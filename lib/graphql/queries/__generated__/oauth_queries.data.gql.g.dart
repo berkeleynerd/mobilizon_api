@@ -1,0 +1,504 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'oauth_queries.data.gql.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GGetAuthApplicationData> _$gGetAuthApplicationDataSerializer =
+    new _$GGetAuthApplicationDataSerializer();
+Serializer<GGetAuthApplicationData_authApplication>
+_$gGetAuthApplicationDataAuthApplicationSerializer =
+    new _$GGetAuthApplicationData_authApplicationSerializer();
+
+class _$GGetAuthApplicationDataSerializer
+    implements StructuredSerializer<GGetAuthApplicationData> {
+  @override
+  final Iterable<Type> types = const [
+    GGetAuthApplicationData,
+    _$GGetAuthApplicationData,
+  ];
+  @override
+  final String wireName = 'GGetAuthApplicationData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetAuthApplicationData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.authApplication;
+    if (value != null) {
+      result
+        ..add('authApplication')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GGetAuthApplicationData_authApplication,
+            ),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GGetAuthApplicationData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GGetAuthApplicationDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'authApplication':
+          result.authApplication.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GGetAuthApplicationData_authApplication,
+                  ),
+                )!
+                as GGetAuthApplicationData_authApplication,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetAuthApplicationData_authApplicationSerializer
+    implements StructuredSerializer<GGetAuthApplicationData_authApplication> {
+  @override
+  final Iterable<Type> types = const [
+    GGetAuthApplicationData_authApplication,
+    _$GGetAuthApplicationData_authApplication,
+  ];
+  @override
+  final String wireName = 'GGetAuthApplicationData_authApplication';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetAuthApplicationData_authApplication object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.clientId;
+    if (value != null) {
+      result
+        ..add('clientId')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.website;
+    if (value != null) {
+      result
+        ..add('website')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GGetAuthApplicationData_authApplication deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GGetAuthApplicationData_authApplicationBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'clientId':
+          result.clientId =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'website':
+          result.website =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetAuthApplicationData extends GGetAuthApplicationData {
+  @override
+  final String G__typename;
+  @override
+  final GGetAuthApplicationData_authApplication? authApplication;
+
+  factory _$GGetAuthApplicationData([
+    void Function(GGetAuthApplicationDataBuilder)? updates,
+  ]) => (new GGetAuthApplicationDataBuilder()..update(updates))._build();
+
+  _$GGetAuthApplicationData._({required this.G__typename, this.authApplication})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GGetAuthApplicationData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GGetAuthApplicationData rebuild(
+    void Function(GGetAuthApplicationDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GGetAuthApplicationDataBuilder toBuilder() =>
+      new GGetAuthApplicationDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetAuthApplicationData &&
+        G__typename == other.G__typename &&
+        authApplication == other.authApplication;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, authApplication.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GGetAuthApplicationData')
+          ..add('G__typename', G__typename)
+          ..add('authApplication', authApplication))
+        .toString();
+  }
+}
+
+class GGetAuthApplicationDataBuilder
+    implements
+        Builder<GGetAuthApplicationData, GGetAuthApplicationDataBuilder> {
+  _$GGetAuthApplicationData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GGetAuthApplicationData_authApplicationBuilder? _authApplication;
+  GGetAuthApplicationData_authApplicationBuilder get authApplication =>
+      _$this._authApplication ??=
+          new GGetAuthApplicationData_authApplicationBuilder();
+  set authApplication(
+    GGetAuthApplicationData_authApplicationBuilder? authApplication,
+  ) => _$this._authApplication = authApplication;
+
+  GGetAuthApplicationDataBuilder() {
+    GGetAuthApplicationData._initializeBuilder(this);
+  }
+
+  GGetAuthApplicationDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _authApplication = $v.authApplication?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetAuthApplicationData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetAuthApplicationData;
+  }
+
+  @override
+  void update(void Function(GGetAuthApplicationDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetAuthApplicationData build() => _build();
+
+  _$GGetAuthApplicationData _build() {
+    _$GGetAuthApplicationData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GGetAuthApplicationData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetAuthApplicationData',
+              'G__typename',
+            ),
+            authApplication: _authApplication?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'authApplication';
+        _authApplication?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GGetAuthApplicationData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetAuthApplicationData_authApplication
+    extends GGetAuthApplicationData_authApplication {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? name;
+  @override
+  final String? clientId;
+  @override
+  final String? website;
+
+  factory _$GGetAuthApplicationData_authApplication([
+    void Function(GGetAuthApplicationData_authApplicationBuilder)? updates,
+  ]) => (new GGetAuthApplicationData_authApplicationBuilder()..update(updates))
+      ._build();
+
+  _$GGetAuthApplicationData_authApplication._({
+    required this.G__typename,
+    this.id,
+    this.name,
+    this.clientId,
+    this.website,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GGetAuthApplicationData_authApplication',
+      'G__typename',
+    );
+  }
+
+  @override
+  GGetAuthApplicationData_authApplication rebuild(
+    void Function(GGetAuthApplicationData_authApplicationBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GGetAuthApplicationData_authApplicationBuilder toBuilder() =>
+      new GGetAuthApplicationData_authApplicationBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetAuthApplicationData_authApplication &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name &&
+        clientId == other.clientId &&
+        website == other.website;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, clientId.hashCode);
+    _$hash = $jc(_$hash, website.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetAuthApplicationData_authApplication',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name)
+          ..add('clientId', clientId)
+          ..add('website', website))
+        .toString();
+  }
+}
+
+class GGetAuthApplicationData_authApplicationBuilder
+    implements
+        Builder<
+          GGetAuthApplicationData_authApplication,
+          GGetAuthApplicationData_authApplicationBuilder
+        > {
+  _$GGetAuthApplicationData_authApplication? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _clientId;
+  String? get clientId => _$this._clientId;
+  set clientId(String? clientId) => _$this._clientId = clientId;
+
+  String? _website;
+  String? get website => _$this._website;
+  set website(String? website) => _$this._website = website;
+
+  GGetAuthApplicationData_authApplicationBuilder() {
+    GGetAuthApplicationData_authApplication._initializeBuilder(this);
+  }
+
+  GGetAuthApplicationData_authApplicationBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _clientId = $v.clientId;
+      _website = $v.website;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetAuthApplicationData_authApplication other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetAuthApplicationData_authApplication;
+  }
+
+  @override
+  void update(
+    void Function(GGetAuthApplicationData_authApplicationBuilder)? updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetAuthApplicationData_authApplication build() => _build();
+
+  _$GGetAuthApplicationData_authApplication _build() {
+    final _$result =
+        _$v ??
+        new _$GGetAuthApplicationData_authApplication._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GGetAuthApplicationData_authApplication',
+            'G__typename',
+          ),
+          id: id,
+          name: name,
+          clientId: clientId,
+          website: website,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

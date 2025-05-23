@@ -1,0 +1,72 @@
+# User and profile queries
+#import "../fragments/user_fragments.graphql"
+
+query GetLoggedUser {
+  loggedUser {
+    ...UserFull
+  }
+}
+
+query GetLoggedPerson {
+  loggedPerson {
+    ...PersonInfo
+  }
+}
+
+query GetUser($id: ID!) {
+  user(id: $id) {
+    ...UserFull
+  }
+}
+
+query GetUsers(
+  $page: Int = 1
+  $limit: Int = 10
+  $sort: SortableUserField = ID
+  $direction: SortDirection = DESC
+  $email: String = ""
+  $currentSignInIp: String
+) {
+  users(
+    page: $page
+    limit: $limit
+    sort: $sort
+    direction: $direction
+    email: $email
+    currentSignInIp: $currentSignInIp
+  ) {
+    total
+    elements {
+      ...UserFull
+    }
+  }
+}
+
+query FetchPerson($preferredUsername: String!) {
+  fetchPerson(preferredUsername: $preferredUsername) {
+    ...PersonInfo
+  }
+}
+
+query GetPerson($id: ID!) {
+  person(id: $id) {
+    ...PersonInfo
+  }
+}
+
+query SearchPersons(
+  $term: String = ""
+  $page: Int = 1
+  $limit: Int = 10
+) {
+  searchPersons(
+    term: $term
+    page: $page
+    limit: $limit
+  ) {
+    total
+    elements {
+      ...PersonInfo
+    }
+  }
+} 

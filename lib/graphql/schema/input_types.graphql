@@ -1,0 +1,23 @@
+# Input type definitions
+
+input MediaInput {
+  mediaId: ID
+  media: MediaInputObject
+}
+
+input MediaInputObject {
+  actorId: ID
+  file: String
+  name: String!
+  alt: String
+  url: String
+}
+
+input LocationInput {
+  name: String
+  range: Int
+  geohash: String
+}
+
+# Note: We're using String for file uploads instead of Upload scalar
+# because we'll handle the file conversion in the application code 

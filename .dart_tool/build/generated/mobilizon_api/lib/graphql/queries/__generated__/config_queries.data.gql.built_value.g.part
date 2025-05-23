@@ -1,0 +1,729 @@
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GGetConfigData> _$gGetConfigDataSerializer =
+    new _$GGetConfigDataSerializer();
+Serializer<GGetConfigData_config> _$gGetConfigDataConfigSerializer =
+    new _$GGetConfigData_configSerializer();
+
+class _$GGetConfigDataSerializer
+    implements StructuredSerializer<GGetConfigData> {
+  @override
+  final Iterable<Type> types = const [GGetConfigData, _$GGetConfigData];
+  @override
+  final String wireName = 'GGetConfigData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetConfigData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.config;
+    if (value != null) {
+      result
+        ..add('config')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GGetConfigData_config),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GGetConfigData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GGetConfigDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'config':
+          result.config.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(GGetConfigData_config),
+                )!
+                as GGetConfigData_config,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetConfigData_configSerializer
+    implements StructuredSerializer<GGetConfigData_config> {
+  @override
+  final Iterable<Type> types = const [
+    GGetConfigData_config,
+    _$GGetConfigData_config,
+  ];
+  @override
+  final String wireName = 'GGetConfigData_config';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetConfigData_config object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.description;
+    if (value != null) {
+      result
+        ..add('description')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.longDescription;
+    if (value != null) {
+      result
+        ..add('longDescription')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.slogan;
+    if (value != null) {
+      result
+        ..add('slogan')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.contact;
+    if (value != null) {
+      result
+        ..add('contact')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.primaryColor;
+    if (value != null) {
+      result
+        ..add('primaryColor')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.secondaryColor;
+    if (value != null) {
+      result
+        ..add('secondaryColor')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.languages;
+    if (value != null) {
+      result
+        ..add('languages')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType.nullable(String),
+            ]),
+          ),
+        );
+    }
+    value = object.registrationsOpen;
+    if (value != null) {
+      result
+        ..add('registrationsOpen')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.registrationsAllowlist;
+    if (value != null) {
+      result
+        ..add('registrationsAllowlist')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.demoMode;
+    if (value != null) {
+      result
+        ..add('demoMode')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.countryCode;
+    if (value != null) {
+      result
+        ..add('countryCode')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GGetConfigData_config deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GGetConfigData_configBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'description':
+          result.description =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'longDescription':
+          result.longDescription =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'slogan':
+          result.slogan =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'contact':
+          result.contact =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'primaryColor':
+          result.primaryColor =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'secondaryColor':
+          result.secondaryColor =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'languages':
+          result.languages.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(BuiltList, const [
+                    const FullType.nullable(String),
+                  ]),
+                )!
+                as BuiltList<Object?>,
+          );
+          break;
+        case 'registrationsOpen':
+          result.registrationsOpen =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'registrationsAllowlist':
+          result.registrationsAllowlist =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'demoMode':
+          result.demoMode =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'countryCode':
+          result.countryCode =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetConfigData extends GGetConfigData {
+  @override
+  final String G__typename;
+  @override
+  final GGetConfigData_config? config;
+
+  factory _$GGetConfigData([void Function(GGetConfigDataBuilder)? updates]) =>
+      (new GGetConfigDataBuilder()..update(updates))._build();
+
+  _$GGetConfigData._({required this.G__typename, this.config}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GGetConfigData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GGetConfigData rebuild(void Function(GGetConfigDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetConfigDataBuilder toBuilder() =>
+      new GGetConfigDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetConfigData &&
+        G__typename == other.G__typename &&
+        config == other.config;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, config.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GGetConfigData')
+          ..add('G__typename', G__typename)
+          ..add('config', config))
+        .toString();
+  }
+}
+
+class GGetConfigDataBuilder
+    implements Builder<GGetConfigData, GGetConfigDataBuilder> {
+  _$GGetConfigData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GGetConfigData_configBuilder? _config;
+  GGetConfigData_configBuilder get config =>
+      _$this._config ??= new GGetConfigData_configBuilder();
+  set config(GGetConfigData_configBuilder? config) => _$this._config = config;
+
+  GGetConfigDataBuilder() {
+    GGetConfigData._initializeBuilder(this);
+  }
+
+  GGetConfigDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _config = $v.config?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetConfigData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetConfigData;
+  }
+
+  @override
+  void update(void Function(GGetConfigDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetConfigData build() => _build();
+
+  _$GGetConfigData _build() {
+    _$GGetConfigData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GGetConfigData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetConfigData',
+              'G__typename',
+            ),
+            config: _config?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'config';
+        _config?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GGetConfigData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetConfigData_config extends GGetConfigData_config {
+  @override
+  final String G__typename;
+  @override
+  final String? name;
+  @override
+  final String? description;
+  @override
+  final String? longDescription;
+  @override
+  final String? slogan;
+  @override
+  final String? contact;
+  @override
+  final String? primaryColor;
+  @override
+  final String? secondaryColor;
+  @override
+  final BuiltList<String?>? languages;
+  @override
+  final bool? registrationsOpen;
+  @override
+  final bool? registrationsAllowlist;
+  @override
+  final bool? demoMode;
+  @override
+  final String? countryCode;
+
+  factory _$GGetConfigData_config([
+    void Function(GGetConfigData_configBuilder)? updates,
+  ]) => (new GGetConfigData_configBuilder()..update(updates))._build();
+
+  _$GGetConfigData_config._({
+    required this.G__typename,
+    this.name,
+    this.description,
+    this.longDescription,
+    this.slogan,
+    this.contact,
+    this.primaryColor,
+    this.secondaryColor,
+    this.languages,
+    this.registrationsOpen,
+    this.registrationsAllowlist,
+    this.demoMode,
+    this.countryCode,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GGetConfigData_config',
+      'G__typename',
+    );
+  }
+
+  @override
+  GGetConfigData_config rebuild(
+    void Function(GGetConfigData_configBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GGetConfigData_configBuilder toBuilder() =>
+      new GGetConfigData_configBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetConfigData_config &&
+        G__typename == other.G__typename &&
+        name == other.name &&
+        description == other.description &&
+        longDescription == other.longDescription &&
+        slogan == other.slogan &&
+        contact == other.contact &&
+        primaryColor == other.primaryColor &&
+        secondaryColor == other.secondaryColor &&
+        languages == other.languages &&
+        registrationsOpen == other.registrationsOpen &&
+        registrationsAllowlist == other.registrationsAllowlist &&
+        demoMode == other.demoMode &&
+        countryCode == other.countryCode;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, longDescription.hashCode);
+    _$hash = $jc(_$hash, slogan.hashCode);
+    _$hash = $jc(_$hash, contact.hashCode);
+    _$hash = $jc(_$hash, primaryColor.hashCode);
+    _$hash = $jc(_$hash, secondaryColor.hashCode);
+    _$hash = $jc(_$hash, languages.hashCode);
+    _$hash = $jc(_$hash, registrationsOpen.hashCode);
+    _$hash = $jc(_$hash, registrationsAllowlist.hashCode);
+    _$hash = $jc(_$hash, demoMode.hashCode);
+    _$hash = $jc(_$hash, countryCode.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GGetConfigData_config')
+          ..add('G__typename', G__typename)
+          ..add('name', name)
+          ..add('description', description)
+          ..add('longDescription', longDescription)
+          ..add('slogan', slogan)
+          ..add('contact', contact)
+          ..add('primaryColor', primaryColor)
+          ..add('secondaryColor', secondaryColor)
+          ..add('languages', languages)
+          ..add('registrationsOpen', registrationsOpen)
+          ..add('registrationsAllowlist', registrationsAllowlist)
+          ..add('demoMode', demoMode)
+          ..add('countryCode', countryCode))
+        .toString();
+  }
+}
+
+class GGetConfigData_configBuilder
+    implements Builder<GGetConfigData_config, GGetConfigData_configBuilder> {
+  _$GGetConfigData_config? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
+  String? _longDescription;
+  String? get longDescription => _$this._longDescription;
+  set longDescription(String? longDescription) =>
+      _$this._longDescription = longDescription;
+
+  String? _slogan;
+  String? get slogan => _$this._slogan;
+  set slogan(String? slogan) => _$this._slogan = slogan;
+
+  String? _contact;
+  String? get contact => _$this._contact;
+  set contact(String? contact) => _$this._contact = contact;
+
+  String? _primaryColor;
+  String? get primaryColor => _$this._primaryColor;
+  set primaryColor(String? primaryColor) => _$this._primaryColor = primaryColor;
+
+  String? _secondaryColor;
+  String? get secondaryColor => _$this._secondaryColor;
+  set secondaryColor(String? secondaryColor) =>
+      _$this._secondaryColor = secondaryColor;
+
+  ListBuilder<String?>? _languages;
+  ListBuilder<String?> get languages =>
+      _$this._languages ??= new ListBuilder<String?>();
+  set languages(ListBuilder<String?>? languages) =>
+      _$this._languages = languages;
+
+  bool? _registrationsOpen;
+  bool? get registrationsOpen => _$this._registrationsOpen;
+  set registrationsOpen(bool? registrationsOpen) =>
+      _$this._registrationsOpen = registrationsOpen;
+
+  bool? _registrationsAllowlist;
+  bool? get registrationsAllowlist => _$this._registrationsAllowlist;
+  set registrationsAllowlist(bool? registrationsAllowlist) =>
+      _$this._registrationsAllowlist = registrationsAllowlist;
+
+  bool? _demoMode;
+  bool? get demoMode => _$this._demoMode;
+  set demoMode(bool? demoMode) => _$this._demoMode = demoMode;
+
+  String? _countryCode;
+  String? get countryCode => _$this._countryCode;
+  set countryCode(String? countryCode) => _$this._countryCode = countryCode;
+
+  GGetConfigData_configBuilder() {
+    GGetConfigData_config._initializeBuilder(this);
+  }
+
+  GGetConfigData_configBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _name = $v.name;
+      _description = $v.description;
+      _longDescription = $v.longDescription;
+      _slogan = $v.slogan;
+      _contact = $v.contact;
+      _primaryColor = $v.primaryColor;
+      _secondaryColor = $v.secondaryColor;
+      _languages = $v.languages?.toBuilder();
+      _registrationsOpen = $v.registrationsOpen;
+      _registrationsAllowlist = $v.registrationsAllowlist;
+      _demoMode = $v.demoMode;
+      _countryCode = $v.countryCode;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetConfigData_config other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetConfigData_config;
+  }
+
+  @override
+  void update(void Function(GGetConfigData_configBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetConfigData_config build() => _build();
+
+  _$GGetConfigData_config _build() {
+    _$GGetConfigData_config _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GGetConfigData_config._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetConfigData_config',
+              'G__typename',
+            ),
+            name: name,
+            description: description,
+            longDescription: longDescription,
+            slogan: slogan,
+            contact: contact,
+            primaryColor: primaryColor,
+            secondaryColor: secondaryColor,
+            languages: _languages?.build(),
+            registrationsOpen: registrationsOpen,
+            registrationsAllowlist: registrationsAllowlist,
+            demoMode: demoMode,
+            countryCode: countryCode,
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'languages';
+        _languages?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GGetConfigData_config',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

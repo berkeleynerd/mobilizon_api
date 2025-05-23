@@ -1,0 +1,2255 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'oauth_mutations.data.gql.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GAuthorizeApplicationData> _$gAuthorizeApplicationDataSerializer =
+    new _$GAuthorizeApplicationDataSerializer();
+Serializer<GAuthorizeApplicationData_authorizeApplication>
+_$gAuthorizeApplicationDataAuthorizeApplicationSerializer =
+    new _$GAuthorizeApplicationData_authorizeApplicationSerializer();
+Serializer<GAuthorizeDeviceApplicationData>
+_$gAuthorizeDeviceApplicationDataSerializer =
+    new _$GAuthorizeDeviceApplicationDataSerializer();
+Serializer<GAuthorizeDeviceApplicationData_authorizeDeviceApplication>
+_$gAuthorizeDeviceApplicationDataAuthorizeDeviceApplicationSerializer =
+    new _$GAuthorizeDeviceApplicationData_authorizeDeviceApplicationSerializer();
+Serializer<GDeviceActivationData> _$gDeviceActivationDataSerializer =
+    new _$GDeviceActivationDataSerializer();
+Serializer<GDeviceActivationData_deviceActivation>
+_$gDeviceActivationDataDeviceActivationSerializer =
+    new _$GDeviceActivationData_deviceActivationSerializer();
+Serializer<GDeviceActivationData_deviceActivation_application>
+_$gDeviceActivationDataDeviceActivationApplicationSerializer =
+    new _$GDeviceActivationData_deviceActivation_applicationSerializer();
+Serializer<GRevokeApplicationTokenData>
+_$gRevokeApplicationTokenDataSerializer =
+    new _$GRevokeApplicationTokenDataSerializer();
+Serializer<GRevokeApplicationTokenData_revokeApplicationToken>
+_$gRevokeApplicationTokenDataRevokeApplicationTokenSerializer =
+    new _$GRevokeApplicationTokenData_revokeApplicationTokenSerializer();
+
+class _$GAuthorizeApplicationDataSerializer
+    implements StructuredSerializer<GAuthorizeApplicationData> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorizeApplicationData,
+    _$GAuthorizeApplicationData,
+  ];
+  @override
+  final String wireName = 'GAuthorizeApplicationData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GAuthorizeApplicationData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.authorizeApplication;
+    if (value != null) {
+      result
+        ..add('authorizeApplication')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GAuthorizeApplicationData_authorizeApplication,
+            ),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GAuthorizeApplicationData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GAuthorizeApplicationDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'authorizeApplication':
+          result.authorizeApplication.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GAuthorizeApplicationData_authorizeApplication,
+                  ),
+                )!
+                as GAuthorizeApplicationData_authorizeApplication,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorizeApplicationData_authorizeApplicationSerializer
+    implements
+        StructuredSerializer<GAuthorizeApplicationData_authorizeApplication> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorizeApplicationData_authorizeApplication,
+    _$GAuthorizeApplicationData_authorizeApplication,
+  ];
+  @override
+  final String wireName = 'GAuthorizeApplicationData_authorizeApplication';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GAuthorizeApplicationData_authorizeApplication object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.code;
+    if (value != null) {
+      result
+        ..add('code')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.state;
+    if (value != null) {
+      result
+        ..add('state')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.clientId;
+    if (value != null) {
+      result
+        ..add('clientId')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.scope;
+    if (value != null) {
+      result
+        ..add('scope')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GAuthorizeApplicationData_authorizeApplication deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GAuthorizeApplicationData_authorizeApplicationBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'code':
+          result.code =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'state':
+          result.state =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'clientId':
+          result.clientId =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'scope':
+          result.scope =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorizeDeviceApplicationDataSerializer
+    implements StructuredSerializer<GAuthorizeDeviceApplicationData> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorizeDeviceApplicationData,
+    _$GAuthorizeDeviceApplicationData,
+  ];
+  @override
+  final String wireName = 'GAuthorizeDeviceApplicationData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GAuthorizeDeviceApplicationData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.authorizeDeviceApplication;
+    if (value != null) {
+      result
+        ..add('authorizeDeviceApplication')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GAuthorizeDeviceApplicationData_authorizeDeviceApplication,
+            ),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GAuthorizeDeviceApplicationData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GAuthorizeDeviceApplicationDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'authorizeDeviceApplication':
+          result.authorizeDeviceApplication.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GAuthorizeDeviceApplicationData_authorizeDeviceApplication,
+                  ),
+                )!
+                as GAuthorizeDeviceApplicationData_authorizeDeviceApplication,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorizeDeviceApplicationData_authorizeDeviceApplicationSerializer
+    implements
+        StructuredSerializer<
+          GAuthorizeDeviceApplicationData_authorizeDeviceApplication
+        > {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorizeDeviceApplicationData_authorizeDeviceApplication,
+    _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication,
+  ];
+  @override
+  final String wireName =
+      'GAuthorizeDeviceApplicationData_authorizeDeviceApplication';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GAuthorizeDeviceApplicationData_authorizeDeviceApplication object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.clientId;
+    if (value != null) {
+      result
+        ..add('clientId')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.website;
+    if (value != null) {
+      result
+        ..add('website')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplication deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result =
+        new GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'clientId':
+          result.clientId =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'website':
+          result.website =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDeviceActivationDataSerializer
+    implements StructuredSerializer<GDeviceActivationData> {
+  @override
+  final Iterable<Type> types = const [
+    GDeviceActivationData,
+    _$GDeviceActivationData,
+  ];
+  @override
+  final String wireName = 'GDeviceActivationData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GDeviceActivationData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.deviceActivation;
+    if (value != null) {
+      result
+        ..add('deviceActivation')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GDeviceActivationData_deviceActivation,
+            ),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GDeviceActivationData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GDeviceActivationDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'deviceActivation':
+          result.deviceActivation.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GDeviceActivationData_deviceActivation,
+                  ),
+                )!
+                as GDeviceActivationData_deviceActivation,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDeviceActivationData_deviceActivationSerializer
+    implements StructuredSerializer<GDeviceActivationData_deviceActivation> {
+  @override
+  final Iterable<Type> types = const [
+    GDeviceActivationData_deviceActivation,
+    _$GDeviceActivationData_deviceActivation,
+  ];
+  @override
+  final String wireName = 'GDeviceActivationData_deviceActivation';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GDeviceActivationData_deviceActivation object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.scope;
+    if (value != null) {
+      result
+        ..add('scope')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.application;
+    if (value != null) {
+      result
+        ..add('application')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GDeviceActivationData_deviceActivation_application,
+            ),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GDeviceActivationData_deviceActivation deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GDeviceActivationData_deviceActivationBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'scope':
+          result.scope =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'application':
+          result.application.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GDeviceActivationData_deviceActivation_application,
+                  ),
+                )!
+                as GDeviceActivationData_deviceActivation_application,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDeviceActivationData_deviceActivation_applicationSerializer
+    implements
+        StructuredSerializer<
+          GDeviceActivationData_deviceActivation_application
+        > {
+  @override
+  final Iterable<Type> types = const [
+    GDeviceActivationData_deviceActivation_application,
+    _$GDeviceActivationData_deviceActivation_application,
+  ];
+  @override
+  final String wireName = 'GDeviceActivationData_deviceActivation_application';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GDeviceActivationData_deviceActivation_application object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.clientId;
+    if (value != null) {
+      result
+        ..add('clientId')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.website;
+    if (value != null) {
+      result
+        ..add('website')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GDeviceActivationData_deviceActivation_application deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result =
+        new GDeviceActivationData_deviceActivation_applicationBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'clientId':
+          result.clientId =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'website':
+          result.website =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GRevokeApplicationTokenDataSerializer
+    implements StructuredSerializer<GRevokeApplicationTokenData> {
+  @override
+  final Iterable<Type> types = const [
+    GRevokeApplicationTokenData,
+    _$GRevokeApplicationTokenData,
+  ];
+  @override
+  final String wireName = 'GRevokeApplicationTokenData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GRevokeApplicationTokenData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.revokeApplicationToken;
+    if (value != null) {
+      result
+        ..add('revokeApplicationToken')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GRevokeApplicationTokenData_revokeApplicationToken,
+            ),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GRevokeApplicationTokenData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GRevokeApplicationTokenDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'revokeApplicationToken':
+          result.revokeApplicationToken.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GRevokeApplicationTokenData_revokeApplicationToken,
+                  ),
+                )!
+                as GRevokeApplicationTokenData_revokeApplicationToken,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GRevokeApplicationTokenData_revokeApplicationTokenSerializer
+    implements
+        StructuredSerializer<
+          GRevokeApplicationTokenData_revokeApplicationToken
+        > {
+  @override
+  final Iterable<Type> types = const [
+    GRevokeApplicationTokenData_revokeApplicationToken,
+    _$GRevokeApplicationTokenData_revokeApplicationToken,
+  ];
+  @override
+  final String wireName = 'GRevokeApplicationTokenData_revokeApplicationToken';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GRevokeApplicationTokenData_revokeApplicationToken object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GRevokeApplicationTokenData_revokeApplicationToken deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result =
+        new GRevokeApplicationTokenData_revokeApplicationTokenBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorizeApplicationData extends GAuthorizeApplicationData {
+  @override
+  final String G__typename;
+  @override
+  final GAuthorizeApplicationData_authorizeApplication? authorizeApplication;
+
+  factory _$GAuthorizeApplicationData([
+    void Function(GAuthorizeApplicationDataBuilder)? updates,
+  ]) => (new GAuthorizeApplicationDataBuilder()..update(updates))._build();
+
+  _$GAuthorizeApplicationData._({
+    required this.G__typename,
+    this.authorizeApplication,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GAuthorizeApplicationData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GAuthorizeApplicationData rebuild(
+    void Function(GAuthorizeApplicationDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorizeApplicationDataBuilder toBuilder() =>
+      new GAuthorizeApplicationDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorizeApplicationData &&
+        G__typename == other.G__typename &&
+        authorizeApplication == other.authorizeApplication;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, authorizeApplication.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorizeApplicationData')
+          ..add('G__typename', G__typename)
+          ..add('authorizeApplication', authorizeApplication))
+        .toString();
+  }
+}
+
+class GAuthorizeApplicationDataBuilder
+    implements
+        Builder<GAuthorizeApplicationData, GAuthorizeApplicationDataBuilder> {
+  _$GAuthorizeApplicationData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GAuthorizeApplicationData_authorizeApplicationBuilder? _authorizeApplication;
+  GAuthorizeApplicationData_authorizeApplicationBuilder
+  get authorizeApplication => _$this._authorizeApplication ??=
+      new GAuthorizeApplicationData_authorizeApplicationBuilder();
+  set authorizeApplication(
+    GAuthorizeApplicationData_authorizeApplicationBuilder? authorizeApplication,
+  ) => _$this._authorizeApplication = authorizeApplication;
+
+  GAuthorizeApplicationDataBuilder() {
+    GAuthorizeApplicationData._initializeBuilder(this);
+  }
+
+  GAuthorizeApplicationDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _authorizeApplication = $v.authorizeApplication?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorizeApplicationData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GAuthorizeApplicationData;
+  }
+
+  @override
+  void update(void Function(GAuthorizeApplicationDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorizeApplicationData build() => _build();
+
+  _$GAuthorizeApplicationData _build() {
+    _$GAuthorizeApplicationData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GAuthorizeApplicationData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GAuthorizeApplicationData',
+              'G__typename',
+            ),
+            authorizeApplication: _authorizeApplication?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'authorizeApplication';
+        _authorizeApplication?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GAuthorizeApplicationData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorizeApplicationData_authorizeApplication
+    extends GAuthorizeApplicationData_authorizeApplication {
+  @override
+  final String G__typename;
+  @override
+  final String? code;
+  @override
+  final String? state;
+  @override
+  final String? clientId;
+  @override
+  final String? scope;
+
+  factory _$GAuthorizeApplicationData_authorizeApplication([
+    void Function(GAuthorizeApplicationData_authorizeApplicationBuilder)?
+    updates,
+  ]) =>
+      (new GAuthorizeApplicationData_authorizeApplicationBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GAuthorizeApplicationData_authorizeApplication._({
+    required this.G__typename,
+    this.code,
+    this.state,
+    this.clientId,
+    this.scope,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GAuthorizeApplicationData_authorizeApplication',
+      'G__typename',
+    );
+  }
+
+  @override
+  GAuthorizeApplicationData_authorizeApplication rebuild(
+    void Function(GAuthorizeApplicationData_authorizeApplicationBuilder)
+    updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorizeApplicationData_authorizeApplicationBuilder toBuilder() =>
+      new GAuthorizeApplicationData_authorizeApplicationBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorizeApplicationData_authorizeApplication &&
+        G__typename == other.G__typename &&
+        code == other.code &&
+        state == other.state &&
+        clientId == other.clientId &&
+        scope == other.scope;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, code.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jc(_$hash, clientId.hashCode);
+    _$hash = $jc(_$hash, scope.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GAuthorizeApplicationData_authorizeApplication',
+          )
+          ..add('G__typename', G__typename)
+          ..add('code', code)
+          ..add('state', state)
+          ..add('clientId', clientId)
+          ..add('scope', scope))
+        .toString();
+  }
+}
+
+class GAuthorizeApplicationData_authorizeApplicationBuilder
+    implements
+        Builder<
+          GAuthorizeApplicationData_authorizeApplication,
+          GAuthorizeApplicationData_authorizeApplicationBuilder
+        > {
+  _$GAuthorizeApplicationData_authorizeApplication? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _code;
+  String? get code => _$this._code;
+  set code(String? code) => _$this._code = code;
+
+  String? _state;
+  String? get state => _$this._state;
+  set state(String? state) => _$this._state = state;
+
+  String? _clientId;
+  String? get clientId => _$this._clientId;
+  set clientId(String? clientId) => _$this._clientId = clientId;
+
+  String? _scope;
+  String? get scope => _$this._scope;
+  set scope(String? scope) => _$this._scope = scope;
+
+  GAuthorizeApplicationData_authorizeApplicationBuilder() {
+    GAuthorizeApplicationData_authorizeApplication._initializeBuilder(this);
+  }
+
+  GAuthorizeApplicationData_authorizeApplicationBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _code = $v.code;
+      _state = $v.state;
+      _clientId = $v.clientId;
+      _scope = $v.scope;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorizeApplicationData_authorizeApplication other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GAuthorizeApplicationData_authorizeApplication;
+  }
+
+  @override
+  void update(
+    void Function(GAuthorizeApplicationData_authorizeApplicationBuilder)?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorizeApplicationData_authorizeApplication build() => _build();
+
+  _$GAuthorizeApplicationData_authorizeApplication _build() {
+    final _$result =
+        _$v ??
+        new _$GAuthorizeApplicationData_authorizeApplication._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GAuthorizeApplicationData_authorizeApplication',
+            'G__typename',
+          ),
+          code: code,
+          state: state,
+          clientId: clientId,
+          scope: scope,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorizeDeviceApplicationData
+    extends GAuthorizeDeviceApplicationData {
+  @override
+  final String G__typename;
+  @override
+  final GAuthorizeDeviceApplicationData_authorizeDeviceApplication?
+  authorizeDeviceApplication;
+
+  factory _$GAuthorizeDeviceApplicationData([
+    void Function(GAuthorizeDeviceApplicationDataBuilder)? updates,
+  ]) =>
+      (new GAuthorizeDeviceApplicationDataBuilder()..update(updates))._build();
+
+  _$GAuthorizeDeviceApplicationData._({
+    required this.G__typename,
+    this.authorizeDeviceApplication,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GAuthorizeDeviceApplicationData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GAuthorizeDeviceApplicationData rebuild(
+    void Function(GAuthorizeDeviceApplicationDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorizeDeviceApplicationDataBuilder toBuilder() =>
+      new GAuthorizeDeviceApplicationDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorizeDeviceApplicationData &&
+        G__typename == other.G__typename &&
+        authorizeDeviceApplication == other.authorizeDeviceApplication;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, authorizeDeviceApplication.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorizeDeviceApplicationData')
+          ..add('G__typename', G__typename)
+          ..add('authorizeDeviceApplication', authorizeDeviceApplication))
+        .toString();
+  }
+}
+
+class GAuthorizeDeviceApplicationDataBuilder
+    implements
+        Builder<
+          GAuthorizeDeviceApplicationData,
+          GAuthorizeDeviceApplicationDataBuilder
+        > {
+  _$GAuthorizeDeviceApplicationData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder?
+  _authorizeDeviceApplication;
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder
+  get authorizeDeviceApplication => _$this._authorizeDeviceApplication ??=
+      new GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder();
+  set authorizeDeviceApplication(
+    GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder?
+    authorizeDeviceApplication,
+  ) => _$this._authorizeDeviceApplication = authorizeDeviceApplication;
+
+  GAuthorizeDeviceApplicationDataBuilder() {
+    GAuthorizeDeviceApplicationData._initializeBuilder(this);
+  }
+
+  GAuthorizeDeviceApplicationDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _authorizeDeviceApplication = $v.authorizeDeviceApplication?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorizeDeviceApplicationData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GAuthorizeDeviceApplicationData;
+  }
+
+  @override
+  void update(void Function(GAuthorizeDeviceApplicationDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorizeDeviceApplicationData build() => _build();
+
+  _$GAuthorizeDeviceApplicationData _build() {
+    _$GAuthorizeDeviceApplicationData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GAuthorizeDeviceApplicationData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GAuthorizeDeviceApplicationData',
+              'G__typename',
+            ),
+            authorizeDeviceApplication: _authorizeDeviceApplication?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'authorizeDeviceApplication';
+        _authorizeDeviceApplication?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GAuthorizeDeviceApplicationData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication
+    extends GAuthorizeDeviceApplicationData_authorizeDeviceApplication {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? name;
+  @override
+  final String? clientId;
+  @override
+  final String? website;
+
+  factory _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication([
+    void Function(
+      GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder,
+    )?
+    updates,
+  ]) =>
+      (new GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication._({
+    required this.G__typename,
+    this.id,
+    this.name,
+    this.clientId,
+    this.website,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GAuthorizeDeviceApplicationData_authorizeDeviceApplication',
+      'G__typename',
+    );
+  }
+
+  @override
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplication rebuild(
+    void Function(
+      GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder,
+    )
+    updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder
+  toBuilder() =>
+      new GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GAuthorizeDeviceApplicationData_authorizeDeviceApplication &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name &&
+        clientId == other.clientId &&
+        website == other.website;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, clientId.hashCode);
+    _$hash = $jc(_$hash, website.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GAuthorizeDeviceApplicationData_authorizeDeviceApplication',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name)
+          ..add('clientId', clientId)
+          ..add('website', website))
+        .toString();
+  }
+}
+
+class GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder
+    implements
+        Builder<
+          GAuthorizeDeviceApplicationData_authorizeDeviceApplication,
+          GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder
+        > {
+  _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _clientId;
+  String? get clientId => _$this._clientId;
+  set clientId(String? clientId) => _$this._clientId = clientId;
+
+  String? _website;
+  String? get website => _$this._website;
+  set website(String? website) => _$this._website = website;
+
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder() {
+    GAuthorizeDeviceApplicationData_authorizeDeviceApplication._initializeBuilder(
+      this,
+    );
+  }
+
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _clientId = $v.clientId;
+      _website = $v.website;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+    GAuthorizeDeviceApplicationData_authorizeDeviceApplication other,
+  ) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication;
+  }
+
+  @override
+  void update(
+    void Function(
+      GAuthorizeDeviceApplicationData_authorizeDeviceApplicationBuilder,
+    )?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorizeDeviceApplicationData_authorizeDeviceApplication build() =>
+      _build();
+
+  _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication _build() {
+    final _$result =
+        _$v ??
+        new _$GAuthorizeDeviceApplicationData_authorizeDeviceApplication._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GAuthorizeDeviceApplicationData_authorizeDeviceApplication',
+            'G__typename',
+          ),
+          id: id,
+          name: name,
+          clientId: clientId,
+          website: website,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDeviceActivationData extends GDeviceActivationData {
+  @override
+  final String G__typename;
+  @override
+  final GDeviceActivationData_deviceActivation? deviceActivation;
+
+  factory _$GDeviceActivationData([
+    void Function(GDeviceActivationDataBuilder)? updates,
+  ]) => (new GDeviceActivationDataBuilder()..update(updates))._build();
+
+  _$GDeviceActivationData._({required this.G__typename, this.deviceActivation})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GDeviceActivationData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GDeviceActivationData rebuild(
+    void Function(GDeviceActivationDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GDeviceActivationDataBuilder toBuilder() =>
+      new GDeviceActivationDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDeviceActivationData &&
+        G__typename == other.G__typename &&
+        deviceActivation == other.deviceActivation;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, deviceActivation.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDeviceActivationData')
+          ..add('G__typename', G__typename)
+          ..add('deviceActivation', deviceActivation))
+        .toString();
+  }
+}
+
+class GDeviceActivationDataBuilder
+    implements Builder<GDeviceActivationData, GDeviceActivationDataBuilder> {
+  _$GDeviceActivationData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GDeviceActivationData_deviceActivationBuilder? _deviceActivation;
+  GDeviceActivationData_deviceActivationBuilder get deviceActivation =>
+      _$this._deviceActivation ??=
+          new GDeviceActivationData_deviceActivationBuilder();
+  set deviceActivation(
+    GDeviceActivationData_deviceActivationBuilder? deviceActivation,
+  ) => _$this._deviceActivation = deviceActivation;
+
+  GDeviceActivationDataBuilder() {
+    GDeviceActivationData._initializeBuilder(this);
+  }
+
+  GDeviceActivationDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _deviceActivation = $v.deviceActivation?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDeviceActivationData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDeviceActivationData;
+  }
+
+  @override
+  void update(void Function(GDeviceActivationDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDeviceActivationData build() => _build();
+
+  _$GDeviceActivationData _build() {
+    _$GDeviceActivationData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GDeviceActivationData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GDeviceActivationData',
+              'G__typename',
+            ),
+            deviceActivation: _deviceActivation?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'deviceActivation';
+        _deviceActivation?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GDeviceActivationData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDeviceActivationData_deviceActivation
+    extends GDeviceActivationData_deviceActivation {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? scope;
+  @override
+  final GDeviceActivationData_deviceActivation_application? application;
+
+  factory _$GDeviceActivationData_deviceActivation([
+    void Function(GDeviceActivationData_deviceActivationBuilder)? updates,
+  ]) => (new GDeviceActivationData_deviceActivationBuilder()..update(updates))
+      ._build();
+
+  _$GDeviceActivationData_deviceActivation._({
+    required this.G__typename,
+    this.id,
+    this.scope,
+    this.application,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GDeviceActivationData_deviceActivation',
+      'G__typename',
+    );
+  }
+
+  @override
+  GDeviceActivationData_deviceActivation rebuild(
+    void Function(GDeviceActivationData_deviceActivationBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GDeviceActivationData_deviceActivationBuilder toBuilder() =>
+      new GDeviceActivationData_deviceActivationBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDeviceActivationData_deviceActivation &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        scope == other.scope &&
+        application == other.application;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, scope.hashCode);
+    _$hash = $jc(_$hash, application.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDeviceActivationData_deviceActivation',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('scope', scope)
+          ..add('application', application))
+        .toString();
+  }
+}
+
+class GDeviceActivationData_deviceActivationBuilder
+    implements
+        Builder<
+          GDeviceActivationData_deviceActivation,
+          GDeviceActivationData_deviceActivationBuilder
+        > {
+  _$GDeviceActivationData_deviceActivation? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _scope;
+  String? get scope => _$this._scope;
+  set scope(String? scope) => _$this._scope = scope;
+
+  GDeviceActivationData_deviceActivation_applicationBuilder? _application;
+  GDeviceActivationData_deviceActivation_applicationBuilder get application =>
+      _$this._application ??=
+          new GDeviceActivationData_deviceActivation_applicationBuilder();
+  set application(
+    GDeviceActivationData_deviceActivation_applicationBuilder? application,
+  ) => _$this._application = application;
+
+  GDeviceActivationData_deviceActivationBuilder() {
+    GDeviceActivationData_deviceActivation._initializeBuilder(this);
+  }
+
+  GDeviceActivationData_deviceActivationBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _scope = $v.scope;
+      _application = $v.application?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDeviceActivationData_deviceActivation other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDeviceActivationData_deviceActivation;
+  }
+
+  @override
+  void update(
+    void Function(GDeviceActivationData_deviceActivationBuilder)? updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDeviceActivationData_deviceActivation build() => _build();
+
+  _$GDeviceActivationData_deviceActivation _build() {
+    _$GDeviceActivationData_deviceActivation _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GDeviceActivationData_deviceActivation._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GDeviceActivationData_deviceActivation',
+              'G__typename',
+            ),
+            id: id,
+            scope: scope,
+            application: _application?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'application';
+        _application?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GDeviceActivationData_deviceActivation',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDeviceActivationData_deviceActivation_application
+    extends GDeviceActivationData_deviceActivation_application {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? name;
+  @override
+  final String? clientId;
+  @override
+  final String? website;
+
+  factory _$GDeviceActivationData_deviceActivation_application([
+    void Function(GDeviceActivationData_deviceActivation_applicationBuilder)?
+    updates,
+  ]) =>
+      (new GDeviceActivationData_deviceActivation_applicationBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GDeviceActivationData_deviceActivation_application._({
+    required this.G__typename,
+    this.id,
+    this.name,
+    this.clientId,
+    this.website,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GDeviceActivationData_deviceActivation_application',
+      'G__typename',
+    );
+  }
+
+  @override
+  GDeviceActivationData_deviceActivation_application rebuild(
+    void Function(GDeviceActivationData_deviceActivation_applicationBuilder)
+    updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GDeviceActivationData_deviceActivation_applicationBuilder toBuilder() =>
+      new GDeviceActivationData_deviceActivation_applicationBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDeviceActivationData_deviceActivation_application &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name &&
+        clientId == other.clientId &&
+        website == other.website;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, clientId.hashCode);
+    _$hash = $jc(_$hash, website.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDeviceActivationData_deviceActivation_application',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name)
+          ..add('clientId', clientId)
+          ..add('website', website))
+        .toString();
+  }
+}
+
+class GDeviceActivationData_deviceActivation_applicationBuilder
+    implements
+        Builder<
+          GDeviceActivationData_deviceActivation_application,
+          GDeviceActivationData_deviceActivation_applicationBuilder
+        > {
+  _$GDeviceActivationData_deviceActivation_application? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _clientId;
+  String? get clientId => _$this._clientId;
+  set clientId(String? clientId) => _$this._clientId = clientId;
+
+  String? _website;
+  String? get website => _$this._website;
+  set website(String? website) => _$this._website = website;
+
+  GDeviceActivationData_deviceActivation_applicationBuilder() {
+    GDeviceActivationData_deviceActivation_application._initializeBuilder(this);
+  }
+
+  GDeviceActivationData_deviceActivation_applicationBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _clientId = $v.clientId;
+      _website = $v.website;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDeviceActivationData_deviceActivation_application other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDeviceActivationData_deviceActivation_application;
+  }
+
+  @override
+  void update(
+    void Function(GDeviceActivationData_deviceActivation_applicationBuilder)?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDeviceActivationData_deviceActivation_application build() => _build();
+
+  _$GDeviceActivationData_deviceActivation_application _build() {
+    final _$result =
+        _$v ??
+        new _$GDeviceActivationData_deviceActivation_application._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GDeviceActivationData_deviceActivation_application',
+            'G__typename',
+          ),
+          id: id,
+          name: name,
+          clientId: clientId,
+          website: website,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GRevokeApplicationTokenData extends GRevokeApplicationTokenData {
+  @override
+  final String G__typename;
+  @override
+  final GRevokeApplicationTokenData_revokeApplicationToken?
+  revokeApplicationToken;
+
+  factory _$GRevokeApplicationTokenData([
+    void Function(GRevokeApplicationTokenDataBuilder)? updates,
+  ]) => (new GRevokeApplicationTokenDataBuilder()..update(updates))._build();
+
+  _$GRevokeApplicationTokenData._({
+    required this.G__typename,
+    this.revokeApplicationToken,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GRevokeApplicationTokenData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GRevokeApplicationTokenData rebuild(
+    void Function(GRevokeApplicationTokenDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GRevokeApplicationTokenDataBuilder toBuilder() =>
+      new GRevokeApplicationTokenDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GRevokeApplicationTokenData &&
+        G__typename == other.G__typename &&
+        revokeApplicationToken == other.revokeApplicationToken;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, revokeApplicationToken.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GRevokeApplicationTokenData')
+          ..add('G__typename', G__typename)
+          ..add('revokeApplicationToken', revokeApplicationToken))
+        .toString();
+  }
+}
+
+class GRevokeApplicationTokenDataBuilder
+    implements
+        Builder<
+          GRevokeApplicationTokenData,
+          GRevokeApplicationTokenDataBuilder
+        > {
+  _$GRevokeApplicationTokenData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GRevokeApplicationTokenData_revokeApplicationTokenBuilder?
+  _revokeApplicationToken;
+  GRevokeApplicationTokenData_revokeApplicationTokenBuilder
+  get revokeApplicationToken => _$this._revokeApplicationToken ??=
+      new GRevokeApplicationTokenData_revokeApplicationTokenBuilder();
+  set revokeApplicationToken(
+    GRevokeApplicationTokenData_revokeApplicationTokenBuilder?
+    revokeApplicationToken,
+  ) => _$this._revokeApplicationToken = revokeApplicationToken;
+
+  GRevokeApplicationTokenDataBuilder() {
+    GRevokeApplicationTokenData._initializeBuilder(this);
+  }
+
+  GRevokeApplicationTokenDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _revokeApplicationToken = $v.revokeApplicationToken?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GRevokeApplicationTokenData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GRevokeApplicationTokenData;
+  }
+
+  @override
+  void update(void Function(GRevokeApplicationTokenDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GRevokeApplicationTokenData build() => _build();
+
+  _$GRevokeApplicationTokenData _build() {
+    _$GRevokeApplicationTokenData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GRevokeApplicationTokenData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GRevokeApplicationTokenData',
+              'G__typename',
+            ),
+            revokeApplicationToken: _revokeApplicationToken?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'revokeApplicationToken';
+        _revokeApplicationToken?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GRevokeApplicationTokenData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GRevokeApplicationTokenData_revokeApplicationToken
+    extends GRevokeApplicationTokenData_revokeApplicationToken {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+
+  factory _$GRevokeApplicationTokenData_revokeApplicationToken([
+    void Function(GRevokeApplicationTokenData_revokeApplicationTokenBuilder)?
+    updates,
+  ]) =>
+      (new GRevokeApplicationTokenData_revokeApplicationTokenBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GRevokeApplicationTokenData_revokeApplicationToken._({
+    required this.G__typename,
+    this.id,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GRevokeApplicationTokenData_revokeApplicationToken',
+      'G__typename',
+    );
+  }
+
+  @override
+  GRevokeApplicationTokenData_revokeApplicationToken rebuild(
+    void Function(GRevokeApplicationTokenData_revokeApplicationTokenBuilder)
+    updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GRevokeApplicationTokenData_revokeApplicationTokenBuilder toBuilder() =>
+      new GRevokeApplicationTokenData_revokeApplicationTokenBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GRevokeApplicationTokenData_revokeApplicationToken &&
+        G__typename == other.G__typename &&
+        id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GRevokeApplicationTokenData_revokeApplicationToken',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id))
+        .toString();
+  }
+}
+
+class GRevokeApplicationTokenData_revokeApplicationTokenBuilder
+    implements
+        Builder<
+          GRevokeApplicationTokenData_revokeApplicationToken,
+          GRevokeApplicationTokenData_revokeApplicationTokenBuilder
+        > {
+  _$GRevokeApplicationTokenData_revokeApplicationToken? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GRevokeApplicationTokenData_revokeApplicationTokenBuilder() {
+    GRevokeApplicationTokenData_revokeApplicationToken._initializeBuilder(this);
+  }
+
+  GRevokeApplicationTokenData_revokeApplicationTokenBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GRevokeApplicationTokenData_revokeApplicationToken other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GRevokeApplicationTokenData_revokeApplicationToken;
+  }
+
+  @override
+  void update(
+    void Function(GRevokeApplicationTokenData_revokeApplicationTokenBuilder)?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GRevokeApplicationTokenData_revokeApplicationToken build() => _build();
+
+  _$GRevokeApplicationTokenData_revokeApplicationToken _build() {
+    final _$result =
+        _$v ??
+        new _$GRevokeApplicationTokenData_revokeApplicationToken._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GRevokeApplicationTokenData_revokeApplicationToken',
+            'G__typename',
+          ),
+          id: id,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

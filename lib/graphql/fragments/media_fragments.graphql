@@ -1,0 +1,19 @@
+# Media fragments
+
+fragment MediaBasicInfo on Media {
+  id
+  alt
+  name
+  url
+  size
+  contentType
+}
+
+fragment MediaWithMetadata on Media {
+  ...MediaBasicInfo
+  metadata {
+    width
+    height
+    blurhash
+  }
+} 

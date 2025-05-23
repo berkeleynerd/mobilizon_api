@@ -1,0 +1,32 @@
+# Administrative mutations (requires MODERATOR or ADMINISTRATOR role)
+#import "../fragments/user_fragments.graphql"
+
+mutation AdminUpdateUser(
+  $id: ID!
+  $email: String
+  $confirmed: Boolean
+  $role: UserRole
+  $notify: Boolean
+) {
+  adminUpdateUser(
+    id: $id
+    email: $email
+    confirmed: $confirmed
+    role: $role
+    notify: $notify
+  ) {
+    ...UserFull
+  }
+}
+
+mutation SuspendProfile($id: ID!) {
+  suspendProfile(id: $id) {
+    ...DeletedObjectResponse
+  }
+}
+
+mutation UnsuspendProfile($id: ID!) {
+  unsuspendProfile(id: $id) {
+    ...ActorBasicInfo
+  }
+} 

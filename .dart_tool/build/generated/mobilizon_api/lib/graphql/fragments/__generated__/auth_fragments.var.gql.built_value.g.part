@@ -1,0 +1,275 @@
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GLoginInfoVars> _$gLoginInfoVarsSerializer =
+    new _$GLoginInfoVarsSerializer();
+Serializer<GRefreshedTokenInfoVars> _$gRefreshedTokenInfoVarsSerializer =
+    new _$GRefreshedTokenInfoVarsSerializer();
+Serializer<GUserSettingsInfoVars> _$gUserSettingsInfoVarsSerializer =
+    new _$GUserSettingsInfoVarsSerializer();
+
+class _$GLoginInfoVarsSerializer
+    implements StructuredSerializer<GLoginInfoVars> {
+  @override
+  final Iterable<Type> types = const [GLoginInfoVars, _$GLoginInfoVars];
+  @override
+  final String wireName = 'GLoginInfoVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GLoginInfoVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return <Object?>[];
+  }
+
+  @override
+  GLoginInfoVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return new GLoginInfoVarsBuilder().build();
+  }
+}
+
+class _$GRefreshedTokenInfoVarsSerializer
+    implements StructuredSerializer<GRefreshedTokenInfoVars> {
+  @override
+  final Iterable<Type> types = const [
+    GRefreshedTokenInfoVars,
+    _$GRefreshedTokenInfoVars,
+  ];
+  @override
+  final String wireName = 'GRefreshedTokenInfoVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GRefreshedTokenInfoVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return <Object?>[];
+  }
+
+  @override
+  GRefreshedTokenInfoVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return new GRefreshedTokenInfoVarsBuilder().build();
+  }
+}
+
+class _$GUserSettingsInfoVarsSerializer
+    implements StructuredSerializer<GUserSettingsInfoVars> {
+  @override
+  final Iterable<Type> types = const [
+    GUserSettingsInfoVars,
+    _$GUserSettingsInfoVars,
+  ];
+  @override
+  final String wireName = 'GUserSettingsInfoVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GUserSettingsInfoVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return <Object?>[];
+  }
+
+  @override
+  GUserSettingsInfoVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return new GUserSettingsInfoVarsBuilder().build();
+  }
+}
+
+class _$GLoginInfoVars extends GLoginInfoVars {
+  factory _$GLoginInfoVars([void Function(GLoginInfoVarsBuilder)? updates]) =>
+      (new GLoginInfoVarsBuilder()..update(updates))._build();
+
+  _$GLoginInfoVars._() : super._();
+
+  @override
+  GLoginInfoVars rebuild(void Function(GLoginInfoVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GLoginInfoVarsBuilder toBuilder() =>
+      new GLoginInfoVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GLoginInfoVars;
+  }
+
+  @override
+  int get hashCode {
+    return 299723880;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'GLoginInfoVars').toString();
+  }
+}
+
+class GLoginInfoVarsBuilder
+    implements Builder<GLoginInfoVars, GLoginInfoVarsBuilder> {
+  _$GLoginInfoVars? _$v;
+
+  GLoginInfoVarsBuilder();
+
+  @override
+  void replace(GLoginInfoVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GLoginInfoVars;
+  }
+
+  @override
+  void update(void Function(GLoginInfoVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GLoginInfoVars build() => _build();
+
+  _$GLoginInfoVars _build() {
+    final _$result = _$v ?? new _$GLoginInfoVars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GRefreshedTokenInfoVars extends GRefreshedTokenInfoVars {
+  factory _$GRefreshedTokenInfoVars([
+    void Function(GRefreshedTokenInfoVarsBuilder)? updates,
+  ]) => (new GRefreshedTokenInfoVarsBuilder()..update(updates))._build();
+
+  _$GRefreshedTokenInfoVars._() : super._();
+
+  @override
+  GRefreshedTokenInfoVars rebuild(
+    void Function(GRefreshedTokenInfoVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GRefreshedTokenInfoVarsBuilder toBuilder() =>
+      new GRefreshedTokenInfoVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GRefreshedTokenInfoVars;
+  }
+
+  @override
+  int get hashCode {
+    return 91988382;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'GRefreshedTokenInfoVars').toString();
+  }
+}
+
+class GRefreshedTokenInfoVarsBuilder
+    implements
+        Builder<GRefreshedTokenInfoVars, GRefreshedTokenInfoVarsBuilder> {
+  _$GRefreshedTokenInfoVars? _$v;
+
+  GRefreshedTokenInfoVarsBuilder();
+
+  @override
+  void replace(GRefreshedTokenInfoVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GRefreshedTokenInfoVars;
+  }
+
+  @override
+  void update(void Function(GRefreshedTokenInfoVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GRefreshedTokenInfoVars build() => _build();
+
+  _$GRefreshedTokenInfoVars _build() {
+    final _$result = _$v ?? new _$GRefreshedTokenInfoVars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUserSettingsInfoVars extends GUserSettingsInfoVars {
+  factory _$GUserSettingsInfoVars([
+    void Function(GUserSettingsInfoVarsBuilder)? updates,
+  ]) => (new GUserSettingsInfoVarsBuilder()..update(updates))._build();
+
+  _$GUserSettingsInfoVars._() : super._();
+
+  @override
+  GUserSettingsInfoVars rebuild(
+    void Function(GUserSettingsInfoVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GUserSettingsInfoVarsBuilder toBuilder() =>
+      new GUserSettingsInfoVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUserSettingsInfoVars;
+  }
+
+  @override
+  int get hashCode {
+    return 142505268;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'GUserSettingsInfoVars').toString();
+  }
+}
+
+class GUserSettingsInfoVarsBuilder
+    implements Builder<GUserSettingsInfoVars, GUserSettingsInfoVarsBuilder> {
+  _$GUserSettingsInfoVars? _$v;
+
+  GUserSettingsInfoVarsBuilder();
+
+  @override
+  void replace(GUserSettingsInfoVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUserSettingsInfoVars;
+  }
+
+  @override
+  void update(void Function(GUserSettingsInfoVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUserSettingsInfoVars build() => _build();
+
+  _$GUserSettingsInfoVars _build() {
+    final _$result = _$v ?? new _$GUserSettingsInfoVars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

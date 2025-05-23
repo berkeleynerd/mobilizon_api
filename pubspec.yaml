@@ -1,0 +1,36 @@
+name: mobilizon_api
+description: A Dart library for Mobilizon's authentication and profile management features.
+version: 0.1.0
+homepage: https://github.com/berkeleynerd/mobilizon_api
+
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_secure_storage: ^9.2.4
+  meta: ^1.11.0
+  # Ferry GraphQL client
+  ferry: ^0.16.1+2
+  gql_http_link: ^1.1.0
+  # Upload media support 
+  http: ^1.4.0
+  http_parser: ^4.1.2
+  mime: ^2.0.0
+  path: ^1.9.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  test: ^1.25.15
+  mockito: ^5.4.6
+  build_runner: ^2.4.15
+  # Ferry code generation
+  ferry_generator: ^0.14.0-dev.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec 

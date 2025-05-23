@@ -1,0 +1,27 @@
+# Person-specific queries
+#import "../fragments/person_fragments.graphql"
+
+query GetPersons(
+  $page: Int = 1
+  $limit: Int = 10
+  $preferredUsername: String
+  $name: String
+  $domain: String
+  $local: Boolean
+  $suspended: Boolean
+) {
+  persons(
+    page: $page
+    limit: $limit
+    preferredUsername: $preferredUsername
+    name: $name
+    domain: $domain
+    local: $local
+    suspended: $suspended
+  ) {
+    total
+    elements {
+      ...PersonFull
+    }
+  }
+} 

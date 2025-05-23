@@ -1,0 +1,69 @@
+# Import dependencies
+#import "../fragments/user_fragments.graphql"
+
+# Account management mutations
+
+mutation ChangePassword($oldPassword: String!, $newPassword: String!) {
+  changePassword(oldPassword: $oldPassword, newPassword: $newPassword) {
+    ...UserBasicInfo
+  }
+}
+
+mutation ChangeEmail($password: String!, $email: String!) {
+  changeEmail(password: $password, email: $email) {
+    ...UserBasicInfo
+  }
+}
+
+mutation ValidateEmail($token: String!) {
+  validateEmail(token: $token) {
+    ...UserBasicInfo
+  }
+}
+
+mutation SetUserSettings(
+  $timezone: Timezone
+  $notificationOnDay: Boolean
+  $notificationEachWeek: Boolean
+  $notificationBeforeEvent: Boolean
+  $notificationPendingParticipation: NotificationPendingEnum
+  $notificationPendingMembership: NotificationPendingEnum
+  $groupNotifications: NotificationPendingEnum
+  $location: LocationInput
+) {
+  setUserSettings(
+    timezone: $timezone
+    notificationOnDay: $notificationOnDay
+    notificationEachWeek: $notificationEachWeek
+    notificationBeforeEvent: $notificationBeforeEvent
+    notificationPendingParticipation: $notificationPendingParticipation
+    notificationPendingMembership: $notificationPendingMembership
+    groupNotifications: $groupNotifications
+    location: $location
+  ) {
+    timezone
+    notificationOnDay
+    notificationEachWeek
+    notificationBeforeEvent
+    notificationPendingParticipation
+    notificationPendingMembership
+    groupNotifications
+    location {
+      range
+      geohash
+      name
+    }
+  }
+}
+
+mutation UpdateLocale($locale: String) {
+  updateLocale(locale: $locale) {
+    ...UserBasicInfo
+  }
+}
+
+mutation DeleteAccount($password: String, $userId: ID) {
+  deleteAccount(password: $password, userId: $userId) {
+    ...DeletedObjectResponse
+  }
+} 

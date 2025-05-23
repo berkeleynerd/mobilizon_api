@@ -1,0 +1,5666 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'account_mutations.data.gql.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GChangePasswordData> _$gChangePasswordDataSerializer =
+    new _$GChangePasswordDataSerializer();
+Serializer<GChangePasswordData_changePassword>
+_$gChangePasswordDataChangePasswordSerializer =
+    new _$GChangePasswordData_changePasswordSerializer();
+Serializer<GChangePasswordData_changePassword_defaultActor>
+_$gChangePasswordDataChangePasswordDefaultActorSerializer =
+    new _$GChangePasswordData_changePassword_defaultActorSerializer();
+Serializer<GChangeEmailData> _$gChangeEmailDataSerializer =
+    new _$GChangeEmailDataSerializer();
+Serializer<GChangeEmailData_changeEmail>
+_$gChangeEmailDataChangeEmailSerializer =
+    new _$GChangeEmailData_changeEmailSerializer();
+Serializer<GChangeEmailData_changeEmail_defaultActor>
+_$gChangeEmailDataChangeEmailDefaultActorSerializer =
+    new _$GChangeEmailData_changeEmail_defaultActorSerializer();
+Serializer<GValidateEmailData> _$gValidateEmailDataSerializer =
+    new _$GValidateEmailDataSerializer();
+Serializer<GValidateEmailData_validateEmail>
+_$gValidateEmailDataValidateEmailSerializer =
+    new _$GValidateEmailData_validateEmailSerializer();
+Serializer<GValidateEmailData_validateEmail_defaultActor>
+_$gValidateEmailDataValidateEmailDefaultActorSerializer =
+    new _$GValidateEmailData_validateEmail_defaultActorSerializer();
+Serializer<GSetUserSettingsData> _$gSetUserSettingsDataSerializer =
+    new _$GSetUserSettingsDataSerializer();
+Serializer<GSetUserSettingsData_setUserSettings>
+_$gSetUserSettingsDataSetUserSettingsSerializer =
+    new _$GSetUserSettingsData_setUserSettingsSerializer();
+Serializer<GSetUserSettingsData_setUserSettings_location>
+_$gSetUserSettingsDataSetUserSettingsLocationSerializer =
+    new _$GSetUserSettingsData_setUserSettings_locationSerializer();
+Serializer<GUpdateLocaleData> _$gUpdateLocaleDataSerializer =
+    new _$GUpdateLocaleDataSerializer();
+Serializer<GUpdateLocaleData_updateLocale>
+_$gUpdateLocaleDataUpdateLocaleSerializer =
+    new _$GUpdateLocaleData_updateLocaleSerializer();
+Serializer<GUpdateLocaleData_updateLocale_defaultActor>
+_$gUpdateLocaleDataUpdateLocaleDefaultActorSerializer =
+    new _$GUpdateLocaleData_updateLocale_defaultActorSerializer();
+Serializer<GDeleteAccountData> _$gDeleteAccountDataSerializer =
+    new _$GDeleteAccountDataSerializer();
+Serializer<GDeleteAccountData_deleteAccount>
+_$gDeleteAccountDataDeleteAccountSerializer =
+    new _$GDeleteAccountData_deleteAccountSerializer();
+
+class _$GChangePasswordDataSerializer
+    implements StructuredSerializer<GChangePasswordData> {
+  @override
+  final Iterable<Type> types = const [
+    GChangePasswordData,
+    _$GChangePasswordData,
+  ];
+  @override
+  final String wireName = 'GChangePasswordData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GChangePasswordData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.changePassword;
+    if (value != null) {
+      result
+        ..add('changePassword')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GChangePasswordData_changePassword),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GChangePasswordData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GChangePasswordDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'changePassword':
+          result.changePassword.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GChangePasswordData_changePassword,
+                  ),
+                )!
+                as GChangePasswordData_changePassword,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GChangePasswordData_changePasswordSerializer
+    implements StructuredSerializer<GChangePasswordData_changePassword> {
+  @override
+  final Iterable<Type> types = const [
+    GChangePasswordData_changePassword,
+    _$GChangePasswordData_changePassword,
+  ];
+  @override
+  final String wireName = 'GChangePasswordData_changePassword';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GChangePasswordData_changePassword object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.confirmedAt;
+    if (value != null) {
+      result
+        ..add('confirmedAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.confirmationSentAt;
+    if (value != null) {
+      result
+        ..add('confirmationSentAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInAt;
+    if (value != null) {
+      result
+        ..add('lastSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInIp;
+    if (value != null) {
+      result
+        ..add('lastSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.currentSignInAt;
+    if (value != null) {
+      result
+        ..add('currentSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.currentSignInIp;
+    if (value != null) {
+      result
+        ..add('currentSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.defaultActor;
+    if (value != null) {
+      result
+        ..add('defaultActor')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GChangePasswordData_changePassword_defaultActor,
+            ),
+          ),
+        );
+    }
+    value = object.disabled;
+    if (value != null) {
+      result
+        ..add('disabled')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.role;
+    if (value != null) {
+      result
+        ..add('role')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GUserRole),
+          ),
+        );
+    }
+    value = object.provider;
+    if (value != null) {
+      result
+        ..add('provider')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.mediaSize;
+    if (value != null) {
+      result
+        ..add('mediaSize')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GChangePasswordData_changePassword deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GChangePasswordData_changePasswordBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'confirmedAt':
+          result.confirmedAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'confirmationSentAt':
+          result.confirmationSentAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInAt':
+          result.lastSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInIp':
+          result.lastSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'currentSignInAt':
+          result.currentSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'currentSignInIp':
+          result.currentSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'defaultActor':
+          result.defaultActor.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GChangePasswordData_changePassword_defaultActor,
+                  ),
+                )!
+                as GChangePasswordData_changePassword_defaultActor,
+          );
+          break;
+        case 'disabled':
+          result.disabled =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'role':
+          result.role =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i3.GUserRole),
+                  )
+                  as _i3.GUserRole?;
+          break;
+        case 'provider':
+          result.provider =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'mediaSize':
+          result.mediaSize =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GChangePasswordData_changePassword_defaultActorSerializer
+    implements
+        StructuredSerializer<GChangePasswordData_changePassword_defaultActor> {
+  @override
+  final Iterable<Type> types = const [
+    GChangePasswordData_changePassword_defaultActor,
+    _$GChangePasswordData_changePassword_defaultActor,
+  ];
+  @override
+  final String wireName = 'GChangePasswordData_changePassword_defaultActor';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GChangePasswordData_changePassword_defaultActor object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.preferredUsername;
+    if (value != null) {
+      result
+        ..add('preferredUsername')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GChangePasswordData_changePassword_defaultActor deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GChangePasswordData_changePassword_defaultActorBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'preferredUsername':
+          result.preferredUsername =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GChangeEmailDataSerializer
+    implements StructuredSerializer<GChangeEmailData> {
+  @override
+  final Iterable<Type> types = const [GChangeEmailData, _$GChangeEmailData];
+  @override
+  final String wireName = 'GChangeEmailData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GChangeEmailData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.changeEmail;
+    if (value != null) {
+      result
+        ..add('changeEmail')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GChangeEmailData_changeEmail),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GChangeEmailData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GChangeEmailDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'changeEmail':
+          result.changeEmail.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(GChangeEmailData_changeEmail),
+                )!
+                as GChangeEmailData_changeEmail,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GChangeEmailData_changeEmailSerializer
+    implements StructuredSerializer<GChangeEmailData_changeEmail> {
+  @override
+  final Iterable<Type> types = const [
+    GChangeEmailData_changeEmail,
+    _$GChangeEmailData_changeEmail,
+  ];
+  @override
+  final String wireName = 'GChangeEmailData_changeEmail';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GChangeEmailData_changeEmail object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.confirmedAt;
+    if (value != null) {
+      result
+        ..add('confirmedAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.confirmationSentAt;
+    if (value != null) {
+      result
+        ..add('confirmationSentAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInAt;
+    if (value != null) {
+      result
+        ..add('lastSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInIp;
+    if (value != null) {
+      result
+        ..add('lastSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.currentSignInAt;
+    if (value != null) {
+      result
+        ..add('currentSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.currentSignInIp;
+    if (value != null) {
+      result
+        ..add('currentSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.defaultActor;
+    if (value != null) {
+      result
+        ..add('defaultActor')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GChangeEmailData_changeEmail_defaultActor,
+            ),
+          ),
+        );
+    }
+    value = object.disabled;
+    if (value != null) {
+      result
+        ..add('disabled')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.role;
+    if (value != null) {
+      result
+        ..add('role')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GUserRole),
+          ),
+        );
+    }
+    value = object.provider;
+    if (value != null) {
+      result
+        ..add('provider')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.mediaSize;
+    if (value != null) {
+      result
+        ..add('mediaSize')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GChangeEmailData_changeEmail deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GChangeEmailData_changeEmailBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'confirmedAt':
+          result.confirmedAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'confirmationSentAt':
+          result.confirmationSentAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInAt':
+          result.lastSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInIp':
+          result.lastSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'currentSignInAt':
+          result.currentSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'currentSignInIp':
+          result.currentSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'defaultActor':
+          result.defaultActor.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GChangeEmailData_changeEmail_defaultActor,
+                  ),
+                )!
+                as GChangeEmailData_changeEmail_defaultActor,
+          );
+          break;
+        case 'disabled':
+          result.disabled =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'role':
+          result.role =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i3.GUserRole),
+                  )
+                  as _i3.GUserRole?;
+          break;
+        case 'provider':
+          result.provider =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'mediaSize':
+          result.mediaSize =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GChangeEmailData_changeEmail_defaultActorSerializer
+    implements StructuredSerializer<GChangeEmailData_changeEmail_defaultActor> {
+  @override
+  final Iterable<Type> types = const [
+    GChangeEmailData_changeEmail_defaultActor,
+    _$GChangeEmailData_changeEmail_defaultActor,
+  ];
+  @override
+  final String wireName = 'GChangeEmailData_changeEmail_defaultActor';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GChangeEmailData_changeEmail_defaultActor object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.preferredUsername;
+    if (value != null) {
+      result
+        ..add('preferredUsername')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GChangeEmailData_changeEmail_defaultActor deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GChangeEmailData_changeEmail_defaultActorBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'preferredUsername':
+          result.preferredUsername =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GValidateEmailDataSerializer
+    implements StructuredSerializer<GValidateEmailData> {
+  @override
+  final Iterable<Type> types = const [GValidateEmailData, _$GValidateEmailData];
+  @override
+  final String wireName = 'GValidateEmailData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GValidateEmailData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.validateEmail;
+    if (value != null) {
+      result
+        ..add('validateEmail')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GValidateEmailData_validateEmail),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GValidateEmailData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GValidateEmailDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'validateEmail':
+          result.validateEmail.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GValidateEmailData_validateEmail,
+                  ),
+                )!
+                as GValidateEmailData_validateEmail,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GValidateEmailData_validateEmailSerializer
+    implements StructuredSerializer<GValidateEmailData_validateEmail> {
+  @override
+  final Iterable<Type> types = const [
+    GValidateEmailData_validateEmail,
+    _$GValidateEmailData_validateEmail,
+  ];
+  @override
+  final String wireName = 'GValidateEmailData_validateEmail';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GValidateEmailData_validateEmail object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.confirmedAt;
+    if (value != null) {
+      result
+        ..add('confirmedAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.confirmationSentAt;
+    if (value != null) {
+      result
+        ..add('confirmationSentAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInAt;
+    if (value != null) {
+      result
+        ..add('lastSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInIp;
+    if (value != null) {
+      result
+        ..add('lastSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.currentSignInAt;
+    if (value != null) {
+      result
+        ..add('currentSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.currentSignInIp;
+    if (value != null) {
+      result
+        ..add('currentSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.defaultActor;
+    if (value != null) {
+      result
+        ..add('defaultActor')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GValidateEmailData_validateEmail_defaultActor,
+            ),
+          ),
+        );
+    }
+    value = object.disabled;
+    if (value != null) {
+      result
+        ..add('disabled')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.role;
+    if (value != null) {
+      result
+        ..add('role')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GUserRole),
+          ),
+        );
+    }
+    value = object.provider;
+    if (value != null) {
+      result
+        ..add('provider')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.mediaSize;
+    if (value != null) {
+      result
+        ..add('mediaSize')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GValidateEmailData_validateEmail deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GValidateEmailData_validateEmailBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'confirmedAt':
+          result.confirmedAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'confirmationSentAt':
+          result.confirmationSentAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInAt':
+          result.lastSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInIp':
+          result.lastSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'currentSignInAt':
+          result.currentSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'currentSignInIp':
+          result.currentSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'defaultActor':
+          result.defaultActor.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GValidateEmailData_validateEmail_defaultActor,
+                  ),
+                )!
+                as GValidateEmailData_validateEmail_defaultActor,
+          );
+          break;
+        case 'disabled':
+          result.disabled =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'role':
+          result.role =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i3.GUserRole),
+                  )
+                  as _i3.GUserRole?;
+          break;
+        case 'provider':
+          result.provider =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'mediaSize':
+          result.mediaSize =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GValidateEmailData_validateEmail_defaultActorSerializer
+    implements
+        StructuredSerializer<GValidateEmailData_validateEmail_defaultActor> {
+  @override
+  final Iterable<Type> types = const [
+    GValidateEmailData_validateEmail_defaultActor,
+    _$GValidateEmailData_validateEmail_defaultActor,
+  ];
+  @override
+  final String wireName = 'GValidateEmailData_validateEmail_defaultActor';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GValidateEmailData_validateEmail_defaultActor object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.preferredUsername;
+    if (value != null) {
+      result
+        ..add('preferredUsername')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GValidateEmailData_validateEmail_defaultActor deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GValidateEmailData_validateEmail_defaultActorBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'preferredUsername':
+          result.preferredUsername =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSetUserSettingsDataSerializer
+    implements StructuredSerializer<GSetUserSettingsData> {
+  @override
+  final Iterable<Type> types = const [
+    GSetUserSettingsData,
+    _$GSetUserSettingsData,
+  ];
+  @override
+  final String wireName = 'GSetUserSettingsData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSetUserSettingsData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.setUserSettings;
+    if (value != null) {
+      result
+        ..add('setUserSettings')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GSetUserSettingsData_setUserSettings),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GSetUserSettingsData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSetUserSettingsDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'setUserSettings':
+          result.setUserSettings.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GSetUserSettingsData_setUserSettings,
+                  ),
+                )!
+                as GSetUserSettingsData_setUserSettings,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSetUserSettingsData_setUserSettingsSerializer
+    implements StructuredSerializer<GSetUserSettingsData_setUserSettings> {
+  @override
+  final Iterable<Type> types = const [
+    GSetUserSettingsData_setUserSettings,
+    _$GSetUserSettingsData_setUserSettings,
+  ];
+  @override
+  final String wireName = 'GSetUserSettingsData_setUserSettings';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSetUserSettingsData_setUserSettings object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.timezone;
+    if (value != null) {
+      result
+        ..add('timezone')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GTimezone),
+          ),
+        );
+    }
+    value = object.notificationOnDay;
+    if (value != null) {
+      result
+        ..add('notificationOnDay')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.notificationEachWeek;
+    if (value != null) {
+      result
+        ..add('notificationEachWeek')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.notificationBeforeEvent;
+    if (value != null) {
+      result
+        ..add('notificationBeforeEvent')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.notificationPendingParticipation;
+    if (value != null) {
+      result
+        ..add('notificationPendingParticipation')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GNotificationPendingEnum),
+          ),
+        );
+    }
+    value = object.notificationPendingMembership;
+    if (value != null) {
+      result
+        ..add('notificationPendingMembership')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GNotificationPendingEnum),
+          ),
+        );
+    }
+    value = object.groupNotifications;
+    if (value != null) {
+      result
+        ..add('groupNotifications')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GNotificationPendingEnum),
+          ),
+        );
+    }
+    value = object.location;
+    if (value != null) {
+      result
+        ..add('location')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GSetUserSettingsData_setUserSettings_location,
+            ),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GSetUserSettingsData_setUserSettings deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSetUserSettingsData_setUserSettingsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'timezone':
+          result.timezone.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GTimezone),
+                )!
+                as _i3.GTimezone,
+          );
+          break;
+        case 'notificationOnDay':
+          result.notificationOnDay =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'notificationEachWeek':
+          result.notificationEachWeek =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'notificationBeforeEvent':
+          result.notificationBeforeEvent =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'notificationPendingParticipation':
+          result.notificationPendingParticipation =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
+                  )
+                  as _i3.GNotificationPendingEnum?;
+          break;
+        case 'notificationPendingMembership':
+          result.notificationPendingMembership =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
+                  )
+                  as _i3.GNotificationPendingEnum?;
+          break;
+        case 'groupNotifications':
+          result.groupNotifications =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
+                  )
+                  as _i3.GNotificationPendingEnum?;
+          break;
+        case 'location':
+          result.location.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GSetUserSettingsData_setUserSettings_location,
+                  ),
+                )!
+                as GSetUserSettingsData_setUserSettings_location,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSetUserSettingsData_setUserSettings_locationSerializer
+    implements
+        StructuredSerializer<GSetUserSettingsData_setUserSettings_location> {
+  @override
+  final Iterable<Type> types = const [
+    GSetUserSettingsData_setUserSettings_location,
+    _$GSetUserSettingsData_setUserSettings_location,
+  ];
+  @override
+  final String wireName = 'GSetUserSettingsData_setUserSettings_location';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSetUserSettingsData_setUserSettings_location object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.range;
+    if (value != null) {
+      result
+        ..add('range')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.geohash;
+    if (value != null) {
+      result
+        ..add('geohash')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GSetUserSettingsData_setUserSettings_location deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSetUserSettingsData_setUserSettings_locationBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'range':
+          result.range =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+        case 'geohash':
+          result.geohash =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateLocaleDataSerializer
+    implements StructuredSerializer<GUpdateLocaleData> {
+  @override
+  final Iterable<Type> types = const [GUpdateLocaleData, _$GUpdateLocaleData];
+  @override
+  final String wireName = 'GUpdateLocaleData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GUpdateLocaleData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.updateLocale;
+    if (value != null) {
+      result
+        ..add('updateLocale')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GUpdateLocaleData_updateLocale),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GUpdateLocaleData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GUpdateLocaleDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'updateLocale':
+          result.updateLocale.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(GUpdateLocaleData_updateLocale),
+                )!
+                as GUpdateLocaleData_updateLocale,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateLocaleData_updateLocaleSerializer
+    implements StructuredSerializer<GUpdateLocaleData_updateLocale> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateLocaleData_updateLocale,
+    _$GUpdateLocaleData_updateLocale,
+  ];
+  @override
+  final String wireName = 'GUpdateLocaleData_updateLocale';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GUpdateLocaleData_updateLocale object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.confirmedAt;
+    if (value != null) {
+      result
+        ..add('confirmedAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.confirmationSentAt;
+    if (value != null) {
+      result
+        ..add('confirmationSentAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInAt;
+    if (value != null) {
+      result
+        ..add('lastSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.lastSignInIp;
+    if (value != null) {
+      result
+        ..add('lastSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.currentSignInAt;
+    if (value != null) {
+      result
+        ..add('currentSignInAt')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GDateTime),
+          ),
+        );
+    }
+    value = object.currentSignInIp;
+    if (value != null) {
+      result
+        ..add('currentSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.defaultActor;
+    if (value != null) {
+      result
+        ..add('defaultActor')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(
+              GUpdateLocaleData_updateLocale_defaultActor,
+            ),
+          ),
+        );
+    }
+    value = object.disabled;
+    if (value != null) {
+      result
+        ..add('disabled')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
+    }
+    value = object.role;
+    if (value != null) {
+      result
+        ..add('role')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i3.GUserRole),
+          ),
+        );
+    }
+    value = object.provider;
+    if (value != null) {
+      result
+        ..add('provider')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.mediaSize;
+    if (value != null) {
+      result
+        ..add('mediaSize')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateLocaleData_updateLocale deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GUpdateLocaleData_updateLocaleBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'confirmedAt':
+          result.confirmedAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'confirmationSentAt':
+          result.confirmationSentAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInAt':
+          result.lastSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'lastSignInIp':
+          result.lastSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'currentSignInAt':
+          result.currentSignInAt.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(_i3.GDateTime),
+                )!
+                as _i3.GDateTime,
+          );
+          break;
+        case 'currentSignInIp':
+          result.currentSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'defaultActor':
+          result.defaultActor.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GUpdateLocaleData_updateLocale_defaultActor,
+                  ),
+                )!
+                as GUpdateLocaleData_updateLocale_defaultActor,
+          );
+          break;
+        case 'disabled':
+          result.disabled =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(bool),
+                  )
+                  as bool?;
+          break;
+        case 'role':
+          result.role =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i3.GUserRole),
+                  )
+                  as _i3.GUserRole?;
+          break;
+        case 'provider':
+          result.provider =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'mediaSize':
+          result.mediaSize =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateLocaleData_updateLocale_defaultActorSerializer
+    implements
+        StructuredSerializer<GUpdateLocaleData_updateLocale_defaultActor> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateLocaleData_updateLocale_defaultActor,
+    _$GUpdateLocaleData_updateLocale_defaultActor,
+  ];
+  @override
+  final String wireName = 'GUpdateLocaleData_updateLocale_defaultActor';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GUpdateLocaleData_updateLocale_defaultActor object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.preferredUsername;
+    if (value != null) {
+      result
+        ..add('preferredUsername')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GUpdateLocaleData_updateLocale_defaultActor deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GUpdateLocaleData_updateLocale_defaultActorBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'preferredUsername':
+          result.preferredUsername =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'name':
+          result.name =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDeleteAccountDataSerializer
+    implements StructuredSerializer<GDeleteAccountData> {
+  @override
+  final Iterable<Type> types = const [GDeleteAccountData, _$GDeleteAccountData];
+  @override
+  final String wireName = 'GDeleteAccountData';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GDeleteAccountData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.deleteAccount;
+    if (value != null) {
+      result
+        ..add('deleteAccount')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(GDeleteAccountData_deleteAccount),
+          ),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GDeleteAccountData deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GDeleteAccountDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'deleteAccount':
+          result.deleteAccount.replace(
+            serializers.deserialize(
+                  value,
+                  specifiedType: const FullType(
+                    GDeleteAccountData_deleteAccount,
+                  ),
+                )!
+                as GDeleteAccountData_deleteAccount,
+          );
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDeleteAccountData_deleteAccountSerializer
+    implements StructuredSerializer<GDeleteAccountData_deleteAccount> {
+  @override
+  final Iterable<Type> types = const [
+    GDeleteAccountData_deleteAccount,
+    _$GDeleteAccountData_deleteAccount,
+  ];
+  @override
+  final String wireName = 'GDeleteAccountData_deleteAccount';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GDeleteAccountData_deleteAccount object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(
+        object.G__typename,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GDeleteAccountData_deleteAccount deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GDeleteAccountData_deleteAccountBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GChangePasswordData extends GChangePasswordData {
+  @override
+  final String G__typename;
+  @override
+  final GChangePasswordData_changePassword? changePassword;
+
+  factory _$GChangePasswordData([
+    void Function(GChangePasswordDataBuilder)? updates,
+  ]) => (new GChangePasswordDataBuilder()..update(updates))._build();
+
+  _$GChangePasswordData._({required this.G__typename, this.changePassword})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GChangePasswordData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GChangePasswordData rebuild(
+    void Function(GChangePasswordDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GChangePasswordDataBuilder toBuilder() =>
+      new GChangePasswordDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GChangePasswordData &&
+        G__typename == other.G__typename &&
+        changePassword == other.changePassword;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, changePassword.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GChangePasswordData')
+          ..add('G__typename', G__typename)
+          ..add('changePassword', changePassword))
+        .toString();
+  }
+}
+
+class GChangePasswordDataBuilder
+    implements Builder<GChangePasswordData, GChangePasswordDataBuilder> {
+  _$GChangePasswordData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GChangePasswordData_changePasswordBuilder? _changePassword;
+  GChangePasswordData_changePasswordBuilder get changePassword =>
+      _$this._changePassword ??=
+          new GChangePasswordData_changePasswordBuilder();
+  set changePassword(
+    GChangePasswordData_changePasswordBuilder? changePassword,
+  ) => _$this._changePassword = changePassword;
+
+  GChangePasswordDataBuilder() {
+    GChangePasswordData._initializeBuilder(this);
+  }
+
+  GChangePasswordDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _changePassword = $v.changePassword?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GChangePasswordData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GChangePasswordData;
+  }
+
+  @override
+  void update(void Function(GChangePasswordDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GChangePasswordData build() => _build();
+
+  _$GChangePasswordData _build() {
+    _$GChangePasswordData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GChangePasswordData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GChangePasswordData',
+              'G__typename',
+            ),
+            changePassword: _changePassword?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'changePassword';
+        _changePassword?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GChangePasswordData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GChangePasswordData_changePassword
+    extends GChangePasswordData_changePassword {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String email;
+  @override
+  final _i3.GDateTime? confirmedAt;
+  @override
+  final _i3.GDateTime? confirmationSentAt;
+  @override
+  final _i3.GDateTime? lastSignInAt;
+  @override
+  final String? lastSignInIp;
+  @override
+  final _i3.GDateTime? currentSignInAt;
+  @override
+  final String? currentSignInIp;
+  @override
+  final String? locale;
+  @override
+  final GChangePasswordData_changePassword_defaultActor? defaultActor;
+  @override
+  final bool? disabled;
+  @override
+  final _i3.GUserRole? role;
+  @override
+  final String? provider;
+  @override
+  final int? mediaSize;
+
+  factory _$GChangePasswordData_changePassword([
+    void Function(GChangePasswordData_changePasswordBuilder)? updates,
+  ]) => (new GChangePasswordData_changePasswordBuilder()..update(updates))
+      ._build();
+
+  _$GChangePasswordData_changePassword._({
+    required this.G__typename,
+    this.id,
+    required this.email,
+    this.confirmedAt,
+    this.confirmationSentAt,
+    this.lastSignInAt,
+    this.lastSignInIp,
+    this.currentSignInAt,
+    this.currentSignInIp,
+    this.locale,
+    this.defaultActor,
+    this.disabled,
+    this.role,
+    this.provider,
+    this.mediaSize,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GChangePasswordData_changePassword',
+      'G__typename',
+    );
+    BuiltValueNullFieldError.checkNotNull(
+      email,
+      r'GChangePasswordData_changePassword',
+      'email',
+    );
+  }
+
+  @override
+  GChangePasswordData_changePassword rebuild(
+    void Function(GChangePasswordData_changePasswordBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GChangePasswordData_changePasswordBuilder toBuilder() =>
+      new GChangePasswordData_changePasswordBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GChangePasswordData_changePassword &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        email == other.email &&
+        confirmedAt == other.confirmedAt &&
+        confirmationSentAt == other.confirmationSentAt &&
+        lastSignInAt == other.lastSignInAt &&
+        lastSignInIp == other.lastSignInIp &&
+        currentSignInAt == other.currentSignInAt &&
+        currentSignInIp == other.currentSignInIp &&
+        locale == other.locale &&
+        defaultActor == other.defaultActor &&
+        disabled == other.disabled &&
+        role == other.role &&
+        provider == other.provider &&
+        mediaSize == other.mediaSize;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, confirmedAt.hashCode);
+    _$hash = $jc(_$hash, confirmationSentAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInIp.hashCode);
+    _$hash = $jc(_$hash, currentSignInAt.hashCode);
+    _$hash = $jc(_$hash, currentSignInIp.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jc(_$hash, defaultActor.hashCode);
+    _$hash = $jc(_$hash, disabled.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jc(_$hash, provider.hashCode);
+    _$hash = $jc(_$hash, mediaSize.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GChangePasswordData_changePassword')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('email', email)
+          ..add('confirmedAt', confirmedAt)
+          ..add('confirmationSentAt', confirmationSentAt)
+          ..add('lastSignInAt', lastSignInAt)
+          ..add('lastSignInIp', lastSignInIp)
+          ..add('currentSignInAt', currentSignInAt)
+          ..add('currentSignInIp', currentSignInIp)
+          ..add('locale', locale)
+          ..add('defaultActor', defaultActor)
+          ..add('disabled', disabled)
+          ..add('role', role)
+          ..add('provider', provider)
+          ..add('mediaSize', mediaSize))
+        .toString();
+  }
+}
+
+class GChangePasswordData_changePasswordBuilder
+    implements
+        Builder<
+          GChangePasswordData_changePassword,
+          GChangePasswordData_changePasswordBuilder
+        > {
+  _$GChangePasswordData_changePassword? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  _i3.GDateTimeBuilder? _confirmedAt;
+  _i3.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
+  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+      _$this._confirmedAt = confirmedAt;
+
+  _i3.GDateTimeBuilder? _confirmationSentAt;
+  _i3.GDateTimeBuilder get confirmationSentAt =>
+      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
+  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
+      _$this._confirmationSentAt = confirmationSentAt;
+
+  _i3.GDateTimeBuilder? _lastSignInAt;
+  _i3.GDateTimeBuilder get lastSignInAt =>
+      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
+  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
+      _$this._lastSignInAt = lastSignInAt;
+
+  String? _lastSignInIp;
+  String? get lastSignInIp => _$this._lastSignInIp;
+  set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
+
+  _i3.GDateTimeBuilder? _currentSignInAt;
+  _i3.GDateTimeBuilder get currentSignInAt =>
+      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
+  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
+      _$this._currentSignInAt = currentSignInAt;
+
+  String? _currentSignInIp;
+  String? get currentSignInIp => _$this._currentSignInIp;
+  set currentSignInIp(String? currentSignInIp) =>
+      _$this._currentSignInIp = currentSignInIp;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GChangePasswordData_changePassword_defaultActorBuilder? _defaultActor;
+  GChangePasswordData_changePassword_defaultActorBuilder get defaultActor =>
+      _$this._defaultActor ??=
+          new GChangePasswordData_changePassword_defaultActorBuilder();
+  set defaultActor(
+    GChangePasswordData_changePassword_defaultActorBuilder? defaultActor,
+  ) => _$this._defaultActor = defaultActor;
+
+  bool? _disabled;
+  bool? get disabled => _$this._disabled;
+  set disabled(bool? disabled) => _$this._disabled = disabled;
+
+  _i3.GUserRole? _role;
+  _i3.GUserRole? get role => _$this._role;
+  set role(_i3.GUserRole? role) => _$this._role = role;
+
+  String? _provider;
+  String? get provider => _$this._provider;
+  set provider(String? provider) => _$this._provider = provider;
+
+  int? _mediaSize;
+  int? get mediaSize => _$this._mediaSize;
+  set mediaSize(int? mediaSize) => _$this._mediaSize = mediaSize;
+
+  GChangePasswordData_changePasswordBuilder() {
+    GChangePasswordData_changePassword._initializeBuilder(this);
+  }
+
+  GChangePasswordData_changePasswordBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _email = $v.email;
+      _confirmedAt = $v.confirmedAt?.toBuilder();
+      _confirmationSentAt = $v.confirmationSentAt?.toBuilder();
+      _lastSignInAt = $v.lastSignInAt?.toBuilder();
+      _lastSignInIp = $v.lastSignInIp;
+      _currentSignInAt = $v.currentSignInAt?.toBuilder();
+      _currentSignInIp = $v.currentSignInIp;
+      _locale = $v.locale;
+      _defaultActor = $v.defaultActor?.toBuilder();
+      _disabled = $v.disabled;
+      _role = $v.role;
+      _provider = $v.provider;
+      _mediaSize = $v.mediaSize;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GChangePasswordData_changePassword other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GChangePasswordData_changePassword;
+  }
+
+  @override
+  void update(
+    void Function(GChangePasswordData_changePasswordBuilder)? updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GChangePasswordData_changePassword build() => _build();
+
+  _$GChangePasswordData_changePassword _build() {
+    _$GChangePasswordData_changePassword _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GChangePasswordData_changePassword._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GChangePasswordData_changePassword',
+              'G__typename',
+            ),
+            id: id,
+            email: BuiltValueNullFieldError.checkNotNull(
+              email,
+              r'GChangePasswordData_changePassword',
+              'email',
+            ),
+            confirmedAt: _confirmedAt?.build(),
+            confirmationSentAt: _confirmationSentAt?.build(),
+            lastSignInAt: _lastSignInAt?.build(),
+            lastSignInIp: lastSignInIp,
+            currentSignInAt: _currentSignInAt?.build(),
+            currentSignInIp: currentSignInIp,
+            locale: locale,
+            defaultActor: _defaultActor?.build(),
+            disabled: disabled,
+            role: role,
+            provider: provider,
+            mediaSize: mediaSize,
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'confirmedAt';
+        _confirmedAt?.build();
+        _$failedField = 'confirmationSentAt';
+        _confirmationSentAt?.build();
+        _$failedField = 'lastSignInAt';
+        _lastSignInAt?.build();
+
+        _$failedField = 'currentSignInAt';
+        _currentSignInAt?.build();
+
+        _$failedField = 'defaultActor';
+        _defaultActor?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GChangePasswordData_changePassword',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GChangePasswordData_changePassword_defaultActor
+    extends GChangePasswordData_changePassword_defaultActor {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? preferredUsername;
+  @override
+  final String? name;
+
+  factory _$GChangePasswordData_changePassword_defaultActor([
+    void Function(GChangePasswordData_changePassword_defaultActorBuilder)?
+    updates,
+  ]) =>
+      (new GChangePasswordData_changePassword_defaultActorBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GChangePasswordData_changePassword_defaultActor._({
+    required this.G__typename,
+    this.id,
+    this.preferredUsername,
+    this.name,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GChangePasswordData_changePassword_defaultActor',
+      'G__typename',
+    );
+  }
+
+  @override
+  GChangePasswordData_changePassword_defaultActor rebuild(
+    void Function(GChangePasswordData_changePassword_defaultActorBuilder)
+    updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GChangePasswordData_changePassword_defaultActorBuilder toBuilder() =>
+      new GChangePasswordData_changePassword_defaultActorBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GChangePasswordData_changePassword_defaultActor &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        preferredUsername == other.preferredUsername &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, preferredUsername.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GChangePasswordData_changePassword_defaultActor',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('preferredUsername', preferredUsername)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GChangePasswordData_changePassword_defaultActorBuilder
+    implements
+        Builder<
+          GChangePasswordData_changePassword_defaultActor,
+          GChangePasswordData_changePassword_defaultActorBuilder
+        > {
+  _$GChangePasswordData_changePassword_defaultActor? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _preferredUsername;
+  String? get preferredUsername => _$this._preferredUsername;
+  set preferredUsername(String? preferredUsername) =>
+      _$this._preferredUsername = preferredUsername;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GChangePasswordData_changePassword_defaultActorBuilder() {
+    GChangePasswordData_changePassword_defaultActor._initializeBuilder(this);
+  }
+
+  GChangePasswordData_changePassword_defaultActorBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _preferredUsername = $v.preferredUsername;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GChangePasswordData_changePassword_defaultActor other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GChangePasswordData_changePassword_defaultActor;
+  }
+
+  @override
+  void update(
+    void Function(GChangePasswordData_changePassword_defaultActorBuilder)?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GChangePasswordData_changePassword_defaultActor build() => _build();
+
+  _$GChangePasswordData_changePassword_defaultActor _build() {
+    final _$result =
+        _$v ??
+        new _$GChangePasswordData_changePassword_defaultActor._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GChangePasswordData_changePassword_defaultActor',
+            'G__typename',
+          ),
+          id: id,
+          preferredUsername: preferredUsername,
+          name: name,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GChangeEmailData extends GChangeEmailData {
+  @override
+  final String G__typename;
+  @override
+  final GChangeEmailData_changeEmail? changeEmail;
+
+  factory _$GChangeEmailData([
+    void Function(GChangeEmailDataBuilder)? updates,
+  ]) => (new GChangeEmailDataBuilder()..update(updates))._build();
+
+  _$GChangeEmailData._({required this.G__typename, this.changeEmail})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GChangeEmailData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GChangeEmailData rebuild(void Function(GChangeEmailDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GChangeEmailDataBuilder toBuilder() =>
+      new GChangeEmailDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GChangeEmailData &&
+        G__typename == other.G__typename &&
+        changeEmail == other.changeEmail;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, changeEmail.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GChangeEmailData')
+          ..add('G__typename', G__typename)
+          ..add('changeEmail', changeEmail))
+        .toString();
+  }
+}
+
+class GChangeEmailDataBuilder
+    implements Builder<GChangeEmailData, GChangeEmailDataBuilder> {
+  _$GChangeEmailData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GChangeEmailData_changeEmailBuilder? _changeEmail;
+  GChangeEmailData_changeEmailBuilder get changeEmail =>
+      _$this._changeEmail ??= new GChangeEmailData_changeEmailBuilder();
+  set changeEmail(GChangeEmailData_changeEmailBuilder? changeEmail) =>
+      _$this._changeEmail = changeEmail;
+
+  GChangeEmailDataBuilder() {
+    GChangeEmailData._initializeBuilder(this);
+  }
+
+  GChangeEmailDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _changeEmail = $v.changeEmail?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GChangeEmailData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GChangeEmailData;
+  }
+
+  @override
+  void update(void Function(GChangeEmailDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GChangeEmailData build() => _build();
+
+  _$GChangeEmailData _build() {
+    _$GChangeEmailData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GChangeEmailData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GChangeEmailData',
+              'G__typename',
+            ),
+            changeEmail: _changeEmail?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'changeEmail';
+        _changeEmail?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GChangeEmailData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GChangeEmailData_changeEmail extends GChangeEmailData_changeEmail {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String email;
+  @override
+  final _i3.GDateTime? confirmedAt;
+  @override
+  final _i3.GDateTime? confirmationSentAt;
+  @override
+  final _i3.GDateTime? lastSignInAt;
+  @override
+  final String? lastSignInIp;
+  @override
+  final _i3.GDateTime? currentSignInAt;
+  @override
+  final String? currentSignInIp;
+  @override
+  final String? locale;
+  @override
+  final GChangeEmailData_changeEmail_defaultActor? defaultActor;
+  @override
+  final bool? disabled;
+  @override
+  final _i3.GUserRole? role;
+  @override
+  final String? provider;
+  @override
+  final int? mediaSize;
+
+  factory _$GChangeEmailData_changeEmail([
+    void Function(GChangeEmailData_changeEmailBuilder)? updates,
+  ]) => (new GChangeEmailData_changeEmailBuilder()..update(updates))._build();
+
+  _$GChangeEmailData_changeEmail._({
+    required this.G__typename,
+    this.id,
+    required this.email,
+    this.confirmedAt,
+    this.confirmationSentAt,
+    this.lastSignInAt,
+    this.lastSignInIp,
+    this.currentSignInAt,
+    this.currentSignInIp,
+    this.locale,
+    this.defaultActor,
+    this.disabled,
+    this.role,
+    this.provider,
+    this.mediaSize,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GChangeEmailData_changeEmail',
+      'G__typename',
+    );
+    BuiltValueNullFieldError.checkNotNull(
+      email,
+      r'GChangeEmailData_changeEmail',
+      'email',
+    );
+  }
+
+  @override
+  GChangeEmailData_changeEmail rebuild(
+    void Function(GChangeEmailData_changeEmailBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GChangeEmailData_changeEmailBuilder toBuilder() =>
+      new GChangeEmailData_changeEmailBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GChangeEmailData_changeEmail &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        email == other.email &&
+        confirmedAt == other.confirmedAt &&
+        confirmationSentAt == other.confirmationSentAt &&
+        lastSignInAt == other.lastSignInAt &&
+        lastSignInIp == other.lastSignInIp &&
+        currentSignInAt == other.currentSignInAt &&
+        currentSignInIp == other.currentSignInIp &&
+        locale == other.locale &&
+        defaultActor == other.defaultActor &&
+        disabled == other.disabled &&
+        role == other.role &&
+        provider == other.provider &&
+        mediaSize == other.mediaSize;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, confirmedAt.hashCode);
+    _$hash = $jc(_$hash, confirmationSentAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInIp.hashCode);
+    _$hash = $jc(_$hash, currentSignInAt.hashCode);
+    _$hash = $jc(_$hash, currentSignInIp.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jc(_$hash, defaultActor.hashCode);
+    _$hash = $jc(_$hash, disabled.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jc(_$hash, provider.hashCode);
+    _$hash = $jc(_$hash, mediaSize.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GChangeEmailData_changeEmail')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('email', email)
+          ..add('confirmedAt', confirmedAt)
+          ..add('confirmationSentAt', confirmationSentAt)
+          ..add('lastSignInAt', lastSignInAt)
+          ..add('lastSignInIp', lastSignInIp)
+          ..add('currentSignInAt', currentSignInAt)
+          ..add('currentSignInIp', currentSignInIp)
+          ..add('locale', locale)
+          ..add('defaultActor', defaultActor)
+          ..add('disabled', disabled)
+          ..add('role', role)
+          ..add('provider', provider)
+          ..add('mediaSize', mediaSize))
+        .toString();
+  }
+}
+
+class GChangeEmailData_changeEmailBuilder
+    implements
+        Builder<
+          GChangeEmailData_changeEmail,
+          GChangeEmailData_changeEmailBuilder
+        > {
+  _$GChangeEmailData_changeEmail? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  _i3.GDateTimeBuilder? _confirmedAt;
+  _i3.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
+  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+      _$this._confirmedAt = confirmedAt;
+
+  _i3.GDateTimeBuilder? _confirmationSentAt;
+  _i3.GDateTimeBuilder get confirmationSentAt =>
+      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
+  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
+      _$this._confirmationSentAt = confirmationSentAt;
+
+  _i3.GDateTimeBuilder? _lastSignInAt;
+  _i3.GDateTimeBuilder get lastSignInAt =>
+      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
+  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
+      _$this._lastSignInAt = lastSignInAt;
+
+  String? _lastSignInIp;
+  String? get lastSignInIp => _$this._lastSignInIp;
+  set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
+
+  _i3.GDateTimeBuilder? _currentSignInAt;
+  _i3.GDateTimeBuilder get currentSignInAt =>
+      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
+  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
+      _$this._currentSignInAt = currentSignInAt;
+
+  String? _currentSignInIp;
+  String? get currentSignInIp => _$this._currentSignInIp;
+  set currentSignInIp(String? currentSignInIp) =>
+      _$this._currentSignInIp = currentSignInIp;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GChangeEmailData_changeEmail_defaultActorBuilder? _defaultActor;
+  GChangeEmailData_changeEmail_defaultActorBuilder get defaultActor =>
+      _$this._defaultActor ??=
+          new GChangeEmailData_changeEmail_defaultActorBuilder();
+  set defaultActor(
+    GChangeEmailData_changeEmail_defaultActorBuilder? defaultActor,
+  ) => _$this._defaultActor = defaultActor;
+
+  bool? _disabled;
+  bool? get disabled => _$this._disabled;
+  set disabled(bool? disabled) => _$this._disabled = disabled;
+
+  _i3.GUserRole? _role;
+  _i3.GUserRole? get role => _$this._role;
+  set role(_i3.GUserRole? role) => _$this._role = role;
+
+  String? _provider;
+  String? get provider => _$this._provider;
+  set provider(String? provider) => _$this._provider = provider;
+
+  int? _mediaSize;
+  int? get mediaSize => _$this._mediaSize;
+  set mediaSize(int? mediaSize) => _$this._mediaSize = mediaSize;
+
+  GChangeEmailData_changeEmailBuilder() {
+    GChangeEmailData_changeEmail._initializeBuilder(this);
+  }
+
+  GChangeEmailData_changeEmailBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _email = $v.email;
+      _confirmedAt = $v.confirmedAt?.toBuilder();
+      _confirmationSentAt = $v.confirmationSentAt?.toBuilder();
+      _lastSignInAt = $v.lastSignInAt?.toBuilder();
+      _lastSignInIp = $v.lastSignInIp;
+      _currentSignInAt = $v.currentSignInAt?.toBuilder();
+      _currentSignInIp = $v.currentSignInIp;
+      _locale = $v.locale;
+      _defaultActor = $v.defaultActor?.toBuilder();
+      _disabled = $v.disabled;
+      _role = $v.role;
+      _provider = $v.provider;
+      _mediaSize = $v.mediaSize;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GChangeEmailData_changeEmail other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GChangeEmailData_changeEmail;
+  }
+
+  @override
+  void update(void Function(GChangeEmailData_changeEmailBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GChangeEmailData_changeEmail build() => _build();
+
+  _$GChangeEmailData_changeEmail _build() {
+    _$GChangeEmailData_changeEmail _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GChangeEmailData_changeEmail._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GChangeEmailData_changeEmail',
+              'G__typename',
+            ),
+            id: id,
+            email: BuiltValueNullFieldError.checkNotNull(
+              email,
+              r'GChangeEmailData_changeEmail',
+              'email',
+            ),
+            confirmedAt: _confirmedAt?.build(),
+            confirmationSentAt: _confirmationSentAt?.build(),
+            lastSignInAt: _lastSignInAt?.build(),
+            lastSignInIp: lastSignInIp,
+            currentSignInAt: _currentSignInAt?.build(),
+            currentSignInIp: currentSignInIp,
+            locale: locale,
+            defaultActor: _defaultActor?.build(),
+            disabled: disabled,
+            role: role,
+            provider: provider,
+            mediaSize: mediaSize,
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'confirmedAt';
+        _confirmedAt?.build();
+        _$failedField = 'confirmationSentAt';
+        _confirmationSentAt?.build();
+        _$failedField = 'lastSignInAt';
+        _lastSignInAt?.build();
+
+        _$failedField = 'currentSignInAt';
+        _currentSignInAt?.build();
+
+        _$failedField = 'defaultActor';
+        _defaultActor?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GChangeEmailData_changeEmail',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GChangeEmailData_changeEmail_defaultActor
+    extends GChangeEmailData_changeEmail_defaultActor {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? preferredUsername;
+  @override
+  final String? name;
+
+  factory _$GChangeEmailData_changeEmail_defaultActor([
+    void Function(GChangeEmailData_changeEmail_defaultActorBuilder)? updates,
+  ]) =>
+      (new GChangeEmailData_changeEmail_defaultActorBuilder()..update(updates))
+          ._build();
+
+  _$GChangeEmailData_changeEmail_defaultActor._({
+    required this.G__typename,
+    this.id,
+    this.preferredUsername,
+    this.name,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GChangeEmailData_changeEmail_defaultActor',
+      'G__typename',
+    );
+  }
+
+  @override
+  GChangeEmailData_changeEmail_defaultActor rebuild(
+    void Function(GChangeEmailData_changeEmail_defaultActorBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GChangeEmailData_changeEmail_defaultActorBuilder toBuilder() =>
+      new GChangeEmailData_changeEmail_defaultActorBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GChangeEmailData_changeEmail_defaultActor &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        preferredUsername == other.preferredUsername &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, preferredUsername.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GChangeEmailData_changeEmail_defaultActor',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('preferredUsername', preferredUsername)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GChangeEmailData_changeEmail_defaultActorBuilder
+    implements
+        Builder<
+          GChangeEmailData_changeEmail_defaultActor,
+          GChangeEmailData_changeEmail_defaultActorBuilder
+        > {
+  _$GChangeEmailData_changeEmail_defaultActor? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _preferredUsername;
+  String? get preferredUsername => _$this._preferredUsername;
+  set preferredUsername(String? preferredUsername) =>
+      _$this._preferredUsername = preferredUsername;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GChangeEmailData_changeEmail_defaultActorBuilder() {
+    GChangeEmailData_changeEmail_defaultActor._initializeBuilder(this);
+  }
+
+  GChangeEmailData_changeEmail_defaultActorBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _preferredUsername = $v.preferredUsername;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GChangeEmailData_changeEmail_defaultActor other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GChangeEmailData_changeEmail_defaultActor;
+  }
+
+  @override
+  void update(
+    void Function(GChangeEmailData_changeEmail_defaultActorBuilder)? updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GChangeEmailData_changeEmail_defaultActor build() => _build();
+
+  _$GChangeEmailData_changeEmail_defaultActor _build() {
+    final _$result =
+        _$v ??
+        new _$GChangeEmailData_changeEmail_defaultActor._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GChangeEmailData_changeEmail_defaultActor',
+            'G__typename',
+          ),
+          id: id,
+          preferredUsername: preferredUsername,
+          name: name,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GValidateEmailData extends GValidateEmailData {
+  @override
+  final String G__typename;
+  @override
+  final GValidateEmailData_validateEmail? validateEmail;
+
+  factory _$GValidateEmailData([
+    void Function(GValidateEmailDataBuilder)? updates,
+  ]) => (new GValidateEmailDataBuilder()..update(updates))._build();
+
+  _$GValidateEmailData._({required this.G__typename, this.validateEmail})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GValidateEmailData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GValidateEmailData rebuild(
+    void Function(GValidateEmailDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GValidateEmailDataBuilder toBuilder() =>
+      new GValidateEmailDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GValidateEmailData &&
+        G__typename == other.G__typename &&
+        validateEmail == other.validateEmail;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, validateEmail.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GValidateEmailData')
+          ..add('G__typename', G__typename)
+          ..add('validateEmail', validateEmail))
+        .toString();
+  }
+}
+
+class GValidateEmailDataBuilder
+    implements Builder<GValidateEmailData, GValidateEmailDataBuilder> {
+  _$GValidateEmailData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GValidateEmailData_validateEmailBuilder? _validateEmail;
+  GValidateEmailData_validateEmailBuilder get validateEmail =>
+      _$this._validateEmail ??= new GValidateEmailData_validateEmailBuilder();
+  set validateEmail(GValidateEmailData_validateEmailBuilder? validateEmail) =>
+      _$this._validateEmail = validateEmail;
+
+  GValidateEmailDataBuilder() {
+    GValidateEmailData._initializeBuilder(this);
+  }
+
+  GValidateEmailDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _validateEmail = $v.validateEmail?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GValidateEmailData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GValidateEmailData;
+  }
+
+  @override
+  void update(void Function(GValidateEmailDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GValidateEmailData build() => _build();
+
+  _$GValidateEmailData _build() {
+    _$GValidateEmailData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GValidateEmailData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GValidateEmailData',
+              'G__typename',
+            ),
+            validateEmail: _validateEmail?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'validateEmail';
+        _validateEmail?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GValidateEmailData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GValidateEmailData_validateEmail
+    extends GValidateEmailData_validateEmail {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String email;
+  @override
+  final _i3.GDateTime? confirmedAt;
+  @override
+  final _i3.GDateTime? confirmationSentAt;
+  @override
+  final _i3.GDateTime? lastSignInAt;
+  @override
+  final String? lastSignInIp;
+  @override
+  final _i3.GDateTime? currentSignInAt;
+  @override
+  final String? currentSignInIp;
+  @override
+  final String? locale;
+  @override
+  final GValidateEmailData_validateEmail_defaultActor? defaultActor;
+  @override
+  final bool? disabled;
+  @override
+  final _i3.GUserRole? role;
+  @override
+  final String? provider;
+  @override
+  final int? mediaSize;
+
+  factory _$GValidateEmailData_validateEmail([
+    void Function(GValidateEmailData_validateEmailBuilder)? updates,
+  ]) =>
+      (new GValidateEmailData_validateEmailBuilder()..update(updates))._build();
+
+  _$GValidateEmailData_validateEmail._({
+    required this.G__typename,
+    this.id,
+    required this.email,
+    this.confirmedAt,
+    this.confirmationSentAt,
+    this.lastSignInAt,
+    this.lastSignInIp,
+    this.currentSignInAt,
+    this.currentSignInIp,
+    this.locale,
+    this.defaultActor,
+    this.disabled,
+    this.role,
+    this.provider,
+    this.mediaSize,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GValidateEmailData_validateEmail',
+      'G__typename',
+    );
+    BuiltValueNullFieldError.checkNotNull(
+      email,
+      r'GValidateEmailData_validateEmail',
+      'email',
+    );
+  }
+
+  @override
+  GValidateEmailData_validateEmail rebuild(
+    void Function(GValidateEmailData_validateEmailBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GValidateEmailData_validateEmailBuilder toBuilder() =>
+      new GValidateEmailData_validateEmailBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GValidateEmailData_validateEmail &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        email == other.email &&
+        confirmedAt == other.confirmedAt &&
+        confirmationSentAt == other.confirmationSentAt &&
+        lastSignInAt == other.lastSignInAt &&
+        lastSignInIp == other.lastSignInIp &&
+        currentSignInAt == other.currentSignInAt &&
+        currentSignInIp == other.currentSignInIp &&
+        locale == other.locale &&
+        defaultActor == other.defaultActor &&
+        disabled == other.disabled &&
+        role == other.role &&
+        provider == other.provider &&
+        mediaSize == other.mediaSize;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, confirmedAt.hashCode);
+    _$hash = $jc(_$hash, confirmationSentAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInIp.hashCode);
+    _$hash = $jc(_$hash, currentSignInAt.hashCode);
+    _$hash = $jc(_$hash, currentSignInIp.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jc(_$hash, defaultActor.hashCode);
+    _$hash = $jc(_$hash, disabled.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jc(_$hash, provider.hashCode);
+    _$hash = $jc(_$hash, mediaSize.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GValidateEmailData_validateEmail')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('email', email)
+          ..add('confirmedAt', confirmedAt)
+          ..add('confirmationSentAt', confirmationSentAt)
+          ..add('lastSignInAt', lastSignInAt)
+          ..add('lastSignInIp', lastSignInIp)
+          ..add('currentSignInAt', currentSignInAt)
+          ..add('currentSignInIp', currentSignInIp)
+          ..add('locale', locale)
+          ..add('defaultActor', defaultActor)
+          ..add('disabled', disabled)
+          ..add('role', role)
+          ..add('provider', provider)
+          ..add('mediaSize', mediaSize))
+        .toString();
+  }
+}
+
+class GValidateEmailData_validateEmailBuilder
+    implements
+        Builder<
+          GValidateEmailData_validateEmail,
+          GValidateEmailData_validateEmailBuilder
+        > {
+  _$GValidateEmailData_validateEmail? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  _i3.GDateTimeBuilder? _confirmedAt;
+  _i3.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
+  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+      _$this._confirmedAt = confirmedAt;
+
+  _i3.GDateTimeBuilder? _confirmationSentAt;
+  _i3.GDateTimeBuilder get confirmationSentAt =>
+      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
+  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
+      _$this._confirmationSentAt = confirmationSentAt;
+
+  _i3.GDateTimeBuilder? _lastSignInAt;
+  _i3.GDateTimeBuilder get lastSignInAt =>
+      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
+  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
+      _$this._lastSignInAt = lastSignInAt;
+
+  String? _lastSignInIp;
+  String? get lastSignInIp => _$this._lastSignInIp;
+  set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
+
+  _i3.GDateTimeBuilder? _currentSignInAt;
+  _i3.GDateTimeBuilder get currentSignInAt =>
+      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
+  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
+      _$this._currentSignInAt = currentSignInAt;
+
+  String? _currentSignInIp;
+  String? get currentSignInIp => _$this._currentSignInIp;
+  set currentSignInIp(String? currentSignInIp) =>
+      _$this._currentSignInIp = currentSignInIp;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GValidateEmailData_validateEmail_defaultActorBuilder? _defaultActor;
+  GValidateEmailData_validateEmail_defaultActorBuilder get defaultActor =>
+      _$this._defaultActor ??=
+          new GValidateEmailData_validateEmail_defaultActorBuilder();
+  set defaultActor(
+    GValidateEmailData_validateEmail_defaultActorBuilder? defaultActor,
+  ) => _$this._defaultActor = defaultActor;
+
+  bool? _disabled;
+  bool? get disabled => _$this._disabled;
+  set disabled(bool? disabled) => _$this._disabled = disabled;
+
+  _i3.GUserRole? _role;
+  _i3.GUserRole? get role => _$this._role;
+  set role(_i3.GUserRole? role) => _$this._role = role;
+
+  String? _provider;
+  String? get provider => _$this._provider;
+  set provider(String? provider) => _$this._provider = provider;
+
+  int? _mediaSize;
+  int? get mediaSize => _$this._mediaSize;
+  set mediaSize(int? mediaSize) => _$this._mediaSize = mediaSize;
+
+  GValidateEmailData_validateEmailBuilder() {
+    GValidateEmailData_validateEmail._initializeBuilder(this);
+  }
+
+  GValidateEmailData_validateEmailBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _email = $v.email;
+      _confirmedAt = $v.confirmedAt?.toBuilder();
+      _confirmationSentAt = $v.confirmationSentAt?.toBuilder();
+      _lastSignInAt = $v.lastSignInAt?.toBuilder();
+      _lastSignInIp = $v.lastSignInIp;
+      _currentSignInAt = $v.currentSignInAt?.toBuilder();
+      _currentSignInIp = $v.currentSignInIp;
+      _locale = $v.locale;
+      _defaultActor = $v.defaultActor?.toBuilder();
+      _disabled = $v.disabled;
+      _role = $v.role;
+      _provider = $v.provider;
+      _mediaSize = $v.mediaSize;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GValidateEmailData_validateEmail other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GValidateEmailData_validateEmail;
+  }
+
+  @override
+  void update(void Function(GValidateEmailData_validateEmailBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GValidateEmailData_validateEmail build() => _build();
+
+  _$GValidateEmailData_validateEmail _build() {
+    _$GValidateEmailData_validateEmail _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GValidateEmailData_validateEmail._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GValidateEmailData_validateEmail',
+              'G__typename',
+            ),
+            id: id,
+            email: BuiltValueNullFieldError.checkNotNull(
+              email,
+              r'GValidateEmailData_validateEmail',
+              'email',
+            ),
+            confirmedAt: _confirmedAt?.build(),
+            confirmationSentAt: _confirmationSentAt?.build(),
+            lastSignInAt: _lastSignInAt?.build(),
+            lastSignInIp: lastSignInIp,
+            currentSignInAt: _currentSignInAt?.build(),
+            currentSignInIp: currentSignInIp,
+            locale: locale,
+            defaultActor: _defaultActor?.build(),
+            disabled: disabled,
+            role: role,
+            provider: provider,
+            mediaSize: mediaSize,
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'confirmedAt';
+        _confirmedAt?.build();
+        _$failedField = 'confirmationSentAt';
+        _confirmationSentAt?.build();
+        _$failedField = 'lastSignInAt';
+        _lastSignInAt?.build();
+
+        _$failedField = 'currentSignInAt';
+        _currentSignInAt?.build();
+
+        _$failedField = 'defaultActor';
+        _defaultActor?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GValidateEmailData_validateEmail',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GValidateEmailData_validateEmail_defaultActor
+    extends GValidateEmailData_validateEmail_defaultActor {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? preferredUsername;
+  @override
+  final String? name;
+
+  factory _$GValidateEmailData_validateEmail_defaultActor([
+    void Function(GValidateEmailData_validateEmail_defaultActorBuilder)?
+    updates,
+  ]) =>
+      (new GValidateEmailData_validateEmail_defaultActorBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GValidateEmailData_validateEmail_defaultActor._({
+    required this.G__typename,
+    this.id,
+    this.preferredUsername,
+    this.name,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GValidateEmailData_validateEmail_defaultActor',
+      'G__typename',
+    );
+  }
+
+  @override
+  GValidateEmailData_validateEmail_defaultActor rebuild(
+    void Function(GValidateEmailData_validateEmail_defaultActorBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GValidateEmailData_validateEmail_defaultActorBuilder toBuilder() =>
+      new GValidateEmailData_validateEmail_defaultActorBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GValidateEmailData_validateEmail_defaultActor &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        preferredUsername == other.preferredUsername &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, preferredUsername.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GValidateEmailData_validateEmail_defaultActor',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('preferredUsername', preferredUsername)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GValidateEmailData_validateEmail_defaultActorBuilder
+    implements
+        Builder<
+          GValidateEmailData_validateEmail_defaultActor,
+          GValidateEmailData_validateEmail_defaultActorBuilder
+        > {
+  _$GValidateEmailData_validateEmail_defaultActor? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _preferredUsername;
+  String? get preferredUsername => _$this._preferredUsername;
+  set preferredUsername(String? preferredUsername) =>
+      _$this._preferredUsername = preferredUsername;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GValidateEmailData_validateEmail_defaultActorBuilder() {
+    GValidateEmailData_validateEmail_defaultActor._initializeBuilder(this);
+  }
+
+  GValidateEmailData_validateEmail_defaultActorBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _preferredUsername = $v.preferredUsername;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GValidateEmailData_validateEmail_defaultActor other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GValidateEmailData_validateEmail_defaultActor;
+  }
+
+  @override
+  void update(
+    void Function(GValidateEmailData_validateEmail_defaultActorBuilder)?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GValidateEmailData_validateEmail_defaultActor build() => _build();
+
+  _$GValidateEmailData_validateEmail_defaultActor _build() {
+    final _$result =
+        _$v ??
+        new _$GValidateEmailData_validateEmail_defaultActor._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GValidateEmailData_validateEmail_defaultActor',
+            'G__typename',
+          ),
+          id: id,
+          preferredUsername: preferredUsername,
+          name: name,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSetUserSettingsData extends GSetUserSettingsData {
+  @override
+  final String G__typename;
+  @override
+  final GSetUserSettingsData_setUserSettings? setUserSettings;
+
+  factory _$GSetUserSettingsData([
+    void Function(GSetUserSettingsDataBuilder)? updates,
+  ]) => (new GSetUserSettingsDataBuilder()..update(updates))._build();
+
+  _$GSetUserSettingsData._({required this.G__typename, this.setUserSettings})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GSetUserSettingsData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GSetUserSettingsData rebuild(
+    void Function(GSetUserSettingsDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GSetUserSettingsDataBuilder toBuilder() =>
+      new GSetUserSettingsDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSetUserSettingsData &&
+        G__typename == other.G__typename &&
+        setUserSettings == other.setUserSettings;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, setUserSettings.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GSetUserSettingsData')
+          ..add('G__typename', G__typename)
+          ..add('setUserSettings', setUserSettings))
+        .toString();
+  }
+}
+
+class GSetUserSettingsDataBuilder
+    implements Builder<GSetUserSettingsData, GSetUserSettingsDataBuilder> {
+  _$GSetUserSettingsData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GSetUserSettingsData_setUserSettingsBuilder? _setUserSettings;
+  GSetUserSettingsData_setUserSettingsBuilder get setUserSettings =>
+      _$this._setUserSettings ??=
+          new GSetUserSettingsData_setUserSettingsBuilder();
+  set setUserSettings(
+    GSetUserSettingsData_setUserSettingsBuilder? setUserSettings,
+  ) => _$this._setUserSettings = setUserSettings;
+
+  GSetUserSettingsDataBuilder() {
+    GSetUserSettingsData._initializeBuilder(this);
+  }
+
+  GSetUserSettingsDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _setUserSettings = $v.setUserSettings?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSetUserSettingsData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSetUserSettingsData;
+  }
+
+  @override
+  void update(void Function(GSetUserSettingsDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSetUserSettingsData build() => _build();
+
+  _$GSetUserSettingsData _build() {
+    _$GSetUserSettingsData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GSetUserSettingsData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GSetUserSettingsData',
+              'G__typename',
+            ),
+            setUserSettings: _setUserSettings?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'setUserSettings';
+        _setUserSettings?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GSetUserSettingsData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSetUserSettingsData_setUserSettings
+    extends GSetUserSettingsData_setUserSettings {
+  @override
+  final String G__typename;
+  @override
+  final _i3.GTimezone? timezone;
+  @override
+  final bool? notificationOnDay;
+  @override
+  final bool? notificationEachWeek;
+  @override
+  final bool? notificationBeforeEvent;
+  @override
+  final _i3.GNotificationPendingEnum? notificationPendingParticipation;
+  @override
+  final _i3.GNotificationPendingEnum? notificationPendingMembership;
+  @override
+  final _i3.GNotificationPendingEnum? groupNotifications;
+  @override
+  final GSetUserSettingsData_setUserSettings_location? location;
+
+  factory _$GSetUserSettingsData_setUserSettings([
+    void Function(GSetUserSettingsData_setUserSettingsBuilder)? updates,
+  ]) => (new GSetUserSettingsData_setUserSettingsBuilder()..update(updates))
+      ._build();
+
+  _$GSetUserSettingsData_setUserSettings._({
+    required this.G__typename,
+    this.timezone,
+    this.notificationOnDay,
+    this.notificationEachWeek,
+    this.notificationBeforeEvent,
+    this.notificationPendingParticipation,
+    this.notificationPendingMembership,
+    this.groupNotifications,
+    this.location,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GSetUserSettingsData_setUserSettings',
+      'G__typename',
+    );
+  }
+
+  @override
+  GSetUserSettingsData_setUserSettings rebuild(
+    void Function(GSetUserSettingsData_setUserSettingsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GSetUserSettingsData_setUserSettingsBuilder toBuilder() =>
+      new GSetUserSettingsData_setUserSettingsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSetUserSettingsData_setUserSettings &&
+        G__typename == other.G__typename &&
+        timezone == other.timezone &&
+        notificationOnDay == other.notificationOnDay &&
+        notificationEachWeek == other.notificationEachWeek &&
+        notificationBeforeEvent == other.notificationBeforeEvent &&
+        notificationPendingParticipation ==
+            other.notificationPendingParticipation &&
+        notificationPendingMembership == other.notificationPendingMembership &&
+        groupNotifications == other.groupNotifications &&
+        location == other.location;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, timezone.hashCode);
+    _$hash = $jc(_$hash, notificationOnDay.hashCode);
+    _$hash = $jc(_$hash, notificationEachWeek.hashCode);
+    _$hash = $jc(_$hash, notificationBeforeEvent.hashCode);
+    _$hash = $jc(_$hash, notificationPendingParticipation.hashCode);
+    _$hash = $jc(_$hash, notificationPendingMembership.hashCode);
+    _$hash = $jc(_$hash, groupNotifications.hashCode);
+    _$hash = $jc(_$hash, location.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GSetUserSettingsData_setUserSettings')
+          ..add('G__typename', G__typename)
+          ..add('timezone', timezone)
+          ..add('notificationOnDay', notificationOnDay)
+          ..add('notificationEachWeek', notificationEachWeek)
+          ..add('notificationBeforeEvent', notificationBeforeEvent)
+          ..add(
+            'notificationPendingParticipation',
+            notificationPendingParticipation,
+          )
+          ..add('notificationPendingMembership', notificationPendingMembership)
+          ..add('groupNotifications', groupNotifications)
+          ..add('location', location))
+        .toString();
+  }
+}
+
+class GSetUserSettingsData_setUserSettingsBuilder
+    implements
+        Builder<
+          GSetUserSettingsData_setUserSettings,
+          GSetUserSettingsData_setUserSettingsBuilder
+        > {
+  _$GSetUserSettingsData_setUserSettings? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  _i3.GTimezoneBuilder? _timezone;
+  _i3.GTimezoneBuilder get timezone =>
+      _$this._timezone ??= new _i3.GTimezoneBuilder();
+  set timezone(_i3.GTimezoneBuilder? timezone) => _$this._timezone = timezone;
+
+  bool? _notificationOnDay;
+  bool? get notificationOnDay => _$this._notificationOnDay;
+  set notificationOnDay(bool? notificationOnDay) =>
+      _$this._notificationOnDay = notificationOnDay;
+
+  bool? _notificationEachWeek;
+  bool? get notificationEachWeek => _$this._notificationEachWeek;
+  set notificationEachWeek(bool? notificationEachWeek) =>
+      _$this._notificationEachWeek = notificationEachWeek;
+
+  bool? _notificationBeforeEvent;
+  bool? get notificationBeforeEvent => _$this._notificationBeforeEvent;
+  set notificationBeforeEvent(bool? notificationBeforeEvent) =>
+      _$this._notificationBeforeEvent = notificationBeforeEvent;
+
+  _i3.GNotificationPendingEnum? _notificationPendingParticipation;
+  _i3.GNotificationPendingEnum? get notificationPendingParticipation =>
+      _$this._notificationPendingParticipation;
+  set notificationPendingParticipation(
+    _i3.GNotificationPendingEnum? notificationPendingParticipation,
+  ) => _$this._notificationPendingParticipation =
+      notificationPendingParticipation;
+
+  _i3.GNotificationPendingEnum? _notificationPendingMembership;
+  _i3.GNotificationPendingEnum? get notificationPendingMembership =>
+      _$this._notificationPendingMembership;
+  set notificationPendingMembership(
+    _i3.GNotificationPendingEnum? notificationPendingMembership,
+  ) => _$this._notificationPendingMembership = notificationPendingMembership;
+
+  _i3.GNotificationPendingEnum? _groupNotifications;
+  _i3.GNotificationPendingEnum? get groupNotifications =>
+      _$this._groupNotifications;
+  set groupNotifications(_i3.GNotificationPendingEnum? groupNotifications) =>
+      _$this._groupNotifications = groupNotifications;
+
+  GSetUserSettingsData_setUserSettings_locationBuilder? _location;
+  GSetUserSettingsData_setUserSettings_locationBuilder get location =>
+      _$this._location ??=
+          new GSetUserSettingsData_setUserSettings_locationBuilder();
+  set location(
+    GSetUserSettingsData_setUserSettings_locationBuilder? location,
+  ) => _$this._location = location;
+
+  GSetUserSettingsData_setUserSettingsBuilder() {
+    GSetUserSettingsData_setUserSettings._initializeBuilder(this);
+  }
+
+  GSetUserSettingsData_setUserSettingsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _timezone = $v.timezone?.toBuilder();
+      _notificationOnDay = $v.notificationOnDay;
+      _notificationEachWeek = $v.notificationEachWeek;
+      _notificationBeforeEvent = $v.notificationBeforeEvent;
+      _notificationPendingParticipation = $v.notificationPendingParticipation;
+      _notificationPendingMembership = $v.notificationPendingMembership;
+      _groupNotifications = $v.groupNotifications;
+      _location = $v.location?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSetUserSettingsData_setUserSettings other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSetUserSettingsData_setUserSettings;
+  }
+
+  @override
+  void update(
+    void Function(GSetUserSettingsData_setUserSettingsBuilder)? updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSetUserSettingsData_setUserSettings build() => _build();
+
+  _$GSetUserSettingsData_setUserSettings _build() {
+    _$GSetUserSettingsData_setUserSettings _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GSetUserSettingsData_setUserSettings._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GSetUserSettingsData_setUserSettings',
+              'G__typename',
+            ),
+            timezone: _timezone?.build(),
+            notificationOnDay: notificationOnDay,
+            notificationEachWeek: notificationEachWeek,
+            notificationBeforeEvent: notificationBeforeEvent,
+            notificationPendingParticipation: notificationPendingParticipation,
+            notificationPendingMembership: notificationPendingMembership,
+            groupNotifications: groupNotifications,
+            location: _location?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'timezone';
+        _timezone?.build();
+
+        _$failedField = 'location';
+        _location?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GSetUserSettingsData_setUserSettings',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSetUserSettingsData_setUserSettings_location
+    extends GSetUserSettingsData_setUserSettings_location {
+  @override
+  final String G__typename;
+  @override
+  final int? range;
+  @override
+  final String? geohash;
+  @override
+  final String? name;
+
+  factory _$GSetUserSettingsData_setUserSettings_location([
+    void Function(GSetUserSettingsData_setUserSettings_locationBuilder)?
+    updates,
+  ]) =>
+      (new GSetUserSettingsData_setUserSettings_locationBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GSetUserSettingsData_setUserSettings_location._({
+    required this.G__typename,
+    this.range,
+    this.geohash,
+    this.name,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GSetUserSettingsData_setUserSettings_location',
+      'G__typename',
+    );
+  }
+
+  @override
+  GSetUserSettingsData_setUserSettings_location rebuild(
+    void Function(GSetUserSettingsData_setUserSettings_locationBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GSetUserSettingsData_setUserSettings_locationBuilder toBuilder() =>
+      new GSetUserSettingsData_setUserSettings_locationBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSetUserSettingsData_setUserSettings_location &&
+        G__typename == other.G__typename &&
+        range == other.range &&
+        geohash == other.geohash &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, range.hashCode);
+    _$hash = $jc(_$hash, geohash.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GSetUserSettingsData_setUserSettings_location',
+          )
+          ..add('G__typename', G__typename)
+          ..add('range', range)
+          ..add('geohash', geohash)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GSetUserSettingsData_setUserSettings_locationBuilder
+    implements
+        Builder<
+          GSetUserSettingsData_setUserSettings_location,
+          GSetUserSettingsData_setUserSettings_locationBuilder
+        > {
+  _$GSetUserSettingsData_setUserSettings_location? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  int? _range;
+  int? get range => _$this._range;
+  set range(int? range) => _$this._range = range;
+
+  String? _geohash;
+  String? get geohash => _$this._geohash;
+  set geohash(String? geohash) => _$this._geohash = geohash;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GSetUserSettingsData_setUserSettings_locationBuilder() {
+    GSetUserSettingsData_setUserSettings_location._initializeBuilder(this);
+  }
+
+  GSetUserSettingsData_setUserSettings_locationBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _range = $v.range;
+      _geohash = $v.geohash;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSetUserSettingsData_setUserSettings_location other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSetUserSettingsData_setUserSettings_location;
+  }
+
+  @override
+  void update(
+    void Function(GSetUserSettingsData_setUserSettings_locationBuilder)?
+    updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSetUserSettingsData_setUserSettings_location build() => _build();
+
+  _$GSetUserSettingsData_setUserSettings_location _build() {
+    final _$result =
+        _$v ??
+        new _$GSetUserSettingsData_setUserSettings_location._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GSetUserSettingsData_setUserSettings_location',
+            'G__typename',
+          ),
+          range: range,
+          geohash: geohash,
+          name: name,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateLocaleData extends GUpdateLocaleData {
+  @override
+  final String G__typename;
+  @override
+  final GUpdateLocaleData_updateLocale? updateLocale;
+
+  factory _$GUpdateLocaleData([
+    void Function(GUpdateLocaleDataBuilder)? updates,
+  ]) => (new GUpdateLocaleDataBuilder()..update(updates))._build();
+
+  _$GUpdateLocaleData._({required this.G__typename, this.updateLocale})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GUpdateLocaleData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GUpdateLocaleData rebuild(void Function(GUpdateLocaleDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateLocaleDataBuilder toBuilder() =>
+      new GUpdateLocaleDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateLocaleData &&
+        G__typename == other.G__typename &&
+        updateLocale == other.updateLocale;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, updateLocale.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateLocaleData')
+          ..add('G__typename', G__typename)
+          ..add('updateLocale', updateLocale))
+        .toString();
+  }
+}
+
+class GUpdateLocaleDataBuilder
+    implements Builder<GUpdateLocaleData, GUpdateLocaleDataBuilder> {
+  _$GUpdateLocaleData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GUpdateLocaleData_updateLocaleBuilder? _updateLocale;
+  GUpdateLocaleData_updateLocaleBuilder get updateLocale =>
+      _$this._updateLocale ??= new GUpdateLocaleData_updateLocaleBuilder();
+  set updateLocale(GUpdateLocaleData_updateLocaleBuilder? updateLocale) =>
+      _$this._updateLocale = updateLocale;
+
+  GUpdateLocaleDataBuilder() {
+    GUpdateLocaleData._initializeBuilder(this);
+  }
+
+  GUpdateLocaleDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _updateLocale = $v.updateLocale?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateLocaleData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateLocaleData;
+  }
+
+  @override
+  void update(void Function(GUpdateLocaleDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateLocaleData build() => _build();
+
+  _$GUpdateLocaleData _build() {
+    _$GUpdateLocaleData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GUpdateLocaleData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GUpdateLocaleData',
+              'G__typename',
+            ),
+            updateLocale: _updateLocale?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'updateLocale';
+        _updateLocale?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GUpdateLocaleData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateLocaleData_updateLocale extends GUpdateLocaleData_updateLocale {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String email;
+  @override
+  final _i3.GDateTime? confirmedAt;
+  @override
+  final _i3.GDateTime? confirmationSentAt;
+  @override
+  final _i3.GDateTime? lastSignInAt;
+  @override
+  final String? lastSignInIp;
+  @override
+  final _i3.GDateTime? currentSignInAt;
+  @override
+  final String? currentSignInIp;
+  @override
+  final String? locale;
+  @override
+  final GUpdateLocaleData_updateLocale_defaultActor? defaultActor;
+  @override
+  final bool? disabled;
+  @override
+  final _i3.GUserRole? role;
+  @override
+  final String? provider;
+  @override
+  final int? mediaSize;
+
+  factory _$GUpdateLocaleData_updateLocale([
+    void Function(GUpdateLocaleData_updateLocaleBuilder)? updates,
+  ]) => (new GUpdateLocaleData_updateLocaleBuilder()..update(updates))._build();
+
+  _$GUpdateLocaleData_updateLocale._({
+    required this.G__typename,
+    this.id,
+    required this.email,
+    this.confirmedAt,
+    this.confirmationSentAt,
+    this.lastSignInAt,
+    this.lastSignInIp,
+    this.currentSignInAt,
+    this.currentSignInIp,
+    this.locale,
+    this.defaultActor,
+    this.disabled,
+    this.role,
+    this.provider,
+    this.mediaSize,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GUpdateLocaleData_updateLocale',
+      'G__typename',
+    );
+    BuiltValueNullFieldError.checkNotNull(
+      email,
+      r'GUpdateLocaleData_updateLocale',
+      'email',
+    );
+  }
+
+  @override
+  GUpdateLocaleData_updateLocale rebuild(
+    void Function(GUpdateLocaleData_updateLocaleBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateLocaleData_updateLocaleBuilder toBuilder() =>
+      new GUpdateLocaleData_updateLocaleBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateLocaleData_updateLocale &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        email == other.email &&
+        confirmedAt == other.confirmedAt &&
+        confirmationSentAt == other.confirmationSentAt &&
+        lastSignInAt == other.lastSignInAt &&
+        lastSignInIp == other.lastSignInIp &&
+        currentSignInAt == other.currentSignInAt &&
+        currentSignInIp == other.currentSignInIp &&
+        locale == other.locale &&
+        defaultActor == other.defaultActor &&
+        disabled == other.disabled &&
+        role == other.role &&
+        provider == other.provider &&
+        mediaSize == other.mediaSize;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, confirmedAt.hashCode);
+    _$hash = $jc(_$hash, confirmationSentAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInAt.hashCode);
+    _$hash = $jc(_$hash, lastSignInIp.hashCode);
+    _$hash = $jc(_$hash, currentSignInAt.hashCode);
+    _$hash = $jc(_$hash, currentSignInIp.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jc(_$hash, defaultActor.hashCode);
+    _$hash = $jc(_$hash, disabled.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jc(_$hash, provider.hashCode);
+    _$hash = $jc(_$hash, mediaSize.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateLocaleData_updateLocale')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('email', email)
+          ..add('confirmedAt', confirmedAt)
+          ..add('confirmationSentAt', confirmationSentAt)
+          ..add('lastSignInAt', lastSignInAt)
+          ..add('lastSignInIp', lastSignInIp)
+          ..add('currentSignInAt', currentSignInAt)
+          ..add('currentSignInIp', currentSignInIp)
+          ..add('locale', locale)
+          ..add('defaultActor', defaultActor)
+          ..add('disabled', disabled)
+          ..add('role', role)
+          ..add('provider', provider)
+          ..add('mediaSize', mediaSize))
+        .toString();
+  }
+}
+
+class GUpdateLocaleData_updateLocaleBuilder
+    implements
+        Builder<
+          GUpdateLocaleData_updateLocale,
+          GUpdateLocaleData_updateLocaleBuilder
+        > {
+  _$GUpdateLocaleData_updateLocale? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  _i3.GDateTimeBuilder? _confirmedAt;
+  _i3.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
+  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+      _$this._confirmedAt = confirmedAt;
+
+  _i3.GDateTimeBuilder? _confirmationSentAt;
+  _i3.GDateTimeBuilder get confirmationSentAt =>
+      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
+  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
+      _$this._confirmationSentAt = confirmationSentAt;
+
+  _i3.GDateTimeBuilder? _lastSignInAt;
+  _i3.GDateTimeBuilder get lastSignInAt =>
+      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
+  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
+      _$this._lastSignInAt = lastSignInAt;
+
+  String? _lastSignInIp;
+  String? get lastSignInIp => _$this._lastSignInIp;
+  set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
+
+  _i3.GDateTimeBuilder? _currentSignInAt;
+  _i3.GDateTimeBuilder get currentSignInAt =>
+      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
+  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
+      _$this._currentSignInAt = currentSignInAt;
+
+  String? _currentSignInIp;
+  String? get currentSignInIp => _$this._currentSignInIp;
+  set currentSignInIp(String? currentSignInIp) =>
+      _$this._currentSignInIp = currentSignInIp;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GUpdateLocaleData_updateLocale_defaultActorBuilder? _defaultActor;
+  GUpdateLocaleData_updateLocale_defaultActorBuilder get defaultActor =>
+      _$this._defaultActor ??=
+          new GUpdateLocaleData_updateLocale_defaultActorBuilder();
+  set defaultActor(
+    GUpdateLocaleData_updateLocale_defaultActorBuilder? defaultActor,
+  ) => _$this._defaultActor = defaultActor;
+
+  bool? _disabled;
+  bool? get disabled => _$this._disabled;
+  set disabled(bool? disabled) => _$this._disabled = disabled;
+
+  _i3.GUserRole? _role;
+  _i3.GUserRole? get role => _$this._role;
+  set role(_i3.GUserRole? role) => _$this._role = role;
+
+  String? _provider;
+  String? get provider => _$this._provider;
+  set provider(String? provider) => _$this._provider = provider;
+
+  int? _mediaSize;
+  int? get mediaSize => _$this._mediaSize;
+  set mediaSize(int? mediaSize) => _$this._mediaSize = mediaSize;
+
+  GUpdateLocaleData_updateLocaleBuilder() {
+    GUpdateLocaleData_updateLocale._initializeBuilder(this);
+  }
+
+  GUpdateLocaleData_updateLocaleBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _email = $v.email;
+      _confirmedAt = $v.confirmedAt?.toBuilder();
+      _confirmationSentAt = $v.confirmationSentAt?.toBuilder();
+      _lastSignInAt = $v.lastSignInAt?.toBuilder();
+      _lastSignInIp = $v.lastSignInIp;
+      _currentSignInAt = $v.currentSignInAt?.toBuilder();
+      _currentSignInIp = $v.currentSignInIp;
+      _locale = $v.locale;
+      _defaultActor = $v.defaultActor?.toBuilder();
+      _disabled = $v.disabled;
+      _role = $v.role;
+      _provider = $v.provider;
+      _mediaSize = $v.mediaSize;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateLocaleData_updateLocale other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateLocaleData_updateLocale;
+  }
+
+  @override
+  void update(void Function(GUpdateLocaleData_updateLocaleBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateLocaleData_updateLocale build() => _build();
+
+  _$GUpdateLocaleData_updateLocale _build() {
+    _$GUpdateLocaleData_updateLocale _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GUpdateLocaleData_updateLocale._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GUpdateLocaleData_updateLocale',
+              'G__typename',
+            ),
+            id: id,
+            email: BuiltValueNullFieldError.checkNotNull(
+              email,
+              r'GUpdateLocaleData_updateLocale',
+              'email',
+            ),
+            confirmedAt: _confirmedAt?.build(),
+            confirmationSentAt: _confirmationSentAt?.build(),
+            lastSignInAt: _lastSignInAt?.build(),
+            lastSignInIp: lastSignInIp,
+            currentSignInAt: _currentSignInAt?.build(),
+            currentSignInIp: currentSignInIp,
+            locale: locale,
+            defaultActor: _defaultActor?.build(),
+            disabled: disabled,
+            role: role,
+            provider: provider,
+            mediaSize: mediaSize,
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'confirmedAt';
+        _confirmedAt?.build();
+        _$failedField = 'confirmationSentAt';
+        _confirmationSentAt?.build();
+        _$failedField = 'lastSignInAt';
+        _lastSignInAt?.build();
+
+        _$failedField = 'currentSignInAt';
+        _currentSignInAt?.build();
+
+        _$failedField = 'defaultActor';
+        _defaultActor?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GUpdateLocaleData_updateLocale',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateLocaleData_updateLocale_defaultActor
+    extends GUpdateLocaleData_updateLocale_defaultActor {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+  @override
+  final String? preferredUsername;
+  @override
+  final String? name;
+
+  factory _$GUpdateLocaleData_updateLocale_defaultActor([
+    void Function(GUpdateLocaleData_updateLocale_defaultActorBuilder)? updates,
+  ]) =>
+      (new GUpdateLocaleData_updateLocale_defaultActorBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GUpdateLocaleData_updateLocale_defaultActor._({
+    required this.G__typename,
+    this.id,
+    this.preferredUsername,
+    this.name,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GUpdateLocaleData_updateLocale_defaultActor',
+      'G__typename',
+    );
+  }
+
+  @override
+  GUpdateLocaleData_updateLocale_defaultActor rebuild(
+    void Function(GUpdateLocaleData_updateLocale_defaultActorBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateLocaleData_updateLocale_defaultActorBuilder toBuilder() =>
+      new GUpdateLocaleData_updateLocale_defaultActorBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateLocaleData_updateLocale_defaultActor &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        preferredUsername == other.preferredUsername &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, preferredUsername.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GUpdateLocaleData_updateLocale_defaultActor',
+          )
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('preferredUsername', preferredUsername)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GUpdateLocaleData_updateLocale_defaultActorBuilder
+    implements
+        Builder<
+          GUpdateLocaleData_updateLocale_defaultActor,
+          GUpdateLocaleData_updateLocale_defaultActorBuilder
+        > {
+  _$GUpdateLocaleData_updateLocale_defaultActor? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _preferredUsername;
+  String? get preferredUsername => _$this._preferredUsername;
+  set preferredUsername(String? preferredUsername) =>
+      _$this._preferredUsername = preferredUsername;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GUpdateLocaleData_updateLocale_defaultActorBuilder() {
+    GUpdateLocaleData_updateLocale_defaultActor._initializeBuilder(this);
+  }
+
+  GUpdateLocaleData_updateLocale_defaultActorBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _preferredUsername = $v.preferredUsername;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateLocaleData_updateLocale_defaultActor other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateLocaleData_updateLocale_defaultActor;
+  }
+
+  @override
+  void update(
+    void Function(GUpdateLocaleData_updateLocale_defaultActorBuilder)? updates,
+  ) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateLocaleData_updateLocale_defaultActor build() => _build();
+
+  _$GUpdateLocaleData_updateLocale_defaultActor _build() {
+    final _$result =
+        _$v ??
+        new _$GUpdateLocaleData_updateLocale_defaultActor._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GUpdateLocaleData_updateLocale_defaultActor',
+            'G__typename',
+          ),
+          id: id,
+          preferredUsername: preferredUsername,
+          name: name,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDeleteAccountData extends GDeleteAccountData {
+  @override
+  final String G__typename;
+  @override
+  final GDeleteAccountData_deleteAccount? deleteAccount;
+
+  factory _$GDeleteAccountData([
+    void Function(GDeleteAccountDataBuilder)? updates,
+  ]) => (new GDeleteAccountDataBuilder()..update(updates))._build();
+
+  _$GDeleteAccountData._({required this.G__typename, this.deleteAccount})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GDeleteAccountData',
+      'G__typename',
+    );
+  }
+
+  @override
+  GDeleteAccountData rebuild(
+    void Function(GDeleteAccountDataBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GDeleteAccountDataBuilder toBuilder() =>
+      new GDeleteAccountDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDeleteAccountData &&
+        G__typename == other.G__typename &&
+        deleteAccount == other.deleteAccount;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, deleteAccount.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDeleteAccountData')
+          ..add('G__typename', G__typename)
+          ..add('deleteAccount', deleteAccount))
+        .toString();
+  }
+}
+
+class GDeleteAccountDataBuilder
+    implements Builder<GDeleteAccountData, GDeleteAccountDataBuilder> {
+  _$GDeleteAccountData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GDeleteAccountData_deleteAccountBuilder? _deleteAccount;
+  GDeleteAccountData_deleteAccountBuilder get deleteAccount =>
+      _$this._deleteAccount ??= new GDeleteAccountData_deleteAccountBuilder();
+  set deleteAccount(GDeleteAccountData_deleteAccountBuilder? deleteAccount) =>
+      _$this._deleteAccount = deleteAccount;
+
+  GDeleteAccountDataBuilder() {
+    GDeleteAccountData._initializeBuilder(this);
+  }
+
+  GDeleteAccountDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _deleteAccount = $v.deleteAccount?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDeleteAccountData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDeleteAccountData;
+  }
+
+  @override
+  void update(void Function(GDeleteAccountDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDeleteAccountData build() => _build();
+
+  _$GDeleteAccountData _build() {
+    _$GDeleteAccountData _$result;
+    try {
+      _$result =
+          _$v ??
+          new _$GDeleteAccountData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GDeleteAccountData',
+              'G__typename',
+            ),
+            deleteAccount: _deleteAccount?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'deleteAccount';
+        _deleteAccount?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+          r'GDeleteAccountData',
+          _$failedField,
+          e.toString(),
+        );
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDeleteAccountData_deleteAccount
+    extends GDeleteAccountData_deleteAccount {
+  @override
+  final String G__typename;
+  @override
+  final String? id;
+
+  factory _$GDeleteAccountData_deleteAccount([
+    void Function(GDeleteAccountData_deleteAccountBuilder)? updates,
+  ]) =>
+      (new GDeleteAccountData_deleteAccountBuilder()..update(updates))._build();
+
+  _$GDeleteAccountData_deleteAccount._({required this.G__typename, this.id})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      G__typename,
+      r'GDeleteAccountData_deleteAccount',
+      'G__typename',
+    );
+  }
+
+  @override
+  GDeleteAccountData_deleteAccount rebuild(
+    void Function(GDeleteAccountData_deleteAccountBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GDeleteAccountData_deleteAccountBuilder toBuilder() =>
+      new GDeleteAccountData_deleteAccountBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDeleteAccountData_deleteAccount &&
+        G__typename == other.G__typename &&
+        id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDeleteAccountData_deleteAccount')
+          ..add('G__typename', G__typename)
+          ..add('id', id))
+        .toString();
+  }
+}
+
+class GDeleteAccountData_deleteAccountBuilder
+    implements
+        Builder<
+          GDeleteAccountData_deleteAccount,
+          GDeleteAccountData_deleteAccountBuilder
+        > {
+  _$GDeleteAccountData_deleteAccount? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GDeleteAccountData_deleteAccountBuilder() {
+    GDeleteAccountData_deleteAccount._initializeBuilder(this);
+  }
+
+  GDeleteAccountData_deleteAccountBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDeleteAccountData_deleteAccount other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDeleteAccountData_deleteAccount;
+  }
+
+  @override
+  void update(void Function(GDeleteAccountData_deleteAccountBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDeleteAccountData_deleteAccount build() => _build();
+
+  _$GDeleteAccountData_deleteAccount _build() {
+    final _$result =
+        _$v ??
+        new _$GDeleteAccountData_deleteAccount._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+            G__typename,
+            r'GDeleteAccountData_deleteAccount',
+            'G__typename',
+          ),
+          id: id,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

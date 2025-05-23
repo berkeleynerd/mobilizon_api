@@ -1,0 +1,712 @@
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializers _$serializers =
+    (new Serializers().toBuilder()
+          ..add(FetchPolicy.serializer)
+          ..add(GActionLogAction.serializer)
+          ..add(GActivityAuthor.serializer)
+          ..add(GActivityType.serializer)
+          ..add(GActorBasicInfoData.serializer)
+          ..add(GActorBasicInfoData_avatar.serializer)
+          ..add(GActorBasicInfoReq.serializer)
+          ..add(GActorBasicInfoVars.serializer)
+          ..add(GActorInterfaceData.serializer)
+          ..add(GActorInterfaceData_avatar.serializer)
+          ..add(GActorInterfaceData_banner.serializer)
+          ..add(GActorInterfaceReq.serializer)
+          ..add(GActorInterfaceVars.serializer)
+          ..add(GActorType.serializer)
+          ..add(GAddressInput.serializer)
+          ..add(GAddressSearchType.serializer)
+          ..add(GAdminUpdateUserData.serializer)
+          ..add(GAdminUpdateUserData_adminUpdateUser.serializer)
+          ..add(GAdminUpdateUserData_adminUpdateUser_actors.serializer)
+          ..add(GAdminUpdateUserData_adminUpdateUser_actors_avatar.serializer)
+          ..add(GAdminUpdateUserData_adminUpdateUser_defaultActor.serializer)
+          ..add(GAdminUpdateUserData_adminUpdateUser_settings.serializer)
+          ..add(
+            GAdminUpdateUserData_adminUpdateUser_settings_location.serializer,
+          )
+          ..add(GAdminUpdateUserReq.serializer)
+          ..add(GAdminUpdateUserVars.serializer)
+          ..add(GAnalyticsConfigurationType.serializer)
+          ..add(GAnonymousEventCreationConfigData.serializer)
+          ..add(GAnonymousEventCreationConfigData_validation.serializer)
+          ..add(GAnonymousEventCreationConfigData_validation_captcha.serializer)
+          ..add(GAnonymousEventCreationConfigData_validation_email.serializer)
+          ..add(GAnonymousEventCreationConfigReq.serializer)
+          ..add(GAnonymousEventCreationConfigVars.serializer)
+          ..add(GAnonymousParticipationConfigData.serializer)
+          ..add(GAnonymousParticipationConfigData_validation.serializer)
+          ..add(GAnonymousParticipationConfigData_validation_captcha.serializer)
+          ..add(GAnonymousParticipationConfigData_validation_email.serializer)
+          ..add(GAnonymousParticipationConfigReq.serializer)
+          ..add(GAnonymousParticipationConfigVars.serializer)
+          ..add(GAnonymousReportsConfigData.serializer)
+          ..add(GAnonymousReportsConfigReq.serializer)
+          ..add(GAnonymousReportsConfigVars.serializer)
+          ..add(GAntiSpamFeedback.serializer)
+          ..add(GApplicationCodeAndStateInfoData.serializer)
+          ..add(GApplicationCodeAndStateInfoReq.serializer)
+          ..add(GApplicationCodeAndStateInfoVars.serializer)
+          ..add(GApplicationDeviceActivationInfoData.serializer)
+          ..add(GApplicationDeviceActivationInfoData_application.serializer)
+          ..add(GApplicationDeviceActivationInfoReq.serializer)
+          ..add(GApplicationDeviceActivationInfoVars.serializer)
+          ..add(GAuthApplicationInfoData.serializer)
+          ..add(GAuthApplicationInfoReq.serializer)
+          ..add(GAuthApplicationInfoVars.serializer)
+          ..add(GAuthApplicationTokenInfoData.serializer)
+          ..add(GAuthApplicationTokenInfoData_application.serializer)
+          ..add(GAuthApplicationTokenInfoReq.serializer)
+          ..add(GAuthApplicationTokenInfoVars.serializer)
+          ..add(GAuthorizeApplicationData.serializer)
+          ..add(GAuthorizeApplicationData_authorizeApplication.serializer)
+          ..add(GAuthorizeApplicationReq.serializer)
+          ..add(GAuthorizeApplicationVars.serializer)
+          ..add(GAuthorizeDeviceApplicationData.serializer)
+          ..add(
+            GAuthorizeDeviceApplicationData_authorizeDeviceApplication
+                .serializer,
+          )
+          ..add(GAuthorizeDeviceApplicationReq.serializer)
+          ..add(GAuthorizeDeviceApplicationVars.serializer)
+          ..add(GChangeDefaultActorData.serializer)
+          ..add(GChangeDefaultActorData_changeDefaultActor.serializer)
+          ..add(GChangeDefaultActorData_changeDefaultActor_actors.serializer)
+          ..add(
+            GChangeDefaultActorData_changeDefaultActor_actors_avatar.serializer,
+          )
+          ..add(
+            GChangeDefaultActorData_changeDefaultActor_defaultActor.serializer,
+          )
+          ..add(GChangeDefaultActorData_changeDefaultActor_settings.serializer)
+          ..add(
+            GChangeDefaultActorData_changeDefaultActor_settings_location
+                .serializer,
+          )
+          ..add(GChangeDefaultActorReq.serializer)
+          ..add(GChangeDefaultActorVars.serializer)
+          ..add(GChangeEmailData.serializer)
+          ..add(GChangeEmailData_changeEmail.serializer)
+          ..add(GChangeEmailData_changeEmail_defaultActor.serializer)
+          ..add(GChangeEmailReq.serializer)
+          ..add(GChangeEmailVars.serializer)
+          ..add(GChangePasswordData.serializer)
+          ..add(GChangePasswordData_changePassword.serializer)
+          ..add(GChangePasswordData_changePassword_defaultActor.serializer)
+          ..add(GChangePasswordReq.serializer)
+          ..add(GChangePasswordVars.serializer)
+          ..add(GCommentVisibility.serializer)
+          ..add(GConfigInfoData.serializer)
+          ..add(GConfigInfoReq.serializer)
+          ..add(GConfigInfoVars.serializer)
+          ..add(GContact.serializer)
+          ..add(GCreatePersonData.serializer)
+          ..add(GCreatePersonData_createPerson.serializer)
+          ..add(GCreatePersonData_createPerson_avatar.serializer)
+          ..add(GCreatePersonData_createPerson_banner.serializer)
+          ..add(GCreatePersonData_createPerson_feedTokens.serializer)
+          ..add(GCreatePersonData_createPerson_follows.serializer)
+          ..add(GCreatePersonData_createPerson_memberships.serializer)
+          ..add(GCreatePersonData_createPerson_organizedEvents.serializer)
+          ..add(GCreatePersonData_createPerson_participations.serializer)
+          ..add(GCreatePersonData_createPerson_user.serializer)
+          ..add(GCreatePersonReq.serializer)
+          ..add(GCreatePersonVars.serializer)
+          ..add(GCreateUserData.serializer)
+          ..add(GCreateUserData_createUser.serializer)
+          ..add(GCreateUserData_createUser_defaultActor.serializer)
+          ..add(GCreateUserReq.serializer)
+          ..add(GCreateUserVars.serializer)
+          ..add(GDateTime.serializer)
+          ..add(GDeleteAccountData.serializer)
+          ..add(GDeleteAccountData_deleteAccount.serializer)
+          ..add(GDeleteAccountReq.serializer)
+          ..add(GDeleteAccountVars.serializer)
+          ..add(GDeletePersonData.serializer)
+          ..add(GDeletePersonData_deletePerson.serializer)
+          ..add(GDeletePersonData_deletePerson_avatar.serializer)
+          ..add(GDeletePersonData_deletePerson_banner.serializer)
+          ..add(GDeletePersonData_deletePerson_feedTokens.serializer)
+          ..add(GDeletePersonData_deletePerson_follows.serializer)
+          ..add(GDeletePersonData_deletePerson_memberships.serializer)
+          ..add(GDeletePersonData_deletePerson_organizedEvents.serializer)
+          ..add(GDeletePersonData_deletePerson_participations.serializer)
+          ..add(GDeletePersonData_deletePerson_user.serializer)
+          ..add(GDeletePersonReq.serializer)
+          ..add(GDeletePersonVars.serializer)
+          ..add(GDeletedObjectResponseData.serializer)
+          ..add(GDeletedObjectResponseReq.serializer)
+          ..add(GDeletedObjectResponseVars.serializer)
+          ..add(GDeviceActivationData.serializer)
+          ..add(GDeviceActivationData_deviceActivation.serializer)
+          ..add(GDeviceActivationData_deviceActivation_application.serializer)
+          ..add(GDeviceActivationReq.serializer)
+          ..add(GDeviceActivationVars.serializer)
+          ..add(GEventCategory.serializer)
+          ..add(GEventCommentModeration.serializer)
+          ..add(GEventJoinOptions.serializer)
+          ..add(GEventMetadataInput.serializer)
+          ..add(GEventMetadataType.serializer)
+          ..add(GEventOfferInput.serializer)
+          ..add(GEventOptionsInput.serializer)
+          ..add(GEventOrderBy.serializer)
+          ..add(GEventParticipationConditionInput.serializer)
+          ..add(GEventStatus.serializer)
+          ..add(GEventType.serializer)
+          ..add(GEventVisibility.serializer)
+          ..add(GExportFormatEnum.serializer)
+          ..add(GFetchPersonData.serializer)
+          ..add(GFetchPersonData_fetchPerson.serializer)
+          ..add(GFetchPersonData_fetchPerson_avatar.serializer)
+          ..add(GFetchPersonData_fetchPerson_banner.serializer)
+          ..add(GFetchPersonData_fetchPerson_feedTokens.serializer)
+          ..add(GFetchPersonData_fetchPerson_follows.serializer)
+          ..add(GFetchPersonData_fetchPerson_memberships.serializer)
+          ..add(GFetchPersonData_fetchPerson_organizedEvents.serializer)
+          ..add(GFetchPersonData_fetchPerson_participations.serializer)
+          ..add(GFetchPersonData_fetchPerson_user.serializer)
+          ..add(GFetchPersonReq.serializer)
+          ..add(GFetchPersonVars.serializer)
+          ..add(GGetAuthApplicationData.serializer)
+          ..add(GGetAuthApplicationData_authApplication.serializer)
+          ..add(GGetAuthApplicationReq.serializer)
+          ..add(GGetAuthApplicationVars.serializer)
+          ..add(GGetConfigData.serializer)
+          ..add(GGetConfigData_config.serializer)
+          ..add(GGetConfigReq.serializer)
+          ..add(GGetConfigVars.serializer)
+          ..add(GGetLoggedPersonData.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_avatar.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_banner.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_feedTokens.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_follows.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_memberships.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_organizedEvents.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_participations.serializer)
+          ..add(GGetLoggedPersonData_loggedPerson_user.serializer)
+          ..add(GGetLoggedPersonReq.serializer)
+          ..add(GGetLoggedPersonVars.serializer)
+          ..add(GGetLoggedUserData.serializer)
+          ..add(GGetLoggedUserData_loggedUser.serializer)
+          ..add(GGetLoggedUserData_loggedUser_actors.serializer)
+          ..add(GGetLoggedUserData_loggedUser_actors_avatar.serializer)
+          ..add(GGetLoggedUserData_loggedUser_defaultActor.serializer)
+          ..add(GGetLoggedUserData_loggedUser_settings.serializer)
+          ..add(GGetLoggedUserData_loggedUser_settings_location.serializer)
+          ..add(GGetLoggedUserReq.serializer)
+          ..add(GGetLoggedUserVars.serializer)
+          ..add(GGetPersonData.serializer)
+          ..add(GGetPersonData_person.serializer)
+          ..add(GGetPersonData_person_avatar.serializer)
+          ..add(GGetPersonData_person_banner.serializer)
+          ..add(GGetPersonData_person_feedTokens.serializer)
+          ..add(GGetPersonData_person_follows.serializer)
+          ..add(GGetPersonData_person_memberships.serializer)
+          ..add(GGetPersonData_person_organizedEvents.serializer)
+          ..add(GGetPersonData_person_participations.serializer)
+          ..add(GGetPersonData_person_user.serializer)
+          ..add(GGetPersonReq.serializer)
+          ..add(GGetPersonVars.serializer)
+          ..add(GGetPersonsData.serializer)
+          ..add(GGetPersonsData_persons.serializer)
+          ..add(GGetPersonsData_persons_elements.serializer)
+          ..add(GGetPersonsData_persons_elements_avatar.serializer)
+          ..add(GGetPersonsData_persons_elements_banner.serializer)
+          ..add(GGetPersonsData_persons_elements_feedTokens.serializer)
+          ..add(GGetPersonsData_persons_elements_feedTokens_actor.serializer)
+          ..add(GGetPersonsData_persons_elements_memberships.serializer)
+          ..add(GGetPersonsData_persons_elements_organizedEvents.serializer)
+          ..add(GGetPersonsData_persons_elements_participations.serializer)
+          ..add(GGetPersonsData_persons_elements_user.serializer)
+          ..add(GGetPersonsReq.serializer)
+          ..add(GGetPersonsVars.serializer)
+          ..add(GGetUserData.serializer)
+          ..add(GGetUserData_user.serializer)
+          ..add(GGetUserData_user_actors.serializer)
+          ..add(GGetUserData_user_actors_avatar.serializer)
+          ..add(GGetUserData_user_defaultActor.serializer)
+          ..add(GGetUserData_user_settings.serializer)
+          ..add(GGetUserData_user_settings_location.serializer)
+          ..add(GGetUserReq.serializer)
+          ..add(GGetUserVars.serializer)
+          ..add(GGetUsersData.serializer)
+          ..add(GGetUsersData_users.serializer)
+          ..add(GGetUsersData_users_elements.serializer)
+          ..add(GGetUsersData_users_elements_actors.serializer)
+          ..add(GGetUsersData_users_elements_actors_avatar.serializer)
+          ..add(GGetUsersData_users_elements_defaultActor.serializer)
+          ..add(GGetUsersData_users_elements_settings.serializer)
+          ..add(GGetUsersData_users_elements_settings_location.serializer)
+          ..add(GGetUsersReq.serializer)
+          ..add(GGetUsersVars.serializer)
+          ..add(GGroupType.serializer)
+          ..add(GGroupVisibility.serializer)
+          ..add(GInstanceFilterFollowStatus.serializer)
+          ..add(GInstanceFilterSuspendStatus.serializer)
+          ..add(GInstanceFollowStatus.serializer)
+          ..add(GInstancePrivacyType.serializer)
+          ..add(GInstanceTermsType.serializer)
+          ..add(GInstancesSortFields.serializer)
+          ..add(GLocationInput.serializer)
+          ..add(GLoginData.serializer)
+          ..add(GLoginData_login.serializer)
+          ..add(GLoginData_login_user.serializer)
+          ..add(GLoginData_login_user_actors.serializer)
+          ..add(GLoginData_login_user_actors_avatar.serializer)
+          ..add(GLoginData_login_user_defaultActor.serializer)
+          ..add(GLoginData_login_user_settings.serializer)
+          ..add(GLoginData_login_user_settings_location.serializer)
+          ..add(GLoginInfoData.serializer)
+          ..add(GLoginInfoData_user.serializer)
+          ..add(GLoginInfoData_user_actors.serializer)
+          ..add(GLoginInfoData_user_actors_avatar.serializer)
+          ..add(GLoginInfoData_user_defaultActor.serializer)
+          ..add(GLoginInfoData_user_settings.serializer)
+          ..add(GLoginInfoData_user_settings_location.serializer)
+          ..add(GLoginInfoReq.serializer)
+          ..add(GLoginInfoVars.serializer)
+          ..add(GLoginReq.serializer)
+          ..add(GLoginResponseData.serializer)
+          ..add(GLoginResponseData_user.serializer)
+          ..add(GLoginResponseData_user_actors.serializer)
+          ..add(GLoginResponseData_user_actors_avatar.serializer)
+          ..add(GLoginResponseData_user_defaultActor.serializer)
+          ..add(GLoginResponseData_user_settings.serializer)
+          ..add(GLoginResponseData_user_settings_location.serializer)
+          ..add(GLoginResponseReq.serializer)
+          ..add(GLoginResponseVars.serializer)
+          ..add(GLoginVars.serializer)
+          ..add(GLogoutData.serializer)
+          ..add(GLogoutReq.serializer)
+          ..add(GLogoutVars.serializer)
+          ..add(GMediaBasicInfoData.serializer)
+          ..add(GMediaBasicInfoReq.serializer)
+          ..add(GMediaBasicInfoVars.serializer)
+          ..add(GMediaInput.serializer)
+          ..add(GMediaInputObject.serializer)
+          ..add(GMediaWithMetadataData.serializer)
+          ..add(GMediaWithMetadataData_metadata.serializer)
+          ..add(GMediaWithMetadataReq.serializer)
+          ..add(GMediaWithMetadataVars.serializer)
+          ..add(GMemberRoleEnum.serializer)
+          ..add(GNaiveDateTime.serializer)
+          ..add(GNotificationPendingEnum.serializer)
+          ..add(GOAuthProviderInfoData.serializer)
+          ..add(GOAuthProviderInfoReq.serializer)
+          ..add(GOAuthProviderInfoVars.serializer)
+          ..add(GOpenness.serializer)
+          ..add(GParticipantRoleEnum.serializer)
+          ..add(GPersonBasicInfoData.serializer)
+          ..add(GPersonBasicInfoData_avatar.serializer)
+          ..add(GPersonBasicInfoData_banner.serializer)
+          ..add(GPersonBasicInfoReq.serializer)
+          ..add(GPersonBasicInfoVars.serializer)
+          ..add(GPersonFullData.serializer)
+          ..add(GPersonFullData_avatar.serializer)
+          ..add(GPersonFullData_banner.serializer)
+          ..add(GPersonFullData_feedTokens.serializer)
+          ..add(GPersonFullData_feedTokens_actor.serializer)
+          ..add(GPersonFullData_memberships.serializer)
+          ..add(GPersonFullData_organizedEvents.serializer)
+          ..add(GPersonFullData_participations.serializer)
+          ..add(GPersonFullData_user.serializer)
+          ..add(GPersonFullReq.serializer)
+          ..add(GPersonFullVars.serializer)
+          ..add(GPersonInfoData.serializer)
+          ..add(GPersonInfoData_avatar.serializer)
+          ..add(GPersonInfoData_banner.serializer)
+          ..add(GPersonInfoData_feedTokens.serializer)
+          ..add(GPersonInfoData_follows.serializer)
+          ..add(GPersonInfoData_memberships.serializer)
+          ..add(GPersonInfoData_organizedEvents.serializer)
+          ..add(GPersonInfoData_participations.serializer)
+          ..add(GPersonInfoData_user.serializer)
+          ..add(GPersonInfoReq.serializer)
+          ..add(GPersonInfoVars.serializer)
+          ..add(GPersonWithStatsData.serializer)
+          ..add(GPersonWithStatsData_avatar.serializer)
+          ..add(GPersonWithStatsData_banner.serializer)
+          ..add(GPersonWithStatsData_memberships.serializer)
+          ..add(GPersonWithStatsData_organizedEvents.serializer)
+          ..add(GPersonWithStatsData_participations.serializer)
+          ..add(GPersonWithStatsReq.serializer)
+          ..add(GPersonWithStatsVars.serializer)
+          ..add(GPoint.serializer)
+          ..add(GPostVisibility.serializer)
+          ..add(GRefreshTokenData.serializer)
+          ..add(GRefreshTokenData_refreshToken.serializer)
+          ..add(GRefreshTokenReq.serializer)
+          ..add(GRefreshTokenVars.serializer)
+          ..add(GRefreshedTokenInfoData.serializer)
+          ..add(GRefreshedTokenInfoReq.serializer)
+          ..add(GRefreshedTokenInfoVars.serializer)
+          ..add(GRefreshedTokenResponseData.serializer)
+          ..add(GRefreshedTokenResponseReq.serializer)
+          ..add(GRefreshedTokenResponseVars.serializer)
+          ..add(GRegisterPersonData.serializer)
+          ..add(GRegisterPersonData_registerPerson.serializer)
+          ..add(GRegisterPersonData_registerPerson_avatar.serializer)
+          ..add(GRegisterPersonData_registerPerson_banner.serializer)
+          ..add(GRegisterPersonData_registerPerson_feedTokens.serializer)
+          ..add(GRegisterPersonData_registerPerson_follows.serializer)
+          ..add(GRegisterPersonData_registerPerson_memberships.serializer)
+          ..add(GRegisterPersonData_registerPerson_organizedEvents.serializer)
+          ..add(GRegisterPersonData_registerPerson_participations.serializer)
+          ..add(GRegisterPersonData_registerPerson_user.serializer)
+          ..add(GRegisterPersonReq.serializer)
+          ..add(GRegisterPersonVars.serializer)
+          ..add(GRemoveMediaData.serializer)
+          ..add(GRemoveMediaData_removeMedia.serializer)
+          ..add(GRemoveMediaReq.serializer)
+          ..add(GRemoveMediaVars.serializer)
+          ..add(GReportStatus.serializer)
+          ..add(GResendConfirmationEmailData.serializer)
+          ..add(GResendConfirmationEmailReq.serializer)
+          ..add(GResendConfirmationEmailVars.serializer)
+          ..add(GResetPasswordData.serializer)
+          ..add(GResetPasswordData_resetPassword.serializer)
+          ..add(GResetPasswordData_resetPassword_user.serializer)
+          ..add(GResetPasswordData_resetPassword_user_actors.serializer)
+          ..add(GResetPasswordData_resetPassword_user_actors_avatar.serializer)
+          ..add(GResetPasswordData_resetPassword_user_defaultActor.serializer)
+          ..add(GResetPasswordData_resetPassword_user_settings.serializer)
+          ..add(
+            GResetPasswordData_resetPassword_user_settings_location.serializer,
+          )
+          ..add(GResetPasswordReq.serializer)
+          ..add(GResetPasswordVars.serializer)
+          ..add(GRevokeApplicationTokenData.serializer)
+          ..add(GRevokeApplicationTokenData_revokeApplicationToken.serializer)
+          ..add(GRevokeApplicationTokenReq.serializer)
+          ..add(GRevokeApplicationTokenVars.serializer)
+          ..add(GRoutingType.serializer)
+          ..add(GSearchEventSortOptions.serializer)
+          ..add(GSearchGroupSortOptions.serializer)
+          ..add(GSearchPersonsData.serializer)
+          ..add(GSearchPersonsData_searchPersons.serializer)
+          ..add(GSearchPersonsData_searchPersons_elements.serializer)
+          ..add(GSearchPersonsData_searchPersons_elements_avatar.serializer)
+          ..add(GSearchPersonsData_searchPersons_elements_banner.serializer)
+          ..add(GSearchPersonsData_searchPersons_elements_feedTokens.serializer)
+          ..add(GSearchPersonsData_searchPersons_elements_follows.serializer)
+          ..add(
+            GSearchPersonsData_searchPersons_elements_memberships.serializer,
+          )
+          ..add(
+            GSearchPersonsData_searchPersons_elements_organizedEvents
+                .serializer,
+          )
+          ..add(
+            GSearchPersonsData_searchPersons_elements_participations.serializer,
+          )
+          ..add(GSearchPersonsData_searchPersons_elements_user.serializer)
+          ..add(GSearchPersonsReq.serializer)
+          ..add(GSearchPersonsVars.serializer)
+          ..add(GSearchTarget.serializer)
+          ..add(GSendResetPasswordData.serializer)
+          ..add(GSendResetPasswordReq.serializer)
+          ..add(GSendResetPasswordVars.serializer)
+          ..add(GSetUserSettingsData.serializer)
+          ..add(GSetUserSettingsData_setUserSettings.serializer)
+          ..add(GSetUserSettingsData_setUserSettings_location.serializer)
+          ..add(GSetUserSettingsReq.serializer)
+          ..add(GSetUserSettingsVars.serializer)
+          ..add(GSortDirection.serializer)
+          ..add(GSortableUserField.serializer)
+          ..add(GSuspendProfileData.serializer)
+          ..add(GSuspendProfileData_suspendProfile.serializer)
+          ..add(GSuspendProfileReq.serializer)
+          ..add(GSuspendProfileVars.serializer)
+          ..add(GTimezone.serializer)
+          ..add(GUUID.serializer)
+          ..add(GUnsuspendProfileData.serializer)
+          ..add(GUnsuspendProfileData_unsuspendProfile.serializer)
+          ..add(GUnsuspendProfileData_unsuspendProfile_avatar.serializer)
+          ..add(GUnsuspendProfileReq.serializer)
+          ..add(GUnsuspendProfileVars.serializer)
+          ..add(GUpdateLocaleData.serializer)
+          ..add(GUpdateLocaleData_updateLocale.serializer)
+          ..add(GUpdateLocaleData_updateLocale_defaultActor.serializer)
+          ..add(GUpdateLocaleReq.serializer)
+          ..add(GUpdateLocaleVars.serializer)
+          ..add(GUpdatePersonData.serializer)
+          ..add(GUpdatePersonData_updatePerson.serializer)
+          ..add(GUpdatePersonData_updatePerson_avatar.serializer)
+          ..add(GUpdatePersonData_updatePerson_banner.serializer)
+          ..add(GUpdatePersonData_updatePerson_feedTokens.serializer)
+          ..add(GUpdatePersonData_updatePerson_follows.serializer)
+          ..add(GUpdatePersonData_updatePerson_memberships.serializer)
+          ..add(GUpdatePersonData_updatePerson_organizedEvents.serializer)
+          ..add(GUpdatePersonData_updatePerson_participations.serializer)
+          ..add(GUpdatePersonData_updatePerson_user.serializer)
+          ..add(GUpdatePersonReq.serializer)
+          ..add(GUpdatePersonVars.serializer)
+          ..add(GUploadMediaData.serializer)
+          ..add(GUploadMediaData_uploadMedia.serializer)
+          ..add(GUploadMediaData_uploadMedia_metadata.serializer)
+          ..add(GUploadMediaReq.serializer)
+          ..add(GUploadMediaVars.serializer)
+          ..add(GUserBasicInfoData.serializer)
+          ..add(GUserBasicInfoData_defaultActor.serializer)
+          ..add(GUserBasicInfoReq.serializer)
+          ..add(GUserBasicInfoVars.serializer)
+          ..add(GUserFullData.serializer)
+          ..add(GUserFullData_actors.serializer)
+          ..add(GUserFullData_actors_avatar.serializer)
+          ..add(GUserFullData_defaultActor.serializer)
+          ..add(GUserFullData_settings.serializer)
+          ..add(GUserFullData_settings_location.serializer)
+          ..add(GUserFullReq.serializer)
+          ..add(GUserFullVars.serializer)
+          ..add(GUserRole.serializer)
+          ..add(GUserSettingsInfoData.serializer)
+          ..add(GUserSettingsInfoData_location.serializer)
+          ..add(GUserSettingsInfoReq.serializer)
+          ..add(GUserSettingsInfoVars.serializer)
+          ..add(GUserWithSettingsData.serializer)
+          ..add(GUserWithSettingsData_defaultActor.serializer)
+          ..add(GUserWithSettingsData_settings.serializer)
+          ..add(GUserWithSettingsData_settings_location.serializer)
+          ..add(GUserWithSettingsReq.serializer)
+          ..add(GUserWithSettingsVars.serializer)
+          ..add(GValidateEmailData.serializer)
+          ..add(GValidateEmailData_validateEmail.serializer)
+          ..add(GValidateEmailData_validateEmail_defaultActor.serializer)
+          ..add(GValidateEmailReq.serializer)
+          ..add(GValidateEmailVars.serializer)
+          ..add(GValidateUserData.serializer)
+          ..add(GValidateUserData_validateUser.serializer)
+          ..add(GValidateUserData_validateUser_user.serializer)
+          ..add(GValidateUserData_validateUser_user_actors.serializer)
+          ..add(GValidateUserData_validateUser_user_actors_avatar.serializer)
+          ..add(GValidateUserData_validateUser_user_defaultActor.serializer)
+          ..add(GValidateUserData_validateUser_user_settings.serializer)
+          ..add(
+            GValidateUserData_validateUser_user_settings_location.serializer,
+          )
+          ..add(GValidateUserReq.serializer)
+          ..add(GValidateUserVars.serializer)
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GAdminUpdateUserData_adminUpdateUser_actors,
+              ),
+            ]),
+            () =>
+                new ListBuilder<GAdminUpdateUserData_adminUpdateUser_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GChangeDefaultActorData_changeDefaultActor_actors,
+              ),
+            ]),
+            () =>
+                new ListBuilder<
+                  GChangeDefaultActorData_changeDefaultActor_actors?
+                >(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GCreatePersonData_createPerson_feedTokens,
+              ),
+            ]),
+            () => new ListBuilder<GCreatePersonData_createPerson_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GDeletePersonData_deletePerson_feedTokens,
+              ),
+            ]),
+            () => new ListBuilder<GDeletePersonData_deletePerson_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GFetchPersonData_fetchPerson_feedTokens),
+            ]),
+            () => new ListBuilder<GFetchPersonData_fetchPerson_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GGetLoggedPersonData_loggedPerson_feedTokens,
+              ),
+            ]),
+            () =>
+                new ListBuilder<
+                  GGetLoggedPersonData_loggedPerson_feedTokens?
+                >(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GGetLoggedUserData_loggedUser_actors),
+            ]),
+            () => new ListBuilder<GGetLoggedUserData_loggedUser_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GGetPersonData_person_feedTokens),
+            ]),
+            () => new ListBuilder<GGetPersonData_person_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GGetPersonsData_persons_elements),
+            ]),
+            () => new ListBuilder<GGetPersonsData_persons_elements?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GGetPersonsData_persons_elements_feedTokens,
+              ),
+            ]),
+            () =>
+                new ListBuilder<GGetPersonsData_persons_elements_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GGetUserData_user_actors),
+            ]),
+            () => new ListBuilder<GGetUserData_user_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GGetUsersData_users_elements),
+            ]),
+            () => new ListBuilder<GGetUsersData_users_elements?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GGetUsersData_users_elements_actors),
+            ]),
+            () => new ListBuilder<GGetUsersData_users_elements_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GLoginData_login_user_actors),
+            ]),
+            () => new ListBuilder<GLoginData_login_user_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GLoginInfoData_user_actors),
+            ]),
+            () => new ListBuilder<GLoginInfoData_user_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GLoginResponseData_user_actors),
+            ]),
+            () => new ListBuilder<GLoginResponseData_user_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GPersonFullData_feedTokens),
+            ]),
+            () => new ListBuilder<GPersonFullData_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GPersonInfoData_feedTokens),
+            ]),
+            () => new ListBuilder<GPersonInfoData_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GRegisterPersonData_registerPerson_feedTokens,
+              ),
+            ]),
+            () =>
+                new ListBuilder<
+                  GRegisterPersonData_registerPerson_feedTokens?
+                >(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GResetPasswordData_resetPassword_user_actors,
+              ),
+            ]),
+            () =>
+                new ListBuilder<
+                  GResetPasswordData_resetPassword_user_actors?
+                >(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GSearchPersonsData_searchPersons_elements,
+              ),
+            ]),
+            () => new ListBuilder<GSearchPersonsData_searchPersons_elements?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GSearchPersonsData_searchPersons_elements_feedTokens,
+              ),
+            ]),
+            () =>
+                new ListBuilder<
+                  GSearchPersonsData_searchPersons_elements_feedTokens?
+                >(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GUpdatePersonData_updatePerson_feedTokens,
+              ),
+            ]),
+            () => new ListBuilder<GUpdatePersonData_updatePerson_feedTokens?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GUserFullData_actors),
+            ]),
+            () => new ListBuilder<GUserFullData_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GValidateUserData_validateUser_user_actors,
+              ),
+            ]),
+            () =>
+                new ListBuilder<GValidateUserData_validateUser_user_actors?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [const FullType.nullable(String)]),
+            () => new ListBuilder<String?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [const FullType.nullable(String)]),
+            () => new ListBuilder<String?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [const FullType.nullable(String)]),
+            () => new ListBuilder<String?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GEventOfferInput),
+            ]),
+            () => new ListBuilder<GEventOfferInput?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GEventParticipationConditionInput),
+            ]),
+            () => new ListBuilder<GEventParticipationConditionInput?>(),
+          ))
+        .build();
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

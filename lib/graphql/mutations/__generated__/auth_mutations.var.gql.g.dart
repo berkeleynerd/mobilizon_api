@@ -1,0 +1,1410 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'auth_mutations.var.gql.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GCreateUserVars> _$gCreateUserVarsSerializer =
+    new _$GCreateUserVarsSerializer();
+Serializer<GValidateUserVars> _$gValidateUserVarsSerializer =
+    new _$GValidateUserVarsSerializer();
+Serializer<GResendConfirmationEmailVars>
+_$gResendConfirmationEmailVarsSerializer =
+    new _$GResendConfirmationEmailVarsSerializer();
+Serializer<GLoginVars> _$gLoginVarsSerializer = new _$GLoginVarsSerializer();
+Serializer<GLogoutVars> _$gLogoutVarsSerializer = new _$GLogoutVarsSerializer();
+Serializer<GRefreshTokenVars> _$gRefreshTokenVarsSerializer =
+    new _$GRefreshTokenVarsSerializer();
+Serializer<GSendResetPasswordVars> _$gSendResetPasswordVarsSerializer =
+    new _$GSendResetPasswordVarsSerializer();
+Serializer<GResetPasswordVars> _$gResetPasswordVarsSerializer =
+    new _$GResetPasswordVarsSerializer();
+
+class _$GCreateUserVarsSerializer
+    implements StructuredSerializer<GCreateUserVars> {
+  @override
+  final Iterable<Type> types = const [GCreateUserVars, _$GCreateUserVars];
+  @override
+  final String wireName = 'GCreateUserVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GCreateUserVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+      'password',
+      serializers.serialize(
+        object.password,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GCreateUserVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GCreateUserVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'password':
+          result.password =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GValidateUserVarsSerializer
+    implements StructuredSerializer<GValidateUserVars> {
+  @override
+  final Iterable<Type> types = const [GValidateUserVars, _$GValidateUserVars];
+  @override
+  final String wireName = 'GValidateUserVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GValidateUserVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'token',
+      serializers.serialize(
+        object.token,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GValidateUserVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GValidateUserVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'token':
+          result.token =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GResendConfirmationEmailVarsSerializer
+    implements StructuredSerializer<GResendConfirmationEmailVars> {
+  @override
+  final Iterable<Type> types = const [
+    GResendConfirmationEmailVars,
+    _$GResendConfirmationEmailVars,
+  ];
+  @override
+  final String wireName = 'GResendConfirmationEmailVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GResendConfirmationEmailVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GResendConfirmationEmailVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GResendConfirmationEmailVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GLoginVarsSerializer implements StructuredSerializer<GLoginVars> {
+  @override
+  final Iterable<Type> types = const [GLoginVars, _$GLoginVars];
+  @override
+  final String wireName = 'GLoginVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GLoginVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+      'password',
+      serializers.serialize(
+        object.password,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GLoginVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GLoginVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'password':
+          result.password =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GLogoutVarsSerializer implements StructuredSerializer<GLogoutVars> {
+  @override
+  final Iterable<Type> types = const [GLogoutVars, _$GLogoutVars];
+  @override
+  final String wireName = 'GLogoutVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GLogoutVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'refreshToken',
+      serializers.serialize(
+        object.refreshToken,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GLogoutVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GLogoutVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'refreshToken':
+          result.refreshToken =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GRefreshTokenVarsSerializer
+    implements StructuredSerializer<GRefreshTokenVars> {
+  @override
+  final Iterable<Type> types = const [GRefreshTokenVars, _$GRefreshTokenVars];
+  @override
+  final String wireName = 'GRefreshTokenVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GRefreshTokenVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'refreshToken',
+      serializers.serialize(
+        object.refreshToken,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GRefreshTokenVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GRefreshTokenVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'refreshToken':
+          result.refreshToken =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSendResetPasswordVarsSerializer
+    implements StructuredSerializer<GSendResetPasswordVars> {
+  @override
+  final Iterable<Type> types = const [
+    GSendResetPasswordVars,
+    _$GSendResetPasswordVars,
+  ];
+  @override
+  final String wireName = 'GSendResetPasswordVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSendResetPasswordVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GSendResetPasswordVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSendResetPasswordVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GResetPasswordVarsSerializer
+    implements StructuredSerializer<GResetPasswordVars> {
+  @override
+  final Iterable<Type> types = const [GResetPasswordVars, _$GResetPasswordVars];
+  @override
+  final String wireName = 'GResetPasswordVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GResetPasswordVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'token',
+      serializers.serialize(
+        object.token,
+        specifiedType: const FullType(String),
+      ),
+      'password',
+      serializers.serialize(
+        object.password,
+        specifiedType: const FullType(String),
+      ),
+    ];
+    Object? value;
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GResetPasswordVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GResetPasswordVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'token':
+          result.token =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'password':
+          result.password =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'locale':
+          result.locale =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateUserVars extends GCreateUserVars {
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String? locale;
+
+  factory _$GCreateUserVars([void Function(GCreateUserVarsBuilder)? updates]) =>
+      (new GCreateUserVarsBuilder()..update(updates))._build();
+
+  _$GCreateUserVars._({
+    required this.email,
+    required this.password,
+    this.locale,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(email, r'GCreateUserVars', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+      password,
+      r'GCreateUserVars',
+      'password',
+    );
+  }
+
+  @override
+  GCreateUserVars rebuild(void Function(GCreateUserVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateUserVarsBuilder toBuilder() =>
+      new GCreateUserVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateUserVars &&
+        email == other.email &&
+        password == other.password &&
+        locale == other.locale;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, password.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateUserVars')
+          ..add('email', email)
+          ..add('password', password)
+          ..add('locale', locale))
+        .toString();
+  }
+}
+
+class GCreateUserVarsBuilder
+    implements Builder<GCreateUserVars, GCreateUserVarsBuilder> {
+  _$GCreateUserVars? _$v;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  String? _password;
+  String? get password => _$this._password;
+  set password(String? password) => _$this._password = password;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GCreateUserVarsBuilder();
+
+  GCreateUserVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _email = $v.email;
+      _password = $v.password;
+      _locale = $v.locale;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateUserVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateUserVars;
+  }
+
+  @override
+  void update(void Function(GCreateUserVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateUserVars build() => _build();
+
+  _$GCreateUserVars _build() {
+    final _$result =
+        _$v ??
+        new _$GCreateUserVars._(
+          email: BuiltValueNullFieldError.checkNotNull(
+            email,
+            r'GCreateUserVars',
+            'email',
+          ),
+          password: BuiltValueNullFieldError.checkNotNull(
+            password,
+            r'GCreateUserVars',
+            'password',
+          ),
+          locale: locale,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GValidateUserVars extends GValidateUserVars {
+  @override
+  final String token;
+
+  factory _$GValidateUserVars([
+    void Function(GValidateUserVarsBuilder)? updates,
+  ]) => (new GValidateUserVarsBuilder()..update(updates))._build();
+
+  _$GValidateUserVars._({required this.token}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(token, r'GValidateUserVars', 'token');
+  }
+
+  @override
+  GValidateUserVars rebuild(void Function(GValidateUserVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GValidateUserVarsBuilder toBuilder() =>
+      new GValidateUserVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GValidateUserVars && token == other.token;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, token.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GValidateUserVars',
+    )..add('token', token)).toString();
+  }
+}
+
+class GValidateUserVarsBuilder
+    implements Builder<GValidateUserVars, GValidateUserVarsBuilder> {
+  _$GValidateUserVars? _$v;
+
+  String? _token;
+  String? get token => _$this._token;
+  set token(String? token) => _$this._token = token;
+
+  GValidateUserVarsBuilder();
+
+  GValidateUserVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _token = $v.token;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GValidateUserVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GValidateUserVars;
+  }
+
+  @override
+  void update(void Function(GValidateUserVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GValidateUserVars build() => _build();
+
+  _$GValidateUserVars _build() {
+    final _$result =
+        _$v ??
+        new _$GValidateUserVars._(
+          token: BuiltValueNullFieldError.checkNotNull(
+            token,
+            r'GValidateUserVars',
+            'token',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GResendConfirmationEmailVars extends GResendConfirmationEmailVars {
+  @override
+  final String email;
+  @override
+  final String? locale;
+
+  factory _$GResendConfirmationEmailVars([
+    void Function(GResendConfirmationEmailVarsBuilder)? updates,
+  ]) => (new GResendConfirmationEmailVarsBuilder()..update(updates))._build();
+
+  _$GResendConfirmationEmailVars._({required this.email, this.locale})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      email,
+      r'GResendConfirmationEmailVars',
+      'email',
+    );
+  }
+
+  @override
+  GResendConfirmationEmailVars rebuild(
+    void Function(GResendConfirmationEmailVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GResendConfirmationEmailVarsBuilder toBuilder() =>
+      new GResendConfirmationEmailVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GResendConfirmationEmailVars &&
+        email == other.email &&
+        locale == other.locale;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GResendConfirmationEmailVars')
+          ..add('email', email)
+          ..add('locale', locale))
+        .toString();
+  }
+}
+
+class GResendConfirmationEmailVarsBuilder
+    implements
+        Builder<
+          GResendConfirmationEmailVars,
+          GResendConfirmationEmailVarsBuilder
+        > {
+  _$GResendConfirmationEmailVars? _$v;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GResendConfirmationEmailVarsBuilder();
+
+  GResendConfirmationEmailVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _email = $v.email;
+      _locale = $v.locale;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GResendConfirmationEmailVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GResendConfirmationEmailVars;
+  }
+
+  @override
+  void update(void Function(GResendConfirmationEmailVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GResendConfirmationEmailVars build() => _build();
+
+  _$GResendConfirmationEmailVars _build() {
+    final _$result =
+        _$v ??
+        new _$GResendConfirmationEmailVars._(
+          email: BuiltValueNullFieldError.checkNotNull(
+            email,
+            r'GResendConfirmationEmailVars',
+            'email',
+          ),
+          locale: locale,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GLoginVars extends GLoginVars {
+  @override
+  final String email;
+  @override
+  final String password;
+
+  factory _$GLoginVars([void Function(GLoginVarsBuilder)? updates]) =>
+      (new GLoginVarsBuilder()..update(updates))._build();
+
+  _$GLoginVars._({required this.email, required this.password}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(email, r'GLoginVars', 'email');
+    BuiltValueNullFieldError.checkNotNull(password, r'GLoginVars', 'password');
+  }
+
+  @override
+  GLoginVars rebuild(void Function(GLoginVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GLoginVarsBuilder toBuilder() => new GLoginVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GLoginVars &&
+        email == other.email &&
+        password == other.password;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, password.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GLoginVars')
+          ..add('email', email)
+          ..add('password', password))
+        .toString();
+  }
+}
+
+class GLoginVarsBuilder implements Builder<GLoginVars, GLoginVarsBuilder> {
+  _$GLoginVars? _$v;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  String? _password;
+  String? get password => _$this._password;
+  set password(String? password) => _$this._password = password;
+
+  GLoginVarsBuilder();
+
+  GLoginVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _email = $v.email;
+      _password = $v.password;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GLoginVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GLoginVars;
+  }
+
+  @override
+  void update(void Function(GLoginVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GLoginVars build() => _build();
+
+  _$GLoginVars _build() {
+    final _$result =
+        _$v ??
+        new _$GLoginVars._(
+          email: BuiltValueNullFieldError.checkNotNull(
+            email,
+            r'GLoginVars',
+            'email',
+          ),
+          password: BuiltValueNullFieldError.checkNotNull(
+            password,
+            r'GLoginVars',
+            'password',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GLogoutVars extends GLogoutVars {
+  @override
+  final String refreshToken;
+
+  factory _$GLogoutVars([void Function(GLogoutVarsBuilder)? updates]) =>
+      (new GLogoutVarsBuilder()..update(updates))._build();
+
+  _$GLogoutVars._({required this.refreshToken}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      refreshToken,
+      r'GLogoutVars',
+      'refreshToken',
+    );
+  }
+
+  @override
+  GLogoutVars rebuild(void Function(GLogoutVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GLogoutVarsBuilder toBuilder() => new GLogoutVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GLogoutVars && refreshToken == other.refreshToken;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, refreshToken.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GLogoutVars',
+    )..add('refreshToken', refreshToken)).toString();
+  }
+}
+
+class GLogoutVarsBuilder implements Builder<GLogoutVars, GLogoutVarsBuilder> {
+  _$GLogoutVars? _$v;
+
+  String? _refreshToken;
+  String? get refreshToken => _$this._refreshToken;
+  set refreshToken(String? refreshToken) => _$this._refreshToken = refreshToken;
+
+  GLogoutVarsBuilder();
+
+  GLogoutVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _refreshToken = $v.refreshToken;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GLogoutVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GLogoutVars;
+  }
+
+  @override
+  void update(void Function(GLogoutVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GLogoutVars build() => _build();
+
+  _$GLogoutVars _build() {
+    final _$result =
+        _$v ??
+        new _$GLogoutVars._(
+          refreshToken: BuiltValueNullFieldError.checkNotNull(
+            refreshToken,
+            r'GLogoutVars',
+            'refreshToken',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GRefreshTokenVars extends GRefreshTokenVars {
+  @override
+  final String refreshToken;
+
+  factory _$GRefreshTokenVars([
+    void Function(GRefreshTokenVarsBuilder)? updates,
+  ]) => (new GRefreshTokenVarsBuilder()..update(updates))._build();
+
+  _$GRefreshTokenVars._({required this.refreshToken}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      refreshToken,
+      r'GRefreshTokenVars',
+      'refreshToken',
+    );
+  }
+
+  @override
+  GRefreshTokenVars rebuild(void Function(GRefreshTokenVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GRefreshTokenVarsBuilder toBuilder() =>
+      new GRefreshTokenVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GRefreshTokenVars && refreshToken == other.refreshToken;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, refreshToken.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GRefreshTokenVars',
+    )..add('refreshToken', refreshToken)).toString();
+  }
+}
+
+class GRefreshTokenVarsBuilder
+    implements Builder<GRefreshTokenVars, GRefreshTokenVarsBuilder> {
+  _$GRefreshTokenVars? _$v;
+
+  String? _refreshToken;
+  String? get refreshToken => _$this._refreshToken;
+  set refreshToken(String? refreshToken) => _$this._refreshToken = refreshToken;
+
+  GRefreshTokenVarsBuilder();
+
+  GRefreshTokenVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _refreshToken = $v.refreshToken;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GRefreshTokenVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GRefreshTokenVars;
+  }
+
+  @override
+  void update(void Function(GRefreshTokenVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GRefreshTokenVars build() => _build();
+
+  _$GRefreshTokenVars _build() {
+    final _$result =
+        _$v ??
+        new _$GRefreshTokenVars._(
+          refreshToken: BuiltValueNullFieldError.checkNotNull(
+            refreshToken,
+            r'GRefreshTokenVars',
+            'refreshToken',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSendResetPasswordVars extends GSendResetPasswordVars {
+  @override
+  final String email;
+  @override
+  final String? locale;
+
+  factory _$GSendResetPasswordVars([
+    void Function(GSendResetPasswordVarsBuilder)? updates,
+  ]) => (new GSendResetPasswordVarsBuilder()..update(updates))._build();
+
+  _$GSendResetPasswordVars._({required this.email, this.locale}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      email,
+      r'GSendResetPasswordVars',
+      'email',
+    );
+  }
+
+  @override
+  GSendResetPasswordVars rebuild(
+    void Function(GSendResetPasswordVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GSendResetPasswordVarsBuilder toBuilder() =>
+      new GSendResetPasswordVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSendResetPasswordVars &&
+        email == other.email &&
+        locale == other.locale;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GSendResetPasswordVars')
+          ..add('email', email)
+          ..add('locale', locale))
+        .toString();
+  }
+}
+
+class GSendResetPasswordVarsBuilder
+    implements Builder<GSendResetPasswordVars, GSendResetPasswordVarsBuilder> {
+  _$GSendResetPasswordVars? _$v;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GSendResetPasswordVarsBuilder();
+
+  GSendResetPasswordVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _email = $v.email;
+      _locale = $v.locale;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSendResetPasswordVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSendResetPasswordVars;
+  }
+
+  @override
+  void update(void Function(GSendResetPasswordVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSendResetPasswordVars build() => _build();
+
+  _$GSendResetPasswordVars _build() {
+    final _$result =
+        _$v ??
+        new _$GSendResetPasswordVars._(
+          email: BuiltValueNullFieldError.checkNotNull(
+            email,
+            r'GSendResetPasswordVars',
+            'email',
+          ),
+          locale: locale,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GResetPasswordVars extends GResetPasswordVars {
+  @override
+  final String token;
+  @override
+  final String password;
+  @override
+  final String? locale;
+
+  factory _$GResetPasswordVars([
+    void Function(GResetPasswordVarsBuilder)? updates,
+  ]) => (new GResetPasswordVarsBuilder()..update(updates))._build();
+
+  _$GResetPasswordVars._({
+    required this.token,
+    required this.password,
+    this.locale,
+  }) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      token,
+      r'GResetPasswordVars',
+      'token',
+    );
+    BuiltValueNullFieldError.checkNotNull(
+      password,
+      r'GResetPasswordVars',
+      'password',
+    );
+  }
+
+  @override
+  GResetPasswordVars rebuild(
+    void Function(GResetPasswordVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GResetPasswordVarsBuilder toBuilder() =>
+      new GResetPasswordVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GResetPasswordVars &&
+        token == other.token &&
+        password == other.password &&
+        locale == other.locale;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, token.hashCode);
+    _$hash = $jc(_$hash, password.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GResetPasswordVars')
+          ..add('token', token)
+          ..add('password', password)
+          ..add('locale', locale))
+        .toString();
+  }
+}
+
+class GResetPasswordVarsBuilder
+    implements Builder<GResetPasswordVars, GResetPasswordVarsBuilder> {
+  _$GResetPasswordVars? _$v;
+
+  String? _token;
+  String? get token => _$this._token;
+  set token(String? token) => _$this._token = token;
+
+  String? _password;
+  String? get password => _$this._password;
+  set password(String? password) => _$this._password = password;
+
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
+
+  GResetPasswordVarsBuilder();
+
+  GResetPasswordVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _token = $v.token;
+      _password = $v.password;
+      _locale = $v.locale;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GResetPasswordVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GResetPasswordVars;
+  }
+
+  @override
+  void update(void Function(GResetPasswordVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GResetPasswordVars build() => _build();
+
+  _$GResetPasswordVars _build() {
+    final _$result =
+        _$v ??
+        new _$GResetPasswordVars._(
+          token: BuiltValueNullFieldError.checkNotNull(
+            token,
+            r'GResetPasswordVars',
+            'token',
+          ),
+          password: BuiltValueNullFieldError.checkNotNull(
+            password,
+            r'GResetPasswordVars',
+            'password',
+          ),
+          locale: locale,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -1,0 +1,32 @@
+# Import dependencies
+#import "./user_fragments.graphql"
+
+# Authentication-specific fragments
+
+fragment LoginInfo on Login {
+  accessToken
+  refreshToken
+  user {
+    ...UserFull
+  }
+}
+
+fragment RefreshedTokenInfo on RefreshedToken {
+  accessToken
+  refreshToken
+}
+
+fragment UserSettingsInfo on UserSettings {
+  timezone
+  notificationOnDay
+  notificationEachWeek
+  notificationBeforeEvent
+  notificationPendingParticipation
+  notificationPendingMembership
+  groupNotifications
+  location {
+    range
+    geohash
+    name
+  }
+} 

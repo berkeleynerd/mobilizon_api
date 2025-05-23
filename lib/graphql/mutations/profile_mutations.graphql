@@ -1,0 +1,68 @@
+# Profile management mutations
+#import "../fragments/user_fragments.graphql"
+
+mutation CreatePerson(
+  $preferredUsername: String!
+  $name: String
+  $summary: String
+  $avatar: MediaInput
+  $banner: MediaInput
+) {
+  createPerson(
+    preferredUsername: $preferredUsername
+    name: $name
+    summary: $summary
+    avatar: $avatar
+    banner: $banner
+  ) {
+    ...PersonInfo
+  }
+}
+
+mutation RegisterPerson(
+  $email: String!
+  $preferredUsername: String!
+  $name: String
+  $summary: String
+  $locale: String
+) {
+  registerPerson(
+    email: $email
+    preferredUsername: $preferredUsername
+    name: $name
+    summary: $summary
+    locale: $locale
+  ) {
+    ...PersonInfo
+  }
+}
+
+mutation UpdatePerson(
+  $id: ID!
+  $name: String
+  $summary: String
+  $avatar: MediaInput
+  $banner: MediaInput
+) {
+  updatePerson(
+    id: $id
+    name: $name
+    summary: $summary
+    avatar: $avatar
+    banner: $banner
+  ) {
+    ...PersonInfo
+  }
+}
+
+mutation DeletePerson($id: ID!) {
+  deletePerson(id: $id) {
+    ...PersonInfo
+  }
+}
+
+mutation ChangeDefaultActor($preferredUsername: String!) {
+  changeDefaultActor(preferredUsername: $preferredUsername) {
+    ...UserFull
+  }
+} 

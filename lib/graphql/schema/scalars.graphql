@@ -1,0 +1,8 @@
+# Scalar type declarations
+
+scalar DateTime
+scalar NaiveDateTime
+scalar UUID
+scalar Upload
+scalar Timezone
+scalar Point 

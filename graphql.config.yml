@@ -1,0 +1,12 @@
+schema: lib/schema.graphql
+include: lib/graphql/**/*.graphql
+exclude:
+  - '**/*.dart'
+  - '**/*.g.dart'
+extensions:
+  endpoints:
+    Mobilizon API:
+      url: http://localhost:4000/api
+      headers:
+        user-agent: Together Dart Client
+      introspect: true

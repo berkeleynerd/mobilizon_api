@@ -1,0 +1,25 @@
+# Media management mutations
+#import "../fragments/media_fragments.graphql"
+#import "../fragments/user_fragments.graphql"
+
+mutation UploadMedia(
+  $file: Upload!
+  $name: String!
+  $alt: String
+  $actorId: ID
+) {
+  uploadMedia(
+    file: $file
+    name: $name
+    alt: $alt
+    actorId: $actorId
+  ) {
+    ...MediaWithMetadata
+  }
+}
+
+mutation RemoveMedia($id: ID!) {
+  removeMedia(id: $id) {
+    ...DeletedObjectResponse
+  }
+} 

@@ -1,0 +1,1076 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'user_queries.var.gql.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GGetLoggedUserVars> _$gGetLoggedUserVarsSerializer =
+    new _$GGetLoggedUserVarsSerializer();
+Serializer<GGetLoggedPersonVars> _$gGetLoggedPersonVarsSerializer =
+    new _$GGetLoggedPersonVarsSerializer();
+Serializer<GGetUserVars> _$gGetUserVarsSerializer =
+    new _$GGetUserVarsSerializer();
+Serializer<GGetUsersVars> _$gGetUsersVarsSerializer =
+    new _$GGetUsersVarsSerializer();
+Serializer<GFetchPersonVars> _$gFetchPersonVarsSerializer =
+    new _$GFetchPersonVarsSerializer();
+Serializer<GGetPersonVars> _$gGetPersonVarsSerializer =
+    new _$GGetPersonVarsSerializer();
+Serializer<GSearchPersonsVars> _$gSearchPersonsVarsSerializer =
+    new _$GSearchPersonsVarsSerializer();
+
+class _$GGetLoggedUserVarsSerializer
+    implements StructuredSerializer<GGetLoggedUserVars> {
+  @override
+  final Iterable<Type> types = const [GGetLoggedUserVars, _$GGetLoggedUserVars];
+  @override
+  final String wireName = 'GGetLoggedUserVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetLoggedUserVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return <Object?>[];
+  }
+
+  @override
+  GGetLoggedUserVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return new GGetLoggedUserVarsBuilder().build();
+  }
+}
+
+class _$GGetLoggedPersonVarsSerializer
+    implements StructuredSerializer<GGetLoggedPersonVars> {
+  @override
+  final Iterable<Type> types = const [
+    GGetLoggedPersonVars,
+    _$GGetLoggedPersonVars,
+  ];
+  @override
+  final String wireName = 'GGetLoggedPersonVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetLoggedPersonVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return <Object?>[];
+  }
+
+  @override
+  GGetLoggedPersonVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return new GGetLoggedPersonVarsBuilder().build();
+  }
+}
+
+class _$GGetUserVarsSerializer implements StructuredSerializer<GGetUserVars> {
+  @override
+  final Iterable<Type> types = const [GGetUserVars, _$GGetUserVars];
+  @override
+  final String wireName = 'GGetUserVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetUserVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetUserVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GGetUserVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetUsersVarsSerializer implements StructuredSerializer<GGetUsersVars> {
+  @override
+  final Iterable<Type> types = const [GGetUsersVars, _$GGetUsersVars];
+  @override
+  final String wireName = 'GGetUsersVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetUsersVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.page;
+    if (value != null) {
+      result
+        ..add('page')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.limit;
+    if (value != null) {
+      result
+        ..add('limit')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.sort;
+    if (value != null) {
+      result
+        ..add('sort')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i2.GSortableUserField),
+          ),
+        );
+    }
+    value = object.direction;
+    if (value != null) {
+      result
+        ..add('direction')
+        ..add(
+          serializers.serialize(
+            value,
+            specifiedType: const FullType(_i2.GSortDirection),
+          ),
+        );
+    }
+    value = object.email;
+    if (value != null) {
+      result
+        ..add('email')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.currentSignInIp;
+    if (value != null) {
+      result
+        ..add('currentSignInIp')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    return result;
+  }
+
+  @override
+  GGetUsersVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GGetUsersVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'page':
+          result.page =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+        case 'limit':
+          result.limit =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+        case 'sort':
+          result.sort =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i2.GSortableUserField),
+                  )
+                  as _i2.GSortableUserField?;
+          break;
+        case 'direction':
+          result.direction =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(_i2.GSortDirection),
+                  )
+                  as _i2.GSortDirection?;
+          break;
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'currentSignInIp':
+          result.currentSignInIp =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GFetchPersonVarsSerializer
+    implements StructuredSerializer<GFetchPersonVars> {
+  @override
+  final Iterable<Type> types = const [GFetchPersonVars, _$GFetchPersonVars];
+  @override
+  final String wireName = 'GFetchPersonVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GFetchPersonVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'preferredUsername',
+      serializers.serialize(
+        object.preferredUsername,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GFetchPersonVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GFetchPersonVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'preferredUsername':
+          result.preferredUsername =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetPersonVarsSerializer
+    implements StructuredSerializer<GGetPersonVars> {
+  @override
+  final Iterable<Type> types = const [GGetPersonVars, _$GGetPersonVars];
+  @override
+  final String wireName = 'GGetPersonVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GGetPersonVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetPersonVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GGetPersonVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSearchPersonsVarsSerializer
+    implements StructuredSerializer<GSearchPersonsVars> {
+  @override
+  final Iterable<Type> types = const [GSearchPersonsVars, _$GSearchPersonsVars];
+  @override
+  final String wireName = 'GSearchPersonsVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSearchPersonsVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.term;
+    if (value != null) {
+      result
+        ..add('term')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
+    value = object.page;
+    if (value != null) {
+      result
+        ..add('page')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.limit;
+    if (value != null) {
+      result
+        ..add('limit')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GSearchPersonsVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSearchPersonsVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'term':
+          result.term =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String?;
+          break;
+        case 'page':
+          result.page =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+        case 'limit':
+          result.limit =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetLoggedUserVars extends GGetLoggedUserVars {
+  factory _$GGetLoggedUserVars([
+    void Function(GGetLoggedUserVarsBuilder)? updates,
+  ]) => (new GGetLoggedUserVarsBuilder()..update(updates))._build();
+
+  _$GGetLoggedUserVars._() : super._();
+
+  @override
+  GGetLoggedUserVars rebuild(
+    void Function(GGetLoggedUserVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GGetLoggedUserVarsBuilder toBuilder() =>
+      new GGetLoggedUserVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetLoggedUserVars;
+  }
+
+  @override
+  int get hashCode {
+    return 84890842;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'GGetLoggedUserVars').toString();
+  }
+}
+
+class GGetLoggedUserVarsBuilder
+    implements Builder<GGetLoggedUserVars, GGetLoggedUserVarsBuilder> {
+  _$GGetLoggedUserVars? _$v;
+
+  GGetLoggedUserVarsBuilder();
+
+  @override
+  void replace(GGetLoggedUserVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetLoggedUserVars;
+  }
+
+  @override
+  void update(void Function(GGetLoggedUserVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetLoggedUserVars build() => _build();
+
+  _$GGetLoggedUserVars _build() {
+    final _$result = _$v ?? new _$GGetLoggedUserVars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetLoggedPersonVars extends GGetLoggedPersonVars {
+  factory _$GGetLoggedPersonVars([
+    void Function(GGetLoggedPersonVarsBuilder)? updates,
+  ]) => (new GGetLoggedPersonVarsBuilder()..update(updates))._build();
+
+  _$GGetLoggedPersonVars._() : super._();
+
+  @override
+  GGetLoggedPersonVars rebuild(
+    void Function(GGetLoggedPersonVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GGetLoggedPersonVarsBuilder toBuilder() =>
+      new GGetLoggedPersonVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetLoggedPersonVars;
+  }
+
+  @override
+  int get hashCode {
+    return 543822434;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'GGetLoggedPersonVars').toString();
+  }
+}
+
+class GGetLoggedPersonVarsBuilder
+    implements Builder<GGetLoggedPersonVars, GGetLoggedPersonVarsBuilder> {
+  _$GGetLoggedPersonVars? _$v;
+
+  GGetLoggedPersonVarsBuilder();
+
+  @override
+  void replace(GGetLoggedPersonVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetLoggedPersonVars;
+  }
+
+  @override
+  void update(void Function(GGetLoggedPersonVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetLoggedPersonVars build() => _build();
+
+  _$GGetLoggedPersonVars _build() {
+    final _$result = _$v ?? new _$GGetLoggedPersonVars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetUserVars extends GGetUserVars {
+  @override
+  final String id;
+
+  factory _$GGetUserVars([void Function(GGetUserVarsBuilder)? updates]) =>
+      (new GGetUserVarsBuilder()..update(updates))._build();
+
+  _$GGetUserVars._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'GGetUserVars', 'id');
+  }
+
+  @override
+  GGetUserVars rebuild(void Function(GGetUserVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetUserVarsBuilder toBuilder() => new GGetUserVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetUserVars && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GGetUserVars',
+    )..add('id', id)).toString();
+  }
+}
+
+class GGetUserVarsBuilder
+    implements Builder<GGetUserVars, GGetUserVarsBuilder> {
+  _$GGetUserVars? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GGetUserVarsBuilder();
+
+  GGetUserVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetUserVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetUserVars;
+  }
+
+  @override
+  void update(void Function(GGetUserVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetUserVars build() => _build();
+
+  _$GGetUserVars _build() {
+    final _$result =
+        _$v ??
+        new _$GGetUserVars._(
+          id: BuiltValueNullFieldError.checkNotNull(id, r'GGetUserVars', 'id'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetUsersVars extends GGetUsersVars {
+  @override
+  final int? page;
+  @override
+  final int? limit;
+  @override
+  final _i2.GSortableUserField? sort;
+  @override
+  final _i2.GSortDirection? direction;
+  @override
+  final String? email;
+  @override
+  final String? currentSignInIp;
+
+  factory _$GGetUsersVars([void Function(GGetUsersVarsBuilder)? updates]) =>
+      (new GGetUsersVarsBuilder()..update(updates))._build();
+
+  _$GGetUsersVars._({
+    this.page,
+    this.limit,
+    this.sort,
+    this.direction,
+    this.email,
+    this.currentSignInIp,
+  }) : super._();
+
+  @override
+  GGetUsersVars rebuild(void Function(GGetUsersVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetUsersVarsBuilder toBuilder() => new GGetUsersVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetUsersVars &&
+        page == other.page &&
+        limit == other.limit &&
+        sort == other.sort &&
+        direction == other.direction &&
+        email == other.email &&
+        currentSignInIp == other.currentSignInIp;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, page.hashCode);
+    _$hash = $jc(_$hash, limit.hashCode);
+    _$hash = $jc(_$hash, sort.hashCode);
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, currentSignInIp.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GGetUsersVars')
+          ..add('page', page)
+          ..add('limit', limit)
+          ..add('sort', sort)
+          ..add('direction', direction)
+          ..add('email', email)
+          ..add('currentSignInIp', currentSignInIp))
+        .toString();
+  }
+}
+
+class GGetUsersVarsBuilder
+    implements Builder<GGetUsersVars, GGetUsersVarsBuilder> {
+  _$GGetUsersVars? _$v;
+
+  int? _page;
+  int? get page => _$this._page;
+  set page(int? page) => _$this._page = page;
+
+  int? _limit;
+  int? get limit => _$this._limit;
+  set limit(int? limit) => _$this._limit = limit;
+
+  _i2.GSortableUserField? _sort;
+  _i2.GSortableUserField? get sort => _$this._sort;
+  set sort(_i2.GSortableUserField? sort) => _$this._sort = sort;
+
+  _i2.GSortDirection? _direction;
+  _i2.GSortDirection? get direction => _$this._direction;
+  set direction(_i2.GSortDirection? direction) => _$this._direction = direction;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  String? _currentSignInIp;
+  String? get currentSignInIp => _$this._currentSignInIp;
+  set currentSignInIp(String? currentSignInIp) =>
+      _$this._currentSignInIp = currentSignInIp;
+
+  GGetUsersVarsBuilder();
+
+  GGetUsersVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _page = $v.page;
+      _limit = $v.limit;
+      _sort = $v.sort;
+      _direction = $v.direction;
+      _email = $v.email;
+      _currentSignInIp = $v.currentSignInIp;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetUsersVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetUsersVars;
+  }
+
+  @override
+  void update(void Function(GGetUsersVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetUsersVars build() => _build();
+
+  _$GGetUsersVars _build() {
+    final _$result =
+        _$v ??
+        new _$GGetUsersVars._(
+          page: page,
+          limit: limit,
+          sort: sort,
+          direction: direction,
+          email: email,
+          currentSignInIp: currentSignInIp,
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GFetchPersonVars extends GFetchPersonVars {
+  @override
+  final String preferredUsername;
+
+  factory _$GFetchPersonVars([
+    void Function(GFetchPersonVarsBuilder)? updates,
+  ]) => (new GFetchPersonVarsBuilder()..update(updates))._build();
+
+  _$GFetchPersonVars._({required this.preferredUsername}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      preferredUsername,
+      r'GFetchPersonVars',
+      'preferredUsername',
+    );
+  }
+
+  @override
+  GFetchPersonVars rebuild(void Function(GFetchPersonVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GFetchPersonVarsBuilder toBuilder() =>
+      new GFetchPersonVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GFetchPersonVars &&
+        preferredUsername == other.preferredUsername;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, preferredUsername.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GFetchPersonVars',
+    )..add('preferredUsername', preferredUsername)).toString();
+  }
+}
+
+class GFetchPersonVarsBuilder
+    implements Builder<GFetchPersonVars, GFetchPersonVarsBuilder> {
+  _$GFetchPersonVars? _$v;
+
+  String? _preferredUsername;
+  String? get preferredUsername => _$this._preferredUsername;
+  set preferredUsername(String? preferredUsername) =>
+      _$this._preferredUsername = preferredUsername;
+
+  GFetchPersonVarsBuilder();
+
+  GFetchPersonVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _preferredUsername = $v.preferredUsername;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GFetchPersonVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GFetchPersonVars;
+  }
+
+  @override
+  void update(void Function(GFetchPersonVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GFetchPersonVars build() => _build();
+
+  _$GFetchPersonVars _build() {
+    final _$result =
+        _$v ??
+        new _$GFetchPersonVars._(
+          preferredUsername: BuiltValueNullFieldError.checkNotNull(
+            preferredUsername,
+            r'GFetchPersonVars',
+            'preferredUsername',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetPersonVars extends GGetPersonVars {
+  @override
+  final String id;
+
+  factory _$GGetPersonVars([void Function(GGetPersonVarsBuilder)? updates]) =>
+      (new GGetPersonVarsBuilder()..update(updates))._build();
+
+  _$GGetPersonVars._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'GGetPersonVars', 'id');
+  }
+
+  @override
+  GGetPersonVars rebuild(void Function(GGetPersonVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetPersonVarsBuilder toBuilder() =>
+      new GGetPersonVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetPersonVars && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GGetPersonVars',
+    )..add('id', id)).toString();
+  }
+}
+
+class GGetPersonVarsBuilder
+    implements Builder<GGetPersonVars, GGetPersonVarsBuilder> {
+  _$GGetPersonVars? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GGetPersonVarsBuilder();
+
+  GGetPersonVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetPersonVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GGetPersonVars;
+  }
+
+  @override
+  void update(void Function(GGetPersonVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetPersonVars build() => _build();
+
+  _$GGetPersonVars _build() {
+    final _$result =
+        _$v ??
+        new _$GGetPersonVars._(
+          id: BuiltValueNullFieldError.checkNotNull(
+            id,
+            r'GGetPersonVars',
+            'id',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSearchPersonsVars extends GSearchPersonsVars {
+  @override
+  final String? term;
+  @override
+  final int? page;
+  @override
+  final int? limit;
+
+  factory _$GSearchPersonsVars([
+    void Function(GSearchPersonsVarsBuilder)? updates,
+  ]) => (new GSearchPersonsVarsBuilder()..update(updates))._build();
+
+  _$GSearchPersonsVars._({this.term, this.page, this.limit}) : super._();
+
+  @override
+  GSearchPersonsVars rebuild(
+    void Function(GSearchPersonsVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GSearchPersonsVarsBuilder toBuilder() =>
+      new GSearchPersonsVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSearchPersonsVars &&
+        term == other.term &&
+        page == other.page &&
+        limit == other.limit;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, term.hashCode);
+    _$hash = $jc(_$hash, page.hashCode);
+    _$hash = $jc(_$hash, limit.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GSearchPersonsVars')
+          ..add('term', term)
+          ..add('page', page)
+          ..add('limit', limit))
+        .toString();
+  }
+}
+
+class GSearchPersonsVarsBuilder
+    implements Builder<GSearchPersonsVars, GSearchPersonsVarsBuilder> {
+  _$GSearchPersonsVars? _$v;
+
+  String? _term;
+  String? get term => _$this._term;
+  set term(String? term) => _$this._term = term;
+
+  int? _page;
+  int? get page => _$this._page;
+  set page(int? page) => _$this._page = page;
+
+  int? _limit;
+  int? get limit => _$this._limit;
+  set limit(int? limit) => _$this._limit = limit;
+
+  GSearchPersonsVarsBuilder();
+
+  GSearchPersonsVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _term = $v.term;
+      _page = $v.page;
+      _limit = $v.limit;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSearchPersonsVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSearchPersonsVars;
+  }
+
+  @override
+  void update(void Function(GSearchPersonsVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSearchPersonsVars build() => _build();
+
+  _$GSearchPersonsVars _build() {
+    final _$result =
+        _$v ?? new _$GSearchPersonsVars._(term: term, page: page, limit: limit);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint
