@@ -45,7 +45,7 @@ class GraphQLAuthServiceImpl implements AuthService {
 
     // We're authenticated but don't have user data
     // This could happen if the app was restarted but tokens are still valid
-    // TODO: Implement a GraphQL query to fetch current user data
+    // Need to implement a GraphQL query to fetch current user data when this happens
     // For now, just return the cached user
     return _currentUser;
   }
@@ -335,24 +335,6 @@ class GraphQLAuthServiceImpl implements AuthService {
   }
 
   // Map notification preference enum
-  NotificationPendingEnum _mapNotificationPending(String? value) {
-    switch (value) {
-      case 'DIRECT': // Assuming DIRECT is equivalent to ALWAYS in our domain model
-        return NotificationPendingEnum.always;
-      case 'NONE':
-        return NotificationPendingEnum.never;
-      case 'ONE_DAY':
-        return NotificationPendingEnum.oneDay;
-      case 'ONE_HOUR':
-        return NotificationPendingEnum.oneHour;
-      case 'ONE_WEEK':
-        return NotificationPendingEnum.oneWeek;
-      case 'THREE_DAYS':
-        return NotificationPendingEnum.threeDays;
-      default:
-        return NotificationPendingEnum.always;
-    }
-  }
 
   void dispose() {
     _authStateController.close();

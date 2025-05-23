@@ -13,6 +13,7 @@ import 'test_helpers.dart';
 /// 2. Token storage and verification of authentication state
 /// 3. Retrieval of user information after authentication
 /// 4. Logout and clearing of authentication state
+/// 5. Token refresh flow
 ///
 /// The tests use the in-memory token storage implementation from test_helpers.dart
 /// to store JWT tokens between API calls.
@@ -113,6 +114,49 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
       } catch (e) {
         fail('Admin user authentication test failed: $e');
+      }
+    });
+
+    test('Token refresh flow works correctly', () async {
+      try {
+        // Step 1: Verify initial unauthenticated state
+        expect(await client.auth.isAuthenticated(), false);
+
+        // Step 2: Login to get initial tokens
+        final credentials = AuthCredentials(
+          email: userEmail,
+          password: userPassword,
+        );
+
+        final loginResult = await client.auth.login(credentials);
+        expect(loginResult.user, isNotNull);
+        expect(await client.auth.isAuthenticated(), true);
+
+        // Step 3: Verify we can perform an authenticated operation
+        final initialUser = await client.auth.getCurrentUser();
+        expect(initialUser, isNotNull);
+        expect(initialUser?.email, userEmail);
+
+        // Step 4: Force token refresh using the existing method
+        final newTokens = await client.auth.forceTokenRefresh();
+        expect(newTokens, isNotNull);
+        expect(newTokens.accessToken, isNotEmpty);
+        expect(newTokens.refreshToken, isNotEmpty);
+        expect(newTokens.accessTokenExpiry.isAfter(DateTime.now()), isTrue);
+
+        // Step 5: Verify client remains authenticated after refresh
+        expect(await client.auth.isAuthenticated(), true);
+
+        // Step 6: Verify can still perform authenticated operations
+        final userAfterRefresh = await client.auth.getCurrentUser();
+        expect(userAfterRefresh, isNotNull);
+        expect(userAfterRefresh?.email, userEmail);
+
+        // Step 7: Logout and verify
+        await client.auth.logout();
+        expect(await client.auth.isAuthenticated(), false);
+      } catch (e) {
+        fail('Token refresh test failed: $e');
       }
     });
   });

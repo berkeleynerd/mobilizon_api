@@ -11,5 +11,6 @@ We will only create and run live integration tests in this application via the r
 All communication with the Mobilizon instance must go through the mobilizon_api package methods.
 
 Direct HTTP requests, raw GraphQL queries, or any other communication methods outside the mobilizon_api package are strictly prohibited.
-</required_instructions>
+
+Since we only create and run live integration tests we must never use or create mocks or mocking frameworks or generators.
 </required_instructions>

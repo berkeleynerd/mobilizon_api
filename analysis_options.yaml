@@ -1,0 +1,97 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+
+  errors:
+    # Treat missing required parameters as errors
+    missing_required_param: error
+    
+    # Treat missing returns as errors
+    missing_return: error
+    
+    # Allow having TODOs in the code
+    todo: ignore
+    
+    # Disable documentation requirements for now
+    public_member_api_docs: ignore
+    package_api_docs: ignore
+    
+    # Make style rules warnings instead of errors
+    always_use_package_imports: warning
+    directives_ordering: warning
+    sort_constructors_first: warning
+    prefer_single_quotes: warning
+    sort_pub_dependencies: warning
+    always_put_required_named_parameters_first: warning
+
+linter:
+  rules:
+    # Error rules
+    - avoid_dynamic_calls
+    - avoid_returning_null_for_future
+    - avoid_type_to_string
+    - cancel_subscriptions
+    - close_sinks
+    - unnecessary_statements
+    
+    # Style rules
+    - always_declare_return_types
+    - directives_ordering
+    - prefer_final_fields
+    - prefer_final_locals
+    - prefer_single_quotes
+    - sort_child_properties_last
+    - unnecessary_lambdas
+    - unnecessary_null_checks
+    - unnecessary_parenthesis
+    
+    # Temporarily disabled rules
+    # - always_put_required_named_parameters_first
+    # - always_use_package_imports
+    # - avoid_redundant_argument_values
+    # - require_trailing_commas
+    # - sort_constructors_first
+    # - sort_pub_dependencies
+    # - sort_unnamed_constructors_first
+    # - unnecessary_raw_strings
+    
+    # Doc rules - disabled for now
+    # - package_api_docs
+    # - public_member_api_docs 
+
+dart_code_metrics:
+  metrics:
+    cyclomatic-complexity: 20
+    number-of-parameters: 4
+    maximum-nesting-level: 5
+  exclude:
+    metrics:
+      - test/**
+  rules:
+    - avoid-dynamic
+    - avoid-passing-async-when-sync-expected
+    - avoid-redundant-async
+    - avoid-unnecessary-type-assertions
+    - avoid-unnecessary-type-casts
+    - avoid-unrelated-type-assertions
+    - avoid-unused-parameters
+    - avoid-nested-conditional-expressions
+    - newline-before-return
+    - no-boolean-literal-compare
+    - no-empty-block
+    - prefer-trailing-comma
+    - prefer-conditional-expressions
+    - no-equal-then-else
+    - prefer-moving-to-variable
+    - prefer-match-file-name
+    - avoid-collapsible-if
+    - avoid-redundant-else
+    - avoid-incomplete-copy-with
+    - avoid-self-compare
+    - avoid-self-assignment
+    - avoid-unnecessary-nullable-return-type
+    - avoid-unrelated-type-casts
+    - prefer-declaring-const-constructor
