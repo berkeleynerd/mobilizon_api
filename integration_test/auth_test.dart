@@ -4,6 +4,18 @@ import 'package:mobilizon_api/client.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
 import 'test_helpers.dart';
 
+/// Authentication integration tests for Mobilizon API client
+///
+/// These tests verify the complete authentication flow against a live
+/// Mobilizon server, including:
+///
+/// 1. Login with valid credentials (both regular and admin users)
+/// 2. Token storage and verification of authentication state
+/// 3. Retrieval of user information after authentication
+/// 4. Logout and clearing of authentication state
+///
+/// The tests use the in-memory token storage implementation from test_helpers.dart
+/// to store JWT tokens between API calls.
 void main() {
   // Initialize Flutter testing framework
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +36,7 @@ void main() {
 
     setUp(() {
       // Create a fresh client for each test with test token storage
+      // This ensures each test starts with a clean authentication state
       client = MobilizonClient(
         MobilizonClientConfig(
           apiUrl: apiUrl,
@@ -35,15 +48,16 @@ void main() {
 
     tearDown(() {
       // Clean up resources
+      // This ensures proper disposal of the client after each test
       client.dispose();
     });
 
     test('Regular user can authenticate', () async {
       try {
-        // Verify not authenticated initially
+        // Step 1: Verify initial unauthenticated state
         expect(await client.auth.isAuthenticated(), false);
 
-        // Attempt login with regular user credentials
+        // Step 2: Attempt login with regular user credentials
         final credentials = AuthCredentials(
           email: userEmail,
           password: userPassword,
@@ -51,17 +65,17 @@ void main() {
 
         final result = await client.auth.login(credentials);
 
-        // Verify login was successful
+        // Step 3: Verify login was successful and tokens were stored
         expect(result.user, isNotNull);
         expect(result.user.email, userEmail);
         expect(await client.auth.isAuthenticated(), true);
 
-        // Get current user and verify identity
+        // Step 4: Verify user information can be retrieved with stored tokens
         final currentUser = await client.auth.getCurrentUser();
         expect(currentUser, isNotNull);
         expect(currentUser?.email, userEmail);
 
-        // Test logout
+        // Step 5: Test logout and verify tokens are cleared
         await client.auth.logout();
         expect(await client.auth.isAuthenticated(), false);
       } catch (e) {
@@ -71,10 +85,10 @@ void main() {
 
     test('Admin user can authenticate', () async {
       try {
-        // Verify not authenticated initially
+        // Step 1: Verify initial unauthenticated state
         expect(await client.auth.isAuthenticated(), false);
 
-        // Attempt login with admin credentials
+        // Step 2: Attempt login with admin credentials
         final credentials = AuthCredentials(
           email: adminEmail,
           password: adminPassword,
@@ -82,19 +96,19 @@ void main() {
 
         final result = await client.auth.login(credentials);
 
-        // Verify login was successful
+        // Step 3: Verify login was successful and tokens were stored
         expect(result.user, isNotNull);
         expect(result.user.email, adminEmail);
         expect(await client.auth.isAuthenticated(), true);
 
-        // Get current user and verify admin role
+        // Step 4: Verify admin user information and role
         final currentUser = await client.auth.getCurrentUser();
         expect(currentUser, isNotNull);
         expect(currentUser?.email, adminEmail);
         // The API should indicate this user has admin privileges
         expect(currentUser?.role, equals(UserRole.administrator));
 
-        // Test logout
+        // Step 5: Test logout and verify tokens are cleared
         await client.auth.logout();
         expect(await client.auth.isAuthenticated(), false);
       } catch (e) {
