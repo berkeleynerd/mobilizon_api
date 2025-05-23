@@ -19,13 +19,15 @@ part 'person_fragments.req.gql.g.dart';
 abstract class GPersonBasicInfoReq
     implements
         Built<GPersonBasicInfoReq, GPersonBasicInfoReqBuilder>,
-        _i1
-        .FragmentRequest<_i2.GPersonBasicInfoData, _i3.GPersonBasicInfoVars> {
+        _i1.FragmentRequest<
+          _i2.GPersonBasicInfoData,
+          _i3.GPersonBasicInfoVars
+        > {
   GPersonBasicInfoReq._();
 
-  factory GPersonBasicInfoReq(
-          [void Function(GPersonBasicInfoReqBuilder b) updates]) =
-      _$GPersonBasicInfoReq;
+  factory GPersonBasicInfoReq([
+    void Function(GPersonBasicInfoReqBuilder b) updates,
+  ]) = _$GPersonBasicInfoReq;
 
   static void _initializeBuilder(GPersonBasicInfoReqBuilder b) => b
     ..document = _i4.document
@@ -53,28 +55,26 @@ abstract class GPersonBasicInfoReq
   static Serializer<GPersonBasicInfoReq> get serializer =>
       _$gPersonBasicInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GPersonBasicInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GPersonBasicInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonBasicInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GPersonBasicInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GPersonBasicInfoReq.serializer, json);
 }
 
 abstract class GPersonWithStatsReq
     implements
         Built<GPersonWithStatsReq, GPersonWithStatsReqBuilder>,
-        _i1
-        .FragmentRequest<_i2.GPersonWithStatsData, _i3.GPersonWithStatsVars> {
+        _i1.FragmentRequest<
+          _i2.GPersonWithStatsData,
+          _i3.GPersonWithStatsVars
+        > {
   GPersonWithStatsReq._();
 
-  factory GPersonWithStatsReq(
-          [void Function(GPersonWithStatsReqBuilder b) updates]) =
-      _$GPersonWithStatsReq;
+  factory GPersonWithStatsReq([
+    void Function(GPersonWithStatsReqBuilder b) updates,
+  ]) = _$GPersonWithStatsReq;
 
   static void _initializeBuilder(GPersonWithStatsReqBuilder b) => b
     ..document = _i4.document
@@ -102,16 +102,12 @@ abstract class GPersonWithStatsReq
   static Serializer<GPersonWithStatsReq> get serializer =>
       _$gPersonWithStatsReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GPersonWithStatsReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GPersonWithStatsReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonWithStatsReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GPersonWithStatsReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GPersonWithStatsReq.serializer, json);
 }
 
 abstract class GPersonFullReq
@@ -148,16 +144,12 @@ abstract class GPersonFullReq
   static Serializer<GPersonFullReq> get serializer =>
       _$gPersonFullReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GPersonFullReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GPersonFullReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonFullReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GPersonFullReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GPersonFullReq.serializer, json);
 }
 
 abstract class GActorInterfaceReq
@@ -166,9 +158,9 @@ abstract class GActorInterfaceReq
         _i1.FragmentRequest<_i2.GActorInterfaceData, _i3.GActorInterfaceVars> {
   GActorInterfaceReq._();
 
-  factory GActorInterfaceReq(
-          [void Function(GActorInterfaceReqBuilder b) updates]) =
-      _$GActorInterfaceReq;
+  factory GActorInterfaceReq([
+    void Function(GActorInterfaceReqBuilder b) updates,
+  ]) = _$GActorInterfaceReq;
 
   static void _initializeBuilder(GActorInterfaceReqBuilder b) => b
     ..document = _i4.document
@@ -196,14 +188,10 @@ abstract class GActorInterfaceReq
   static Serializer<GActorInterfaceReq> get serializer =>
       _$gActorInterfaceReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GActorInterfaceReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GActorInterfaceReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GActorInterfaceReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GActorInterfaceReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GActorInterfaceReq.serializer, json);
 }

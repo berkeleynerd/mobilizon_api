@@ -18,14 +18,10 @@ abstract class GGetConfigVars
   static Serializer<GGetConfigVars> get serializer =>
       _$gGetConfigVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetConfigVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetConfigVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetConfigVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetConfigVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetConfigVars.serializer, json);
 }

@@ -112,8 +112,6 @@ const LocationInput = _i1.InputObjectTypeDefinitionNode(
     ),
   ],
 );
-const document = _i1.DocumentNode(definitions: [
-  MediaInput,
-  MediaInputObject,
-  LocationInput,
-]);
+const document = _i1.DocumentNode(
+  definitions: [MediaInput, MediaInputObject, LocationInput],
+);

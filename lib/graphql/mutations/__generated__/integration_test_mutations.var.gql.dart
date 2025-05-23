@@ -20,62 +20,50 @@ abstract class GSimpleLoginVars
   static Serializer<GSimpleLoginVars> get serializer =>
       _$gSimpleLoginVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GSimpleLoginVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GSimpleLoginVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GSimpleLoginVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GSimpleLoginVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GSimpleLoginVars.serializer, json);
 }
 
 abstract class GSimpleLogoutVars
     implements Built<GSimpleLogoutVars, GSimpleLogoutVarsBuilder> {
   GSimpleLogoutVars._();
 
-  factory GSimpleLogoutVars(
-          [void Function(GSimpleLogoutVarsBuilder b) updates]) =
-      _$GSimpleLogoutVars;
+  factory GSimpleLogoutVars([
+    void Function(GSimpleLogoutVarsBuilder b) updates,
+  ]) = _$GSimpleLogoutVars;
 
   String get refreshToken;
   static Serializer<GSimpleLogoutVars> get serializer =>
       _$gSimpleLogoutVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GSimpleLogoutVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GSimpleLogoutVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GSimpleLogoutVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GSimpleLogoutVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GSimpleLogoutVars.serializer, json);
 }
 
 abstract class GSimpleRefreshTokenVars
     implements Built<GSimpleRefreshTokenVars, GSimpleRefreshTokenVarsBuilder> {
   GSimpleRefreshTokenVars._();
 
-  factory GSimpleRefreshTokenVars(
-          [void Function(GSimpleRefreshTokenVarsBuilder b) updates]) =
-      _$GSimpleRefreshTokenVars;
+  factory GSimpleRefreshTokenVars([
+    void Function(GSimpleRefreshTokenVarsBuilder b) updates,
+  ]) = _$GSimpleRefreshTokenVars;
 
   String get refreshToken;
   static Serializer<GSimpleRefreshTokenVars> get serializer =>
       _$gSimpleRefreshTokenVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GSimpleRefreshTokenVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GSimpleRefreshTokenVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GSimpleRefreshTokenVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GSimpleRefreshTokenVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GSimpleRefreshTokenVars.serializer, json);
 }

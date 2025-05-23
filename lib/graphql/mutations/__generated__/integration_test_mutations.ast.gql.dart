@@ -28,176 +28,188 @@ const SimpleLogin = _i1.OperationDefinitionNode(
     ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'login'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'email'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'email')),
-        ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'password'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'password')),
-        ),
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'accessToken'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'refreshToken'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'user'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: _i1.SelectionSetNode(selections: [
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'login'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'email'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'email')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'password'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'password')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
             _i1.FieldNode(
-              name: _i1.NameNode(value: 'id'),
+              name: _i1.NameNode(value: 'accessToken'),
               alias: null,
               arguments: [],
               directives: [],
               selectionSet: null,
             ),
             _i1.FieldNode(
-              name: _i1.NameNode(value: 'email'),
+              name: _i1.NameNode(value: 'refreshToken'),
               alias: null,
               arguments: [],
               directives: [],
               selectionSet: null,
             ),
             _i1.FieldNode(
-              name: _i1.NameNode(value: 'confirmedAt'),
+              name: _i1.NameNode(value: 'user'),
               alias: null,
               arguments: [],
               directives: [],
-              selectionSet: null,
-            ),
-            _i1.FieldNode(
-              name: _i1.NameNode(value: 'role'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            _i1.FieldNode(
-              name: _i1.NameNode(value: 'defaultActor'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: _i1.SelectionSetNode(selections: [
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'id'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'preferredUsername'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'summary'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            ),
-            _i1.FieldNode(
-              name: _i1.NameNode(value: 'actors'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: _i1.SelectionSetNode(selections: [
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'id'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'preferredUsername'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'summary'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'avatar'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: _i1.SelectionSetNode(selections: [
-                    _i1.FieldNode(
-                      name: _i1.NameNode(value: 'id'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
+              selectionSet: _i1.SelectionSetNode(
+                selections: [
+                  _i1.FieldNode(
+                    name: _i1.NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  _i1.FieldNode(
+                    name: _i1.NameNode(value: 'email'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  _i1.FieldNode(
+                    name: _i1.NameNode(value: 'confirmedAt'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  _i1.FieldNode(
+                    name: _i1.NameNode(value: 'role'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  _i1.FieldNode(
+                    name: _i1.NameNode(value: 'defaultActor'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: _i1.SelectionSetNode(
+                      selections: [
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'preferredUsername'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'summary'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                      ],
                     ),
-                    _i1.FieldNode(
-                      name: _i1.NameNode(value: 'url'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
+                  ),
+                  _i1.FieldNode(
+                    name: _i1.NameNode(value: 'actors'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: _i1.SelectionSetNode(
+                      selections: [
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'preferredUsername'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'summary'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        _i1.FieldNode(
+                          name: _i1.NameNode(value: 'avatar'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: _i1.SelectionSetNode(
+                            selections: [
+                              _i1.FieldNode(
+                                name: _i1.NameNode(value: 'id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                              _i1.FieldNode(
+                                name: _i1.NameNode(value: 'url'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                              _i1.FieldNode(
+                                name: _i1.NameNode(value: 'alt'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    _i1.FieldNode(
-                      name: _i1.NameNode(value: 'alt'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
-                    ),
-                  ]),
-                ),
-              ]),
+                  ),
+                ],
+              ),
             ),
-          ]),
+          ],
         ),
-      ]),
-    )
-  ]),
+      ),
+    ],
+  ),
 );
 const SimpleLogout = _i1.OperationDefinitionNode(
   type: _i1.OperationType.mutation,
@@ -211,23 +223,25 @@ const SimpleLogout = _i1.OperationDefinitionNode(
       ),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'logout'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'refreshToken'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'refreshToken')),
-        )
-      ],
-      directives: [],
-      selectionSet: null,
-    )
-  ]),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'logout'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'refreshToken'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'refreshToken')),
+          ),
+        ],
+        directives: [],
+        selectionSet: null,
+      ),
+    ],
+  ),
 );
 const SimpleRefreshToken = _i1.OperationDefinitionNode(
   type: _i1.OperationType.mutation,
@@ -241,41 +255,43 @@ const SimpleRefreshToken = _i1.OperationDefinitionNode(
       ),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'refreshToken'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'refreshToken'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'refreshToken')),
-        )
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'accessToken'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'refreshToken'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'refreshToken'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'refreshToken')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'accessToken'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'refreshToken'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'refreshToken'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    )
-  ]),
+      ),
+    ],
+  ),
 );
-const document = _i1.DocumentNode(definitions: [
-  SimpleLogin,
-  SimpleLogout,
-  SimpleRefreshToken,
-]);
+const document = _i1.DocumentNode(
+  definitions: [SimpleLogin, SimpleLogout, SimpleRefreshToken],
+);

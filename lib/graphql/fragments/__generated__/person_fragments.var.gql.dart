@@ -12,46 +12,38 @@ abstract class GPersonBasicInfoVars
     implements Built<GPersonBasicInfoVars, GPersonBasicInfoVarsBuilder> {
   GPersonBasicInfoVars._();
 
-  factory GPersonBasicInfoVars(
-          [void Function(GPersonBasicInfoVarsBuilder b) updates]) =
-      _$GPersonBasicInfoVars;
+  factory GPersonBasicInfoVars([
+    void Function(GPersonBasicInfoVarsBuilder b) updates,
+  ]) = _$GPersonBasicInfoVars;
 
   static Serializer<GPersonBasicInfoVars> get serializer =>
       _$gPersonBasicInfoVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPersonBasicInfoVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GPersonBasicInfoVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonBasicInfoVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPersonBasicInfoVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GPersonBasicInfoVars.serializer, json);
 }
 
 abstract class GPersonWithStatsVars
     implements Built<GPersonWithStatsVars, GPersonWithStatsVarsBuilder> {
   GPersonWithStatsVars._();
 
-  factory GPersonWithStatsVars(
-          [void Function(GPersonWithStatsVarsBuilder b) updates]) =
-      _$GPersonWithStatsVars;
+  factory GPersonWithStatsVars([
+    void Function(GPersonWithStatsVarsBuilder b) updates,
+  ]) = _$GPersonWithStatsVars;
 
   static Serializer<GPersonWithStatsVars> get serializer =>
       _$gPersonWithStatsVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPersonWithStatsVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GPersonWithStatsVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonWithStatsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPersonWithStatsVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GPersonWithStatsVars.serializer, json);
 }
 
 abstract class GPersonFullVars
@@ -64,37 +56,29 @@ abstract class GPersonFullVars
   static Serializer<GPersonFullVars> get serializer =>
       _$gPersonFullVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPersonFullVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GPersonFullVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonFullVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPersonFullVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GPersonFullVars.serializer, json);
 }
 
 abstract class GActorInterfaceVars
     implements Built<GActorInterfaceVars, GActorInterfaceVarsBuilder> {
   GActorInterfaceVars._();
 
-  factory GActorInterfaceVars(
-          [void Function(GActorInterfaceVarsBuilder b) updates]) =
-      _$GActorInterfaceVars;
+  factory GActorInterfaceVars([
+    void Function(GActorInterfaceVarsBuilder b) updates,
+  ]) = _$GActorInterfaceVars;
 
   static Serializer<GActorInterfaceVars> get serializer =>
       _$gActorInterfaceVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GActorInterfaceVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GActorInterfaceVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GActorInterfaceVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GActorInterfaceVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GActorInterfaceVars.serializer, json);
 }

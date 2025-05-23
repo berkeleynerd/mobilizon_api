@@ -9,7 +9,6 @@ import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     show OperationSerializer;
-import 'package:http/http.dart';
 import 'package:mobilizon_api/__generated__/schema.schema.gql.dart'
     show
         GActionLogAction,

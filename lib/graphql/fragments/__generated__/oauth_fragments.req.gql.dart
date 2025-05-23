@@ -19,13 +19,15 @@ part 'oauth_fragments.req.gql.g.dart';
 abstract class GAuthApplicationInfoReq
     implements
         Built<GAuthApplicationInfoReq, GAuthApplicationInfoReqBuilder>,
-        _i1.FragmentRequest<_i2.GAuthApplicationInfoData,
-            _i3.GAuthApplicationInfoVars> {
+        _i1.FragmentRequest<
+          _i2.GAuthApplicationInfoData,
+          _i3.GAuthApplicationInfoVars
+        > {
   GAuthApplicationInfoReq._();
 
-  factory GAuthApplicationInfoReq(
-          [void Function(GAuthApplicationInfoReqBuilder b) updates]) =
-      _$GAuthApplicationInfoReq;
+  factory GAuthApplicationInfoReq([
+    void Function(GAuthApplicationInfoReqBuilder b) updates,
+  ]) = _$GAuthApplicationInfoReq;
 
   static void _initializeBuilder(GAuthApplicationInfoReqBuilder b) => b
     ..document = _i4.document
@@ -53,29 +55,29 @@ abstract class GAuthApplicationInfoReq
   static Serializer<GAuthApplicationInfoReq> get serializer =>
       _$gAuthApplicationInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAuthApplicationInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GAuthApplicationInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GAuthApplicationInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GAuthApplicationInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GAuthApplicationInfoReq.serializer, json);
 }
 
 abstract class GAuthApplicationTokenInfoReq
     implements
-        Built<GAuthApplicationTokenInfoReq,
-            GAuthApplicationTokenInfoReqBuilder>,
-        _i1.FragmentRequest<_i2.GAuthApplicationTokenInfoData,
-            _i3.GAuthApplicationTokenInfoVars> {
+        Built<
+          GAuthApplicationTokenInfoReq,
+          GAuthApplicationTokenInfoReqBuilder
+        >,
+        _i1.FragmentRequest<
+          _i2.GAuthApplicationTokenInfoData,
+          _i3.GAuthApplicationTokenInfoVars
+        > {
   GAuthApplicationTokenInfoReq._();
 
-  factory GAuthApplicationTokenInfoReq(
-          [void Function(GAuthApplicationTokenInfoReqBuilder b) updates]) =
-      _$GAuthApplicationTokenInfoReq;
+  factory GAuthApplicationTokenInfoReq([
+    void Function(GAuthApplicationTokenInfoReqBuilder b) updates,
+  ]) = _$GAuthApplicationTokenInfoReq;
 
   static void _initializeBuilder(GAuthApplicationTokenInfoReqBuilder b) => b
     ..document = _i4.document
@@ -103,10 +105,12 @@ abstract class GAuthApplicationTokenInfoReq
   static Serializer<GAuthApplicationTokenInfoReq> get serializer =>
       _$gAuthApplicationTokenInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAuthApplicationTokenInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GAuthApplicationTokenInfoReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAuthApplicationTokenInfoReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
@@ -117,15 +121,19 @@ abstract class GAuthApplicationTokenInfoReq
 
 abstract class GApplicationCodeAndStateInfoReq
     implements
-        Built<GApplicationCodeAndStateInfoReq,
-            GApplicationCodeAndStateInfoReqBuilder>,
-        _i1.FragmentRequest<_i2.GApplicationCodeAndStateInfoData,
-            _i3.GApplicationCodeAndStateInfoVars> {
+        Built<
+          GApplicationCodeAndStateInfoReq,
+          GApplicationCodeAndStateInfoReqBuilder
+        >,
+        _i1.FragmentRequest<
+          _i2.GApplicationCodeAndStateInfoData,
+          _i3.GApplicationCodeAndStateInfoVars
+        > {
   GApplicationCodeAndStateInfoReq._();
 
-  factory GApplicationCodeAndStateInfoReq(
-          [void Function(GApplicationCodeAndStateInfoReqBuilder b) updates]) =
-      _$GApplicationCodeAndStateInfoReq;
+  factory GApplicationCodeAndStateInfoReq([
+    void Function(GApplicationCodeAndStateInfoReqBuilder b) updates,
+  ]) = _$GApplicationCodeAndStateInfoReq;
 
   static void _initializeBuilder(GApplicationCodeAndStateInfoReqBuilder b) => b
     ..document = _i4.document
@@ -153,10 +161,12 @@ abstract class GApplicationCodeAndStateInfoReq
   static Serializer<GApplicationCodeAndStateInfoReq> get serializer =>
       _$gApplicationCodeAndStateInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GApplicationCodeAndStateInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GApplicationCodeAndStateInfoReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GApplicationCodeAndStateInfoReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
@@ -167,21 +177,25 @@ abstract class GApplicationCodeAndStateInfoReq
 
 abstract class GApplicationDeviceActivationInfoReq
     implements
-        Built<GApplicationDeviceActivationInfoReq,
-            GApplicationDeviceActivationInfoReqBuilder>,
-        _i1.FragmentRequest<_i2.GApplicationDeviceActivationInfoData,
-            _i3.GApplicationDeviceActivationInfoVars> {
+        Built<
+          GApplicationDeviceActivationInfoReq,
+          GApplicationDeviceActivationInfoReqBuilder
+        >,
+        _i1.FragmentRequest<
+          _i2.GApplicationDeviceActivationInfoData,
+          _i3.GApplicationDeviceActivationInfoVars
+        > {
   GApplicationDeviceActivationInfoReq._();
 
-  factory GApplicationDeviceActivationInfoReq(
-      [void Function(GApplicationDeviceActivationInfoReqBuilder b)
-          updates]) = _$GApplicationDeviceActivationInfoReq;
+  factory GApplicationDeviceActivationInfoReq([
+    void Function(GApplicationDeviceActivationInfoReqBuilder b) updates,
+  ]) = _$GApplicationDeviceActivationInfoReq;
 
   static void _initializeBuilder(
-          GApplicationDeviceActivationInfoReqBuilder b) =>
-      b
-        ..document = _i4.document
-        ..fragmentName = 'ApplicationDeviceActivationInfo';
+    GApplicationDeviceActivationInfoReqBuilder b,
+  ) => b
+    ..document = _i4.document
+    ..fragmentName = 'ApplicationDeviceActivationInfo';
 
   @override
   _i3.GApplicationDeviceActivationInfoVars get vars;
@@ -193,29 +207,31 @@ abstract class GApplicationDeviceActivationInfoReq
   Map<String, dynamic> get idFields;
   @override
   _i2.GApplicationDeviceActivationInfoData? parseData(
-          Map<String, dynamic> json) =>
-      _i2.GApplicationDeviceActivationInfoData.fromJson(json);
+    Map<String, dynamic> json,
+  ) => _i2.GApplicationDeviceActivationInfoData.fromJson(json);
 
   @override
   Map<String, dynamic> varsToJson() => vars.toJson();
 
   @override
   Map<String, dynamic> dataToJson(
-          _i2.GApplicationDeviceActivationInfoData data) =>
-      data.toJson();
+    _i2.GApplicationDeviceActivationInfoData data,
+  ) => data.toJson();
 
   static Serializer<GApplicationDeviceActivationInfoReq> get serializer =>
       _$gApplicationDeviceActivationInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GApplicationDeviceActivationInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GApplicationDeviceActivationInfoReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GApplicationDeviceActivationInfoReq? fromJson(
-          Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GApplicationDeviceActivationInfoReq.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i6.serializers.deserializeWith(
+    GApplicationDeviceActivationInfoReq.serializer,
+    json,
+  );
 }

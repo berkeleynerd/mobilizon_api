@@ -1,5 +1,5 @@
-import 'package:mobilizon_api/auth/token_manager.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
+import 'package:mobilizon_api/auth/token_manager.dart';
 
 /// Integration test implementation of TokenStorage
 ///
@@ -16,7 +16,9 @@ import 'package:mobilizon_api/auth/models/auth_models.dart';
 /// 1. Headless tests don't have access to platform channels
 /// 2. Secure storage plugins require a real device/emulator
 /// 3. Integration tests need a way to store and retrieve tokens
-class IntegrationTestTokenStorage implements TokenStorage {
+class TestTokenStorage implements TokenStorage {
+  const TestTokenStorage();
+
   // In-memory token storage for tests
   static TokenPair? _tokens;
 

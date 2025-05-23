@@ -168,16 +168,12 @@ abstract class GLoginInfoData
   static Serializer<GLoginInfoData> get serializer =>
       _$gLoginInfoDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GLoginInfoData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GLoginInfoData.serializer, this)
+          as Map<String, dynamic>);
 
   static GLoginInfoData? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GLoginInfoData.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GLoginInfoData.serializer, json);
 }
 
 abstract class GLoginInfoData_user
@@ -187,9 +183,9 @@ abstract class GLoginInfoData_user
         _i1.GUserFull {
   GLoginInfoData_user._();
 
-  factory GLoginInfoData_user(
-          [void Function(GLoginInfoData_userBuilder b) updates]) =
-      _$GLoginInfoData_user;
+  factory GLoginInfoData_user([
+    void Function(GLoginInfoData_userBuilder b) updates,
+  ]) = _$GLoginInfoData_user;
 
   static void _initializeBuilder(GLoginInfoData_userBuilder b) =>
       b..G__typename = 'User';
@@ -232,29 +228,27 @@ abstract class GLoginInfoData_user
   static Serializer<GLoginInfoData_user> get serializer =>
       _$gLoginInfoDataUserSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GLoginInfoData_user.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GLoginInfoData_user.serializer, this)
+          as Map<String, dynamic>);
 
   static GLoginInfoData_user? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GLoginInfoData_user.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GLoginInfoData_user.serializer, json);
 }
 
 abstract class GLoginInfoData_user_defaultActor
     implements
-        Built<GLoginInfoData_user_defaultActor,
-            GLoginInfoData_user_defaultActorBuilder>,
+        Built<
+          GLoginInfoData_user_defaultActor,
+          GLoginInfoData_user_defaultActorBuilder
+        >,
         GLoginInfo_user_defaultActor,
         _i1.GUserFull_defaultActor {
   GLoginInfoData_user_defaultActor._();
 
-  factory GLoginInfoData_user_defaultActor(
-          [void Function(GLoginInfoData_user_defaultActorBuilder b) updates]) =
-      _$GLoginInfoData_user_defaultActor;
+  factory GLoginInfoData_user_defaultActor([
+    void Function(GLoginInfoData_user_defaultActorBuilder b) updates,
+  ]) = _$GLoginInfoData_user_defaultActor;
 
   static void _initializeBuilder(GLoginInfoData_user_defaultActorBuilder b) =>
       b..G__typename = 'Person';
@@ -271,30 +265,34 @@ abstract class GLoginInfoData_user_defaultActor
   static Serializer<GLoginInfoData_user_defaultActor> get serializer =>
       _$gLoginInfoDataUserDefaultActorSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GLoginInfoData_user_defaultActor.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(
+            GLoginInfoData_user_defaultActor.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GLoginInfoData_user_defaultActor? fromJson(
-          Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GLoginInfoData_user_defaultActor.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i4.serializers.deserializeWith(
+    GLoginInfoData_user_defaultActor.serializer,
+    json,
+  );
 }
 
 abstract class GLoginInfoData_user_settings
     implements
-        Built<GLoginInfoData_user_settings,
-            GLoginInfoData_user_settingsBuilder>,
+        Built<
+          GLoginInfoData_user_settings,
+          GLoginInfoData_user_settingsBuilder
+        >,
         GLoginInfo_user_settings,
         _i1.GUserFull_settings {
   GLoginInfoData_user_settings._();
 
-  factory GLoginInfoData_user_settings(
-          [void Function(GLoginInfoData_user_settingsBuilder b) updates]) =
-      _$GLoginInfoData_user_settings;
+  factory GLoginInfoData_user_settings([
+    void Function(GLoginInfoData_user_settingsBuilder b) updates,
+  ]) = _$GLoginInfoData_user_settings;
 
   static void _initializeBuilder(GLoginInfoData_user_settingsBuilder b) =>
       b..G__typename = 'UserSettings';
@@ -321,10 +319,12 @@ abstract class GLoginInfoData_user_settings
   static Serializer<GLoginInfoData_user_settings> get serializer =>
       _$gLoginInfoDataUserSettingsSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GLoginInfoData_user_settings.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(
+            GLoginInfoData_user_settings.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GLoginInfoData_user_settings? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
@@ -335,19 +335,21 @@ abstract class GLoginInfoData_user_settings
 
 abstract class GLoginInfoData_user_settings_location
     implements
-        Built<GLoginInfoData_user_settings_location,
-            GLoginInfoData_user_settings_locationBuilder>,
+        Built<
+          GLoginInfoData_user_settings_location,
+          GLoginInfoData_user_settings_locationBuilder
+        >,
         GLoginInfo_user_settings_location,
         _i1.GUserFull_settings_location {
   GLoginInfoData_user_settings_location._();
 
-  factory GLoginInfoData_user_settings_location(
-      [void Function(GLoginInfoData_user_settings_locationBuilder b)
-          updates]) = _$GLoginInfoData_user_settings_location;
+  factory GLoginInfoData_user_settings_location([
+    void Function(GLoginInfoData_user_settings_locationBuilder b) updates,
+  ]) = _$GLoginInfoData_user_settings_location;
 
   static void _initializeBuilder(
-          GLoginInfoData_user_settings_locationBuilder b) =>
-      b..G__typename = 'Location';
+    GLoginInfoData_user_settings_locationBuilder b,
+  ) => b..G__typename = 'Location';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -361,17 +363,19 @@ abstract class GLoginInfoData_user_settings_location
   static Serializer<GLoginInfoData_user_settings_location> get serializer =>
       _$gLoginInfoDataUserSettingsLocationSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GLoginInfoData_user_settings_location.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(
+            GLoginInfoData_user_settings_location.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GLoginInfoData_user_settings_location? fromJson(
-          Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GLoginInfoData_user_settings_location.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i4.serializers.deserializeWith(
+    GLoginInfoData_user_settings_location.serializer,
+    json,
+  );
 }
 
 abstract class GLoginInfoData_user_actors
@@ -382,9 +386,9 @@ abstract class GLoginInfoData_user_actors
         _i1.GActorBasicInfo {
   GLoginInfoData_user_actors._();
 
-  factory GLoginInfoData_user_actors(
-          [void Function(GLoginInfoData_user_actorsBuilder b) updates]) =
-      _$GLoginInfoData_user_actors;
+  factory GLoginInfoData_user_actors([
+    void Function(GLoginInfoData_user_actorsBuilder b) updates,
+  ]) = _$GLoginInfoData_user_actors;
 
   static void _initializeBuilder(GLoginInfoData_user_actorsBuilder b) =>
       b..G__typename = 'Person';
@@ -411,31 +415,33 @@ abstract class GLoginInfoData_user_actors
   static Serializer<GLoginInfoData_user_actors> get serializer =>
       _$gLoginInfoDataUserActorsSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GLoginInfoData_user_actors.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(
+            GLoginInfoData_user_actors.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GLoginInfoData_user_actors? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GLoginInfoData_user_actors.serializer,
-        json,
-      );
+  static GLoginInfoData_user_actors? fromJson(Map<String, dynamic> json) => _i4
+      .serializers
+      .deserializeWith(GLoginInfoData_user_actors.serializer, json);
 }
 
 abstract class GLoginInfoData_user_actors_avatar
     implements
-        Built<GLoginInfoData_user_actors_avatar,
-            GLoginInfoData_user_actors_avatarBuilder>,
+        Built<
+          GLoginInfoData_user_actors_avatar,
+          GLoginInfoData_user_actors_avatarBuilder
+        >,
         GLoginInfo_user_actors_avatar,
         _i1.GUserFull_actors_avatar,
         _i1.GActorBasicInfo_avatar,
         _i3.GMediaBasicInfo {
   GLoginInfoData_user_actors_avatar._();
 
-  factory GLoginInfoData_user_actors_avatar(
-          [void Function(GLoginInfoData_user_actors_avatarBuilder b) updates]) =
-      _$GLoginInfoData_user_actors_avatar;
+  factory GLoginInfoData_user_actors_avatar([
+    void Function(GLoginInfoData_user_actors_avatarBuilder b) updates,
+  ]) = _$GLoginInfoData_user_actors_avatar;
 
   static void _initializeBuilder(GLoginInfoData_user_actors_avatarBuilder b) =>
       b..G__typename = 'Media';
@@ -458,17 +464,19 @@ abstract class GLoginInfoData_user_actors_avatar
   static Serializer<GLoginInfoData_user_actors_avatar> get serializer =>
       _$gLoginInfoDataUserActorsAvatarSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GLoginInfoData_user_actors_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(
+            GLoginInfoData_user_actors_avatar.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GLoginInfoData_user_actors_avatar? fromJson(
-          Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GLoginInfoData_user_actors_avatar.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i4.serializers.deserializeWith(
+    GLoginInfoData_user_actors_avatar.serializer,
+    json,
+  );
 }
 
 abstract class GRefreshedTokenInfo {
@@ -483,9 +491,9 @@ abstract class GRefreshedTokenInfoData
         GRefreshedTokenInfo {
   GRefreshedTokenInfoData._();
 
-  factory GRefreshedTokenInfoData(
-          [void Function(GRefreshedTokenInfoDataBuilder b) updates]) =
-      _$GRefreshedTokenInfoData;
+  factory GRefreshedTokenInfoData([
+    void Function(GRefreshedTokenInfoDataBuilder b) updates,
+  ]) = _$GRefreshedTokenInfoData;
 
   static void _initializeBuilder(GRefreshedTokenInfoDataBuilder b) =>
       b..G__typename = 'RefreshedToken';
@@ -500,16 +508,12 @@ abstract class GRefreshedTokenInfoData
   static Serializer<GRefreshedTokenInfoData> get serializer =>
       _$gRefreshedTokenInfoDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GRefreshedTokenInfoData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GRefreshedTokenInfoData.serializer, this)
+          as Map<String, dynamic>);
 
   static GRefreshedTokenInfoData? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GRefreshedTokenInfoData.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GRefreshedTokenInfoData.serializer, json);
 }
 
 abstract class GUserSettingsInfo {
@@ -537,9 +541,9 @@ abstract class GUserSettingsInfoData
         GUserSettingsInfo {
   GUserSettingsInfoData._();
 
-  factory GUserSettingsInfoData(
-          [void Function(GUserSettingsInfoDataBuilder b) updates]) =
-      _$GUserSettingsInfoData;
+  factory GUserSettingsInfoData([
+    void Function(GUserSettingsInfoDataBuilder b) updates,
+  ]) = _$GUserSettingsInfoData;
 
   static void _initializeBuilder(GUserSettingsInfoDataBuilder b) =>
       b..G__typename = 'UserSettings';
@@ -566,28 +570,26 @@ abstract class GUserSettingsInfoData
   static Serializer<GUserSettingsInfoData> get serializer =>
       _$gUserSettingsInfoDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GUserSettingsInfoData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GUserSettingsInfoData.serializer, this)
+          as Map<String, dynamic>);
 
   static GUserSettingsInfoData? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GUserSettingsInfoData.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GUserSettingsInfoData.serializer, json);
 }
 
 abstract class GUserSettingsInfoData_location
     implements
-        Built<GUserSettingsInfoData_location,
-            GUserSettingsInfoData_locationBuilder>,
+        Built<
+          GUserSettingsInfoData_location,
+          GUserSettingsInfoData_locationBuilder
+        >,
         GUserSettingsInfo_location {
   GUserSettingsInfoData_location._();
 
-  factory GUserSettingsInfoData_location(
-          [void Function(GUserSettingsInfoData_locationBuilder b) updates]) =
-      _$GUserSettingsInfoData_location;
+  factory GUserSettingsInfoData_location([
+    void Function(GUserSettingsInfoData_locationBuilder b) updates,
+  ]) = _$GUserSettingsInfoData_location;
 
   static void _initializeBuilder(GUserSettingsInfoData_locationBuilder b) =>
       b..G__typename = 'Location';
@@ -604,10 +606,12 @@ abstract class GUserSettingsInfoData_location
   static Serializer<GUserSettingsInfoData_location> get serializer =>
       _$gUserSettingsInfoDataLocationSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GUserSettingsInfoData_location.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(
+            GUserSettingsInfoData_location.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GUserSettingsInfoData_location? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(

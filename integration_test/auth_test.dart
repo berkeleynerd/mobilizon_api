@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobilizon_api/client.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
-import 'test_helpers.dart';
+import 'package:mobilizon_api/client.dart';
+
+import 'test_token_storage.dart';
 
 /// Authentication integration tests for Mobilizon API client
 ///
@@ -15,22 +17,18 @@ import 'test_helpers.dart';
 /// 4. Logout and clearing of authentication state
 /// 5. Token refresh flow
 ///
-/// The tests use the in-memory token storage implementation from test_helpers.dart
+/// The tests use the in-memory token storage implementation from test_token_storage.dart
 /// to store JWT tokens between API calls.
 void main() {
   // Initialize Flutter testing framework
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // Get configuration from environment variables
-  final apiUrl =
-      Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
-  final userEmail =
-      Platform.environment['TEST_USER_EMAIL'] ?? 'rebecca@redshift.is';
+  final apiUrl = Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
+  final userEmail = Platform.environment['TEST_USER_EMAIL'] ?? 'rebecca@redshift.is';
   final userPassword = Platform.environment['TEST_USER_PASSWORD'] ?? 'airong7';
-  final adminEmail =
-      Platform.environment['TEST_ADMIN_EMAIL'] ?? 'admin@admin.admin';
-  final adminPassword =
-      Platform.environment['TEST_ADMIN_PASSWORD'] ?? 'airong7';
+  final adminEmail = Platform.environment['TEST_ADMIN_EMAIL'] ?? 'admin@admin.admin';
+  final adminPassword = Platform.environment['TEST_ADMIN_PASSWORD'] ?? 'airong7';
 
   group('Mobilizon Authentication Tests', () {
     late MobilizonClient client;
@@ -38,13 +36,7 @@ void main() {
     setUp(() {
       // Create a fresh client for each test with test token storage
       // This ensures each test starts with a clean authentication state
-      client = MobilizonClient(
-        MobilizonClientConfig(
-          apiUrl: apiUrl,
-          enableDebugLogging: true,
-          tokenStorage: IntegrationTestTokenStorage(),
-        ),
-      );
+      client = MobilizonClient(MobilizonClientConfig(apiUrl: apiUrl, enableDebugLogging: true, tokenStorage: TestTokenStorage()));
     });
 
     tearDown(() {
@@ -59,10 +51,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
 
         // Step 2: Attempt login with regular user credentials
-        final credentials = AuthCredentials(
-          email: userEmail,
-          password: userPassword,
-        );
+        final credentials = AuthCredentials(email: userEmail, password: userPassword);
 
         final result = await client.auth.login(credentials);
 
@@ -90,10 +79,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
 
         // Step 2: Attempt login with admin credentials
-        final credentials = AuthCredentials(
-          email: adminEmail,
-          password: adminPassword,
-        );
+        final credentials = AuthCredentials(email: adminEmail, password: adminPassword);
 
         final result = await client.auth.login(credentials);
 
@@ -123,10 +109,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
 
         // Step 2: Login to get initial tokens
-        final credentials = AuthCredentials(
-          email: userEmail,
-          password: userPassword,
-        );
+        final credentials = AuthCredentials(email: userEmail, password: userPassword);
 
         final loginResult = await client.auth.login(credentials);
         expect(loginResult.user, isNotNull);

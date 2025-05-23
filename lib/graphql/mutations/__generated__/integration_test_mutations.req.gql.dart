@@ -38,19 +38,17 @@ abstract class GSimpleLoginReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GSimpleLoginData? Function(
-    _i2.GSimpleLoginData?,
-    _i2.GSimpleLoginData?,
-  )? get updateResult;
+  _i2.GSimpleLoginData? Function(_i2.GSimpleLoginData?, _i2.GSimpleLoginData?)?
+  get updateResult;
   @override
   _i2.GSimpleLoginData? get optimisticResponse;
   @override
@@ -76,22 +74,18 @@ abstract class GSimpleLoginReq
 
   @override
   _i1.OperationRequest<_i2.GSimpleLoginData, _i3.GSimpleLoginVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GSimpleLoginReq> get serializer =>
       _$gSimpleLoginReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GSimpleLoginReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GSimpleLoginReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GSimpleLoginReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GSimpleLoginReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GSimpleLoginReq.serializer, json);
 }
 
 abstract class GSimpleLogoutReq
@@ -116,10 +110,10 @@ abstract class GSimpleLogoutReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -128,7 +122,8 @@ abstract class GSimpleLogoutReq
   _i2.GSimpleLogoutData? Function(
     _i2.GSimpleLogoutData?,
     _i2.GSimpleLogoutData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GSimpleLogoutData? get optimisticResponse;
   @override
@@ -154,34 +149,32 @@ abstract class GSimpleLogoutReq
 
   @override
   _i1.OperationRequest<_i2.GSimpleLogoutData, _i3.GSimpleLogoutVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GSimpleLogoutReq> get serializer =>
       _$gSimpleLogoutReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GSimpleLogoutReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GSimpleLogoutReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GSimpleLogoutReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GSimpleLogoutReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GSimpleLogoutReq.serializer, json);
 }
 
 abstract class GSimpleRefreshTokenReq
     implements
         Built<GSimpleRefreshTokenReq, GSimpleRefreshTokenReqBuilder>,
-        _i1.OperationRequest<_i2.GSimpleRefreshTokenData,
-            _i3.GSimpleRefreshTokenVars> {
+        _i1.OperationRequest<
+          _i2.GSimpleRefreshTokenData,
+          _i3.GSimpleRefreshTokenVars
+        > {
   GSimpleRefreshTokenReq._();
 
-  factory GSimpleRefreshTokenReq(
-          [void Function(GSimpleRefreshTokenReqBuilder b) updates]) =
-      _$GSimpleRefreshTokenReq;
+  factory GSimpleRefreshTokenReq([
+    void Function(GSimpleRefreshTokenReqBuilder b) updates,
+  ]) = _$GSimpleRefreshTokenReq;
 
   static void _initializeBuilder(GSimpleRefreshTokenReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -196,10 +189,10 @@ abstract class GSimpleRefreshTokenReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -208,7 +201,8 @@ abstract class GSimpleRefreshTokenReq
   _i2.GSimpleRefreshTokenData? Function(
     _i2.GSimpleRefreshTokenData?,
     _i2.GSimpleRefreshTokenData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GSimpleRefreshTokenData? get optimisticResponse;
   @override
@@ -235,20 +229,16 @@ abstract class GSimpleRefreshTokenReq
 
   @override
   _i1.OperationRequest<_i2.GSimpleRefreshTokenData, _i3.GSimpleRefreshTokenVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GSimpleRefreshTokenReq> get serializer =>
       _$gSimpleRefreshTokenReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GSimpleRefreshTokenReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GSimpleRefreshTokenReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GSimpleRefreshTokenReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GSimpleRefreshTokenReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GSimpleRefreshTokenReq.serializer, json);
 }

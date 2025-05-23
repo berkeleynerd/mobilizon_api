@@ -18,91 +18,91 @@ abstract class GConfigInfoVars
   static Serializer<GConfigInfoVars> get serializer =>
       _$gConfigInfoVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GConfigInfoVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GConfigInfoVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GConfigInfoVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GConfigInfoVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GConfigInfoVars.serializer, json);
 }
 
 abstract class GOAuthProviderInfoVars
     implements Built<GOAuthProviderInfoVars, GOAuthProviderInfoVarsBuilder> {
   GOAuthProviderInfoVars._();
 
-  factory GOAuthProviderInfoVars(
-          [void Function(GOAuthProviderInfoVarsBuilder b) updates]) =
-      _$GOAuthProviderInfoVars;
+  factory GOAuthProviderInfoVars([
+    void Function(GOAuthProviderInfoVarsBuilder b) updates,
+  ]) = _$GOAuthProviderInfoVars;
 
   static Serializer<GOAuthProviderInfoVars> get serializer =>
       _$gOAuthProviderInfoVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GOAuthProviderInfoVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GOAuthProviderInfoVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GOAuthProviderInfoVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GOAuthProviderInfoVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GOAuthProviderInfoVars.serializer, json);
 }
 
 abstract class GAnonymousParticipationConfigVars
     implements
-        Built<GAnonymousParticipationConfigVars,
-            GAnonymousParticipationConfigVarsBuilder> {
+        Built<
+          GAnonymousParticipationConfigVars,
+          GAnonymousParticipationConfigVarsBuilder
+        > {
   GAnonymousParticipationConfigVars._();
 
-  factory GAnonymousParticipationConfigVars(
-          [void Function(GAnonymousParticipationConfigVarsBuilder b) updates]) =
-      _$GAnonymousParticipationConfigVars;
+  factory GAnonymousParticipationConfigVars([
+    void Function(GAnonymousParticipationConfigVarsBuilder b) updates,
+  ]) = _$GAnonymousParticipationConfigVars;
 
   static Serializer<GAnonymousParticipationConfigVars> get serializer =>
       _$gAnonymousParticipationConfigVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousParticipationConfigVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousParticipationConfigVars.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousParticipationConfigVars? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousParticipationConfigVars.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousParticipationConfigVars.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousEventCreationConfigVars
     implements
-        Built<GAnonymousEventCreationConfigVars,
-            GAnonymousEventCreationConfigVarsBuilder> {
+        Built<
+          GAnonymousEventCreationConfigVars,
+          GAnonymousEventCreationConfigVarsBuilder
+        > {
   GAnonymousEventCreationConfigVars._();
 
-  factory GAnonymousEventCreationConfigVars(
-          [void Function(GAnonymousEventCreationConfigVarsBuilder b) updates]) =
-      _$GAnonymousEventCreationConfigVars;
+  factory GAnonymousEventCreationConfigVars([
+    void Function(GAnonymousEventCreationConfigVarsBuilder b) updates,
+  ]) = _$GAnonymousEventCreationConfigVars;
 
   static Serializer<GAnonymousEventCreationConfigVars> get serializer =>
       _$gAnonymousEventCreationConfigVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousEventCreationConfigVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousEventCreationConfigVars.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousEventCreationConfigVars? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousEventCreationConfigVars.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousEventCreationConfigVars.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousReportsConfigVars
@@ -110,21 +110,21 @@ abstract class GAnonymousReportsConfigVars
         Built<GAnonymousReportsConfigVars, GAnonymousReportsConfigVarsBuilder> {
   GAnonymousReportsConfigVars._();
 
-  factory GAnonymousReportsConfigVars(
-          [void Function(GAnonymousReportsConfigVarsBuilder b) updates]) =
-      _$GAnonymousReportsConfigVars;
+  factory GAnonymousReportsConfigVars([
+    void Function(GAnonymousReportsConfigVarsBuilder b) updates,
+  ]) = _$GAnonymousReportsConfigVars;
 
   static Serializer<GAnonymousReportsConfigVars> get serializer =>
       _$gAnonymousReportsConfigVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousReportsConfigVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousReportsConfigVars.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GAnonymousReportsConfigVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousReportsConfigVars.serializer,
-        json,
-      );
+  static GAnonymousReportsConfigVars? fromJson(Map<String, dynamic> json) => _i1
+      .serializers
+      .deserializeWith(GAnonymousReportsConfigVars.serializer, json);
 }

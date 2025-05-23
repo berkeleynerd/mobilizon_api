@@ -30,25 +30,21 @@ abstract class GGetPersonsData
   static Serializer<GGetPersonsData> get serializer =>
       _$gGetPersonsDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetPersonsData.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetPersonsData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetPersonsData.serializer, json);
 }
 
 abstract class GGetPersonsData_persons
     implements Built<GGetPersonsData_persons, GGetPersonsData_personsBuilder> {
   GGetPersonsData_persons._();
 
-  factory GGetPersonsData_persons(
-          [void Function(GGetPersonsData_personsBuilder b) updates]) =
-      _$GGetPersonsData_persons;
+  factory GGetPersonsData_persons([
+    void Function(GGetPersonsData_personsBuilder b) updates,
+  ]) = _$GGetPersonsData_persons;
 
   static void _initializeBuilder(GGetPersonsData_personsBuilder b) =>
       b..G__typename = 'PaginatedPersonList';
@@ -60,28 +56,26 @@ abstract class GGetPersonsData_persons
   static Serializer<GGetPersonsData_persons> get serializer =>
       _$gGetPersonsDataPersonsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetPersonsData_persons.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetPersonsData_persons.serializer, json);
 }
 
 abstract class GGetPersonsData_persons_elements
     implements
-        Built<GGetPersonsData_persons_elements,
-            GGetPersonsData_persons_elementsBuilder>,
+        Built<
+          GGetPersonsData_persons_elements,
+          GGetPersonsData_persons_elementsBuilder
+        >,
         _i2.GPersonFull {
   GGetPersonsData_persons_elements._();
 
-  factory GGetPersonsData_persons_elements(
-          [void Function(GGetPersonsData_persons_elementsBuilder b) updates]) =
-      _$GGetPersonsData_persons_elements;
+  factory GGetPersonsData_persons_elements([
+    void Function(GGetPersonsData_persons_elementsBuilder b) updates,
+  ]) = _$GGetPersonsData_persons_elements;
 
   static void _initializeBuilder(GGetPersonsData_persons_elementsBuilder b) =>
       b..G__typename = 'Person';
@@ -134,34 +128,38 @@ abstract class GGetPersonsData_persons_elements
   static Serializer<GGetPersonsData_persons_elements> get serializer =>
       _$gGetPersonsDataPersonsElementsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_avatar
     implements
-        Built<GGetPersonsData_persons_elements_avatar,
-            GGetPersonsData_persons_elements_avatarBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_avatar,
+          GGetPersonsData_persons_elements_avatarBuilder
+        >,
         _i2.GPersonFull_avatar,
         _i4.GMediaBasicInfo {
   GGetPersonsData_persons_elements_avatar._();
 
-  factory GGetPersonsData_persons_elements_avatar(
-      [void Function(GGetPersonsData_persons_elements_avatarBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_avatar;
+  factory GGetPersonsData_persons_elements_avatar([
+    void Function(GGetPersonsData_persons_elements_avatarBuilder b) updates,
+  ]) = _$GGetPersonsData_persons_elements_avatar;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_avatarBuilder b) =>
-      b..G__typename = 'Media';
+    GGetPersonsData_persons_elements_avatarBuilder b,
+  ) => b..G__typename = 'Media';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -181,34 +179,38 @@ abstract class GGetPersonsData_persons_elements_avatar
   static Serializer<GGetPersonsData_persons_elements_avatar> get serializer =>
       _$gGetPersonsDataPersonsElementsAvatarSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_avatar.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_avatar? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_avatar.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_avatar.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_banner
     implements
-        Built<GGetPersonsData_persons_elements_banner,
-            GGetPersonsData_persons_elements_bannerBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_banner,
+          GGetPersonsData_persons_elements_bannerBuilder
+        >,
         _i2.GPersonFull_banner,
         _i4.GMediaBasicInfo {
   GGetPersonsData_persons_elements_banner._();
 
-  factory GGetPersonsData_persons_elements_banner(
-      [void Function(GGetPersonsData_persons_elements_bannerBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_banner;
+  factory GGetPersonsData_persons_elements_banner([
+    void Function(GGetPersonsData_persons_elements_bannerBuilder b) updates,
+  ]) = _$GGetPersonsData_persons_elements_banner;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_bannerBuilder b) =>
-      b..G__typename = 'Media';
+    GGetPersonsData_persons_elements_bannerBuilder b,
+  ) => b..G__typename = 'Media';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -228,33 +230,38 @@ abstract class GGetPersonsData_persons_elements_banner
   static Serializer<GGetPersonsData_persons_elements_banner> get serializer =>
       _$gGetPersonsDataPersonsElementsBannerSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_banner.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_banner.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_banner? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_banner.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_banner.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_organizedEvents
     implements
-        Built<GGetPersonsData_persons_elements_organizedEvents,
-            GGetPersonsData_persons_elements_organizedEventsBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_organizedEvents,
+          GGetPersonsData_persons_elements_organizedEventsBuilder
+        >,
         _i2.GPersonFull_organizedEvents {
   GGetPersonsData_persons_elements_organizedEvents._();
 
-  factory GGetPersonsData_persons_elements_organizedEvents(
-      [void Function(GGetPersonsData_persons_elements_organizedEventsBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_organizedEvents;
+  factory GGetPersonsData_persons_elements_organizedEvents([
+    void Function(GGetPersonsData_persons_elements_organizedEventsBuilder b)
+    updates,
+  ]) = _$GGetPersonsData_persons_elements_organizedEvents;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_organizedEventsBuilder b) =>
-      b..G__typename = 'PaginatedEventList';
+    GGetPersonsData_persons_elements_organizedEventsBuilder b,
+  ) => b..G__typename = 'PaginatedEventList';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -262,36 +269,40 @@ abstract class GGetPersonsData_persons_elements_organizedEvents
   @override
   int? get total;
   static Serializer<GGetPersonsData_persons_elements_organizedEvents>
-      get serializer =>
-          _$gGetPersonsDataPersonsElementsOrganizedEventsSerializer;
+  get serializer => _$gGetPersonsDataPersonsElementsOrganizedEventsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_organizedEvents.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_organizedEvents.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_organizedEvents? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_organizedEvents.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_organizedEvents.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_participations
     implements
-        Built<GGetPersonsData_persons_elements_participations,
-            GGetPersonsData_persons_elements_participationsBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_participations,
+          GGetPersonsData_persons_elements_participationsBuilder
+        >,
         _i2.GPersonFull_participations {
   GGetPersonsData_persons_elements_participations._();
 
-  factory GGetPersonsData_persons_elements_participations(
-      [void Function(GGetPersonsData_persons_elements_participationsBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_participations;
+  factory GGetPersonsData_persons_elements_participations([
+    void Function(GGetPersonsData_persons_elements_participationsBuilder b)
+    updates,
+  ]) = _$GGetPersonsData_persons_elements_participations;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_participationsBuilder b) =>
-      b..G__typename = 'PaginatedParticipantList';
+    GGetPersonsData_persons_elements_participationsBuilder b,
+  ) => b..G__typename = 'PaginatedParticipantList';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -299,36 +310,40 @@ abstract class GGetPersonsData_persons_elements_participations
   @override
   int? get total;
   static Serializer<GGetPersonsData_persons_elements_participations>
-      get serializer =>
-          _$gGetPersonsDataPersonsElementsParticipationsSerializer;
+  get serializer => _$gGetPersonsDataPersonsElementsParticipationsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_participations.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_participations.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_participations? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_participations.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_participations.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_memberships
     implements
-        Built<GGetPersonsData_persons_elements_memberships,
-            GGetPersonsData_persons_elements_membershipsBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_memberships,
+          GGetPersonsData_persons_elements_membershipsBuilder
+        >,
         _i2.GPersonFull_memberships {
   GGetPersonsData_persons_elements_memberships._();
 
-  factory GGetPersonsData_persons_elements_memberships(
-      [void Function(GGetPersonsData_persons_elements_membershipsBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_memberships;
+  factory GGetPersonsData_persons_elements_memberships([
+    void Function(GGetPersonsData_persons_elements_membershipsBuilder b)
+    updates,
+  ]) = _$GGetPersonsData_persons_elements_memberships;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_membershipsBuilder b) =>
-      b..G__typename = 'PaginatedMemberList';
+    GGetPersonsData_persons_elements_membershipsBuilder b,
+  ) => b..G__typename = 'PaginatedMemberList';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -336,35 +351,39 @@ abstract class GGetPersonsData_persons_elements_memberships
   @override
   int? get total;
   static Serializer<GGetPersonsData_persons_elements_memberships>
-      get serializer => _$gGetPersonsDataPersonsElementsMembershipsSerializer;
+  get serializer => _$gGetPersonsDataPersonsElementsMembershipsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_memberships.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_memberships.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_memberships? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_memberships.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_memberships.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_feedTokens
     implements
-        Built<GGetPersonsData_persons_elements_feedTokens,
-            GGetPersonsData_persons_elements_feedTokensBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_feedTokens,
+          GGetPersonsData_persons_elements_feedTokensBuilder
+        >,
         _i2.GPersonFull_feedTokens {
   GGetPersonsData_persons_elements_feedTokens._();
 
-  factory GGetPersonsData_persons_elements_feedTokens(
-      [void Function(GGetPersonsData_persons_elements_feedTokensBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_feedTokens;
+  factory GGetPersonsData_persons_elements_feedTokens([
+    void Function(GGetPersonsData_persons_elements_feedTokensBuilder b) updates,
+  ]) = _$GGetPersonsData_persons_elements_feedTokens;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_feedTokensBuilder b) =>
-      b..G__typename = 'FeedToken';
+    GGetPersonsData_persons_elements_feedTokensBuilder b,
+  ) => b..G__typename = 'FeedToken';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -374,35 +393,40 @@ abstract class GGetPersonsData_persons_elements_feedTokens
   @override
   GGetPersonsData_persons_elements_feedTokens_actor? get actor;
   static Serializer<GGetPersonsData_persons_elements_feedTokens>
-      get serializer => _$gGetPersonsDataPersonsElementsFeedTokensSerializer;
+  get serializer => _$gGetPersonsDataPersonsElementsFeedTokensSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_feedTokens.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_feedTokens.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_feedTokens? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_feedTokens.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_feedTokens.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_feedTokens_actor
     implements
-        Built<GGetPersonsData_persons_elements_feedTokens_actor,
-            GGetPersonsData_persons_elements_feedTokens_actorBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_feedTokens_actor,
+          GGetPersonsData_persons_elements_feedTokens_actorBuilder
+        >,
         _i2.GPersonFull_feedTokens_actor {
   GGetPersonsData_persons_elements_feedTokens_actor._();
 
-  factory GGetPersonsData_persons_elements_feedTokens_actor(
-      [void Function(GGetPersonsData_persons_elements_feedTokens_actorBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_feedTokens_actor;
+  factory GGetPersonsData_persons_elements_feedTokens_actor([
+    void Function(GGetPersonsData_persons_elements_feedTokens_actorBuilder b)
+    updates,
+  ]) = _$GGetPersonsData_persons_elements_feedTokens_actor;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_feedTokens_actorBuilder b) =>
-      b..G__typename = 'Actor';
+    GGetPersonsData_persons_elements_feedTokens_actorBuilder b,
+  ) => b..G__typename = 'Actor';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -412,36 +436,39 @@ abstract class GGetPersonsData_persons_elements_feedTokens_actor
   @override
   String? get preferredUsername;
   static Serializer<GGetPersonsData_persons_elements_feedTokens_actor>
-      get serializer =>
-          _$gGetPersonsDataPersonsElementsFeedTokensActorSerializer;
+  get serializer => _$gGetPersonsDataPersonsElementsFeedTokensActorSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_feedTokens_actor.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_feedTokens_actor.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_feedTokens_actor? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_feedTokens_actor.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_feedTokens_actor.serializer,
+    json,
+  );
 }
 
 abstract class GGetPersonsData_persons_elements_user
     implements
-        Built<GGetPersonsData_persons_elements_user,
-            GGetPersonsData_persons_elements_userBuilder>,
+        Built<
+          GGetPersonsData_persons_elements_user,
+          GGetPersonsData_persons_elements_userBuilder
+        >,
         _i2.GPersonFull_user {
   GGetPersonsData_persons_elements_user._();
 
-  factory GGetPersonsData_persons_elements_user(
-      [void Function(GGetPersonsData_persons_elements_userBuilder b)
-          updates]) = _$GGetPersonsData_persons_elements_user;
+  factory GGetPersonsData_persons_elements_user([
+    void Function(GGetPersonsData_persons_elements_userBuilder b) updates,
+  ]) = _$GGetPersonsData_persons_elements_user;
 
   static void _initializeBuilder(
-          GGetPersonsData_persons_elements_userBuilder b) =>
-      b..G__typename = 'User';
+    GGetPersonsData_persons_elements_userBuilder b,
+  ) => b..G__typename = 'User';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -457,15 +484,17 @@ abstract class GGetPersonsData_persons_elements_user
   static Serializer<GGetPersonsData_persons_elements_user> get serializer =>
       _$gGetPersonsDataPersonsElementsUserSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsData_persons_elements_user.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetPersonsData_persons_elements_user.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetPersonsData_persons_elements_user? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsData_persons_elements_user.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetPersonsData_persons_elements_user.serializer,
+    json,
+  );
 }

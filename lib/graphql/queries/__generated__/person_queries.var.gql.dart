@@ -25,14 +25,10 @@ abstract class GGetPersonsVars
   static Serializer<GGetPersonsVars> get serializer =>
       _$gGetPersonsVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetPersonsVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetPersonsVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetPersonsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetPersonsVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetPersonsVars.serializer, json);
 }

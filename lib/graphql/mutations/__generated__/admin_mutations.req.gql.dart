@@ -19,13 +19,15 @@ part 'admin_mutations.req.gql.g.dart';
 abstract class GAdminUpdateUserReq
     implements
         Built<GAdminUpdateUserReq, GAdminUpdateUserReqBuilder>,
-        _i1
-        .OperationRequest<_i2.GAdminUpdateUserData, _i3.GAdminUpdateUserVars> {
+        _i1.OperationRequest<
+          _i2.GAdminUpdateUserData,
+          _i3.GAdminUpdateUserVars
+        > {
   GAdminUpdateUserReq._();
 
-  factory GAdminUpdateUserReq(
-          [void Function(GAdminUpdateUserReqBuilder b) updates]) =
-      _$GAdminUpdateUserReq;
+  factory GAdminUpdateUserReq([
+    void Function(GAdminUpdateUserReqBuilder b) updates,
+  ]) = _$GAdminUpdateUserReq;
 
   static void _initializeBuilder(GAdminUpdateUserReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -40,10 +42,10 @@ abstract class GAdminUpdateUserReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -52,7 +54,8 @@ abstract class GAdminUpdateUserReq
   _i2.GAdminUpdateUserData? Function(
     _i2.GAdminUpdateUserData?,
     _i2.GAdminUpdateUserData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GAdminUpdateUserData? get optimisticResponse;
   @override
@@ -79,22 +82,18 @@ abstract class GAdminUpdateUserReq
 
   @override
   _i1.OperationRequest<_i2.GAdminUpdateUserData, _i3.GAdminUpdateUserVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GAdminUpdateUserReq> get serializer =>
       _$gAdminUpdateUserReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAdminUpdateUserReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GAdminUpdateUserReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GAdminUpdateUserReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GAdminUpdateUserReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GAdminUpdateUserReq.serializer, json);
 }
 
 abstract class GSuspendProfileReq
@@ -103,9 +102,9 @@ abstract class GSuspendProfileReq
         _i1.OperationRequest<_i2.GSuspendProfileData, _i3.GSuspendProfileVars> {
   GSuspendProfileReq._();
 
-  factory GSuspendProfileReq(
-          [void Function(GSuspendProfileReqBuilder b) updates]) =
-      _$GSuspendProfileReq;
+  factory GSuspendProfileReq([
+    void Function(GSuspendProfileReqBuilder b) updates,
+  ]) = _$GSuspendProfileReq;
 
   static void _initializeBuilder(GSuspendProfileReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -120,10 +119,10 @@ abstract class GSuspendProfileReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -132,7 +131,8 @@ abstract class GSuspendProfileReq
   _i2.GSuspendProfileData? Function(
     _i2.GSuspendProfileData?,
     _i2.GSuspendProfileData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GSuspendProfileData? get optimisticResponse;
   @override
@@ -159,34 +159,32 @@ abstract class GSuspendProfileReq
 
   @override
   _i1.OperationRequest<_i2.GSuspendProfileData, _i3.GSuspendProfileVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GSuspendProfileReq> get serializer =>
       _$gSuspendProfileReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GSuspendProfileReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GSuspendProfileReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GSuspendProfileReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GSuspendProfileReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GSuspendProfileReq.serializer, json);
 }
 
 abstract class GUnsuspendProfileReq
     implements
         Built<GUnsuspendProfileReq, GUnsuspendProfileReqBuilder>,
-        _i1.OperationRequest<_i2.GUnsuspendProfileData,
-            _i3.GUnsuspendProfileVars> {
+        _i1.OperationRequest<
+          _i2.GUnsuspendProfileData,
+          _i3.GUnsuspendProfileVars
+        > {
   GUnsuspendProfileReq._();
 
-  factory GUnsuspendProfileReq(
-          [void Function(GUnsuspendProfileReqBuilder b) updates]) =
-      _$GUnsuspendProfileReq;
+  factory GUnsuspendProfileReq([
+    void Function(GUnsuspendProfileReqBuilder b) updates,
+  ]) = _$GUnsuspendProfileReq;
 
   static void _initializeBuilder(GUnsuspendProfileReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -201,10 +199,10 @@ abstract class GUnsuspendProfileReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -213,7 +211,8 @@ abstract class GUnsuspendProfileReq
   _i2.GUnsuspendProfileData? Function(
     _i2.GUnsuspendProfileData?,
     _i2.GUnsuspendProfileData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GUnsuspendProfileData? get optimisticResponse;
   @override
@@ -240,20 +239,16 @@ abstract class GUnsuspendProfileReq
 
   @override
   _i1.OperationRequest<_i2.GUnsuspendProfileData, _i3.GUnsuspendProfileVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GUnsuspendProfileReq> get serializer =>
       _$gUnsuspendProfileReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GUnsuspendProfileReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GUnsuspendProfileReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GUnsuspendProfileReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GUnsuspendProfileReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GUnsuspendProfileReq.serializer, json);
 }

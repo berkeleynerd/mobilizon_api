@@ -18,33 +18,39 @@ const GetAuthApplication = _i1.OperationDefinitionNode(
       ),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'authApplication'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'clientId'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'clientId')),
-        )
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'AuthApplicationInfo'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'authApplication'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'clientId'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'clientId')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'AuthApplicationInfo'),
+              directives: [],
+            ),
+          ],
+        ),
+      ),
+    ],
+  ),
 );
-const document = _i1.DocumentNode(definitions: [
-  GetAuthApplication,
-  _i2.AuthApplicationInfo,
-  _i2.AuthApplicationTokenInfo,
-  _i2.ApplicationCodeAndStateInfo,
-  _i2.ApplicationDeviceActivationInfo,
-]);
+const document = _i1.DocumentNode(
+  definitions: [
+    GetAuthApplication,
+    _i2.AuthApplicationInfo,
+    _i2.AuthApplicationTokenInfo,
+    _i2.ApplicationCodeAndStateInfo,
+    _i2.ApplicationDeviceActivationInfo,
+  ],
+);

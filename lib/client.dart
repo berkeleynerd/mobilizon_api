@@ -1,7 +1,7 @@
 import 'auth/auth_service.dart';
 import 'auth/auth_service_impl.dart';
-import 'auth/token_manager.dart';
 import 'auth/graphql_client_provider.dart';
+import 'auth/token_manager.dart';
 
 /// Configuration options for Mobilizon client
 class MobilizonClientConfig {
@@ -17,12 +17,7 @@ class MobilizonClientConfig {
   /// Timeout for network requests in seconds
   final int networkTimeoutSeconds;
 
-  MobilizonClientConfig({
-    required this.apiUrl,
-    this.enableDebugLogging = false,
-    this.tokenStorage,
-    this.networkTimeoutSeconds = 30,
-  });
+  const MobilizonClientConfig({required this.apiUrl, this.enableDebugLogging = false, this.tokenStorage, this.networkTimeoutSeconds = 30});
 }
 
 /// Main client for interacting with Mobilizon
@@ -54,17 +49,14 @@ class MobilizonClient {
     );
 
     // Initialize authentication service
-    _authService = GraphQLAuthServiceImpl(
-      graphQLClient: _graphQLClient,
-      tokenManager: _tokenManager,
-    );
+    _authService = AuthServiceImpl(graphQLClient: _graphQLClient, tokenManager: _tokenManager);
 
     // TODO: Initialize other services (user, profile, admin)
   }
 
   /// Dispose all resources
   void dispose() {
-    (_authService as GraphQLAuthServiceImpl).dispose();
+    (_authService as AuthServiceImpl).dispose();
     _tokenManager.dispose();
   }
 

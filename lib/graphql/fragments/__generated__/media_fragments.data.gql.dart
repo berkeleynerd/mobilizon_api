@@ -24,9 +24,9 @@ abstract class GMediaBasicInfoData
         GMediaBasicInfo {
   GMediaBasicInfoData._();
 
-  factory GMediaBasicInfoData(
-          [void Function(GMediaBasicInfoDataBuilder b) updates]) =
-      _$GMediaBasicInfoData;
+  factory GMediaBasicInfoData([
+    void Function(GMediaBasicInfoDataBuilder b) updates,
+  ]) = _$GMediaBasicInfoData;
 
   static void _initializeBuilder(GMediaBasicInfoDataBuilder b) =>
       b..G__typename = 'Media';
@@ -49,16 +49,12 @@ abstract class GMediaBasicInfoData
   static Serializer<GMediaBasicInfoData> get serializer =>
       _$gMediaBasicInfoDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GMediaBasicInfoData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GMediaBasicInfoData.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaBasicInfoData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GMediaBasicInfoData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GMediaBasicInfoData.serializer, json);
 }
 
 abstract class GMediaWithMetadata implements GMediaBasicInfo {
@@ -93,9 +89,9 @@ abstract class GMediaWithMetadataData
         GMediaBasicInfo {
   GMediaWithMetadataData._();
 
-  factory GMediaWithMetadataData(
-          [void Function(GMediaWithMetadataDataBuilder b) updates]) =
-      _$GMediaWithMetadataData;
+  factory GMediaWithMetadataData([
+    void Function(GMediaWithMetadataDataBuilder b) updates,
+  ]) = _$GMediaWithMetadataData;
 
   static void _initializeBuilder(GMediaWithMetadataDataBuilder b) =>
       b..G__typename = 'Media';
@@ -120,28 +116,26 @@ abstract class GMediaWithMetadataData
   static Serializer<GMediaWithMetadataData> get serializer =>
       _$gMediaWithMetadataDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GMediaWithMetadataData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GMediaWithMetadataData.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaWithMetadataData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GMediaWithMetadataData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GMediaWithMetadataData.serializer, json);
 }
 
 abstract class GMediaWithMetadataData_metadata
     implements
-        Built<GMediaWithMetadataData_metadata,
-            GMediaWithMetadataData_metadataBuilder>,
+        Built<
+          GMediaWithMetadataData_metadata,
+          GMediaWithMetadataData_metadataBuilder
+        >,
         GMediaWithMetadata_metadata {
   GMediaWithMetadataData_metadata._();
 
-  factory GMediaWithMetadataData_metadata(
-          [void Function(GMediaWithMetadataData_metadataBuilder b) updates]) =
-      _$GMediaWithMetadataData_metadata;
+  factory GMediaWithMetadataData_metadata([
+    void Function(GMediaWithMetadataData_metadataBuilder b) updates,
+  ]) = _$GMediaWithMetadataData_metadata;
 
   static void _initializeBuilder(GMediaWithMetadataData_metadataBuilder b) =>
       b..G__typename = 'MediaMetadata';
@@ -158,10 +152,12 @@ abstract class GMediaWithMetadataData_metadata
   static Serializer<GMediaWithMetadataData_metadata> get serializer =>
       _$gMediaWithMetadataDataMetadataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GMediaWithMetadataData_metadata.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GMediaWithMetadataData_metadata.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GMediaWithMetadataData_metadata? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(

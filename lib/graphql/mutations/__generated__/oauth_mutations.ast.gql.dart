@@ -54,37 +54,41 @@ const AuthorizeApplication = _i1.OperationDefinitionNode(
     ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'authorizeApplication'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'clientId'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'clientId')),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'authorizeApplication'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'clientId'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'clientId')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'redirectUri'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'redirectUri')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'state'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'state')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'scope'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'scope')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'ApplicationCodeAndStateInfo'),
+              directives: [],
+            ),
+          ],
         ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'redirectUri'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'redirectUri')),
-        ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'state'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'state')),
-        ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'scope'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'scope')),
-        ),
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'ApplicationCodeAndStateInfo'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+      ),
+    ],
+  ),
 );
 const AuthorizeDeviceApplication = _i1.OperationDefinitionNode(
   type: _i1.OperationType.mutation,
@@ -110,29 +114,33 @@ const AuthorizeDeviceApplication = _i1.OperationDefinitionNode(
     ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'authorizeDeviceApplication'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'clientId'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'clientId')),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'authorizeDeviceApplication'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'clientId'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'clientId')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'userCode'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'userCode')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'AuthApplicationInfo'),
+              directives: [],
+            ),
+          ],
         ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'userCode'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'userCode')),
-        ),
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'AuthApplicationInfo'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+      ),
+    ],
+  ),
 );
 const DeviceActivation = _i1.OperationDefinitionNode(
   type: _i1.OperationType.mutation,
@@ -146,28 +154,32 @@ const DeviceActivation = _i1.OperationDefinitionNode(
       ),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'deviceActivation'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'userCode'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'userCode')),
-        )
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'ApplicationDeviceActivationInfo'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'deviceActivation'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'userCode'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'userCode')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'ApplicationDeviceActivationInfo'),
+              directives: [],
+            ),
+          ],
+        ),
+      ),
+    ],
+  ),
 );
 const RevokeApplicationToken = _i1.OperationDefinitionNode(
   type: _i1.OperationType.mutation,
@@ -181,50 +193,56 @@ const RevokeApplicationToken = _i1.OperationDefinitionNode(
       ),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'revokeApplicationToken'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'appTokenId'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'appTokenId')),
-        )
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'DeletedObjectResponse'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'revokeApplicationToken'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'appTokenId'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'appTokenId')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'DeletedObjectResponse'),
+              directives: [],
+            ),
+          ],
+        ),
+      ),
+    ],
+  ),
 );
-const document = _i1.DocumentNode(definitions: [
-  AuthorizeApplication,
-  AuthorizeDeviceApplication,
-  DeviceActivation,
-  RevokeApplicationToken,
-  _i2.AuthApplicationInfo,
-  _i2.AuthApplicationTokenInfo,
-  _i2.ApplicationCodeAndStateInfo,
-  _i2.ApplicationDeviceActivationInfo,
-  _i3.UserBasicInfo,
-  _i3.UserWithSettings,
-  _i3.UserFull,
-  _i3.ActorBasicInfo,
-  _i3.PersonInfo,
-  _i3.LoginResponse,
-  _i3.RefreshedTokenResponse,
-  _i3.DeletedObjectResponse,
-  _i4.MediaBasicInfo,
-  _i4.MediaWithMetadata,
-  _i5.PersonBasicInfo,
-  _i5.PersonWithStats,
-  _i5.PersonFull,
-  _i5.ActorInterface,
-]);
+const document = _i1.DocumentNode(
+  definitions: [
+    AuthorizeApplication,
+    AuthorizeDeviceApplication,
+    DeviceActivation,
+    RevokeApplicationToken,
+    _i2.AuthApplicationInfo,
+    _i2.AuthApplicationTokenInfo,
+    _i2.ApplicationCodeAndStateInfo,
+    _i2.ApplicationDeviceActivationInfo,
+    _i3.UserBasicInfo,
+    _i3.UserWithSettings,
+    _i3.UserFull,
+    _i3.ActorBasicInfo,
+    _i3.PersonInfo,
+    _i3.LoginResponse,
+    _i3.RefreshedTokenResponse,
+    _i3.DeletedObjectResponse,
+    _i4.MediaBasicInfo,
+    _i4.MediaWithMetadata,
+    _i5.PersonBasicInfo,
+    _i5.PersonWithStats,
+    _i5.PersonFull,
+    _i5.ActorInterface,
+  ],
+);

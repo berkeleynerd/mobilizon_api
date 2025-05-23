@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'models/auth_models.dart';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import 'models/auth_models.dart';
 
 /// Interface for secure token storage
 abstract class TokenStorage {
@@ -37,6 +39,7 @@ class TokenManager {
 
     final storedTokens = await _storage.getTokens();
     _cachedTokens = storedTokens;
+
     return storedTokens;
   }
 
@@ -80,20 +83,13 @@ class SecureTokenStorage implements TokenStorage {
   // Secure storage instance
   final FlutterSecureStorage _secureStorage;
 
-  SecureTokenStorage({FlutterSecureStorage? secureStorage})
-    : _secureStorage = secureStorage ?? const FlutterSecureStorage();
+  SecureTokenStorage({FlutterSecureStorage? secureStorage}) : _secureStorage = secureStorage ?? const FlutterSecureStorage();
 
   @override
   Future<void> storeTokens(TokenPair tokens) async {
     await _secureStorage.write(key: _accessTokenKey, value: tokens.accessToken);
-    await _secureStorage.write(
-      key: _refreshTokenKey,
-      value: tokens.refreshToken,
-    );
-    await _secureStorage.write(
-      key: _expiryKey,
-      value: tokens.accessTokenExpiry.millisecondsSinceEpoch.toString(),
-    );
+    await _secureStorage.write(key: _refreshTokenKey, value: tokens.refreshToken);
+    await _secureStorage.write(key: _expiryKey, value: tokens.accessTokenExpiry.millisecondsSinceEpoch.toString());
   }
 
   @override
@@ -110,14 +106,11 @@ class SecureTokenStorage implements TokenStorage {
       final expiryTimestamp = int.parse(expiryString);
       final expiry = DateTime.fromMillisecondsSinceEpoch(expiryTimestamp);
 
-      return TokenPair(
-        accessToken: accessToken,
-        refreshToken: refreshToken,
-        accessTokenExpiry: expiry,
-      );
+      return TokenPair(accessToken: accessToken, refreshToken: refreshToken, accessTokenExpiry: expiry);
     } catch (e) {
       // If we can't parse the expiry, clear the tokens and return null
       await clearTokens();
+
       return null;
     }
   }

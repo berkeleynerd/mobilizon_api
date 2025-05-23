@@ -67,9 +67,9 @@ abstract class GPersonBasicInfoData
         GPersonBasicInfo {
   GPersonBasicInfoData._();
 
-  factory GPersonBasicInfoData(
-          [void Function(GPersonBasicInfoDataBuilder b) updates]) =
-      _$GPersonBasicInfoData;
+  factory GPersonBasicInfoData([
+    void Function(GPersonBasicInfoDataBuilder b) updates,
+  ]) = _$GPersonBasicInfoData;
 
   static void _initializeBuilder(GPersonBasicInfoDataBuilder b) =>
       b..G__typename = 'Person';
@@ -102,16 +102,12 @@ abstract class GPersonBasicInfoData
   static Serializer<GPersonBasicInfoData> get serializer =>
       _$gPersonBasicInfoDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonBasicInfoData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(GPersonBasicInfoData.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonBasicInfoData? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonBasicInfoData.serializer,
-        json,
-      );
+      _i3.serializers.deserializeWith(GPersonBasicInfoData.serializer, json);
 }
 
 abstract class GPersonBasicInfoData_avatar
@@ -121,9 +117,9 @@ abstract class GPersonBasicInfoData_avatar
         _i2.GMediaBasicInfo {
   GPersonBasicInfoData_avatar._();
 
-  factory GPersonBasicInfoData_avatar(
-          [void Function(GPersonBasicInfoData_avatarBuilder b) updates]) =
-      _$GPersonBasicInfoData_avatar;
+  factory GPersonBasicInfoData_avatar([
+    void Function(GPersonBasicInfoData_avatarBuilder b) updates,
+  ]) = _$GPersonBasicInfoData_avatar;
 
   static void _initializeBuilder(GPersonBasicInfoData_avatarBuilder b) =>
       b..G__typename = 'Media';
@@ -146,16 +142,16 @@ abstract class GPersonBasicInfoData_avatar
   static Serializer<GPersonBasicInfoData_avatar> get serializer =>
       _$gPersonBasicInfoDataAvatarSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonBasicInfoData_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonBasicInfoData_avatar.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GPersonBasicInfoData_avatar? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonBasicInfoData_avatar.serializer,
-        json,
-      );
+  static GPersonBasicInfoData_avatar? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GPersonBasicInfoData_avatar.serializer, json);
 }
 
 abstract class GPersonBasicInfoData_banner
@@ -165,9 +161,9 @@ abstract class GPersonBasicInfoData_banner
         _i2.GMediaBasicInfo {
   GPersonBasicInfoData_banner._();
 
-  factory GPersonBasicInfoData_banner(
-          [void Function(GPersonBasicInfoData_bannerBuilder b) updates]) =
-      _$GPersonBasicInfoData_banner;
+  factory GPersonBasicInfoData_banner([
+    void Function(GPersonBasicInfoData_bannerBuilder b) updates,
+  ]) = _$GPersonBasicInfoData_banner;
 
   static void _initializeBuilder(GPersonBasicInfoData_bannerBuilder b) =>
       b..G__typename = 'Media';
@@ -190,16 +186,16 @@ abstract class GPersonBasicInfoData_banner
   static Serializer<GPersonBasicInfoData_banner> get serializer =>
       _$gPersonBasicInfoDataBannerSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonBasicInfoData_banner.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonBasicInfoData_banner.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GPersonBasicInfoData_banner? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonBasicInfoData_banner.serializer,
-        json,
-      );
+  static GPersonBasicInfoData_banner? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GPersonBasicInfoData_banner.serializer, json);
 }
 
 abstract class GPersonWithStats implements GPersonBasicInfo {
@@ -294,9 +290,9 @@ abstract class GPersonWithStatsData
         GPersonBasicInfo {
   GPersonWithStatsData._();
 
-  factory GPersonWithStatsData(
-          [void Function(GPersonWithStatsDataBuilder b) updates]) =
-      _$GPersonWithStatsData;
+  factory GPersonWithStatsData([
+    void Function(GPersonWithStatsDataBuilder b) updates,
+  ]) = _$GPersonWithStatsData;
 
   static void _initializeBuilder(GPersonWithStatsDataBuilder b) =>
       b..G__typename = 'Person';
@@ -343,16 +339,12 @@ abstract class GPersonWithStatsData
   static Serializer<GPersonWithStatsData> get serializer =>
       _$gPersonWithStatsDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonWithStatsData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(GPersonWithStatsData.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonWithStatsData? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonWithStatsData.serializer,
-        json,
-      );
+      _i3.serializers.deserializeWith(GPersonWithStatsData.serializer, json);
 }
 
 abstract class GPersonWithStatsData_avatar
@@ -363,9 +355,9 @@ abstract class GPersonWithStatsData_avatar
         _i2.GMediaBasicInfo {
   GPersonWithStatsData_avatar._();
 
-  factory GPersonWithStatsData_avatar(
-          [void Function(GPersonWithStatsData_avatarBuilder b) updates]) =
-      _$GPersonWithStatsData_avatar;
+  factory GPersonWithStatsData_avatar([
+    void Function(GPersonWithStatsData_avatarBuilder b) updates,
+  ]) = _$GPersonWithStatsData_avatar;
 
   static void _initializeBuilder(GPersonWithStatsData_avatarBuilder b) =>
       b..G__typename = 'Media';
@@ -388,16 +380,16 @@ abstract class GPersonWithStatsData_avatar
   static Serializer<GPersonWithStatsData_avatar> get serializer =>
       _$gPersonWithStatsDataAvatarSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonWithStatsData_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonWithStatsData_avatar.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GPersonWithStatsData_avatar? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonWithStatsData_avatar.serializer,
-        json,
-      );
+  static GPersonWithStatsData_avatar? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GPersonWithStatsData_avatar.serializer, json);
 }
 
 abstract class GPersonWithStatsData_banner
@@ -408,9 +400,9 @@ abstract class GPersonWithStatsData_banner
         _i2.GMediaBasicInfo {
   GPersonWithStatsData_banner._();
 
-  factory GPersonWithStatsData_banner(
-          [void Function(GPersonWithStatsData_bannerBuilder b) updates]) =
-      _$GPersonWithStatsData_banner;
+  factory GPersonWithStatsData_banner([
+    void Function(GPersonWithStatsData_bannerBuilder b) updates,
+  ]) = _$GPersonWithStatsData_banner;
 
   static void _initializeBuilder(GPersonWithStatsData_bannerBuilder b) =>
       b..G__typename = 'Media';
@@ -433,32 +425,34 @@ abstract class GPersonWithStatsData_banner
   static Serializer<GPersonWithStatsData_banner> get serializer =>
       _$gPersonWithStatsDataBannerSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonWithStatsData_banner.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonWithStatsData_banner.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GPersonWithStatsData_banner? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonWithStatsData_banner.serializer,
-        json,
-      );
+  static GPersonWithStatsData_banner? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GPersonWithStatsData_banner.serializer, json);
 }
 
 abstract class GPersonWithStatsData_organizedEvents
     implements
-        Built<GPersonWithStatsData_organizedEvents,
-            GPersonWithStatsData_organizedEventsBuilder>,
+        Built<
+          GPersonWithStatsData_organizedEvents,
+          GPersonWithStatsData_organizedEventsBuilder
+        >,
         GPersonWithStats_organizedEvents {
   GPersonWithStatsData_organizedEvents._();
 
-  factory GPersonWithStatsData_organizedEvents(
-      [void Function(GPersonWithStatsData_organizedEventsBuilder b)
-          updates]) = _$GPersonWithStatsData_organizedEvents;
+  factory GPersonWithStatsData_organizedEvents([
+    void Function(GPersonWithStatsData_organizedEventsBuilder b) updates,
+  ]) = _$GPersonWithStatsData_organizedEvents;
 
   static void _initializeBuilder(
-          GPersonWithStatsData_organizedEventsBuilder b) =>
-      b..G__typename = 'PaginatedEventList';
+    GPersonWithStatsData_organizedEventsBuilder b,
+  ) => b..G__typename = 'PaginatedEventList';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -468,33 +462,37 @@ abstract class GPersonWithStatsData_organizedEvents
   static Serializer<GPersonWithStatsData_organizedEvents> get serializer =>
       _$gPersonWithStatsDataOrganizedEventsSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonWithStatsData_organizedEvents.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonWithStatsData_organizedEvents.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GPersonWithStatsData_organizedEvents? fromJson(
-          Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonWithStatsData_organizedEvents.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i3.serializers.deserializeWith(
+    GPersonWithStatsData_organizedEvents.serializer,
+    json,
+  );
 }
 
 abstract class GPersonWithStatsData_participations
     implements
-        Built<GPersonWithStatsData_participations,
-            GPersonWithStatsData_participationsBuilder>,
+        Built<
+          GPersonWithStatsData_participations,
+          GPersonWithStatsData_participationsBuilder
+        >,
         GPersonWithStats_participations {
   GPersonWithStatsData_participations._();
 
-  factory GPersonWithStatsData_participations(
-      [void Function(GPersonWithStatsData_participationsBuilder b)
-          updates]) = _$GPersonWithStatsData_participations;
+  factory GPersonWithStatsData_participations([
+    void Function(GPersonWithStatsData_participationsBuilder b) updates,
+  ]) = _$GPersonWithStatsData_participations;
 
   static void _initializeBuilder(
-          GPersonWithStatsData_participationsBuilder b) =>
-      b..G__typename = 'PaginatedParticipantList';
+    GPersonWithStatsData_participationsBuilder b,
+  ) => b..G__typename = 'PaginatedParticipantList';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -504,29 +502,33 @@ abstract class GPersonWithStatsData_participations
   static Serializer<GPersonWithStatsData_participations> get serializer =>
       _$gPersonWithStatsDataParticipationsSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonWithStatsData_participations.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonWithStatsData_participations.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GPersonWithStatsData_participations? fromJson(
-          Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonWithStatsData_participations.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i3.serializers.deserializeWith(
+    GPersonWithStatsData_participations.serializer,
+    json,
+  );
 }
 
 abstract class GPersonWithStatsData_memberships
     implements
-        Built<GPersonWithStatsData_memberships,
-            GPersonWithStatsData_membershipsBuilder>,
+        Built<
+          GPersonWithStatsData_memberships,
+          GPersonWithStatsData_membershipsBuilder
+        >,
         GPersonWithStats_memberships {
   GPersonWithStatsData_memberships._();
 
-  factory GPersonWithStatsData_memberships(
-          [void Function(GPersonWithStatsData_membershipsBuilder b) updates]) =
-      _$GPersonWithStatsData_memberships;
+  factory GPersonWithStatsData_memberships([
+    void Function(GPersonWithStatsData_membershipsBuilder b) updates,
+  ]) = _$GPersonWithStatsData_memberships;
 
   static void _initializeBuilder(GPersonWithStatsData_membershipsBuilder b) =>
       b..G__typename = 'PaginatedMemberList';
@@ -539,17 +541,19 @@ abstract class GPersonWithStatsData_memberships
   static Serializer<GPersonWithStatsData_memberships> get serializer =>
       _$gPersonWithStatsDataMembershipsSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonWithStatsData_memberships.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonWithStatsData_memberships.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GPersonWithStatsData_memberships? fromJson(
-          Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonWithStatsData_memberships.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i3.serializers.deserializeWith(
+    GPersonWithStatsData_memberships.serializer,
+    json,
+  );
 }
 
 abstract class GPersonFull implements GPersonWithStats {
@@ -736,16 +740,12 @@ abstract class GPersonFullData
   static Serializer<GPersonFullData> get serializer =>
       _$gPersonFullDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(GPersonFullData.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonFullData? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonFullData.serializer,
-        json,
-      );
+      _i3.serializers.deserializeWith(GPersonFullData.serializer, json);
 }
 
 abstract class GPersonFullData_avatar
@@ -756,9 +756,9 @@ abstract class GPersonFullData_avatar
         _i2.GMediaBasicInfo {
   GPersonFullData_avatar._();
 
-  factory GPersonFullData_avatar(
-          [void Function(GPersonFullData_avatarBuilder b) updates]) =
-      _$GPersonFullData_avatar;
+  factory GPersonFullData_avatar([
+    void Function(GPersonFullData_avatarBuilder b) updates,
+  ]) = _$GPersonFullData_avatar;
 
   static void _initializeBuilder(GPersonFullData_avatarBuilder b) =>
       b..G__typename = 'Media';
@@ -781,16 +781,12 @@ abstract class GPersonFullData_avatar
   static Serializer<GPersonFullData_avatar> get serializer =>
       _$gPersonFullDataAvatarSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(GPersonFullData_avatar.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonFullData_avatar? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonFullData_avatar.serializer,
-        json,
-      );
+      _i3.serializers.deserializeWith(GPersonFullData_avatar.serializer, json);
 }
 
 abstract class GPersonFullData_banner
@@ -801,9 +797,9 @@ abstract class GPersonFullData_banner
         _i2.GMediaBasicInfo {
   GPersonFullData_banner._();
 
-  factory GPersonFullData_banner(
-          [void Function(GPersonFullData_bannerBuilder b) updates]) =
-      _$GPersonFullData_banner;
+  factory GPersonFullData_banner([
+    void Function(GPersonFullData_bannerBuilder b) updates,
+  ]) = _$GPersonFullData_banner;
 
   static void _initializeBuilder(GPersonFullData_bannerBuilder b) =>
       b..G__typename = 'Media';
@@ -826,29 +822,27 @@ abstract class GPersonFullData_banner
   static Serializer<GPersonFullData_banner> get serializer =>
       _$gPersonFullDataBannerSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_banner.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(GPersonFullData_banner.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonFullData_banner? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonFullData_banner.serializer,
-        json,
-      );
+      _i3.serializers.deserializeWith(GPersonFullData_banner.serializer, json);
 }
 
 abstract class GPersonFullData_organizedEvents
     implements
-        Built<GPersonFullData_organizedEvents,
-            GPersonFullData_organizedEventsBuilder>,
+        Built<
+          GPersonFullData_organizedEvents,
+          GPersonFullData_organizedEventsBuilder
+        >,
         GPersonFull_organizedEvents,
         GPersonWithStats_organizedEvents {
   GPersonFullData_organizedEvents._();
 
-  factory GPersonFullData_organizedEvents(
-          [void Function(GPersonFullData_organizedEventsBuilder b) updates]) =
-      _$GPersonFullData_organizedEvents;
+  factory GPersonFullData_organizedEvents([
+    void Function(GPersonFullData_organizedEventsBuilder b) updates,
+  ]) = _$GPersonFullData_organizedEvents;
 
   static void _initializeBuilder(GPersonFullData_organizedEventsBuilder b) =>
       b..G__typename = 'PaginatedEventList';
@@ -861,10 +855,12 @@ abstract class GPersonFullData_organizedEvents
   static Serializer<GPersonFullData_organizedEvents> get serializer =>
       _$gPersonFullDataOrganizedEventsSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_organizedEvents.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonFullData_organizedEvents.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GPersonFullData_organizedEvents? fromJson(Map<String, dynamic> json) =>
       _i3.serializers.deserializeWith(
@@ -875,15 +871,17 @@ abstract class GPersonFullData_organizedEvents
 
 abstract class GPersonFullData_participations
     implements
-        Built<GPersonFullData_participations,
-            GPersonFullData_participationsBuilder>,
+        Built<
+          GPersonFullData_participations,
+          GPersonFullData_participationsBuilder
+        >,
         GPersonFull_participations,
         GPersonWithStats_participations {
   GPersonFullData_participations._();
 
-  factory GPersonFullData_participations(
-          [void Function(GPersonFullData_participationsBuilder b) updates]) =
-      _$GPersonFullData_participations;
+  factory GPersonFullData_participations([
+    void Function(GPersonFullData_participationsBuilder b) updates,
+  ]) = _$GPersonFullData_participations;
 
   static void _initializeBuilder(GPersonFullData_participationsBuilder b) =>
       b..G__typename = 'PaginatedParticipantList';
@@ -896,10 +894,12 @@ abstract class GPersonFullData_participations
   static Serializer<GPersonFullData_participations> get serializer =>
       _$gPersonFullDataParticipationsSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_participations.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonFullData_participations.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GPersonFullData_participations? fromJson(Map<String, dynamic> json) =>
       _i3.serializers.deserializeWith(
@@ -915,9 +915,9 @@ abstract class GPersonFullData_memberships
         GPersonWithStats_memberships {
   GPersonFullData_memberships._();
 
-  factory GPersonFullData_memberships(
-          [void Function(GPersonFullData_membershipsBuilder b) updates]) =
-      _$GPersonFullData_memberships;
+  factory GPersonFullData_memberships([
+    void Function(GPersonFullData_membershipsBuilder b) updates,
+  ]) = _$GPersonFullData_memberships;
 
   static void _initializeBuilder(GPersonFullData_membershipsBuilder b) =>
       b..G__typename = 'PaginatedMemberList';
@@ -930,16 +930,16 @@ abstract class GPersonFullData_memberships
   static Serializer<GPersonFullData_memberships> get serializer =>
       _$gPersonFullDataMembershipsSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_memberships.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonFullData_memberships.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GPersonFullData_memberships? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonFullData_memberships.serializer,
-        json,
-      );
+  static GPersonFullData_memberships? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GPersonFullData_memberships.serializer, json);
 }
 
 abstract class GPersonFullData_feedTokens
@@ -948,9 +948,9 @@ abstract class GPersonFullData_feedTokens
         GPersonFull_feedTokens {
   GPersonFullData_feedTokens._();
 
-  factory GPersonFullData_feedTokens(
-          [void Function(GPersonFullData_feedTokensBuilder b) updates]) =
-      _$GPersonFullData_feedTokens;
+  factory GPersonFullData_feedTokens([
+    void Function(GPersonFullData_feedTokensBuilder b) updates,
+  ]) = _$GPersonFullData_feedTokens;
 
   static void _initializeBuilder(GPersonFullData_feedTokensBuilder b) =>
       b..G__typename = 'FeedToken';
@@ -965,28 +965,30 @@ abstract class GPersonFullData_feedTokens
   static Serializer<GPersonFullData_feedTokens> get serializer =>
       _$gPersonFullDataFeedTokensSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_feedTokens.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonFullData_feedTokens.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GPersonFullData_feedTokens? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonFullData_feedTokens.serializer,
-        json,
-      );
+  static GPersonFullData_feedTokens? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GPersonFullData_feedTokens.serializer, json);
 }
 
 abstract class GPersonFullData_feedTokens_actor
     implements
-        Built<GPersonFullData_feedTokens_actor,
-            GPersonFullData_feedTokens_actorBuilder>,
+        Built<
+          GPersonFullData_feedTokens_actor,
+          GPersonFullData_feedTokens_actorBuilder
+        >,
         GPersonFull_feedTokens_actor {
   GPersonFullData_feedTokens_actor._();
 
-  factory GPersonFullData_feedTokens_actor(
-          [void Function(GPersonFullData_feedTokens_actorBuilder b) updates]) =
-      _$GPersonFullData_feedTokens_actor;
+  factory GPersonFullData_feedTokens_actor([
+    void Function(GPersonFullData_feedTokens_actorBuilder b) updates,
+  ]) = _$GPersonFullData_feedTokens_actor;
 
   static void _initializeBuilder(GPersonFullData_feedTokens_actorBuilder b) =>
       b..G__typename = 'Actor';
@@ -1001,17 +1003,19 @@ abstract class GPersonFullData_feedTokens_actor
   static Serializer<GPersonFullData_feedTokens_actor> get serializer =>
       _$gPersonFullDataFeedTokensActorSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_feedTokens_actor.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GPersonFullData_feedTokens_actor.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GPersonFullData_feedTokens_actor? fromJson(
-          Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonFullData_feedTokens_actor.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i3.serializers.deserializeWith(
+    GPersonFullData_feedTokens_actor.serializer,
+    json,
+  );
 }
 
 abstract class GPersonFullData_user
@@ -1020,9 +1024,9 @@ abstract class GPersonFullData_user
         GPersonFull_user {
   GPersonFullData_user._();
 
-  factory GPersonFullData_user(
-          [void Function(GPersonFullData_userBuilder b) updates]) =
-      _$GPersonFullData_user;
+  factory GPersonFullData_user([
+    void Function(GPersonFullData_userBuilder b) updates,
+  ]) = _$GPersonFullData_user;
 
   static void _initializeBuilder(GPersonFullData_userBuilder b) =>
       b..G__typename = 'User';
@@ -1041,16 +1045,12 @@ abstract class GPersonFullData_user
   static Serializer<GPersonFullData_user> get serializer =>
       _$gPersonFullDataUserSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GPersonFullData_user.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(GPersonFullData_user.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonFullData_user? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GPersonFullData_user.serializer,
-        json,
-      );
+      _i3.serializers.deserializeWith(GPersonFullData_user.serializer, json);
 }
 
 abstract class GActorInterface {
@@ -1112,9 +1112,9 @@ abstract class GActorInterfaceData
         GActorInterface {
   GActorInterfaceData._();
 
-  factory GActorInterfaceData(
-          [void Function(GActorInterfaceDataBuilder b) updates]) =
-      _$GActorInterfaceData;
+  factory GActorInterfaceData([
+    void Function(GActorInterfaceDataBuilder b) updates,
+  ]) = _$GActorInterfaceData;
 
   static void _initializeBuilder(GActorInterfaceDataBuilder b) =>
       b..G__typename = 'Actor';
@@ -1155,16 +1155,12 @@ abstract class GActorInterfaceData
   static Serializer<GActorInterfaceData> get serializer =>
       _$gActorInterfaceDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GActorInterfaceData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(GActorInterfaceData.serializer, this)
+          as Map<String, dynamic>);
 
   static GActorInterfaceData? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GActorInterfaceData.serializer,
-        json,
-      );
+      _i3.serializers.deserializeWith(GActorInterfaceData.serializer, json);
 }
 
 abstract class GActorInterfaceData_avatar
@@ -1174,9 +1170,9 @@ abstract class GActorInterfaceData_avatar
         _i2.GMediaBasicInfo {
   GActorInterfaceData_avatar._();
 
-  factory GActorInterfaceData_avatar(
-          [void Function(GActorInterfaceData_avatarBuilder b) updates]) =
-      _$GActorInterfaceData_avatar;
+  factory GActorInterfaceData_avatar([
+    void Function(GActorInterfaceData_avatarBuilder b) updates,
+  ]) = _$GActorInterfaceData_avatar;
 
   static void _initializeBuilder(GActorInterfaceData_avatarBuilder b) =>
       b..G__typename = 'Media';
@@ -1199,16 +1195,16 @@ abstract class GActorInterfaceData_avatar
   static Serializer<GActorInterfaceData_avatar> get serializer =>
       _$gActorInterfaceDataAvatarSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GActorInterfaceData_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GActorInterfaceData_avatar.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GActorInterfaceData_avatar? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GActorInterfaceData_avatar.serializer,
-        json,
-      );
+  static GActorInterfaceData_avatar? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GActorInterfaceData_avatar.serializer, json);
 }
 
 abstract class GActorInterfaceData_banner
@@ -1218,9 +1214,9 @@ abstract class GActorInterfaceData_banner
         _i2.GMediaBasicInfo {
   GActorInterfaceData_banner._();
 
-  factory GActorInterfaceData_banner(
-          [void Function(GActorInterfaceData_bannerBuilder b) updates]) =
-      _$GActorInterfaceData_banner;
+  factory GActorInterfaceData_banner([
+    void Function(GActorInterfaceData_bannerBuilder b) updates,
+  ]) = _$GActorInterfaceData_banner;
 
   static void _initializeBuilder(GActorInterfaceData_bannerBuilder b) =>
       b..G__typename = 'Media';
@@ -1243,14 +1239,14 @@ abstract class GActorInterfaceData_banner
   static Serializer<GActorInterfaceData_banner> get serializer =>
       _$gActorInterfaceDataBannerSerializer;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
-        GActorInterfaceData_banner.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i3.serializers.serializeWith(
+            GActorInterfaceData_banner.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GActorInterfaceData_banner? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
-        GActorInterfaceData_banner.serializer,
-        json,
-      );
+  static GActorInterfaceData_banner? fromJson(Map<String, dynamic> json) => _i3
+      .serializers
+      .deserializeWith(GActorInterfaceData_banner.serializer, json);
 }

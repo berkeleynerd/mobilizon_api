@@ -13,25 +13,21 @@ abstract class GChangePasswordVars
     implements Built<GChangePasswordVars, GChangePasswordVarsBuilder> {
   GChangePasswordVars._();
 
-  factory GChangePasswordVars(
-          [void Function(GChangePasswordVarsBuilder b) updates]) =
-      _$GChangePasswordVars;
+  factory GChangePasswordVars([
+    void Function(GChangePasswordVarsBuilder b) updates,
+  ]) = _$GChangePasswordVars;
 
   String get oldPassword;
   String get newPassword;
   static Serializer<GChangePasswordVars> get serializer =>
       _$gChangePasswordVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GChangePasswordVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GChangePasswordVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GChangePasswordVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GChangePasswordVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GChangePasswordVars.serializer, json);
 }
 
 abstract class GChangeEmailVars
@@ -46,49 +42,41 @@ abstract class GChangeEmailVars
   static Serializer<GChangeEmailVars> get serializer =>
       _$gChangeEmailVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GChangeEmailVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GChangeEmailVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GChangeEmailVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GChangeEmailVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GChangeEmailVars.serializer, json);
 }
 
 abstract class GValidateEmailVars
     implements Built<GValidateEmailVars, GValidateEmailVarsBuilder> {
   GValidateEmailVars._();
 
-  factory GValidateEmailVars(
-          [void Function(GValidateEmailVarsBuilder b) updates]) =
-      _$GValidateEmailVars;
+  factory GValidateEmailVars([
+    void Function(GValidateEmailVarsBuilder b) updates,
+  ]) = _$GValidateEmailVars;
 
   String get token;
   static Serializer<GValidateEmailVars> get serializer =>
       _$gValidateEmailVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GValidateEmailVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GValidateEmailVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GValidateEmailVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GValidateEmailVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GValidateEmailVars.serializer, json);
 }
 
 abstract class GSetUserSettingsVars
     implements Built<GSetUserSettingsVars, GSetUserSettingsVarsBuilder> {
   GSetUserSettingsVars._();
 
-  factory GSetUserSettingsVars(
-          [void Function(GSetUserSettingsVarsBuilder b) updates]) =
-      _$GSetUserSettingsVars;
+  factory GSetUserSettingsVars([
+    void Function(GSetUserSettingsVarsBuilder b) updates,
+  ]) = _$GSetUserSettingsVars;
 
   _i2.GTimezone? get timezone;
   bool? get notificationOnDay;
@@ -101,63 +89,51 @@ abstract class GSetUserSettingsVars
   static Serializer<GSetUserSettingsVars> get serializer =>
       _$gSetUserSettingsVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GSetUserSettingsVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GSetUserSettingsVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GSetUserSettingsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GSetUserSettingsVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GSetUserSettingsVars.serializer, json);
 }
 
 abstract class GUpdateLocaleVars
     implements Built<GUpdateLocaleVars, GUpdateLocaleVarsBuilder> {
   GUpdateLocaleVars._();
 
-  factory GUpdateLocaleVars(
-          [void Function(GUpdateLocaleVarsBuilder b) updates]) =
-      _$GUpdateLocaleVars;
+  factory GUpdateLocaleVars([
+    void Function(GUpdateLocaleVarsBuilder b) updates,
+  ]) = _$GUpdateLocaleVars;
 
   String? get locale;
   static Serializer<GUpdateLocaleVars> get serializer =>
       _$gUpdateLocaleVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GUpdateLocaleVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GUpdateLocaleVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GUpdateLocaleVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GUpdateLocaleVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GUpdateLocaleVars.serializer, json);
 }
 
 abstract class GDeleteAccountVars
     implements Built<GDeleteAccountVars, GDeleteAccountVarsBuilder> {
   GDeleteAccountVars._();
 
-  factory GDeleteAccountVars(
-          [void Function(GDeleteAccountVarsBuilder b) updates]) =
-      _$GDeleteAccountVars;
+  factory GDeleteAccountVars([
+    void Function(GDeleteAccountVarsBuilder b) updates,
+  ]) = _$GDeleteAccountVars;
 
   String? get password;
   String? get userId;
   static Serializer<GDeleteAccountVars> get serializer =>
       _$gDeleteAccountVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GDeleteAccountVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GDeleteAccountVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GDeleteAccountVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GDeleteAccountVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GDeleteAccountVars.serializer, json);
 }

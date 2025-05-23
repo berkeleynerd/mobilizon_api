@@ -1,6 +1,8 @@
 /// Domain models for authentication
 /// These models represent the core domain concepts for authentication,
 /// completely decoupled from the underlying GraphQL implementation.
+// ignore_for_file: prefer-match-file-name
+
 library;
 
 /// Authentication credentials for login
@@ -8,7 +10,7 @@ class AuthCredentials {
   final String email;
   final String password;
 
-  AuthCredentials({required this.email, required this.password});
+  const AuthCredentials({required this.email, required this.password});
 }
 
 /// User registration information
@@ -17,7 +19,7 @@ class RegistrationData {
   final String password;
   final String? locale;
 
-  RegistrationData({required this.email, required this.password, this.locale});
+  const RegistrationData({required this.email, required this.password, this.locale});
 }
 
 /// Authentication token pair
@@ -26,11 +28,7 @@ class TokenPair {
   final String refreshToken;
   final DateTime accessTokenExpiry;
 
-  TokenPair({
-    required this.accessToken,
-    required this.refreshToken,
-    required this.accessTokenExpiry,
-  });
+  const TokenPair({required this.accessToken, required this.refreshToken, required this.accessTokenExpiry});
 
   bool get isAccessTokenExpired => DateTime.now().isAfter(accessTokenExpiry);
 }
@@ -40,7 +38,7 @@ class AuthResult {
   final TokenPair tokens;
   final User user;
 
-  AuthResult({required this.tokens, required this.user});
+  const AuthResult({required this.tokens, required this.user});
 }
 
 /// User model representing a Mobilizon user account
@@ -52,14 +50,7 @@ class User {
   final List<Person> profiles;
   final UserSettings? settings;
 
-  User({
-    required this.id,
-    required this.email,
-    required this.confirmed,
-    required this.role,
-    required this.profiles,
-    this.settings,
-  });
+  const User({required this.id, required this.email, required this.confirmed, required this.role, required this.profiles, this.settings});
 }
 
 /// Person model representing a Mobilizon profile/identity
@@ -71,14 +62,7 @@ class Person {
   final Media? avatar;
   final Media? banner;
 
-  Person({
-    required this.id,
-    required this.preferredUsername,
-    this.name,
-    this.summary,
-    this.avatar,
-    this.banner,
-  });
+  const Person({required this.id, required this.preferredUsername, this.name, this.summary, this.avatar, this.banner});
 }
 
 /// Media item for profile images
@@ -87,7 +71,7 @@ class Media {
   final String url;
   final String? alt;
 
-  Media({required this.id, required this.url, this.alt});
+  const Media({required this.id, required this.url, this.alt});
 }
 
 /// User settings
@@ -100,7 +84,7 @@ class UserSettings {
   final NotificationPendingEnum notificationPendingMembership;
   final NotificationPendingEnum groupNotifications;
 
-  UserSettings({
+  const UserSettings({
     this.timezone,
     required this.notificationOnDay,
     required this.notificationEachWeek,
@@ -120,7 +104,7 @@ class InstanceConfig {
   final List<OAuthProvider> oauthProviders;
   final AnonymousPermissions anonymousPermissions;
 
-  InstanceConfig({
+  const InstanceConfig({
     required this.name,
     required this.description,
     required this.registrationsOpen,
@@ -136,11 +120,7 @@ class OAuthProvider {
   final String name;
   final String authorizationEndpoint;
 
-  OAuthProvider({
-    required this.id,
-    required this.name,
-    required this.authorizationEndpoint,
-  });
+  const OAuthProvider({required this.id, required this.name, required this.authorizationEndpoint});
 }
 
 /// Anonymous user permissions
@@ -149,11 +129,7 @@ class AnonymousPermissions {
   final bool canParticipate;
   final bool canReport;
 
-  AnonymousPermissions({
-    required this.canCreateEvents,
-    required this.canParticipate,
-    required this.canReport,
-  });
+  const AnonymousPermissions({required this.canCreateEvents, required this.canParticipate, required this.canReport});
 }
 
 /// Result of a password reset request
@@ -161,7 +137,7 @@ class PasswordResetRequestResult {
   final bool success;
   final String? message;
 
-  PasswordResetRequestResult({required this.success, this.message});
+  const PasswordResetRequestResult({required this.success, this.message});
 }
 
 /// Enums
@@ -170,11 +146,4 @@ class PasswordResetRequestResult {
 enum UserRole { administrator, moderator, user }
 
 /// Notification timing preferences
-enum NotificationPendingEnum {
-  always,
-  never,
-  oneHour,
-  oneDay,
-  threeDays,
-  oneWeek,
-}
+enum NotificationPendingEnum { always, never, oneHour, oneDay, threeDays, oneWeek }

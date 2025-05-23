@@ -22,9 +22,9 @@ abstract class GMediaBasicInfoReq
         _i1.FragmentRequest<_i2.GMediaBasicInfoData, _i3.GMediaBasicInfoVars> {
   GMediaBasicInfoReq._();
 
-  factory GMediaBasicInfoReq(
-          [void Function(GMediaBasicInfoReqBuilder b) updates]) =
-      _$GMediaBasicInfoReq;
+  factory GMediaBasicInfoReq([
+    void Function(GMediaBasicInfoReqBuilder b) updates,
+  ]) = _$GMediaBasicInfoReq;
 
   static void _initializeBuilder(GMediaBasicInfoReqBuilder b) => b
     ..document = _i4.document
@@ -52,28 +52,26 @@ abstract class GMediaBasicInfoReq
   static Serializer<GMediaBasicInfoReq> get serializer =>
       _$gMediaBasicInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GMediaBasicInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GMediaBasicInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaBasicInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GMediaBasicInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GMediaBasicInfoReq.serializer, json);
 }
 
 abstract class GMediaWithMetadataReq
     implements
         Built<GMediaWithMetadataReq, GMediaWithMetadataReqBuilder>,
-        _i1.FragmentRequest<_i2.GMediaWithMetadataData,
-            _i3.GMediaWithMetadataVars> {
+        _i1.FragmentRequest<
+          _i2.GMediaWithMetadataData,
+          _i3.GMediaWithMetadataVars
+        > {
   GMediaWithMetadataReq._();
 
-  factory GMediaWithMetadataReq(
-          [void Function(GMediaWithMetadataReqBuilder b) updates]) =
-      _$GMediaWithMetadataReq;
+  factory GMediaWithMetadataReq([
+    void Function(GMediaWithMetadataReqBuilder b) updates,
+  ]) = _$GMediaWithMetadataReq;
 
   static void _initializeBuilder(GMediaWithMetadataReqBuilder b) => b
     ..document = _i4.document
@@ -101,14 +99,10 @@ abstract class GMediaWithMetadataReq
   static Serializer<GMediaWithMetadataReq> get serializer =>
       _$gMediaWithMetadataReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GMediaWithMetadataReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GMediaWithMetadataReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaWithMetadataReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GMediaWithMetadataReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GMediaWithMetadataReq.serializer, json);
 }

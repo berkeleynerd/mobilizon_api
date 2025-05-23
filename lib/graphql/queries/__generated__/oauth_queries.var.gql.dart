@@ -12,22 +12,18 @@ abstract class GGetAuthApplicationVars
     implements Built<GGetAuthApplicationVars, GGetAuthApplicationVarsBuilder> {
   GGetAuthApplicationVars._();
 
-  factory GGetAuthApplicationVars(
-          [void Function(GGetAuthApplicationVarsBuilder b) updates]) =
-      _$GGetAuthApplicationVars;
+  factory GGetAuthApplicationVars([
+    void Function(GGetAuthApplicationVarsBuilder b) updates,
+  ]) = _$GGetAuthApplicationVars;
 
   String get clientId;
   static Serializer<GGetAuthApplicationVars> get serializer =>
       _$gGetAuthApplicationVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetAuthApplicationVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetAuthApplicationVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetAuthApplicationVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetAuthApplicationVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetAuthApplicationVars.serializer, json);
 }

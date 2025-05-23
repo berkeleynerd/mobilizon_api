@@ -28,11 +28,6 @@ const Point = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'Point'),
   directives: [],
 );
-const document = _i1.DocumentNode(definitions: [
-  DateTime,
-  NaiveDateTime,
-  UUID,
-  Upload,
-  Timezone,
-  Point,
-]);
+const document = _i1.DocumentNode(
+  definitions: [DateTime, NaiveDateTime, UUID, Upload, Timezone, Point],
+);

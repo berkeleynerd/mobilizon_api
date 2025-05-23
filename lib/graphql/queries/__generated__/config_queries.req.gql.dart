@@ -38,19 +38,17 @@ abstract class GGetConfigReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GGetConfigData? Function(
-    _i2.GGetConfigData?,
-    _i2.GGetConfigData?,
-  )? get updateResult;
+  _i2.GGetConfigData? Function(_i2.GGetConfigData?, _i2.GGetConfigData?)?
+  get updateResult;
   @override
   _i2.GGetConfigData? get optimisticResponse;
   @override
@@ -76,19 +74,15 @@ abstract class GGetConfigReq
 
   @override
   _i1.OperationRequest<_i2.GGetConfigData, _i3.GGetConfigVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetConfigReq> get serializer => _$gGetConfigReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetConfigReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetConfigReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetConfigReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetConfigReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetConfigReq.serializer, json);
 }

@@ -38,19 +38,17 @@ abstract class GGetPersonsReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GGetPersonsData? Function(
-    _i2.GGetPersonsData?,
-    _i2.GGetPersonsData?,
-  )? get updateResult;
+  _i2.GGetPersonsData? Function(_i2.GGetPersonsData?, _i2.GGetPersonsData?)?
+  get updateResult;
   @override
   _i2.GGetPersonsData? get optimisticResponse;
   @override
@@ -76,20 +74,16 @@ abstract class GGetPersonsReq
 
   @override
   _i1.OperationRequest<_i2.GGetPersonsData, _i3.GGetPersonsVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetPersonsReq> get serializer =>
       _$gGetPersonsReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetPersonsReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetPersonsReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetPersonsReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetPersonsReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetPersonsReq.serializer, json);
 }

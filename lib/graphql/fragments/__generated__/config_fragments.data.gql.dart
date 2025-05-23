@@ -65,16 +65,12 @@ abstract class GConfigInfoData
   static Serializer<GConfigInfoData> get serializer =>
       _$gConfigInfoDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GConfigInfoData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GConfigInfoData.serializer, this)
+          as Map<String, dynamic>);
 
   static GConfigInfoData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GConfigInfoData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GConfigInfoData.serializer, json);
 }
 
 abstract class GOAuthProviderInfo {
@@ -89,9 +85,9 @@ abstract class GOAuthProviderInfoData
         GOAuthProviderInfo {
   GOAuthProviderInfoData._();
 
-  factory GOAuthProviderInfoData(
-          [void Function(GOAuthProviderInfoDataBuilder b) updates]) =
-      _$GOAuthProviderInfoData;
+  factory GOAuthProviderInfoData([
+    void Function(GOAuthProviderInfoDataBuilder b) updates,
+  ]) = _$GOAuthProviderInfoData;
 
   static void _initializeBuilder(GOAuthProviderInfoDataBuilder b) =>
       b..G__typename = 'OauthProvider';
@@ -106,16 +102,12 @@ abstract class GOAuthProviderInfoData
   static Serializer<GOAuthProviderInfoData> get serializer =>
       _$gOAuthProviderInfoDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GOAuthProviderInfoData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GOAuthProviderInfoData.serializer, this)
+          as Map<String, dynamic>);
 
   static GOAuthProviderInfoData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GOAuthProviderInfoData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GOAuthProviderInfoData.serializer, json);
 }
 
 abstract class GAnonymousParticipationConfig {
@@ -143,14 +135,16 @@ abstract class GAnonymousParticipationConfig_validation_captcha {
 
 abstract class GAnonymousParticipationConfigData
     implements
-        Built<GAnonymousParticipationConfigData,
-            GAnonymousParticipationConfigDataBuilder>,
+        Built<
+          GAnonymousParticipationConfigData,
+          GAnonymousParticipationConfigDataBuilder
+        >,
         GAnonymousParticipationConfig {
   GAnonymousParticipationConfigData._();
 
-  factory GAnonymousParticipationConfigData(
-          [void Function(GAnonymousParticipationConfigDataBuilder b) updates]) =
-      _$GAnonymousParticipationConfigData;
+  factory GAnonymousParticipationConfigData([
+    void Function(GAnonymousParticipationConfigDataBuilder b) updates,
+  ]) = _$GAnonymousParticipationConfigData;
 
   static void _initializeBuilder(GAnonymousParticipationConfigDataBuilder b) =>
       b..G__typename = 'AnonymousParticipation';
@@ -165,33 +159,38 @@ abstract class GAnonymousParticipationConfigData
   static Serializer<GAnonymousParticipationConfigData> get serializer =>
       _$gAnonymousParticipationConfigDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousParticipationConfigData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousParticipationConfigData.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousParticipationConfigData? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousParticipationConfigData.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousParticipationConfigData.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousParticipationConfigData_validation
     implements
-        Built<GAnonymousParticipationConfigData_validation,
-            GAnonymousParticipationConfigData_validationBuilder>,
+        Built<
+          GAnonymousParticipationConfigData_validation,
+          GAnonymousParticipationConfigData_validationBuilder
+        >,
         GAnonymousParticipationConfig_validation {
   GAnonymousParticipationConfigData_validation._();
 
-  factory GAnonymousParticipationConfigData_validation(
-      [void Function(GAnonymousParticipationConfigData_validationBuilder b)
-          updates]) = _$GAnonymousParticipationConfigData_validation;
+  factory GAnonymousParticipationConfigData_validation([
+    void Function(GAnonymousParticipationConfigData_validationBuilder b)
+    updates,
+  ]) = _$GAnonymousParticipationConfigData_validation;
 
   static void _initializeBuilder(
-          GAnonymousParticipationConfigData_validationBuilder b) =>
-      b..G__typename = 'AnonymousParticipationValidation';
+    GAnonymousParticipationConfigData_validationBuilder b,
+  ) => b..G__typename = 'AnonymousParticipationValidation';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -201,36 +200,40 @@ abstract class GAnonymousParticipationConfigData_validation
   @override
   GAnonymousParticipationConfigData_validation_captcha? get captcha;
   static Serializer<GAnonymousParticipationConfigData_validation>
-      get serializer => _$gAnonymousParticipationConfigDataValidationSerializer;
+  get serializer => _$gAnonymousParticipationConfigDataValidationSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousParticipationConfigData_validation.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousParticipationConfigData_validation.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousParticipationConfigData_validation? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousParticipationConfigData_validation.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousParticipationConfigData_validation.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousParticipationConfigData_validation_email
     implements
-        Built<GAnonymousParticipationConfigData_validation_email,
-            GAnonymousParticipationConfigData_validation_emailBuilder>,
+        Built<
+          GAnonymousParticipationConfigData_validation_email,
+          GAnonymousParticipationConfigData_validation_emailBuilder
+        >,
         GAnonymousParticipationConfig_validation_email {
   GAnonymousParticipationConfigData_validation_email._();
 
-  factory GAnonymousParticipationConfigData_validation_email(
-      [void Function(
-              GAnonymousParticipationConfigData_validation_emailBuilder b)
-          updates]) = _$GAnonymousParticipationConfigData_validation_email;
+  factory GAnonymousParticipationConfigData_validation_email([
+    void Function(GAnonymousParticipationConfigData_validation_emailBuilder b)
+    updates,
+  ]) = _$GAnonymousParticipationConfigData_validation_email;
 
   static void _initializeBuilder(
-          GAnonymousParticipationConfigData_validation_emailBuilder b) =>
-      b..G__typename = 'AnonymousParticipationValidationEmail';
+    GAnonymousParticipationConfigData_validation_emailBuilder b,
+  ) => b..G__typename = 'AnonymousParticipationValidationEmail';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -240,37 +243,41 @@ abstract class GAnonymousParticipationConfigData_validation_email
   @override
   bool? get confirmationRequired;
   static Serializer<GAnonymousParticipationConfigData_validation_email>
-      get serializer =>
-          _$gAnonymousParticipationConfigDataValidationEmailSerializer;
+  get serializer =>
+      _$gAnonymousParticipationConfigDataValidationEmailSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousParticipationConfigData_validation_email.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousParticipationConfigData_validation_email.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousParticipationConfigData_validation_email? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousParticipationConfigData_validation_email.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousParticipationConfigData_validation_email.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousParticipationConfigData_validation_captcha
     implements
-        Built<GAnonymousParticipationConfigData_validation_captcha,
-            GAnonymousParticipationConfigData_validation_captchaBuilder>,
+        Built<
+          GAnonymousParticipationConfigData_validation_captcha,
+          GAnonymousParticipationConfigData_validation_captchaBuilder
+        >,
         GAnonymousParticipationConfig_validation_captcha {
   GAnonymousParticipationConfigData_validation_captcha._();
 
-  factory GAnonymousParticipationConfigData_validation_captcha(
-      [void Function(
-              GAnonymousParticipationConfigData_validation_captchaBuilder b)
-          updates]) = _$GAnonymousParticipationConfigData_validation_captcha;
+  factory GAnonymousParticipationConfigData_validation_captcha([
+    void Function(GAnonymousParticipationConfigData_validation_captchaBuilder b)
+    updates,
+  ]) = _$GAnonymousParticipationConfigData_validation_captcha;
 
   static void _initializeBuilder(
-          GAnonymousParticipationConfigData_validation_captchaBuilder b) =>
-      b..G__typename = 'AnonymousParticipationValidationCaptcha';
+    GAnonymousParticipationConfigData_validation_captchaBuilder b,
+  ) => b..G__typename = 'AnonymousParticipationValidationCaptcha';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -278,20 +285,22 @@ abstract class GAnonymousParticipationConfigData_validation_captcha
   @override
   bool? get enabled;
   static Serializer<GAnonymousParticipationConfigData_validation_captcha>
-      get serializer =>
-          _$gAnonymousParticipationConfigDataValidationCaptchaSerializer;
+  get serializer =>
+      _$gAnonymousParticipationConfigDataValidationCaptchaSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousParticipationConfigData_validation_captcha.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousParticipationConfigData_validation_captcha.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousParticipationConfigData_validation_captcha? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousParticipationConfigData_validation_captcha.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousParticipationConfigData_validation_captcha.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousEventCreationConfig {
@@ -319,14 +328,16 @@ abstract class GAnonymousEventCreationConfig_validation_captcha {
 
 abstract class GAnonymousEventCreationConfigData
     implements
-        Built<GAnonymousEventCreationConfigData,
-            GAnonymousEventCreationConfigDataBuilder>,
+        Built<
+          GAnonymousEventCreationConfigData,
+          GAnonymousEventCreationConfigDataBuilder
+        >,
         GAnonymousEventCreationConfig {
   GAnonymousEventCreationConfigData._();
 
-  factory GAnonymousEventCreationConfigData(
-          [void Function(GAnonymousEventCreationConfigDataBuilder b) updates]) =
-      _$GAnonymousEventCreationConfigData;
+  factory GAnonymousEventCreationConfigData([
+    void Function(GAnonymousEventCreationConfigDataBuilder b) updates,
+  ]) = _$GAnonymousEventCreationConfigData;
 
   static void _initializeBuilder(GAnonymousEventCreationConfigDataBuilder b) =>
       b..G__typename = 'AnonymousEventCreation';
@@ -341,33 +352,38 @@ abstract class GAnonymousEventCreationConfigData
   static Serializer<GAnonymousEventCreationConfigData> get serializer =>
       _$gAnonymousEventCreationConfigDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousEventCreationConfigData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousEventCreationConfigData.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousEventCreationConfigData? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousEventCreationConfigData.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousEventCreationConfigData.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousEventCreationConfigData_validation
     implements
-        Built<GAnonymousEventCreationConfigData_validation,
-            GAnonymousEventCreationConfigData_validationBuilder>,
+        Built<
+          GAnonymousEventCreationConfigData_validation,
+          GAnonymousEventCreationConfigData_validationBuilder
+        >,
         GAnonymousEventCreationConfig_validation {
   GAnonymousEventCreationConfigData_validation._();
 
-  factory GAnonymousEventCreationConfigData_validation(
-      [void Function(GAnonymousEventCreationConfigData_validationBuilder b)
-          updates]) = _$GAnonymousEventCreationConfigData_validation;
+  factory GAnonymousEventCreationConfigData_validation([
+    void Function(GAnonymousEventCreationConfigData_validationBuilder b)
+    updates,
+  ]) = _$GAnonymousEventCreationConfigData_validation;
 
   static void _initializeBuilder(
-          GAnonymousEventCreationConfigData_validationBuilder b) =>
-      b..G__typename = 'AnonymousEventCreationValidation';
+    GAnonymousEventCreationConfigData_validationBuilder b,
+  ) => b..G__typename = 'AnonymousEventCreationValidation';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -377,36 +393,40 @@ abstract class GAnonymousEventCreationConfigData_validation
   @override
   GAnonymousEventCreationConfigData_validation_captcha? get captcha;
   static Serializer<GAnonymousEventCreationConfigData_validation>
-      get serializer => _$gAnonymousEventCreationConfigDataValidationSerializer;
+  get serializer => _$gAnonymousEventCreationConfigDataValidationSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousEventCreationConfigData_validation.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousEventCreationConfigData_validation.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousEventCreationConfigData_validation? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousEventCreationConfigData_validation.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousEventCreationConfigData_validation.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousEventCreationConfigData_validation_email
     implements
-        Built<GAnonymousEventCreationConfigData_validation_email,
-            GAnonymousEventCreationConfigData_validation_emailBuilder>,
+        Built<
+          GAnonymousEventCreationConfigData_validation_email,
+          GAnonymousEventCreationConfigData_validation_emailBuilder
+        >,
         GAnonymousEventCreationConfig_validation_email {
   GAnonymousEventCreationConfigData_validation_email._();
 
-  factory GAnonymousEventCreationConfigData_validation_email(
-      [void Function(
-              GAnonymousEventCreationConfigData_validation_emailBuilder b)
-          updates]) = _$GAnonymousEventCreationConfigData_validation_email;
+  factory GAnonymousEventCreationConfigData_validation_email([
+    void Function(GAnonymousEventCreationConfigData_validation_emailBuilder b)
+    updates,
+  ]) = _$GAnonymousEventCreationConfigData_validation_email;
 
   static void _initializeBuilder(
-          GAnonymousEventCreationConfigData_validation_emailBuilder b) =>
-      b..G__typename = 'AnonymousEventCreationValidationEmail';
+    GAnonymousEventCreationConfigData_validation_emailBuilder b,
+  ) => b..G__typename = 'AnonymousEventCreationValidationEmail';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -416,37 +436,41 @@ abstract class GAnonymousEventCreationConfigData_validation_email
   @override
   bool? get confirmationRequired;
   static Serializer<GAnonymousEventCreationConfigData_validation_email>
-      get serializer =>
-          _$gAnonymousEventCreationConfigDataValidationEmailSerializer;
+  get serializer =>
+      _$gAnonymousEventCreationConfigDataValidationEmailSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousEventCreationConfigData_validation_email.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousEventCreationConfigData_validation_email.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousEventCreationConfigData_validation_email? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousEventCreationConfigData_validation_email.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousEventCreationConfigData_validation_email.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousEventCreationConfigData_validation_captcha
     implements
-        Built<GAnonymousEventCreationConfigData_validation_captcha,
-            GAnonymousEventCreationConfigData_validation_captchaBuilder>,
+        Built<
+          GAnonymousEventCreationConfigData_validation_captcha,
+          GAnonymousEventCreationConfigData_validation_captchaBuilder
+        >,
         GAnonymousEventCreationConfig_validation_captcha {
   GAnonymousEventCreationConfigData_validation_captcha._();
 
-  factory GAnonymousEventCreationConfigData_validation_captcha(
-      [void Function(
-              GAnonymousEventCreationConfigData_validation_captchaBuilder b)
-          updates]) = _$GAnonymousEventCreationConfigData_validation_captcha;
+  factory GAnonymousEventCreationConfigData_validation_captcha([
+    void Function(GAnonymousEventCreationConfigData_validation_captchaBuilder b)
+    updates,
+  ]) = _$GAnonymousEventCreationConfigData_validation_captcha;
 
   static void _initializeBuilder(
-          GAnonymousEventCreationConfigData_validation_captchaBuilder b) =>
-      b..G__typename = 'AnonymousEventCreationValidationCaptcha';
+    GAnonymousEventCreationConfigData_validation_captchaBuilder b,
+  ) => b..G__typename = 'AnonymousEventCreationValidationCaptcha';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -454,20 +478,22 @@ abstract class GAnonymousEventCreationConfigData_validation_captcha
   @override
   bool? get enabled;
   static Serializer<GAnonymousEventCreationConfigData_validation_captcha>
-      get serializer =>
-          _$gAnonymousEventCreationConfigDataValidationCaptchaSerializer;
+  get serializer =>
+      _$gAnonymousEventCreationConfigDataValidationCaptchaSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousEventCreationConfigData_validation_captcha.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousEventCreationConfigData_validation_captcha.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousEventCreationConfigData_validation_captcha? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousEventCreationConfigData_validation_captcha.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GAnonymousEventCreationConfigData_validation_captcha.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousReportsConfig {
@@ -481,9 +507,9 @@ abstract class GAnonymousReportsConfigData
         GAnonymousReportsConfig {
   GAnonymousReportsConfigData._();
 
-  factory GAnonymousReportsConfigData(
-          [void Function(GAnonymousReportsConfigDataBuilder b) updates]) =
-      _$GAnonymousReportsConfigData;
+  factory GAnonymousReportsConfigData([
+    void Function(GAnonymousReportsConfigDataBuilder b) updates,
+  ]) = _$GAnonymousReportsConfigData;
 
   static void _initializeBuilder(GAnonymousReportsConfigDataBuilder b) =>
       b..G__typename = 'AnonymousReports';
@@ -496,14 +522,14 @@ abstract class GAnonymousReportsConfigData
   static Serializer<GAnonymousReportsConfigData> get serializer =>
       _$gAnonymousReportsConfigDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAnonymousReportsConfigData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GAnonymousReportsConfigData.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GAnonymousReportsConfigData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAnonymousReportsConfigData.serializer,
-        json,
-      );
+  static GAnonymousReportsConfigData? fromJson(Map<String, dynamic> json) => _i1
+      .serializers
+      .deserializeWith(GAnonymousReportsConfigData.serializer, json);
 }

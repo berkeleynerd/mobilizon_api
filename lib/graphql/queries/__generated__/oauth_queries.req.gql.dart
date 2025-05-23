@@ -19,13 +19,15 @@ part 'oauth_queries.req.gql.g.dart';
 abstract class GGetAuthApplicationReq
     implements
         Built<GGetAuthApplicationReq, GGetAuthApplicationReqBuilder>,
-        _i1.OperationRequest<_i2.GGetAuthApplicationData,
-            _i3.GGetAuthApplicationVars> {
+        _i1.OperationRequest<
+          _i2.GGetAuthApplicationData,
+          _i3.GGetAuthApplicationVars
+        > {
   GGetAuthApplicationReq._();
 
-  factory GGetAuthApplicationReq(
-          [void Function(GGetAuthApplicationReqBuilder b) updates]) =
-      _$GGetAuthApplicationReq;
+  factory GGetAuthApplicationReq([
+    void Function(GGetAuthApplicationReqBuilder b) updates,
+  ]) = _$GGetAuthApplicationReq;
 
   static void _initializeBuilder(GGetAuthApplicationReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -40,10 +42,10 @@ abstract class GGetAuthApplicationReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -52,7 +54,8 @@ abstract class GGetAuthApplicationReq
   _i2.GGetAuthApplicationData? Function(
     _i2.GGetAuthApplicationData?,
     _i2.GGetAuthApplicationData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GGetAuthApplicationData? get optimisticResponse;
   @override
@@ -79,20 +82,16 @@ abstract class GGetAuthApplicationReq
 
   @override
   _i1.OperationRequest<_i2.GGetAuthApplicationData, _i3.GGetAuthApplicationVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetAuthApplicationReq> get serializer =>
       _$gGetAuthApplicationReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetAuthApplicationReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetAuthApplicationReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetAuthApplicationReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetAuthApplicationReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetAuthApplicationReq.serializer, json);
 }

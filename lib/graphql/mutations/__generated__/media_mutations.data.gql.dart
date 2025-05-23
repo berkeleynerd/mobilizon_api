@@ -26,28 +26,26 @@ abstract class GUploadMediaData
   static Serializer<GUploadMediaData> get serializer =>
       _$gUploadMediaDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GUploadMediaData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GUploadMediaData.serializer, this)
+          as Map<String, dynamic>);
 
   static GUploadMediaData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GUploadMediaData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GUploadMediaData.serializer, json);
 }
 
 abstract class GUploadMediaData_uploadMedia
     implements
-        Built<GUploadMediaData_uploadMedia,
-            GUploadMediaData_uploadMediaBuilder>,
+        Built<
+          GUploadMediaData_uploadMedia,
+          GUploadMediaData_uploadMediaBuilder
+        >,
         _i2.GMediaWithMetadata {
   GUploadMediaData_uploadMedia._();
 
-  factory GUploadMediaData_uploadMedia(
-          [void Function(GUploadMediaData_uploadMediaBuilder b) updates]) =
-      _$GUploadMediaData_uploadMedia;
+  factory GUploadMediaData_uploadMedia([
+    void Function(GUploadMediaData_uploadMediaBuilder b) updates,
+  ]) = _$GUploadMediaData_uploadMedia;
 
   static void _initializeBuilder(GUploadMediaData_uploadMediaBuilder b) =>
       b..G__typename = 'Media';
@@ -72,10 +70,12 @@ abstract class GUploadMediaData_uploadMedia
   static Serializer<GUploadMediaData_uploadMedia> get serializer =>
       _$gUploadMediaDataUploadMediaSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GUploadMediaData_uploadMedia.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GUploadMediaData_uploadMedia.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GUploadMediaData_uploadMedia? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -86,18 +86,20 @@ abstract class GUploadMediaData_uploadMedia
 
 abstract class GUploadMediaData_uploadMedia_metadata
     implements
-        Built<GUploadMediaData_uploadMedia_metadata,
-            GUploadMediaData_uploadMedia_metadataBuilder>,
+        Built<
+          GUploadMediaData_uploadMedia_metadata,
+          GUploadMediaData_uploadMedia_metadataBuilder
+        >,
         _i2.GMediaWithMetadata_metadata {
   GUploadMediaData_uploadMedia_metadata._();
 
-  factory GUploadMediaData_uploadMedia_metadata(
-      [void Function(GUploadMediaData_uploadMedia_metadataBuilder b)
-          updates]) = _$GUploadMediaData_uploadMedia_metadata;
+  factory GUploadMediaData_uploadMedia_metadata([
+    void Function(GUploadMediaData_uploadMedia_metadataBuilder b) updates,
+  ]) = _$GUploadMediaData_uploadMedia_metadata;
 
   static void _initializeBuilder(
-          GUploadMediaData_uploadMedia_metadataBuilder b) =>
-      b..G__typename = 'MediaMetadata';
+    GUploadMediaData_uploadMedia_metadataBuilder b,
+  ) => b..G__typename = 'MediaMetadata';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -111,17 +113,19 @@ abstract class GUploadMediaData_uploadMedia_metadata
   static Serializer<GUploadMediaData_uploadMedia_metadata> get serializer =>
       _$gUploadMediaDataUploadMediaMetadataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GUploadMediaData_uploadMedia_metadata.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GUploadMediaData_uploadMedia_metadata.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GUploadMediaData_uploadMedia_metadata? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GUploadMediaData_uploadMedia_metadata.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GUploadMediaData_uploadMedia_metadata.serializer,
+    json,
+  );
 }
 
 abstract class GRemoveMediaData
@@ -140,27 +144,25 @@ abstract class GRemoveMediaData
   static Serializer<GRemoveMediaData> get serializer =>
       _$gRemoveMediaDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GRemoveMediaData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GRemoveMediaData.serializer, this)
+          as Map<String, dynamic>);
 
   static GRemoveMediaData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GRemoveMediaData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GRemoveMediaData.serializer, json);
 }
 
 abstract class GRemoveMediaData_removeMedia
     implements
-        Built<GRemoveMediaData_removeMedia,
-            GRemoveMediaData_removeMediaBuilder> {
+        Built<
+          GRemoveMediaData_removeMedia,
+          GRemoveMediaData_removeMediaBuilder
+        > {
   GRemoveMediaData_removeMedia._();
 
-  factory GRemoveMediaData_removeMedia(
-          [void Function(GRemoveMediaData_removeMediaBuilder b) updates]) =
-      _$GRemoveMediaData_removeMedia;
+  factory GRemoveMediaData_removeMedia([
+    void Function(GRemoveMediaData_removeMediaBuilder b) updates,
+  ]) = _$GRemoveMediaData_removeMedia;
 
   static void _initializeBuilder(GRemoveMediaData_removeMediaBuilder b) =>
       b..G__typename = 'DeletedObject';
@@ -171,10 +173,12 @@ abstract class GRemoveMediaData_removeMedia
   static Serializer<GRemoveMediaData_removeMedia> get serializer =>
       _$gRemoveMediaDataRemoveMediaSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GRemoveMediaData_removeMedia.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GRemoveMediaData_removeMedia.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GRemoveMediaData_removeMedia? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(

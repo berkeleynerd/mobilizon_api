@@ -18,25 +18,21 @@ abstract class GMediaInput implements Built<GMediaInput, GMediaInputBuilder> {
   GMediaInputObject? get media;
   static Serializer<GMediaInput> get serializer => _$gMediaInputSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GMediaInput.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GMediaInput.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GMediaInput.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GMediaInput.serializer, json);
 }
 
 abstract class GMediaInputObject
     implements Built<GMediaInputObject, GMediaInputObjectBuilder> {
   GMediaInputObject._();
 
-  factory GMediaInputObject(
-          [void Function(GMediaInputObjectBuilder b) updates]) =
-      _$GMediaInputObject;
+  factory GMediaInputObject([
+    void Function(GMediaInputObjectBuilder b) updates,
+  ]) = _$GMediaInputObject;
 
   String? get actorId;
   String? get file;
@@ -46,16 +42,12 @@ abstract class GMediaInputObject
   static Serializer<GMediaInputObject> get serializer =>
       _$gMediaInputObjectSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GMediaInputObject.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GMediaInputObject.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaInputObject? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GMediaInputObject.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GMediaInputObject.serializer, json);
 }
 
 abstract class GLocationInput
@@ -71,16 +63,12 @@ abstract class GLocationInput
   static Serializer<GLocationInput> get serializer =>
       _$gLocationInputSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GLocationInput.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GLocationInput.serializer, this)
+          as Map<String, dynamic>);
 
   static GLocationInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GLocationInput.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GLocationInput.serializer, json);
 }
 
 const Map<String, Set<String>> possibleTypesMap = {};

@@ -22,9 +22,9 @@ abstract class GUserBasicInfoReq
         _i1.FragmentRequest<_i2.GUserBasicInfoData, _i3.GUserBasicInfoVars> {
   GUserBasicInfoReq._();
 
-  factory GUserBasicInfoReq(
-          [void Function(GUserBasicInfoReqBuilder b) updates]) =
-      _$GUserBasicInfoReq;
+  factory GUserBasicInfoReq([
+    void Function(GUserBasicInfoReqBuilder b) updates,
+  ]) = _$GUserBasicInfoReq;
 
   static void _initializeBuilder(GUserBasicInfoReqBuilder b) => b
     ..document = _i4.document
@@ -51,28 +51,26 @@ abstract class GUserBasicInfoReq
   static Serializer<GUserBasicInfoReq> get serializer =>
       _$gUserBasicInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GUserBasicInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GUserBasicInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GUserBasicInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GUserBasicInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GUserBasicInfoReq.serializer, json);
 }
 
 abstract class GUserWithSettingsReq
     implements
         Built<GUserWithSettingsReq, GUserWithSettingsReqBuilder>,
-        _i1
-        .FragmentRequest<_i2.GUserWithSettingsData, _i3.GUserWithSettingsVars> {
+        _i1.FragmentRequest<
+          _i2.GUserWithSettingsData,
+          _i3.GUserWithSettingsVars
+        > {
   GUserWithSettingsReq._();
 
-  factory GUserWithSettingsReq(
-          [void Function(GUserWithSettingsReqBuilder b) updates]) =
-      _$GUserWithSettingsReq;
+  factory GUserWithSettingsReq([
+    void Function(GUserWithSettingsReqBuilder b) updates,
+  ]) = _$GUserWithSettingsReq;
 
   static void _initializeBuilder(GUserWithSettingsReqBuilder b) => b
     ..document = _i4.document
@@ -100,16 +98,12 @@ abstract class GUserWithSettingsReq
   static Serializer<GUserWithSettingsReq> get serializer =>
       _$gUserWithSettingsReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GUserWithSettingsReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GUserWithSettingsReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GUserWithSettingsReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GUserWithSettingsReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GUserWithSettingsReq.serializer, json);
 }
 
 abstract class GUserFullReq
@@ -145,16 +139,12 @@ abstract class GUserFullReq
 
   static Serializer<GUserFullReq> get serializer => _$gUserFullReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GUserFullReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GUserFullReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GUserFullReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GUserFullReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GUserFullReq.serializer, json);
 }
 
 abstract class GActorBasicInfoReq
@@ -163,9 +153,9 @@ abstract class GActorBasicInfoReq
         _i1.FragmentRequest<_i2.GActorBasicInfoData, _i3.GActorBasicInfoVars> {
   GActorBasicInfoReq._();
 
-  factory GActorBasicInfoReq(
-          [void Function(GActorBasicInfoReqBuilder b) updates]) =
-      _$GActorBasicInfoReq;
+  factory GActorBasicInfoReq([
+    void Function(GActorBasicInfoReqBuilder b) updates,
+  ]) = _$GActorBasicInfoReq;
 
   static void _initializeBuilder(GActorBasicInfoReqBuilder b) => b
     ..document = _i4.document
@@ -193,16 +183,12 @@ abstract class GActorBasicInfoReq
   static Serializer<GActorBasicInfoReq> get serializer =>
       _$gActorBasicInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GActorBasicInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GActorBasicInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GActorBasicInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GActorBasicInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GActorBasicInfoReq.serializer, json);
 }
 
 abstract class GPersonInfoReq
@@ -239,16 +225,12 @@ abstract class GPersonInfoReq
   static Serializer<GPersonInfoReq> get serializer =>
       _$gPersonInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GPersonInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GPersonInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GPersonInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GPersonInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GPersonInfoReq.serializer, json);
 }
 
 abstract class GLoginResponseReq
@@ -257,9 +239,9 @@ abstract class GLoginResponseReq
         _i1.FragmentRequest<_i2.GLoginResponseData, _i3.GLoginResponseVars> {
   GLoginResponseReq._();
 
-  factory GLoginResponseReq(
-          [void Function(GLoginResponseReqBuilder b) updates]) =
-      _$GLoginResponseReq;
+  factory GLoginResponseReq([
+    void Function(GLoginResponseReqBuilder b) updates,
+  ]) = _$GLoginResponseReq;
 
   static void _initializeBuilder(GLoginResponseReqBuilder b) => b
     ..document = _i4.document
@@ -286,28 +268,26 @@ abstract class GLoginResponseReq
   static Serializer<GLoginResponseReq> get serializer =>
       _$gLoginResponseReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GLoginResponseReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GLoginResponseReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GLoginResponseReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GLoginResponseReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GLoginResponseReq.serializer, json);
 }
 
 abstract class GRefreshedTokenResponseReq
     implements
         Built<GRefreshedTokenResponseReq, GRefreshedTokenResponseReqBuilder>,
-        _i1.FragmentRequest<_i2.GRefreshedTokenResponseData,
-            _i3.GRefreshedTokenResponseVars> {
+        _i1.FragmentRequest<
+          _i2.GRefreshedTokenResponseData,
+          _i3.GRefreshedTokenResponseVars
+        > {
   GRefreshedTokenResponseReq._();
 
-  factory GRefreshedTokenResponseReq(
-          [void Function(GRefreshedTokenResponseReqBuilder b) updates]) =
-      _$GRefreshedTokenResponseReq;
+  factory GRefreshedTokenResponseReq([
+    void Function(GRefreshedTokenResponseReqBuilder b) updates,
+  ]) = _$GRefreshedTokenResponseReq;
 
   static void _initializeBuilder(GRefreshedTokenResponseReqBuilder b) => b
     ..document = _i4.document
@@ -335,28 +315,30 @@ abstract class GRefreshedTokenResponseReq
   static Serializer<GRefreshedTokenResponseReq> get serializer =>
       _$gRefreshedTokenResponseReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GRefreshedTokenResponseReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GRefreshedTokenResponseReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GRefreshedTokenResponseReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GRefreshedTokenResponseReq.serializer,
-        json,
-      );
+  static GRefreshedTokenResponseReq? fromJson(Map<String, dynamic> json) => _i6
+      .serializers
+      .deserializeWith(GRefreshedTokenResponseReq.serializer, json);
 }
 
 abstract class GDeletedObjectResponseReq
     implements
         Built<GDeletedObjectResponseReq, GDeletedObjectResponseReqBuilder>,
-        _i1.FragmentRequest<_i2.GDeletedObjectResponseData,
-            _i3.GDeletedObjectResponseVars> {
+        _i1.FragmentRequest<
+          _i2.GDeletedObjectResponseData,
+          _i3.GDeletedObjectResponseVars
+        > {
   GDeletedObjectResponseReq._();
 
-  factory GDeletedObjectResponseReq(
-          [void Function(GDeletedObjectResponseReqBuilder b) updates]) =
-      _$GDeletedObjectResponseReq;
+  factory GDeletedObjectResponseReq([
+    void Function(GDeletedObjectResponseReqBuilder b) updates,
+  ]) = _$GDeletedObjectResponseReq;
 
   static void _initializeBuilder(GDeletedObjectResponseReqBuilder b) => b
     ..document = _i4.document
@@ -384,14 +366,11 @@ abstract class GDeletedObjectResponseReq
   static Serializer<GDeletedObjectResponseReq> get serializer =>
       _$gDeletedObjectResponseReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GDeletedObjectResponseReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GDeletedObjectResponseReq.serializer, this)
+          as Map<String, dynamic>);
 
-  static GDeletedObjectResponseReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GDeletedObjectResponseReq.serializer,
-        json,
-      );
+  static GDeletedObjectResponseReq? fromJson(Map<String, dynamic> json) => _i6
+      .serializers
+      .deserializeWith(GDeletedObjectResponseReq.serializer, json);
 }

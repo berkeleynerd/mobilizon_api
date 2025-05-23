@@ -38,19 +38,17 @@ abstract class GUploadMediaReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GUploadMediaData? Function(
-    _i2.GUploadMediaData?,
-    _i2.GUploadMediaData?,
-  )? get updateResult;
+  _i2.GUploadMediaData? Function(_i2.GUploadMediaData?, _i2.GUploadMediaData?)?
+  get updateResult;
   @override
   _i2.GUploadMediaData? get optimisticResponse;
   @override
@@ -76,22 +74,18 @@ abstract class GUploadMediaReq
 
   @override
   _i1.OperationRequest<_i2.GUploadMediaData, _i3.GUploadMediaVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GUploadMediaReq> get serializer =>
       _$gUploadMediaReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GUploadMediaReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GUploadMediaReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GUploadMediaReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GUploadMediaReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GUploadMediaReq.serializer, json);
 }
 
 abstract class GRemoveMediaReq
@@ -116,19 +110,17 @@ abstract class GRemoveMediaReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GRemoveMediaData? Function(
-    _i2.GRemoveMediaData?,
-    _i2.GRemoveMediaData?,
-  )? get updateResult;
+  _i2.GRemoveMediaData? Function(_i2.GRemoveMediaData?, _i2.GRemoveMediaData?)?
+  get updateResult;
   @override
   _i2.GRemoveMediaData? get optimisticResponse;
   @override
@@ -154,20 +146,16 @@ abstract class GRemoveMediaReq
 
   @override
   _i1.OperationRequest<_i2.GRemoveMediaData, _i3.GRemoveMediaVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GRemoveMediaReq> get serializer =>
       _$gRemoveMediaReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GRemoveMediaReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GRemoveMediaReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GRemoveMediaReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GRemoveMediaReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GRemoveMediaReq.serializer, json);
 }

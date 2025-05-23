@@ -22,9 +22,9 @@ abstract class GGetLoggedUserReq
         _i1.OperationRequest<_i2.GGetLoggedUserData, _i3.GGetLoggedUserVars> {
   GGetLoggedUserReq._();
 
-  factory GGetLoggedUserReq(
-          [void Function(GGetLoggedUserReqBuilder b) updates]) =
-      _$GGetLoggedUserReq;
+  factory GGetLoggedUserReq([
+    void Function(GGetLoggedUserReqBuilder b) updates,
+  ]) = _$GGetLoggedUserReq;
 
   static void _initializeBuilder(GGetLoggedUserReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -39,10 +39,10 @@ abstract class GGetLoggedUserReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -51,7 +51,8 @@ abstract class GGetLoggedUserReq
   _i2.GGetLoggedUserData? Function(
     _i2.GGetLoggedUserData?,
     _i2.GGetLoggedUserData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GGetLoggedUserData? get optimisticResponse;
   @override
@@ -77,34 +78,32 @@ abstract class GGetLoggedUserReq
 
   @override
   _i1.OperationRequest<_i2.GGetLoggedUserData, _i3.GGetLoggedUserVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetLoggedUserReq> get serializer =>
       _$gGetLoggedUserReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetLoggedUserReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetLoggedUserReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetLoggedUserReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetLoggedUserReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetLoggedUserReq.serializer, json);
 }
 
 abstract class GGetLoggedPersonReq
     implements
         Built<GGetLoggedPersonReq, GGetLoggedPersonReqBuilder>,
-        _i1
-        .OperationRequest<_i2.GGetLoggedPersonData, _i3.GGetLoggedPersonVars> {
+        _i1.OperationRequest<
+          _i2.GGetLoggedPersonData,
+          _i3.GGetLoggedPersonVars
+        > {
   GGetLoggedPersonReq._();
 
-  factory GGetLoggedPersonReq(
-          [void Function(GGetLoggedPersonReqBuilder b) updates]) =
-      _$GGetLoggedPersonReq;
+  factory GGetLoggedPersonReq([
+    void Function(GGetLoggedPersonReqBuilder b) updates,
+  ]) = _$GGetLoggedPersonReq;
 
   static void _initializeBuilder(GGetLoggedPersonReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -119,10 +118,10 @@ abstract class GGetLoggedPersonReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -131,7 +130,8 @@ abstract class GGetLoggedPersonReq
   _i2.GGetLoggedPersonData? Function(
     _i2.GGetLoggedPersonData?,
     _i2.GGetLoggedPersonData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GGetLoggedPersonData? get optimisticResponse;
   @override
@@ -158,22 +158,18 @@ abstract class GGetLoggedPersonReq
 
   @override
   _i1.OperationRequest<_i2.GGetLoggedPersonData, _i3.GGetLoggedPersonVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetLoggedPersonReq> get serializer =>
       _$gGetLoggedPersonReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetLoggedPersonReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetLoggedPersonReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetLoggedPersonReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetLoggedPersonReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetLoggedPersonReq.serializer, json);
 }
 
 abstract class GGetUserReq
@@ -198,19 +194,17 @@ abstract class GGetUserReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GGetUserData? Function(
-    _i2.GGetUserData?,
-    _i2.GGetUserData?,
-  )? get updateResult;
+  _i2.GGetUserData? Function(_i2.GGetUserData?, _i2.GGetUserData?)?
+  get updateResult;
   @override
   _i2.GGetUserData? get optimisticResponse;
   @override
@@ -236,21 +230,17 @@ abstract class GGetUserReq
 
   @override
   _i1.OperationRequest<_i2.GGetUserData, _i3.GGetUserVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
-      this.rebuild((b) => b..operation = transform(operation));
+    _i4.Operation Function(_i4.Operation) transform,
+  ) => this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetUserReq> get serializer => _$gGetUserReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetUserReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetUserReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetUserReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetUserReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetUserReq.serializer, json);
 }
 
 abstract class GGetUsersReq
@@ -275,19 +265,17 @@ abstract class GGetUsersReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GGetUsersData? Function(
-    _i2.GGetUsersData?,
-    _i2.GGetUsersData?,
-  )? get updateResult;
+  _i2.GGetUsersData? Function(_i2.GGetUsersData?, _i2.GGetUsersData?)?
+  get updateResult;
   @override
   _i2.GGetUsersData? get optimisticResponse;
   @override
@@ -313,21 +301,17 @@ abstract class GGetUsersReq
 
   @override
   _i1.OperationRequest<_i2.GGetUsersData, _i3.GGetUsersVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
-      this.rebuild((b) => b..operation = transform(operation));
+    _i4.Operation Function(_i4.Operation) transform,
+  ) => this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetUsersReq> get serializer => _$gGetUsersReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetUsersReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetUsersReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetUsersReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetUsersReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetUsersReq.serializer, json);
 }
 
 abstract class GFetchPersonReq
@@ -352,19 +336,17 @@ abstract class GFetchPersonReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GFetchPersonData? Function(
-    _i2.GFetchPersonData?,
-    _i2.GFetchPersonData?,
-  )? get updateResult;
+  _i2.GFetchPersonData? Function(_i2.GFetchPersonData?, _i2.GFetchPersonData?)?
+  get updateResult;
   @override
   _i2.GFetchPersonData? get optimisticResponse;
   @override
@@ -390,22 +372,18 @@ abstract class GFetchPersonReq
 
   @override
   _i1.OperationRequest<_i2.GFetchPersonData, _i3.GFetchPersonVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GFetchPersonReq> get serializer =>
       _$gFetchPersonReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GFetchPersonReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GFetchPersonReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GFetchPersonReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GFetchPersonReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GFetchPersonReq.serializer, json);
 }
 
 abstract class GGetPersonReq
@@ -430,19 +408,17 @@ abstract class GGetPersonReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GGetPersonData? Function(
-    _i2.GGetPersonData?,
-    _i2.GGetPersonData?,
-  )? get updateResult;
+  _i2.GGetPersonData? Function(_i2.GGetPersonData?, _i2.GGetPersonData?)?
+  get updateResult;
   @override
   _i2.GGetPersonData? get optimisticResponse;
   @override
@@ -468,21 +444,17 @@ abstract class GGetPersonReq
 
   @override
   _i1.OperationRequest<_i2.GGetPersonData, _i3.GGetPersonVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GGetPersonReq> get serializer => _$gGetPersonReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GGetPersonReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GGetPersonReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetPersonReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GGetPersonReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GGetPersonReq.serializer, json);
 }
 
 abstract class GSearchPersonsReq
@@ -491,9 +463,9 @@ abstract class GSearchPersonsReq
         _i1.OperationRequest<_i2.GSearchPersonsData, _i3.GSearchPersonsVars> {
   GSearchPersonsReq._();
 
-  factory GSearchPersonsReq(
-          [void Function(GSearchPersonsReqBuilder b) updates]) =
-      _$GSearchPersonsReq;
+  factory GSearchPersonsReq([
+    void Function(GSearchPersonsReqBuilder b) updates,
+  ]) = _$GSearchPersonsReq;
 
   static void _initializeBuilder(GSearchPersonsReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -508,10 +480,10 @@ abstract class GSearchPersonsReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -520,7 +492,8 @@ abstract class GSearchPersonsReq
   _i2.GSearchPersonsData? Function(
     _i2.GSearchPersonsData?,
     _i2.GSearchPersonsData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GSearchPersonsData? get optimisticResponse;
   @override
@@ -546,20 +519,16 @@ abstract class GSearchPersonsReq
 
   @override
   _i1.OperationRequest<_i2.GSearchPersonsData, _i3.GSearchPersonsVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GSearchPersonsReq> get serializer =>
       _$gSearchPersonsReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GSearchPersonsReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GSearchPersonsReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GSearchPersonsReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GSearchPersonsReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GSearchPersonsReq.serializer, json);
 }

@@ -23,16 +23,12 @@ abstract class GUploadMediaVars
   static Serializer<GUploadMediaVars> get serializer =>
       _$gUploadMediaVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
-        GUploadMediaVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GUploadMediaVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GUploadMediaVars? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(
-        GUploadMediaVars.serializer,
-        json,
-      );
+      _i2.serializers.deserializeWith(GUploadMediaVars.serializer, json);
 }
 
 abstract class GRemoveMediaVars
@@ -46,14 +42,10 @@ abstract class GRemoveMediaVars
   static Serializer<GRemoveMediaVars> get serializer =>
       _$gRemoveMediaVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
-        GRemoveMediaVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GRemoveMediaVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GRemoveMediaVars? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(
-        GRemoveMediaVars.serializer,
-        json,
-      );
+      _i2.serializers.deserializeWith(GRemoveMediaVars.serializer, json);
 }

@@ -19,13 +19,15 @@ part 'oauth_mutations.req.gql.g.dart';
 abstract class GAuthorizeApplicationReq
     implements
         Built<GAuthorizeApplicationReq, GAuthorizeApplicationReqBuilder>,
-        _i1.OperationRequest<_i2.GAuthorizeApplicationData,
-            _i3.GAuthorizeApplicationVars> {
+        _i1.OperationRequest<
+          _i2.GAuthorizeApplicationData,
+          _i3.GAuthorizeApplicationVars
+        > {
   GAuthorizeApplicationReq._();
 
-  factory GAuthorizeApplicationReq(
-          [void Function(GAuthorizeApplicationReqBuilder b) updates]) =
-      _$GAuthorizeApplicationReq;
+  factory GAuthorizeApplicationReq([
+    void Function(GAuthorizeApplicationReqBuilder b) updates,
+  ]) = _$GAuthorizeApplicationReq;
 
   static void _initializeBuilder(GAuthorizeApplicationReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -40,10 +42,10 @@ abstract class GAuthorizeApplicationReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -52,7 +54,8 @@ abstract class GAuthorizeApplicationReq
   _i2.GAuthorizeApplicationData? Function(
     _i2.GAuthorizeApplicationData?,
     _i2.GAuthorizeApplicationData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GAuthorizeApplicationData? get optimisticResponse;
   @override
@@ -78,37 +81,40 @@ abstract class GAuthorizeApplicationReq
       data.toJson();
 
   @override
-  _i1.OperationRequest<_i2.GAuthorizeApplicationData,
-      _i3.GAuthorizeApplicationVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
+  _i1.OperationRequest<
+    _i2.GAuthorizeApplicationData,
+    _i3.GAuthorizeApplicationVars
+  >
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
       this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GAuthorizeApplicationReq> get serializer =>
       _$gAuthorizeApplicationReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAuthorizeApplicationReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GAuthorizeApplicationReq.serializer, this)
+          as Map<String, dynamic>);
 
-  static GAuthorizeApplicationReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GAuthorizeApplicationReq.serializer,
-        json,
-      );
+  static GAuthorizeApplicationReq? fromJson(Map<String, dynamic> json) => _i6
+      .serializers
+      .deserializeWith(GAuthorizeApplicationReq.serializer, json);
 }
 
 abstract class GAuthorizeDeviceApplicationReq
     implements
-        Built<GAuthorizeDeviceApplicationReq,
-            GAuthorizeDeviceApplicationReqBuilder>,
-        _i1.OperationRequest<_i2.GAuthorizeDeviceApplicationData,
-            _i3.GAuthorizeDeviceApplicationVars> {
+        Built<
+          GAuthorizeDeviceApplicationReq,
+          GAuthorizeDeviceApplicationReqBuilder
+        >,
+        _i1.OperationRequest<
+          _i2.GAuthorizeDeviceApplicationData,
+          _i3.GAuthorizeDeviceApplicationVars
+        > {
   GAuthorizeDeviceApplicationReq._();
 
-  factory GAuthorizeDeviceApplicationReq(
-          [void Function(GAuthorizeDeviceApplicationReqBuilder b) updates]) =
-      _$GAuthorizeDeviceApplicationReq;
+  factory GAuthorizeDeviceApplicationReq([
+    void Function(GAuthorizeDeviceApplicationReqBuilder b) updates,
+  ]) = _$GAuthorizeDeviceApplicationReq;
 
   static void _initializeBuilder(GAuthorizeDeviceApplicationReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -123,10 +129,10 @@ abstract class GAuthorizeDeviceApplicationReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -135,7 +141,8 @@ abstract class GAuthorizeDeviceApplicationReq
   _i2.GAuthorizeDeviceApplicationData? Function(
     _i2.GAuthorizeDeviceApplicationData?,
     _i2.GAuthorizeDeviceApplicationData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GAuthorizeDeviceApplicationData? get optimisticResponse;
   @override
@@ -161,18 +168,22 @@ abstract class GAuthorizeDeviceApplicationReq
       data.toJson();
 
   @override
-  _i1.OperationRequest<_i2.GAuthorizeDeviceApplicationData,
-      _i3.GAuthorizeDeviceApplicationVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
+  _i1.OperationRequest<
+    _i2.GAuthorizeDeviceApplicationData,
+    _i3.GAuthorizeDeviceApplicationVars
+  >
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
       this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GAuthorizeDeviceApplicationReq> get serializer =>
       _$gAuthorizeDeviceApplicationReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAuthorizeDeviceApplicationReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GAuthorizeDeviceApplicationReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAuthorizeDeviceApplicationReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
@@ -184,13 +195,15 @@ abstract class GAuthorizeDeviceApplicationReq
 abstract class GDeviceActivationReq
     implements
         Built<GDeviceActivationReq, GDeviceActivationReqBuilder>,
-        _i1.OperationRequest<_i2.GDeviceActivationData,
-            _i3.GDeviceActivationVars> {
+        _i1.OperationRequest<
+          _i2.GDeviceActivationData,
+          _i3.GDeviceActivationVars
+        > {
   GDeviceActivationReq._();
 
-  factory GDeviceActivationReq(
-          [void Function(GDeviceActivationReqBuilder b) updates]) =
-      _$GDeviceActivationReq;
+  factory GDeviceActivationReq([
+    void Function(GDeviceActivationReqBuilder b) updates,
+  ]) = _$GDeviceActivationReq;
 
   static void _initializeBuilder(GDeviceActivationReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -205,10 +218,10 @@ abstract class GDeviceActivationReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -217,7 +230,8 @@ abstract class GDeviceActivationReq
   _i2.GDeviceActivationData? Function(
     _i2.GDeviceActivationData?,
     _i2.GDeviceActivationData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GDeviceActivationData? get optimisticResponse;
   @override
@@ -244,34 +258,32 @@ abstract class GDeviceActivationReq
 
   @override
   _i1.OperationRequest<_i2.GDeviceActivationData, _i3.GDeviceActivationVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GDeviceActivationReq> get serializer =>
       _$gDeviceActivationReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GDeviceActivationReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GDeviceActivationReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GDeviceActivationReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GDeviceActivationReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GDeviceActivationReq.serializer, json);
 }
 
 abstract class GRevokeApplicationTokenReq
     implements
         Built<GRevokeApplicationTokenReq, GRevokeApplicationTokenReqBuilder>,
-        _i1.OperationRequest<_i2.GRevokeApplicationTokenData,
-            _i3.GRevokeApplicationTokenVars> {
+        _i1.OperationRequest<
+          _i2.GRevokeApplicationTokenData,
+          _i3.GRevokeApplicationTokenVars
+        > {
   GRevokeApplicationTokenReq._();
 
-  factory GRevokeApplicationTokenReq(
-          [void Function(GRevokeApplicationTokenReqBuilder b) updates]) =
-      _$GRevokeApplicationTokenReq;
+  factory GRevokeApplicationTokenReq([
+    void Function(GRevokeApplicationTokenReqBuilder b) updates,
+  ]) = _$GRevokeApplicationTokenReq;
 
   static void _initializeBuilder(GRevokeApplicationTokenReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -286,10 +298,10 @@ abstract class GRevokeApplicationTokenReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -298,7 +310,8 @@ abstract class GRevokeApplicationTokenReq
   _i2.GRevokeApplicationTokenData? Function(
     _i2.GRevokeApplicationTokenData?,
     _i2.GRevokeApplicationTokenData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GRevokeApplicationTokenData? get optimisticResponse;
   @override
@@ -324,22 +337,24 @@ abstract class GRevokeApplicationTokenReq
       data.toJson();
 
   @override
-  _i1.OperationRequest<_i2.GRevokeApplicationTokenData,
-      _i3.GRevokeApplicationTokenVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
+  _i1.OperationRequest<
+    _i2.GRevokeApplicationTokenData,
+    _i3.GRevokeApplicationTokenVars
+  >
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
       this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GRevokeApplicationTokenReq> get serializer =>
       _$gRevokeApplicationTokenReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GRevokeApplicationTokenReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GRevokeApplicationTokenReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GRevokeApplicationTokenReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GRevokeApplicationTokenReq.serializer,
-        json,
-      );
+  static GRevokeApplicationTokenReq? fromJson(Map<String, dynamic> json) => _i6
+      .serializers
+      .deserializeWith(GRevokeApplicationTokenReq.serializer, json);
 }

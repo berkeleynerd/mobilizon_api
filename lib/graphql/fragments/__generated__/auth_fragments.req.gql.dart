@@ -49,28 +49,26 @@ abstract class GLoginInfoReq
 
   static Serializer<GLoginInfoReq> get serializer => _$gLoginInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GLoginInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GLoginInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GLoginInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GLoginInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GLoginInfoReq.serializer, json);
 }
 
 abstract class GRefreshedTokenInfoReq
     implements
         Built<GRefreshedTokenInfoReq, GRefreshedTokenInfoReqBuilder>,
-        _i1.FragmentRequest<_i2.GRefreshedTokenInfoData,
-            _i3.GRefreshedTokenInfoVars> {
+        _i1.FragmentRequest<
+          _i2.GRefreshedTokenInfoData,
+          _i3.GRefreshedTokenInfoVars
+        > {
   GRefreshedTokenInfoReq._();
 
-  factory GRefreshedTokenInfoReq(
-          [void Function(GRefreshedTokenInfoReqBuilder b) updates]) =
-      _$GRefreshedTokenInfoReq;
+  factory GRefreshedTokenInfoReq([
+    void Function(GRefreshedTokenInfoReqBuilder b) updates,
+  ]) = _$GRefreshedTokenInfoReq;
 
   static void _initializeBuilder(GRefreshedTokenInfoReqBuilder b) => b
     ..document = _i4.document
@@ -98,28 +96,26 @@ abstract class GRefreshedTokenInfoReq
   static Serializer<GRefreshedTokenInfoReq> get serializer =>
       _$gRefreshedTokenInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GRefreshedTokenInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GRefreshedTokenInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GRefreshedTokenInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GRefreshedTokenInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GRefreshedTokenInfoReq.serializer, json);
 }
 
 abstract class GUserSettingsInfoReq
     implements
         Built<GUserSettingsInfoReq, GUserSettingsInfoReqBuilder>,
-        _i1
-        .FragmentRequest<_i2.GUserSettingsInfoData, _i3.GUserSettingsInfoVars> {
+        _i1.FragmentRequest<
+          _i2.GUserSettingsInfoData,
+          _i3.GUserSettingsInfoVars
+        > {
   GUserSettingsInfoReq._();
 
-  factory GUserSettingsInfoReq(
-          [void Function(GUserSettingsInfoReqBuilder b) updates]) =
-      _$GUserSettingsInfoReq;
+  factory GUserSettingsInfoReq([
+    void Function(GUserSettingsInfoReqBuilder b) updates,
+  ]) = _$GUserSettingsInfoReq;
 
   static void _initializeBuilder(GUserSettingsInfoReqBuilder b) => b
     ..document = _i4.document
@@ -147,14 +143,10 @@ abstract class GUserSettingsInfoReq
   static Serializer<GUserSettingsInfoReq> get serializer =>
       _$gUserSettingsInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GUserSettingsInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GUserSettingsInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GUserSettingsInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GUserSettingsInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GUserSettingsInfoReq.serializer, json);
 }

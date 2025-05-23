@@ -22,9 +22,9 @@ abstract class GChangePasswordReq
         _i1.OperationRequest<_i2.GChangePasswordData, _i3.GChangePasswordVars> {
   GChangePasswordReq._();
 
-  factory GChangePasswordReq(
-          [void Function(GChangePasswordReqBuilder b) updates]) =
-      _$GChangePasswordReq;
+  factory GChangePasswordReq([
+    void Function(GChangePasswordReqBuilder b) updates,
+  ]) = _$GChangePasswordReq;
 
   static void _initializeBuilder(GChangePasswordReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -39,10 +39,10 @@ abstract class GChangePasswordReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -51,7 +51,8 @@ abstract class GChangePasswordReq
   _i2.GChangePasswordData? Function(
     _i2.GChangePasswordData?,
     _i2.GChangePasswordData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GChangePasswordData? get optimisticResponse;
   @override
@@ -78,22 +79,18 @@ abstract class GChangePasswordReq
 
   @override
   _i1.OperationRequest<_i2.GChangePasswordData, _i3.GChangePasswordVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GChangePasswordReq> get serializer =>
       _$gChangePasswordReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GChangePasswordReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GChangePasswordReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GChangePasswordReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GChangePasswordReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GChangePasswordReq.serializer, json);
 }
 
 abstract class GChangeEmailReq
@@ -118,19 +115,17 @@ abstract class GChangeEmailReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GChangeEmailData? Function(
-    _i2.GChangeEmailData?,
-    _i2.GChangeEmailData?,
-  )? get updateResult;
+  _i2.GChangeEmailData? Function(_i2.GChangeEmailData?, _i2.GChangeEmailData?)?
+  get updateResult;
   @override
   _i2.GChangeEmailData? get optimisticResponse;
   @override
@@ -156,22 +151,18 @@ abstract class GChangeEmailReq
 
   @override
   _i1.OperationRequest<_i2.GChangeEmailData, _i3.GChangeEmailVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GChangeEmailReq> get serializer =>
       _$gChangeEmailReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GChangeEmailReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GChangeEmailReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GChangeEmailReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GChangeEmailReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GChangeEmailReq.serializer, json);
 }
 
 abstract class GValidateEmailReq
@@ -180,9 +171,9 @@ abstract class GValidateEmailReq
         _i1.OperationRequest<_i2.GValidateEmailData, _i3.GValidateEmailVars> {
   GValidateEmailReq._();
 
-  factory GValidateEmailReq(
-          [void Function(GValidateEmailReqBuilder b) updates]) =
-      _$GValidateEmailReq;
+  factory GValidateEmailReq([
+    void Function(GValidateEmailReqBuilder b) updates,
+  ]) = _$GValidateEmailReq;
 
   static void _initializeBuilder(GValidateEmailReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -197,10 +188,10 @@ abstract class GValidateEmailReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -209,7 +200,8 @@ abstract class GValidateEmailReq
   _i2.GValidateEmailData? Function(
     _i2.GValidateEmailData?,
     _i2.GValidateEmailData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GValidateEmailData? get optimisticResponse;
   @override
@@ -235,34 +227,32 @@ abstract class GValidateEmailReq
 
   @override
   _i1.OperationRequest<_i2.GValidateEmailData, _i3.GValidateEmailVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GValidateEmailReq> get serializer =>
       _$gValidateEmailReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GValidateEmailReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GValidateEmailReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GValidateEmailReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GValidateEmailReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GValidateEmailReq.serializer, json);
 }
 
 abstract class GSetUserSettingsReq
     implements
         Built<GSetUserSettingsReq, GSetUserSettingsReqBuilder>,
-        _i1
-        .OperationRequest<_i2.GSetUserSettingsData, _i3.GSetUserSettingsVars> {
+        _i1.OperationRequest<
+          _i2.GSetUserSettingsData,
+          _i3.GSetUserSettingsVars
+        > {
   GSetUserSettingsReq._();
 
-  factory GSetUserSettingsReq(
-          [void Function(GSetUserSettingsReqBuilder b) updates]) =
-      _$GSetUserSettingsReq;
+  factory GSetUserSettingsReq([
+    void Function(GSetUserSettingsReqBuilder b) updates,
+  ]) = _$GSetUserSettingsReq;
 
   static void _initializeBuilder(GSetUserSettingsReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -277,10 +267,10 @@ abstract class GSetUserSettingsReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -289,7 +279,8 @@ abstract class GSetUserSettingsReq
   _i2.GSetUserSettingsData? Function(
     _i2.GSetUserSettingsData?,
     _i2.GSetUserSettingsData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GSetUserSettingsData? get optimisticResponse;
   @override
@@ -316,22 +307,18 @@ abstract class GSetUserSettingsReq
 
   @override
   _i1.OperationRequest<_i2.GSetUserSettingsData, _i3.GSetUserSettingsVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GSetUserSettingsReq> get serializer =>
       _$gSetUserSettingsReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GSetUserSettingsReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GSetUserSettingsReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GSetUserSettingsReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GSetUserSettingsReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GSetUserSettingsReq.serializer, json);
 }
 
 abstract class GUpdateLocaleReq
@@ -356,10 +343,10 @@ abstract class GUpdateLocaleReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -368,7 +355,8 @@ abstract class GUpdateLocaleReq
   _i2.GUpdateLocaleData? Function(
     _i2.GUpdateLocaleData?,
     _i2.GUpdateLocaleData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GUpdateLocaleData? get optimisticResponse;
   @override
@@ -394,22 +382,18 @@ abstract class GUpdateLocaleReq
 
   @override
   _i1.OperationRequest<_i2.GUpdateLocaleData, _i3.GUpdateLocaleVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GUpdateLocaleReq> get serializer =>
       _$gUpdateLocaleReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GUpdateLocaleReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GUpdateLocaleReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GUpdateLocaleReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GUpdateLocaleReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GUpdateLocaleReq.serializer, json);
 }
 
 abstract class GDeleteAccountReq
@@ -418,9 +402,9 @@ abstract class GDeleteAccountReq
         _i1.OperationRequest<_i2.GDeleteAccountData, _i3.GDeleteAccountVars> {
   GDeleteAccountReq._();
 
-  factory GDeleteAccountReq(
-          [void Function(GDeleteAccountReqBuilder b) updates]) =
-      _$GDeleteAccountReq;
+  factory GDeleteAccountReq([
+    void Function(GDeleteAccountReqBuilder b) updates,
+  ]) = _$GDeleteAccountReq;
 
   static void _initializeBuilder(GDeleteAccountReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -435,10 +419,10 @@ abstract class GDeleteAccountReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -447,7 +431,8 @@ abstract class GDeleteAccountReq
   _i2.GDeleteAccountData? Function(
     _i2.GDeleteAccountData?,
     _i2.GDeleteAccountData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GDeleteAccountData? get optimisticResponse;
   @override
@@ -473,20 +458,16 @@ abstract class GDeleteAccountReq
 
   @override
   _i1.OperationRequest<_i2.GDeleteAccountData, _i3.GDeleteAccountVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GDeleteAccountReq> get serializer =>
       _$gDeleteAccountReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GDeleteAccountReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GDeleteAccountReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GDeleteAccountReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GDeleteAccountReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GDeleteAccountReq.serializer, json);
 }

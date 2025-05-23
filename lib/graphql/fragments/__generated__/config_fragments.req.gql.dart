@@ -50,28 +50,26 @@ abstract class GConfigInfoReq
   static Serializer<GConfigInfoReq> get serializer =>
       _$gConfigInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GConfigInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GConfigInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GConfigInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GConfigInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GConfigInfoReq.serializer, json);
 }
 
 abstract class GOAuthProviderInfoReq
     implements
         Built<GOAuthProviderInfoReq, GOAuthProviderInfoReqBuilder>,
-        _i1.FragmentRequest<_i2.GOAuthProviderInfoData,
-            _i3.GOAuthProviderInfoVars> {
+        _i1.FragmentRequest<
+          _i2.GOAuthProviderInfoData,
+          _i3.GOAuthProviderInfoVars
+        > {
   GOAuthProviderInfoReq._();
 
-  factory GOAuthProviderInfoReq(
-          [void Function(GOAuthProviderInfoReqBuilder b) updates]) =
-      _$GOAuthProviderInfoReq;
+  factory GOAuthProviderInfoReq([
+    void Function(GOAuthProviderInfoReqBuilder b) updates,
+  ]) = _$GOAuthProviderInfoReq;
 
   static void _initializeBuilder(GOAuthProviderInfoReqBuilder b) => b
     ..document = _i4.document
@@ -99,29 +97,29 @@ abstract class GOAuthProviderInfoReq
   static Serializer<GOAuthProviderInfoReq> get serializer =>
       _$gOAuthProviderInfoReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GOAuthProviderInfoReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GOAuthProviderInfoReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GOAuthProviderInfoReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GOAuthProviderInfoReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GOAuthProviderInfoReq.serializer, json);
 }
 
 abstract class GAnonymousParticipationConfigReq
     implements
-        Built<GAnonymousParticipationConfigReq,
-            GAnonymousParticipationConfigReqBuilder>,
-        _i1.FragmentRequest<_i2.GAnonymousParticipationConfigData,
-            _i3.GAnonymousParticipationConfigVars> {
+        Built<
+          GAnonymousParticipationConfigReq,
+          GAnonymousParticipationConfigReqBuilder
+        >,
+        _i1.FragmentRequest<
+          _i2.GAnonymousParticipationConfigData,
+          _i3.GAnonymousParticipationConfigVars
+        > {
   GAnonymousParticipationConfigReq._();
 
-  factory GAnonymousParticipationConfigReq(
-          [void Function(GAnonymousParticipationConfigReqBuilder b) updates]) =
-      _$GAnonymousParticipationConfigReq;
+  factory GAnonymousParticipationConfigReq([
+    void Function(GAnonymousParticipationConfigReqBuilder b) updates,
+  ]) = _$GAnonymousParticipationConfigReq;
 
   static void _initializeBuilder(GAnonymousParticipationConfigReqBuilder b) => b
     ..document = _i4.document
@@ -149,30 +147,36 @@ abstract class GAnonymousParticipationConfigReq
   static Serializer<GAnonymousParticipationConfigReq> get serializer =>
       _$gAnonymousParticipationConfigReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAnonymousParticipationConfigReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GAnonymousParticipationConfigReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousParticipationConfigReq? fromJson(
-          Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GAnonymousParticipationConfigReq.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i6.serializers.deserializeWith(
+    GAnonymousParticipationConfigReq.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousEventCreationConfigReq
     implements
-        Built<GAnonymousEventCreationConfigReq,
-            GAnonymousEventCreationConfigReqBuilder>,
-        _i1.FragmentRequest<_i2.GAnonymousEventCreationConfigData,
-            _i3.GAnonymousEventCreationConfigVars> {
+        Built<
+          GAnonymousEventCreationConfigReq,
+          GAnonymousEventCreationConfigReqBuilder
+        >,
+        _i1.FragmentRequest<
+          _i2.GAnonymousEventCreationConfigData,
+          _i3.GAnonymousEventCreationConfigVars
+        > {
   GAnonymousEventCreationConfigReq._();
 
-  factory GAnonymousEventCreationConfigReq(
-          [void Function(GAnonymousEventCreationConfigReqBuilder b) updates]) =
-      _$GAnonymousEventCreationConfigReq;
+  factory GAnonymousEventCreationConfigReq([
+    void Function(GAnonymousEventCreationConfigReqBuilder b) updates,
+  ]) = _$GAnonymousEventCreationConfigReq;
 
   static void _initializeBuilder(GAnonymousEventCreationConfigReqBuilder b) => b
     ..document = _i4.document
@@ -200,29 +204,33 @@ abstract class GAnonymousEventCreationConfigReq
   static Serializer<GAnonymousEventCreationConfigReq> get serializer =>
       _$gAnonymousEventCreationConfigReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAnonymousEventCreationConfigReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GAnonymousEventCreationConfigReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GAnonymousEventCreationConfigReq? fromJson(
-          Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GAnonymousEventCreationConfigReq.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i6.serializers.deserializeWith(
+    GAnonymousEventCreationConfigReq.serializer,
+    json,
+  );
 }
 
 abstract class GAnonymousReportsConfigReq
     implements
         Built<GAnonymousReportsConfigReq, GAnonymousReportsConfigReqBuilder>,
-        _i1.FragmentRequest<_i2.GAnonymousReportsConfigData,
-            _i3.GAnonymousReportsConfigVars> {
+        _i1.FragmentRequest<
+          _i2.GAnonymousReportsConfigData,
+          _i3.GAnonymousReportsConfigVars
+        > {
   GAnonymousReportsConfigReq._();
 
-  factory GAnonymousReportsConfigReq(
-          [void Function(GAnonymousReportsConfigReqBuilder b) updates]) =
-      _$GAnonymousReportsConfigReq;
+  factory GAnonymousReportsConfigReq([
+    void Function(GAnonymousReportsConfigReqBuilder b) updates,
+  ]) = _$GAnonymousReportsConfigReq;
 
   static void _initializeBuilder(GAnonymousReportsConfigReqBuilder b) => b
     ..document = _i4.document
@@ -250,14 +258,14 @@ abstract class GAnonymousReportsConfigReq
   static Serializer<GAnonymousReportsConfigReq> get serializer =>
       _$gAnonymousReportsConfigReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAnonymousReportsConfigReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GAnonymousReportsConfigReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GAnonymousReportsConfigReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GAnonymousReportsConfigReq.serializer,
-        json,
-      );
+  static GAnonymousReportsConfigReq? fromJson(Map<String, dynamic> json) => _i6
+      .serializers
+      .deserializeWith(GAnonymousReportsConfigReq.serializer, json);
 }

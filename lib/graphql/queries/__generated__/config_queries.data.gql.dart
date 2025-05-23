@@ -27,16 +27,12 @@ abstract class GGetConfigData
   static Serializer<GGetConfigData> get serializer =>
       _$gGetConfigDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetConfigData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetConfigData.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetConfigData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetConfigData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetConfigData.serializer, json);
 }
 
 abstract class GGetConfigData_config
@@ -45,9 +41,9 @@ abstract class GGetConfigData_config
         _i2.GConfigInfo {
   GGetConfigData_config._();
 
-  factory GGetConfigData_config(
-          [void Function(GGetConfigData_configBuilder b) updates]) =
-      _$GGetConfigData_config;
+  factory GGetConfigData_config([
+    void Function(GGetConfigData_configBuilder b) updates,
+  ]) = _$GGetConfigData_config;
 
   static void _initializeBuilder(GGetConfigData_configBuilder b) =>
       b..G__typename = 'Config';
@@ -82,14 +78,10 @@ abstract class GGetConfigData_config
   static Serializer<GGetConfigData_config> get serializer =>
       _$gGetConfigDataConfigSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetConfigData_config.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetConfigData_config.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetConfigData_config? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetConfigData_config.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetConfigData_config.serializer, json);
 }

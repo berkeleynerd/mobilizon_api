@@ -1,8 +1,9 @@
 import 'dart:io';
+
 import 'package:http/http.dart' show MultipartFile;
 import 'package:http_parser/http_parser.dart' show MediaType;
-import 'package:path/path.dart' as path;
 import 'package:mime/mime.dart' show lookupMimeType;
+import 'package:path/path.dart' as path;
 
 /// A helper class for working with file uploads in GraphQL mutations.
 class UploadHelper {

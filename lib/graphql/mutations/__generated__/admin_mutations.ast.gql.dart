@@ -16,10 +16,7 @@ const AdminUpdateUser = _i1.OperationDefinitionNode(
   variableDefinitions: [
     _i1.VariableDefinitionNode(
       variable: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
     ),
@@ -61,41 +58,45 @@ const AdminUpdateUser = _i1.OperationDefinitionNode(
     ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'adminUpdateUser'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'id'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'adminUpdateUser'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'id'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'email'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'email')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'confirmed'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'confirmed')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'role'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'role')),
+          ),
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'notify'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'notify')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'UserFull'),
+              directives: [],
+            ),
+          ],
         ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'email'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'email')),
-        ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'confirmed'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'confirmed')),
-        ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'role'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'role')),
-        ),
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'notify'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'notify')),
-        ),
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'UserFull'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+      ),
+    ],
+  ),
 );
 const SuspendProfile = _i1.OperationDefinitionNode(
   type: _i1.OperationType.mutation,
@@ -103,34 +104,35 @@ const SuspendProfile = _i1.OperationDefinitionNode(
   variableDefinitions: [
     _i1.VariableDefinitionNode(
       variable: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'suspendProfile'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'id'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
-        )
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'DeletedObjectResponse'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'suspendProfile'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'id'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'DeletedObjectResponse'),
+              directives: [],
+            ),
+          ],
+        ),
+      ),
+    ],
+  ),
 );
 const UnsuspendProfile = _i1.OperationDefinitionNode(
   type: _i1.OperationType.mutation,
@@ -138,51 +140,54 @@ const UnsuspendProfile = _i1.OperationDefinitionNode(
   variableDefinitions: [
     _i1.VariableDefinitionNode(
       variable: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'unsuspendProfile'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'id'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
-        )
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'ActorBasicInfo'),
-          directives: [],
-        )
-      ]),
-    )
-  ]),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'unsuspendProfile'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'id'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'ActorBasicInfo'),
+              directives: [],
+            ),
+          ],
+        ),
+      ),
+    ],
+  ),
 );
-const document = _i1.DocumentNode(definitions: [
-  AdminUpdateUser,
-  SuspendProfile,
-  UnsuspendProfile,
-  _i2.UserBasicInfo,
-  _i2.UserWithSettings,
-  _i2.UserFull,
-  _i2.ActorBasicInfo,
-  _i2.PersonInfo,
-  _i2.LoginResponse,
-  _i2.RefreshedTokenResponse,
-  _i2.DeletedObjectResponse,
-  _i3.MediaBasicInfo,
-  _i3.MediaWithMetadata,
-  _i4.PersonBasicInfo,
-  _i4.PersonWithStats,
-  _i4.PersonFull,
-  _i4.ActorInterface,
-]);
+const document = _i1.DocumentNode(
+  definitions: [
+    AdminUpdateUser,
+    SuspendProfile,
+    UnsuspendProfile,
+    _i2.UserBasicInfo,
+    _i2.UserWithSettings,
+    _i2.UserFull,
+    _i2.ActorBasicInfo,
+    _i2.PersonInfo,
+    _i2.LoginResponse,
+    _i2.RefreshedTokenResponse,
+    _i2.DeletedObjectResponse,
+    _i3.MediaBasicInfo,
+    _i3.MediaWithMetadata,
+    _i4.PersonBasicInfo,
+    _i4.PersonWithStats,
+    _i4.PersonFull,
+    _i4.ActorInterface,
+  ],
+);

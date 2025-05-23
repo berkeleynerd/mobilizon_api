@@ -12,44 +12,36 @@ abstract class GMediaBasicInfoVars
     implements Built<GMediaBasicInfoVars, GMediaBasicInfoVarsBuilder> {
   GMediaBasicInfoVars._();
 
-  factory GMediaBasicInfoVars(
-          [void Function(GMediaBasicInfoVarsBuilder b) updates]) =
-      _$GMediaBasicInfoVars;
+  factory GMediaBasicInfoVars([
+    void Function(GMediaBasicInfoVarsBuilder b) updates,
+  ]) = _$GMediaBasicInfoVars;
 
   static Serializer<GMediaBasicInfoVars> get serializer =>
       _$gMediaBasicInfoVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GMediaBasicInfoVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GMediaBasicInfoVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaBasicInfoVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GMediaBasicInfoVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GMediaBasicInfoVars.serializer, json);
 }
 
 abstract class GMediaWithMetadataVars
     implements Built<GMediaWithMetadataVars, GMediaWithMetadataVarsBuilder> {
   GMediaWithMetadataVars._();
 
-  factory GMediaWithMetadataVars(
-          [void Function(GMediaWithMetadataVarsBuilder b) updates]) =
-      _$GMediaWithMetadataVars;
+  factory GMediaWithMetadataVars([
+    void Function(GMediaWithMetadataVarsBuilder b) updates,
+  ]) = _$GMediaWithMetadataVars;
 
   static Serializer<GMediaWithMetadataVars> get serializer =>
       _$gMediaWithMetadataVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GMediaWithMetadataVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GMediaWithMetadataVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GMediaWithMetadataVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GMediaWithMetadataVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GMediaWithMetadataVars.serializer, json);
 }

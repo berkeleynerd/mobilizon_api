@@ -38,19 +38,17 @@ abstract class GCreateUserReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GCreateUserData? Function(
-    _i2.GCreateUserData?,
-    _i2.GCreateUserData?,
-  )? get updateResult;
+  _i2.GCreateUserData? Function(_i2.GCreateUserData?, _i2.GCreateUserData?)?
+  get updateResult;
   @override
   _i2.GCreateUserData? get optimisticResponse;
   @override
@@ -76,22 +74,18 @@ abstract class GCreateUserReq
 
   @override
   _i1.OperationRequest<_i2.GCreateUserData, _i3.GCreateUserVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GCreateUserReq> get serializer =>
       _$gCreateUserReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GCreateUserReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GCreateUserReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GCreateUserReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GCreateUserReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GCreateUserReq.serializer, json);
 }
 
 abstract class GValidateUserReq
@@ -116,10 +110,10 @@ abstract class GValidateUserReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -128,7 +122,8 @@ abstract class GValidateUserReq
   _i2.GValidateUserData? Function(
     _i2.GValidateUserData?,
     _i2.GValidateUserData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GValidateUserData? get optimisticResponse;
   @override
@@ -154,34 +149,32 @@ abstract class GValidateUserReq
 
   @override
   _i1.OperationRequest<_i2.GValidateUserData, _i3.GValidateUserVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GValidateUserReq> get serializer =>
       _$gValidateUserReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GValidateUserReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GValidateUserReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GValidateUserReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GValidateUserReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GValidateUserReq.serializer, json);
 }
 
 abstract class GResendConfirmationEmailReq
     implements
         Built<GResendConfirmationEmailReq, GResendConfirmationEmailReqBuilder>,
-        _i1.OperationRequest<_i2.GResendConfirmationEmailData,
-            _i3.GResendConfirmationEmailVars> {
+        _i1.OperationRequest<
+          _i2.GResendConfirmationEmailData,
+          _i3.GResendConfirmationEmailVars
+        > {
   GResendConfirmationEmailReq._();
 
-  factory GResendConfirmationEmailReq(
-          [void Function(GResendConfirmationEmailReqBuilder b) updates]) =
-      _$GResendConfirmationEmailReq;
+  factory GResendConfirmationEmailReq([
+    void Function(GResendConfirmationEmailReqBuilder b) updates,
+  ]) = _$GResendConfirmationEmailReq;
 
   static void _initializeBuilder(GResendConfirmationEmailReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -196,10 +189,10 @@ abstract class GResendConfirmationEmailReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -208,7 +201,8 @@ abstract class GResendConfirmationEmailReq
   _i2.GResendConfirmationEmailData? Function(
     _i2.GResendConfirmationEmailData?,
     _i2.GResendConfirmationEmailData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GResendConfirmationEmailData? get optimisticResponse;
   @override
@@ -234,24 +228,26 @@ abstract class GResendConfirmationEmailReq
       data.toJson();
 
   @override
-  _i1.OperationRequest<_i2.GResendConfirmationEmailData,
-      _i3.GResendConfirmationEmailVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
+  _i1.OperationRequest<
+    _i2.GResendConfirmationEmailData,
+    _i3.GResendConfirmationEmailVars
+  >
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
       this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GResendConfirmationEmailReq> get serializer =>
       _$gResendConfirmationEmailReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GResendConfirmationEmailReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(
+            GResendConfirmationEmailReq.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
-  static GResendConfirmationEmailReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GResendConfirmationEmailReq.serializer,
-        json,
-      );
+  static GResendConfirmationEmailReq? fromJson(Map<String, dynamic> json) => _i6
+      .serializers
+      .deserializeWith(GResendConfirmationEmailReq.serializer, json);
 }
 
 abstract class GLoginReq
@@ -263,10 +259,7 @@ abstract class GLoginReq
   factory GLoginReq([void Function(GLoginReqBuilder b) updates]) = _$GLoginReq;
 
   static void _initializeBuilder(GLoginReqBuilder b) => b
-    ..operation = _i4.Operation(
-      document: _i5.document,
-      operationName: 'Login',
-    )
+    ..operation = _i4.Operation(document: _i5.document, operationName: 'Login')
     ..executeOnListen = true;
 
   @override
@@ -275,19 +268,16 @@ abstract class GLoginReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GLoginData? Function(
-    _i2.GLoginData?,
-    _i2.GLoginData?,
-  )? get updateResult;
+  _i2.GLoginData? Function(_i2.GLoginData?, _i2.GLoginData?)? get updateResult;
   @override
   _i2.GLoginData? get optimisticResponse;
   @override
@@ -313,21 +303,17 @@ abstract class GLoginReq
 
   @override
   _i1.OperationRequest<_i2.GLoginData, _i3.GLoginVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
-      this.rebuild((b) => b..operation = transform(operation));
+    _i4.Operation Function(_i4.Operation) transform,
+  ) => this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GLoginReq> get serializer => _$gLoginReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GLoginReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GLoginReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GLoginReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GLoginReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GLoginReq.serializer, json);
 }
 
 abstract class GLogoutReq
@@ -340,10 +326,7 @@ abstract class GLogoutReq
       _$GLogoutReq;
 
   static void _initializeBuilder(GLogoutReqBuilder b) => b
-    ..operation = _i4.Operation(
-      document: _i5.document,
-      operationName: 'Logout',
-    )
+    ..operation = _i4.Operation(document: _i5.document, operationName: 'Logout')
     ..executeOnListen = true;
 
   @override
@@ -352,19 +335,17 @@ abstract class GLogoutReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GLogoutData? Function(
-    _i2.GLogoutData?,
-    _i2.GLogoutData?,
-  )? get updateResult;
+  _i2.GLogoutData? Function(_i2.GLogoutData?, _i2.GLogoutData?)?
+  get updateResult;
   @override
   _i2.GLogoutData? get optimisticResponse;
   @override
@@ -390,21 +371,17 @@ abstract class GLogoutReq
 
   @override
   _i1.OperationRequest<_i2.GLogoutData, _i3.GLogoutVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
-      this.rebuild((b) => b..operation = transform(operation));
+    _i4.Operation Function(_i4.Operation) transform,
+  ) => this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GLogoutReq> get serializer => _$gLogoutReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GLogoutReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GLogoutReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GLogoutReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GLogoutReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GLogoutReq.serializer, json);
 }
 
 abstract class GRefreshTokenReq
@@ -429,10 +406,10 @@ abstract class GRefreshTokenReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -441,7 +418,8 @@ abstract class GRefreshTokenReq
   _i2.GRefreshTokenData? Function(
     _i2.GRefreshTokenData?,
     _i2.GRefreshTokenData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GRefreshTokenData? get optimisticResponse;
   @override
@@ -467,34 +445,32 @@ abstract class GRefreshTokenReq
 
   @override
   _i1.OperationRequest<_i2.GRefreshTokenData, _i3.GRefreshTokenVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GRefreshTokenReq> get serializer =>
       _$gRefreshTokenReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GRefreshTokenReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GRefreshTokenReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GRefreshTokenReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GRefreshTokenReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GRefreshTokenReq.serializer, json);
 }
 
 abstract class GSendResetPasswordReq
     implements
         Built<GSendResetPasswordReq, GSendResetPasswordReqBuilder>,
-        _i1.OperationRequest<_i2.GSendResetPasswordData,
-            _i3.GSendResetPasswordVars> {
+        _i1.OperationRequest<
+          _i2.GSendResetPasswordData,
+          _i3.GSendResetPasswordVars
+        > {
   GSendResetPasswordReq._();
 
-  factory GSendResetPasswordReq(
-          [void Function(GSendResetPasswordReqBuilder b) updates]) =
-      _$GSendResetPasswordReq;
+  factory GSendResetPasswordReq([
+    void Function(GSendResetPasswordReqBuilder b) updates,
+  ]) = _$GSendResetPasswordReq;
 
   static void _initializeBuilder(GSendResetPasswordReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -509,10 +485,10 @@ abstract class GSendResetPasswordReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -521,7 +497,8 @@ abstract class GSendResetPasswordReq
   _i2.GSendResetPasswordData? Function(
     _i2.GSendResetPasswordData?,
     _i2.GSendResetPasswordData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GSendResetPasswordData? get optimisticResponse;
   @override
@@ -548,22 +525,18 @@ abstract class GSendResetPasswordReq
 
   @override
   _i1.OperationRequest<_i2.GSendResetPasswordData, _i3.GSendResetPasswordVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GSendResetPasswordReq> get serializer =>
       _$gSendResetPasswordReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GSendResetPasswordReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GSendResetPasswordReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GSendResetPasswordReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GSendResetPasswordReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GSendResetPasswordReq.serializer, json);
 }
 
 abstract class GResetPasswordReq
@@ -572,9 +545,9 @@ abstract class GResetPasswordReq
         _i1.OperationRequest<_i2.GResetPasswordData, _i3.GResetPasswordVars> {
   GResetPasswordReq._();
 
-  factory GResetPasswordReq(
-          [void Function(GResetPasswordReqBuilder b) updates]) =
-      _$GResetPasswordReq;
+  factory GResetPasswordReq([
+    void Function(GResetPasswordReqBuilder b) updates,
+  ]) = _$GResetPasswordReq;
 
   static void _initializeBuilder(GResetPasswordReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -589,10 +562,10 @@ abstract class GResetPasswordReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-        operation: operation,
-        variables: vars.toJson(),
-        context: context ?? const _i4.Context(),
-      );
+    operation: operation,
+    variables: vars.toJson(),
+    context: context ?? const _i4.Context(),
+  );
 
   @override
   String? get requestId;
@@ -601,7 +574,8 @@ abstract class GResetPasswordReq
   _i2.GResetPasswordData? Function(
     _i2.GResetPasswordData?,
     _i2.GResetPasswordData?,
-  )? get updateResult;
+  )?
+  get updateResult;
   @override
   _i2.GResetPasswordData? get optimisticResponse;
   @override
@@ -627,20 +601,16 @@ abstract class GResetPasswordReq
 
   @override
   _i1.OperationRequest<_i2.GResetPasswordData, _i3.GResetPasswordVars>
-      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-          this.rebuild((b) => b..operation = transform(operation));
+  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+      this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GResetPasswordReq> get serializer =>
       _$gResetPasswordReqSerializer;
 
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GResetPasswordReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GResetPasswordReq.serializer, this)
+          as Map<String, dynamic>);
 
   static GResetPasswordReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GResetPasswordReq.serializer,
-        json,
-      );
+      _i6.serializers.deserializeWith(GResetPasswordReq.serializer, json);
 }

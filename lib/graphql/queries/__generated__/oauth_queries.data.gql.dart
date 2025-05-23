@@ -14,9 +14,9 @@ abstract class GGetAuthApplicationData
     implements Built<GGetAuthApplicationData, GGetAuthApplicationDataBuilder> {
   GGetAuthApplicationData._();
 
-  factory GGetAuthApplicationData(
-          [void Function(GGetAuthApplicationDataBuilder b) updates]) =
-      _$GGetAuthApplicationData;
+  factory GGetAuthApplicationData([
+    void Function(GGetAuthApplicationDataBuilder b) updates,
+  ]) = _$GGetAuthApplicationData;
 
   static void _initializeBuilder(GGetAuthApplicationDataBuilder b) =>
       b..G__typename = 'RootQueryType';
@@ -27,32 +27,30 @@ abstract class GGetAuthApplicationData
   static Serializer<GGetAuthApplicationData> get serializer =>
       _$gGetAuthApplicationDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetAuthApplicationData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GGetAuthApplicationData.serializer, this)
+          as Map<String, dynamic>);
 
   static GGetAuthApplicationData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetAuthApplicationData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GGetAuthApplicationData.serializer, json);
 }
 
 abstract class GGetAuthApplicationData_authApplication
     implements
-        Built<GGetAuthApplicationData_authApplication,
-            GGetAuthApplicationData_authApplicationBuilder>,
+        Built<
+          GGetAuthApplicationData_authApplication,
+          GGetAuthApplicationData_authApplicationBuilder
+        >,
         _i2.GAuthApplicationInfo {
   GGetAuthApplicationData_authApplication._();
 
-  factory GGetAuthApplicationData_authApplication(
-      [void Function(GGetAuthApplicationData_authApplicationBuilder b)
-          updates]) = _$GGetAuthApplicationData_authApplication;
+  factory GGetAuthApplicationData_authApplication([
+    void Function(GGetAuthApplicationData_authApplicationBuilder b) updates,
+  ]) = _$GGetAuthApplicationData_authApplication;
 
   static void _initializeBuilder(
-          GGetAuthApplicationData_authApplicationBuilder b) =>
-      b..G__typename = 'AuthApplication';
+    GGetAuthApplicationData_authApplicationBuilder b,
+  ) => b..G__typename = 'AuthApplication';
 
   @override
   @BuiltValueField(wireName: '__typename')
@@ -68,15 +66,17 @@ abstract class GGetAuthApplicationData_authApplication
   static Serializer<GGetAuthApplicationData_authApplication> get serializer =>
       _$gGetAuthApplicationDataAuthApplicationSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GGetAuthApplicationData_authApplication.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GGetAuthApplicationData_authApplication.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GGetAuthApplicationData_authApplication? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GGetAuthApplicationData_authApplication.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GGetAuthApplicationData_authApplication.serializer,
+    json,
+  );
 }

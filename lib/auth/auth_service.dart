@@ -1,18 +1,6 @@
 import 'dart:async';
+
 import 'models/auth_models.dart';
-
-/// Exception thrown when authentication operations fail
-class AuthException implements Exception {
-  final String message;
-  final String? code;
-  final dynamic originalError;
-
-  AuthException(this.message, {this.code, this.originalError});
-
-  @override
-  String toString() =>
-      'AuthException: $message${code != null ? ' (code: $code)' : ''}';
-}
 
 /// Service for authentication operations
 abstract class AuthService {
@@ -59,19 +47,12 @@ abstract class AuthService {
   ///
   /// Returns a result object with success status and optional message
   /// Throws [AuthException] if request fails
-  Future<PasswordResetRequestResult> requestPasswordReset(
-    String email, {
-    String? locale,
-  });
+  Future<PasswordResetRequestResult> requestPasswordReset(String email, {String? locale});
 
   /// Reset password using a reset token
   ///
   /// Throws [AuthException] if reset fails
-  Future<AuthResult> resetPassword(
-    String token,
-    String newPassword, {
-    String? locale,
-  });
+  Future<AuthResult> resetPassword(String token, String newPassword, {String? locale});
 
   /// Check if a token refresh is needed and perform it if necessary
   ///
