@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobilizon_api/client.dart';
+import 'test_helpers.dart';
 
 void main() {
   // Initialize Flutter testing framework
@@ -12,9 +13,13 @@ void main() {
 
   group('Mobilizon Instance Availability Tests', () {
     test('Instance API endpoint is reachable', () async {
-      // Create a client with the test API URL
+      // Create a client with the test API URL and test token storage
       final client = MobilizonClient(
-        MobilizonClientConfig(apiUrl: apiUrl, enableDebugLogging: true),
+        MobilizonClientConfig(
+          apiUrl: apiUrl,
+          enableDebugLogging: true,
+          tokenStorage: IntegrationTestTokenStorage(),
+        ),
       );
 
       try {

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobilizon_api/client.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
+import 'test_helpers.dart';
 
 void main() {
   // Initialize Flutter testing framework
@@ -22,9 +23,13 @@ void main() {
     late MobilizonClient client;
 
     setUp(() {
-      // Create a fresh client for each test
+      // Create a fresh client for each test with test token storage
       client = MobilizonClient(
-        MobilizonClientConfig(apiUrl: apiUrl, enableDebugLogging: true),
+        MobilizonClientConfig(
+          apiUrl: apiUrl,
+          enableDebugLogging: true,
+          tokenStorage: IntegrationTestTokenStorage(),
+        ),
       );
     });
 
@@ -87,8 +92,7 @@ void main() {
         expect(currentUser, isNotNull);
         expect(currentUser?.email, adminEmail);
         // The API should indicate this user has admin privileges
-        // Depending on how the API represents admin status, this check may need adjustment
-        expect(currentUser?.role, contains('ADMIN'));
+        expect(currentUser?.role, equals(UserRole.administrator));
 
         // Test logout
         await client.auth.logout();

@@ -1,0 +1,1 @@
+ /Users/rebecca/src/github.com/berkeleynerd/mobilizon_api/.dart_tool/flutter_build/7d781aa9b4e42be3a8347d0432ddedd8/native_assets.json: 

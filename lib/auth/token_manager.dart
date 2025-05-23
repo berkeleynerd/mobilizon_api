@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'models/auth_models.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Interface for secure token storage
 abstract class TokenStorage {
@@ -76,23 +77,55 @@ class SecureTokenStorage implements TokenStorage {
   static const String _refreshTokenKey = 'mobilizon_refresh_token';
   static const String _expiryKey = 'mobilizon_token_expiry';
 
-  // TODO: Inject actual secure storage implementation
+  // Secure storage instance
+  final FlutterSecureStorage _secureStorage;
+
+  SecureTokenStorage({FlutterSecureStorage? secureStorage})
+    : _secureStorage = secureStorage ?? const FlutterSecureStorage();
 
   @override
   Future<void> storeTokens(TokenPair tokens) async {
-    // TODO: Implementation using secure storage
-    throw UnimplementedError();
+    await _secureStorage.write(key: _accessTokenKey, value: tokens.accessToken);
+    await _secureStorage.write(
+      key: _refreshTokenKey,
+      value: tokens.refreshToken,
+    );
+    await _secureStorage.write(
+      key: _expiryKey,
+      value: tokens.accessTokenExpiry.millisecondsSinceEpoch.toString(),
+    );
   }
 
   @override
   Future<TokenPair?> getTokens() async {
-    // TODO: Implementation using secure storage
-    throw UnimplementedError();
+    final accessToken = await _secureStorage.read(key: _accessTokenKey);
+    final refreshToken = await _secureStorage.read(key: _refreshTokenKey);
+    final expiryString = await _secureStorage.read(key: _expiryKey);
+
+    if (accessToken == null || refreshToken == null || expiryString == null) {
+      return null;
+    }
+
+    try {
+      final expiryTimestamp = int.parse(expiryString);
+      final expiry = DateTime.fromMillisecondsSinceEpoch(expiryTimestamp);
+
+      return TokenPair(
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        accessTokenExpiry: expiry,
+      );
+    } catch (e) {
+      // If we can't parse the expiry, clear the tokens and return null
+      await clearTokens();
+      return null;
+    }
   }
 
   @override
   Future<void> clearTokens() async {
-    // TODO: Implementation using secure storage
-    throw UnimplementedError();
+    await _secureStorage.delete(key: _accessTokenKey);
+    await _secureStorage.delete(key: _refreshTokenKey);
+    await _secureStorage.delete(key: _expiryKey);
   }
 }

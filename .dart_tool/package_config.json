@@ -440,12 +440,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "mockito",
-      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/mockito-5.4.6",
-      "packageUri": "lib/",
-      "languageVersion": "3.7"
-    },
-    {
       "name": "node_preamble",
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/node_preamble-2.0.2",
       "packageUri": "lib/",

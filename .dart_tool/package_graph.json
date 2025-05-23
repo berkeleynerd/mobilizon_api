@@ -10,6 +10,7 @@
         "built_collection",
         "built_value",
         "ferry",
+        "ferry_cache",
         "ferry_exec",
         "flutter",
         "flutter_secure_storage",
@@ -30,7 +31,6 @@
         "flutter_lints",
         "flutter_test",
         "integration_test",
-        "mockito",
         "test"
       ]
     },
@@ -96,22 +96,6 @@
         "web",
         "web_socket_channel",
         "yaml"
-      ]
-    },
-    {
-      "name": "mockito",
-      "version": "5.4.6",
-      "dependencies": [
-        "analyzer",
-        "build",
-        "code_builder",
-        "collection",
-        "dart_style",
-        "matcher",
-        "meta",
-        "path",
-        "source_gen",
-        "test_api"
       ]
     },
     {
@@ -316,6 +300,19 @@
         "http",
         "http_parser",
         "meta"
+      ]
+    },
+    {
+      "name": "ferry_cache",
+      "version": "0.10.1-dev.0+1",
+      "dependencies": [
+        "collection",
+        "ferry_exec",
+        "ferry_store",
+        "meta",
+        "normalize",
+        "pedantic",
+        "rxdart"
       ]
     },
     {
@@ -716,47 +713,6 @@
       "dependencies": []
     },
     {
-      "name": "test_api",
-      "version": "0.7.4",
-      "dependencies": [
-        "async",
-        "boolean_selector",
-        "collection",
-        "meta",
-        "source_span",
-        "stack_trace",
-        "stream_channel",
-        "string_scanner",
-        "term_glyph"
-      ]
-    },
-    {
-      "name": "source_gen",
-      "version": "2.0.0",
-      "dependencies": [
-        "analyzer",
-        "async",
-        "build",
-        "dart_style",
-        "glob",
-        "path",
-        "pub_semver",
-        "source_span",
-        "yaml"
-      ]
-    },
-    {
-      "name": "matcher",
-      "version": "0.12.17",
-      "dependencies": [
-        "async",
-        "meta",
-        "stack_trace",
-        "term_glyph",
-        "test_api"
-      ]
-    },
-    {
       "name": "webkit_inspection_protocol",
       "version": "1.2.1",
       "dependencies": [
@@ -795,6 +751,21 @@
         "test_api",
         "vm_service",
         "yaml"
+      ]
+    },
+    {
+      "name": "test_api",
+      "version": "0.7.4",
+      "dependencies": [
+        "async",
+        "boolean_selector",
+        "collection",
+        "meta",
+        "source_span",
+        "stack_trace",
+        "stream_channel",
+        "string_scanner",
+        "term_glyph"
       ]
     },
     {
@@ -837,6 +808,17 @@
       "name": "node_preamble",
       "version": "2.0.2",
       "dependencies": []
+    },
+    {
+      "name": "matcher",
+      "version": "0.12.17",
+      "dependencies": [
+        "async",
+        "meta",
+        "stack_trace",
+        "term_glyph",
+        "test_api"
+      ]
     },
     {
       "name": "coverage",
@@ -1017,15 +999,15 @@
       "dependencies": []
     },
     {
-      "name": "ferry_cache",
-      "version": "0.10.1-dev.0+1",
+      "name": "pedantic",
+      "version": "1.11.1",
+      "dependencies": []
+    },
+    {
+      "name": "ferry_store",
+      "version": "0.6.1",
       "dependencies": [
         "collection",
-        "ferry_exec",
-        "ferry_store",
-        "meta",
-        "normalize",
-        "pedantic",
         "rxdart"
       ]
     },
@@ -1038,17 +1020,17 @@
       ]
     },
     {
+      "name": "rxdart",
+      "version": "0.28.0",
+      "dependencies": []
+    },
+    {
       "name": "hive",
       "version": "2.2.3",
       "dependencies": [
         "crypto",
         "meta"
       ]
-    },
-    {
-      "name": "rxdart",
-      "version": "0.28.0",
-      "dependencies": []
     },
     {
       "name": "flutter_secure_storage_windows",
@@ -1113,6 +1095,21 @@
       "version": "82.0.0",
       "dependencies": [
         "meta"
+      ]
+    },
+    {
+      "name": "source_gen",
+      "version": "2.0.0",
+      "dependencies": [
+        "analyzer",
+        "async",
+        "build",
+        "dart_style",
+        "glob",
+        "path",
+        "pub_semver",
+        "source_span",
+        "yaml"
       ]
     },
     {
@@ -1186,19 +1183,6 @@
         "platform",
         "process",
         "vm_service"
-      ]
-    },
-    {
-      "name": "pedantic",
-      "version": "1.11.1",
-      "dependencies": []
-    },
-    {
-      "name": "ferry_store",
-      "version": "0.6.1",
-      "dependencies": [
-        "collection",
-        "rxdart"
       ]
     },
     {

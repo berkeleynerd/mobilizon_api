@@ -210,7 +210,7 @@ packages:
     source: hosted
     version: "0.16.2-dev.4"
   ferry_cache:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: ferry_cache
       sha256: "3af0927d90d051d64f6f5d8dcb6f12e0dacfa6fdc0526ae7a431207e8e69d384"
@@ -567,14 +567,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  mockito:
-    dependency: "direct dev"
-    description:
-      name: mockito
-      sha256: "4546eac99e8967ea91bae633d2ca7698181d008e95fa4627330cf903d573277a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.4.6"
   node_preamble:
     dependency: transitive
     description:

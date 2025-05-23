@@ -21,7 +21,7 @@ flutter test integration_test/instance_live_test.dart -d flutter-tester
 
 # If connectivity test passes, run authentication tests
 echo "Testing authentication..."
-flutter test integration_test/auth_test.dart
+flutter test integration_test/auth_test.dart -d flutter-tester
 
 # Run any other specific test files if they exist
 # For now, we're focusing on connectivity and authentication

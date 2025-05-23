@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:ferry/ferry.dart';
+import 'package:gql_http_link/gql_http_link.dart';
 import 'token_manager.dart';
+import 'models/auth_models.dart';
 
 /// Exception for GraphQL client errors
 class GraphQLClientException implements Exception {
@@ -65,6 +67,9 @@ class GraphQLClientProvider {
   /// The underlying Ferry client
   late final Client _client;
 
+  /// Client for authenticated requests
+  Client? _authClient;
+
   GraphQLClientProvider({
     required this.apiUrl,
     required this.tokenManager,
@@ -76,8 +81,77 @@ class GraphQLClientProvider {
 
   /// Initialize the Ferry client
   void _initClient() {
-    // TODO: Initialize Ferry client with proper link configuration
-    // This would include the auth link that adds the token to requests
+    // Create an HTTP link for the GraphQL API with default headers
+    final httpLink = HttpLink(
+      apiUrl,
+      defaultHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    );
+
+    // Create an in-memory cache
+    final cache = Cache();
+
+    // Create the default client with the HTTP link and cache
+    _client = Client(
+      link: httpLink,
+      cache: cache,
+      defaultFetchPolicies: {
+        // Default policies for query, mutation, and subscription
+        OperationType.query: FetchPolicy.NetworkOnly,
+        OperationType.mutation: FetchPolicy.NetworkOnly,
+        OperationType.subscription: FetchPolicy.CacheAndNetwork,
+      },
+    );
+
+    if (enableDebugLogging) {
+      _setupLogging();
+    }
+
+    // Listen for token changes to update the auth client
+    tokenManager.tokenChanges.listen((tokens) {
+      if (tokens != null) {
+        _createAuthClient(tokens);
+      } else {
+        _authClient = null;
+      }
+    });
+  }
+
+  /// Create an authenticated client with the current token
+  void _createAuthClient(TokenPair tokens) {
+    // Create an HTTP link with the auth token
+    final authHttpLink = HttpLink(
+      apiUrl,
+      defaultHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${tokens.accessToken}',
+      },
+    );
+
+    // Create an in-memory cache
+    final cache = Cache();
+
+    // Create the auth client
+    _authClient = Client(
+      link: authHttpLink,
+      cache: cache,
+      defaultFetchPolicies: {
+        OperationType.query: FetchPolicy.NetworkOnly,
+        OperationType.mutation: FetchPolicy.NetworkOnly,
+        OperationType.subscription: FetchPolicy.CacheAndNetwork,
+      },
+    );
+  }
+
+  /// Set up logging for debugging
+  void _setupLogging() {
+    // Listen to client events for debugging
+    _client.requestController.stream.listen((request) {
+      print('🚀 [GraphQL] ${request.operation.operationName}');
+    });
   }
 
   /// Execute a GraphQL operation with authentication
@@ -87,14 +161,24 @@ class GraphQLClientProvider {
     OperationRequest<TData, TVars> request,
   ) async {
     try {
-      // Ensure authentication is available
+      // Check if authentication is needed and token is available
       final tokens = await tokenManager.getCurrentTokens();
-      if (tokens == null || tokens.isAccessTokenExpired) {
+      if (tokens == null) {
         throw GraphQLClientException("Authentication required");
       }
 
-      // Execute the request
-      return _client.request(request).first;
+      // Check if token is expired
+      if (tokens.isAccessTokenExpired) {
+        throw GraphQLClientException("Token expired");
+      }
+
+      // Make sure we have an auth client
+      if (_authClient == null) {
+        _createAuthClient(tokens);
+      }
+
+      // Execute the request with the authenticated client
+      return _authClient!.request(request).first;
     } catch (e) {
       throw GraphQLClientException(
         "Failed to execute operation: ${request.operation.operationName}",
@@ -128,8 +212,9 @@ class GraphQLClientProvider {
     OperationRequest<TData, TVars> request,
   ) {
     try {
-      // Ensure client is initialized
-      return _client.request(request);
+      // Get the appropriate client
+      final client = _authClient ?? _client;
+      return client.request(request);
     } catch (e) {
       throw GraphQLClientException(
         "Failed to watch operation: ${request.operation.operationName}",

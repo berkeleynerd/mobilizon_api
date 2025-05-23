@@ -4,36 +4,80 @@ import 'auth_service.dart';
 import 'token_manager.dart';
 import 'graphql_client_provider.dart';
 
+// Import the generated GraphQL classes for auth operations
+import 'package:jwt_decoder/jwt_decoder.dart';
+import '../graphql/mutations/__generated__/auth_mutations.req.gql.dart';
+import '../graphql/mutations/__generated__/auth_mutations.data.gql.dart';
+
 /// Implementation of AuthService using GraphQL
 class GraphQLAuthServiceImpl implements AuthService {
   // Internal controller for auth state changes
   final _authStateController = StreamController<bool>.broadcast();
 
+  // GraphQL client for API calls
+  final GraphQLClientProvider _graphQLClient;
+
+  // Token manager for managing auth tokens
+  final TokenManager _tokenManager;
+
   // Current user
+  User? _currentUser;
 
   GraphQLAuthServiceImpl({
     required GraphQLClientProvider graphQLClient,
     required TokenManager tokenManager,
-  });
+  }) : _graphQLClient = graphQLClient,
+       _tokenManager = tokenManager;
 
   @override
   Stream<bool> get authStateChanges => _authStateController.stream;
 
   @override
   Future<User?> getCurrentUser() async {
-    // TODO: Implementation
-    return null;
+    if (_currentUser != null) {
+      return _currentUser;
+    }
+
+    final isAuth = await isAuthenticated();
+    if (!isAuth) {
+      return null;
+    }
+
+    // We're authenticated but don't have user data
+    // This could happen if the app was restarted but tokens are still valid
+    // TODO: Implement a GraphQL query to fetch current user data
+    // For now, just return the cached user
+    return _currentUser;
   }
 
   @override
   Future<Person?> getCurrentProfile() async {
-    // TODO: Implementation
-    return null;
+    final user = await getCurrentUser();
+    if (user == null || user.profiles.isEmpty) {
+      return null;
+    }
+
+    // Return the default profile (first one in the list)
+    return user.profiles.first;
   }
 
   @override
   Future<bool> isAuthenticated() async {
-    // TODO: Implementation
+    final tokens = await _tokenManager.getCurrentTokens();
+    if (tokens == null) {
+      return false;
+    }
+
+    if (tokens.isAccessTokenExpired) {
+      try {
+        // Try to refresh the token
+        await refreshTokenIfNeeded();
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
     return true;
   }
 
@@ -44,32 +88,113 @@ class GraphQLAuthServiceImpl implements AuthService {
 
   @override
   Future<User> register(RegistrationData data) async {
-    // TODO: Implementation
     throw AuthException("Failed to register user");
   }
 
   @override
   Future<AuthResult> validateUser(String token) async {
-    // TODO: Implementation
     throw AuthException("Failed to validate user");
   }
 
   @override
   Future<bool> resendConfirmationEmail(String email, {String? locale}) async {
-    // TODO: Implementation
     throw AuthException("Failed to resend confirmation email");
   }
 
   @override
   Future<AuthResult> login(AuthCredentials credentials) async {
-    // TODO: Implementation
-    throw AuthException("Failed to login");
+    try {
+      // Create the login request with credentials
+      final request = GLoginReq(
+        (b) => b
+          ..vars.email = credentials.email
+          ..vars.password = credentials.password,
+      );
+
+      // Execute the login mutation
+      final response = await _graphQLClient.executePublic(request);
+
+      // Check for errors from the GraphQL operation
+      if (response.hasErrors || response.data?.login == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .whereType<String>()
+            .join(', ');
+        throw AuthException(
+          "Login failed: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      final loginData = response.data!.login!;
+
+      // Parse JWT token to get expiry date
+      final Map<String, dynamic> decodedToken = JwtDecoder.decode(
+        loginData.accessToken,
+      );
+      final expiryTimestamp = decodedToken['exp'] as int;
+      final expiryDateTime = DateTime.fromMillisecondsSinceEpoch(
+        expiryTimestamp * 1000,
+      );
+
+      // Create token pair
+      final tokens = TokenPair(
+        accessToken: loginData.accessToken,
+        refreshToken: loginData.refreshToken,
+        accessTokenExpiry: expiryDateTime,
+      );
+
+      // Save tokens
+      await _tokenManager.saveTokens(tokens);
+
+      // Map GraphQL user to domain model
+      final user = _mapGraphQLUserToUser(loginData.user);
+      _currentUser = user;
+
+      // Notify listeners of authentication state change
+      _authStateController.add(true);
+
+      // Return the result
+      return AuthResult(tokens: tokens, user: user);
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException("Failed to login: ${e.toString()}", originalError: e);
+    }
   }
 
   @override
   Future<bool> logout() async {
-    // TODO: Implementation
-    throw AuthException("Failed to logout");
+    try {
+      // Get the current refresh token
+      final tokens = await _tokenManager.getCurrentTokens();
+      if (tokens != null) {
+        // Create the logout request with refresh token
+        final request = GLogoutReq(
+          (b) => b..vars.refreshToken = tokens.refreshToken,
+        );
+
+        // Execute the logout mutation
+        await _graphQLClient.execute(request);
+      }
+
+      // Clear the tokens
+      await _tokenManager.clearTokens();
+
+      // Clear current user
+      _currentUser = null;
+
+      // Notify listeners of authentication state change
+      _authStateController.add(false);
+
+      return true;
+    } catch (e) {
+      throw AuthException(
+        "Failed to logout: ${e.toString()}",
+        originalError: e,
+      );
+    }
   }
 
   @override
@@ -77,7 +202,6 @@ class GraphQLAuthServiceImpl implements AuthService {
     String email, {
     String? locale,
   }) async {
-    // TODO: Implementation
     throw AuthException("Failed to request password reset");
   }
 
@@ -87,21 +211,181 @@ class GraphQLAuthServiceImpl implements AuthService {
     String newPassword, {
     String? locale,
   }) async {
-    // TODO: Implementation
     throw AuthException("Failed to reset password");
   }
 
   @override
   Future<bool> refreshTokenIfNeeded() async {
-    // TODO: Implementation
-    throw AuthException("Token refresh failed");
+    try {
+      final tokens = await _tokenManager.getCurrentTokens();
+      if (tokens == null) {
+        return false; // No tokens to refresh
+      }
+
+      if (!tokens.isAccessTokenExpired) {
+        return false; // Token is still valid, no need to refresh
+      }
+
+      // Force token refresh
+      await forceTokenRefresh();
+      return true;
+    } catch (e) {
+      throw AuthException(
+        "Token refresh failed: ${e.toString()}",
+        originalError: e,
+      );
+    }
   }
 
   @override
   Future<TokenPair> forceTokenRefresh() async {
-    // TODO: Implementation
-    throw AuthException("Failed to refresh token");
+    try {
+      final tokens = await _tokenManager.getCurrentTokens();
+      if (tokens == null) {
+        throw AuthException("No tokens available for refresh");
+      }
+
+      // Create the refresh token request
+      final request = GRefreshTokenReq(
+        (b) => b..vars.refreshToken = tokens.refreshToken,
+      );
+
+      // Execute the refresh token mutation
+      final response = await _graphQLClient.executePublic(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.refreshToken == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .whereType<String>()
+            .join(', ');
+        throw AuthException(
+          "Token refresh failed: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      final refreshData = response.data!.refreshToken!;
+
+      // Parse JWT token to get expiry date
+      final Map<String, dynamic> decodedToken = JwtDecoder.decode(
+        refreshData.accessToken,
+      );
+      final expiryTimestamp = decodedToken['exp'] as int;
+      final expiryDateTime = DateTime.fromMillisecondsSinceEpoch(
+        expiryTimestamp * 1000,
+      );
+
+      // Create token pair
+      final newTokens = TokenPair(
+        accessToken: refreshData.accessToken,
+        refreshToken: refreshData.refreshToken,
+        accessTokenExpiry: expiryDateTime,
+      );
+
+      // Save new tokens
+      await _tokenManager.saveTokens(newTokens);
+
+      return newTokens;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        "Failed to refresh token: ${e.toString()}",
+        originalError: e,
+      );
+    }
   }
 
-  void dispose() {}
+  // Helper method to map GraphQL user to domain model
+  User _mapGraphQLUserToUser(GLoginData_login_user user) {
+    // Create a list of profiles from actors
+    final profiles = user.actors.where((actor) => actor != null).map((actor) {
+      // Get avatar if available
+      Media? avatar;
+      if (actor!.avatar != null) {
+        avatar = Media(
+          id: actor.avatar!.id ?? '',
+          url: actor.avatar!.url ?? '',
+          alt: actor.avatar!.alt,
+        );
+      }
+
+      return Person(
+        id: actor.id ?? '',
+        preferredUsername: actor.preferredUsername ?? '',
+        name: actor.name,
+        summary: actor.summary,
+        avatar: avatar,
+        banner: null, // Banner is not included in ActorBasicInfo fragment
+      );
+    }).toList();
+
+    // Map user settings if available
+    UserSettings? settings;
+    if (user.settings != null) {
+      settings = UserSettings(
+        timezone: user.settings!.timezone?.toString(),
+        notificationOnDay: user.settings!.notificationOnDay ?? false,
+        notificationEachWeek: user.settings!.notificationEachWeek ?? false,
+        notificationBeforeEvent:
+            user.settings!.notificationBeforeEvent ?? false,
+        notificationPendingParticipation: _mapNotificationPending(
+          user.settings!.notificationPendingParticipation?.toString(),
+        ),
+        notificationPendingMembership: _mapNotificationPending(
+          user.settings!.notificationPendingMembership?.toString(),
+        ),
+        groupNotifications: _mapNotificationPending(
+          user.settings!.groupNotifications?.toString(),
+        ),
+      );
+    }
+
+    return User(
+      id: user.id ?? '',
+      email: user.email,
+      confirmed: user.confirmedAt != null,
+      role: _mapUserRole(user.role?.toString()),
+      profiles: profiles,
+      settings: settings,
+    );
+  }
+
+  // Map GraphQL user role to domain model
+  UserRole _mapUserRole(String? role) {
+    switch (role) {
+      case 'ADMINISTRATOR':
+        return UserRole.administrator;
+      case 'MODERATOR':
+        return UserRole.moderator;
+      default:
+        return UserRole.user;
+    }
+  }
+
+  // Map notification preference enum
+  NotificationPendingEnum _mapNotificationPending(String? value) {
+    switch (value) {
+      case 'DIRECT': // Assuming DIRECT is equivalent to ALWAYS in our domain model
+        return NotificationPendingEnum.always;
+      case 'NONE':
+        return NotificationPendingEnum.never;
+      case 'ONE_DAY':
+        return NotificationPendingEnum.oneDay;
+      case 'ONE_HOUR':
+        return NotificationPendingEnum.oneHour;
+      case 'ONE_WEEK':
+        return NotificationPendingEnum.oneWeek;
+      case 'THREE_DAYS':
+        return NotificationPendingEnum.threeDays;
+      default:
+        return NotificationPendingEnum.always;
+    }
+  }
+
+  void dispose() {
+    _authStateController.close();
+  }
 }
