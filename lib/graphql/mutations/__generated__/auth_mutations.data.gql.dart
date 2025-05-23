@@ -5,12 +5,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:mobilizon_api/__generated__/schema.schema.gql.dart' as _i3;
+import 'package:mobilizon_api/__generated__/schema.schema.gql.dart' as _i2;
 import 'package:mobilizon_api/__generated__/serializers.gql.dart' as _i1;
-import 'package:mobilizon_api/graphql/fragments/__generated__/media_fragments.data.gql.dart'
-    as _i4;
-import 'package:mobilizon_api/graphql/fragments/__generated__/user_fragments.data.gql.dart'
-    as _i2;
 
 part 'auth_mutations.data.gql.g.dart';
 
@@ -44,8 +40,7 @@ abstract class GCreateUserData
 
 abstract class GCreateUserData_createUser
     implements
-        Built<GCreateUserData_createUser, GCreateUserData_createUserBuilder>,
-        _i2.GUserBasicInfo {
+        Built<GCreateUserData_createUser, GCreateUserData_createUserBuilder> {
   GCreateUserData_createUser._();
 
   factory GCreateUserData_createUser(
@@ -55,36 +50,21 @@ abstract class GCreateUserData_createUser
   static void _initializeBuilder(GCreateUserData_createUserBuilder b) =>
       b..G__typename = 'User';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String get email;
-  @override
-  _i3.GDateTime? get confirmedAt;
-  @override
-  _i3.GDateTime? get confirmationSentAt;
-  @override
-  _i3.GDateTime? get lastSignInAt;
-  @override
+  _i2.GDateTime? get confirmedAt;
+  _i2.GDateTime? get confirmationSentAt;
+  _i2.GDateTime? get lastSignInAt;
   String? get lastSignInIp;
-  @override
-  _i3.GDateTime? get currentSignInAt;
-  @override
+  _i2.GDateTime? get currentSignInAt;
   String? get currentSignInIp;
-  @override
   String? get locale;
-  @override
   GCreateUserData_createUser_defaultActor? get defaultActor;
-  @override
   bool? get disabled;
-  @override
-  _i3.GUserRole? get role;
-  @override
+  _i2.GUserRole? get role;
   String? get provider;
-  @override
   int? get mediaSize;
   static Serializer<GCreateUserData_createUser> get serializer =>
       _$gCreateUserDataCreateUserSerializer;
@@ -104,8 +84,7 @@ abstract class GCreateUserData_createUser
 abstract class GCreateUserData_createUser_defaultActor
     implements
         Built<GCreateUserData_createUser_defaultActor,
-            GCreateUserData_createUser_defaultActorBuilder>,
-        _i2.GUserBasicInfo_defaultActor {
+            GCreateUserData_createUser_defaultActorBuilder> {
   GCreateUserData_createUser_defaultActor._();
 
   factory GCreateUserData_createUser_defaultActor(
@@ -116,14 +95,10 @@ abstract class GCreateUserData_createUser_defaultActor
           GCreateUserData_createUser_defaultActorBuilder b) =>
       b..G__typename = 'Person';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String? get preferredUsername;
-  @override
   String? get name;
   static Serializer<GCreateUserData_createUser_defaultActor> get serializer =>
       _$gCreateUserDataCreateUserDefaultActorSerializer;
@@ -173,8 +148,7 @@ abstract class GValidateUserData
 abstract class GValidateUserData_validateUser
     implements
         Built<GValidateUserData_validateUser,
-            GValidateUserData_validateUserBuilder>,
-        _i2.GLoginResponse {
+            GValidateUserData_validateUserBuilder> {
   GValidateUserData_validateUser._();
 
   factory GValidateUserData_validateUser(
@@ -184,14 +158,10 @@ abstract class GValidateUserData_validateUser
   static void _initializeBuilder(GValidateUserData_validateUserBuilder b) =>
       b..G__typename = 'Login';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String get accessToken;
-  @override
   String get refreshToken;
-  @override
   GValidateUserData_validateUser_user get user;
   static Serializer<GValidateUserData_validateUser> get serializer =>
       _$gValidateUserDataValidateUserSerializer;
@@ -211,9 +181,7 @@ abstract class GValidateUserData_validateUser
 abstract class GValidateUserData_validateUser_user
     implements
         Built<GValidateUserData_validateUser_user,
-            GValidateUserData_validateUser_userBuilder>,
-        _i2.GLoginResponse_user,
-        _i2.GUserFull {
+            GValidateUserData_validateUser_userBuilder> {
   GValidateUserData_validateUser_user._();
 
   factory GValidateUserData_validateUser_user(
@@ -224,40 +192,13 @@ abstract class GValidateUserData_validateUser_user
           GValidateUserData_validateUser_userBuilder b) =>
       b..G__typename = 'User';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String get email;
-  @override
-  _i3.GDateTime? get confirmedAt;
-  @override
-  _i3.GDateTime? get confirmationSentAt;
-  @override
-  _i3.GDateTime? get lastSignInAt;
-  @override
-  String? get lastSignInIp;
-  @override
-  _i3.GDateTime? get currentSignInAt;
-  @override
-  String? get currentSignInIp;
-  @override
-  String? get locale;
-  @override
+  _i2.GDateTime? get confirmedAt;
+  _i2.GUserRole? get role;
   GValidateUserData_validateUser_user_defaultActor? get defaultActor;
-  @override
-  bool? get disabled;
-  @override
-  _i3.GUserRole? get role;
-  @override
-  String? get provider;
-  @override
-  int? get mediaSize;
-  @override
-  GValidateUserData_validateUser_user_settings? get settings;
-  @override
   BuiltList<GValidateUserData_validateUser_user_actors?> get actors;
   static Serializer<GValidateUserData_validateUser_user> get serializer =>
       _$gValidateUserDataValidateUserUserSerializer;
@@ -278,9 +219,7 @@ abstract class GValidateUserData_validateUser_user
 abstract class GValidateUserData_validateUser_user_defaultActor
     implements
         Built<GValidateUserData_validateUser_user_defaultActor,
-            GValidateUserData_validateUser_user_defaultActorBuilder>,
-        _i2.GLoginResponse_user_defaultActor,
-        _i2.GUserFull_defaultActor {
+            GValidateUserData_validateUser_user_defaultActorBuilder> {
   GValidateUserData_validateUser_user_defaultActor._();
 
   factory GValidateUserData_validateUser_user_defaultActor(
@@ -291,14 +230,10 @@ abstract class GValidateUserData_validateUser_user_defaultActor
           GValidateUserData_validateUser_user_defaultActorBuilder b) =>
       b..G__typename = 'Person';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String? get preferredUsername;
-  @override
   String? get name;
   static Serializer<GValidateUserData_validateUser_user_defaultActor>
       get serializer =>
@@ -317,107 +252,10 @@ abstract class GValidateUserData_validateUser_user_defaultActor
       );
 }
 
-abstract class GValidateUserData_validateUser_user_settings
-    implements
-        Built<GValidateUserData_validateUser_user_settings,
-            GValidateUserData_validateUser_user_settingsBuilder>,
-        _i2.GLoginResponse_user_settings,
-        _i2.GUserFull_settings {
-  GValidateUserData_validateUser_user_settings._();
-
-  factory GValidateUserData_validateUser_user_settings(
-      [void Function(GValidateUserData_validateUser_user_settingsBuilder b)
-          updates]) = _$GValidateUserData_validateUser_user_settings;
-
-  static void _initializeBuilder(
-          GValidateUserData_validateUser_user_settingsBuilder b) =>
-      b..G__typename = 'UserSettings';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  _i3.GTimezone? get timezone;
-  @override
-  bool? get notificationOnDay;
-  @override
-  bool? get notificationEachWeek;
-  @override
-  bool? get notificationBeforeEvent;
-  @override
-  _i3.GNotificationPendingEnum? get notificationPendingParticipation;
-  @override
-  _i3.GNotificationPendingEnum? get notificationPendingMembership;
-  @override
-  _i3.GNotificationPendingEnum? get groupNotifications;
-  @override
-  GValidateUserData_validateUser_user_settings_location? get location;
-  static Serializer<GValidateUserData_validateUser_user_settings>
-      get serializer => _$gValidateUserDataValidateUserUserSettingsSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GValidateUserData_validateUser_user_settings.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GValidateUserData_validateUser_user_settings? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GValidateUserData_validateUser_user_settings.serializer,
-        json,
-      );
-}
-
-abstract class GValidateUserData_validateUser_user_settings_location
-    implements
-        Built<GValidateUserData_validateUser_user_settings_location,
-            GValidateUserData_validateUser_user_settings_locationBuilder>,
-        _i2.GLoginResponse_user_settings_location,
-        _i2.GUserFull_settings_location {
-  GValidateUserData_validateUser_user_settings_location._();
-
-  factory GValidateUserData_validateUser_user_settings_location(
-      [void Function(
-              GValidateUserData_validateUser_user_settings_locationBuilder b)
-          updates]) = _$GValidateUserData_validateUser_user_settings_location;
-
-  static void _initializeBuilder(
-          GValidateUserData_validateUser_user_settings_locationBuilder b) =>
-      b..G__typename = 'Location';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  int? get range;
-  @override
-  String? get geohash;
-  @override
-  String? get name;
-  static Serializer<GValidateUserData_validateUser_user_settings_location>
-      get serializer =>
-          _$gValidateUserDataValidateUserUserSettingsLocationSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GValidateUserData_validateUser_user_settings_location.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GValidateUserData_validateUser_user_settings_location? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GValidateUserData_validateUser_user_settings_location.serializer,
-        json,
-      );
-}
-
 abstract class GValidateUserData_validateUser_user_actors
     implements
         Built<GValidateUserData_validateUser_user_actors,
-            GValidateUserData_validateUser_user_actorsBuilder>,
-        _i2.GLoginResponse_user_actors,
-        _i2.GUserFull_actors,
-        _i2.GActorBasicInfo {
+            GValidateUserData_validateUser_user_actorsBuilder> {
   GValidateUserData_validateUser_user_actors._();
 
   factory GValidateUserData_validateUser_user_actors(
@@ -428,25 +266,11 @@ abstract class GValidateUserData_validateUser_user_actors
           GValidateUserData_validateUser_user_actorsBuilder b) =>
       b..G__typename = 'Person';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String? get preferredUsername;
-  @override
   String? get name;
-  @override
-  String? get domain;
-  @override
-  String? get summary;
-  @override
-  String? get url;
-  @override
-  bool? get suspended;
-  @override
-  GValidateUserData_validateUser_user_actors_avatar? get avatar;
   static Serializer<GValidateUserData_validateUser_user_actors>
       get serializer => _$gValidateUserDataValidateUserUserActorsSerializer;
 
@@ -459,56 +283,6 @@ abstract class GValidateUserData_validateUser_user_actors
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GValidateUserData_validateUser_user_actors.serializer,
-        json,
-      );
-}
-
-abstract class GValidateUserData_validateUser_user_actors_avatar
-    implements
-        Built<GValidateUserData_validateUser_user_actors_avatar,
-            GValidateUserData_validateUser_user_actors_avatarBuilder>,
-        _i2.GLoginResponse_user_actors_avatar,
-        _i2.GUserFull_actors_avatar,
-        _i2.GActorBasicInfo_avatar,
-        _i4.GMediaBasicInfo {
-  GValidateUserData_validateUser_user_actors_avatar._();
-
-  factory GValidateUserData_validateUser_user_actors_avatar(
-      [void Function(GValidateUserData_validateUser_user_actors_avatarBuilder b)
-          updates]) = _$GValidateUserData_validateUser_user_actors_avatar;
-
-  static void _initializeBuilder(
-          GValidateUserData_validateUser_user_actors_avatarBuilder b) =>
-      b..G__typename = 'Media';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String? get id;
-  @override
-  String? get alt;
-  @override
-  String? get name;
-  @override
-  String? get url;
-  @override
-  int? get size;
-  @override
-  String? get contentType;
-  static Serializer<GValidateUserData_validateUser_user_actors_avatar>
-      get serializer =>
-          _$gValidateUserDataValidateUserUserActorsAvatarSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GValidateUserData_validateUser_user_actors_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GValidateUserData_validateUser_user_actors_avatar? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GValidateUserData_validateUser_user_actors_avatar.serializer,
         json,
       );
 }
@@ -571,9 +345,7 @@ abstract class GLoginData implements Built<GLoginData, GLoginDataBuilder> {
 }
 
 abstract class GLoginData_login
-    implements
-        Built<GLoginData_login, GLoginData_loginBuilder>,
-        _i2.GLoginResponse {
+    implements Built<GLoginData_login, GLoginData_loginBuilder> {
   GLoginData_login._();
 
   factory GLoginData_login([void Function(GLoginData_loginBuilder b) updates]) =
@@ -582,14 +354,10 @@ abstract class GLoginData_login
   static void _initializeBuilder(GLoginData_loginBuilder b) =>
       b..G__typename = 'Login';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String get accessToken;
-  @override
   String get refreshToken;
-  @override
   GLoginData_login_user get user;
   static Serializer<GLoginData_login> get serializer =>
       _$gLoginDataLoginSerializer;
@@ -607,10 +375,7 @@ abstract class GLoginData_login
 }
 
 abstract class GLoginData_login_user
-    implements
-        Built<GLoginData_login_user, GLoginData_login_userBuilder>,
-        _i2.GLoginResponse_user,
-        _i2.GUserFull {
+    implements Built<GLoginData_login_user, GLoginData_login_userBuilder> {
   GLoginData_login_user._();
 
   factory GLoginData_login_user(
@@ -620,40 +385,13 @@ abstract class GLoginData_login_user
   static void _initializeBuilder(GLoginData_login_userBuilder b) =>
       b..G__typename = 'User';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String get email;
-  @override
-  _i3.GDateTime? get confirmedAt;
-  @override
-  _i3.GDateTime? get confirmationSentAt;
-  @override
-  _i3.GDateTime? get lastSignInAt;
-  @override
-  String? get lastSignInIp;
-  @override
-  _i3.GDateTime? get currentSignInAt;
-  @override
-  String? get currentSignInIp;
-  @override
-  String? get locale;
-  @override
+  _i2.GDateTime? get confirmedAt;
+  _i2.GUserRole? get role;
   GLoginData_login_user_defaultActor? get defaultActor;
-  @override
-  bool? get disabled;
-  @override
-  _i3.GUserRole? get role;
-  @override
-  String? get provider;
-  @override
-  int? get mediaSize;
-  @override
-  GLoginData_login_user_settings? get settings;
-  @override
   BuiltList<GLoginData_login_user_actors?> get actors;
   static Serializer<GLoginData_login_user> get serializer =>
       _$gLoginDataLoginUserSerializer;
@@ -673,9 +411,7 @@ abstract class GLoginData_login_user
 abstract class GLoginData_login_user_defaultActor
     implements
         Built<GLoginData_login_user_defaultActor,
-            GLoginData_login_user_defaultActorBuilder>,
-        _i2.GLoginResponse_user_defaultActor,
-        _i2.GUserFull_defaultActor {
+            GLoginData_login_user_defaultActorBuilder> {
   GLoginData_login_user_defaultActor._();
 
   factory GLoginData_login_user_defaultActor(
@@ -685,14 +421,10 @@ abstract class GLoginData_login_user_defaultActor
   static void _initializeBuilder(GLoginData_login_user_defaultActorBuilder b) =>
       b..G__typename = 'Person';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String? get preferredUsername;
-  @override
   String? get name;
   static Serializer<GLoginData_login_user_defaultActor> get serializer =>
       _$gLoginDataLoginUserDefaultActorSerializer;
@@ -710,103 +442,10 @@ abstract class GLoginData_login_user_defaultActor
       );
 }
 
-abstract class GLoginData_login_user_settings
-    implements
-        Built<GLoginData_login_user_settings,
-            GLoginData_login_user_settingsBuilder>,
-        _i2.GLoginResponse_user_settings,
-        _i2.GUserFull_settings {
-  GLoginData_login_user_settings._();
-
-  factory GLoginData_login_user_settings(
-          [void Function(GLoginData_login_user_settingsBuilder b) updates]) =
-      _$GLoginData_login_user_settings;
-
-  static void _initializeBuilder(GLoginData_login_user_settingsBuilder b) =>
-      b..G__typename = 'UserSettings';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  _i3.GTimezone? get timezone;
-  @override
-  bool? get notificationOnDay;
-  @override
-  bool? get notificationEachWeek;
-  @override
-  bool? get notificationBeforeEvent;
-  @override
-  _i3.GNotificationPendingEnum? get notificationPendingParticipation;
-  @override
-  _i3.GNotificationPendingEnum? get notificationPendingMembership;
-  @override
-  _i3.GNotificationPendingEnum? get groupNotifications;
-  @override
-  GLoginData_login_user_settings_location? get location;
-  static Serializer<GLoginData_login_user_settings> get serializer =>
-      _$gLoginDataLoginUserSettingsSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GLoginData_login_user_settings.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GLoginData_login_user_settings? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GLoginData_login_user_settings.serializer,
-        json,
-      );
-}
-
-abstract class GLoginData_login_user_settings_location
-    implements
-        Built<GLoginData_login_user_settings_location,
-            GLoginData_login_user_settings_locationBuilder>,
-        _i2.GLoginResponse_user_settings_location,
-        _i2.GUserFull_settings_location {
-  GLoginData_login_user_settings_location._();
-
-  factory GLoginData_login_user_settings_location(
-      [void Function(GLoginData_login_user_settings_locationBuilder b)
-          updates]) = _$GLoginData_login_user_settings_location;
-
-  static void _initializeBuilder(
-          GLoginData_login_user_settings_locationBuilder b) =>
-      b..G__typename = 'Location';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  int? get range;
-  @override
-  String? get geohash;
-  @override
-  String? get name;
-  static Serializer<GLoginData_login_user_settings_location> get serializer =>
-      _$gLoginDataLoginUserSettingsLocationSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GLoginData_login_user_settings_location.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GLoginData_login_user_settings_location? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GLoginData_login_user_settings_location.serializer,
-        json,
-      );
-}
-
 abstract class GLoginData_login_user_actors
     implements
         Built<GLoginData_login_user_actors,
-            GLoginData_login_user_actorsBuilder>,
-        _i2.GLoginResponse_user_actors,
-        _i2.GUserFull_actors,
-        _i2.GActorBasicInfo {
+            GLoginData_login_user_actorsBuilder> {
   GLoginData_login_user_actors._();
 
   factory GLoginData_login_user_actors(
@@ -816,25 +455,11 @@ abstract class GLoginData_login_user_actors
   static void _initializeBuilder(GLoginData_login_user_actorsBuilder b) =>
       b..G__typename = 'Person';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String? get preferredUsername;
-  @override
   String? get name;
-  @override
-  String? get domain;
-  @override
-  String? get summary;
-  @override
-  String? get url;
-  @override
-  bool? get suspended;
-  @override
-  GLoginData_login_user_actors_avatar? get avatar;
   static Serializer<GLoginData_login_user_actors> get serializer =>
       _$gLoginDataLoginUserActorsSerializer;
 
@@ -846,55 +471,6 @@ abstract class GLoginData_login_user_actors
   static GLoginData_login_user_actors? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GLoginData_login_user_actors.serializer,
-        json,
-      );
-}
-
-abstract class GLoginData_login_user_actors_avatar
-    implements
-        Built<GLoginData_login_user_actors_avatar,
-            GLoginData_login_user_actors_avatarBuilder>,
-        _i2.GLoginResponse_user_actors_avatar,
-        _i2.GUserFull_actors_avatar,
-        _i2.GActorBasicInfo_avatar,
-        _i4.GMediaBasicInfo {
-  GLoginData_login_user_actors_avatar._();
-
-  factory GLoginData_login_user_actors_avatar(
-      [void Function(GLoginData_login_user_actors_avatarBuilder b)
-          updates]) = _$GLoginData_login_user_actors_avatar;
-
-  static void _initializeBuilder(
-          GLoginData_login_user_actors_avatarBuilder b) =>
-      b..G__typename = 'Media';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String? get id;
-  @override
-  String? get alt;
-  @override
-  String? get name;
-  @override
-  String? get url;
-  @override
-  int? get size;
-  @override
-  String? get contentType;
-  static Serializer<GLoginData_login_user_actors_avatar> get serializer =>
-      _$gLoginDataLoginUserActorsAvatarSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GLoginData_login_user_actors_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GLoginData_login_user_actors_avatar? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GLoginData_login_user_actors_avatar.serializer,
         json,
       );
 }
@@ -957,8 +533,7 @@ abstract class GRefreshTokenData
 abstract class GRefreshTokenData_refreshToken
     implements
         Built<GRefreshTokenData_refreshToken,
-            GRefreshTokenData_refreshTokenBuilder>,
-        _i2.GRefreshedTokenResponse {
+            GRefreshTokenData_refreshTokenBuilder> {
   GRefreshTokenData_refreshToken._();
 
   factory GRefreshTokenData_refreshToken(
@@ -968,12 +543,9 @@ abstract class GRefreshTokenData_refreshToken
   static void _initializeBuilder(GRefreshTokenData_refreshTokenBuilder b) =>
       b..G__typename = 'RefreshedToken';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String get accessToken;
-  @override
   String get refreshToken;
   static Serializer<GRefreshTokenData_refreshToken> get serializer =>
       _$gRefreshTokenDataRefreshTokenSerializer;
@@ -1051,8 +623,7 @@ abstract class GResetPasswordData
 abstract class GResetPasswordData_resetPassword
     implements
         Built<GResetPasswordData_resetPassword,
-            GResetPasswordData_resetPasswordBuilder>,
-        _i2.GLoginResponse {
+            GResetPasswordData_resetPasswordBuilder> {
   GResetPasswordData_resetPassword._();
 
   factory GResetPasswordData_resetPassword(
@@ -1062,14 +633,10 @@ abstract class GResetPasswordData_resetPassword
   static void _initializeBuilder(GResetPasswordData_resetPasswordBuilder b) =>
       b..G__typename = 'Login';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String get accessToken;
-  @override
   String get refreshToken;
-  @override
   GResetPasswordData_resetPassword_user get user;
   static Serializer<GResetPasswordData_resetPassword> get serializer =>
       _$gResetPasswordDataResetPasswordSerializer;
@@ -1090,9 +657,7 @@ abstract class GResetPasswordData_resetPassword
 abstract class GResetPasswordData_resetPassword_user
     implements
         Built<GResetPasswordData_resetPassword_user,
-            GResetPasswordData_resetPassword_userBuilder>,
-        _i2.GLoginResponse_user,
-        _i2.GUserFull {
+            GResetPasswordData_resetPassword_userBuilder> {
   GResetPasswordData_resetPassword_user._();
 
   factory GResetPasswordData_resetPassword_user(
@@ -1103,40 +668,13 @@ abstract class GResetPasswordData_resetPassword_user
           GResetPasswordData_resetPassword_userBuilder b) =>
       b..G__typename = 'User';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String get email;
-  @override
-  _i3.GDateTime? get confirmedAt;
-  @override
-  _i3.GDateTime? get confirmationSentAt;
-  @override
-  _i3.GDateTime? get lastSignInAt;
-  @override
-  String? get lastSignInIp;
-  @override
-  _i3.GDateTime? get currentSignInAt;
-  @override
-  String? get currentSignInIp;
-  @override
-  String? get locale;
-  @override
+  _i2.GDateTime? get confirmedAt;
+  _i2.GUserRole? get role;
   GResetPasswordData_resetPassword_user_defaultActor? get defaultActor;
-  @override
-  bool? get disabled;
-  @override
-  _i3.GUserRole? get role;
-  @override
-  String? get provider;
-  @override
-  int? get mediaSize;
-  @override
-  GResetPasswordData_resetPassword_user_settings? get settings;
-  @override
   BuiltList<GResetPasswordData_resetPassword_user_actors?> get actors;
   static Serializer<GResetPasswordData_resetPassword_user> get serializer =>
       _$gResetPasswordDataResetPasswordUserSerializer;
@@ -1157,9 +695,7 @@ abstract class GResetPasswordData_resetPassword_user
 abstract class GResetPasswordData_resetPassword_user_defaultActor
     implements
         Built<GResetPasswordData_resetPassword_user_defaultActor,
-            GResetPasswordData_resetPassword_user_defaultActorBuilder>,
-        _i2.GLoginResponse_user_defaultActor,
-        _i2.GUserFull_defaultActor {
+            GResetPasswordData_resetPassword_user_defaultActorBuilder> {
   GResetPasswordData_resetPassword_user_defaultActor._();
 
   factory GResetPasswordData_resetPassword_user_defaultActor(
@@ -1171,14 +707,10 @@ abstract class GResetPasswordData_resetPassword_user_defaultActor
           GResetPasswordData_resetPassword_user_defaultActorBuilder b) =>
       b..G__typename = 'Person';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String? get preferredUsername;
-  @override
   String? get name;
   static Serializer<GResetPasswordData_resetPassword_user_defaultActor>
       get serializer =>
@@ -1197,107 +729,10 @@ abstract class GResetPasswordData_resetPassword_user_defaultActor
       );
 }
 
-abstract class GResetPasswordData_resetPassword_user_settings
-    implements
-        Built<GResetPasswordData_resetPassword_user_settings,
-            GResetPasswordData_resetPassword_user_settingsBuilder>,
-        _i2.GLoginResponse_user_settings,
-        _i2.GUserFull_settings {
-  GResetPasswordData_resetPassword_user_settings._();
-
-  factory GResetPasswordData_resetPassword_user_settings(
-      [void Function(GResetPasswordData_resetPassword_user_settingsBuilder b)
-          updates]) = _$GResetPasswordData_resetPassword_user_settings;
-
-  static void _initializeBuilder(
-          GResetPasswordData_resetPassword_user_settingsBuilder b) =>
-      b..G__typename = 'UserSettings';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  _i3.GTimezone? get timezone;
-  @override
-  bool? get notificationOnDay;
-  @override
-  bool? get notificationEachWeek;
-  @override
-  bool? get notificationBeforeEvent;
-  @override
-  _i3.GNotificationPendingEnum? get notificationPendingParticipation;
-  @override
-  _i3.GNotificationPendingEnum? get notificationPendingMembership;
-  @override
-  _i3.GNotificationPendingEnum? get groupNotifications;
-  @override
-  GResetPasswordData_resetPassword_user_settings_location? get location;
-  static Serializer<GResetPasswordData_resetPassword_user_settings>
-      get serializer => _$gResetPasswordDataResetPasswordUserSettingsSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GResetPasswordData_resetPassword_user_settings.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GResetPasswordData_resetPassword_user_settings? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GResetPasswordData_resetPassword_user_settings.serializer,
-        json,
-      );
-}
-
-abstract class GResetPasswordData_resetPassword_user_settings_location
-    implements
-        Built<GResetPasswordData_resetPassword_user_settings_location,
-            GResetPasswordData_resetPassword_user_settings_locationBuilder>,
-        _i2.GLoginResponse_user_settings_location,
-        _i2.GUserFull_settings_location {
-  GResetPasswordData_resetPassword_user_settings_location._();
-
-  factory GResetPasswordData_resetPassword_user_settings_location(
-      [void Function(
-              GResetPasswordData_resetPassword_user_settings_locationBuilder b)
-          updates]) = _$GResetPasswordData_resetPassword_user_settings_location;
-
-  static void _initializeBuilder(
-          GResetPasswordData_resetPassword_user_settings_locationBuilder b) =>
-      b..G__typename = 'Location';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  int? get range;
-  @override
-  String? get geohash;
-  @override
-  String? get name;
-  static Serializer<GResetPasswordData_resetPassword_user_settings_location>
-      get serializer =>
-          _$gResetPasswordDataResetPasswordUserSettingsLocationSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GResetPasswordData_resetPassword_user_settings_location.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GResetPasswordData_resetPassword_user_settings_location? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GResetPasswordData_resetPassword_user_settings_location.serializer,
-        json,
-      );
-}
-
 abstract class GResetPasswordData_resetPassword_user_actors
     implements
         Built<GResetPasswordData_resetPassword_user_actors,
-            GResetPasswordData_resetPassword_user_actorsBuilder>,
-        _i2.GLoginResponse_user_actors,
-        _i2.GUserFull_actors,
-        _i2.GActorBasicInfo {
+            GResetPasswordData_resetPassword_user_actorsBuilder> {
   GResetPasswordData_resetPassword_user_actors._();
 
   factory GResetPasswordData_resetPassword_user_actors(
@@ -1308,25 +743,11 @@ abstract class GResetPasswordData_resetPassword_user_actors
           GResetPasswordData_resetPassword_user_actorsBuilder b) =>
       b..G__typename = 'Person';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
-  @override
   String? get preferredUsername;
-  @override
   String? get name;
-  @override
-  String? get domain;
-  @override
-  String? get summary;
-  @override
-  String? get url;
-  @override
-  bool? get suspended;
-  @override
-  GResetPasswordData_resetPassword_user_actors_avatar? get avatar;
   static Serializer<GResetPasswordData_resetPassword_user_actors>
       get serializer => _$gResetPasswordDataResetPasswordUserActorsSerializer;
 
@@ -1339,57 +760,6 @@ abstract class GResetPasswordData_resetPassword_user_actors
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GResetPasswordData_resetPassword_user_actors.serializer,
-        json,
-      );
-}
-
-abstract class GResetPasswordData_resetPassword_user_actors_avatar
-    implements
-        Built<GResetPasswordData_resetPassword_user_actors_avatar,
-            GResetPasswordData_resetPassword_user_actors_avatarBuilder>,
-        _i2.GLoginResponse_user_actors_avatar,
-        _i2.GUserFull_actors_avatar,
-        _i2.GActorBasicInfo_avatar,
-        _i4.GMediaBasicInfo {
-  GResetPasswordData_resetPassword_user_actors_avatar._();
-
-  factory GResetPasswordData_resetPassword_user_actors_avatar(
-      [void Function(
-              GResetPasswordData_resetPassword_user_actors_avatarBuilder b)
-          updates]) = _$GResetPasswordData_resetPassword_user_actors_avatar;
-
-  static void _initializeBuilder(
-          GResetPasswordData_resetPassword_user_actors_avatarBuilder b) =>
-      b..G__typename = 'Media';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String? get id;
-  @override
-  String? get alt;
-  @override
-  String? get name;
-  @override
-  String? get url;
-  @override
-  int? get size;
-  @override
-  String? get contentType;
-  static Serializer<GResetPasswordData_resetPassword_user_actors_avatar>
-      get serializer =>
-          _$gResetPasswordDataResetPasswordUserActorsAvatarSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GResetPasswordData_resetPassword_user_actors_avatar.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GResetPasswordData_resetPassword_user_actors_avatar? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GResetPasswordData_resetPassword_user_actors_avatar.serializer,
         json,
       );
 }

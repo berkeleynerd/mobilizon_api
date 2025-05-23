@@ -1,0 +1,494 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'integration_test_mutations.var.gql.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<GSimpleLoginVars> _$gSimpleLoginVarsSerializer =
+    new _$GSimpleLoginVarsSerializer();
+Serializer<GSimpleLogoutVars> _$gSimpleLogoutVarsSerializer =
+    new _$GSimpleLogoutVarsSerializer();
+Serializer<GSimpleRefreshTokenVars> _$gSimpleRefreshTokenVarsSerializer =
+    new _$GSimpleRefreshTokenVarsSerializer();
+
+class _$GSimpleLoginVarsSerializer
+    implements StructuredSerializer<GSimpleLoginVars> {
+  @override
+  final Iterable<Type> types = const [GSimpleLoginVars, _$GSimpleLoginVars];
+  @override
+  final String wireName = 'GSimpleLoginVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSimpleLoginVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'email',
+      serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      ),
+      'password',
+      serializers.serialize(
+        object.password,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GSimpleLoginVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSimpleLoginVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'email':
+          result.email =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+        case 'password':
+          result.password =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSimpleLogoutVarsSerializer
+    implements StructuredSerializer<GSimpleLogoutVars> {
+  @override
+  final Iterable<Type> types = const [GSimpleLogoutVars, _$GSimpleLogoutVars];
+  @override
+  final String wireName = 'GSimpleLogoutVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSimpleLogoutVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'refreshToken',
+      serializers.serialize(
+        object.refreshToken,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GSimpleLogoutVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSimpleLogoutVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'refreshToken':
+          result.refreshToken =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSimpleRefreshTokenVarsSerializer
+    implements StructuredSerializer<GSimpleRefreshTokenVars> {
+  @override
+  final Iterable<Type> types = const [
+    GSimpleRefreshTokenVars,
+    _$GSimpleRefreshTokenVars,
+  ];
+  @override
+  final String wireName = 'GSimpleRefreshTokenVars';
+
+  @override
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GSimpleRefreshTokenVars object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = <Object?>[
+      'refreshToken',
+      serializers.serialize(
+        object.refreshToken,
+        specifiedType: const FullType(String),
+      ),
+    ];
+
+    return result;
+  }
+
+  @override
+  GSimpleRefreshTokenVars deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = new GSimpleRefreshTokenVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'refreshToken':
+          result.refreshToken =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSimpleLoginVars extends GSimpleLoginVars {
+  @override
+  final String email;
+  @override
+  final String password;
+
+  factory _$GSimpleLoginVars([
+    void Function(GSimpleLoginVarsBuilder)? updates,
+  ]) => (new GSimpleLoginVarsBuilder()..update(updates))._build();
+
+  _$GSimpleLoginVars._({required this.email, required this.password})
+    : super._() {
+    BuiltValueNullFieldError.checkNotNull(email, r'GSimpleLoginVars', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+      password,
+      r'GSimpleLoginVars',
+      'password',
+    );
+  }
+
+  @override
+  GSimpleLoginVars rebuild(void Function(GSimpleLoginVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GSimpleLoginVarsBuilder toBuilder() =>
+      new GSimpleLoginVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSimpleLoginVars &&
+        email == other.email &&
+        password == other.password;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, password.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GSimpleLoginVars')
+          ..add('email', email)
+          ..add('password', password))
+        .toString();
+  }
+}
+
+class GSimpleLoginVarsBuilder
+    implements Builder<GSimpleLoginVars, GSimpleLoginVarsBuilder> {
+  _$GSimpleLoginVars? _$v;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  String? _password;
+  String? get password => _$this._password;
+  set password(String? password) => _$this._password = password;
+
+  GSimpleLoginVarsBuilder();
+
+  GSimpleLoginVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _email = $v.email;
+      _password = $v.password;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSimpleLoginVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSimpleLoginVars;
+  }
+
+  @override
+  void update(void Function(GSimpleLoginVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSimpleLoginVars build() => _build();
+
+  _$GSimpleLoginVars _build() {
+    final _$result =
+        _$v ??
+        new _$GSimpleLoginVars._(
+          email: BuiltValueNullFieldError.checkNotNull(
+            email,
+            r'GSimpleLoginVars',
+            'email',
+          ),
+          password: BuiltValueNullFieldError.checkNotNull(
+            password,
+            r'GSimpleLoginVars',
+            'password',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSimpleLogoutVars extends GSimpleLogoutVars {
+  @override
+  final String refreshToken;
+
+  factory _$GSimpleLogoutVars([
+    void Function(GSimpleLogoutVarsBuilder)? updates,
+  ]) => (new GSimpleLogoutVarsBuilder()..update(updates))._build();
+
+  _$GSimpleLogoutVars._({required this.refreshToken}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      refreshToken,
+      r'GSimpleLogoutVars',
+      'refreshToken',
+    );
+  }
+
+  @override
+  GSimpleLogoutVars rebuild(void Function(GSimpleLogoutVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GSimpleLogoutVarsBuilder toBuilder() =>
+      new GSimpleLogoutVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSimpleLogoutVars && refreshToken == other.refreshToken;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, refreshToken.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GSimpleLogoutVars',
+    )..add('refreshToken', refreshToken)).toString();
+  }
+}
+
+class GSimpleLogoutVarsBuilder
+    implements Builder<GSimpleLogoutVars, GSimpleLogoutVarsBuilder> {
+  _$GSimpleLogoutVars? _$v;
+
+  String? _refreshToken;
+  String? get refreshToken => _$this._refreshToken;
+  set refreshToken(String? refreshToken) => _$this._refreshToken = refreshToken;
+
+  GSimpleLogoutVarsBuilder();
+
+  GSimpleLogoutVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _refreshToken = $v.refreshToken;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSimpleLogoutVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSimpleLogoutVars;
+  }
+
+  @override
+  void update(void Function(GSimpleLogoutVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSimpleLogoutVars build() => _build();
+
+  _$GSimpleLogoutVars _build() {
+    final _$result =
+        _$v ??
+        new _$GSimpleLogoutVars._(
+          refreshToken: BuiltValueNullFieldError.checkNotNull(
+            refreshToken,
+            r'GSimpleLogoutVars',
+            'refreshToken',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSimpleRefreshTokenVars extends GSimpleRefreshTokenVars {
+  @override
+  final String refreshToken;
+
+  factory _$GSimpleRefreshTokenVars([
+    void Function(GSimpleRefreshTokenVarsBuilder)? updates,
+  ]) => (new GSimpleRefreshTokenVarsBuilder()..update(updates))._build();
+
+  _$GSimpleRefreshTokenVars._({required this.refreshToken}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+      refreshToken,
+      r'GSimpleRefreshTokenVars',
+      'refreshToken',
+    );
+  }
+
+  @override
+  GSimpleRefreshTokenVars rebuild(
+    void Function(GSimpleRefreshTokenVarsBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
+
+  @override
+  GSimpleRefreshTokenVarsBuilder toBuilder() =>
+      new GSimpleRefreshTokenVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSimpleRefreshTokenVars &&
+        refreshToken == other.refreshToken;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, refreshToken.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+      r'GSimpleRefreshTokenVars',
+    )..add('refreshToken', refreshToken)).toString();
+  }
+}
+
+class GSimpleRefreshTokenVarsBuilder
+    implements
+        Builder<GSimpleRefreshTokenVars, GSimpleRefreshTokenVarsBuilder> {
+  _$GSimpleRefreshTokenVars? _$v;
+
+  String? _refreshToken;
+  String? get refreshToken => _$this._refreshToken;
+  set refreshToken(String? refreshToken) => _$this._refreshToken = refreshToken;
+
+  GSimpleRefreshTokenVarsBuilder();
+
+  GSimpleRefreshTokenVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _refreshToken = $v.refreshToken;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSimpleRefreshTokenVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSimpleRefreshTokenVars;
+  }
+
+  @override
+  void update(void Function(GSimpleRefreshTokenVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GSimpleRefreshTokenVars build() => _build();
+
+  _$GSimpleRefreshTokenVars _build() {
+    final _$result =
+        _$v ??
+        new _$GSimpleRefreshTokenVars._(
+          refreshToken: BuiltValueNullFieldError.checkNotNull(
+            refreshToken,
+            r'GSimpleRefreshTokenVars',
+            'refreshToken',
+          ),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -264,10 +264,7 @@ Serializers _$serializers =
           ..add(GLoginData_login.serializer)
           ..add(GLoginData_login_user.serializer)
           ..add(GLoginData_login_user_actors.serializer)
-          ..add(GLoginData_login_user_actors_avatar.serializer)
           ..add(GLoginData_login_user_defaultActor.serializer)
-          ..add(GLoginData_login_user_settings.serializer)
-          ..add(GLoginData_login_user_settings_location.serializer)
           ..add(GLoginInfoData.serializer)
           ..add(GLoginInfoData_user.serializer)
           ..add(GLoginInfoData_user_actors.serializer)
@@ -379,12 +376,7 @@ Serializers _$serializers =
           ..add(GResetPasswordData_resetPassword.serializer)
           ..add(GResetPasswordData_resetPassword_user.serializer)
           ..add(GResetPasswordData_resetPassword_user_actors.serializer)
-          ..add(GResetPasswordData_resetPassword_user_actors_avatar.serializer)
           ..add(GResetPasswordData_resetPassword_user_defaultActor.serializer)
-          ..add(GResetPasswordData_resetPassword_user_settings.serializer)
-          ..add(
-            GResetPasswordData_resetPassword_user_settings_location.serializer,
-          )
           ..add(GResetPasswordReq.serializer)
           ..add(GResetPasswordVars.serializer)
           ..add(GRevokeApplicationTokenData.serializer)
@@ -423,6 +415,21 @@ Serializers _$serializers =
           ..add(GSetUserSettingsData_setUserSettings_location.serializer)
           ..add(GSetUserSettingsReq.serializer)
           ..add(GSetUserSettingsVars.serializer)
+          ..add(GSimpleLoginData.serializer)
+          ..add(GSimpleLoginData_login.serializer)
+          ..add(GSimpleLoginData_login_user.serializer)
+          ..add(GSimpleLoginData_login_user_actors.serializer)
+          ..add(GSimpleLoginData_login_user_actors_avatar.serializer)
+          ..add(GSimpleLoginData_login_user_defaultActor.serializer)
+          ..add(GSimpleLoginReq.serializer)
+          ..add(GSimpleLoginVars.serializer)
+          ..add(GSimpleLogoutData.serializer)
+          ..add(GSimpleLogoutReq.serializer)
+          ..add(GSimpleLogoutVars.serializer)
+          ..add(GSimpleRefreshTokenData.serializer)
+          ..add(GSimpleRefreshTokenData_refreshToken.serializer)
+          ..add(GSimpleRefreshTokenReq.serializer)
+          ..add(GSimpleRefreshTokenVars.serializer)
           ..add(GSortDirection.serializer)
           ..add(GSortableUserField.serializer)
           ..add(GSuspendProfileData.serializer)
@@ -490,12 +497,7 @@ Serializers _$serializers =
           ..add(GValidateUserData_validateUser.serializer)
           ..add(GValidateUserData_validateUser_user.serializer)
           ..add(GValidateUserData_validateUser_user_actors.serializer)
-          ..add(GValidateUserData_validateUser_user_actors_avatar.serializer)
           ..add(GValidateUserData_validateUser_user_defaultActor.serializer)
-          ..add(GValidateUserData_validateUser_user_settings.serializer)
-          ..add(
-            GValidateUserData_validateUser_user_settings_location.serializer,
-          )
           ..add(GValidateUserReq.serializer)
           ..add(GValidateUserVars.serializer)
           ..addBuilderFactory(
@@ -666,6 +668,12 @@ Serializers _$serializers =
                 new ListBuilder<
                   GSearchPersonsData_searchPersons_elements_feedTokens?
                 >(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GSimpleLoginData_login_user_actors),
+            ]),
+            () => new ListBuilder<GSimpleLoginData_login_user_actors?>(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [

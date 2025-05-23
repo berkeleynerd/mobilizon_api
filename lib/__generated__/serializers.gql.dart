@@ -293,10 +293,7 @@ import 'package:mobilizon_api/graphql/mutations/__generated__/auth_mutations.dat
         GLoginData_login,
         GLoginData_login_user,
         GLoginData_login_user_actors,
-        GLoginData_login_user_actors_avatar,
         GLoginData_login_user_defaultActor,
-        GLoginData_login_user_settings,
-        GLoginData_login_user_settings_location,
         GLogoutData,
         GRefreshTokenData,
         GRefreshTokenData_refreshToken,
@@ -305,19 +302,13 @@ import 'package:mobilizon_api/graphql/mutations/__generated__/auth_mutations.dat
         GResetPasswordData_resetPassword,
         GResetPasswordData_resetPassword_user,
         GResetPasswordData_resetPassword_user_actors,
-        GResetPasswordData_resetPassword_user_actors_avatar,
         GResetPasswordData_resetPassword_user_defaultActor,
-        GResetPasswordData_resetPassword_user_settings,
-        GResetPasswordData_resetPassword_user_settings_location,
         GSendResetPasswordData,
         GValidateUserData,
         GValidateUserData_validateUser,
         GValidateUserData_validateUser_user,
         GValidateUserData_validateUser_user_actors,
-        GValidateUserData_validateUser_user_actors_avatar,
-        GValidateUserData_validateUser_user_defaultActor,
-        GValidateUserData_validateUser_user_settings,
-        GValidateUserData_validateUser_user_settings_location;
+        GValidateUserData_validateUser_user_defaultActor;
 import 'package:mobilizon_api/graphql/mutations/__generated__/auth_mutations.req.gql.dart'
     show
         GCreateUserReq,
@@ -338,6 +329,21 @@ import 'package:mobilizon_api/graphql/mutations/__generated__/auth_mutations.var
         GResetPasswordVars,
         GSendResetPasswordVars,
         GValidateUserVars;
+import 'package:mobilizon_api/graphql/mutations/__generated__/integration_test_mutations.data.gql.dart'
+    show
+        GSimpleLoginData,
+        GSimpleLoginData_login,
+        GSimpleLoginData_login_user,
+        GSimpleLoginData_login_user_actors,
+        GSimpleLoginData_login_user_actors_avatar,
+        GSimpleLoginData_login_user_defaultActor,
+        GSimpleLogoutData,
+        GSimpleRefreshTokenData,
+        GSimpleRefreshTokenData_refreshToken;
+import 'package:mobilizon_api/graphql/mutations/__generated__/integration_test_mutations.req.gql.dart'
+    show GSimpleLoginReq, GSimpleLogoutReq, GSimpleRefreshTokenReq;
+import 'package:mobilizon_api/graphql/mutations/__generated__/integration_test_mutations.var.gql.dart'
+    show GSimpleLoginVars, GSimpleLogoutVars, GSimpleRefreshTokenVars;
 import 'package:mobilizon_api/graphql/mutations/__generated__/media_mutations.data.gql.dart'
     show
         GRemoveMediaData,
@@ -801,10 +807,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GLoginData_login,
   GLoginData_login_user,
   GLoginData_login_user_actors,
-  GLoginData_login_user_actors_avatar,
   GLoginData_login_user_defaultActor,
-  GLoginData_login_user_settings,
-  GLoginData_login_user_settings_location,
   GLoginInfoData,
   GLoginInfoData_user,
   GLoginInfoData_user_actors,
@@ -916,10 +919,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GResetPasswordData_resetPassword,
   GResetPasswordData_resetPassword_user,
   GResetPasswordData_resetPassword_user_actors,
-  GResetPasswordData_resetPassword_user_actors_avatar,
   GResetPasswordData_resetPassword_user_defaultActor,
-  GResetPasswordData_resetPassword_user_settings,
-  GResetPasswordData_resetPassword_user_settings_location,
   GResetPasswordReq,
   GResetPasswordVars,
   GRevokeApplicationTokenData,
@@ -951,6 +951,21 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GSetUserSettingsData_setUserSettings_location,
   GSetUserSettingsReq,
   GSetUserSettingsVars,
+  GSimpleLoginData,
+  GSimpleLoginData_login,
+  GSimpleLoginData_login_user,
+  GSimpleLoginData_login_user_actors,
+  GSimpleLoginData_login_user_actors_avatar,
+  GSimpleLoginData_login_user_defaultActor,
+  GSimpleLoginReq,
+  GSimpleLoginVars,
+  GSimpleLogoutData,
+  GSimpleLogoutReq,
+  GSimpleLogoutVars,
+  GSimpleRefreshTokenData,
+  GSimpleRefreshTokenData_refreshToken,
+  GSimpleRefreshTokenReq,
+  GSimpleRefreshTokenVars,
   GSortDirection,
   GSortableUserField,
   GSuspendProfileData,
@@ -1018,10 +1033,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GValidateUserData_validateUser,
   GValidateUserData_validateUser_user,
   GValidateUserData_validateUser_user_actors,
-  GValidateUserData_validateUser_user_actors_avatar,
   GValidateUserData_validateUser_user_defaultActor,
-  GValidateUserData_validateUser_user_settings,
-  GValidateUserData_validateUser_user_settings_location,
   GValidateUserReq,
   GValidateUserVars,
 ])

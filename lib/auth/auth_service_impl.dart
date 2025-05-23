@@ -302,46 +302,15 @@ class GraphQLAuthServiceImpl implements AuthService {
   User _mapGraphQLUserToUser(GLoginData_login_user user) {
     // Create a list of profiles from actors
     final profiles = user.actors.where((actor) => actor != null).map((actor) {
-      // Get avatar if available
-      Media? avatar;
-      if (actor!.avatar != null) {
-        avatar = Media(
-          id: actor.avatar!.id ?? '',
-          url: actor.avatar!.url ?? '',
-          alt: actor.avatar!.alt,
-        );
-      }
-
       return Person(
-        id: actor.id ?? '',
+        id: actor!.id ?? '',
         preferredUsername: actor.preferredUsername ?? '',
         name: actor.name,
-        summary: actor.summary,
-        avatar: avatar,
-        banner: null, // Banner is not included in ActorBasicInfo fragment
+        summary: null,
+        avatar: null,
+        banner: null,
       );
     }).toList();
-
-    // Map user settings if available
-    UserSettings? settings;
-    if (user.settings != null) {
-      settings = UserSettings(
-        timezone: user.settings!.timezone?.toString(),
-        notificationOnDay: user.settings!.notificationOnDay ?? false,
-        notificationEachWeek: user.settings!.notificationEachWeek ?? false,
-        notificationBeforeEvent:
-            user.settings!.notificationBeforeEvent ?? false,
-        notificationPendingParticipation: _mapNotificationPending(
-          user.settings!.notificationPendingParticipation?.toString(),
-        ),
-        notificationPendingMembership: _mapNotificationPending(
-          user.settings!.notificationPendingMembership?.toString(),
-        ),
-        groupNotifications: _mapNotificationPending(
-          user.settings!.groupNotifications?.toString(),
-        ),
-      );
-    }
 
     return User(
       id: user.id ?? '',
@@ -349,7 +318,7 @@ class GraphQLAuthServiceImpl implements AuthService {
       confirmed: user.confirmedAt != null,
       role: _mapUserRole(user.role?.toString()),
       profiles: profiles,
-      settings: settings,
+      settings: null,
     );
   }
 

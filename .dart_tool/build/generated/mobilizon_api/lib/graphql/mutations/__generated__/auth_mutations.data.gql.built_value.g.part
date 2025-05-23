@@ -20,18 +20,9 @@ _$gValidateUserDataValidateUserUserSerializer =
 Serializer<GValidateUserData_validateUser_user_defaultActor>
 _$gValidateUserDataValidateUserUserDefaultActorSerializer =
     new _$GValidateUserData_validateUser_user_defaultActorSerializer();
-Serializer<GValidateUserData_validateUser_user_settings>
-_$gValidateUserDataValidateUserUserSettingsSerializer =
-    new _$GValidateUserData_validateUser_user_settingsSerializer();
-Serializer<GValidateUserData_validateUser_user_settings_location>
-_$gValidateUserDataValidateUserUserSettingsLocationSerializer =
-    new _$GValidateUserData_validateUser_user_settings_locationSerializer();
 Serializer<GValidateUserData_validateUser_user_actors>
 _$gValidateUserDataValidateUserUserActorsSerializer =
     new _$GValidateUserData_validateUser_user_actorsSerializer();
-Serializer<GValidateUserData_validateUser_user_actors_avatar>
-_$gValidateUserDataValidateUserUserActorsAvatarSerializer =
-    new _$GValidateUserData_validateUser_user_actors_avatarSerializer();
 Serializer<GResendConfirmationEmailData>
 _$gResendConfirmationEmailDataSerializer =
     new _$GResendConfirmationEmailDataSerializer();
@@ -43,17 +34,8 @@ Serializer<GLoginData_login_user> _$gLoginDataLoginUserSerializer =
 Serializer<GLoginData_login_user_defaultActor>
 _$gLoginDataLoginUserDefaultActorSerializer =
     new _$GLoginData_login_user_defaultActorSerializer();
-Serializer<GLoginData_login_user_settings>
-_$gLoginDataLoginUserSettingsSerializer =
-    new _$GLoginData_login_user_settingsSerializer();
-Serializer<GLoginData_login_user_settings_location>
-_$gLoginDataLoginUserSettingsLocationSerializer =
-    new _$GLoginData_login_user_settings_locationSerializer();
 Serializer<GLoginData_login_user_actors> _$gLoginDataLoginUserActorsSerializer =
     new _$GLoginData_login_user_actorsSerializer();
-Serializer<GLoginData_login_user_actors_avatar>
-_$gLoginDataLoginUserActorsAvatarSerializer =
-    new _$GLoginData_login_user_actors_avatarSerializer();
 Serializer<GLogoutData> _$gLogoutDataSerializer = new _$GLogoutDataSerializer();
 Serializer<GRefreshTokenData> _$gRefreshTokenDataSerializer =
     new _$GRefreshTokenDataSerializer();
@@ -73,18 +55,9 @@ _$gResetPasswordDataResetPasswordUserSerializer =
 Serializer<GResetPasswordData_resetPassword_user_defaultActor>
 _$gResetPasswordDataResetPasswordUserDefaultActorSerializer =
     new _$GResetPasswordData_resetPassword_user_defaultActorSerializer();
-Serializer<GResetPasswordData_resetPassword_user_settings>
-_$gResetPasswordDataResetPasswordUserSettingsSerializer =
-    new _$GResetPasswordData_resetPassword_user_settingsSerializer();
-Serializer<GResetPasswordData_resetPassword_user_settings_location>
-_$gResetPasswordDataResetPasswordUserSettingsLocationSerializer =
-    new _$GResetPasswordData_resetPassword_user_settings_locationSerializer();
 Serializer<GResetPasswordData_resetPassword_user_actors>
 _$gResetPasswordDataResetPasswordUserActorsSerializer =
     new _$GResetPasswordData_resetPassword_user_actorsSerializer();
-Serializer<GResetPasswordData_resetPassword_user_actors_avatar>
-_$gResetPasswordDataResetPasswordUserActorsAvatarSerializer =
-    new _$GResetPasswordData_resetPassword_user_actors_avatarSerializer();
 
 class _$GCreateUserDataSerializer
     implements StructuredSerializer<GCreateUserData> {
@@ -203,7 +176,7 @@ class _$GCreateUserData_createUserSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GDateTime),
           ),
         );
     }
@@ -214,7 +187,7 @@ class _$GCreateUserData_createUserSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GDateTime),
           ),
         );
     }
@@ -225,7 +198,7 @@ class _$GCreateUserData_createUserSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GDateTime),
           ),
         );
     }
@@ -244,7 +217,7 @@ class _$GCreateUserData_createUserSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GDateTime),
           ),
         );
     }
@@ -292,7 +265,7 @@ class _$GCreateUserData_createUserSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GUserRole),
+            specifiedType: const FullType(_i2.GUserRole),
           ),
         );
     }
@@ -355,27 +328,27 @@ class _$GCreateUserData_createUserSerializer
           result.confirmedAt.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(_i3.GDateTime),
+                  specifiedType: const FullType(_i2.GDateTime),
                 )!
-                as _i3.GDateTime,
+                as _i2.GDateTime,
           );
           break;
         case 'confirmationSentAt':
           result.confirmationSentAt.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(_i3.GDateTime),
+                  specifiedType: const FullType(_i2.GDateTime),
                 )!
-                as _i3.GDateTime,
+                as _i2.GDateTime,
           );
           break;
         case 'lastSignInAt':
           result.lastSignInAt.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(_i3.GDateTime),
+                  specifiedType: const FullType(_i2.GDateTime),
                 )!
-                as _i3.GDateTime,
+                as _i2.GDateTime,
           );
           break;
         case 'lastSignInIp':
@@ -390,9 +363,9 @@ class _$GCreateUserData_createUserSerializer
           result.currentSignInAt.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(_i3.GDateTime),
+                  specifiedType: const FullType(_i2.GDateTime),
                 )!
-                as _i3.GDateTime,
+                as _i2.GDateTime,
           );
           break;
         case 'currentSignInIp':
@@ -434,9 +407,9 @@ class _$GCreateUserData_createUserSerializer
           result.role =
               serializers.deserialize(
                     value,
-                    specifiedType: const FullType(_i3.GUserRole),
+                    specifiedType: const FullType(_i2.GUserRole),
                   )
-                  as _i3.GUserRole?;
+                  as _i2.GUserRole?;
           break;
         case 'provider':
           result.provider =
@@ -784,65 +757,19 @@ class _$GValidateUserData_validateUser_userSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GDateTime),
           ),
         );
     }
-    value = object.confirmationSentAt;
+    value = object.role;
     if (value != null) {
       result
-        ..add('confirmationSentAt')
+        ..add('role')
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GUserRole),
           ),
-        );
-    }
-    value = object.lastSignInAt;
-    if (value != null) {
-      result
-        ..add('lastSignInAt')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GDateTime),
-          ),
-        );
-    }
-    value = object.lastSignInIp;
-    if (value != null) {
-      result
-        ..add('lastSignInIp')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.currentSignInAt;
-    if (value != null) {
-      result
-        ..add('currentSignInAt')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GDateTime),
-          ),
-        );
-    }
-    value = object.currentSignInIp;
-    if (value != null) {
-      result
-        ..add('currentSignInIp')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.locale;
-    if (value != null) {
-      result
-        ..add('locale')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
         );
     }
     value = object.defaultActor;
@@ -854,52 +781,6 @@ class _$GValidateUserData_validateUser_userSerializer
             value,
             specifiedType: const FullType(
               GValidateUserData_validateUser_user_defaultActor,
-            ),
-          ),
-        );
-    }
-    value = object.disabled;
-    if (value != null) {
-      result
-        ..add('disabled')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.role;
-    if (value != null) {
-      result
-        ..add('role')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GUserRole),
-          ),
-        );
-    }
-    value = object.provider;
-    if (value != null) {
-      result
-        ..add('provider')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.mediaSize;
-    if (value != null) {
-      result
-        ..add('mediaSize')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.settings;
-    if (value != null) {
-      result
-        ..add('settings')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(
-              GValidateUserData_validateUser_user_settings,
             ),
           ),
         );
@@ -949,61 +830,18 @@ class _$GValidateUserData_validateUser_userSerializer
           result.confirmedAt.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(_i3.GDateTime),
+                  specifiedType: const FullType(_i2.GDateTime),
                 )!
-                as _i3.GDateTime,
+                as _i2.GDateTime,
           );
           break;
-        case 'confirmationSentAt':
-          result.confirmationSentAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'lastSignInAt':
-          result.lastSignInAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'lastSignInIp':
-          result.lastSignInIp =
+        case 'role':
+          result.role =
               serializers.deserialize(
                     value,
-                    specifiedType: const FullType(String),
+                    specifiedType: const FullType(_i2.GUserRole),
                   )
-                  as String?;
-          break;
-        case 'currentSignInAt':
-          result.currentSignInAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'currentSignInIp':
-          result.currentSignInIp =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'locale':
-          result.locale =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
+                  as _i2.GUserRole?;
           break;
         case 'defaultActor':
           result.defaultActor.replace(
@@ -1014,46 +852,6 @@ class _$GValidateUserData_validateUser_userSerializer
                   ),
                 )!
                 as GValidateUserData_validateUser_user_defaultActor,
-          );
-          break;
-        case 'disabled':
-          result.disabled =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'role':
-          result.role =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GUserRole),
-                  )
-                  as _i3.GUserRole?;
-          break;
-        case 'provider':
-          result.provider =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'mediaSize':
-          result.mediaSize =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'settings':
-          result.settings.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GValidateUserData_validateUser_user_settings,
-                  ),
-                )!
-                as GValidateUserData_validateUser_user_settings,
           );
           break;
         case 'actors':
@@ -1182,316 +980,6 @@ class _$GValidateUserData_validateUser_user_defaultActorSerializer
   }
 }
 
-class _$GValidateUserData_validateUser_user_settingsSerializer
-    implements
-        StructuredSerializer<GValidateUserData_validateUser_user_settings> {
-  @override
-  final Iterable<Type> types = const [
-    GValidateUserData_validateUser_user_settings,
-    _$GValidateUserData_validateUser_user_settings,
-  ];
-  @override
-  final String wireName = 'GValidateUserData_validateUser_user_settings';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GValidateUserData_validateUser_user_settings object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.timezone;
-    if (value != null) {
-      result
-        ..add('timezone')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GTimezone),
-          ),
-        );
-    }
-    value = object.notificationOnDay;
-    if (value != null) {
-      result
-        ..add('notificationOnDay')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationEachWeek;
-    if (value != null) {
-      result
-        ..add('notificationEachWeek')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationBeforeEvent;
-    if (value != null) {
-      result
-        ..add('notificationBeforeEvent')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationPendingParticipation;
-    if (value != null) {
-      result
-        ..add('notificationPendingParticipation')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.notificationPendingMembership;
-    if (value != null) {
-      result
-        ..add('notificationPendingMembership')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.groupNotifications;
-    if (value != null) {
-      result
-        ..add('groupNotifications')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.location;
-    if (value != null) {
-      result
-        ..add('location')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(
-              GValidateUserData_validateUser_user_settings_location,
-            ),
-          ),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GValidateUserData_validateUser_user_settings deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = new GValidateUserData_validateUser_user_settingsBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'timezone':
-          result.timezone.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GTimezone),
-                )!
-                as _i3.GTimezone,
-          );
-          break;
-        case 'notificationOnDay':
-          result.notificationOnDay =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationEachWeek':
-          result.notificationEachWeek =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationBeforeEvent':
-          result.notificationBeforeEvent =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationPendingParticipation':
-          result.notificationPendingParticipation =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'notificationPendingMembership':
-          result.notificationPendingMembership =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'groupNotifications':
-          result.groupNotifications =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'location':
-          result.location.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GValidateUserData_validateUser_user_settings_location,
-                  ),
-                )!
-                as GValidateUserData_validateUser_user_settings_location,
-          );
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GValidateUserData_validateUser_user_settings_locationSerializer
-    implements
-        StructuredSerializer<
-          GValidateUserData_validateUser_user_settings_location
-        > {
-  @override
-  final Iterable<Type> types = const [
-    GValidateUserData_validateUser_user_settings_location,
-    _$GValidateUserData_validateUser_user_settings_location,
-  ];
-  @override
-  final String wireName =
-      'GValidateUserData_validateUser_user_settings_location';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GValidateUserData_validateUser_user_settings_location object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.range;
-    if (value != null) {
-      result
-        ..add('range')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.geohash;
-    if (value != null) {
-      result
-        ..add('geohash')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GValidateUserData_validateUser_user_settings_location deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result =
-        new GValidateUserData_validateUser_user_settings_locationBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'range':
-          result.range =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'geohash':
-          result.geohash =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'name':
-          result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
 class _$GValidateUserData_validateUser_user_actorsSerializer
     implements
         StructuredSerializer<GValidateUserData_validateUser_user_actors> {
@@ -1541,51 +1029,6 @@ class _$GValidateUserData_validateUser_user_actorsSerializer
           serializers.serialize(value, specifiedType: const FullType(String)),
         );
     }
-    value = object.domain;
-    if (value != null) {
-      result
-        ..add('domain')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.summary;
-    if (value != null) {
-      result
-        ..add('summary')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.url;
-    if (value != null) {
-      result
-        ..add('url')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.suspended;
-    if (value != null) {
-      result
-        ..add('suspended')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.avatar;
-    if (value != null) {
-      result
-        ..add('avatar')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(
-              GValidateUserData_validateUser_user_actors_avatar,
-            ),
-          ),
-        );
-    }
     return result;
   }
 
@@ -1629,200 +1072,6 @@ class _$GValidateUserData_validateUser_user_actorsSerializer
           break;
         case 'name':
           result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'domain':
-          result.domain =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'summary':
-          result.summary =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'url':
-          result.url =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'suspended':
-          result.suspended =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'avatar':
-          result.avatar.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GValidateUserData_validateUser_user_actors_avatar,
-                  ),
-                )!
-                as GValidateUserData_validateUser_user_actors_avatar,
-          );
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GValidateUserData_validateUser_user_actors_avatarSerializer
-    implements
-        StructuredSerializer<
-          GValidateUserData_validateUser_user_actors_avatar
-        > {
-  @override
-  final Iterable<Type> types = const [
-    GValidateUserData_validateUser_user_actors_avatar,
-    _$GValidateUserData_validateUser_user_actors_avatar,
-  ];
-  @override
-  final String wireName = 'GValidateUserData_validateUser_user_actors_avatar';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GValidateUserData_validateUser_user_actors_avatar object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.id;
-    if (value != null) {
-      result
-        ..add('id')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.alt;
-    if (value != null) {
-      result
-        ..add('alt')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.url;
-    if (value != null) {
-      result
-        ..add('url')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.size;
-    if (value != null) {
-      result
-        ..add('size')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.contentType;
-    if (value != null) {
-      result
-        ..add('contentType')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GValidateUserData_validateUser_user_actors_avatar deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result =
-        new GValidateUserData_validateUser_user_actors_avatarBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'id':
-          result.id =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'alt':
-          result.alt =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'name':
-          result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'url':
-          result.url =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'size':
-          result.size =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'contentType':
-          result.contentType =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(String),
@@ -2124,65 +1373,19 @@ class _$GLoginData_login_userSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GDateTime),
           ),
         );
     }
-    value = object.confirmationSentAt;
+    value = object.role;
     if (value != null) {
       result
-        ..add('confirmationSentAt')
+        ..add('role')
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GUserRole),
           ),
-        );
-    }
-    value = object.lastSignInAt;
-    if (value != null) {
-      result
-        ..add('lastSignInAt')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GDateTime),
-          ),
-        );
-    }
-    value = object.lastSignInIp;
-    if (value != null) {
-      result
-        ..add('lastSignInIp')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.currentSignInAt;
-    if (value != null) {
-      result
-        ..add('currentSignInAt')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GDateTime),
-          ),
-        );
-    }
-    value = object.currentSignInIp;
-    if (value != null) {
-      result
-        ..add('currentSignInIp')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.locale;
-    if (value != null) {
-      result
-        ..add('locale')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
         );
     }
     value = object.defaultActor;
@@ -2193,50 +1396,6 @@ class _$GLoginData_login_userSerializer
           serializers.serialize(
             value,
             specifiedType: const FullType(GLoginData_login_user_defaultActor),
-          ),
-        );
-    }
-    value = object.disabled;
-    if (value != null) {
-      result
-        ..add('disabled')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.role;
-    if (value != null) {
-      result
-        ..add('role')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GUserRole),
-          ),
-        );
-    }
-    value = object.provider;
-    if (value != null) {
-      result
-        ..add('provider')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.mediaSize;
-    if (value != null) {
-      result
-        ..add('mediaSize')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.settings;
-    if (value != null) {
-      result
-        ..add('settings')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(GLoginData_login_user_settings),
           ),
         );
     }
@@ -2285,61 +1444,18 @@ class _$GLoginData_login_userSerializer
           result.confirmedAt.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(_i3.GDateTime),
+                  specifiedType: const FullType(_i2.GDateTime),
                 )!
-                as _i3.GDateTime,
+                as _i2.GDateTime,
           );
           break;
-        case 'confirmationSentAt':
-          result.confirmationSentAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'lastSignInAt':
-          result.lastSignInAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'lastSignInIp':
-          result.lastSignInIp =
+        case 'role':
+          result.role =
               serializers.deserialize(
                     value,
-                    specifiedType: const FullType(String),
+                    specifiedType: const FullType(_i2.GUserRole),
                   )
-                  as String?;
-          break;
-        case 'currentSignInAt':
-          result.currentSignInAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'currentSignInIp':
-          result.currentSignInIp =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'locale':
-          result.locale =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
+                  as _i2.GUserRole?;
           break;
         case 'defaultActor':
           result.defaultActor.replace(
@@ -2350,44 +1466,6 @@ class _$GLoginData_login_userSerializer
                   ),
                 )!
                 as GLoginData_login_user_defaultActor,
-          );
-          break;
-        case 'disabled':
-          result.disabled =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'role':
-          result.role =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GUserRole),
-                  )
-                  as _i3.GUserRole?;
-          break;
-        case 'provider':
-          result.provider =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'mediaSize':
-          result.mediaSize =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'settings':
-          result.settings.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(GLoginData_login_user_settings),
-                )!
-                as GLoginData_login_user_settings,
           );
           break;
         case 'actors':
@@ -2512,310 +1590,6 @@ class _$GLoginData_login_user_defaultActorSerializer
   }
 }
 
-class _$GLoginData_login_user_settingsSerializer
-    implements StructuredSerializer<GLoginData_login_user_settings> {
-  @override
-  final Iterable<Type> types = const [
-    GLoginData_login_user_settings,
-    _$GLoginData_login_user_settings,
-  ];
-  @override
-  final String wireName = 'GLoginData_login_user_settings';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GLoginData_login_user_settings object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.timezone;
-    if (value != null) {
-      result
-        ..add('timezone')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GTimezone),
-          ),
-        );
-    }
-    value = object.notificationOnDay;
-    if (value != null) {
-      result
-        ..add('notificationOnDay')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationEachWeek;
-    if (value != null) {
-      result
-        ..add('notificationEachWeek')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationBeforeEvent;
-    if (value != null) {
-      result
-        ..add('notificationBeforeEvent')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationPendingParticipation;
-    if (value != null) {
-      result
-        ..add('notificationPendingParticipation')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.notificationPendingMembership;
-    if (value != null) {
-      result
-        ..add('notificationPendingMembership')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.groupNotifications;
-    if (value != null) {
-      result
-        ..add('groupNotifications')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.location;
-    if (value != null) {
-      result
-        ..add('location')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(
-              GLoginData_login_user_settings_location,
-            ),
-          ),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GLoginData_login_user_settings deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = new GLoginData_login_user_settingsBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'timezone':
-          result.timezone.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GTimezone),
-                )!
-                as _i3.GTimezone,
-          );
-          break;
-        case 'notificationOnDay':
-          result.notificationOnDay =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationEachWeek':
-          result.notificationEachWeek =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationBeforeEvent':
-          result.notificationBeforeEvent =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationPendingParticipation':
-          result.notificationPendingParticipation =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'notificationPendingMembership':
-          result.notificationPendingMembership =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'groupNotifications':
-          result.groupNotifications =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'location':
-          result.location.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GLoginData_login_user_settings_location,
-                  ),
-                )!
-                as GLoginData_login_user_settings_location,
-          );
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GLoginData_login_user_settings_locationSerializer
-    implements StructuredSerializer<GLoginData_login_user_settings_location> {
-  @override
-  final Iterable<Type> types = const [
-    GLoginData_login_user_settings_location,
-    _$GLoginData_login_user_settings_location,
-  ];
-  @override
-  final String wireName = 'GLoginData_login_user_settings_location';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GLoginData_login_user_settings_location object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.range;
-    if (value != null) {
-      result
-        ..add('range')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.geohash;
-    if (value != null) {
-      result
-        ..add('geohash')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GLoginData_login_user_settings_location deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = new GLoginData_login_user_settings_locationBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'range':
-          result.range =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'geohash':
-          result.geohash =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'name':
-          result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
 class _$GLoginData_login_user_actorsSerializer
     implements StructuredSerializer<GLoginData_login_user_actors> {
   @override
@@ -2864,49 +1638,6 @@ class _$GLoginData_login_user_actorsSerializer
           serializers.serialize(value, specifiedType: const FullType(String)),
         );
     }
-    value = object.domain;
-    if (value != null) {
-      result
-        ..add('domain')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.summary;
-    if (value != null) {
-      result
-        ..add('summary')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.url;
-    if (value != null) {
-      result
-        ..add('url')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.suspended;
-    if (value != null) {
-      result
-        ..add('suspended')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.avatar;
-    if (value != null) {
-      result
-        ..add('avatar')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(GLoginData_login_user_actors_avatar),
-          ),
-        );
-    }
     return result;
   }
 
@@ -2950,196 +1681,6 @@ class _$GLoginData_login_user_actorsSerializer
           break;
         case 'name':
           result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'domain':
-          result.domain =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'summary':
-          result.summary =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'url':
-          result.url =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'suspended':
-          result.suspended =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'avatar':
-          result.avatar.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GLoginData_login_user_actors_avatar,
-                  ),
-                )!
-                as GLoginData_login_user_actors_avatar,
-          );
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GLoginData_login_user_actors_avatarSerializer
-    implements StructuredSerializer<GLoginData_login_user_actors_avatar> {
-  @override
-  final Iterable<Type> types = const [
-    GLoginData_login_user_actors_avatar,
-    _$GLoginData_login_user_actors_avatar,
-  ];
-  @override
-  final String wireName = 'GLoginData_login_user_actors_avatar';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GLoginData_login_user_actors_avatar object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.id;
-    if (value != null) {
-      result
-        ..add('id')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.alt;
-    if (value != null) {
-      result
-        ..add('alt')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.url;
-    if (value != null) {
-      result
-        ..add('url')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.size;
-    if (value != null) {
-      result
-        ..add('size')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.contentType;
-    if (value != null) {
-      result
-        ..add('contentType')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GLoginData_login_user_actors_avatar deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = new GLoginData_login_user_actors_avatarBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'id':
-          result.id =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'alt':
-          result.alt =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'name':
-          result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'url':
-          result.url =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'size':
-          result.size =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'contentType':
-          result.contentType =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(String),
@@ -3672,65 +2213,19 @@ class _$GResetPasswordData_resetPassword_userSerializer
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GDateTime),
           ),
         );
     }
-    value = object.confirmationSentAt;
+    value = object.role;
     if (value != null) {
       result
-        ..add('confirmationSentAt')
+        ..add('role')
         ..add(
           serializers.serialize(
             value,
-            specifiedType: const FullType(_i3.GDateTime),
+            specifiedType: const FullType(_i2.GUserRole),
           ),
-        );
-    }
-    value = object.lastSignInAt;
-    if (value != null) {
-      result
-        ..add('lastSignInAt')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GDateTime),
-          ),
-        );
-    }
-    value = object.lastSignInIp;
-    if (value != null) {
-      result
-        ..add('lastSignInIp')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.currentSignInAt;
-    if (value != null) {
-      result
-        ..add('currentSignInAt')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GDateTime),
-          ),
-        );
-    }
-    value = object.currentSignInIp;
-    if (value != null) {
-      result
-        ..add('currentSignInIp')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.locale;
-    if (value != null) {
-      result
-        ..add('locale')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
         );
     }
     value = object.defaultActor;
@@ -3742,52 +2237,6 @@ class _$GResetPasswordData_resetPassword_userSerializer
             value,
             specifiedType: const FullType(
               GResetPasswordData_resetPassword_user_defaultActor,
-            ),
-          ),
-        );
-    }
-    value = object.disabled;
-    if (value != null) {
-      result
-        ..add('disabled')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.role;
-    if (value != null) {
-      result
-        ..add('role')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GUserRole),
-          ),
-        );
-    }
-    value = object.provider;
-    if (value != null) {
-      result
-        ..add('provider')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.mediaSize;
-    if (value != null) {
-      result
-        ..add('mediaSize')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.settings;
-    if (value != null) {
-      result
-        ..add('settings')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(
-              GResetPasswordData_resetPassword_user_settings,
             ),
           ),
         );
@@ -3837,61 +2286,18 @@ class _$GResetPasswordData_resetPassword_userSerializer
           result.confirmedAt.replace(
             serializers.deserialize(
                   value,
-                  specifiedType: const FullType(_i3.GDateTime),
+                  specifiedType: const FullType(_i2.GDateTime),
                 )!
-                as _i3.GDateTime,
+                as _i2.GDateTime,
           );
           break;
-        case 'confirmationSentAt':
-          result.confirmationSentAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'lastSignInAt':
-          result.lastSignInAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'lastSignInIp':
-          result.lastSignInIp =
+        case 'role':
+          result.role =
               serializers.deserialize(
                     value,
-                    specifiedType: const FullType(String),
+                    specifiedType: const FullType(_i2.GUserRole),
                   )
-                  as String?;
-          break;
-        case 'currentSignInAt':
-          result.currentSignInAt.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GDateTime),
-                )!
-                as _i3.GDateTime,
-          );
-          break;
-        case 'currentSignInIp':
-          result.currentSignInIp =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'locale':
-          result.locale =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
+                  as _i2.GUserRole?;
           break;
         case 'defaultActor':
           result.defaultActor.replace(
@@ -3902,46 +2308,6 @@ class _$GResetPasswordData_resetPassword_userSerializer
                   ),
                 )!
                 as GResetPasswordData_resetPassword_user_defaultActor,
-          );
-          break;
-        case 'disabled':
-          result.disabled =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'role':
-          result.role =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GUserRole),
-                  )
-                  as _i3.GUserRole?;
-          break;
-        case 'provider':
-          result.provider =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'mediaSize':
-          result.mediaSize =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'settings':
-          result.settings.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GResetPasswordData_resetPassword_user_settings,
-                  ),
-                )!
-                as GResetPasswordData_resetPassword_user_settings,
           );
           break;
         case 'actors':
@@ -4072,316 +2438,6 @@ class _$GResetPasswordData_resetPassword_user_defaultActorSerializer
   }
 }
 
-class _$GResetPasswordData_resetPassword_user_settingsSerializer
-    implements
-        StructuredSerializer<GResetPasswordData_resetPassword_user_settings> {
-  @override
-  final Iterable<Type> types = const [
-    GResetPasswordData_resetPassword_user_settings,
-    _$GResetPasswordData_resetPassword_user_settings,
-  ];
-  @override
-  final String wireName = 'GResetPasswordData_resetPassword_user_settings';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GResetPasswordData_resetPassword_user_settings object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.timezone;
-    if (value != null) {
-      result
-        ..add('timezone')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GTimezone),
-          ),
-        );
-    }
-    value = object.notificationOnDay;
-    if (value != null) {
-      result
-        ..add('notificationOnDay')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationEachWeek;
-    if (value != null) {
-      result
-        ..add('notificationEachWeek')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationBeforeEvent;
-    if (value != null) {
-      result
-        ..add('notificationBeforeEvent')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.notificationPendingParticipation;
-    if (value != null) {
-      result
-        ..add('notificationPendingParticipation')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.notificationPendingMembership;
-    if (value != null) {
-      result
-        ..add('notificationPendingMembership')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.groupNotifications;
-    if (value != null) {
-      result
-        ..add('groupNotifications')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(_i3.GNotificationPendingEnum),
-          ),
-        );
-    }
-    value = object.location;
-    if (value != null) {
-      result
-        ..add('location')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(
-              GResetPasswordData_resetPassword_user_settings_location,
-            ),
-          ),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_settings deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = new GResetPasswordData_resetPassword_user_settingsBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'timezone':
-          result.timezone.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(_i3.GTimezone),
-                )!
-                as _i3.GTimezone,
-          );
-          break;
-        case 'notificationOnDay':
-          result.notificationOnDay =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationEachWeek':
-          result.notificationEachWeek =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationBeforeEvent':
-          result.notificationBeforeEvent =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'notificationPendingParticipation':
-          result.notificationPendingParticipation =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'notificationPendingMembership':
-          result.notificationPendingMembership =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'groupNotifications':
-          result.groupNotifications =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(_i3.GNotificationPendingEnum),
-                  )
-                  as _i3.GNotificationPendingEnum?;
-          break;
-        case 'location':
-          result.location.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GResetPasswordData_resetPassword_user_settings_location,
-                  ),
-                )!
-                as GResetPasswordData_resetPassword_user_settings_location,
-          );
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GResetPasswordData_resetPassword_user_settings_locationSerializer
-    implements
-        StructuredSerializer<
-          GResetPasswordData_resetPassword_user_settings_location
-        > {
-  @override
-  final Iterable<Type> types = const [
-    GResetPasswordData_resetPassword_user_settings_location,
-    _$GResetPasswordData_resetPassword_user_settings_location,
-  ];
-  @override
-  final String wireName =
-      'GResetPasswordData_resetPassword_user_settings_location';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GResetPasswordData_resetPassword_user_settings_location object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.range;
-    if (value != null) {
-      result
-        ..add('range')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.geohash;
-    if (value != null) {
-      result
-        ..add('geohash')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_settings_location deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result =
-        new GResetPasswordData_resetPassword_user_settings_locationBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'range':
-          result.range =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'geohash':
-          result.geohash =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'name':
-          result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
 class _$GResetPasswordData_resetPassword_user_actorsSerializer
     implements
         StructuredSerializer<GResetPasswordData_resetPassword_user_actors> {
@@ -4431,51 +2487,6 @@ class _$GResetPasswordData_resetPassword_user_actorsSerializer
           serializers.serialize(value, specifiedType: const FullType(String)),
         );
     }
-    value = object.domain;
-    if (value != null) {
-      result
-        ..add('domain')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.summary;
-    if (value != null) {
-      result
-        ..add('summary')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.url;
-    if (value != null) {
-      result
-        ..add('url')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.suspended;
-    if (value != null) {
-      result
-        ..add('suspended')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(bool)),
-        );
-    }
-    value = object.avatar;
-    if (value != null) {
-      result
-        ..add('avatar')
-        ..add(
-          serializers.serialize(
-            value,
-            specifiedType: const FullType(
-              GResetPasswordData_resetPassword_user_actors_avatar,
-            ),
-          ),
-        );
-    }
     return result;
   }
 
@@ -4519,200 +2530,6 @@ class _$GResetPasswordData_resetPassword_user_actorsSerializer
           break;
         case 'name':
           result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'domain':
-          result.domain =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'summary':
-          result.summary =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'url':
-          result.url =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'suspended':
-          result.suspended =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(bool),
-                  )
-                  as bool?;
-          break;
-        case 'avatar':
-          result.avatar.replace(
-            serializers.deserialize(
-                  value,
-                  specifiedType: const FullType(
-                    GResetPasswordData_resetPassword_user_actors_avatar,
-                  ),
-                )!
-                as GResetPasswordData_resetPassword_user_actors_avatar,
-          );
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GResetPasswordData_resetPassword_user_actors_avatarSerializer
-    implements
-        StructuredSerializer<
-          GResetPasswordData_resetPassword_user_actors_avatar
-        > {
-  @override
-  final Iterable<Type> types = const [
-    GResetPasswordData_resetPassword_user_actors_avatar,
-    _$GResetPasswordData_resetPassword_user_actors_avatar,
-  ];
-  @override
-  final String wireName = 'GResetPasswordData_resetPassword_user_actors_avatar';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GResetPasswordData_resetPassword_user_actors_avatar object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(
-        object.G__typename,
-        specifiedType: const FullType(String),
-      ),
-    ];
-    Object? value;
-    value = object.id;
-    if (value != null) {
-      result
-        ..add('id')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.alt;
-    if (value != null) {
-      result
-        ..add('alt')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.url;
-    if (value != null) {
-      result
-        ..add('url')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    value = object.size;
-    if (value != null) {
-      result
-        ..add('size')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.contentType;
-    if (value != null) {
-      result
-        ..add('contentType')
-        ..add(
-          serializers.serialize(value, specifiedType: const FullType(String)),
-        );
-    }
-    return result;
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_actors_avatar deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result =
-        new GResetPasswordData_resetPassword_user_actors_avatarBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )!
-                  as String;
-          break;
-        case 'id':
-          result.id =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'alt':
-          result.alt =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'name':
-          result.name =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'url':
-          result.url =
-              serializers.deserialize(
-                    value,
-                    specifiedType: const FullType(String),
-                  )
-                  as String?;
-          break;
-        case 'size':
-          result.size =
-              serializers.deserialize(value, specifiedType: const FullType(int))
-                  as int?;
-          break;
-        case 'contentType':
-          result.contentType =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(String),
@@ -4860,15 +2677,15 @@ class _$GCreateUserData_createUser extends GCreateUserData_createUser {
   @override
   final String email;
   @override
-  final _i3.GDateTime? confirmedAt;
+  final _i2.GDateTime? confirmedAt;
   @override
-  final _i3.GDateTime? confirmationSentAt;
+  final _i2.GDateTime? confirmationSentAt;
   @override
-  final _i3.GDateTime? lastSignInAt;
+  final _i2.GDateTime? lastSignInAt;
   @override
   final String? lastSignInIp;
   @override
-  final _i3.GDateTime? currentSignInAt;
+  final _i2.GDateTime? currentSignInAt;
   @override
   final String? currentSignInIp;
   @override
@@ -4878,7 +2695,7 @@ class _$GCreateUserData_createUser extends GCreateUserData_createUser {
   @override
   final bool? disabled;
   @override
-  final _i3.GUserRole? role;
+  final _i2.GUserRole? role;
   @override
   final String? provider;
   @override
@@ -5008,32 +2825,32 @@ class GCreateUserData_createUserBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  _i3.GDateTimeBuilder? _confirmedAt;
-  _i3.GDateTimeBuilder get confirmedAt =>
-      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
-  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+  _i2.GDateTimeBuilder? _confirmedAt;
+  _i2.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i2.GDateTimeBuilder();
+  set confirmedAt(_i2.GDateTimeBuilder? confirmedAt) =>
       _$this._confirmedAt = confirmedAt;
 
-  _i3.GDateTimeBuilder? _confirmationSentAt;
-  _i3.GDateTimeBuilder get confirmationSentAt =>
-      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
-  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
+  _i2.GDateTimeBuilder? _confirmationSentAt;
+  _i2.GDateTimeBuilder get confirmationSentAt =>
+      _$this._confirmationSentAt ??= new _i2.GDateTimeBuilder();
+  set confirmationSentAt(_i2.GDateTimeBuilder? confirmationSentAt) =>
       _$this._confirmationSentAt = confirmationSentAt;
 
-  _i3.GDateTimeBuilder? _lastSignInAt;
-  _i3.GDateTimeBuilder get lastSignInAt =>
-      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
-  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
+  _i2.GDateTimeBuilder? _lastSignInAt;
+  _i2.GDateTimeBuilder get lastSignInAt =>
+      _$this._lastSignInAt ??= new _i2.GDateTimeBuilder();
+  set lastSignInAt(_i2.GDateTimeBuilder? lastSignInAt) =>
       _$this._lastSignInAt = lastSignInAt;
 
   String? _lastSignInIp;
   String? get lastSignInIp => _$this._lastSignInIp;
   set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
 
-  _i3.GDateTimeBuilder? _currentSignInAt;
-  _i3.GDateTimeBuilder get currentSignInAt =>
-      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
-  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
+  _i2.GDateTimeBuilder? _currentSignInAt;
+  _i2.GDateTimeBuilder get currentSignInAt =>
+      _$this._currentSignInAt ??= new _i2.GDateTimeBuilder();
+  set currentSignInAt(_i2.GDateTimeBuilder? currentSignInAt) =>
       _$this._currentSignInAt = currentSignInAt;
 
   String? _currentSignInIp;
@@ -5057,9 +2874,9 @@ class GCreateUserData_createUserBuilder
   bool? get disabled => _$this._disabled;
   set disabled(bool? disabled) => _$this._disabled = disabled;
 
-  _i3.GUserRole? _role;
-  _i3.GUserRole? get role => _$this._role;
-  set role(_i3.GUserRole? role) => _$this._role = role;
+  _i2.GUserRole? _role;
+  _i2.GUserRole? get role => _$this._role;
+  set role(_i2.GUserRole? role) => _$this._role = role;
 
   String? _provider;
   String? get provider => _$this._provider;
@@ -5633,31 +3450,11 @@ class _$GValidateUserData_validateUser_user
   @override
   final String email;
   @override
-  final _i3.GDateTime? confirmedAt;
+  final _i2.GDateTime? confirmedAt;
   @override
-  final _i3.GDateTime? confirmationSentAt;
-  @override
-  final _i3.GDateTime? lastSignInAt;
-  @override
-  final String? lastSignInIp;
-  @override
-  final _i3.GDateTime? currentSignInAt;
-  @override
-  final String? currentSignInIp;
-  @override
-  final String? locale;
+  final _i2.GUserRole? role;
   @override
   final GValidateUserData_validateUser_user_defaultActor? defaultActor;
-  @override
-  final bool? disabled;
-  @override
-  final _i3.GUserRole? role;
-  @override
-  final String? provider;
-  @override
-  final int? mediaSize;
-  @override
-  final GValidateUserData_validateUser_user_settings? settings;
   @override
   final BuiltList<GValidateUserData_validateUser_user_actors?> actors;
 
@@ -5671,18 +3468,8 @@ class _$GValidateUserData_validateUser_user
     this.id,
     required this.email,
     this.confirmedAt,
-    this.confirmationSentAt,
-    this.lastSignInAt,
-    this.lastSignInIp,
-    this.currentSignInAt,
-    this.currentSignInIp,
-    this.locale,
-    this.defaultActor,
-    this.disabled,
     this.role,
-    this.provider,
-    this.mediaSize,
-    this.settings,
+    this.defaultActor,
     required this.actors,
   }) : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -5719,18 +3506,8 @@ class _$GValidateUserData_validateUser_user
         id == other.id &&
         email == other.email &&
         confirmedAt == other.confirmedAt &&
-        confirmationSentAt == other.confirmationSentAt &&
-        lastSignInAt == other.lastSignInAt &&
-        lastSignInIp == other.lastSignInIp &&
-        currentSignInAt == other.currentSignInAt &&
-        currentSignInIp == other.currentSignInIp &&
-        locale == other.locale &&
-        defaultActor == other.defaultActor &&
-        disabled == other.disabled &&
         role == other.role &&
-        provider == other.provider &&
-        mediaSize == other.mediaSize &&
-        settings == other.settings &&
+        defaultActor == other.defaultActor &&
         actors == other.actors;
   }
 
@@ -5741,18 +3518,8 @@ class _$GValidateUserData_validateUser_user
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, confirmedAt.hashCode);
-    _$hash = $jc(_$hash, confirmationSentAt.hashCode);
-    _$hash = $jc(_$hash, lastSignInAt.hashCode);
-    _$hash = $jc(_$hash, lastSignInIp.hashCode);
-    _$hash = $jc(_$hash, currentSignInAt.hashCode);
-    _$hash = $jc(_$hash, currentSignInIp.hashCode);
-    _$hash = $jc(_$hash, locale.hashCode);
-    _$hash = $jc(_$hash, defaultActor.hashCode);
-    _$hash = $jc(_$hash, disabled.hashCode);
     _$hash = $jc(_$hash, role.hashCode);
-    _$hash = $jc(_$hash, provider.hashCode);
-    _$hash = $jc(_$hash, mediaSize.hashCode);
-    _$hash = $jc(_$hash, settings.hashCode);
+    _$hash = $jc(_$hash, defaultActor.hashCode);
     _$hash = $jc(_$hash, actors.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -5765,18 +3532,8 @@ class _$GValidateUserData_validateUser_user
           ..add('id', id)
           ..add('email', email)
           ..add('confirmedAt', confirmedAt)
-          ..add('confirmationSentAt', confirmationSentAt)
-          ..add('lastSignInAt', lastSignInAt)
-          ..add('lastSignInIp', lastSignInIp)
-          ..add('currentSignInAt', currentSignInAt)
-          ..add('currentSignInIp', currentSignInIp)
-          ..add('locale', locale)
-          ..add('defaultActor', defaultActor)
-          ..add('disabled', disabled)
           ..add('role', role)
-          ..add('provider', provider)
-          ..add('mediaSize', mediaSize)
-          ..add('settings', settings)
+          ..add('defaultActor', defaultActor)
           ..add('actors', actors))
         .toString();
   }
@@ -5802,42 +3559,15 @@ class GValidateUserData_validateUser_userBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  _i3.GDateTimeBuilder? _confirmedAt;
-  _i3.GDateTimeBuilder get confirmedAt =>
-      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
-  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+  _i2.GDateTimeBuilder? _confirmedAt;
+  _i2.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i2.GDateTimeBuilder();
+  set confirmedAt(_i2.GDateTimeBuilder? confirmedAt) =>
       _$this._confirmedAt = confirmedAt;
 
-  _i3.GDateTimeBuilder? _confirmationSentAt;
-  _i3.GDateTimeBuilder get confirmationSentAt =>
-      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
-  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
-      _$this._confirmationSentAt = confirmationSentAt;
-
-  _i3.GDateTimeBuilder? _lastSignInAt;
-  _i3.GDateTimeBuilder get lastSignInAt =>
-      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
-  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
-      _$this._lastSignInAt = lastSignInAt;
-
-  String? _lastSignInIp;
-  String? get lastSignInIp => _$this._lastSignInIp;
-  set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
-
-  _i3.GDateTimeBuilder? _currentSignInAt;
-  _i3.GDateTimeBuilder get currentSignInAt =>
-      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
-  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
-      _$this._currentSignInAt = currentSignInAt;
-
-  String? _currentSignInIp;
-  String? get currentSignInIp => _$this._currentSignInIp;
-  set currentSignInIp(String? currentSignInIp) =>
-      _$this._currentSignInIp = currentSignInIp;
-
-  String? _locale;
-  String? get locale => _$this._locale;
-  set locale(String? locale) => _$this._locale = locale;
+  _i2.GUserRole? _role;
+  _i2.GUserRole? get role => _$this._role;
+  set role(_i2.GUserRole? role) => _$this._role = role;
 
   GValidateUserData_validateUser_user_defaultActorBuilder? _defaultActor;
   GValidateUserData_validateUser_user_defaultActorBuilder get defaultActor =>
@@ -5846,29 +3576,6 @@ class GValidateUserData_validateUser_userBuilder
   set defaultActor(
     GValidateUserData_validateUser_user_defaultActorBuilder? defaultActor,
   ) => _$this._defaultActor = defaultActor;
-
-  bool? _disabled;
-  bool? get disabled => _$this._disabled;
-  set disabled(bool? disabled) => _$this._disabled = disabled;
-
-  _i3.GUserRole? _role;
-  _i3.GUserRole? get role => _$this._role;
-  set role(_i3.GUserRole? role) => _$this._role = role;
-
-  String? _provider;
-  String? get provider => _$this._provider;
-  set provider(String? provider) => _$this._provider = provider;
-
-  int? _mediaSize;
-  int? get mediaSize => _$this._mediaSize;
-  set mediaSize(int? mediaSize) => _$this._mediaSize = mediaSize;
-
-  GValidateUserData_validateUser_user_settingsBuilder? _settings;
-  GValidateUserData_validateUser_user_settingsBuilder get settings =>
-      _$this._settings ??=
-          new GValidateUserData_validateUser_user_settingsBuilder();
-  set settings(GValidateUserData_validateUser_user_settingsBuilder? settings) =>
-      _$this._settings = settings;
 
   ListBuilder<GValidateUserData_validateUser_user_actors?>? _actors;
   ListBuilder<GValidateUserData_validateUser_user_actors?> get actors =>
@@ -5889,18 +3596,8 @@ class GValidateUserData_validateUser_userBuilder
       _id = $v.id;
       _email = $v.email;
       _confirmedAt = $v.confirmedAt?.toBuilder();
-      _confirmationSentAt = $v.confirmationSentAt?.toBuilder();
-      _lastSignInAt = $v.lastSignInAt?.toBuilder();
-      _lastSignInIp = $v.lastSignInIp;
-      _currentSignInAt = $v.currentSignInAt?.toBuilder();
-      _currentSignInIp = $v.currentSignInIp;
-      _locale = $v.locale;
-      _defaultActor = $v.defaultActor?.toBuilder();
-      _disabled = $v.disabled;
       _role = $v.role;
-      _provider = $v.provider;
-      _mediaSize = $v.mediaSize;
-      _settings = $v.settings?.toBuilder();
+      _defaultActor = $v.defaultActor?.toBuilder();
       _actors = $v.actors.toBuilder();
       _$v = null;
     }
@@ -5941,18 +3638,8 @@ class GValidateUserData_validateUser_userBuilder
               'email',
             ),
             confirmedAt: _confirmedAt?.build(),
-            confirmationSentAt: _confirmationSentAt?.build(),
-            lastSignInAt: _lastSignInAt?.build(),
-            lastSignInIp: lastSignInIp,
-            currentSignInAt: _currentSignInAt?.build(),
-            currentSignInIp: currentSignInIp,
-            locale: locale,
-            defaultActor: _defaultActor?.build(),
-            disabled: disabled,
             role: role,
-            provider: provider,
-            mediaSize: mediaSize,
-            settings: _settings?.build(),
+            defaultActor: _defaultActor?.build(),
             actors: actors.build(),
           );
     } catch (_) {
@@ -5960,19 +3647,9 @@ class GValidateUserData_validateUser_userBuilder
       try {
         _$failedField = 'confirmedAt';
         _confirmedAt?.build();
-        _$failedField = 'confirmationSentAt';
-        _confirmationSentAt?.build();
-        _$failedField = 'lastSignInAt';
-        _lastSignInAt?.build();
-
-        _$failedField = 'currentSignInAt';
-        _currentSignInAt?.build();
 
         _$failedField = 'defaultActor';
         _defaultActor?.build();
-
-        _$failedField = 'settings';
-        _settings?.build();
         _$failedField = 'actors';
         actors.build();
       } catch (e) {
@@ -6142,408 +3819,6 @@ class GValidateUserData_validateUser_user_defaultActorBuilder
   }
 }
 
-class _$GValidateUserData_validateUser_user_settings
-    extends GValidateUserData_validateUser_user_settings {
-  @override
-  final String G__typename;
-  @override
-  final _i3.GTimezone? timezone;
-  @override
-  final bool? notificationOnDay;
-  @override
-  final bool? notificationEachWeek;
-  @override
-  final bool? notificationBeforeEvent;
-  @override
-  final _i3.GNotificationPendingEnum? notificationPendingParticipation;
-  @override
-  final _i3.GNotificationPendingEnum? notificationPendingMembership;
-  @override
-  final _i3.GNotificationPendingEnum? groupNotifications;
-  @override
-  final GValidateUserData_validateUser_user_settings_location? location;
-
-  factory _$GValidateUserData_validateUser_user_settings([
-    void Function(GValidateUserData_validateUser_user_settingsBuilder)? updates,
-  ]) =>
-      (new GValidateUserData_validateUser_user_settingsBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GValidateUserData_validateUser_user_settings._({
-    required this.G__typename,
-    this.timezone,
-    this.notificationOnDay,
-    this.notificationEachWeek,
-    this.notificationBeforeEvent,
-    this.notificationPendingParticipation,
-    this.notificationPendingMembership,
-    this.groupNotifications,
-    this.location,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GValidateUserData_validateUser_user_settings',
-      'G__typename',
-    );
-  }
-
-  @override
-  GValidateUserData_validateUser_user_settings rebuild(
-    void Function(GValidateUserData_validateUser_user_settingsBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GValidateUserData_validateUser_user_settingsBuilder toBuilder() =>
-      new GValidateUserData_validateUser_user_settingsBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GValidateUserData_validateUser_user_settings &&
-        G__typename == other.G__typename &&
-        timezone == other.timezone &&
-        notificationOnDay == other.notificationOnDay &&
-        notificationEachWeek == other.notificationEachWeek &&
-        notificationBeforeEvent == other.notificationBeforeEvent &&
-        notificationPendingParticipation ==
-            other.notificationPendingParticipation &&
-        notificationPendingMembership == other.notificationPendingMembership &&
-        groupNotifications == other.groupNotifications &&
-        location == other.location;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, timezone.hashCode);
-    _$hash = $jc(_$hash, notificationOnDay.hashCode);
-    _$hash = $jc(_$hash, notificationEachWeek.hashCode);
-    _$hash = $jc(_$hash, notificationBeforeEvent.hashCode);
-    _$hash = $jc(_$hash, notificationPendingParticipation.hashCode);
-    _$hash = $jc(_$hash, notificationPendingMembership.hashCode);
-    _$hash = $jc(_$hash, groupNotifications.hashCode);
-    _$hash = $jc(_$hash, location.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GValidateUserData_validateUser_user_settings',
-          )
-          ..add('G__typename', G__typename)
-          ..add('timezone', timezone)
-          ..add('notificationOnDay', notificationOnDay)
-          ..add('notificationEachWeek', notificationEachWeek)
-          ..add('notificationBeforeEvent', notificationBeforeEvent)
-          ..add(
-            'notificationPendingParticipation',
-            notificationPendingParticipation,
-          )
-          ..add('notificationPendingMembership', notificationPendingMembership)
-          ..add('groupNotifications', groupNotifications)
-          ..add('location', location))
-        .toString();
-  }
-}
-
-class GValidateUserData_validateUser_user_settingsBuilder
-    implements
-        Builder<
-          GValidateUserData_validateUser_user_settings,
-          GValidateUserData_validateUser_user_settingsBuilder
-        > {
-  _$GValidateUserData_validateUser_user_settings? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  _i3.GTimezoneBuilder? _timezone;
-  _i3.GTimezoneBuilder get timezone =>
-      _$this._timezone ??= new _i3.GTimezoneBuilder();
-  set timezone(_i3.GTimezoneBuilder? timezone) => _$this._timezone = timezone;
-
-  bool? _notificationOnDay;
-  bool? get notificationOnDay => _$this._notificationOnDay;
-  set notificationOnDay(bool? notificationOnDay) =>
-      _$this._notificationOnDay = notificationOnDay;
-
-  bool? _notificationEachWeek;
-  bool? get notificationEachWeek => _$this._notificationEachWeek;
-  set notificationEachWeek(bool? notificationEachWeek) =>
-      _$this._notificationEachWeek = notificationEachWeek;
-
-  bool? _notificationBeforeEvent;
-  bool? get notificationBeforeEvent => _$this._notificationBeforeEvent;
-  set notificationBeforeEvent(bool? notificationBeforeEvent) =>
-      _$this._notificationBeforeEvent = notificationBeforeEvent;
-
-  _i3.GNotificationPendingEnum? _notificationPendingParticipation;
-  _i3.GNotificationPendingEnum? get notificationPendingParticipation =>
-      _$this._notificationPendingParticipation;
-  set notificationPendingParticipation(
-    _i3.GNotificationPendingEnum? notificationPendingParticipation,
-  ) => _$this._notificationPendingParticipation =
-      notificationPendingParticipation;
-
-  _i3.GNotificationPendingEnum? _notificationPendingMembership;
-  _i3.GNotificationPendingEnum? get notificationPendingMembership =>
-      _$this._notificationPendingMembership;
-  set notificationPendingMembership(
-    _i3.GNotificationPendingEnum? notificationPendingMembership,
-  ) => _$this._notificationPendingMembership = notificationPendingMembership;
-
-  _i3.GNotificationPendingEnum? _groupNotifications;
-  _i3.GNotificationPendingEnum? get groupNotifications =>
-      _$this._groupNotifications;
-  set groupNotifications(_i3.GNotificationPendingEnum? groupNotifications) =>
-      _$this._groupNotifications = groupNotifications;
-
-  GValidateUserData_validateUser_user_settings_locationBuilder? _location;
-  GValidateUserData_validateUser_user_settings_locationBuilder get location =>
-      _$this._location ??=
-          new GValidateUserData_validateUser_user_settings_locationBuilder();
-  set location(
-    GValidateUserData_validateUser_user_settings_locationBuilder? location,
-  ) => _$this._location = location;
-
-  GValidateUserData_validateUser_user_settingsBuilder() {
-    GValidateUserData_validateUser_user_settings._initializeBuilder(this);
-  }
-
-  GValidateUserData_validateUser_user_settingsBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _timezone = $v.timezone?.toBuilder();
-      _notificationOnDay = $v.notificationOnDay;
-      _notificationEachWeek = $v.notificationEachWeek;
-      _notificationBeforeEvent = $v.notificationBeforeEvent;
-      _notificationPendingParticipation = $v.notificationPendingParticipation;
-      _notificationPendingMembership = $v.notificationPendingMembership;
-      _groupNotifications = $v.groupNotifications;
-      _location = $v.location?.toBuilder();
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GValidateUserData_validateUser_user_settings other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GValidateUserData_validateUser_user_settings;
-  }
-
-  @override
-  void update(
-    void Function(GValidateUserData_validateUser_user_settingsBuilder)? updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GValidateUserData_validateUser_user_settings build() => _build();
-
-  _$GValidateUserData_validateUser_user_settings _build() {
-    _$GValidateUserData_validateUser_user_settings _$result;
-    try {
-      _$result =
-          _$v ??
-          new _$GValidateUserData_validateUser_user_settings._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename,
-              r'GValidateUserData_validateUser_user_settings',
-              'G__typename',
-            ),
-            timezone: _timezone?.build(),
-            notificationOnDay: notificationOnDay,
-            notificationEachWeek: notificationEachWeek,
-            notificationBeforeEvent: notificationBeforeEvent,
-            notificationPendingParticipation: notificationPendingParticipation,
-            notificationPendingMembership: notificationPendingMembership,
-            groupNotifications: groupNotifications,
-            location: _location?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'timezone';
-        _timezone?.build();
-
-        _$failedField = 'location';
-        _location?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-          r'GValidateUserData_validateUser_user_settings',
-          _$failedField,
-          e.toString(),
-        );
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GValidateUserData_validateUser_user_settings_location
-    extends GValidateUserData_validateUser_user_settings_location {
-  @override
-  final String G__typename;
-  @override
-  final int? range;
-  @override
-  final String? geohash;
-  @override
-  final String? name;
-
-  factory _$GValidateUserData_validateUser_user_settings_location([
-    void Function(GValidateUserData_validateUser_user_settings_locationBuilder)?
-    updates,
-  ]) =>
-      (new GValidateUserData_validateUser_user_settings_locationBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GValidateUserData_validateUser_user_settings_location._({
-    required this.G__typename,
-    this.range,
-    this.geohash,
-    this.name,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GValidateUserData_validateUser_user_settings_location',
-      'G__typename',
-    );
-  }
-
-  @override
-  GValidateUserData_validateUser_user_settings_location rebuild(
-    void Function(GValidateUserData_validateUser_user_settings_locationBuilder)
-    updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GValidateUserData_validateUser_user_settings_locationBuilder toBuilder() =>
-      new GValidateUserData_validateUser_user_settings_locationBuilder()
-        ..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GValidateUserData_validateUser_user_settings_location &&
-        G__typename == other.G__typename &&
-        range == other.range &&
-        geohash == other.geohash &&
-        name == other.name;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, range.hashCode);
-    _$hash = $jc(_$hash, geohash.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GValidateUserData_validateUser_user_settings_location',
-          )
-          ..add('G__typename', G__typename)
-          ..add('range', range)
-          ..add('geohash', geohash)
-          ..add('name', name))
-        .toString();
-  }
-}
-
-class GValidateUserData_validateUser_user_settings_locationBuilder
-    implements
-        Builder<
-          GValidateUserData_validateUser_user_settings_location,
-          GValidateUserData_validateUser_user_settings_locationBuilder
-        > {
-  _$GValidateUserData_validateUser_user_settings_location? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  int? _range;
-  int? get range => _$this._range;
-  set range(int? range) => _$this._range = range;
-
-  String? _geohash;
-  String? get geohash => _$this._geohash;
-  set geohash(String? geohash) => _$this._geohash = geohash;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GValidateUserData_validateUser_user_settings_locationBuilder() {
-    GValidateUserData_validateUser_user_settings_location._initializeBuilder(
-      this,
-    );
-  }
-
-  GValidateUserData_validateUser_user_settings_locationBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _range = $v.range;
-      _geohash = $v.geohash;
-      _name = $v.name;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GValidateUserData_validateUser_user_settings_location other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GValidateUserData_validateUser_user_settings_location;
-  }
-
-  @override
-  void update(
-    void Function(GValidateUserData_validateUser_user_settings_locationBuilder)?
-    updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GValidateUserData_validateUser_user_settings_location build() => _build();
-
-  _$GValidateUserData_validateUser_user_settings_location _build() {
-    final _$result =
-        _$v ??
-        new _$GValidateUserData_validateUser_user_settings_location._(
-          G__typename: BuiltValueNullFieldError.checkNotNull(
-            G__typename,
-            r'GValidateUserData_validateUser_user_settings_location',
-            'G__typename',
-          ),
-          range: range,
-          geohash: geohash,
-          name: name,
-        );
-    replace(_$result);
-    return _$result;
-  }
-}
-
 class _$GValidateUserData_validateUser_user_actors
     extends GValidateUserData_validateUser_user_actors {
   @override
@@ -6554,16 +3829,6 @@ class _$GValidateUserData_validateUser_user_actors
   final String? preferredUsername;
   @override
   final String? name;
-  @override
-  final String? domain;
-  @override
-  final String? summary;
-  @override
-  final String? url;
-  @override
-  final bool? suspended;
-  @override
-  final GValidateUserData_validateUser_user_actors_avatar? avatar;
 
   factory _$GValidateUserData_validateUser_user_actors([
     void Function(GValidateUserData_validateUser_user_actorsBuilder)? updates,
@@ -6576,11 +3841,6 @@ class _$GValidateUserData_validateUser_user_actors
     this.id,
     this.preferredUsername,
     this.name,
-    this.domain,
-    this.summary,
-    this.url,
-    this.suspended,
-    this.avatar,
   }) : super._() {
     BuiltValueNullFieldError.checkNotNull(
       G__typename,
@@ -6605,12 +3865,7 @@ class _$GValidateUserData_validateUser_user_actors
         G__typename == other.G__typename &&
         id == other.id &&
         preferredUsername == other.preferredUsername &&
-        name == other.name &&
-        domain == other.domain &&
-        summary == other.summary &&
-        url == other.url &&
-        suspended == other.suspended &&
-        avatar == other.avatar;
+        name == other.name;
   }
 
   @override
@@ -6620,11 +3875,6 @@ class _$GValidateUserData_validateUser_user_actors
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, preferredUsername.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, domain.hashCode);
-    _$hash = $jc(_$hash, summary.hashCode);
-    _$hash = $jc(_$hash, url.hashCode);
-    _$hash = $jc(_$hash, suspended.hashCode);
-    _$hash = $jc(_$hash, avatar.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -6637,12 +3887,7 @@ class _$GValidateUserData_validateUser_user_actors
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('preferredUsername', preferredUsername)
-          ..add('name', name)
-          ..add('domain', domain)
-          ..add('summary', summary)
-          ..add('url', url)
-          ..add('suspended', suspended)
-          ..add('avatar', avatar))
+          ..add('name', name))
         .toString();
   }
 }
@@ -6672,30 +3917,6 @@ class GValidateUserData_validateUser_user_actorsBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _domain;
-  String? get domain => _$this._domain;
-  set domain(String? domain) => _$this._domain = domain;
-
-  String? _summary;
-  String? get summary => _$this._summary;
-  set summary(String? summary) => _$this._summary = summary;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  bool? _suspended;
-  bool? get suspended => _$this._suspended;
-  set suspended(bool? suspended) => _$this._suspended = suspended;
-
-  GValidateUserData_validateUser_user_actors_avatarBuilder? _avatar;
-  GValidateUserData_validateUser_user_actors_avatarBuilder get avatar =>
-      _$this._avatar ??=
-          new GValidateUserData_validateUser_user_actors_avatarBuilder();
-  set avatar(
-    GValidateUserData_validateUser_user_actors_avatarBuilder? avatar,
-  ) => _$this._avatar = avatar;
-
   GValidateUserData_validateUser_user_actorsBuilder() {
     GValidateUserData_validateUser_user_actors._initializeBuilder(this);
   }
@@ -6707,11 +3928,6 @@ class GValidateUserData_validateUser_user_actorsBuilder
       _id = $v.id;
       _preferredUsername = $v.preferredUsername;
       _name = $v.name;
-      _domain = $v.domain;
-      _summary = $v.summary;
-      _url = $v.url;
-      _suspended = $v.suspended;
-      _avatar = $v.avatar?.toBuilder();
       _$v = null;
     }
     return this;
@@ -6734,226 +3950,17 @@ class GValidateUserData_validateUser_user_actorsBuilder
   GValidateUserData_validateUser_user_actors build() => _build();
 
   _$GValidateUserData_validateUser_user_actors _build() {
-    _$GValidateUserData_validateUser_user_actors _$result;
-    try {
-      _$result =
-          _$v ??
-          new _$GValidateUserData_validateUser_user_actors._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename,
-              r'GValidateUserData_validateUser_user_actors',
-              'G__typename',
-            ),
-            id: id,
-            preferredUsername: preferredUsername,
-            name: name,
-            domain: domain,
-            summary: summary,
-            url: url,
-            suspended: suspended,
-            avatar: _avatar?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'avatar';
-        _avatar?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-          r'GValidateUserData_validateUser_user_actors',
-          _$failedField,
-          e.toString(),
-        );
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GValidateUserData_validateUser_user_actors_avatar
-    extends GValidateUserData_validateUser_user_actors_avatar {
-  @override
-  final String G__typename;
-  @override
-  final String? id;
-  @override
-  final String? alt;
-  @override
-  final String? name;
-  @override
-  final String? url;
-  @override
-  final int? size;
-  @override
-  final String? contentType;
-
-  factory _$GValidateUserData_validateUser_user_actors_avatar([
-    void Function(GValidateUserData_validateUser_user_actors_avatarBuilder)?
-    updates,
-  ]) =>
-      (new GValidateUserData_validateUser_user_actors_avatarBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GValidateUserData_validateUser_user_actors_avatar._({
-    required this.G__typename,
-    this.id,
-    this.alt,
-    this.name,
-    this.url,
-    this.size,
-    this.contentType,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GValidateUserData_validateUser_user_actors_avatar',
-      'G__typename',
-    );
-  }
-
-  @override
-  GValidateUserData_validateUser_user_actors_avatar rebuild(
-    void Function(GValidateUserData_validateUser_user_actors_avatarBuilder)
-    updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GValidateUserData_validateUser_user_actors_avatarBuilder toBuilder() =>
-      new GValidateUserData_validateUser_user_actors_avatarBuilder()
-        ..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GValidateUserData_validateUser_user_actors_avatar &&
-        G__typename == other.G__typename &&
-        id == other.id &&
-        alt == other.alt &&
-        name == other.name &&
-        url == other.url &&
-        size == other.size &&
-        contentType == other.contentType;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, alt.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, url.hashCode);
-    _$hash = $jc(_$hash, size.hashCode);
-    _$hash = $jc(_$hash, contentType.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GValidateUserData_validateUser_user_actors_avatar',
-          )
-          ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('alt', alt)
-          ..add('name', name)
-          ..add('url', url)
-          ..add('size', size)
-          ..add('contentType', contentType))
-        .toString();
-  }
-}
-
-class GValidateUserData_validateUser_user_actors_avatarBuilder
-    implements
-        Builder<
-          GValidateUserData_validateUser_user_actors_avatar,
-          GValidateUserData_validateUser_user_actors_avatarBuilder
-        > {
-  _$GValidateUserData_validateUser_user_actors_avatar? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _alt;
-  String? get alt => _$this._alt;
-  set alt(String? alt) => _$this._alt = alt;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  int? _size;
-  int? get size => _$this._size;
-  set size(int? size) => _$this._size = size;
-
-  String? _contentType;
-  String? get contentType => _$this._contentType;
-  set contentType(String? contentType) => _$this._contentType = contentType;
-
-  GValidateUserData_validateUser_user_actors_avatarBuilder() {
-    GValidateUserData_validateUser_user_actors_avatar._initializeBuilder(this);
-  }
-
-  GValidateUserData_validateUser_user_actors_avatarBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _id = $v.id;
-      _alt = $v.alt;
-      _name = $v.name;
-      _url = $v.url;
-      _size = $v.size;
-      _contentType = $v.contentType;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GValidateUserData_validateUser_user_actors_avatar other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GValidateUserData_validateUser_user_actors_avatar;
-  }
-
-  @override
-  void update(
-    void Function(GValidateUserData_validateUser_user_actors_avatarBuilder)?
-    updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GValidateUserData_validateUser_user_actors_avatar build() => _build();
-
-  _$GValidateUserData_validateUser_user_actors_avatar _build() {
     final _$result =
         _$v ??
-        new _$GValidateUserData_validateUser_user_actors_avatar._(
+        new _$GValidateUserData_validateUser_user_actors._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
             G__typename,
-            r'GValidateUserData_validateUser_user_actors_avatar',
+            r'GValidateUserData_validateUser_user_actors',
             'G__typename',
           ),
           id: id,
-          alt: alt,
+          preferredUsername: preferredUsername,
           name: name,
-          url: url,
-          size: size,
-          contentType: contentType,
         );
     replace(_$result);
     return _$result;
@@ -7378,31 +4385,11 @@ class _$GLoginData_login_user extends GLoginData_login_user {
   @override
   final String email;
   @override
-  final _i3.GDateTime? confirmedAt;
+  final _i2.GDateTime? confirmedAt;
   @override
-  final _i3.GDateTime? confirmationSentAt;
-  @override
-  final _i3.GDateTime? lastSignInAt;
-  @override
-  final String? lastSignInIp;
-  @override
-  final _i3.GDateTime? currentSignInAt;
-  @override
-  final String? currentSignInIp;
-  @override
-  final String? locale;
+  final _i2.GUserRole? role;
   @override
   final GLoginData_login_user_defaultActor? defaultActor;
-  @override
-  final bool? disabled;
-  @override
-  final _i3.GUserRole? role;
-  @override
-  final String? provider;
-  @override
-  final int? mediaSize;
-  @override
-  final GLoginData_login_user_settings? settings;
   @override
   final BuiltList<GLoginData_login_user_actors?> actors;
 
@@ -7415,18 +4402,8 @@ class _$GLoginData_login_user extends GLoginData_login_user {
     this.id,
     required this.email,
     this.confirmedAt,
-    this.confirmationSentAt,
-    this.lastSignInAt,
-    this.lastSignInIp,
-    this.currentSignInAt,
-    this.currentSignInIp,
-    this.locale,
-    this.defaultActor,
-    this.disabled,
     this.role,
-    this.provider,
-    this.mediaSize,
-    this.settings,
+    this.defaultActor,
     required this.actors,
   }) : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -7463,18 +4440,8 @@ class _$GLoginData_login_user extends GLoginData_login_user {
         id == other.id &&
         email == other.email &&
         confirmedAt == other.confirmedAt &&
-        confirmationSentAt == other.confirmationSentAt &&
-        lastSignInAt == other.lastSignInAt &&
-        lastSignInIp == other.lastSignInIp &&
-        currentSignInAt == other.currentSignInAt &&
-        currentSignInIp == other.currentSignInIp &&
-        locale == other.locale &&
-        defaultActor == other.defaultActor &&
-        disabled == other.disabled &&
         role == other.role &&
-        provider == other.provider &&
-        mediaSize == other.mediaSize &&
-        settings == other.settings &&
+        defaultActor == other.defaultActor &&
         actors == other.actors;
   }
 
@@ -7485,18 +4452,8 @@ class _$GLoginData_login_user extends GLoginData_login_user {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, confirmedAt.hashCode);
-    _$hash = $jc(_$hash, confirmationSentAt.hashCode);
-    _$hash = $jc(_$hash, lastSignInAt.hashCode);
-    _$hash = $jc(_$hash, lastSignInIp.hashCode);
-    _$hash = $jc(_$hash, currentSignInAt.hashCode);
-    _$hash = $jc(_$hash, currentSignInIp.hashCode);
-    _$hash = $jc(_$hash, locale.hashCode);
-    _$hash = $jc(_$hash, defaultActor.hashCode);
-    _$hash = $jc(_$hash, disabled.hashCode);
     _$hash = $jc(_$hash, role.hashCode);
-    _$hash = $jc(_$hash, provider.hashCode);
-    _$hash = $jc(_$hash, mediaSize.hashCode);
-    _$hash = $jc(_$hash, settings.hashCode);
+    _$hash = $jc(_$hash, defaultActor.hashCode);
     _$hash = $jc(_$hash, actors.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -7509,18 +4466,8 @@ class _$GLoginData_login_user extends GLoginData_login_user {
           ..add('id', id)
           ..add('email', email)
           ..add('confirmedAt', confirmedAt)
-          ..add('confirmationSentAt', confirmationSentAt)
-          ..add('lastSignInAt', lastSignInAt)
-          ..add('lastSignInIp', lastSignInIp)
-          ..add('currentSignInAt', currentSignInAt)
-          ..add('currentSignInIp', currentSignInIp)
-          ..add('locale', locale)
-          ..add('defaultActor', defaultActor)
-          ..add('disabled', disabled)
           ..add('role', role)
-          ..add('provider', provider)
-          ..add('mediaSize', mediaSize)
-          ..add('settings', settings)
+          ..add('defaultActor', defaultActor)
           ..add('actors', actors))
         .toString();
   }
@@ -7542,70 +4489,21 @@ class GLoginData_login_userBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  _i3.GDateTimeBuilder? _confirmedAt;
-  _i3.GDateTimeBuilder get confirmedAt =>
-      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
-  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+  _i2.GDateTimeBuilder? _confirmedAt;
+  _i2.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i2.GDateTimeBuilder();
+  set confirmedAt(_i2.GDateTimeBuilder? confirmedAt) =>
       _$this._confirmedAt = confirmedAt;
 
-  _i3.GDateTimeBuilder? _confirmationSentAt;
-  _i3.GDateTimeBuilder get confirmationSentAt =>
-      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
-  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
-      _$this._confirmationSentAt = confirmationSentAt;
-
-  _i3.GDateTimeBuilder? _lastSignInAt;
-  _i3.GDateTimeBuilder get lastSignInAt =>
-      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
-  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
-      _$this._lastSignInAt = lastSignInAt;
-
-  String? _lastSignInIp;
-  String? get lastSignInIp => _$this._lastSignInIp;
-  set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
-
-  _i3.GDateTimeBuilder? _currentSignInAt;
-  _i3.GDateTimeBuilder get currentSignInAt =>
-      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
-  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
-      _$this._currentSignInAt = currentSignInAt;
-
-  String? _currentSignInIp;
-  String? get currentSignInIp => _$this._currentSignInIp;
-  set currentSignInIp(String? currentSignInIp) =>
-      _$this._currentSignInIp = currentSignInIp;
-
-  String? _locale;
-  String? get locale => _$this._locale;
-  set locale(String? locale) => _$this._locale = locale;
+  _i2.GUserRole? _role;
+  _i2.GUserRole? get role => _$this._role;
+  set role(_i2.GUserRole? role) => _$this._role = role;
 
   GLoginData_login_user_defaultActorBuilder? _defaultActor;
   GLoginData_login_user_defaultActorBuilder get defaultActor =>
       _$this._defaultActor ??= new GLoginData_login_user_defaultActorBuilder();
   set defaultActor(GLoginData_login_user_defaultActorBuilder? defaultActor) =>
       _$this._defaultActor = defaultActor;
-
-  bool? _disabled;
-  bool? get disabled => _$this._disabled;
-  set disabled(bool? disabled) => _$this._disabled = disabled;
-
-  _i3.GUserRole? _role;
-  _i3.GUserRole? get role => _$this._role;
-  set role(_i3.GUserRole? role) => _$this._role = role;
-
-  String? _provider;
-  String? get provider => _$this._provider;
-  set provider(String? provider) => _$this._provider = provider;
-
-  int? _mediaSize;
-  int? get mediaSize => _$this._mediaSize;
-  set mediaSize(int? mediaSize) => _$this._mediaSize = mediaSize;
-
-  GLoginData_login_user_settingsBuilder? _settings;
-  GLoginData_login_user_settingsBuilder get settings =>
-      _$this._settings ??= new GLoginData_login_user_settingsBuilder();
-  set settings(GLoginData_login_user_settingsBuilder? settings) =>
-      _$this._settings = settings;
 
   ListBuilder<GLoginData_login_user_actors?>? _actors;
   ListBuilder<GLoginData_login_user_actors?> get actors =>
@@ -7624,18 +4522,8 @@ class GLoginData_login_userBuilder
       _id = $v.id;
       _email = $v.email;
       _confirmedAt = $v.confirmedAt?.toBuilder();
-      _confirmationSentAt = $v.confirmationSentAt?.toBuilder();
-      _lastSignInAt = $v.lastSignInAt?.toBuilder();
-      _lastSignInIp = $v.lastSignInIp;
-      _currentSignInAt = $v.currentSignInAt?.toBuilder();
-      _currentSignInIp = $v.currentSignInIp;
-      _locale = $v.locale;
-      _defaultActor = $v.defaultActor?.toBuilder();
-      _disabled = $v.disabled;
       _role = $v.role;
-      _provider = $v.provider;
-      _mediaSize = $v.mediaSize;
-      _settings = $v.settings?.toBuilder();
+      _defaultActor = $v.defaultActor?.toBuilder();
       _actors = $v.actors.toBuilder();
       _$v = null;
     }
@@ -7674,18 +4562,8 @@ class GLoginData_login_userBuilder
               'email',
             ),
             confirmedAt: _confirmedAt?.build(),
-            confirmationSentAt: _confirmationSentAt?.build(),
-            lastSignInAt: _lastSignInAt?.build(),
-            lastSignInIp: lastSignInIp,
-            currentSignInAt: _currentSignInAt?.build(),
-            currentSignInIp: currentSignInIp,
-            locale: locale,
-            defaultActor: _defaultActor?.build(),
-            disabled: disabled,
             role: role,
-            provider: provider,
-            mediaSize: mediaSize,
-            settings: _settings?.build(),
+            defaultActor: _defaultActor?.build(),
             actors: actors.build(),
           );
     } catch (_) {
@@ -7693,19 +4571,9 @@ class GLoginData_login_userBuilder
       try {
         _$failedField = 'confirmedAt';
         _confirmedAt?.build();
-        _$failedField = 'confirmationSentAt';
-        _confirmationSentAt?.build();
-        _$failedField = 'lastSignInAt';
-        _lastSignInAt?.build();
-
-        _$failedField = 'currentSignInAt';
-        _currentSignInAt?.build();
 
         _$failedField = 'defaultActor';
         _defaultActor?.build();
-
-        _$failedField = 'settings';
-        _settings?.build();
         _$failedField = 'actors';
         actors.build();
       } catch (e) {
@@ -7867,390 +4735,6 @@ class GLoginData_login_user_defaultActorBuilder
   }
 }
 
-class _$GLoginData_login_user_settings extends GLoginData_login_user_settings {
-  @override
-  final String G__typename;
-  @override
-  final _i3.GTimezone? timezone;
-  @override
-  final bool? notificationOnDay;
-  @override
-  final bool? notificationEachWeek;
-  @override
-  final bool? notificationBeforeEvent;
-  @override
-  final _i3.GNotificationPendingEnum? notificationPendingParticipation;
-  @override
-  final _i3.GNotificationPendingEnum? notificationPendingMembership;
-  @override
-  final _i3.GNotificationPendingEnum? groupNotifications;
-  @override
-  final GLoginData_login_user_settings_location? location;
-
-  factory _$GLoginData_login_user_settings([
-    void Function(GLoginData_login_user_settingsBuilder)? updates,
-  ]) => (new GLoginData_login_user_settingsBuilder()..update(updates))._build();
-
-  _$GLoginData_login_user_settings._({
-    required this.G__typename,
-    this.timezone,
-    this.notificationOnDay,
-    this.notificationEachWeek,
-    this.notificationBeforeEvent,
-    this.notificationPendingParticipation,
-    this.notificationPendingMembership,
-    this.groupNotifications,
-    this.location,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GLoginData_login_user_settings',
-      'G__typename',
-    );
-  }
-
-  @override
-  GLoginData_login_user_settings rebuild(
-    void Function(GLoginData_login_user_settingsBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GLoginData_login_user_settingsBuilder toBuilder() =>
-      new GLoginData_login_user_settingsBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GLoginData_login_user_settings &&
-        G__typename == other.G__typename &&
-        timezone == other.timezone &&
-        notificationOnDay == other.notificationOnDay &&
-        notificationEachWeek == other.notificationEachWeek &&
-        notificationBeforeEvent == other.notificationBeforeEvent &&
-        notificationPendingParticipation ==
-            other.notificationPendingParticipation &&
-        notificationPendingMembership == other.notificationPendingMembership &&
-        groupNotifications == other.groupNotifications &&
-        location == other.location;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, timezone.hashCode);
-    _$hash = $jc(_$hash, notificationOnDay.hashCode);
-    _$hash = $jc(_$hash, notificationEachWeek.hashCode);
-    _$hash = $jc(_$hash, notificationBeforeEvent.hashCode);
-    _$hash = $jc(_$hash, notificationPendingParticipation.hashCode);
-    _$hash = $jc(_$hash, notificationPendingMembership.hashCode);
-    _$hash = $jc(_$hash, groupNotifications.hashCode);
-    _$hash = $jc(_$hash, location.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'GLoginData_login_user_settings')
-          ..add('G__typename', G__typename)
-          ..add('timezone', timezone)
-          ..add('notificationOnDay', notificationOnDay)
-          ..add('notificationEachWeek', notificationEachWeek)
-          ..add('notificationBeforeEvent', notificationBeforeEvent)
-          ..add(
-            'notificationPendingParticipation',
-            notificationPendingParticipation,
-          )
-          ..add('notificationPendingMembership', notificationPendingMembership)
-          ..add('groupNotifications', groupNotifications)
-          ..add('location', location))
-        .toString();
-  }
-}
-
-class GLoginData_login_user_settingsBuilder
-    implements
-        Builder<
-          GLoginData_login_user_settings,
-          GLoginData_login_user_settingsBuilder
-        > {
-  _$GLoginData_login_user_settings? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  _i3.GTimezoneBuilder? _timezone;
-  _i3.GTimezoneBuilder get timezone =>
-      _$this._timezone ??= new _i3.GTimezoneBuilder();
-  set timezone(_i3.GTimezoneBuilder? timezone) => _$this._timezone = timezone;
-
-  bool? _notificationOnDay;
-  bool? get notificationOnDay => _$this._notificationOnDay;
-  set notificationOnDay(bool? notificationOnDay) =>
-      _$this._notificationOnDay = notificationOnDay;
-
-  bool? _notificationEachWeek;
-  bool? get notificationEachWeek => _$this._notificationEachWeek;
-  set notificationEachWeek(bool? notificationEachWeek) =>
-      _$this._notificationEachWeek = notificationEachWeek;
-
-  bool? _notificationBeforeEvent;
-  bool? get notificationBeforeEvent => _$this._notificationBeforeEvent;
-  set notificationBeforeEvent(bool? notificationBeforeEvent) =>
-      _$this._notificationBeforeEvent = notificationBeforeEvent;
-
-  _i3.GNotificationPendingEnum? _notificationPendingParticipation;
-  _i3.GNotificationPendingEnum? get notificationPendingParticipation =>
-      _$this._notificationPendingParticipation;
-  set notificationPendingParticipation(
-    _i3.GNotificationPendingEnum? notificationPendingParticipation,
-  ) => _$this._notificationPendingParticipation =
-      notificationPendingParticipation;
-
-  _i3.GNotificationPendingEnum? _notificationPendingMembership;
-  _i3.GNotificationPendingEnum? get notificationPendingMembership =>
-      _$this._notificationPendingMembership;
-  set notificationPendingMembership(
-    _i3.GNotificationPendingEnum? notificationPendingMembership,
-  ) => _$this._notificationPendingMembership = notificationPendingMembership;
-
-  _i3.GNotificationPendingEnum? _groupNotifications;
-  _i3.GNotificationPendingEnum? get groupNotifications =>
-      _$this._groupNotifications;
-  set groupNotifications(_i3.GNotificationPendingEnum? groupNotifications) =>
-      _$this._groupNotifications = groupNotifications;
-
-  GLoginData_login_user_settings_locationBuilder? _location;
-  GLoginData_login_user_settings_locationBuilder get location =>
-      _$this._location ??= new GLoginData_login_user_settings_locationBuilder();
-  set location(GLoginData_login_user_settings_locationBuilder? location) =>
-      _$this._location = location;
-
-  GLoginData_login_user_settingsBuilder() {
-    GLoginData_login_user_settings._initializeBuilder(this);
-  }
-
-  GLoginData_login_user_settingsBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _timezone = $v.timezone?.toBuilder();
-      _notificationOnDay = $v.notificationOnDay;
-      _notificationEachWeek = $v.notificationEachWeek;
-      _notificationBeforeEvent = $v.notificationBeforeEvent;
-      _notificationPendingParticipation = $v.notificationPendingParticipation;
-      _notificationPendingMembership = $v.notificationPendingMembership;
-      _groupNotifications = $v.groupNotifications;
-      _location = $v.location?.toBuilder();
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GLoginData_login_user_settings other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GLoginData_login_user_settings;
-  }
-
-  @override
-  void update(void Function(GLoginData_login_user_settingsBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GLoginData_login_user_settings build() => _build();
-
-  _$GLoginData_login_user_settings _build() {
-    _$GLoginData_login_user_settings _$result;
-    try {
-      _$result =
-          _$v ??
-          new _$GLoginData_login_user_settings._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename,
-              r'GLoginData_login_user_settings',
-              'G__typename',
-            ),
-            timezone: _timezone?.build(),
-            notificationOnDay: notificationOnDay,
-            notificationEachWeek: notificationEachWeek,
-            notificationBeforeEvent: notificationBeforeEvent,
-            notificationPendingParticipation: notificationPendingParticipation,
-            notificationPendingMembership: notificationPendingMembership,
-            groupNotifications: groupNotifications,
-            location: _location?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'timezone';
-        _timezone?.build();
-
-        _$failedField = 'location';
-        _location?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-          r'GLoginData_login_user_settings',
-          _$failedField,
-          e.toString(),
-        );
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GLoginData_login_user_settings_location
-    extends GLoginData_login_user_settings_location {
-  @override
-  final String G__typename;
-  @override
-  final int? range;
-  @override
-  final String? geohash;
-  @override
-  final String? name;
-
-  factory _$GLoginData_login_user_settings_location([
-    void Function(GLoginData_login_user_settings_locationBuilder)? updates,
-  ]) => (new GLoginData_login_user_settings_locationBuilder()..update(updates))
-      ._build();
-
-  _$GLoginData_login_user_settings_location._({
-    required this.G__typename,
-    this.range,
-    this.geohash,
-    this.name,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GLoginData_login_user_settings_location',
-      'G__typename',
-    );
-  }
-
-  @override
-  GLoginData_login_user_settings_location rebuild(
-    void Function(GLoginData_login_user_settings_locationBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GLoginData_login_user_settings_locationBuilder toBuilder() =>
-      new GLoginData_login_user_settings_locationBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GLoginData_login_user_settings_location &&
-        G__typename == other.G__typename &&
-        range == other.range &&
-        geohash == other.geohash &&
-        name == other.name;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, range.hashCode);
-    _$hash = $jc(_$hash, geohash.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GLoginData_login_user_settings_location',
-          )
-          ..add('G__typename', G__typename)
-          ..add('range', range)
-          ..add('geohash', geohash)
-          ..add('name', name))
-        .toString();
-  }
-}
-
-class GLoginData_login_user_settings_locationBuilder
-    implements
-        Builder<
-          GLoginData_login_user_settings_location,
-          GLoginData_login_user_settings_locationBuilder
-        > {
-  _$GLoginData_login_user_settings_location? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  int? _range;
-  int? get range => _$this._range;
-  set range(int? range) => _$this._range = range;
-
-  String? _geohash;
-  String? get geohash => _$this._geohash;
-  set geohash(String? geohash) => _$this._geohash = geohash;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GLoginData_login_user_settings_locationBuilder() {
-    GLoginData_login_user_settings_location._initializeBuilder(this);
-  }
-
-  GLoginData_login_user_settings_locationBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _range = $v.range;
-      _geohash = $v.geohash;
-      _name = $v.name;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GLoginData_login_user_settings_location other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GLoginData_login_user_settings_location;
-  }
-
-  @override
-  void update(
-    void Function(GLoginData_login_user_settings_locationBuilder)? updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GLoginData_login_user_settings_location build() => _build();
-
-  _$GLoginData_login_user_settings_location _build() {
-    final _$result =
-        _$v ??
-        new _$GLoginData_login_user_settings_location._(
-          G__typename: BuiltValueNullFieldError.checkNotNull(
-            G__typename,
-            r'GLoginData_login_user_settings_location',
-            'G__typename',
-          ),
-          range: range,
-          geohash: geohash,
-          name: name,
-        );
-    replace(_$result);
-    return _$result;
-  }
-}
-
 class _$GLoginData_login_user_actors extends GLoginData_login_user_actors {
   @override
   final String G__typename;
@@ -8260,16 +4744,6 @@ class _$GLoginData_login_user_actors extends GLoginData_login_user_actors {
   final String? preferredUsername;
   @override
   final String? name;
-  @override
-  final String? domain;
-  @override
-  final String? summary;
-  @override
-  final String? url;
-  @override
-  final bool? suspended;
-  @override
-  final GLoginData_login_user_actors_avatar? avatar;
 
   factory _$GLoginData_login_user_actors([
     void Function(GLoginData_login_user_actorsBuilder)? updates,
@@ -8280,11 +4754,6 @@ class _$GLoginData_login_user_actors extends GLoginData_login_user_actors {
     this.id,
     this.preferredUsername,
     this.name,
-    this.domain,
-    this.summary,
-    this.url,
-    this.suspended,
-    this.avatar,
   }) : super._() {
     BuiltValueNullFieldError.checkNotNull(
       G__typename,
@@ -8309,12 +4778,7 @@ class _$GLoginData_login_user_actors extends GLoginData_login_user_actors {
         G__typename == other.G__typename &&
         id == other.id &&
         preferredUsername == other.preferredUsername &&
-        name == other.name &&
-        domain == other.domain &&
-        summary == other.summary &&
-        url == other.url &&
-        suspended == other.suspended &&
-        avatar == other.avatar;
+        name == other.name;
   }
 
   @override
@@ -8324,11 +4788,6 @@ class _$GLoginData_login_user_actors extends GLoginData_login_user_actors {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, preferredUsername.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, domain.hashCode);
-    _$hash = $jc(_$hash, summary.hashCode);
-    _$hash = $jc(_$hash, url.hashCode);
-    _$hash = $jc(_$hash, suspended.hashCode);
-    _$hash = $jc(_$hash, avatar.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -8339,12 +4798,7 @@ class _$GLoginData_login_user_actors extends GLoginData_login_user_actors {
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('preferredUsername', preferredUsername)
-          ..add('name', name)
-          ..add('domain', domain)
-          ..add('summary', summary)
-          ..add('url', url)
-          ..add('suspended', suspended)
-          ..add('avatar', avatar))
+          ..add('name', name))
         .toString();
   }
 }
@@ -8374,28 +4828,6 @@ class GLoginData_login_user_actorsBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _domain;
-  String? get domain => _$this._domain;
-  set domain(String? domain) => _$this._domain = domain;
-
-  String? _summary;
-  String? get summary => _$this._summary;
-  set summary(String? summary) => _$this._summary = summary;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  bool? _suspended;
-  bool? get suspended => _$this._suspended;
-  set suspended(bool? suspended) => _$this._suspended = suspended;
-
-  GLoginData_login_user_actors_avatarBuilder? _avatar;
-  GLoginData_login_user_actors_avatarBuilder get avatar =>
-      _$this._avatar ??= new GLoginData_login_user_actors_avatarBuilder();
-  set avatar(GLoginData_login_user_actors_avatarBuilder? avatar) =>
-      _$this._avatar = avatar;
-
   GLoginData_login_user_actorsBuilder() {
     GLoginData_login_user_actors._initializeBuilder(this);
   }
@@ -8407,11 +4839,6 @@ class GLoginData_login_user_actorsBuilder
       _id = $v.id;
       _preferredUsername = $v.preferredUsername;
       _name = $v.name;
-      _domain = $v.domain;
-      _summary = $v.summary;
-      _url = $v.url;
-      _suspended = $v.suspended;
-      _avatar = $v.avatar?.toBuilder();
       _$v = null;
     }
     return this;
@@ -8432,218 +4859,17 @@ class GLoginData_login_user_actorsBuilder
   GLoginData_login_user_actors build() => _build();
 
   _$GLoginData_login_user_actors _build() {
-    _$GLoginData_login_user_actors _$result;
-    try {
-      _$result =
-          _$v ??
-          new _$GLoginData_login_user_actors._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename,
-              r'GLoginData_login_user_actors',
-              'G__typename',
-            ),
-            id: id,
-            preferredUsername: preferredUsername,
-            name: name,
-            domain: domain,
-            summary: summary,
-            url: url,
-            suspended: suspended,
-            avatar: _avatar?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'avatar';
-        _avatar?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-          r'GLoginData_login_user_actors',
-          _$failedField,
-          e.toString(),
-        );
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GLoginData_login_user_actors_avatar
-    extends GLoginData_login_user_actors_avatar {
-  @override
-  final String G__typename;
-  @override
-  final String? id;
-  @override
-  final String? alt;
-  @override
-  final String? name;
-  @override
-  final String? url;
-  @override
-  final int? size;
-  @override
-  final String? contentType;
-
-  factory _$GLoginData_login_user_actors_avatar([
-    void Function(GLoginData_login_user_actors_avatarBuilder)? updates,
-  ]) => (new GLoginData_login_user_actors_avatarBuilder()..update(updates))
-      ._build();
-
-  _$GLoginData_login_user_actors_avatar._({
-    required this.G__typename,
-    this.id,
-    this.alt,
-    this.name,
-    this.url,
-    this.size,
-    this.contentType,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GLoginData_login_user_actors_avatar',
-      'G__typename',
-    );
-  }
-
-  @override
-  GLoginData_login_user_actors_avatar rebuild(
-    void Function(GLoginData_login_user_actors_avatarBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GLoginData_login_user_actors_avatarBuilder toBuilder() =>
-      new GLoginData_login_user_actors_avatarBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GLoginData_login_user_actors_avatar &&
-        G__typename == other.G__typename &&
-        id == other.id &&
-        alt == other.alt &&
-        name == other.name &&
-        url == other.url &&
-        size == other.size &&
-        contentType == other.contentType;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, alt.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, url.hashCode);
-    _$hash = $jc(_$hash, size.hashCode);
-    _$hash = $jc(_$hash, contentType.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'GLoginData_login_user_actors_avatar')
-          ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('alt', alt)
-          ..add('name', name)
-          ..add('url', url)
-          ..add('size', size)
-          ..add('contentType', contentType))
-        .toString();
-  }
-}
-
-class GLoginData_login_user_actors_avatarBuilder
-    implements
-        Builder<
-          GLoginData_login_user_actors_avatar,
-          GLoginData_login_user_actors_avatarBuilder
-        > {
-  _$GLoginData_login_user_actors_avatar? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _alt;
-  String? get alt => _$this._alt;
-  set alt(String? alt) => _$this._alt = alt;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  int? _size;
-  int? get size => _$this._size;
-  set size(int? size) => _$this._size = size;
-
-  String? _contentType;
-  String? get contentType => _$this._contentType;
-  set contentType(String? contentType) => _$this._contentType = contentType;
-
-  GLoginData_login_user_actors_avatarBuilder() {
-    GLoginData_login_user_actors_avatar._initializeBuilder(this);
-  }
-
-  GLoginData_login_user_actors_avatarBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _id = $v.id;
-      _alt = $v.alt;
-      _name = $v.name;
-      _url = $v.url;
-      _size = $v.size;
-      _contentType = $v.contentType;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GLoginData_login_user_actors_avatar other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GLoginData_login_user_actors_avatar;
-  }
-
-  @override
-  void update(
-    void Function(GLoginData_login_user_actors_avatarBuilder)? updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GLoginData_login_user_actors_avatar build() => _build();
-
-  _$GLoginData_login_user_actors_avatar _build() {
     final _$result =
         _$v ??
-        new _$GLoginData_login_user_actors_avatar._(
+        new _$GLoginData_login_user_actors._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
             G__typename,
-            r'GLoginData_login_user_actors_avatar',
+            r'GLoginData_login_user_actors',
             'G__typename',
           ),
           id: id,
-          alt: alt,
+          preferredUsername: preferredUsername,
           name: name,
-          url: url,
-          size: size,
-          contentType: contentType,
         );
     replace(_$result);
     return _$result;
@@ -9461,31 +5687,11 @@ class _$GResetPasswordData_resetPassword_user
   @override
   final String email;
   @override
-  final _i3.GDateTime? confirmedAt;
+  final _i2.GDateTime? confirmedAt;
   @override
-  final _i3.GDateTime? confirmationSentAt;
-  @override
-  final _i3.GDateTime? lastSignInAt;
-  @override
-  final String? lastSignInIp;
-  @override
-  final _i3.GDateTime? currentSignInAt;
-  @override
-  final String? currentSignInIp;
-  @override
-  final String? locale;
+  final _i2.GUserRole? role;
   @override
   final GResetPasswordData_resetPassword_user_defaultActor? defaultActor;
-  @override
-  final bool? disabled;
-  @override
-  final _i3.GUserRole? role;
-  @override
-  final String? provider;
-  @override
-  final int? mediaSize;
-  @override
-  final GResetPasswordData_resetPassword_user_settings? settings;
   @override
   final BuiltList<GResetPasswordData_resetPassword_user_actors?> actors;
 
@@ -9499,18 +5705,8 @@ class _$GResetPasswordData_resetPassword_user
     this.id,
     required this.email,
     this.confirmedAt,
-    this.confirmationSentAt,
-    this.lastSignInAt,
-    this.lastSignInIp,
-    this.currentSignInAt,
-    this.currentSignInIp,
-    this.locale,
-    this.defaultActor,
-    this.disabled,
     this.role,
-    this.provider,
-    this.mediaSize,
-    this.settings,
+    this.defaultActor,
     required this.actors,
   }) : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -9547,18 +5743,8 @@ class _$GResetPasswordData_resetPassword_user
         id == other.id &&
         email == other.email &&
         confirmedAt == other.confirmedAt &&
-        confirmationSentAt == other.confirmationSentAt &&
-        lastSignInAt == other.lastSignInAt &&
-        lastSignInIp == other.lastSignInIp &&
-        currentSignInAt == other.currentSignInAt &&
-        currentSignInIp == other.currentSignInIp &&
-        locale == other.locale &&
-        defaultActor == other.defaultActor &&
-        disabled == other.disabled &&
         role == other.role &&
-        provider == other.provider &&
-        mediaSize == other.mediaSize &&
-        settings == other.settings &&
+        defaultActor == other.defaultActor &&
         actors == other.actors;
   }
 
@@ -9569,18 +5755,8 @@ class _$GResetPasswordData_resetPassword_user
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, confirmedAt.hashCode);
-    _$hash = $jc(_$hash, confirmationSentAt.hashCode);
-    _$hash = $jc(_$hash, lastSignInAt.hashCode);
-    _$hash = $jc(_$hash, lastSignInIp.hashCode);
-    _$hash = $jc(_$hash, currentSignInAt.hashCode);
-    _$hash = $jc(_$hash, currentSignInIp.hashCode);
-    _$hash = $jc(_$hash, locale.hashCode);
-    _$hash = $jc(_$hash, defaultActor.hashCode);
-    _$hash = $jc(_$hash, disabled.hashCode);
     _$hash = $jc(_$hash, role.hashCode);
-    _$hash = $jc(_$hash, provider.hashCode);
-    _$hash = $jc(_$hash, mediaSize.hashCode);
-    _$hash = $jc(_$hash, settings.hashCode);
+    _$hash = $jc(_$hash, defaultActor.hashCode);
     _$hash = $jc(_$hash, actors.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -9595,18 +5771,8 @@ class _$GResetPasswordData_resetPassword_user
           ..add('id', id)
           ..add('email', email)
           ..add('confirmedAt', confirmedAt)
-          ..add('confirmationSentAt', confirmationSentAt)
-          ..add('lastSignInAt', lastSignInAt)
-          ..add('lastSignInIp', lastSignInIp)
-          ..add('currentSignInAt', currentSignInAt)
-          ..add('currentSignInIp', currentSignInIp)
-          ..add('locale', locale)
-          ..add('defaultActor', defaultActor)
-          ..add('disabled', disabled)
           ..add('role', role)
-          ..add('provider', provider)
-          ..add('mediaSize', mediaSize)
-          ..add('settings', settings)
+          ..add('defaultActor', defaultActor)
           ..add('actors', actors))
         .toString();
   }
@@ -9632,42 +5798,15 @@ class GResetPasswordData_resetPassword_userBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  _i3.GDateTimeBuilder? _confirmedAt;
-  _i3.GDateTimeBuilder get confirmedAt =>
-      _$this._confirmedAt ??= new _i3.GDateTimeBuilder();
-  set confirmedAt(_i3.GDateTimeBuilder? confirmedAt) =>
+  _i2.GDateTimeBuilder? _confirmedAt;
+  _i2.GDateTimeBuilder get confirmedAt =>
+      _$this._confirmedAt ??= new _i2.GDateTimeBuilder();
+  set confirmedAt(_i2.GDateTimeBuilder? confirmedAt) =>
       _$this._confirmedAt = confirmedAt;
 
-  _i3.GDateTimeBuilder? _confirmationSentAt;
-  _i3.GDateTimeBuilder get confirmationSentAt =>
-      _$this._confirmationSentAt ??= new _i3.GDateTimeBuilder();
-  set confirmationSentAt(_i3.GDateTimeBuilder? confirmationSentAt) =>
-      _$this._confirmationSentAt = confirmationSentAt;
-
-  _i3.GDateTimeBuilder? _lastSignInAt;
-  _i3.GDateTimeBuilder get lastSignInAt =>
-      _$this._lastSignInAt ??= new _i3.GDateTimeBuilder();
-  set lastSignInAt(_i3.GDateTimeBuilder? lastSignInAt) =>
-      _$this._lastSignInAt = lastSignInAt;
-
-  String? _lastSignInIp;
-  String? get lastSignInIp => _$this._lastSignInIp;
-  set lastSignInIp(String? lastSignInIp) => _$this._lastSignInIp = lastSignInIp;
-
-  _i3.GDateTimeBuilder? _currentSignInAt;
-  _i3.GDateTimeBuilder get currentSignInAt =>
-      _$this._currentSignInAt ??= new _i3.GDateTimeBuilder();
-  set currentSignInAt(_i3.GDateTimeBuilder? currentSignInAt) =>
-      _$this._currentSignInAt = currentSignInAt;
-
-  String? _currentSignInIp;
-  String? get currentSignInIp => _$this._currentSignInIp;
-  set currentSignInIp(String? currentSignInIp) =>
-      _$this._currentSignInIp = currentSignInIp;
-
-  String? _locale;
-  String? get locale => _$this._locale;
-  set locale(String? locale) => _$this._locale = locale;
+  _i2.GUserRole? _role;
+  _i2.GUserRole? get role => _$this._role;
+  set role(_i2.GUserRole? role) => _$this._role = role;
 
   GResetPasswordData_resetPassword_user_defaultActorBuilder? _defaultActor;
   GResetPasswordData_resetPassword_user_defaultActorBuilder get defaultActor =>
@@ -9676,30 +5815,6 @@ class GResetPasswordData_resetPassword_userBuilder
   set defaultActor(
     GResetPasswordData_resetPassword_user_defaultActorBuilder? defaultActor,
   ) => _$this._defaultActor = defaultActor;
-
-  bool? _disabled;
-  bool? get disabled => _$this._disabled;
-  set disabled(bool? disabled) => _$this._disabled = disabled;
-
-  _i3.GUserRole? _role;
-  _i3.GUserRole? get role => _$this._role;
-  set role(_i3.GUserRole? role) => _$this._role = role;
-
-  String? _provider;
-  String? get provider => _$this._provider;
-  set provider(String? provider) => _$this._provider = provider;
-
-  int? _mediaSize;
-  int? get mediaSize => _$this._mediaSize;
-  set mediaSize(int? mediaSize) => _$this._mediaSize = mediaSize;
-
-  GResetPasswordData_resetPassword_user_settingsBuilder? _settings;
-  GResetPasswordData_resetPassword_user_settingsBuilder get settings =>
-      _$this._settings ??=
-          new GResetPasswordData_resetPassword_user_settingsBuilder();
-  set settings(
-    GResetPasswordData_resetPassword_user_settingsBuilder? settings,
-  ) => _$this._settings = settings;
 
   ListBuilder<GResetPasswordData_resetPassword_user_actors?>? _actors;
   ListBuilder<GResetPasswordData_resetPassword_user_actors?> get actors =>
@@ -9720,18 +5835,8 @@ class GResetPasswordData_resetPassword_userBuilder
       _id = $v.id;
       _email = $v.email;
       _confirmedAt = $v.confirmedAt?.toBuilder();
-      _confirmationSentAt = $v.confirmationSentAt?.toBuilder();
-      _lastSignInAt = $v.lastSignInAt?.toBuilder();
-      _lastSignInIp = $v.lastSignInIp;
-      _currentSignInAt = $v.currentSignInAt?.toBuilder();
-      _currentSignInIp = $v.currentSignInIp;
-      _locale = $v.locale;
-      _defaultActor = $v.defaultActor?.toBuilder();
-      _disabled = $v.disabled;
       _role = $v.role;
-      _provider = $v.provider;
-      _mediaSize = $v.mediaSize;
-      _settings = $v.settings?.toBuilder();
+      _defaultActor = $v.defaultActor?.toBuilder();
       _actors = $v.actors.toBuilder();
       _$v = null;
     }
@@ -9772,18 +5877,8 @@ class GResetPasswordData_resetPassword_userBuilder
               'email',
             ),
             confirmedAt: _confirmedAt?.build(),
-            confirmationSentAt: _confirmationSentAt?.build(),
-            lastSignInAt: _lastSignInAt?.build(),
-            lastSignInIp: lastSignInIp,
-            currentSignInAt: _currentSignInAt?.build(),
-            currentSignInIp: currentSignInIp,
-            locale: locale,
-            defaultActor: _defaultActor?.build(),
-            disabled: disabled,
             role: role,
-            provider: provider,
-            mediaSize: mediaSize,
-            settings: _settings?.build(),
+            defaultActor: _defaultActor?.build(),
             actors: actors.build(),
           );
     } catch (_) {
@@ -9791,19 +5886,9 @@ class GResetPasswordData_resetPassword_userBuilder
       try {
         _$failedField = 'confirmedAt';
         _confirmedAt?.build();
-        _$failedField = 'confirmationSentAt';
-        _confirmationSentAt?.build();
-        _$failedField = 'lastSignInAt';
-        _lastSignInAt?.build();
-
-        _$failedField = 'currentSignInAt';
-        _currentSignInAt?.build();
 
         _$failedField = 'defaultActor';
         _defaultActor?.build();
-
-        _$failedField = 'settings';
-        _settings?.build();
         _$failedField = 'actors';
         actors.build();
       } catch (e) {
@@ -9973,418 +6058,6 @@ class GResetPasswordData_resetPassword_user_defaultActorBuilder
   }
 }
 
-class _$GResetPasswordData_resetPassword_user_settings
-    extends GResetPasswordData_resetPassword_user_settings {
-  @override
-  final String G__typename;
-  @override
-  final _i3.GTimezone? timezone;
-  @override
-  final bool? notificationOnDay;
-  @override
-  final bool? notificationEachWeek;
-  @override
-  final bool? notificationBeforeEvent;
-  @override
-  final _i3.GNotificationPendingEnum? notificationPendingParticipation;
-  @override
-  final _i3.GNotificationPendingEnum? notificationPendingMembership;
-  @override
-  final _i3.GNotificationPendingEnum? groupNotifications;
-  @override
-  final GResetPasswordData_resetPassword_user_settings_location? location;
-
-  factory _$GResetPasswordData_resetPassword_user_settings([
-    void Function(GResetPasswordData_resetPassword_user_settingsBuilder)?
-    updates,
-  ]) =>
-      (new GResetPasswordData_resetPassword_user_settingsBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GResetPasswordData_resetPassword_user_settings._({
-    required this.G__typename,
-    this.timezone,
-    this.notificationOnDay,
-    this.notificationEachWeek,
-    this.notificationBeforeEvent,
-    this.notificationPendingParticipation,
-    this.notificationPendingMembership,
-    this.groupNotifications,
-    this.location,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GResetPasswordData_resetPassword_user_settings',
-      'G__typename',
-    );
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_settings rebuild(
-    void Function(GResetPasswordData_resetPassword_user_settingsBuilder)
-    updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GResetPasswordData_resetPassword_user_settingsBuilder toBuilder() =>
-      new GResetPasswordData_resetPassword_user_settingsBuilder()
-        ..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GResetPasswordData_resetPassword_user_settings &&
-        G__typename == other.G__typename &&
-        timezone == other.timezone &&
-        notificationOnDay == other.notificationOnDay &&
-        notificationEachWeek == other.notificationEachWeek &&
-        notificationBeforeEvent == other.notificationBeforeEvent &&
-        notificationPendingParticipation ==
-            other.notificationPendingParticipation &&
-        notificationPendingMembership == other.notificationPendingMembership &&
-        groupNotifications == other.groupNotifications &&
-        location == other.location;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, timezone.hashCode);
-    _$hash = $jc(_$hash, notificationOnDay.hashCode);
-    _$hash = $jc(_$hash, notificationEachWeek.hashCode);
-    _$hash = $jc(_$hash, notificationBeforeEvent.hashCode);
-    _$hash = $jc(_$hash, notificationPendingParticipation.hashCode);
-    _$hash = $jc(_$hash, notificationPendingMembership.hashCode);
-    _$hash = $jc(_$hash, groupNotifications.hashCode);
-    _$hash = $jc(_$hash, location.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GResetPasswordData_resetPassword_user_settings',
-          )
-          ..add('G__typename', G__typename)
-          ..add('timezone', timezone)
-          ..add('notificationOnDay', notificationOnDay)
-          ..add('notificationEachWeek', notificationEachWeek)
-          ..add('notificationBeforeEvent', notificationBeforeEvent)
-          ..add(
-            'notificationPendingParticipation',
-            notificationPendingParticipation,
-          )
-          ..add('notificationPendingMembership', notificationPendingMembership)
-          ..add('groupNotifications', groupNotifications)
-          ..add('location', location))
-        .toString();
-  }
-}
-
-class GResetPasswordData_resetPassword_user_settingsBuilder
-    implements
-        Builder<
-          GResetPasswordData_resetPassword_user_settings,
-          GResetPasswordData_resetPassword_user_settingsBuilder
-        > {
-  _$GResetPasswordData_resetPassword_user_settings? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  _i3.GTimezoneBuilder? _timezone;
-  _i3.GTimezoneBuilder get timezone =>
-      _$this._timezone ??= new _i3.GTimezoneBuilder();
-  set timezone(_i3.GTimezoneBuilder? timezone) => _$this._timezone = timezone;
-
-  bool? _notificationOnDay;
-  bool? get notificationOnDay => _$this._notificationOnDay;
-  set notificationOnDay(bool? notificationOnDay) =>
-      _$this._notificationOnDay = notificationOnDay;
-
-  bool? _notificationEachWeek;
-  bool? get notificationEachWeek => _$this._notificationEachWeek;
-  set notificationEachWeek(bool? notificationEachWeek) =>
-      _$this._notificationEachWeek = notificationEachWeek;
-
-  bool? _notificationBeforeEvent;
-  bool? get notificationBeforeEvent => _$this._notificationBeforeEvent;
-  set notificationBeforeEvent(bool? notificationBeforeEvent) =>
-      _$this._notificationBeforeEvent = notificationBeforeEvent;
-
-  _i3.GNotificationPendingEnum? _notificationPendingParticipation;
-  _i3.GNotificationPendingEnum? get notificationPendingParticipation =>
-      _$this._notificationPendingParticipation;
-  set notificationPendingParticipation(
-    _i3.GNotificationPendingEnum? notificationPendingParticipation,
-  ) => _$this._notificationPendingParticipation =
-      notificationPendingParticipation;
-
-  _i3.GNotificationPendingEnum? _notificationPendingMembership;
-  _i3.GNotificationPendingEnum? get notificationPendingMembership =>
-      _$this._notificationPendingMembership;
-  set notificationPendingMembership(
-    _i3.GNotificationPendingEnum? notificationPendingMembership,
-  ) => _$this._notificationPendingMembership = notificationPendingMembership;
-
-  _i3.GNotificationPendingEnum? _groupNotifications;
-  _i3.GNotificationPendingEnum? get groupNotifications =>
-      _$this._groupNotifications;
-  set groupNotifications(_i3.GNotificationPendingEnum? groupNotifications) =>
-      _$this._groupNotifications = groupNotifications;
-
-  GResetPasswordData_resetPassword_user_settings_locationBuilder? _location;
-  GResetPasswordData_resetPassword_user_settings_locationBuilder get location =>
-      _$this._location ??=
-          new GResetPasswordData_resetPassword_user_settings_locationBuilder();
-  set location(
-    GResetPasswordData_resetPassword_user_settings_locationBuilder? location,
-  ) => _$this._location = location;
-
-  GResetPasswordData_resetPassword_user_settingsBuilder() {
-    GResetPasswordData_resetPassword_user_settings._initializeBuilder(this);
-  }
-
-  GResetPasswordData_resetPassword_user_settingsBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _timezone = $v.timezone?.toBuilder();
-      _notificationOnDay = $v.notificationOnDay;
-      _notificationEachWeek = $v.notificationEachWeek;
-      _notificationBeforeEvent = $v.notificationBeforeEvent;
-      _notificationPendingParticipation = $v.notificationPendingParticipation;
-      _notificationPendingMembership = $v.notificationPendingMembership;
-      _groupNotifications = $v.groupNotifications;
-      _location = $v.location?.toBuilder();
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GResetPasswordData_resetPassword_user_settings other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GResetPasswordData_resetPassword_user_settings;
-  }
-
-  @override
-  void update(
-    void Function(GResetPasswordData_resetPassword_user_settingsBuilder)?
-    updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_settings build() => _build();
-
-  _$GResetPasswordData_resetPassword_user_settings _build() {
-    _$GResetPasswordData_resetPassword_user_settings _$result;
-    try {
-      _$result =
-          _$v ??
-          new _$GResetPasswordData_resetPassword_user_settings._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename,
-              r'GResetPasswordData_resetPassword_user_settings',
-              'G__typename',
-            ),
-            timezone: _timezone?.build(),
-            notificationOnDay: notificationOnDay,
-            notificationEachWeek: notificationEachWeek,
-            notificationBeforeEvent: notificationBeforeEvent,
-            notificationPendingParticipation: notificationPendingParticipation,
-            notificationPendingMembership: notificationPendingMembership,
-            groupNotifications: groupNotifications,
-            location: _location?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'timezone';
-        _timezone?.build();
-
-        _$failedField = 'location';
-        _location?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-          r'GResetPasswordData_resetPassword_user_settings',
-          _$failedField,
-          e.toString(),
-        );
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GResetPasswordData_resetPassword_user_settings_location
-    extends GResetPasswordData_resetPassword_user_settings_location {
-  @override
-  final String G__typename;
-  @override
-  final int? range;
-  @override
-  final String? geohash;
-  @override
-  final String? name;
-
-  factory _$GResetPasswordData_resetPassword_user_settings_location([
-    void Function(
-      GResetPasswordData_resetPassword_user_settings_locationBuilder,
-    )?
-    updates,
-  ]) =>
-      (new GResetPasswordData_resetPassword_user_settings_locationBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GResetPasswordData_resetPassword_user_settings_location._({
-    required this.G__typename,
-    this.range,
-    this.geohash,
-    this.name,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GResetPasswordData_resetPassword_user_settings_location',
-      'G__typename',
-    );
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_settings_location rebuild(
-    void Function(
-      GResetPasswordData_resetPassword_user_settings_locationBuilder,
-    )
-    updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GResetPasswordData_resetPassword_user_settings_locationBuilder toBuilder() =>
-      new GResetPasswordData_resetPassword_user_settings_locationBuilder()
-        ..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GResetPasswordData_resetPassword_user_settings_location &&
-        G__typename == other.G__typename &&
-        range == other.range &&
-        geohash == other.geohash &&
-        name == other.name;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, range.hashCode);
-    _$hash = $jc(_$hash, geohash.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GResetPasswordData_resetPassword_user_settings_location',
-          )
-          ..add('G__typename', G__typename)
-          ..add('range', range)
-          ..add('geohash', geohash)
-          ..add('name', name))
-        .toString();
-  }
-}
-
-class GResetPasswordData_resetPassword_user_settings_locationBuilder
-    implements
-        Builder<
-          GResetPasswordData_resetPassword_user_settings_location,
-          GResetPasswordData_resetPassword_user_settings_locationBuilder
-        > {
-  _$GResetPasswordData_resetPassword_user_settings_location? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  int? _range;
-  int? get range => _$this._range;
-  set range(int? range) => _$this._range = range;
-
-  String? _geohash;
-  String? get geohash => _$this._geohash;
-  set geohash(String? geohash) => _$this._geohash = geohash;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GResetPasswordData_resetPassword_user_settings_locationBuilder() {
-    GResetPasswordData_resetPassword_user_settings_location._initializeBuilder(
-      this,
-    );
-  }
-
-  GResetPasswordData_resetPassword_user_settings_locationBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _range = $v.range;
-      _geohash = $v.geohash;
-      _name = $v.name;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GResetPasswordData_resetPassword_user_settings_location other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GResetPasswordData_resetPassword_user_settings_location;
-  }
-
-  @override
-  void update(
-    void Function(
-      GResetPasswordData_resetPassword_user_settings_locationBuilder,
-    )?
-    updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_settings_location build() => _build();
-
-  _$GResetPasswordData_resetPassword_user_settings_location _build() {
-    final _$result =
-        _$v ??
-        new _$GResetPasswordData_resetPassword_user_settings_location._(
-          G__typename: BuiltValueNullFieldError.checkNotNull(
-            G__typename,
-            r'GResetPasswordData_resetPassword_user_settings_location',
-            'G__typename',
-          ),
-          range: range,
-          geohash: geohash,
-          name: name,
-        );
-    replace(_$result);
-    return _$result;
-  }
-}
-
 class _$GResetPasswordData_resetPassword_user_actors
     extends GResetPasswordData_resetPassword_user_actors {
   @override
@@ -10395,16 +6068,6 @@ class _$GResetPasswordData_resetPassword_user_actors
   final String? preferredUsername;
   @override
   final String? name;
-  @override
-  final String? domain;
-  @override
-  final String? summary;
-  @override
-  final String? url;
-  @override
-  final bool? suspended;
-  @override
-  final GResetPasswordData_resetPassword_user_actors_avatar? avatar;
 
   factory _$GResetPasswordData_resetPassword_user_actors([
     void Function(GResetPasswordData_resetPassword_user_actorsBuilder)? updates,
@@ -10418,11 +6081,6 @@ class _$GResetPasswordData_resetPassword_user_actors
     this.id,
     this.preferredUsername,
     this.name,
-    this.domain,
-    this.summary,
-    this.url,
-    this.suspended,
-    this.avatar,
   }) : super._() {
     BuiltValueNullFieldError.checkNotNull(
       G__typename,
@@ -10447,12 +6105,7 @@ class _$GResetPasswordData_resetPassword_user_actors
         G__typename == other.G__typename &&
         id == other.id &&
         preferredUsername == other.preferredUsername &&
-        name == other.name &&
-        domain == other.domain &&
-        summary == other.summary &&
-        url == other.url &&
-        suspended == other.suspended &&
-        avatar == other.avatar;
+        name == other.name;
   }
 
   @override
@@ -10462,11 +6115,6 @@ class _$GResetPasswordData_resetPassword_user_actors
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, preferredUsername.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, domain.hashCode);
-    _$hash = $jc(_$hash, summary.hashCode);
-    _$hash = $jc(_$hash, url.hashCode);
-    _$hash = $jc(_$hash, suspended.hashCode);
-    _$hash = $jc(_$hash, avatar.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -10479,12 +6127,7 @@ class _$GResetPasswordData_resetPassword_user_actors
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('preferredUsername', preferredUsername)
-          ..add('name', name)
-          ..add('domain', domain)
-          ..add('summary', summary)
-          ..add('url', url)
-          ..add('suspended', suspended)
-          ..add('avatar', avatar))
+          ..add('name', name))
         .toString();
   }
 }
@@ -10514,30 +6157,6 @@ class GResetPasswordData_resetPassword_user_actorsBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _domain;
-  String? get domain => _$this._domain;
-  set domain(String? domain) => _$this._domain = domain;
-
-  String? _summary;
-  String? get summary => _$this._summary;
-  set summary(String? summary) => _$this._summary = summary;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  bool? _suspended;
-  bool? get suspended => _$this._suspended;
-  set suspended(bool? suspended) => _$this._suspended = suspended;
-
-  GResetPasswordData_resetPassword_user_actors_avatarBuilder? _avatar;
-  GResetPasswordData_resetPassword_user_actors_avatarBuilder get avatar =>
-      _$this._avatar ??=
-          new GResetPasswordData_resetPassword_user_actors_avatarBuilder();
-  set avatar(
-    GResetPasswordData_resetPassword_user_actors_avatarBuilder? avatar,
-  ) => _$this._avatar = avatar;
-
   GResetPasswordData_resetPassword_user_actorsBuilder() {
     GResetPasswordData_resetPassword_user_actors._initializeBuilder(this);
   }
@@ -10549,11 +6168,6 @@ class GResetPasswordData_resetPassword_user_actorsBuilder
       _id = $v.id;
       _preferredUsername = $v.preferredUsername;
       _name = $v.name;
-      _domain = $v.domain;
-      _summary = $v.summary;
-      _url = $v.url;
-      _suspended = $v.suspended;
-      _avatar = $v.avatar?.toBuilder();
       _$v = null;
     }
     return this;
@@ -10576,228 +6190,17 @@ class GResetPasswordData_resetPassword_user_actorsBuilder
   GResetPasswordData_resetPassword_user_actors build() => _build();
 
   _$GResetPasswordData_resetPassword_user_actors _build() {
-    _$GResetPasswordData_resetPassword_user_actors _$result;
-    try {
-      _$result =
-          _$v ??
-          new _$GResetPasswordData_resetPassword_user_actors._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename,
-              r'GResetPasswordData_resetPassword_user_actors',
-              'G__typename',
-            ),
-            id: id,
-            preferredUsername: preferredUsername,
-            name: name,
-            domain: domain,
-            summary: summary,
-            url: url,
-            suspended: suspended,
-            avatar: _avatar?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'avatar';
-        _avatar?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-          r'GResetPasswordData_resetPassword_user_actors',
-          _$failedField,
-          e.toString(),
-        );
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GResetPasswordData_resetPassword_user_actors_avatar
-    extends GResetPasswordData_resetPassword_user_actors_avatar {
-  @override
-  final String G__typename;
-  @override
-  final String? id;
-  @override
-  final String? alt;
-  @override
-  final String? name;
-  @override
-  final String? url;
-  @override
-  final int? size;
-  @override
-  final String? contentType;
-
-  factory _$GResetPasswordData_resetPassword_user_actors_avatar([
-    void Function(GResetPasswordData_resetPassword_user_actors_avatarBuilder)?
-    updates,
-  ]) =>
-      (new GResetPasswordData_resetPassword_user_actors_avatarBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GResetPasswordData_resetPassword_user_actors_avatar._({
-    required this.G__typename,
-    this.id,
-    this.alt,
-    this.name,
-    this.url,
-    this.size,
-    this.contentType,
-  }) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-      G__typename,
-      r'GResetPasswordData_resetPassword_user_actors_avatar',
-      'G__typename',
-    );
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_actors_avatar rebuild(
-    void Function(GResetPasswordData_resetPassword_user_actors_avatarBuilder)
-    updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GResetPasswordData_resetPassword_user_actors_avatarBuilder toBuilder() =>
-      new GResetPasswordData_resetPassword_user_actors_avatarBuilder()
-        ..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GResetPasswordData_resetPassword_user_actors_avatar &&
-        G__typename == other.G__typename &&
-        id == other.id &&
-        alt == other.alt &&
-        name == other.name &&
-        url == other.url &&
-        size == other.size &&
-        contentType == other.contentType;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, alt.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, url.hashCode);
-    _$hash = $jc(_$hash, size.hashCode);
-    _$hash = $jc(_$hash, contentType.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GResetPasswordData_resetPassword_user_actors_avatar',
-          )
-          ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('alt', alt)
-          ..add('name', name)
-          ..add('url', url)
-          ..add('size', size)
-          ..add('contentType', contentType))
-        .toString();
-  }
-}
-
-class GResetPasswordData_resetPassword_user_actors_avatarBuilder
-    implements
-        Builder<
-          GResetPasswordData_resetPassword_user_actors_avatar,
-          GResetPasswordData_resetPassword_user_actors_avatarBuilder
-        > {
-  _$GResetPasswordData_resetPassword_user_actors_avatar? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _alt;
-  String? get alt => _$this._alt;
-  set alt(String? alt) => _$this._alt = alt;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  int? _size;
-  int? get size => _$this._size;
-  set size(int? size) => _$this._size = size;
-
-  String? _contentType;
-  String? get contentType => _$this._contentType;
-  set contentType(String? contentType) => _$this._contentType = contentType;
-
-  GResetPasswordData_resetPassword_user_actors_avatarBuilder() {
-    GResetPasswordData_resetPassword_user_actors_avatar._initializeBuilder(
-      this,
-    );
-  }
-
-  GResetPasswordData_resetPassword_user_actors_avatarBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _id = $v.id;
-      _alt = $v.alt;
-      _name = $v.name;
-      _url = $v.url;
-      _size = $v.size;
-      _contentType = $v.contentType;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GResetPasswordData_resetPassword_user_actors_avatar other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GResetPasswordData_resetPassword_user_actors_avatar;
-  }
-
-  @override
-  void update(
-    void Function(GResetPasswordData_resetPassword_user_actors_avatarBuilder)?
-    updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GResetPasswordData_resetPassword_user_actors_avatar build() => _build();
-
-  _$GResetPasswordData_resetPassword_user_actors_avatar _build() {
     final _$result =
         _$v ??
-        new _$GResetPasswordData_resetPassword_user_actors_avatar._(
+        new _$GResetPasswordData_resetPassword_user_actors._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
             G__typename,
-            r'GResetPasswordData_resetPassword_user_actors_avatar',
+            r'GResetPasswordData_resetPassword_user_actors',
             'G__typename',
           ),
           id: id,
-          alt: alt,
+          preferredUsername: preferredUsername,
           name: name,
-          url: url,
-          size: size,
-          contentType: contentType,
         );
     replace(_$result);
     return _$result;
