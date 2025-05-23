@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+<required_instructions>
+The following rules must always be followed.
+
+We will only create and run live integration tests in this application via the run_headless_tests.sh script which defines valid live server connection information for both regular and admin accounts.
+
+All communication with the Mobilizon instance must go through the mobilizon_api package methods.
+
+Direct HTTP requests, raw GraphQL queries, or any other communication methods outside the mobilizon_api package are strictly prohibited.
+</required_instructions>
+</required_instructions>
