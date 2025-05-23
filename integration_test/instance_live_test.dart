@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobilizon_api/client.dart';
+import 'package:mobilizon_api/mobilizon_client.dart';
 
 import 'test_token_storage.dart';
 
@@ -22,12 +22,19 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // Get API URL from environment variables
-  final apiUrl = Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
+  final apiUrl =
+      Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
 
   group('Mobilizon Instance Availability Tests', () {
     test('Instance API endpoint is reachable', () async {
       // Create a client with the test API URL and test token storage
-      final client = MobilizonClient(MobilizonClientConfig(apiUrl: apiUrl, enableDebugLogging: true, tokenStorage: TestTokenStorage()));
+      final client = MobilizonClient(
+        MobilizonClientConfig(
+          apiUrl: apiUrl,
+          enableDebugLogging: true,
+          tokenStorage: TestTokenStorage(),
+        ),
+      );
 
       try {
         // Attempt to check if the client can connect to the server

@@ -1,73 +1,298 @@
 import 'dart:async';
 
+// Import the generated GraphQL classes for auth operations
+import 'package:jwt_decoder/jwt_decoder.dart';
+
+import '../graphql/mutations/__generated__/auth_mutations.data.gql.dart';
+import '../graphql/mutations/__generated__/auth_mutations.req.gql.dart';
+import 'exceptions/auth_exception.dart';
+import 'graphql_client_provider.dart';
 import 'models/auth_models.dart';
+import 'token_manager.dart';
 
-/// Service for authentication operations
-abstract class AuthService {
-  /// Get the current authenticated user, or null if not logged in
-  Future<User?> getCurrentUser();
+/// Implementation of AuthService using GraphQL
+class AuthService {
+  // Internal controller for auth state changes
+  final _authStateController = StreamController<bool>.broadcast();
 
-  /// Get the current active profile, or null if not logged in
-  Future<Person?> getCurrentProfile();
+  // GraphQL client for API calls
+  final GraphQLClientProvider _graphQLClient;
 
-  /// Check if the user is currently authenticated
-  Future<bool> isAuthenticated();
+  // Token manager for managing auth tokens
+  final TokenManager _tokenManager;
 
-  /// Get the instance configuration
-  Future<InstanceConfig> getInstanceConfig();
+  // Current user
+  User? _currentUser;
 
-  /// Register a new user account
-  ///
-  /// Throws [AuthException] if registration fails
-  Future<User> register(RegistrationData data);
+  AuthService({
+    required GraphQLClientProvider graphQLClient,
+    required TokenManager tokenManager,
+  }) : _graphQLClient = graphQLClient,
+       _tokenManager = tokenManager;
 
-  /// Validate a user account with a confirmation token
-  ///
-  /// Throws [AuthException] if validation fails
-  Future<AuthResult> validateUser(String token);
+  Stream<bool> get authStateChanges => _authStateController.stream;
 
-  /// Resend confirmation email to a previously registered email
-  ///
-  /// Returns true if email was sent successfully
-  /// Throws [AuthException] if operation fails
-  Future<bool> resendConfirmationEmail(String email, {String? locale});
+  Future<User?> getMyUser() async {
+    if (_currentUser != null) {
+      return _currentUser;
+    }
 
-  /// Log in with email and password
-  ///
-  /// Throws [AuthException] if login fails
-  Future<AuthResult> login(AuthCredentials credentials);
+    final isAuth = await isAuthenticated();
+    if (!isAuth) {
+      return null;
+    }
 
-  /// Log out the current user
-  ///
-  /// Returns true if logout was successful
-  /// Throws [AuthException] if logout fails
-  Future<bool> logout();
+    // We're authenticated but don't have user data
+    // This could happen if the app was restarted but tokens are still valid
+    // Need to implement a GraphQL query to fetch current user data when this happens
+    // For now, just return the cached user
+    return _currentUser;
+  }
 
-  /// Request a password reset email
-  ///
-  /// Returns a result object with success status and optional message
-  /// Throws [AuthException] if request fails
-  Future<PasswordResetRequestResult> requestPasswordReset(String email, {String? locale});
+  Future<Person?> getMyProfile() async {
+    final user = await getMyUser();
+    if (user == null || user.profiles.isEmpty) {
+      return null;
+    }
 
-  /// Reset password using a reset token
-  ///
-  /// Throws [AuthException] if reset fails
-  Future<AuthResult> resetPassword(String token, String newPassword, {String? locale});
+    // Return the default profile (first one in the list)
+    return user.profiles.first;
+  }
 
-  /// Check if a token refresh is needed and perform it if necessary
-  ///
-  /// Returns true if a refresh was performed successfully
-  /// Returns false if no refresh was needed
-  /// Throws [AuthException] if refresh fails
-  Future<bool> refreshTokenIfNeeded();
+  Future<bool> isAuthenticated() async {
+    final tokens = await _tokenManager.getCurrentTokens();
+    if (tokens == null) {
+      return false;
+    }
 
-  /// Force a token refresh regardless of expiration status
-  ///
-  /// Throws [AuthException] if refresh fails
-  Future<TokenPair> forceTokenRefresh();
+    if (tokens.isAccessTokenExpired) {
+      try {
+        // Try to refresh the token
+        await refreshTokenIfNeeded();
 
-  /// Listen for authentication state changes
-  ///
-  /// The stream emits true when authenticated, false when not authenticated
-  Stream<bool> get authStateChanges;
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  Future<AuthResult> login(AuthCredentials credentials) async {
+    try {
+      // Create the login request with credentials
+      final request = GLoginReq(
+        (b) => b
+          ..vars.email = credentials.email
+          ..vars.password = credentials.password,
+      );
+
+      // Execute the login mutation
+      final response = await _graphQLClient.executePublic(request);
+
+      // Check for errors from the GraphQL operation
+      if (response.hasErrors || response.data?.login == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .join(', ');
+        throw AuthException(
+          "Login failed: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      final loginData = response.data!.login!;
+
+      // Parse JWT token to get expiry date
+      final Map<String, dynamic> decodedToken = JwtDecoder.decode(
+        loginData.accessToken,
+      );
+      final expiryTimestamp = decodedToken['exp'] as int;
+      final expiryDateTime = DateTime.fromMillisecondsSinceEpoch(
+        expiryTimestamp * 1000,
+      );
+
+      // Create token pair
+      final tokens = TokenPair(
+        accessToken: loginData.accessToken,
+        refreshToken: loginData.refreshToken,
+        accessTokenExpiry: expiryDateTime,
+      );
+
+      // Save tokens
+      await _tokenManager.saveTokens(tokens);
+
+      // Map GraphQL user to domain model
+      final user = _mapGraphQLUserToUser(loginData.user);
+      _currentUser = user;
+
+      // Notify listeners of authentication state change
+      _authStateController.add(true);
+
+      // Return the result
+      return AuthResult(tokens: tokens, user: user);
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException('Failed to login: ${e.toString()}', originalError: e);
+    }
+  }
+
+  Future<bool> logout() async {
+    try {
+      // Get the current refresh token
+      final tokens = await _tokenManager.getCurrentTokens();
+      if (tokens != null) {
+        // Create the logout request with refresh token
+        final request = GLogoutReq(
+          (b) => b..vars.refreshToken = tokens.refreshToken,
+        );
+
+        // Execute the logout mutation
+        await _graphQLClient.execute(request);
+      }
+
+      // Clear the tokens
+      await _tokenManager.clearTokens();
+
+      // Clear current user
+      _currentUser = null;
+
+      // Notify listeners of authentication state change
+      _authStateController.add(false);
+
+      return true;
+    } catch (e) {
+      throw AuthException(
+        'Failed to logout: ${e.toString()}',
+        originalError: e,
+      );
+    }
+  }
+
+  Future<bool> refreshTokenIfNeeded() async {
+    try {
+      final tokens = await _tokenManager.getCurrentTokens();
+      if (tokens == null) {
+        return false; // No tokens to refresh
+      }
+
+      if (!tokens.isAccessTokenExpired) {
+        return false; // Token is still valid, no need to refresh
+      }
+
+      // Force token refresh
+      await forceTokenRefresh();
+
+      return true;
+    } catch (e) {
+      throw AuthException(
+        'Token refresh failed: ${e.toString()}',
+        originalError: e,
+      );
+    }
+  }
+
+  Future<TokenPair> forceTokenRefresh() async {
+    try {
+      final tokens = await _tokenManager.getCurrentTokens();
+      if (tokens == null) {
+        throw AuthException('No tokens available for refresh');
+      }
+
+      // Create the refresh token request
+      final request = GRefreshTokenReq(
+        (b) => b..vars.refreshToken = tokens.refreshToken,
+      );
+
+      // Execute the refresh token mutation
+      final response = await _graphQLClient.executePublic(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.refreshToken == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .join(', ');
+        throw AuthException(
+          "Token refresh failed: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      final refreshData = response.data!.refreshToken!;
+
+      // Parse JWT token to get expiry date
+      final Map<String, dynamic> decodedToken = JwtDecoder.decode(
+        refreshData.accessToken,
+      );
+      final expiryTimestamp = decodedToken['exp'] as int;
+      final expiryDateTime = DateTime.fromMillisecondsSinceEpoch(
+        expiryTimestamp * 1000,
+      );
+
+      // Create token pair
+      final newTokens = TokenPair(
+        accessToken: refreshData.accessToken,
+        refreshToken: refreshData.refreshToken,
+        accessTokenExpiry: expiryDateTime,
+      );
+
+      // Save new tokens
+      await _tokenManager.saveTokens(newTokens);
+
+      return newTokens;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to refresh token: ${e.toString()}',
+        originalError: e,
+      );
+    }
+  }
+
+  // Helper method to map GraphQL user to domain model
+  User _mapGraphQLUserToUser(GLoginData_login_user user) {
+    // Create a list of profiles from actors
+    final profiles = user.actors.where((actor) => actor != null).map((actor) {
+      return Person(
+        id: actor!.id ?? '',
+        preferredUsername: actor.preferredUsername ?? '',
+        name: actor.name,
+        summary: null,
+        avatar: null,
+        banner: null,
+      );
+    }).toList();
+
+    return User(
+      id: user.id ?? '',
+      email: user.email,
+      confirmed: user.confirmedAt != null,
+      role: _mapUserRole(user.role?.toString()),
+      profiles: profiles,
+      settings: null,
+    );
+  }
+
+  // Map GraphQL user role to domain model
+  UserRole _mapUserRole(String? role) {
+    switch (role) {
+      case 'ADMINISTRATOR':
+        return UserRole.administrator;
+      case 'MODERATOR':
+        return UserRole.moderator;
+      default:
+        return UserRole.user;
+    }
+  }
+
+  // Map notification preference enum
+
+  void dispose() {
+    _authStateController.close();
+  }
 }

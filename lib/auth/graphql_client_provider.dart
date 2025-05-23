@@ -30,14 +30,25 @@ class GraphQLClientProvider {
   /// Client for authenticated requests
   Client? _authClient;
 
-  GraphQLClientProvider({required this.apiUrl, required this.tokenManager, this.enableDebugLogging = false, this.networkTimeoutSeconds = 30}) {
+  GraphQLClientProvider({
+    required this.apiUrl,
+    required this.tokenManager,
+    this.enableDebugLogging = false,
+    this.networkTimeoutSeconds = 30,
+  }) {
     _initClient();
   }
 
   /// Initialize the Ferry client
   void _initClient() {
     // Create an HTTP link for the GraphQL API with default headers
-    final httpLink = HttpLink(apiUrl, defaultHeaders: {'Content-Type': 'application/json', 'Accept': 'application/json'});
+    final httpLink = HttpLink(
+      apiUrl,
+      defaultHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    );
 
     // Create an in-memory cache
     final cache = Cache();
@@ -73,7 +84,11 @@ class GraphQLClientProvider {
     // Create an HTTP link with the auth token
     final authHttpLink = HttpLink(
       apiUrl,
-      defaultHeaders: {'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Bearer ${tokens.accessToken}'},
+      defaultHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${tokens.accessToken}',
+      },
     );
 
     // Create an in-memory cache
@@ -102,7 +117,9 @@ class GraphQLClientProvider {
   /// Execute a GraphQL operation with authentication
   ///
   /// The operation must be a Ferry-generated OperationRequest
-  Future<OperationResponse<TData, TVars>> execute<TData, TVars>(OperationRequest<TData, TVars> request) async {
+  Future<OperationResponse<TData, TVars>> execute<TData, TVars>(
+    OperationRequest<TData, TVars> request,
+  ) async {
     try {
       // Check if authentication is needed and token is available
       final tokens = await tokenManager.getCurrentTokens();
@@ -123,19 +140,27 @@ class GraphQLClientProvider {
       // Execute the request with the authenticated client
       return _authClient!.request(request).first;
     } catch (e) {
-      throw GqlClientException('Failed to execute operation: ${request.operation.operationName}', originalError: e);
+      throw GqlClientException(
+        'Failed to execute operation: ${request.operation.operationName}',
+        originalError: e,
+      );
     }
   }
 
   /// Execute a GraphQL operation without authentication
   ///
   /// Similar to execute() but doesn't check for authentication
-  Future<OperationResponse<TData, TVars>> executePublic<TData, TVars>(OperationRequest<TData, TVars> request) {
+  Future<OperationResponse<TData, TVars>> executePublic<TData, TVars>(
+    OperationRequest<TData, TVars> request,
+  ) {
     try {
       // Execute the request without checking auth
       return _client.request(request).first;
     } catch (e) {
-      throw GqlClientException('Failed to execute public operation: ${request.operation.operationName}', originalError: e);
+      throw GqlClientException(
+        'Failed to execute public operation: ${request.operation.operationName}',
+        originalError: e,
+      );
     }
   }
 
@@ -143,14 +168,19 @@ class GraphQLClientProvider {
   ///
   /// Returns a stream of operation responses that updates
   /// when the underlying data changes
-  Stream<OperationResponse<TData, TVars>> watch<TData, TVars>(OperationRequest<TData, TVars> request) {
+  Stream<OperationResponse<TData, TVars>> watch<TData, TVars>(
+    OperationRequest<TData, TVars> request,
+  ) {
     try {
       // Get the appropriate client
       final client = _authClient ?? _client;
 
       return client.request(request);
     } catch (e) {
-      throw GqlClientException('Failed to watch operation: ${request.operation.operationName}', originalError: e);
+      throw GqlClientException(
+        'Failed to watch operation: ${request.operation.operationName}',
+        originalError: e,
+      );
     }
   }
 }

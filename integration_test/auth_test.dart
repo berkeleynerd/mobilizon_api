@@ -1,8 +1,10 @@
+// ignore_for_file: prefer-moving-to-variable
+
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
-import 'package:mobilizon_api/client.dart';
+import 'package:mobilizon_api/mobilizon_client.dart';
 
 import 'test_token_storage.dart';
 
@@ -24,11 +26,15 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // Get configuration from environment variables
-  final apiUrl = Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
-  final userEmail = Platform.environment['TEST_USER_EMAIL'] ?? 'rebecca@redshift.is';
+  final apiUrl =
+      Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
+  final userEmail =
+      Platform.environment['TEST_USER_EMAIL'] ?? 'rebecca@redshift.is';
   final userPassword = Platform.environment['TEST_USER_PASSWORD'] ?? 'airong7';
-  final adminEmail = Platform.environment['TEST_ADMIN_EMAIL'] ?? 'admin@admin.admin';
-  final adminPassword = Platform.environment['TEST_ADMIN_PASSWORD'] ?? 'airong7';
+  final adminEmail =
+      Platform.environment['TEST_ADMIN_EMAIL'] ?? 'admin@admin.admin';
+  final adminPassword =
+      Platform.environment['TEST_ADMIN_PASSWORD'] ?? 'airong7';
 
   group('Mobilizon Authentication Tests', () {
     late MobilizonClient client;
@@ -36,7 +42,13 @@ void main() {
     setUp(() {
       // Create a fresh client for each test with test token storage
       // This ensures each test starts with a clean authentication state
-      client = MobilizonClient(MobilizonClientConfig(apiUrl: apiUrl, enableDebugLogging: true, tokenStorage: TestTokenStorage()));
+      client = MobilizonClient(
+        MobilizonClientConfig(
+          apiUrl: apiUrl,
+          enableDebugLogging: true,
+          tokenStorage: TestTokenStorage(),
+        ),
+      );
     });
 
     tearDown(() {
@@ -51,7 +63,10 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
 
         // Step 2: Attempt login with regular user credentials
-        final credentials = AuthCredentials(email: userEmail, password: userPassword);
+        final credentials = AuthCredentials(
+          email: userEmail,
+          password: userPassword,
+        );
 
         final result = await client.auth.login(credentials);
 
@@ -61,7 +76,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 4: Verify user information can be retrieved with stored tokens
-        final currentUser = await client.auth.getCurrentUser();
+        final currentUser = await client.auth.getMyUser();
         expect(currentUser, isNotNull);
         expect(currentUser?.email, userEmail);
 
@@ -79,7 +94,10 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
 
         // Step 2: Attempt login with admin credentials
-        final credentials = AuthCredentials(email: adminEmail, password: adminPassword);
+        final credentials = AuthCredentials(
+          email: adminEmail,
+          password: adminPassword,
+        );
 
         final result = await client.auth.login(credentials);
 
@@ -89,7 +107,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 4: Verify admin user information and role
-        final currentUser = await client.auth.getCurrentUser();
+        final currentUser = await client.auth.getMyUser();
         expect(currentUser, isNotNull);
         expect(currentUser?.email, adminEmail);
         // The API should indicate this user has admin privileges
@@ -109,14 +127,17 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
 
         // Step 2: Login to get initial tokens
-        final credentials = AuthCredentials(email: userEmail, password: userPassword);
+        final credentials = AuthCredentials(
+          email: userEmail,
+          password: userPassword,
+        );
 
         final loginResult = await client.auth.login(credentials);
         expect(loginResult.user, isNotNull);
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 3: Verify we can perform an authenticated operation
-        final initialUser = await client.auth.getCurrentUser();
+        final initialUser = await client.auth.getMyUser();
         expect(initialUser, isNotNull);
         expect(initialUser?.email, userEmail);
 
@@ -131,7 +152,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 6: Verify can still perform authenticated operations
-        final userAfterRefresh = await client.auth.getCurrentUser();
+        final userAfterRefresh = await client.auth.getMyUser();
         expect(userAfterRefresh, isNotNull);
         expect(userAfterRefresh?.email, userEmail);
 
