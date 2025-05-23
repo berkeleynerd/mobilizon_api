@@ -1,0 +1,1 @@
+ /Users/rebecca/src/github.com/berkeleynerd/mobilizon_api/.dart_tool/flutter_build/dcd618758418443dc150eff4e34038d8/dart_build_result.json: 

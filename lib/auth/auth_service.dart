@@ -5,6 +5,8 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../graphql/mutations/__generated__/auth_mutations.data.gql.dart';
 import '../graphql/mutations/__generated__/auth_mutations.req.gql.dart';
+import '../graphql/queries/__generated__/user_queries.data.gql.dart';
+import '../graphql/queries/__generated__/user_queries.req.gql.dart';
 import 'exceptions/auth_exception.dart';
 import 'graphql_client_provider.dart';
 import 'models/auth_models.dart';
@@ -43,10 +45,91 @@ class AuthService {
     }
 
     // We're authenticated but don't have user data
-    // This could happen if the app was restarted but tokens are still valid
-    // Need to implement a GraphQL query to fetch current user data when this happens
-    // For now, just return the cached user
-    return _currentUser;
+    // Fetch current user data using the GraphQL API
+    try {
+      // Create the get logged user request
+      final request = GGetLoggedUserReq();
+
+      // Execute the query
+      final response = await _graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.loggedUser == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .join(', ');
+        throw AuthException(
+          "Failed to get current user: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Map the GraphQL response to our domain model
+      final userData = response.data!.loggedUser!;
+
+      // Map profiles from actors
+      final profiles = userData.actors.where((actor) => actor != null).map((
+        actor,
+      ) {
+        return Person(
+          id: actor!.id ?? '',
+          preferredUsername: actor.preferredUsername ?? '',
+          name: actor.name,
+          summary: actor.summary,
+          // Map avatar if available
+          avatar: actor.avatar != null
+              ? Media(
+                  id: actor.avatar!.id!,
+                  url: actor.avatar!.url!,
+                  alt: actor.avatar!.alt,
+                )
+              : null,
+          banner: null, // Banner is not included in the actors fragment
+        );
+      }).toList();
+
+      // Create settings if available
+      UserSettings? settings;
+      if (userData.settings != null) {
+        settings = UserSettings(
+          timezone: userData.settings!.timezone?.value,
+          notificationOnDay: userData.settings!.notificationOnDay ?? false,
+          notificationEachWeek:
+              userData.settings!.notificationEachWeek ?? false,
+          notificationBeforeEvent:
+              userData.settings!.notificationBeforeEvent ?? false,
+          notificationPendingParticipation: _mapNotificationEnum(
+            userData.settings!.notificationPendingParticipation.toString(),
+          ),
+          notificationPendingMembership: _mapNotificationEnum(
+            userData.settings!.notificationPendingMembership.toString(),
+          ),
+          groupNotifications: _mapNotificationEnum(
+            userData.settings!.groupNotifications.toString(),
+          ),
+        );
+      }
+
+      // Create the user object
+      _currentUser = User(
+        id: userData.id ?? '',
+        email: userData.email ?? '',
+        confirmed: userData.confirmedAt != null,
+        role: _mapUserRole(userData.role?.toString()),
+        profiles: profiles,
+        settings: settings,
+      );
+
+      return _currentUser;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to get current user: ${e.toString()}',
+        originalError: e,
+      );
+    }
   }
 
   Future<Person?> getMyProfile() async {
@@ -291,6 +374,24 @@ class AuthService {
   }
 
   // Map notification preference enum
+  NotificationPendingEnum _mapNotificationEnum(String? value) {
+    switch (value) {
+      case 'ALWAYS':
+        return NotificationPendingEnum.always;
+      case 'NEVER':
+        return NotificationPendingEnum.never;
+      case 'ONE_HOUR':
+        return NotificationPendingEnum.oneHour;
+      case 'ONE_DAY':
+        return NotificationPendingEnum.oneDay;
+      case 'THREE_DAYS':
+        return NotificationPendingEnum.threeDays;
+      case 'ONE_WEEK':
+        return NotificationPendingEnum.oneWeek;
+      default:
+        return NotificationPendingEnum.always;
+    }
+  }
 
   void dispose() {
     _authStateController.close();

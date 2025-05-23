@@ -23,7 +23,11 @@ flutter test integration_test/instance_live_test.dart -d flutter-tester
 echo "Testing authentication..."
 flutter test integration_test/auth_test.dart -d flutter-tester
 
+# Run user profile retrieval tests
+echo "Testing user profile retrieval..."
+flutter test integration_test/user_profile_test.dart -d flutter-tester
+
 # Run any other specific test files if they exist
-# For now, we're focusing on connectivity and authentication
+# For now, we're focusing on connectivity, authentication, and user profile
 
 echo "All tests completed successfully!" 
