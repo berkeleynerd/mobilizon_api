@@ -42,7 +42,23 @@ import 'package:mobilizon_api/graphql/schema/__generated__/input_types.ast.gql.d
 import 'package:mobilizon_api/graphql/schema/__generated__/scalars.ast.gql.dart'
     as _i19;
 
+const EmptyOperation = _i1.OperationDefinitionNode(
+  type: _i1.OperationType.query,
+  name: _i1.NameNode(value: 'EmptyOperation'),
+  variableDefinitions: [],
+  directives: [],
+  selectionSet: _i1.SelectionSetNode(selections: [
+    _i1.FieldNode(
+      name: _i1.NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    )
+  ]),
+);
 const document = _i1.DocumentNode(definitions: [
+  EmptyOperation,
   _i2.UserBasicInfo,
   _i2.UserWithSettings,
   _i2.UserFull,

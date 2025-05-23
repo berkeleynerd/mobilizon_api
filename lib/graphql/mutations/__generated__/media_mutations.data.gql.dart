@@ -7,8 +7,6 @@ import 'package:built_value/serializer.dart';
 import 'package:mobilizon_api/__generated__/serializers.gql.dart' as _i1;
 import 'package:mobilizon_api/graphql/fragments/__generated__/media_fragments.data.gql.dart'
     as _i2;
-import 'package:mobilizon_api/graphql/fragments/__generated__/user_fragments.data.gql.dart'
-    as _i3;
 
 part 'media_mutations.data.gql.g.dart';
 
@@ -157,8 +155,7 @@ abstract class GRemoveMediaData
 abstract class GRemoveMediaData_removeMedia
     implements
         Built<GRemoveMediaData_removeMedia,
-            GRemoveMediaData_removeMediaBuilder>,
-        _i3.GDeletedObjectResponse {
+            GRemoveMediaData_removeMediaBuilder> {
   GRemoveMediaData_removeMedia._();
 
   factory GRemoveMediaData_removeMedia(
@@ -168,10 +165,8 @@ abstract class GRemoveMediaData_removeMedia
   static void _initializeBuilder(GRemoveMediaData_removeMediaBuilder b) =>
       b..G__typename = 'DeletedObject';
 
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String? get id;
   static Serializer<GRemoveMediaData_removeMedia> get serializer =>
       _$gRemoveMediaDataRemoveMediaSerializer;

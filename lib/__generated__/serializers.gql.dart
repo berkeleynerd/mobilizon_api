@@ -9,7 +9,6 @@ import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     show OperationSerializer;
-import 'package:http/http.dart';
 import 'package:mobilizon_api/__generated__/schema.schema.gql.dart'
     show
         GActionLogAction,
@@ -64,6 +63,12 @@ import 'package:mobilizon_api/__generated__/schema.schema.gql.dart'
         GTimezone,
         GUUID,
         GUserRole;
+import 'package:mobilizon_api/graphql/__generated__/operations.data.gql.dart'
+    show GEmptyOperationData;
+import 'package:mobilizon_api/graphql/__generated__/operations.req.gql.dart'
+    show GEmptyOperationReq;
+import 'package:mobilizon_api/graphql/__generated__/operations.var.gql.dart'
+    show GEmptyOperationVars;
 import 'package:mobilizon_api/graphql/fragments/__generated__/auth_fragments.data.gql.dart'
     show
         GLoginInfoData,
@@ -681,6 +686,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GDeviceActivationData_deviceActivation_application,
   GDeviceActivationReq,
   GDeviceActivationVars,
+  GEmptyOperationData,
+  GEmptyOperationReq,
+  GEmptyOperationVars,
   GEventCategory,
   GEventCommentModeration,
   GEventJoinOptions,

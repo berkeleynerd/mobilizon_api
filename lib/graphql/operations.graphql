@@ -24,3 +24,8 @@
 #import "./schema/scalars.graphql"
 #import "./schema/enums.graphql"
 #import "./schema/input_types.graphql" 
+
+# Empty operation to make the file valid
+query EmptyOperation {
+  __typename
+} 

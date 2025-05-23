@@ -19,7 +19,14 @@ dependencies:
   http_parser: ^4.1.2
   mime: ^2.0.0
   path: ^1.9.1
+  jwt_decoder: any
 
+  built_value: any
+  ferry_exec: any
+  gql: any
+  built_collection: any
+  gql_exec: any
+  gql_code_builder_serializers: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

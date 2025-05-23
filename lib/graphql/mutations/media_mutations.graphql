@@ -20,6 +20,6 @@ mutation UploadMedia(
 
 mutation RemoveMedia($id: ID!) {
   removeMedia(id: $id) {
-    ...DeletedObjectResponse
+    id
   }
 } 
