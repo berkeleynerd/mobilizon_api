@@ -1,8 +1,0 @@
-# OAuth and application queries
-#import "../fragments/oauth_fragments.graphql"
-
-query GetAuthApplication($clientId: String!) {
-  authApplication(clientId: $clientId) {
-    ...AuthApplicationInfo
-  }
-} 

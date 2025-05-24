@@ -22,9 +22,9 @@ abstract class GEmptyOperationReq
         _i1.OperationRequest<_i2.GEmptyOperationData, _i3.GEmptyOperationVars> {
   GEmptyOperationReq._();
 
-  factory GEmptyOperationReq([
-    void Function(GEmptyOperationReqBuilder b) updates,
-  ]) = _$GEmptyOperationReq;
+  factory GEmptyOperationReq(
+          [void Function(GEmptyOperationReqBuilder b) updates]) =
+      _$GEmptyOperationReq;
 
   static void _initializeBuilder(GEmptyOperationReqBuilder b) => b
     ..operation = _i4.Operation(
@@ -39,10 +39,10 @@ abstract class GEmptyOperationReq
   _i4.Operation get operation;
   @override
   _i4.Request get execRequest => _i4.Request(
-    operation: operation,
-    variables: vars.toJson(),
-    context: context ?? const _i4.Context(),
-  );
+        operation: operation,
+        variables: vars.toJson(),
+        context: context ?? const _i4.Context(),
+      );
 
   @override
   String? get requestId;
@@ -51,8 +51,7 @@ abstract class GEmptyOperationReq
   _i2.GEmptyOperationData? Function(
     _i2.GEmptyOperationData?,
     _i2.GEmptyOperationData?,
-  )?
-  get updateResult;
+  )? get updateResult;
   @override
   _i2.GEmptyOperationData? get optimisticResponse;
   @override
@@ -79,16 +78,20 @@ abstract class GEmptyOperationReq
 
   @override
   _i1.OperationRequest<_i2.GEmptyOperationData, _i3.GEmptyOperationVars>
-  transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
-      this.rebuild((b) => b..operation = transform(operation));
+      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+          this.rebuild((b) => b..operation = transform(operation));
 
   static Serializer<GEmptyOperationReq> get serializer =>
       _$gEmptyOperationReqSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i6.serializers.serializeWith(GEmptyOperationReq.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
+        GEmptyOperationReq.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GEmptyOperationReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(GEmptyOperationReq.serializer, json);
+      _i6.serializers.deserializeWith(
+        GEmptyOperationReq.serializer,
+        json,
+      );
 }

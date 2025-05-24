@@ -70,7 +70,7 @@ void main() {
         final loginUser = loginResult.user;
 
         // Step 2: Call getMyUser() to get current user data
-        final myUser = await client.auth.getMyUser();
+        final myUser = await client.auth.getLoggedUser();
 
         // Step 3: Verify user data is returned correctly
         expect(myUser, isNotNull, reason: 'getMyUser returned null');
@@ -157,7 +157,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 2: Call getMyUser() to get current admin user data
-        final adminUser = await client.auth.getMyUser();
+        final adminUser = await client.auth.getLoggedUser();
 
         // Step 3: Verify admin user data
         expect(
@@ -203,7 +203,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), false);
 
         // Step 2: Call getMyUser() without authentication
-        final unauthenticatedUser = await client.auth.getMyUser();
+        final unauthenticatedUser = await client.auth.getLoggedUser();
 
         // Step 3: Verify null result
         expect(
@@ -228,7 +228,7 @@ void main() {
         await client.auth.login(credentials);
 
         // Step 2: Get user before refresh
-        final userBeforeRefresh = await client.auth.getMyUser();
+        final userBeforeRefresh = await client.auth.getLoggedUser();
         expect(
           userBeforeRefresh,
           isNotNull,
@@ -244,7 +244,7 @@ void main() {
         );
 
         // Step 4: Get user after refresh
-        final userAfterRefresh = await client.auth.getMyUser();
+        final userAfterRefresh = await client.auth.getLoggedUser();
         expect(
           userAfterRefresh,
           isNotNull,

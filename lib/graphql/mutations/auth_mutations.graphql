@@ -1,55 +1,5 @@
 # Authentication mutations
 
-mutation CreateUser($email: String!, $password: String!, $locale: String) {
-  createUser(email: $email, password: $password, locale: $locale) {
-    id
-    email
-    confirmedAt
-    confirmationSentAt
-    lastSignInAt
-    lastSignInIp
-    currentSignInAt
-    currentSignInIp
-    locale
-    defaultActor {
-      id
-      preferredUsername
-      name
-    }
-    disabled
-    role
-    provider
-    mediaSize
-  }
-}
-
-mutation ValidateUser($token: String!) {
-  validateUser(token: $token) {
-    accessToken
-    refreshToken
-    user {
-      id
-      email
-      confirmedAt
-      role
-      defaultActor {
-        id
-        preferredUsername
-        name
-      }
-      actors {
-        id
-        preferredUsername
-        name
-      }
-    }
-  }
-}
-
-mutation ResendConfirmationEmail($email: String!, $locale: String) {
-  resendConfirmationEmail(email: $email, locale: $locale)
-}
-
 mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     accessToken
@@ -83,30 +33,3 @@ mutation RefreshToken($refreshToken: String!) {
     refreshToken
   }
 }
-
-mutation SendResetPassword($email: String!, $locale: String) {
-  sendResetPassword(email: $email, locale: $locale)
-}
-
-mutation ResetPassword($token: String!, $password: String!, $locale: String) {
-  resetPassword(token: $token, password: $password, locale: $locale) {
-    accessToken
-    refreshToken
-    user {
-      id
-      email
-      confirmedAt
-      role
-      defaultActor {
-        id
-        preferredUsername
-        name
-      }
-      actors {
-        id
-        preferredUsername
-        name
-      }
-    }
-  }
-} 

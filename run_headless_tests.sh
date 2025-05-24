@@ -15,17 +15,36 @@ export TEST_ADMIN_PASSWORD="airong7"
 # Run flutter pub get to ensure dependencies are up to date
 flutter pub get
 
+# Define a delay to prevent rate limiting (in seconds)
+DELAY=2
+
 # First, run instance connectivity test to verify server access
 echo "Testing instance connectivity..."
 flutter test integration_test/instance_live_test.dart -d flutter-tester
+
+# Wait to avoid rate limiting
+echo "Waiting ${DELAY}s to avoid rate limiting..."
+sleep $DELAY
 
 # If connectivity test passes, run authentication tests
 echo "Testing authentication..."
 flutter test integration_test/auth_test.dart -d flutter-tester
 
+# Wait to avoid rate limiting
+echo "Waiting ${DELAY}s to avoid rate limiting..."
+sleep $DELAY
+
 # Run user profile retrieval tests
 echo "Testing user profile retrieval..."
 flutter test integration_test/user_profile_test.dart -d flutter-tester
+
+# Wait to avoid rate limiting
+echo "Waiting ${DELAY}s to avoid rate limiting..."
+sleep $DELAY
+
+# Run person profile retrieval tests
+echo "Testing person profile retrieval..."
+flutter test integration_test/person_test.dart -d flutter-tester
 
 # Run any other specific test files if they exist
 # For now, we're focusing on connectivity, authentication, and user profile

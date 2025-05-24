@@ -76,7 +76,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 4: Verify user information can be retrieved with stored tokens
-        final currentUser = await client.auth.getMyUser();
+        final currentUser = await client.auth.getLoggedUser();
         expect(currentUser, isNotNull);
         expect(currentUser?.email, userEmail);
 
@@ -107,7 +107,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 4: Verify admin user information and role
-        final currentUser = await client.auth.getMyUser();
+        final currentUser = await client.auth.getLoggedUser();
         expect(currentUser, isNotNull);
         expect(currentUser?.email, adminEmail);
         // The API should indicate this user has admin privileges
@@ -137,7 +137,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 3: Verify we can perform an authenticated operation
-        final initialUser = await client.auth.getMyUser();
+        final initialUser = await client.auth.getLoggedUser();
         expect(initialUser, isNotNull);
         expect(initialUser?.email, userEmail);
 
@@ -152,7 +152,7 @@ void main() {
         expect(await client.auth.isAuthenticated(), true);
 
         // Step 6: Verify can still perform authenticated operations
-        final userAfterRefresh = await client.auth.getMyUser();
+        final userAfterRefresh = await client.auth.getLoggedUser();
         expect(userAfterRefresh, isNotNull);
         expect(userAfterRefresh?.email, userEmail);
 

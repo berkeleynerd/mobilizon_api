@@ -22,5 +22,3 @@ targets:
           custom_serializers:
             - import: "package:built_value/src/date_time_serializer.dart"
               name: DateTimeSerializer
-            - import: "package:mobilizon_api/graphql/serializers/upload_serializer.dart"
-              name: UploadSerializer 

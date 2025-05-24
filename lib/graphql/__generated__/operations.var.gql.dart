@@ -12,17 +12,21 @@ abstract class GEmptyOperationVars
     implements Built<GEmptyOperationVars, GEmptyOperationVarsBuilder> {
   GEmptyOperationVars._();
 
-  factory GEmptyOperationVars([
-    void Function(GEmptyOperationVarsBuilder b) updates,
-  ]) = _$GEmptyOperationVars;
+  factory GEmptyOperationVars(
+          [void Function(GEmptyOperationVarsBuilder b) updates]) =
+      _$GEmptyOperationVars;
 
   static Serializer<GEmptyOperationVars> get serializer =>
       _$gEmptyOperationVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GEmptyOperationVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GEmptyOperationVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GEmptyOperationVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GEmptyOperationVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GEmptyOperationVars.serializer,
+        json,
+      );
 }

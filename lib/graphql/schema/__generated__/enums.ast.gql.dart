@@ -160,13 +160,11 @@ const SortableUserField = _i1.EnumTypeDefinitionNode(
     ),
   ],
 );
-const document = _i1.DocumentNode(
-  definitions: [
-    UserRole,
-    MemberRoleEnum,
-    ParticipantRoleEnum,
-    NotificationPendingEnum,
-    SortDirection,
-    SortableUserField,
-  ],
-);
+const document = _i1.DocumentNode(definitions: [
+  UserRole,
+  MemberRoleEnum,
+  ParticipantRoleEnum,
+  NotificationPendingEnum,
+  SortDirection,
+  SortableUserField,
+]);

@@ -41,7 +41,7 @@ const specifiedBy = _i1.DirectiveDefinitionNode(
         isNonNull: true,
       ),
       defaultValue: null,
-    ),
+    )
   ],
   locations: [_i1.DirectiveLocation.scalar],
   repeatable: false,
@@ -161,7 +161,7 @@ const ActionLogObject = _i1.InterfaceTypeDefinitionNode(
         name: _i1.NameNode(value: 'ID'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const Activity = _i1.ObjectTypeDefinitionNode(
@@ -303,7 +303,7 @@ const ActivityObject = _i1.InterfaceTypeDefinitionNode(
         name: _i1.NameNode(value: 'ID'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const ActivityParamItem = _i1.ObjectTypeDefinitionNode(
@@ -817,7 +817,7 @@ const AddressSearchType = _i1.EnumTypeDefinitionNode(
     _i1.EnumValueDefinitionNode(
       name: _i1.NameNode(value: 'ADMINISTRATIVE'),
       directives: [],
-    ),
+    )
   ],
 );
 const AdminSettings = _i1.ObjectTypeDefinitionNode(
@@ -1200,7 +1200,7 @@ const AnonymousEventCreationValidationCaptcha = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'Boolean'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const AnonymousEventCreationValidationEmail = _i1.ObjectTypeDefinitionNode(
@@ -1291,7 +1291,7 @@ const AnonymousParticipationValidationCaptcha = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'Boolean'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const AnonymousParticipationValidationEmail = _i1.ObjectTypeDefinitionNode(
@@ -1332,7 +1332,7 @@ const AnonymousReports = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'Boolean'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const AntiSpamFeedback = _i1.EnumTypeDefinitionNode(
@@ -1353,7 +1353,10 @@ const Application = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'Application'),
   directives: [],
   interfaces: [
-    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Actor'), isNonNull: false),
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Actor'),
+      isNonNull: false,
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -2205,8 +2208,11 @@ const Config = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'en', isBlock: false),
-        ),
+          defaultValue: _i1.StringValueNode(
+            value: 'en',
+            isBlock: false,
+          ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Privacy'),
@@ -2299,8 +2305,11 @@ const Config = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'en', isBlock: false),
-        ),
+          defaultValue: _i1.StringValueNode(
+            value: 'en',
+            isBlock: false,
+          ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Terms'),
@@ -2360,7 +2369,7 @@ const Contact = _i1.InputObjectTypeDefinitionNode(
         isNonNull: false,
       ),
       defaultValue: null,
-    ),
+    )
   ],
 );
 const Conversation = _i1.ObjectTypeDefinitionNode(
@@ -2370,7 +2379,7 @@ const Conversation = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActivityObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -2635,7 +2644,7 @@ const DeletedObject = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'ID'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const DeletedParticipant = _i1.ObjectTypeDefinitionNode(
@@ -2679,7 +2688,7 @@ const Discussion = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActivityObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -3055,7 +3064,10 @@ const Event = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
       ],
       type: _i1.NamedTypeNode(
@@ -3969,7 +3981,7 @@ const EventResult = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'EventSearchResult'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -4391,7 +4403,7 @@ const ExportFormats = _i1.ObjectTypeDefinitionNode(
         ),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const Features = _i1.ObjectTypeDefinitionNode(
@@ -4646,7 +4658,10 @@ const Group = _i1.ObjectTypeDefinitionNode(
       name: _i1.NameNode(value: 'ActivityObject'),
       isNonNull: false,
     ),
-    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Actor'), isNonNull: false),
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Actor'),
+      isNonNull: false,
+    ),
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'GroupSearchResult'),
       isNonNull: false,
@@ -4887,7 +4902,10 @@ const Group = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
       ],
       type: _i1.NamedTypeNode(
@@ -4960,9 +4978,8 @@ const Group = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'EventOrderBy'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'BEGINS_ON'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'BEGINS_ON')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'orderDirection'),
@@ -5153,7 +5170,7 @@ const GroupResult = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'GroupSearchResult'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -5605,7 +5622,7 @@ const InstanceFeeds = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'Boolean'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const InstanceFilterFollowStatus = _i1.EnumTypeDefinitionNode(
@@ -5741,7 +5758,7 @@ const Interactable = _i1.InterfaceTypeDefinitionNode(
         name: _i1.NameNode(value: 'String'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const Language = _i1.ObjectTypeDefinitionNode(
@@ -6106,7 +6123,7 @@ const Member = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActivityObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -7054,7 +7071,10 @@ const Person = _i1.ObjectTypeDefinitionNode(
       name: _i1.NameNode(value: 'ActionLogObject'),
       isNonNull: false,
     ),
-    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Actor'), isNonNull: false),
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Actor'),
+      isNonNull: false,
+    ),
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -7510,7 +7530,7 @@ const Post = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActivityObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -7737,7 +7757,7 @@ const Report = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActionLogObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -7857,7 +7877,7 @@ const ReportNote = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActionLogObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -7932,7 +7952,7 @@ const Resource = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActivityObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -8282,7 +8302,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Member'),
@@ -8301,7 +8321,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Follower'),
@@ -8320,7 +8340,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Instance'),
@@ -8394,7 +8414,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Member'),
@@ -8487,7 +8507,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'User'),
@@ -8562,7 +8582,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Participant'),
@@ -8607,7 +8627,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'text'),
@@ -8756,7 +8779,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'metadata'),
@@ -8786,14 +8812,12 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'EventOptionsInput'),
             isNonNull: false,
           ),
-          defaultValue: _i1.ObjectValueNode(
-            fields: [
-              _i1.ObjectFieldNode(
-                name: _i1.NameNode(value: 'anonymousParticipation'),
-                value: _i1.BooleanValueNode(value: false),
-              ),
-            ],
-          ),
+          defaultValue: _i1.ObjectValueNode(fields: [
+            _i1.ObjectFieldNode(
+              name: _i1.NameNode(value: 'anonymousParticipation'),
+              value: _i1.BooleanValueNode(value: false),
+            )
+          ]),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'organizerActorId'),
@@ -8897,7 +8921,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'FeedToken'),
@@ -8951,9 +8975,8 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'Openness'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'INVITE_ONLY'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'INVITE_ONLY')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'physicalAddress'),
@@ -8980,7 +9003,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'visibility'),
@@ -9026,7 +9052,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'preferredUsername'),
@@ -9044,7 +9073,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
       ],
       type: _i1.NamedTypeNode(
@@ -9090,7 +9122,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'picture'),
@@ -9291,7 +9326,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'link', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'link',
+            isBlock: false,
+          ),
         ),
       ],
       type: _i1.NamedTypeNode(
@@ -9459,7 +9497,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Comment'),
@@ -9478,7 +9516,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Conversation'),
@@ -9497,7 +9535,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Discussion'),
@@ -9516,7 +9554,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -9535,7 +9573,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedFeedToken'),
@@ -9554,7 +9592,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -9573,7 +9611,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Person'),
@@ -9592,7 +9630,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -9611,7 +9649,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -9630,7 +9668,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -9649,7 +9687,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'ApplicationDeviceActivation'),
@@ -9828,7 +9866,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Member'),
@@ -9884,7 +9922,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -9931,7 +9969,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'String'),
@@ -9976,7 +10014,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'mentions'),
@@ -10017,7 +10058,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'ResourceMetadata'),
@@ -10036,7 +10077,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Actor'),
@@ -10055,7 +10096,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'RefreshedToken'),
@@ -10100,7 +10141,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'preferredUsername'),
@@ -10118,7 +10162,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
       ],
       type: _i1.NamedTypeNode(
@@ -10175,7 +10222,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Member'),
@@ -10194,7 +10241,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Member'),
@@ -10213,7 +10260,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Follower'),
@@ -10232,7 +10279,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -10279,7 +10326,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Follower'),
@@ -10353,7 +10400,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'en', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'en',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'password'),
@@ -10391,7 +10441,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -10611,7 +10661,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'roles'),
@@ -10762,7 +10815,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'DeletedObject'),
@@ -10781,7 +10834,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Follower'),
@@ -10800,7 +10853,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'String'),
@@ -10819,7 +10872,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Actor'),
@@ -10892,7 +10945,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'text'),
@@ -11069,7 +11125,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'metadata'),
@@ -11284,7 +11343,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'visibility'),
@@ -11341,7 +11403,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'User'),
@@ -11506,7 +11568,10 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'und', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'und',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'picture'),
@@ -11776,7 +11841,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'User'),
@@ -11795,7 +11860,7 @@ const RootMutationType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Login'),
@@ -11858,7 +11923,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'AuthApplication'),
@@ -11898,7 +11963,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Conversation'),
@@ -11954,7 +12019,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Event'),
@@ -12008,9 +12073,8 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'EventOrderBy'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'BEGINS_ON'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'BEGINS_ON')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'page'),
@@ -12048,7 +12112,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Person'),
@@ -12067,7 +12131,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Group'),
@@ -12086,7 +12150,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Group'),
@@ -12104,7 +12168,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'limit'),
@@ -12131,7 +12198,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'page'),
@@ -12149,7 +12219,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'suspended'),
@@ -12178,9 +12251,9 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
                 value: 'Use the loggedUser query instead',
                 isBlock: false,
               ),
-            ),
+            )
           ],
-        ),
+        )
       ],
       args: [],
       type: _i1.ListTypeNode(
@@ -12203,7 +12276,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Instance'),
@@ -12221,7 +12294,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'desc', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'desc',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'filterDomain'),
@@ -12266,9 +12342,8 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'InstancesSortFields'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'EVENT_COUNT'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'EVENT_COUNT')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'page'),
@@ -12297,7 +12372,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Interactable'),
@@ -12319,7 +12394,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
@@ -12359,7 +12434,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Media'),
@@ -12378,7 +12453,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Person'),
@@ -12396,7 +12471,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'limit'),
@@ -12423,7 +12501,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'page'),
@@ -12441,7 +12522,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'suspended'),
@@ -12470,7 +12554,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Post'),
@@ -12516,7 +12600,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'desc', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'desc',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'limit'),
@@ -12566,7 +12653,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Report'),
@@ -12667,7 +12754,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'en', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'en',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'longitude'),
@@ -12716,7 +12806,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: 'en', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: 'en',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'page'),
@@ -12882,9 +12975,8 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'SearchTarget'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'INTERNAL'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'INTERNAL')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'sortBy'),
@@ -12893,9 +12985,8 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'SearchEventSortOptions'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'MATCH_DESC'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'MATCH_DESC')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'statusOneOf'),
@@ -12925,7 +13016,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'type'),
@@ -13049,9 +13143,8 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'SearchTarget'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'INTERNAL'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'INTERNAL')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'sortBy'),
@@ -13060,9 +13153,8 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'SearchGroupSortOptions'),
             isNonNull: false,
           ),
-          defaultValue: _i1.EnumValueNode(
-            name: _i1.NameNode(value: 'MATCH_DESC'),
-          ),
+          defaultValue:
+              _i1.EnumValueNode(name: _i1.NameNode(value: 'MATCH_DESC')),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'term'),
@@ -13071,7 +13163,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'zoom'),
@@ -13117,7 +13212,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
       ],
       type: _i1.NamedTypeNode(
@@ -13186,7 +13284,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
@@ -13208,7 +13306,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Todo'),
@@ -13227,7 +13325,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'TodoList'),
@@ -13246,7 +13344,7 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'User'),
@@ -13282,7 +13380,10 @@ const RootQueryType = _i1.ObjectTypeDefinitionNode(
             name: _i1.NameNode(value: 'String'),
             isNonNull: false,
           ),
-          defaultValue: _i1.StringValueNode(value: '', isBlock: false),
+          defaultValue: _i1.StringValueNode(
+            value: '',
+            isBlock: false,
+          ),
         ),
         _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'limit'),
@@ -13336,7 +13437,7 @@ const RootSubscriptionType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Conversation'),
@@ -13355,7 +13456,7 @@ const RootSubscriptionType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Discussion'),
@@ -13374,7 +13475,7 @@ const RootSubscriptionType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Person'),
@@ -13421,7 +13522,7 @@ const RootSubscriptionType = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        ),
+        )
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Int'),
@@ -13443,7 +13544,7 @@ const Routing = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'RoutingType'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const RoutingType = _i1.EnumTypeDefinitionNode(
@@ -13533,7 +13634,7 @@ const SearchSettings = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'GlobalSearchSettings'),
         isNonNull: false,
       ),
-    ),
+    )
   ],
 );
 const SearchTarget = _i1.EnumTypeDefinitionNode(
@@ -13561,7 +13662,7 @@ const SortableUserField = _i1.EnumTypeDefinitionNode(
     _i1.EnumValueDefinitionNode(
       name: _i1.NameNode(value: 'ID'),
       directives: [],
-    ),
+    )
   ],
 );
 const SortDirection = _i1.EnumTypeDefinitionNode(
@@ -13952,7 +14053,7 @@ const User = _i1.ObjectTypeDefinitionNode(
     _i1.NamedTypeNode(
       name: _i1.NameNode(value: 'ActionLogObject'),
       isNonNull: false,
-    ),
+    )
   ],
   fields: [
     _i1.FieldDefinitionNode(
@@ -14525,182 +14626,180 @@ const WebPush = _i1.ObjectTypeDefinitionNode(
     ),
   ],
 );
-const document = _i1.DocumentNode(
-  definitions: [
-    schema,
-    specifiedBy,
-    ActionLog,
-    ActionLogAction,
-    ActionLogObject,
-    Activity,
-    ActivityAuthor,
-    ActivityObject,
-    ActivityParamItem,
-    ActivitySetting,
-    ActivityType,
-    Actor,
-    ActorType,
-    Address,
-    AddressInput,
-    AddressSearchType,
-    AdminSettings,
-    Analytics,
-    AnalyticsConfiguration,
-    AnalyticsConfigurationType,
-    Anonymous,
-    AnonymousEventCreation,
-    AnonymousEventCreationValidation,
-    AnonymousEventCreationValidationCaptcha,
-    AnonymousEventCreationValidationEmail,
-    AnonymousParticipation,
-    AnonymousParticipationValidation,
-    AnonymousParticipationValidationCaptcha,
-    AnonymousParticipationValidationEmail,
-    AnonymousReports,
-    AntiSpamFeedback,
-    Application,
-    ApplicationCodeAndState,
-    ApplicationDeviceActivation,
-    Auth,
-    AuthApplication,
-    AuthApplicationToken,
-    CategoryStatistics,
-    Comment,
-    CommentVisibility,
-    Config,
-    Contact,
-    Conversation,
-    Dashboard,
-    DateTime,
-    DeletedFeedToken,
-    DeletedObject,
-    DeletedParticipant,
-    Discussion,
-    Event,
-    EventCategory,
-    EventCategoryOption,
-    EventCommentModeration,
-    EventJoinOptions,
-    EventMetadata,
-    EventMetadataInput,
-    EventMetadataType,
-    EventOffer,
-    EventOfferInput,
-    EventOptions,
-    EventOptionsInput,
-    EventOrderBy,
-    EventParticipationCondition,
-    EventParticipationConditionInput,
-    EventResult,
-    Events,
-    EventSearchResult,
-    EventStatus,
-    EventType,
-    EventVisibility,
-    ExportFormatEnum,
-    ExportFormats,
-    Features,
-    FeedToken,
-    FollowedGroupEvent,
-    Follower,
-    Geocoding,
-    GlobalSearchSettings,
-    Group,
-    GroupResult,
-    Groups,
-    GroupSearchResult,
-    GroupType,
-    GroupVisibility,
-    Instance,
-    InstanceFeeds,
-    InstanceFilterFollowStatus,
-    InstanceFilterSuspendStatus,
-    InstanceFollowStatus,
-    InstancePrivacyType,
-    InstancesSortFields,
-    InstanceTermsType,
-    Interactable,
-    Language,
-    Location,
-    LocationInput,
-    Login,
-    Lonlat,
-    Maps,
-    Media,
-    MediaInput,
-    MediaInputObject,
-    MediaMetadata,
-    Member,
-    MemberRoleEnum,
-    NaiveDateTime,
-    NotificationPendingEnum,
-    OauthProvider,
-    Openness,
-    PaginatedActionLogList,
-    PaginatedActivityList,
-    PaginatedCommentList,
-    PaginatedConversationList,
-    PaginatedDiscussionList,
-    PaginatedEventList,
-    PaginatedFollowedGroupEvents,
-    PaginatedFollowerList,
-    PaginatedGroupList,
-    PaginatedInstanceList,
-    PaginatedMediaList,
-    PaginatedMemberList,
-    PaginatedParticipantList,
-    PaginatedPersonList,
-    PaginatedPostList,
-    PaginatedReportList,
-    PaginatedResourceList,
-    PaginatedTodoList,
-    PaginatedTodoListList,
-    Participant,
-    ParticipantExport,
-    ParticipantMetadata,
-    ParticipantRoleEnum,
-    ParticipantStats,
-    Person,
-    Persons,
-    PictureInfo,
-    PictureInfoElement,
-    Point,
-    Post,
-    PostVisibility,
-    Privacy,
-    RefreshedToken,
-    Report,
-    ReportNote,
-    ReportStatus,
-    Resource,
-    ResourceMetadata,
-    ResourceProvider,
-    Restrictions,
-    RootMutationType,
-    RootQueryType,
-    RootSubscriptionType,
-    Routing,
-    RoutingType,
-    SearchEventSortOptions,
-    SearchGroupSortOptions,
-    SearchSettings,
-    SearchTarget,
-    SortableUserField,
-    SortDirection,
-    Statistics,
-    Tag,
-    Terms,
-    Tiles,
-    Timezone,
-    Todo,
-    TodoList,
-    Upload,
-    UploadLimits,
-    User,
-    UserRole,
-    Users,
-    UserSettings,
-    UUID,
-    WebPush,
-  ],
-);
+const document = _i1.DocumentNode(definitions: [
+  schema,
+  specifiedBy,
+  ActionLog,
+  ActionLogAction,
+  ActionLogObject,
+  Activity,
+  ActivityAuthor,
+  ActivityObject,
+  ActivityParamItem,
+  ActivitySetting,
+  ActivityType,
+  Actor,
+  ActorType,
+  Address,
+  AddressInput,
+  AddressSearchType,
+  AdminSettings,
+  Analytics,
+  AnalyticsConfiguration,
+  AnalyticsConfigurationType,
+  Anonymous,
+  AnonymousEventCreation,
+  AnonymousEventCreationValidation,
+  AnonymousEventCreationValidationCaptcha,
+  AnonymousEventCreationValidationEmail,
+  AnonymousParticipation,
+  AnonymousParticipationValidation,
+  AnonymousParticipationValidationCaptcha,
+  AnonymousParticipationValidationEmail,
+  AnonymousReports,
+  AntiSpamFeedback,
+  Application,
+  ApplicationCodeAndState,
+  ApplicationDeviceActivation,
+  Auth,
+  AuthApplication,
+  AuthApplicationToken,
+  CategoryStatistics,
+  Comment,
+  CommentVisibility,
+  Config,
+  Contact,
+  Conversation,
+  Dashboard,
+  DateTime,
+  DeletedFeedToken,
+  DeletedObject,
+  DeletedParticipant,
+  Discussion,
+  Event,
+  EventCategory,
+  EventCategoryOption,
+  EventCommentModeration,
+  EventJoinOptions,
+  EventMetadata,
+  EventMetadataInput,
+  EventMetadataType,
+  EventOffer,
+  EventOfferInput,
+  EventOptions,
+  EventOptionsInput,
+  EventOrderBy,
+  EventParticipationCondition,
+  EventParticipationConditionInput,
+  EventResult,
+  Events,
+  EventSearchResult,
+  EventStatus,
+  EventType,
+  EventVisibility,
+  ExportFormatEnum,
+  ExportFormats,
+  Features,
+  FeedToken,
+  FollowedGroupEvent,
+  Follower,
+  Geocoding,
+  GlobalSearchSettings,
+  Group,
+  GroupResult,
+  Groups,
+  GroupSearchResult,
+  GroupType,
+  GroupVisibility,
+  Instance,
+  InstanceFeeds,
+  InstanceFilterFollowStatus,
+  InstanceFilterSuspendStatus,
+  InstanceFollowStatus,
+  InstancePrivacyType,
+  InstancesSortFields,
+  InstanceTermsType,
+  Interactable,
+  Language,
+  Location,
+  LocationInput,
+  Login,
+  Lonlat,
+  Maps,
+  Media,
+  MediaInput,
+  MediaInputObject,
+  MediaMetadata,
+  Member,
+  MemberRoleEnum,
+  NaiveDateTime,
+  NotificationPendingEnum,
+  OauthProvider,
+  Openness,
+  PaginatedActionLogList,
+  PaginatedActivityList,
+  PaginatedCommentList,
+  PaginatedConversationList,
+  PaginatedDiscussionList,
+  PaginatedEventList,
+  PaginatedFollowedGroupEvents,
+  PaginatedFollowerList,
+  PaginatedGroupList,
+  PaginatedInstanceList,
+  PaginatedMediaList,
+  PaginatedMemberList,
+  PaginatedParticipantList,
+  PaginatedPersonList,
+  PaginatedPostList,
+  PaginatedReportList,
+  PaginatedResourceList,
+  PaginatedTodoList,
+  PaginatedTodoListList,
+  Participant,
+  ParticipantExport,
+  ParticipantMetadata,
+  ParticipantRoleEnum,
+  ParticipantStats,
+  Person,
+  Persons,
+  PictureInfo,
+  PictureInfoElement,
+  Point,
+  Post,
+  PostVisibility,
+  Privacy,
+  RefreshedToken,
+  Report,
+  ReportNote,
+  ReportStatus,
+  Resource,
+  ResourceMetadata,
+  ResourceProvider,
+  Restrictions,
+  RootMutationType,
+  RootQueryType,
+  RootSubscriptionType,
+  Routing,
+  RoutingType,
+  SearchEventSortOptions,
+  SearchGroupSortOptions,
+  SearchSettings,
+  SearchTarget,
+  SortableUserField,
+  SortDirection,
+  Statistics,
+  Tag,
+  Terms,
+  Tiles,
+  Timezone,
+  Todo,
+  TodoList,
+  Upload,
+  UploadLimits,
+  User,
+  UserRole,
+  Users,
+  UserSettings,
+  UUID,
+  WebPush,
+]);

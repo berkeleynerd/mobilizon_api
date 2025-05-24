@@ -12,9 +12,9 @@ abstract class GEmptyOperationData
     implements Built<GEmptyOperationData, GEmptyOperationDataBuilder> {
   GEmptyOperationData._();
 
-  factory GEmptyOperationData([
-    void Function(GEmptyOperationDataBuilder b) updates,
-  ]) = _$GEmptyOperationData;
+  factory GEmptyOperationData(
+          [void Function(GEmptyOperationDataBuilder b) updates]) =
+      _$GEmptyOperationData;
 
   static void _initializeBuilder(GEmptyOperationDataBuilder b) =>
       b..G__typename = 'RootQueryType';
@@ -24,10 +24,14 @@ abstract class GEmptyOperationData
   static Serializer<GEmptyOperationData> get serializer =>
       _$gEmptyOperationDataSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GEmptyOperationData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GEmptyOperationData.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GEmptyOperationData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GEmptyOperationData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GEmptyOperationData.serializer,
+        json,
+      );
 }

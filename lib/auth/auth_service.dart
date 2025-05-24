@@ -34,7 +34,7 @@ class AuthService {
 
   Stream<bool> get authStateChanges => _authStateController.stream;
 
-  Future<User?> getMyUser() async {
+  Future<User?> getLoggedUser() async {
     if (_currentUser != null) {
       return _currentUser;
     }
@@ -76,14 +76,6 @@ class AuthService {
           preferredUsername: actor.preferredUsername ?? '',
           name: actor.name,
           summary: actor.summary,
-          // Map avatar if available
-          avatar: actor.avatar != null
-              ? Media(
-                  id: actor.avatar!.id!,
-                  url: actor.avatar!.url!,
-                  alt: actor.avatar!.alt,
-                )
-              : null,
           banner: null, // Banner is not included in the actors fragment
         );
       }).toList();
@@ -91,29 +83,13 @@ class AuthService {
       // Create settings if available
       UserSettings? settings;
       if (userData.settings != null) {
-        settings = UserSettings(
-          timezone: userData.settings!.timezone?.value,
-          notificationOnDay: userData.settings!.notificationOnDay ?? false,
-          notificationEachWeek:
-              userData.settings!.notificationEachWeek ?? false,
-          notificationBeforeEvent:
-              userData.settings!.notificationBeforeEvent ?? false,
-          notificationPendingParticipation: _mapNotificationEnum(
-            userData.settings!.notificationPendingParticipation.toString(),
-          ),
-          notificationPendingMembership: _mapNotificationEnum(
-            userData.settings!.notificationPendingMembership.toString(),
-          ),
-          groupNotifications: _mapNotificationEnum(
-            userData.settings!.groupNotifications.toString(),
-          ),
-        );
+        settings = UserSettings(timezone: userData.settings!.timezone?.value);
       }
 
       // Create the user object
       _currentUser = User(
         id: userData.id ?? '',
-        email: userData.email ?? '',
+        email: userData.email,
         confirmed: userData.confirmedAt != null,
         role: _mapUserRole(userData.role?.toString()),
         profiles: profiles,
@@ -133,13 +109,109 @@ class AuthService {
   }
 
   Future<Person?> getMyProfile() async {
-    final user = await getMyUser();
-    if (user == null || user.profiles.isEmpty) {
+    try {
+      final user = await getLoggedUser();
+
+      // Add debug logs
+      print(
+        'getMyProfile: user = ${user != null ? 'User found' : 'No user found'}',
+      );
+      if (user != null) {
+        print('getMyProfile: user.profiles.length = ${user.profiles.length}');
+        if (user.profiles.isNotEmpty) {
+          print(
+            'getMyProfile: first profile preferredUsername = ${user.profiles.first.preferredUsername}',
+          );
+        }
+      }
+
+      // Return null if user is null or there are no profiles
+      if (user == null || user.profiles.isEmpty) {
+        print('getMyProfile: No user or empty profiles list, returning null');
+
+        return null;
+      }
+
+      // Return the default profile (first one in the list)
+      final profile = user.profiles.first;
+
+      // Return null if profile data is not valid
+      if (profile.id.isEmpty || profile.preferredUsername.isEmpty) {
+        print('getMyProfile: Empty profile ID or username, returning null');
+
+        return null;
+      }
+
+      return profile;
+    } catch (e) {
+      print('getMyProfile error: $e');
+
+      return null;
+    }
+  }
+
+  /// Fetches the current user's profile (Person) directly from the GraphQL API
+  /// This method is more direct than getMyProfile() as it performs a dedicated query
+  /// rather than extracting the profile from the user data
+  Future<Person?> getLoggedPerson() async {
+    final isAuth = await isAuthenticated();
+    if (!isAuth) {
       return null;
     }
 
-    // Return the default profile (first one in the list)
-    return user.profiles.first;
+    try {
+      // Create the get logged person request
+      final request = GGetLoggedPersonReq();
+
+      // Execute the query
+      final response = await _graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.loggedPerson == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .join(', ');
+        throw AuthException(
+          "Failed to get current person: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Extract the person data from the response
+      final personData = response.data!.loggedPerson!;
+
+      // Map the GraphQL response to our domain model
+      return Person(
+        id: personData.id ?? '',
+        preferredUsername: personData.preferredUsername ?? '',
+        name: personData.name,
+        summary: personData.summary,
+        // Map avatar if available
+        avatar: personData.avatar != null
+            ? Media(
+                id: personData.avatar!.id ?? '',
+                url: personData.avatar!.url ?? '',
+                alt: personData.avatar!.alt,
+              )
+            : null,
+        // Map banner if available
+        banner: personData.banner != null
+            ? Media(
+                id: personData.banner!.id ?? '',
+                url: personData.banner!.url ?? '',
+                alt: personData.banner!.alt,
+              )
+            : null,
+      );
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to get current person: ${e.toString()}',
+        originalError: e,
+      );
+    }
   }
 
   Future<bool> isAuthenticated() async {
@@ -374,24 +446,6 @@ class AuthService {
   }
 
   // Map notification preference enum
-  NotificationPendingEnum _mapNotificationEnum(String? value) {
-    switch (value) {
-      case 'ALWAYS':
-        return NotificationPendingEnum.always;
-      case 'NEVER':
-        return NotificationPendingEnum.never;
-      case 'ONE_HOUR':
-        return NotificationPendingEnum.oneHour;
-      case 'ONE_DAY':
-        return NotificationPendingEnum.oneDay;
-      case 'THREE_DAYS':
-        return NotificationPendingEnum.threeDays;
-      case 'ONE_WEEK':
-        return NotificationPendingEnum.oneWeek;
-      default:
-        return NotificationPendingEnum.always;
-    }
-  }
 
   void dispose() {
     _authStateController.close();

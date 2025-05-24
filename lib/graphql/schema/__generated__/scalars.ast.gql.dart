@@ -16,10 +16,6 @@ const UUID = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'UUID'),
   directives: [],
 );
-const Upload = _i1.ScalarTypeDefinitionNode(
-  name: _i1.NameNode(value: 'Upload'),
-  directives: [],
-);
 const Timezone = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'Timezone'),
   directives: [],
@@ -28,6 +24,10 @@ const Point = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'Point'),
   directives: [],
 );
-const document = _i1.DocumentNode(
-  definitions: [DateTime, NaiveDateTime, UUID, Upload, Timezone, Point],
-);
+const document = _i1.DocumentNode(definitions: [
+  DateTime,
+  NaiveDateTime,
+  UUID,
+  Timezone,
+  Point,
+]);

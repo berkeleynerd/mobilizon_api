@@ -4,7 +4,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:mobilizon_api/__generated__/schema.schema.gql.dart' as _i2;
 import 'package:mobilizon_api/__generated__/serializers.gql.dart' as _i1;
 
 part 'user_queries.var.gql.g.dart';
@@ -13,137 +12,134 @@ abstract class GGetLoggedUserVars
     implements Built<GGetLoggedUserVars, GGetLoggedUserVarsBuilder> {
   GGetLoggedUserVars._();
 
-  factory GGetLoggedUserVars([
-    void Function(GGetLoggedUserVarsBuilder b) updates,
-  ]) = _$GGetLoggedUserVars;
+  factory GGetLoggedUserVars(
+          [void Function(GGetLoggedUserVarsBuilder b) updates]) =
+      _$GGetLoggedUserVars;
 
   static Serializer<GGetLoggedUserVars> get serializer =>
       _$gGetLoggedUserVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GGetLoggedUserVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GGetLoggedUserVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GGetLoggedUserVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GGetLoggedUserVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GGetLoggedUserVars.serializer,
+        json,
+      );
 }
 
 abstract class GGetLoggedPersonVars
     implements Built<GGetLoggedPersonVars, GGetLoggedPersonVarsBuilder> {
   GGetLoggedPersonVars._();
 
-  factory GGetLoggedPersonVars([
-    void Function(GGetLoggedPersonVarsBuilder b) updates,
-  ]) = _$GGetLoggedPersonVars;
+  factory GGetLoggedPersonVars(
+          [void Function(GGetLoggedPersonVarsBuilder b) updates]) =
+      _$GGetLoggedPersonVars;
 
   static Serializer<GGetLoggedPersonVars> get serializer =>
       _$gGetLoggedPersonVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GGetLoggedPersonVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GGetLoggedPersonVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GGetLoggedPersonVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GGetLoggedPersonVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GGetLoggedPersonVars.serializer,
+        json,
+      );
 }
 
-abstract class GGetUserVars
-    implements Built<GGetUserVars, GGetUserVarsBuilder> {
-  GGetUserVars._();
+abstract class GUserBasicInfoVars
+    implements Built<GUserBasicInfoVars, GUserBasicInfoVarsBuilder> {
+  GUserBasicInfoVars._();
 
-  factory GGetUserVars([void Function(GGetUserVarsBuilder b) updates]) =
-      _$GGetUserVars;
+  factory GUserBasicInfoVars(
+          [void Function(GUserBasicInfoVarsBuilder b) updates]) =
+      _$GUserBasicInfoVars;
 
-  String get id;
-  static Serializer<GGetUserVars> get serializer => _$gGetUserVarsSerializer;
+  static Serializer<GUserBasicInfoVars> get serializer =>
+      _$gUserBasicInfoVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GGetUserVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GUserBasicInfoVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GGetUserVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GGetUserVars.serializer, json);
+  static GUserBasicInfoVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GUserBasicInfoVars.serializer,
+        json,
+      );
 }
 
-abstract class GGetUsersVars
-    implements Built<GGetUsersVars, GGetUsersVarsBuilder> {
-  GGetUsersVars._();
+abstract class GUserWithSettingsVars
+    implements Built<GUserWithSettingsVars, GUserWithSettingsVarsBuilder> {
+  GUserWithSettingsVars._();
 
-  factory GGetUsersVars([void Function(GGetUsersVarsBuilder b) updates]) =
-      _$GGetUsersVars;
+  factory GUserWithSettingsVars(
+          [void Function(GUserWithSettingsVarsBuilder b) updates]) =
+      _$GUserWithSettingsVars;
 
-  int? get page;
-  int? get limit;
-  _i2.GSortableUserField? get sort;
-  _i2.GSortDirection? get direction;
-  String? get email;
-  String? get currentSignInIp;
-  static Serializer<GGetUsersVars> get serializer => _$gGetUsersVarsSerializer;
+  static Serializer<GUserWithSettingsVars> get serializer =>
+      _$gUserWithSettingsVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GGetUsersVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GUserWithSettingsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GGetUsersVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GGetUsersVars.serializer, json);
+  static GUserWithSettingsVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GUserWithSettingsVars.serializer,
+        json,
+      );
 }
 
-abstract class GFetchPersonVars
-    implements Built<GFetchPersonVars, GFetchPersonVarsBuilder> {
-  GFetchPersonVars._();
+abstract class GUserFullVars
+    implements Built<GUserFullVars, GUserFullVarsBuilder> {
+  GUserFullVars._();
 
-  factory GFetchPersonVars([void Function(GFetchPersonVarsBuilder b) updates]) =
-      _$GFetchPersonVars;
+  factory GUserFullVars([void Function(GUserFullVarsBuilder b) updates]) =
+      _$GUserFullVars;
 
-  String get preferredUsername;
-  static Serializer<GFetchPersonVars> get serializer =>
-      _$gFetchPersonVarsSerializer;
+  static Serializer<GUserFullVars> get serializer => _$gUserFullVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GFetchPersonVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GUserFullVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GFetchPersonVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GFetchPersonVars.serializer, json);
+  static GUserFullVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GUserFullVars.serializer,
+        json,
+      );
 }
 
-abstract class GGetPersonVars
-    implements Built<GGetPersonVars, GGetPersonVarsBuilder> {
-  GGetPersonVars._();
+abstract class GActorBasicInfoVars
+    implements Built<GActorBasicInfoVars, GActorBasicInfoVarsBuilder> {
+  GActorBasicInfoVars._();
 
-  factory GGetPersonVars([void Function(GGetPersonVarsBuilder b) updates]) =
-      _$GGetPersonVars;
+  factory GActorBasicInfoVars(
+          [void Function(GActorBasicInfoVarsBuilder b) updates]) =
+      _$GActorBasicInfoVars;
 
-  String get id;
-  static Serializer<GGetPersonVars> get serializer =>
-      _$gGetPersonVarsSerializer;
+  static Serializer<GActorBasicInfoVars> get serializer =>
+      _$gActorBasicInfoVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GGetPersonVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GActorBasicInfoVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GGetPersonVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GGetPersonVars.serializer, json);
-}
-
-abstract class GSearchPersonsVars
-    implements Built<GSearchPersonsVars, GSearchPersonsVarsBuilder> {
-  GSearchPersonsVars._();
-
-  factory GSearchPersonsVars([
-    void Function(GSearchPersonsVarsBuilder b) updates,
-  ]) = _$GSearchPersonsVars;
-
-  String? get term;
-  int? get page;
-  int? get limit;
-  static Serializer<GSearchPersonsVars> get serializer =>
-      _$gSearchPersonsVarsSerializer;
-
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GSearchPersonsVars.serializer, this)
-          as Map<String, dynamic>);
-
-  static GSearchPersonsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GSearchPersonsVars.serializer, json);
+  static GActorBasicInfoVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GActorBasicInfoVars.serializer,
+        json,
+      );
 }

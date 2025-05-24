@@ -131,12 +131,16 @@ abstract class GAddressInput
   String? get url;
   static Serializer<GAddressInput> get serializer => _$gAddressInputSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GAddressInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAddressInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GAddressInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GAddressInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAddressInput.serializer,
+        json,
+      );
 }
 
 class GAddressSearchType extends EnumClass {
@@ -225,12 +229,16 @@ abstract class GContact implements Built<GContact, GContactBuilder> {
   String? get id;
   static Serializer<GContact> get serializer => _$gContactSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GContact.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GContact.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GContact? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GContact.serializer, json);
+      _i1.serializers.deserializeWith(
+        GContact.serializer,
+        json,
+      );
 }
 
 abstract class GDateTime implements Built<GDateTime, GDateTimeBuilder> {
@@ -243,8 +251,7 @@ abstract class GDateTime implements Built<GDateTime, GDateTimeBuilder> {
   @BuiltValueSerializer(custom: true)
   static Serializer<GDateTime> get serializer =>
       _i2.DefaultScalarSerializer<GDateTime>(
-        (Object serialized) => GDateTime((serialized as String?)),
-      );
+          (Object serialized) => GDateTime((serialized as String?)));
 }
 
 class GEventCategory extends EnumClass {
@@ -369,9 +376,9 @@ abstract class GEventMetadataInput
     implements Built<GEventMetadataInput, GEventMetadataInputBuilder> {
   GEventMetadataInput._();
 
-  factory GEventMetadataInput([
-    void Function(GEventMetadataInputBuilder b) updates,
-  ]) = _$GEventMetadataInput;
+  factory GEventMetadataInput(
+          [void Function(GEventMetadataInputBuilder b) updates]) =
+      _$GEventMetadataInput;
 
   String get key;
   String? get title;
@@ -380,12 +387,16 @@ abstract class GEventMetadataInput
   static Serializer<GEventMetadataInput> get serializer =>
       _$gEventMetadataInputSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GEventMetadataInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GEventMetadataInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GEventMetadataInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GEventMetadataInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GEventMetadataInput.serializer,
+        json,
+      );
 }
 
 class GEventMetadataType extends EnumClass {
@@ -419,21 +430,25 @@ abstract class GEventOfferInput
   static Serializer<GEventOfferInput> get serializer =>
       _$gEventOfferInputSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GEventOfferInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GEventOfferInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GEventOfferInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GEventOfferInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GEventOfferInput.serializer,
+        json,
+      );
 }
 
 abstract class GEventOptionsInput
     implements Built<GEventOptionsInput, GEventOptionsInputBuilder> {
   GEventOptionsInput._();
 
-  factory GEventOptionsInput([
-    void Function(GEventOptionsInputBuilder b) updates,
-  ]) = _$GEventOptionsInput;
+  factory GEventOptionsInput(
+          [void Function(GEventOptionsInputBuilder b) updates]) =
+      _$GEventOptionsInput;
 
   bool? get anonymousParticipation;
   BuiltList<String?>? get attendees;
@@ -454,12 +469,16 @@ abstract class GEventOptionsInput
   static Serializer<GEventOptionsInput> get serializer =>
       _$gEventOptionsInputSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GEventOptionsInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GEventOptionsInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GEventOptionsInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GEventOptionsInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GEventOptionsInput.serializer,
+        json,
+      );
 }
 
 class GEventOrderBy extends EnumClass {
@@ -480,15 +499,13 @@ class GEventOrderBy extends EnumClass {
 
 abstract class GEventParticipationConditionInput
     implements
-        Built<
-          GEventParticipationConditionInput,
-          GEventParticipationConditionInputBuilder
-        > {
+        Built<GEventParticipationConditionInput,
+            GEventParticipationConditionInputBuilder> {
   GEventParticipationConditionInput._();
 
-  factory GEventParticipationConditionInput([
-    void Function(GEventParticipationConditionInputBuilder b) updates,
-  ]) = _$GEventParticipationConditionInput;
+  factory GEventParticipationConditionInput(
+          [void Function(GEventParticipationConditionInputBuilder b) updates]) =
+      _$GEventParticipationConditionInput;
 
   String? get content;
   String? get title;
@@ -496,19 +513,17 @@ abstract class GEventParticipationConditionInput
   static Serializer<GEventParticipationConditionInput> get serializer =>
       _$gEventParticipationConditionInputSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(
-            GEventParticipationConditionInput.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GEventParticipationConditionInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GEventParticipationConditionInput? fromJson(
-    Map<String, dynamic> json,
-  ) => _i1.serializers.deserializeWith(
-    GEventParticipationConditionInput.serializer,
-    json,
-  );
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GEventParticipationConditionInput.serializer,
+        json,
+      );
 }
 
 class GEventStatus extends EnumClass {
@@ -755,12 +770,16 @@ abstract class GLocationInput
   static Serializer<GLocationInput> get serializer =>
       _$gLocationInputSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GLocationInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GLocationInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GLocationInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GLocationInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GLocationInput.serializer,
+        json,
+      );
 }
 
 abstract class GMediaInput implements Built<GMediaInput, GMediaInputBuilder> {
@@ -773,21 +792,25 @@ abstract class GMediaInput implements Built<GMediaInput, GMediaInputBuilder> {
   String? get mediaId;
   static Serializer<GMediaInput> get serializer => _$gMediaInputSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GMediaInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GMediaInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GMediaInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GMediaInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GMediaInput.serializer,
+        json,
+      );
 }
 
 abstract class GMediaInputObject
     implements Built<GMediaInputObject, GMediaInputObjectBuilder> {
   GMediaInputObject._();
 
-  factory GMediaInputObject([
-    void Function(GMediaInputObjectBuilder b) updates,
-  ]) = _$GMediaInputObject;
+  factory GMediaInputObject(
+          [void Function(GMediaInputObjectBuilder b) updates]) =
+      _$GMediaInputObject;
 
   String? get actorId;
   String? get alt;
@@ -797,12 +820,16 @@ abstract class GMediaInputObject
   static Serializer<GMediaInputObject> get serializer =>
       _$gMediaInputObjectSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GMediaInputObject.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GMediaInputObject.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GMediaInputObject? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GMediaInputObject.serializer, json);
+      _i1.serializers.deserializeWith(
+        GMediaInputObject.serializer,
+        json,
+      );
 }
 
 class GMemberRoleEnum extends EnumClass {
@@ -841,8 +868,7 @@ abstract class GNaiveDateTime
   @BuiltValueSerializer(custom: true)
   static Serializer<GNaiveDateTime> get serializer =>
       _i2.DefaultScalarSerializer<GNaiveDateTime>(
-        (Object serialized) => GNaiveDateTime((serialized as String?)),
-      );
+          (Object serialized) => GNaiveDateTime((serialized as String?)));
 }
 
 class GNotificationPendingEnum extends EnumClass {
@@ -929,8 +955,7 @@ abstract class GPoint implements Built<GPoint, GPointBuilder> {
   @BuiltValueSerializer(custom: true)
   static Serializer<GPoint> get serializer =>
       _i2.DefaultScalarSerializer<GPoint>(
-        (Object serialized) => GPoint((serialized as String?)),
-      );
+          (Object serialized) => GPoint((serialized as String?)));
 }
 
 class GPostVisibility extends EnumClass {
@@ -1097,8 +1122,7 @@ abstract class GTimezone implements Built<GTimezone, GTimezoneBuilder> {
   @BuiltValueSerializer(custom: true)
   static Serializer<GTimezone> get serializer =>
       _i2.DefaultScalarSerializer<GTimezone>(
-        (Object serialized) => GTimezone((serialized as String?)),
-      );
+          (Object serialized) => GTimezone((serialized as String?)));
 }
 
 class GUserRole extends EnumClass {
@@ -1126,12 +1150,15 @@ abstract class GUUID implements Built<GUUID, GUUIDBuilder> {
   String get value;
   @BuiltValueSerializer(custom: true)
   static Serializer<GUUID> get serializer => _i2.DefaultScalarSerializer<GUUID>(
-    (Object serialized) => GUUID((serialized as String?)),
-  );
+      (Object serialized) => GUUID((serialized as String?)));
 }
 
 const Map<String, Set<String>> possibleTypesMap = {
-  'Actor': {'Application', 'Group', 'Person'},
+  'Actor': {
+    'Application',
+    'Group',
+    'Person',
+  },
   'ActionLogObject': {
     'Comment',
     'Event',
@@ -1151,7 +1178,16 @@ const Map<String, Set<String>> possibleTypesMap = {
     'Post',
     'Resource',
   },
-  'EventSearchResult': {'Event', 'EventResult'},
-  'Interactable': {'Event', 'Group'},
-  'GroupSearchResult': {'Group', 'GroupResult'},
+  'EventSearchResult': {
+    'Event',
+    'EventResult',
+  },
+  'Interactable': {
+    'Event',
+    'Group',
+  },
+  'GroupSearchResult': {
+    'Group',
+    'GroupResult',
+  },
 };

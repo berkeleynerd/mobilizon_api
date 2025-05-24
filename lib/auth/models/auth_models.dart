@@ -99,22 +99,8 @@ class Media {
 /// User settings
 class UserSettings {
   final String? timezone;
-  final bool notificationOnDay;
-  final bool notificationEachWeek;
-  final bool notificationBeforeEvent;
-  final NotificationPendingEnum notificationPendingParticipation;
-  final NotificationPendingEnum notificationPendingMembership;
-  final NotificationPendingEnum groupNotifications;
 
-  const UserSettings({
-    this.timezone,
-    required this.notificationOnDay,
-    required this.notificationEachWeek,
-    required this.notificationBeforeEvent,
-    required this.notificationPendingParticipation,
-    required this.notificationPendingMembership,
-    required this.groupNotifications,
-  });
+  const UserSettings({this.timezone});
 }
 
 /// Instance configuration model

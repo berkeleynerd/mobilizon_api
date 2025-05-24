@@ -1,29 +1,12 @@
-# Import all fragments
-#import "./fragments/user_fragments.graphql"
-#import "./fragments/person_fragments.graphql"
-#import "./fragments/auth_fragments.graphql"
-#import "./fragments/media_fragments.graphql"
-#import "./fragments/config_fragments.graphql"
-#import "./fragments/oauth_fragments.graphql"
-
 # Import all queries
-#import "./queries/config_queries.graphql"
 #import "./queries/user_queries.graphql"
-#import "./queries/person_queries.graphql"
-#import "./queries/oauth_queries.graphql"
 
 # Import all mutations
 #import "./mutations/auth_mutations.graphql"
-#import "./mutations/account_mutations.graphql"
-#import "./mutations/profile_mutations.graphql"
-#import "./mutations/media_mutations.graphql"
-#import "./mutations/oauth_mutations.graphql"
-#import "./mutations/admin_mutations.graphql"
 
 # Import schema definitions
 #import "./schema/scalars.graphql"
 #import "./schema/enums.graphql"
-#import "./schema/input_types.graphql" 
 
 # Empty operation to make the file valid
 query EmptyOperation {

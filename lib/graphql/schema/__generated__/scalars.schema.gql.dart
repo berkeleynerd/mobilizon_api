@@ -19,8 +19,7 @@ abstract class GDateTime implements Built<GDateTime, GDateTimeBuilder> {
   @BuiltValueSerializer(custom: true)
   static Serializer<GDateTime> get serializer =>
       _i1.DefaultScalarSerializer<GDateTime>(
-        (Object serialized) => GDateTime((serialized as String?)),
-      );
+          (Object serialized) => GDateTime((serialized as String?)));
 }
 
 abstract class GNaiveDateTime
@@ -34,8 +33,7 @@ abstract class GNaiveDateTime
   @BuiltValueSerializer(custom: true)
   static Serializer<GNaiveDateTime> get serializer =>
       _i1.DefaultScalarSerializer<GNaiveDateTime>(
-        (Object serialized) => GNaiveDateTime((serialized as String?)),
-      );
+          (Object serialized) => GNaiveDateTime((serialized as String?)));
 }
 
 abstract class GUUID implements Built<GUUID, GUUIDBuilder> {
@@ -47,8 +45,7 @@ abstract class GUUID implements Built<GUUID, GUUIDBuilder> {
   String get value;
   @BuiltValueSerializer(custom: true)
   static Serializer<GUUID> get serializer => _i1.DefaultScalarSerializer<GUUID>(
-    (Object serialized) => GUUID((serialized as String?)),
-  );
+      (Object serialized) => GUUID((serialized as String?)));
 }
 
 abstract class GTimezone implements Built<GTimezone, GTimezoneBuilder> {
@@ -61,8 +58,7 @@ abstract class GTimezone implements Built<GTimezone, GTimezoneBuilder> {
   @BuiltValueSerializer(custom: true)
   static Serializer<GTimezone> get serializer =>
       _i1.DefaultScalarSerializer<GTimezone>(
-        (Object serialized) => GTimezone((serialized as String?)),
-      );
+          (Object serialized) => GTimezone((serialized as String?)));
 }
 
 abstract class GPoint implements Built<GPoint, GPointBuilder> {
@@ -75,8 +71,7 @@ abstract class GPoint implements Built<GPoint, GPointBuilder> {
   @BuiltValueSerializer(custom: true)
   static Serializer<GPoint> get serializer =>
       _i1.DefaultScalarSerializer<GPoint>(
-        (Object serialized) => GPoint((serialized as String?)),
-      );
+          (Object serialized) => GPoint((serialized as String?)));
 }
 
 const Map<String, Set<String>> possibleTypesMap = {};
