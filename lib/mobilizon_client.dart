@@ -18,9 +18,8 @@ class MobilizonClient {
 
   /// Initialize all client services
   void _initServices() {
-    // Initialize token manager with provided or default storage
-    final tokenStorage = _config.tokenStorage ?? SecureTokenStorage();
-    _tokenManager = TokenManager(tokenStorage);
+    // Initialize token manager with provided storage
+    _tokenManager = TokenManager(_config.tokenStorage);
 
     // Initialize GraphQL client provider
     _graphQLClient = GraphQLClientProvider(
@@ -44,11 +43,6 @@ class MobilizonClient {
     _authService.dispose();
     _tokenManager.dispose();
   }
-
-  /// Factory method to create a client with default configuration
-  static MobilizonClient defaultClient(String apiUrl) {
-    return MobilizonClient(MobilizonClientConfig(apiUrl: apiUrl));
-  }
 }
 
 /// Configuration options for Mobilizon client
@@ -59,16 +53,19 @@ class MobilizonClientConfig {
   /// Whether to enable debug logging
   final bool enableDebugLogging;
 
-  /// Custom implementation of token storage
-  final TokenStorage? tokenStorage;
+  /// Implementation of token storage
+  ///
+  /// Consumers must provide their own implementation of TokenStorage
+  /// to handle secure storage of authentication tokens.
+  final TokenStorage tokenStorage;
 
   /// Timeout for network requests in seconds
   final int networkTimeoutSeconds;
 
   const MobilizonClientConfig({
     required this.apiUrl,
+    required this.tokenStorage,
     this.enableDebugLogging = false,
-    this.tokenStorage,
     this.networkTimeoutSeconds = 30,
   });
 }

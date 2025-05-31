@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_secure_storage: ^9.2.4
   meta: ^1.11.0
   # Ferry GraphQL client
   ferry: ^0.16.1+2

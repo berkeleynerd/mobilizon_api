@@ -20,14 +20,41 @@ dependencies:
   mobilizon_api: ^0.1.0
 ```
 
-## Usage
+## Token Storage Requirement
 
-Create a client instance to interact with the API:
+This library requires you to provide your own secure token storage implementation. This design ensures you have complete control over how sensitive authentication tokens are stored.
+
+You must implement the `TokenStorage` interface:
 
 ```dart
+abstract class TokenStorage {
+  Future<void> storeTokens(TokenPair tokens);
+  Future<TokenPair?> getTokens();
+  Future<void> clearTokens();
+}
+```
+
+See the [Token Storage Guide](docs/token_storage_guide.md) for implementation examples using various storage backends.
+
+## Usage
+
+Create a client instance with your token storage implementation:
+
+```dart
+// Example using flutter_secure_storage
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+class SecureTokenStorage implements TokenStorage {
+  final _storage = const FlutterSecureStorage();
+  
+  // ... implement the required methods
+}
+
+// Create the client
 final client = MobilizonClient(
   MobilizonClientConfig(
     apiUrl: "https://your-mobilizon-instance.org/api",
+    tokenStorage: SecureTokenStorage(), // Required
   ),
 );
 ```
@@ -41,6 +68,14 @@ final credentials = AuthCredentials(
   password: "password",
 );
 final result = await client.auth.login(credentials);
+
+// Register new user
+final registrationData = RegistrationData(
+  email: "newuser@example.com",
+  password: "securepassword",
+  locale: "en",
+);
+final user = await client.auth.register(registrationData);
 
 // Logout
 await client.auth.logout();

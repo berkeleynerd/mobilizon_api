@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
 import 'models/auth_models.dart';
 
 /// Manager for authentication tokens
@@ -61,68 +59,12 @@ class TokenManager {
   }
 }
 
-/// Implementation of token storage using secure storage
-class SecureTokenStorage implements TokenStorage {
-  // Keys for storing tokens
-  static const String _accessTokenKey = 'mobilizon_access_token';
-  static const String _refreshTokenKey = 'mobilizon_refresh_token';
-  static const String _expiryKey = 'mobilizon_token_expiry';
-
-  // Secure storage instance
-  final FlutterSecureStorage _secureStorage;
-
-  SecureTokenStorage({FlutterSecureStorage? secureStorage})
-    : _secureStorage = secureStorage ?? const FlutterSecureStorage();
-
-  @override
-  Future<void> storeTokens(TokenPair tokens) async {
-    await _secureStorage.write(key: _accessTokenKey, value: tokens.accessToken);
-    await _secureStorage.write(
-      key: _refreshTokenKey,
-      value: tokens.refreshToken,
-    );
-    await _secureStorage.write(
-      key: _expiryKey,
-      value: tokens.accessTokenExpiry.millisecondsSinceEpoch.toString(),
-    );
-  }
-
-  @override
-  Future<TokenPair?> getTokens() async {
-    final accessToken = await _secureStorage.read(key: _accessTokenKey);
-    final refreshToken = await _secureStorage.read(key: _refreshTokenKey);
-    final expiryString = await _secureStorage.read(key: _expiryKey);
-
-    if (accessToken == null || refreshToken == null || expiryString == null) {
-      return null;
-    }
-
-    try {
-      final expiryTimestamp = int.parse(expiryString);
-      final expiry = DateTime.fromMillisecondsSinceEpoch(expiryTimestamp);
-
-      return TokenPair(
-        accessToken: accessToken,
-        refreshToken: refreshToken,
-        accessTokenExpiry: expiry,
-      );
-    } catch (e) {
-      // If we can't parse the expiry, clear the tokens and return null
-      await clearTokens();
-
-      return null;
-    }
-  }
-
-  @override
-  Future<void> clearTokens() async {
-    await _secureStorage.delete(key: _accessTokenKey);
-    await _secureStorage.delete(key: _refreshTokenKey);
-    await _secureStorage.delete(key: _expiryKey);
-  }
-}
-
 /// Interface for secure token storage
+///
+/// Consumers must implement this interface to provide their own
+/// secure storage mechanism for authentication tokens.
+///
+/// Example implementations can be found in token_storage_examples.dart
 abstract class TokenStorage {
   /// Store a token pair securely
   Future<void> storeTokens(TokenPair tokens);
