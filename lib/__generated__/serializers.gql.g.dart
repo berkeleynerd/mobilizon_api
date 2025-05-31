@@ -22,6 +22,12 @@ Serializers _$serializers =
           ..add(GAntiSpamFeedback.serializer)
           ..add(GCommentVisibility.serializer)
           ..add(GContact.serializer)
+          ..add(GCreateUserData.serializer)
+          ..add(GCreateUserData_createUser.serializer)
+          ..add(GCreateUserData_createUser_actors.serializer)
+          ..add(GCreateUserData_createUser_defaultActor.serializer)
+          ..add(GCreateUserReq.serializer)
+          ..add(GCreateUserVars.serializer)
           ..add(GDateTime.serializer)
           ..add(GEmptyOperationData.serializer)
           ..add(GEmptyOperationReq.serializer)
@@ -91,6 +97,9 @@ Serializers _$serializers =
           ..add(GRefreshTokenReq.serializer)
           ..add(GRefreshTokenVars.serializer)
           ..add(GReportStatus.serializer)
+          ..add(GResendConfirmationEmailData.serializer)
+          ..add(GResendConfirmationEmailReq.serializer)
+          ..add(GResendConfirmationEmailVars.serializer)
           ..add(GRoutingType.serializer)
           ..add(GSearchEventSortOptions.serializer)
           ..add(GSearchGroupSortOptions.serializer)
@@ -115,6 +124,16 @@ Serializers _$serializers =
           ..add(GUserWithSettingsData_settings.serializer)
           ..add(GUserWithSettingsReq.serializer)
           ..add(GUserWithSettingsVars.serializer)
+          ..add(GValidateEmailData.serializer)
+          ..add(GValidateEmailData_validateEmail.serializer)
+          ..add(GValidateEmailReq.serializer)
+          ..add(GValidateEmailVars.serializer)
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(GCreateUserData_createUser_actors),
+            ]),
+            () => new ListBuilder<GCreateUserData_createUser_actors?>(),
+          )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
               const FullType.nullable(

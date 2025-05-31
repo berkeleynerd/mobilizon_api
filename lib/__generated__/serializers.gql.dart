@@ -84,6 +84,19 @@ import 'package:mobilizon_api/graphql/mutations/__generated__/auth_mutations.req
     show GLoginReq, GLogoutReq, GRefreshTokenReq;
 import 'package:mobilizon_api/graphql/mutations/__generated__/auth_mutations.var.gql.dart'
     show GLoginVars, GLogoutVars, GRefreshTokenVars;
+import 'package:mobilizon_api/graphql/mutations/__generated__/registration_mutations.data.gql.dart'
+    show
+        GCreateUserData,
+        GCreateUserData_createUser,
+        GCreateUserData_createUser_actors,
+        GCreateUserData_createUser_defaultActor,
+        GResendConfirmationEmailData,
+        GValidateEmailData,
+        GValidateEmailData_validateEmail;
+import 'package:mobilizon_api/graphql/mutations/__generated__/registration_mutations.req.gql.dart'
+    show GCreateUserReq, GResendConfirmationEmailReq, GValidateEmailReq;
+import 'package:mobilizon_api/graphql/mutations/__generated__/registration_mutations.var.gql.dart'
+    show GCreateUserVars, GResendConfirmationEmailVars, GValidateEmailVars;
 import 'package:mobilizon_api/graphql/queries/__generated__/user_queries.data.gql.dart'
     show
         GActorBasicInfoData,
@@ -148,6 +161,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAntiSpamFeedback,
   GCommentVisibility,
   GContact,
+  GCreateUserData,
+  GCreateUserData_createUser,
+  GCreateUserData_createUser_actors,
+  GCreateUserData_createUser_defaultActor,
+  GCreateUserReq,
+  GCreateUserVars,
   GDateTime,
   GEmptyOperationData,
   GEmptyOperationReq,
@@ -217,6 +236,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GRefreshTokenReq,
   GRefreshTokenVars,
   GReportStatus,
+  GResendConfirmationEmailData,
+  GResendConfirmationEmailReq,
+  GResendConfirmationEmailVars,
   GRoutingType,
   GSearchEventSortOptions,
   GSearchGroupSortOptions,
@@ -241,5 +263,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GUserWithSettingsData_settings,
   GUserWithSettingsReq,
   GUserWithSettingsVars,
+  GValidateEmailData,
+  GValidateEmailData_validateEmail,
+  GValidateEmailReq,
+  GValidateEmailVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

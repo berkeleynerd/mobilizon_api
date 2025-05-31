@@ -34,6 +34,14 @@ flutter test integration_test/auth_test.dart -d flutter-tester
 echo "Waiting ${DELAY}s to avoid rate limiting..."
 sleep $DELAY
 
+# Run registration tests
+echo "Testing user registration..."
+flutter test integration_test/auth_registration_test.dart -d flutter-tester
+
+# Wait to avoid rate limiting
+echo "Waiting ${DELAY}s to avoid rate limiting..."
+sleep $DELAY
+
 # Run user profile retrieval tests
 echo "Testing user profile retrieval..."
 flutter test integration_test/user_profile_test.dart -d flutter-tester

@@ -5,6 +5,8 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../graphql/mutations/__generated__/auth_mutations.data.gql.dart';
 import '../graphql/mutations/__generated__/auth_mutations.req.gql.dart';
+import '../graphql/mutations/__generated__/registration_mutations.data.gql.dart';
+import '../graphql/mutations/__generated__/registration_mutations.req.gql.dart';
 import '../graphql/queries/__generated__/user_queries.data.gql.dart';
 import '../graphql/queries/__generated__/user_queries.req.gql.dart';
 import 'exceptions/auth_exception.dart';
@@ -292,6 +294,83 @@ class AuthService {
         rethrow;
       }
       throw AuthException('Failed to login: ${e.toString()}', originalError: e);
+    }
+  }
+
+  Future<User> register(RegistrationData registrationData) async {
+    try {
+      // Create the registration request
+      final request = GCreateUserReq(
+        (b) => b
+          ..vars.email = registrationData.email
+          ..vars.password = registrationData.password
+          ..vars.locale = registrationData.locale,
+      );
+
+      // Execute the registration mutation (no auth required)
+      final response = await _graphQLClient.executePublic(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.createUser == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .join(', ');
+
+        // Check for specific error cases
+        if (errorMessages?.contains('already used') ?? false) {
+          throw AuthException(
+            'Email address is already registered',
+            originalError: response.graphqlErrors,
+          );
+        }
+
+        throw AuthException(
+          "Registration failed: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Map the response to our domain model
+      final userData = response.data!.createUser!;
+
+      // Map profiles from actors
+      final profiles = userData.actors.where((actor) => actor != null).map((
+        actor,
+      ) {
+        return Person(
+          id: actor!.id ?? '',
+          preferredUsername: actor.preferredUsername ?? '',
+          name: actor.name,
+          summary: null,
+          avatar: null,
+          banner: null,
+        );
+      }).toList();
+
+      // Create the user object
+      final user = User(
+        id: userData.id ?? '',
+        email: userData.email,
+        confirmed: userData.confirmedAt != null,
+        role: _mapUserRole(userData.role?.toString()),
+        profiles: profiles,
+        settings: null,
+      );
+
+      // Note: Registration doesn't return tokens, user needs to login separately
+      // Clear any existing authentication state
+      _currentUser = null;
+      _authStateController.add(false);
+
+      return user;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to register: ${e.toString()}',
+        originalError: e,
+      );
     }
   }
 
