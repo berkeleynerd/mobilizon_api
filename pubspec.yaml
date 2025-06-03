@@ -19,14 +19,14 @@ dependencies:
   path: ^1.9.1
   jwt_decoder: any
 
-  built_value: any
-  gql: any
-  built_collection: any
-  gql_exec: any
-  gql_code_builder_serializers: any
-  mobilizon_graphql_gen:
-    path: /Users/rebecca/src/github.com/berkeleynerd/mobilizon_graphql_gen/
-  ferry: any
+  # GraphQL dependencies from mobilizon_graphql_gen
+  mobilizon_graphql:
+    path: ../
+  ferry: ^0.16.2-dev.4
+  ferry_exec: any
+  gql: ^1.0.0
+  gql_exec: ^1.0.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -34,7 +34,6 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
   test: ^1.25.15
-  build_runner: ^2.4.15
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec 

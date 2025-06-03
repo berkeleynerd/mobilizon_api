@@ -111,6 +111,7 @@ class GraphQLClientProvider {
     // Listen to client events for debugging
     _client.requestController.stream.listen((request) {
       print('🚀 [GraphQL] ${request.operation.operationName}');
+      print('  Variables: ${request.vars}');
     });
   }
 
@@ -138,7 +139,12 @@ class GraphQLClientProvider {
       }
 
       // Execute the request with the authenticated client
-      return _authClient!.request(request).first;
+      return _authClient!.request(request).first.timeout(
+        Duration(seconds: networkTimeoutSeconds),
+        onTimeout: () => throw GqlClientException(
+          'Request timeout after $networkTimeoutSeconds seconds',
+        ),
+      );
     } catch (e) {
       throw GqlClientException(
         'Failed to execute operation: ${request.operation.operationName}',
@@ -155,7 +161,12 @@ class GraphQLClientProvider {
   ) {
     try {
       // Execute the request without checking auth
-      return _client.request(request).first;
+      return _client.request(request).first.timeout(
+        Duration(seconds: networkTimeoutSeconds),
+        onTimeout: () => throw GqlClientException(
+          'Request timeout after $networkTimeoutSeconds seconds',
+        ),
+      );
     } catch (e) {
       throw GqlClientException(
         'Failed to execute public operation: ${request.operation.operationName}',

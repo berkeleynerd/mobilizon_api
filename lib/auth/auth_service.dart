@@ -2,13 +2,7 @@ import 'dart:async';
 
 // Import the generated GraphQL classes for auth operations
 import 'package:jwt_decoder/jwt_decoder.dart';
-
-import '../graphql/mutations/__generated__/auth_mutations.data.gql.dart';
-import '../graphql/mutations/__generated__/auth_mutations.req.gql.dart';
-import '../graphql/mutations/__generated__/registration_mutations.data.gql.dart';
-import '../graphql/mutations/__generated__/registration_mutations.req.gql.dart';
-import '../graphql/queries/__generated__/user_queries.data.gql.dart';
-import '../graphql/queries/__generated__/user_queries.req.gql.dart';
+import 'package:mobilizon_graphql/mobilizon_graphql.dart';
 import 'exceptions/auth_exception.dart';
 import 'graphql_client_provider.dart';
 import 'models/auth_models.dart';
@@ -50,7 +44,7 @@ class AuthService {
     // Fetch current user data using the GraphQL API
     try {
       // Create the get logged user request
-      final request = GGetLoggedUserReq();
+      final request = GLoggedUserReq();
 
       // Execute the query
       final response = await _graphQLClient.execute(request);
@@ -67,7 +61,7 @@ class AuthService {
       }
 
       // Map the GraphQL response to our domain model
-      final userData = response.data!.loggedUser;
+      final userData = response.data!.loggedUser!;
 
       // Map profiles from actors
       final profiles = userData.actors.where((actor) => actor != null).map((
@@ -85,7 +79,7 @@ class AuthService {
       // Create settings if available
       UserSettings? settings;
       if (userData.settings != null) {
-        settings = UserSettings(timezone: userData.settings!.timezone?.value);
+        settings = UserSettings(timezone: userData.settings?.timezone?.value);
       }
 
       // Create the user object
@@ -163,7 +157,7 @@ class AuthService {
 
     try {
       // Create the get logged person request
-      final request = GGetLoggedPersonReq();
+      final request = GLoggedPersonReq();
 
       // Execute the query
       final response = await _graphQLClient.execute(request);
@@ -180,7 +174,7 @@ class AuthService {
       }
 
       // Extract the person data from the response
-      final personData = response.data!.loggedPerson;
+      final personData = response.data!.loggedPerson!;
 
       // Map the GraphQL response to our domain model
       return Person(
@@ -248,6 +242,22 @@ class AuthService {
       // Execute the login mutation
       final response = await _graphQLClient.executePublic(request);
 
+      // Debug logging
+      print('🔍 [DEBUG] Login response:');
+      print('  Has errors: ${response.hasErrors}');
+      print('  GraphQL errors: ${response.graphqlErrors}');
+      print('  Link exception: ${response.linkException}');
+      print('  Data is null: ${response.data == null}');
+      print('  Login is null: ${response.data?.login == null}');
+      if (response.data != null) {
+        print('  Response data type: ${response.data.runtimeType}');
+        try {
+          print('  Response data JSON: ${response.data?.toJson()}');
+        } catch (e) {
+          print('  Could not serialize response data: $e');
+        }
+      }
+
       // Check for errors from the GraphQL operation
       if (response.hasErrors || response.data?.login == null) {
         final errorMessages = response.graphqlErrors
@@ -259,7 +269,7 @@ class AuthService {
         );
       }
 
-      final loginData = response.data!.login;
+      final loginData = response.data!.login!;
 
       // Parse JWT token to get expiry date
       final Map<String, dynamic> decodedToken = JwtDecoder.decode(
@@ -331,7 +341,7 @@ class AuthService {
       }
 
       // Map the response to our domain model
-      final userData = response.data!.createUser;
+      final userData = response.data!.createUser!;
 
       // Map profiles from actors
       final profiles = userData.actors.where((actor) => actor != null).map((
@@ -455,7 +465,7 @@ class AuthService {
         );
       }
 
-      final refreshData = response.data!.refreshToken;
+      final refreshData = response.data!.refreshToken!;
 
       // Parse JWT token to get expiry date
       final Map<String, dynamic> decodedToken = JwtDecoder.decode(
@@ -496,7 +506,7 @@ class AuthService {
         id: actor!.id ?? '',
         preferredUsername: actor.preferredUsername ?? '',
         name: actor.name,
-        summary: null,
+        summary: actor.summary,
         avatar: null,
         banner: null,
       );
