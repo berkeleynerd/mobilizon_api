@@ -67,7 +67,7 @@ class AuthService {
       }
 
       // Map the GraphQL response to our domain model
-      final userData = response.data!.loggedUser!;
+      final userData = response.data!.loggedUser;
 
       // Map profiles from actors
       final profiles = userData.actors.where((actor) => actor != null).map((
@@ -180,7 +180,7 @@ class AuthService {
       }
 
       // Extract the person data from the response
-      final personData = response.data!.loggedPerson!;
+      final personData = response.data!.loggedPerson;
 
       // Map the GraphQL response to our domain model
       return Person(
@@ -259,7 +259,7 @@ class AuthService {
         );
       }
 
-      final loginData = response.data!.login!;
+      final loginData = response.data!.login;
 
       // Parse JWT token to get expiry date
       final Map<String, dynamic> decodedToken = JwtDecoder.decode(
@@ -331,7 +331,7 @@ class AuthService {
       }
 
       // Map the response to our domain model
-      final userData = response.data!.createUser!;
+      final userData = response.data!.createUser;
 
       // Map profiles from actors
       final profiles = userData.actors.where((actor) => actor != null).map((
@@ -455,7 +455,7 @@ class AuthService {
         );
       }
 
-      final refreshData = response.data!.refreshToken!;
+      final refreshData = response.data!.refreshToken;
 
       // Parse JWT token to get expiry date
       final Map<String, dynamic> decodedToken = JwtDecoder.decode(

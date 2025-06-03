@@ -1,7 +1,0 @@
-# Scalar type declarations
-
-scalar DateTime
-scalar NaiveDateTime
-scalar UUID
-scalar Timezone
-scalar Point 
