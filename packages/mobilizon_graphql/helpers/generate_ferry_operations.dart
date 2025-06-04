@@ -1,6 +1,7 @@
+// ignore_for_file: avoid_catches_without_on_clauses
+
 import 'dart:io';
 import 'lib/mobilizon_graphql.dart';
-import 'lib/src/post_processor.dart';
 
 void main(List<String> arguments) async {
   if (arguments.isEmpty) {
@@ -172,8 +173,12 @@ String _introspectionToSDL(Map<String, dynamic> introspectionData) {
     final name = typeData['name'] as String?;
 
     // Skip built-in types
-    if (name == null || name.startsWith('__')) continue;
-    if (['String', 'Int', 'Float', 'Boolean', 'ID'].contains(name)) continue;
+    if (name == null || name.startsWith('__')) {
+      continue;
+    }
+    if (['String', 'Int', 'Float', 'Boolean', 'ID'].contains(name)) {
+      continue;
+    }
 
     _writeType(buffer, typeData);
     buffer.writeln();
@@ -228,7 +233,9 @@ void _writeType(StringBuffer buffer, Map<String, dynamic> type) {
 }
 
 void _writeFields(StringBuffer buffer, List? fields) {
-  if (fields == null) return;
+  if (fields == null) {
+    return;
+  }
 
   for (final field in fields) {
     final fieldData = field as Map<String, dynamic>;
@@ -241,7 +248,9 @@ void _writeFields(StringBuffer buffer, List? fields) {
     if (args != null && args.isNotEmpty) {
       buffer.write('(');
       for (var i = 0; i < args.length; i++) {
-        if (i > 0) buffer.write(', ');
+        if (i > 0) {
+          buffer.write(', ');
+        }
         final arg = args[i] as Map<String, dynamic>;
         buffer.write(
           '${arg['name']}: ${_formatType(arg['type'] as Map<String, dynamic>)}',
@@ -255,7 +264,9 @@ void _writeFields(StringBuffer buffer, List? fields) {
 }
 
 void _writeInputFields(StringBuffer buffer, List? fields) {
-  if (fields == null) return;
+  if (fields == null) {
+    return;
+  }
 
   for (final field in fields) {
     final fieldData = field as Map<String, dynamic>;

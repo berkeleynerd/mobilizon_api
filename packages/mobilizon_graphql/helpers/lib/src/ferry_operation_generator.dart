@@ -399,6 +399,7 @@ class FerryOperationGenerator {
     }
   }
 
+  // ignore: prefer_expression_function_bodies
   bool _shouldUseFragment(String typeName, int depth) {
     // Use fragments for commonly reused types, but not at top level
     return depth > 1 &&

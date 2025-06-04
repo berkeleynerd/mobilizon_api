@@ -2,6 +2,9 @@
 /// 
 /// This demonstrates how to create thin convenience wrappers around
 /// the generated GraphQL operations without adding complexity.
+// ignore_for_file: camel_case_types, avoid_catches_without_on_clauses
+
+library;
 
 import 'package:ferry/ferry.dart';
 import 'package:gql_http_link/gql_http_link.dart';
@@ -11,16 +14,16 @@ import 'package:gql_http_link/gql_http_link.dart';
 
 // For this example, we'll define minimal types to demonstrate the pattern
 class GLoginReq {
-  final LoginVars vars;
   GLoginReq(Function(LoginVarsBuilder) updates) : vars = LoginVars(updates);
+  final LoginVars vars;
 }
 
 class LoginVars {
-  final String email;
-  final String password;
   LoginVars(Function(LoginVarsBuilder) updates) 
     : email = (LoginVarsBuilder()..update(updates)).email!,
       password = (LoginVarsBuilder()..update(updates)).password!;
+  final String email;
+  final String password;
 }
 
 class LoginVarsBuilder {
@@ -31,37 +34,37 @@ class LoginVarsBuilder {
 
 // Simulated response types
 class GLoginData_login {
-  final String accessToken;
-  final String refreshToken;
-  final GLoginData_login_user user;
   
   GLoginData_login({
     required this.accessToken,
     required this.refreshToken,
     required this.user,
   });
+  final String accessToken;
+  final String refreshToken;
+  final GLoginData_login_user user;
 }
 
 class GLoginData_login_user {
-  final String id;
-  final String email;
-  final String? locale;
   
   GLoginData_login_user({
     required this.id,
     required this.email,
     this.locale,
   });
+  final String id;
+  final String email;
+  final String? locale;
 }
 
 // --- LIGHTWEIGHT WRAPPER FUNCTIONS ---
 
 /// Simple exception for GraphQL errors
 class GraphQLException implements Exception {
-  final String message;
-  final List<dynamic>? errors;
   
   GraphQLException(this.message, {this.errors});
+  final String message;
+  final List<dynamic>? errors;
   
   @override
   String toString() => errors != null 
@@ -75,16 +78,12 @@ Future<AuthResult> login(
   String email,
   String password,
 ) async {
-  final request = GLoginReq((b) => b
-    ..email = email
-    ..password = password
-  );
   
   // In real implementation:
   // final response = await client.request(request).first;
   
   // Simulated response for example
-  await Future.delayed(Duration(milliseconds: 500));
+  await Future.delayed(const Duration(milliseconds: 500));
   final mockResponse = GLoginData_login(
     accessToken: 'mock_access_token',
     refreshToken: 'mock_refresh_token', 
@@ -104,15 +103,15 @@ Future<AuthResult> login(
 
 /// Simple container for authentication result
 class AuthResult {
-  final String accessToken;
-  final String refreshToken;
-  final GLoginData_login_user user;
   
   const AuthResult({
     required this.accessToken,
     required this.refreshToken,
     required this.user,
   });
+  final String accessToken;
+  final String refreshToken;
+  final GLoginData_login_user user;
 }
 
 /// Create an authenticated Ferry client
@@ -153,7 +152,7 @@ Future<CreateEventResult> createEvent(
   // return response.data!.createEvent;
   
   // Simulated response
-  await Future.delayed(Duration(milliseconds: 300));
+  await Future.delayed(const Duration(milliseconds: 300));
   return CreateEventResult(
     id: 'event_${DateTime.now().millisecondsSinceEpoch}',
     title: title,
@@ -163,10 +162,6 @@ Future<CreateEventResult> createEvent(
 }
 
 class CreateEventResult {
-  final String id;
-  final String title;
-  final DateTime beginsOn;
-  final String url;
   
   CreateEventResult({
     required this.id,
@@ -174,6 +169,10 @@ class CreateEventResult {
     required this.beginsOn,
     required this.url,
   });
+  final String id;
+  final String title;
+  final DateTime beginsOn;
+  final String url;
 }
 
 /// Quick event search with defaults
@@ -196,28 +195,24 @@ Future<List<EventSearchResult>> searchEvents(
   // return response.data?.searchEvents.elements ?? [];
   
   // Simulated results
-  await Future.delayed(Duration(milliseconds: 200));
+  await Future.delayed(const Duration(milliseconds: 200));
   return [
     EventSearchResult(
       id: '1',
       title: 'Flutter Paris Meetup',
-      beginsOn: DateTime.now().add(Duration(days: 5)),
+      beginsOn: DateTime.now().add(const Duration(days: 5)),
       location: 'Paris, France',
     ),
     EventSearchResult(
       id: '2', 
       title: 'Dart Workshop',
-      beginsOn: DateTime.now().add(Duration(days: 12)),
+      beginsOn: DateTime.now().add(const Duration(days: 12)),
       location: 'Paris, France',
     ),
   ];
 }
 
 class EventSearchResult {
-  final String id;
-  final String title;
-  final DateTime beginsOn;
-  final String? location;
   
   EventSearchResult({
     required this.id,
@@ -225,6 +220,10 @@ class EventSearchResult {
     required this.beginsOn,
     this.location,
   });
+  final String id;
+  final String title;
+  final DateTime beginsOn;
+  final String? location;
 }
 
 /// Batch operation helper - join multiple events
@@ -255,7 +254,7 @@ Future<JoinEventResult> joinEvent(
   //   ..vars.message = message
   // );
   
-  await Future.delayed(Duration(milliseconds: 100));
+  await Future.delayed(const Duration(milliseconds: 100));
   return JoinEventResult(
     eventId: eventId,
     participantId: 'participant_${DateTime.now().millisecondsSinceEpoch}',
@@ -264,21 +263,21 @@ Future<JoinEventResult> joinEvent(
 }
 
 class JoinEventResult {
-  final String eventId;
-  final String participantId;
-  final String role;
   
   JoinEventResult({
     required this.eventId,
     required this.participantId,
     required this.role,
   });
+  final String eventId;
+  final String participantId;
+  final String role;
 }
 
 // --- USAGE EXAMPLE ---
 
 void main() async {
-  final endpoint = 'http://localhost:4000/api';
+  const endpoint = 'http://localhost:4000/api';
   final client = Client(link: HttpLink(endpoint));
   
   try {
@@ -295,7 +294,7 @@ void main() async {
     final newEvent = await createEvent(
       authClient,
       title: 'Flutter & Dart Meetup',
-      beginsOn: DateTime.now().add(Duration(days: 14)),
+      beginsOn: DateTime.now().add(const Duration(days: 14)),
       description: 'Join us to learn about Flutter and Dart!',
       tags: ['flutter', 'dart', 'mobile'],
     );
@@ -335,7 +334,7 @@ void main() async {
   } catch (e) {
     print('❌ Error: $e');
   } finally {
-    client.dispose();
+    await client.dispose();
   }
 }
 

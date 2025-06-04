@@ -155,7 +155,9 @@ class SchemaParser {
   }
 
   List<ArgumentDefinition> _parseArguments(List? args) {
-    if (args == null) return [];
+    if (args == null) {
+      return [];
+    }
 
     return args.map((arg) {
       final argData = arg as Map<String, dynamic>;

@@ -7,6 +7,8 @@ analyzer:
     - "build/**"
   errors:
     invalid_annotation_target: ignore
+    avoid_slow_async_io: ignore
+    avoid_catches_without_on_clauses: ignore
 
 linter:
   rules:

@@ -46,6 +46,7 @@ void main(List<String> arguments) async {
     print('  - Check modified files for comments explaining changes');
     print('  - Run build_runner after post-processing to regenerate Dart classes');
     print('  - Add custom rules in lib/src/post_processor.dart');
+  // ignore: avoid_catches_without_on_clauses
   } catch (e) {
     print('❌ Error during post-processing: $e');
     exit(1);

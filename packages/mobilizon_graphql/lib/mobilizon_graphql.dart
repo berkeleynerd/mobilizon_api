@@ -9,7 +9,6 @@
 
 // Schema types
 export 'graphql/__generated__/schema.schema.gql.dart';
-
 // Query and Mutation operations
 // Note: Only exporting request classes (.req) which include all necessary types
 // Data and variable types are accessible through the request classes
@@ -142,9 +141,9 @@ export 'graphql/operations/__generated__/leave_group.req.gql.dart';
 export 'graphql/operations/__generated__/logged_person.req.gql.dart';
 // LoggedUser operation
 export 'graphql/operations/__generated__/logged_user.req.gql.dart';
+export 'graphql/operations/__generated__/login.data.gql.dart';
 // Login operation
 export 'graphql/operations/__generated__/login.req.gql.dart';
-export 'graphql/operations/__generated__/login.data.gql.dart';
 // Logout operation
 export 'graphql/operations/__generated__/logout.req.gql.dart';
 // Media operation

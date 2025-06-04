@@ -5,9 +5,9 @@ import 'dart:io';
 /// This class handles special cases where the generated operations need
 /// to be modified to comply with API-specific limitations.
 class GraphQLPostProcessor {
-  final String operationsDirectory;
   
   GraphQLPostProcessor(this.operationsDirectory);
+  final String operationsDirectory;
   
   /// Apply all post-processing rules to the generated operations
   Future<void> processAll() async {
@@ -30,6 +30,7 @@ class GraphQLPostProcessor {
   Future<void> _processLoginOperation() async {
     final loginFile = File('$operationsDirectory/login.graphql');
     
+    // ignore: avoid_slow_async_io
     if (!await loginFile.exists()) {
       print('⚠️  login.graphql not found, skipping pre-auth processing');
       return;
@@ -112,17 +113,6 @@ $newContent''';
     print('   ✓ Added explanatory comment');
   }
   
-  /// Process register_person operation (if it has similar limitations)
-  Future<void> _processRegisterPersonOperation() async {
-    final registerFile = File('$operationsDirectory/register_person.graphql');
-    
-    if (!await registerFile.exists()) {
-      return;
-    }
-    
-    // Similar processing for register_person if needed
-    // This is a placeholder for potential future needs
-  }
   
   /// Add custom processing rules for specific operations
   /// 
@@ -131,6 +121,7 @@ $newContent''';
   Future<void> processOperation(String operationName, Function(String) transform) async {
     final file = File('$operationsDirectory/$operationName.graphql');
     
+    // ignore: avoid_slow_async_io
     if (!await file.exists()) {
       print('⚠️  $operationName.graphql not found');
       return;
@@ -152,10 +143,6 @@ $newContent''';
 
 /// Configuration for field access rules
 class FieldAccessRule {
-  final String operationName;
-  final String typeName;
-  final List<String> allowedFields;
-  final String? comment;
   
   const FieldAccessRule({
     required this.operationName,
@@ -163,6 +150,10 @@ class FieldAccessRule {
     required this.allowedFields,
     this.comment,
   });
+  final String operationName;
+  final String typeName;
+  final List<String> allowedFields;
+  final String? comment;
 }
 
 /// Predefined rules for Mobilizon API
