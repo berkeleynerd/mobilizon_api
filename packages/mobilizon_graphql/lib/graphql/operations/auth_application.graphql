@@ -1,0 +1,9 @@
+query AuthApplication($clientId: String!) {
+  authApplication(clientId: $clientId) {
+    clientId
+    id
+    name
+    scope
+    website
+  }
+}

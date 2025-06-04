@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobilizon" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobilizon/deps/exkismet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobilizon/deps/icalendar" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobilizon/deps/rajska" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobilizon/deps/web_push_encryption" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobilizon_api" vcs="Git" />
+  </component>
+</project>

@@ -1,0 +1,20 @@
+mutation AddInstance($domain: String!) {
+  addInstance(domain: $domain) {
+    domain
+    eventCount
+    followedStatus
+    followerStatus
+    followersCount
+    followingsCount
+    groupCount
+    hasRelay
+    instanceDescription
+    instanceName
+    mediaSize
+    personCount
+    relayAddress
+    reportsCount
+    software
+    softwareVersion
+  }
+}

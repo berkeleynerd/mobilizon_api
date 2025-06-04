@@ -1,0 +1,143 @@
+query SearchEvents($bbox: String, $beginsOn: DateTime, $boostLanguages: [String], $category: String, $categoryOneOf: [String], $endsOn: DateTime, $languageOneOf: [String], $location: String, $longEvents: Boolean, $statusOneOf: [EventStatus], $tags: String, $type: EventType, $zoom: Int) {
+  searchEvents(bbox: $bbox, beginsOn: $beginsOn, boostLanguages: $boostLanguages, category: $category, categoryOneOf: $categoryOneOf, endsOn: $endsOn, languageOneOf: $languageOneOf, location: $location, longEvents: $longEvents, statusOneOf: $statusOneOf, tags: $tags, type: $type, zoom: $zoom) {
+    elements {
+      attributedTo {
+        avatar {
+          ...searchEvents_MediaFields
+        }
+        banner {
+          ...searchEvents_MediaFields
+        }
+        domain
+        followersCount
+        followingCount
+        id
+        local
+        manuallyApprovesFollowers
+        mediaSize
+        name
+        preferredUsername
+        summary
+        suspended
+        type
+        url
+      }
+      beginsOn
+      category
+      endsOn
+      id
+      longEvent
+      options {
+        anonymousParticipation
+        attendees
+        commentModeration
+        hideNumberOfParticipants
+        hideOrganizerWhenGroupEvent
+        isOnline
+        maximumAttendeeCapacity
+        offers {
+          price
+          priceCurrency
+          url
+        }
+        participationConditions {
+          content
+          title
+          url
+        }
+        program
+        remainingAttendeeCapacity
+        showEndTime
+        showParticipationPrice
+        showRemainingAttendeeCapacity
+        showStartTime
+        timezone
+      }
+      organizerActor {
+        avatar {
+          ...searchEvents_MediaFields
+        }
+        banner {
+          ...searchEvents_MediaFields
+        }
+        domain
+        followersCount
+        followingCount
+        id
+        local
+        manuallyApprovesFollowers
+        mediaSize
+        name
+        preferredUsername
+        summary
+        suspended
+        type
+        url
+      }
+      participantStats {
+        administrator
+        creator
+        going
+        moderator
+        notApproved
+        notConfirmed
+        participant
+        rejected
+      }
+      physicalAddress {
+        ...searchEvents_AddressFields
+      }
+      picture {
+        ...searchEvents_MediaFields
+      }
+      status
+      tags {
+        id
+        related {
+          id
+          slug
+          title
+        }
+        slug
+        title
+      }
+      title
+      url
+      uuid
+    }
+    total
+  }
+}
+
+fragment searchEvents_AddressFields on Address {
+  country
+  description
+  geom
+  id
+  locality
+  originId
+  pictureInfo {
+    url
+  }
+  postalCode
+  region
+  street
+  timezone
+  type
+  url
+}
+
+fragment searchEvents_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

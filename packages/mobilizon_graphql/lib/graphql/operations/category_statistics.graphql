@@ -1,0 +1,6 @@
+query CategoryStatistics {
+  categoryStatistics {
+    key
+    number
+  }
+}

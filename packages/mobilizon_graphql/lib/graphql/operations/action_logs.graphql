@@ -1,0 +1,49 @@
+query ActionLogs {
+  actionLogs {
+    elements {
+      action
+      actor {
+        avatar {
+          ...actionLogs_MediaFields
+        }
+        banner {
+          ...actionLogs_MediaFields
+        }
+        domain
+        followersCount
+        followingCount
+        id
+        local
+        manuallyApprovesFollowers
+        mediaSize
+        name
+        preferredUsername
+        summary
+        suspended
+        type
+        url
+      }
+      id
+      insertedAt
+      object {
+        id
+      }
+    }
+    total
+  }
+}
+
+fragment actionLogs_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

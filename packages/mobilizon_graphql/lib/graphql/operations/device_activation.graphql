@@ -1,0 +1,13 @@
+mutation DeviceActivation($userCode: String!) {
+  deviceActivation(userCode: $userCode) {
+    application {
+      clientId
+      id
+      name
+      scope
+      website
+    }
+    id
+    scope
+  }
+}

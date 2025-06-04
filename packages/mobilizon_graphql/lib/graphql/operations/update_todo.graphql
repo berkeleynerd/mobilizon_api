@@ -1,0 +1,99 @@
+mutation UpdateTodo($assignedToId: ID, $dueDate: DateTime, $id: ID!, $status: Boolean, $title: String, $todoListId: ID) {
+  updateTodo(assignedToId: $assignedToId, dueDate: $dueDate, id: $id, status: $status, title: $title, todoListId: $todoListId) {
+    assignedTo {
+      avatar {
+        ...updateTodo_MediaFields
+      }
+      banner {
+        ...updateTodo_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    creator {
+      avatar {
+        ...updateTodo_MediaFields
+      }
+      banner {
+        ...updateTodo_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    dueDate
+    id
+    status
+    title
+    todoList {
+      actor {
+        avatar {
+          ...updateTodo_MediaFields
+        }
+        banner {
+          ...updateTodo_MediaFields
+        }
+        domain
+        followersCount
+        followingCount
+        id
+        local
+        manuallyApprovesFollowers
+        mediaSize
+        name
+        preferredUsername
+        summary
+        suspended
+        type
+        url
+      }
+      id
+      title
+      todos {
+        elements {
+          dueDate
+          id
+          status
+          title
+        }
+        total
+      }
+    }
+  }
+}
+
+fragment updateTodo_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

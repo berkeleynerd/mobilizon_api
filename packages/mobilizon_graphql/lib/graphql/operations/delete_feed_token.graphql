@@ -1,0 +1,10 @@
+mutation DeleteFeedToken($token: String!) {
+  deleteFeedToken(token: $token) {
+    actor {
+      id
+    }
+    user {
+      id
+    }
+  }
+}

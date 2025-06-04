@@ -1,0 +1,677 @@
+query Group($preferredUsername: String!) {
+  group(preferredUsername: $preferredUsername) {
+    activity {
+      elements {
+        author {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        group {
+          ...group_GroupFields
+        }
+        id
+        insertedAt
+        message
+        messageParams {
+          key
+          value
+        }
+        object {
+          id
+        }
+        priority
+        subject
+        subjectParams {
+          key
+          value
+        }
+        type
+      }
+      total
+    }
+    avatar {
+      ...group_MediaFields
+    }
+    banner {
+      ...group_MediaFields
+    }
+    discussions {
+      elements {
+        actor {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        comments {
+          total
+        }
+        creator {
+          ...group_PersonFields
+        }
+        id
+        insertedAt
+        lastComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        slug
+        title
+        updatedAt
+      }
+      total
+    }
+    domain
+    followers {
+      elements {
+        actor {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        approved
+        id
+        insertedAt
+        notify
+        targetActor {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        updatedAt
+      }
+      total
+    }
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    members {
+      elements {
+        actor {
+          ...group_PersonFields
+        }
+        id
+        insertedAt
+        invitedBy {
+          ...group_PersonFields
+        }
+        parent {
+          ...group_GroupFields
+        }
+        role
+        updatedAt
+      }
+      total
+    }
+    membersCount
+    name
+    openness
+    organizedEvents {
+      elements {
+        ...group_EventFields
+      }
+      total
+    }
+    physicalAddress {
+      ...group_AddressFields
+    }
+    posts {
+      elements {
+        attributedTo {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        author {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        body
+        draft
+        id
+        insertedAt
+        language
+        picture {
+          ...group_MediaFields
+        }
+        publishAt
+        slug
+        tags {
+          id
+          slug
+          title
+        }
+        title
+        updatedAt
+        url
+        visibility
+      }
+      total
+    }
+    preferredUsername
+    resources {
+      elements {
+        actor {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        children {
+          total
+        }
+        creator {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        id
+        insertedAt
+        metadata {
+          authorName
+          authorUrl
+          description
+          faviconUrl
+          height
+          html
+          imageRemoteUrl
+          providerName
+          providerUrl
+          title
+          type
+          width
+        }
+        parent {
+          id
+          insertedAt
+          path
+          publishedAt
+          resourceUrl
+          summary
+          title
+          type
+          updatedAt
+          url
+        }
+        path
+        publishedAt
+        resourceUrl
+        summary
+        title
+        type
+        updatedAt
+        url
+      }
+      total
+    }
+    summary
+    suspended
+    todoLists {
+      elements {
+        actor {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        id
+        title
+        todos {
+          total
+        }
+      }
+      total
+    }
+    type
+    types
+    url
+    visibility
+  }
+}
+
+fragment group_AddressFields on Address {
+  country
+  description
+  geom
+  id
+  locality
+  originId
+  pictureInfo {
+    url
+  }
+  postalCode
+  region
+  street
+  timezone
+  type
+  url
+}
+
+fragment group_EventFields on Event {
+  attributedTo {
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+  beginsOn
+  category
+  comments {
+    deletedAt
+    id
+    insertedAt
+    isAnnouncement
+    language
+    local
+    primaryLanguage
+    publishedAt
+    text
+    threadLanguages
+    totalReplies
+    updatedAt
+    url
+    uuid
+    visibility
+  }
+  contacts {
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+  conversations {
+    total
+  }
+  description
+  draft
+  endsOn
+  externalParticipationUrl
+  id
+  insertedAt
+  joinOptions
+  language
+  local
+  longEvent
+  media {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  metadata {
+    key
+    title
+    type
+    value
+  }
+  onlineAddress
+  options {
+    anonymousParticipation
+    attendees
+    commentModeration
+    hideNumberOfParticipants
+    hideOrganizerWhenGroupEvent
+    isOnline
+    maximumAttendeeCapacity
+    program
+    remainingAttendeeCapacity
+    showEndTime
+    showParticipationPrice
+    showRemainingAttendeeCapacity
+    showStartTime
+    timezone
+  }
+  organizerActor {
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+  participantStats {
+    administrator
+    creator
+    going
+    moderator
+    notApproved
+    notConfirmed
+    participant
+    rejected
+  }
+  participants {
+    total
+  }
+  phoneAddress
+  physicalAddress {
+    country
+    description
+    geom
+    id
+    locality
+    originId
+    postalCode
+    region
+    street
+    timezone
+    type
+    url
+  }
+  picture {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  publishAt
+  slug
+  status
+  tags {
+    id
+    slug
+    title
+  }
+  title
+  updatedAt
+  url
+  uuid
+  visibility
+}
+
+fragment group_GroupFields on Group {
+  activity {
+    total
+  }
+  avatar {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  banner {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  discussions {
+    total
+  }
+  domain
+  followers {
+    total
+  }
+  followersCount
+  followingCount
+  id
+  local
+  manuallyApprovesFollowers
+  mediaSize
+  members {
+    total
+  }
+  membersCount
+  name
+  openness
+  organizedEvents {
+    total
+  }
+  physicalAddress {
+    country
+    description
+    geom
+    id
+    locality
+    originId
+    postalCode
+    region
+    street
+    timezone
+    type
+    url
+  }
+  posts {
+    total
+  }
+  preferredUsername
+  resources {
+    total
+  }
+  summary
+  suspended
+  todoLists {
+    total
+  }
+  type
+  types
+  url
+  visibility
+}
+
+fragment group_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+
+fragment group_PersonFields on Person {
+  avatar {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  banner {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  conversations {
+    total
+  }
+  domain
+  feedTokens {
+    token
+  }
+  followersCount
+  followingCount
+  follows {
+    total
+  }
+  id
+  local
+  manuallyApprovesFollowers
+  mediaSize
+  memberOf {
+    id
+    insertedAt
+    role
+    updatedAt
+  }
+  memberships {
+    total
+  }
+  name
+  organizedEvents {
+    total
+  }
+  participations {
+    total
+  }
+  preferredUsername
+  summary
+  suspended
+  type
+  unreadConversationsCount
+  url
+  user {
+    confirmationSentAt
+    confirmationToken
+    confirmedAt
+    currentSignInAt
+    currentSignInIp
+    disabled
+    email
+    id
+    lastSignInAt
+    lastSignInIp
+    locale
+    mediaSize
+    provider
+    resetPasswordSentAt
+    resetPasswordToken
+    role
+  }
+}
+

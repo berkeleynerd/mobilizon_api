@@ -1,0 +1,6 @@
+mutation ExportEventParticipants($eventId: ID!, $format: ExportFormatEnum) {
+  exportEventParticipants(eventId: $eventId, format: $format) {
+    format
+    path
+  }
+}

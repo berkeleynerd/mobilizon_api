@@ -1,0 +1,66 @@
+mutation RejectRelay($address: String!) {
+  rejectRelay(address: $address) {
+    actor {
+      avatar {
+        ...rejectRelay_MediaFields
+      }
+      banner {
+        ...rejectRelay_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    approved
+    id
+    insertedAt
+    notify
+    targetActor {
+      avatar {
+        ...rejectRelay_MediaFields
+      }
+      banner {
+        ...rejectRelay_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    updatedAt
+  }
+}
+
+fragment rejectRelay_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

@@ -1,0 +1,85 @@
+mutation CreateTodoList($groupId: ID!, $title: String!) {
+  createTodoList(groupId: $groupId, title: $title) {
+    actor {
+      avatar {
+        ...createTodoList_MediaFields
+      }
+      banner {
+        ...createTodoList_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    id
+    title
+    todos {
+      elements {
+        assignedTo {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        creator {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        dueDate
+        id
+        status
+        title
+        todoList {
+          id
+          title
+        }
+      }
+      total
+    }
+  }
+}
+
+fragment createTodoList_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

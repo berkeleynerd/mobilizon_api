@@ -1,0 +1,66 @@
+mutation UpdateFollower($approved: Boolean!, $id: ID!) {
+  updateFollower(approved: $approved, id: $id) {
+    actor {
+      avatar {
+        ...updateFollower_MediaFields
+      }
+      banner {
+        ...updateFollower_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    approved
+    id
+    insertedAt
+    notify
+    targetActor {
+      avatar {
+        ...updateFollower_MediaFields
+      }
+      banner {
+        ...updateFollower_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    updatedAt
+  }
+}
+
+fragment updateFollower_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

@@ -1,0 +1,1703 @@
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+  subscription: RootSubscriptionType
+}
+
+"""An action log"""
+type ActionLog {
+  action: ActionLogAction
+  actor: Actor
+  id: ID
+  insertedAt: DateTime
+  object: ActionLogObject
+}
+
+"""The different types of action log actions"""
+enum ActionLogAction {
+  ACTOR_SUSPENSION
+  ACTOR_UNSUSPENSION
+  COMMENT_DELETION
+  EVENT_DELETION
+  EVENT_UPDATE
+  NOTE_CREATION
+  NOTE_DELETION
+  REPORT_UPDATE_CLOSED
+  REPORT_UPDATE_OPENED
+  REPORT_UPDATE_RESOLVED
+  USER_DELETION
+}
+
+"""The objects that can be in an action log"""
+interface ActionLogObject {
+  id: ID
+}
+
+type Activity {
+  author: Actor
+  group: Group
+  id: ID
+  insertedAt: DateTime
+  message: String
+  messageParams: [ActivityParamItem]
+  object: ActivityObject
+  priority: Int
+  subject: String
+  subjectParams: [ActivityParamItem]
+  type: ActivityType
+}
+
+enum ActivityAuthor {
+  BY
+  SELF
+}
+
+interface ActivityObject {
+  id: ID
+}
+
+type ActivityParamItem {
+  key: String
+  value: String
+}
+
+type ActivitySetting {
+  enabled: Boolean
+  key: String
+  method: String
+  user: User
+}
+
+enum ActivityType {
+  DISCUSSION
+  EVENT
+  GROUP
+  MEMBER
+  POST
+  RESOURCE
+}
+
+"""An ActivityPub actor"""
+interface Actor {
+  avatar: Media
+  banner: Media
+  domain: String
+  followersCount: Int
+  followingCount: Int
+  id: ID
+  local: Boolean
+  manuallyApprovesFollowers: Boolean
+  mediaSize: Int
+  name: String
+  preferredUsername: String
+  summary: String
+  suspended: Boolean
+  type: ActorType
+  url: String
+}
+
+"""The list of types an actor can be"""
+enum ActorType {
+  APPLICATION
+  GROUP
+  ORGANIZATION
+  PERSON
+  SERVICE
+}
+
+"""An address object"""
+type Address {
+  country: String
+  description: String
+  geom: Point
+  id: ID
+  locality: String
+  originId: String
+  pictureInfo: PictureInfo
+  postalCode: String
+  region: String
+  street: String
+  timezone: Timezone
+  type: String
+  url: String
+}
+
+"""An address input"""
+input AddressInput {
+  country: String
+  description: String
+  geom: Point
+  id: ID
+  locality: String
+  originId: String
+  postalCode: String
+  region: String
+  street: String
+  timezone: Timezone
+  type: String
+  url: String
+}
+
+"""A list of possible values for the type option to search an address.
+
+Results may vary depending on the geocoding provider."""
+enum AddressSearchType {
+  ADMINISTRATIVE
+}
+
+"""Admin settings"""
+type AdminSettings {
+  contact: String
+  defaultPicture: Media
+  instanceDescription: String
+  instanceFavicon: Media
+  instanceLanguages: [String]
+  instanceLogo: Media
+  instanceLongDescription: String
+  instanceName: String
+  instancePrivacyPolicy: String
+  instancePrivacyPolicyType: InstancePrivacyType
+  instancePrivacyPolicyUrl: String
+  instanceRules: String
+  instanceSlogan: String
+  instanceTerms: String
+  instanceTermsType: InstanceTermsType
+  instanceTermsUrl: String
+  primaryColor: String
+  registrationsOpen: Boolean
+  secondaryColor: String
+}
+
+type Analytics {
+  configuration: [AnalyticsConfiguration]
+  enabled: Boolean
+  id: String
+}
+
+type AnalyticsConfiguration {
+  key: String
+  type: AnalyticsConfigurationType
+  value: String
+}
+
+enum AnalyticsConfigurationType {
+  BOOLEAN
+  FLOAT
+  INTEGER
+  STRING
+}
+
+"""Instance anonymous configuration"""
+type Anonymous {
+  actorId: ID
+  eventCreation: AnonymousEventCreation
+  participation: AnonymousParticipation
+  reports: AnonymousReports
+}
+
+"""Instance anonymous event creation configuration"""
+type AnonymousEventCreation {
+  allowed: Boolean
+  validation: AnonymousEventCreationValidation
+}
+
+"""Instance anonymous event creation validation configuration"""
+type AnonymousEventCreationValidation {
+  captcha: AnonymousEventCreationValidationCaptcha
+  email: AnonymousEventCreationValidationEmail
+}
+
+"""Instance anonymous event creation captcha validation configuration"""
+type AnonymousEventCreationValidationCaptcha {
+  enabled: Boolean
+}
+
+"""Instance anonymous event creation email validation configuration"""
+type AnonymousEventCreationValidationEmail {
+  confirmationRequired: Boolean
+  enabled: Boolean
+}
+
+"""Instance anonymous participation configuration"""
+type AnonymousParticipation {
+  allowed: Boolean
+  validation: AnonymousParticipationValidation
+}
+
+"""Instance anonymous participation validation configuration"""
+type AnonymousParticipationValidation {
+  captcha: AnonymousParticipationValidationCaptcha
+  email: AnonymousParticipationValidationEmail
+}
+
+"""Instance anonymous participation with validation by captcha configuration"""
+type AnonymousParticipationValidationCaptcha {
+  enabled: Boolean
+}
+
+"""Instance anonymous participation with validation by email configuration"""
+type AnonymousParticipationValidationEmail {
+  confirmationRequired: Boolean
+  enabled: Boolean
+}
+
+"""Instance anonymous reports"""
+type AnonymousReports {
+  allowed: Boolean
+}
+
+enum AntiSpamFeedback {
+  HAM
+  SPAM
+}
+
+"""Represents an application"""
+type Application {
+  avatar: Media
+  banner: Media
+  domain: String
+  followersCount: Int
+  followingCount: Int
+  id: ID
+  local: Boolean
+  manuallyApprovesFollowers: Boolean
+  mediaSize: Int
+  name: String
+  preferredUsername: String
+  summary: String
+  suspended: Boolean
+  type: ActorType
+  url: String
+}
+
+"""The informations returned after authorization"""
+type ApplicationCodeAndState {
+  clientId: String
+  code: String
+  scope: String
+  state: String
+}
+
+type ApplicationDeviceActivation {
+  application: AuthApplication
+  id: ID
+  scope: String
+}
+
+"""The instance's auth configuration"""
+type Auth {
+  databaseLogin: Boolean
+  ldap: Boolean
+  oauthProviders: [OauthProvider]
+}
+
+"""An application"""
+type AuthApplication {
+  clientId: String
+  id: ID
+  name: String
+  scope: String
+  website: String
+}
+
+"""An application"""
+type AuthApplicationToken {
+  application: AuthApplication
+  id: ID
+  insertedAt: String
+  lastUsedAt: String
+}
+
+type CategoryStatistics {
+  key: String
+  number: Int
+}
+
+"""A comment"""
+type Comment {
+  actor: Person
+  attributedTo: Actor
+  conversation: Conversation
+  deletedAt: DateTime
+  event: Event
+  id: ID
+  inReplyToComment: Comment
+  insertedAt: DateTime
+  isAnnouncement: Boolean!
+  language: String
+  local: Boolean
+  originComment: Comment
+  primaryLanguage: String
+  publishedAt: DateTime
+  replies: [Comment]
+  text: String
+  threadLanguages: [String]!
+  totalReplies: Int
+  updatedAt: DateTime
+  url: String
+  uuid: UUID
+  visibility: CommentVisibility
+}
+
+"""The list of visibility options for a comment"""
+enum CommentVisibility {
+  INVITE
+  MODERATED
+  PRIVATE
+  PUBLIC
+  UNLISTED
+}
+
+"""A config object"""
+type Config {
+  analytics: [Analytics]
+  anonymous: Anonymous
+  auth: Auth
+  contact: String
+  countryCode: String
+  defaultPicture: Media
+  demoMode: Boolean
+  description: String
+  durationOfLongEvent: Int
+  eventCategories: [EventCategoryOption]
+  exportFormats: ExportFormats
+  features: Features
+  federating: Boolean
+  geocoding: Geocoding
+  instanceFeeds: InstanceFeeds
+  instanceLogo: Media
+  languages: [String]
+  location: Lonlat
+  longDescription: String
+  longEvents: Boolean
+  maps: Maps
+  name: String
+  primaryColor: String
+  privacy(locale: String): Privacy
+  registrationsAllowlist: Boolean
+  registrationsOpen: Boolean
+  resourceProviders: [ResourceProvider]
+  restrictions: Restrictions
+  rules: String
+  search: SearchSettings
+  secondaryColor: String
+  slogan: String
+  terms(locale: String): Terms
+  timezones: [Timezone]
+  uploadLimits: UploadLimits
+  version: String
+  webPush: WebPush
+}
+
+"""A event contact"""
+input Contact {
+  id: String
+}
+
+"""A conversation"""
+type Conversation {
+  actor: Person
+  comments(limit: Int, page: Int): PaginatedCommentList
+  conversationParticipantId: ID
+  event: Event
+  id: ID
+  insertedAt: DateTime
+  lastComment: Comment
+  originComment: Comment
+  participants: [Person]
+  unread: Boolean
+  updatedAt: DateTime
+}
+
+"""Dashboard information"""
+type Dashboard {
+  lastGroupCreated: Group
+  lastPublicEventPublished: Event
+  numberOfComments: Int
+  numberOfConfirmedParticipationsToLocalEvents: Int
+  numberOfEvents: Int
+  numberOfFollowers: Int
+  numberOfFollowings: Int
+  numberOfGroups: Int
+  numberOfReports: Int
+  numberOfUsers: Int
+}
+
+"""The `DateTime` scalar type represents a date and time in the UTC
+timezone. The DateTime appears in a JSON response as an ISO8601 formatted
+string, including UTC timezone ("Z"). The parsed date and time string will
+be converted to UTC if there is an offset."""
+scalar DateTime
+
+"""Represents a deleted feed_token"""
+type DeletedFeedToken {
+  actor: DeletedObject
+  user: DeletedObject
+}
+
+"""A struct containing the id of the deleted object"""
+type DeletedObject {
+  id: ID
+}
+
+"""Represents a deleted participant"""
+type DeletedParticipant {
+  actor: Actor
+  event: Event
+  id: ID
+}
+
+"""A discussion"""
+type Discussion {
+  actor: Actor
+  comments(limit: Int, page: Int): PaginatedCommentList
+  creator: Person
+  id: ID
+  insertedAt: DateTime
+  lastComment: Comment
+  slug: String
+  title: String
+  updatedAt: DateTime
+}
+
+"""An event"""
+type Event {
+  attributedTo: Actor
+  beginsOn: DateTime
+  category: EventCategory
+  comments: [Comment]
+  contacts: [Actor]
+  conversations(limit: Int, page: Int): PaginatedConversationList
+  description: String
+  draft: Boolean
+  endsOn: DateTime
+  externalParticipationUrl: String
+  id: ID
+  insertedAt: DateTime
+  joinOptions: EventJoinOptions
+  language: String
+  local: Boolean
+  longEvent: Boolean
+  media: [Media]
+  metadata: [EventMetadata]
+  onlineAddress: String
+  options: EventOptions
+  organizerActor: Actor
+  participantStats: ParticipantStats
+  participants(limit: Int, page: Int, roles: String): PaginatedParticipantList
+  phoneAddress: String
+  physicalAddress: Address
+  picture: Media
+  publishAt: DateTime
+  relatedEvents: [Event]
+  slug: String
+  status: EventStatus
+  tags: [Tag]
+  title: String
+  updatedAt: DateTime
+  url: String
+  uuid: UUID
+  visibility: EventVisibility
+}
+
+enum EventCategory {
+  ARTS
+  AUTO_BOAT_AIR
+  BOOK_CLUBS
+  BUSINESS
+  CAUSES
+  COMEDY
+  COMMUNITY
+  CRAFTS
+  FAMILY_EDUCATION
+  FASHION_BEAUTY
+  FILM_MEDIA
+  FOOD_DRINK
+  GAMES
+  HEALTH
+  LANGUAGE_CULTURE
+  LEARNING
+  LGBTQ
+  MEETING
+  MOVEMENTS_POLITICS
+  MUSIC
+  NETWORKING
+  OUTDOORS_ADVENTURE
+  PARTY
+  PERFORMING_VISUAL_ARTS
+  PETS
+  PHOTOGRAPHY
+  SCIENCE_TECH
+  SPIRITUALITY_RELIGION_BELIEFS
+  SPORTS
+  THEATRE
+}
+
+"""Event categories list configuration"""
+type EventCategoryOption {
+  id: String
+  label: String
+}
+
+"""The list of possible options for the event's status"""
+enum EventCommentModeration {
+  ALLOW_ALL
+  CLOSED
+  MODERATED
+}
+
+"""The list of join options for an event"""
+enum EventJoinOptions {
+  EXTERNAL
+  FREE
+  INVITE
+  RESTRICTED
+}
+
+type EventMetadata {
+  key: String
+  title: String
+  type: EventMetadataType
+  value: String
+}
+
+input EventMetadataInput {
+  key: String!
+  title: String
+  type: EventMetadataType
+  value: String!
+}
+
+enum EventMetadataType {
+  BOOLEAN
+  INTEGER
+  STRING
+}
+
+"""An event offer"""
+type EventOffer {
+  price: Float
+  priceCurrency: String
+  url: String
+}
+
+"""An event offer"""
+input EventOfferInput {
+  price: Float
+  priceCurrency: String
+  url: String
+}
+
+"""Event options"""
+type EventOptions {
+  anonymousParticipation: Boolean
+  attendees: [String]
+  commentModeration: EventCommentModeration
+  hideNumberOfParticipants: Boolean
+  hideOrganizerWhenGroupEvent: Boolean
+  isOnline: Boolean
+  maximumAttendeeCapacity: Int
+  offers: [EventOffer]
+  participationConditions: [EventParticipationCondition]
+  program: String
+  remainingAttendeeCapacity: Int
+  showEndTime: Boolean
+  showParticipationPrice: Boolean
+  showRemainingAttendeeCapacity: Boolean
+  showStartTime: Boolean
+  timezone: Timezone
+}
+
+"""Event options"""
+input EventOptionsInput {
+  anonymousParticipation: Boolean
+  attendees: [String]
+  commentModeration: EventCommentModeration
+  hideNumberOfParticipants: Boolean
+  hideOrganizerWhenGroupEvent: Boolean
+  isOnline: Boolean
+  maximumAttendeeCapacity: Int
+  offers: [EventOfferInput]
+  participationConditions: [EventParticipationConditionInput]
+  program: String
+  remainingAttendeeCapacity: Int
+  showEndTime: Boolean
+  showParticipationPrice: Boolean
+  showRemainingAttendeeCapacity: Boolean
+  showStartTime: Boolean
+  timezone: Timezone
+}
+
+"""Available event sort fields"""
+enum EventOrderBy {
+  BEGINS_ON
+  INSERTED_AT
+  UPDATED_AT
+}
+
+"""An event participation condition"""
+type EventParticipationCondition {
+  content: String
+  title: String
+  url: String
+}
+
+"""An event participation condition"""
+input EventParticipationConditionInput {
+  content: String
+  title: String
+  url: String
+}
+
+"""Search event result"""
+type EventResult {
+  attributedTo: Actor
+  beginsOn: DateTime
+  category: EventCategory
+  endsOn: DateTime
+  id: ID
+  longEvent: Boolean
+  options: EventOptions
+  organizerActor: Actor
+  participantStats: ParticipantStats
+  physicalAddress: Address
+  picture: Media
+  status: EventStatus
+  tags: [Tag]
+  title: String
+  url: String
+  uuid: UUID
+}
+
+interface EventSearchResult {
+  attributedTo: Actor
+  beginsOn: DateTime
+  category: EventCategory
+  endsOn: DateTime
+  id: ID
+  longEvent: Boolean
+  options: EventOptions
+  organizerActor: Actor
+  participantStats: ParticipantStats
+  physicalAddress: Address
+  picture: Media
+  status: EventStatus
+  tags: [Tag]
+  title: String
+  url: String
+  uuid: UUID
+}
+
+"""The list of possible options for the event's status"""
+enum EventStatus {
+  CANCELLED
+  CONFIRMED
+  TENTATIVE
+}
+
+enum EventType {
+  IN_PERSON
+  ONLINE
+}
+
+"""The list of visibility options for an event"""
+enum EventVisibility {
+  PRIVATE
+  PUBLIC
+  RESTRICTED
+  UNLISTED
+}
+
+"""Search events result"""
+type Events {
+  elements: [EventSearchResult]!
+  total: Int!
+}
+
+enum ExportFormatEnum {
+  CSV
+  ODS
+  PDF
+}
+
+"""Export formats configuration"""
+type ExportFormats {
+  eventParticipants: [String]
+}
+
+"""The instance's features"""
+type Features {
+  antispam: Boolean
+  eventCreation: Boolean
+  eventExternal: Boolean
+  groups: Boolean
+}
+
+"""Represents a feed token
+
+Feed tokens are tokens that are used to provide access to private feeds such as WebCal feed for all of your user's events,
+or an Atom feed for just a profile."""
+type FeedToken {
+  actor: Actor
+  token: String
+  user: User
+}
+
+"""A follow group event"""
+type FollowedGroupEvent {
+  event: Event
+  group: Group
+  profile: Person
+  user: User
+}
+
+"""Represents an actor's follower"""
+type Follower {
+  actor: Actor
+  approved: Boolean
+  id: ID
+  insertedAt: DateTime
+  notify: Boolean
+  targetActor: Actor
+  updatedAt: DateTime
+}
+
+"""Instance geocoding configuration"""
+type Geocoding {
+  autocomplete: Boolean
+  provider: String
+}
+
+type GlobalSearchSettings {
+  isDefault: Boolean
+  isEnabled: Boolean
+}
+
+"""Represents a group of actors"""
+type Group {
+  activity(author: ActivityAuthor, limit: Int, page: Int, type: ActivityType): PaginatedActivityList
+  avatar: Media
+  banner: Media
+  discussions(limit: Int, page: Int): PaginatedDiscussionList
+  domain: String
+  followers(approved: Boolean, limit: Int, page: Int): PaginatedFollowerList
+  followersCount: Int
+  followingCount: Int
+  id: ID
+  local: Boolean
+  manuallyApprovesFollowers: Boolean
+  mediaSize: Int
+  members(limit: Int, name: String, page: Int, roles: String): PaginatedMemberList
+  membersCount: Int
+  name: String
+  openness: Openness
+  organizedEvents(afterDatetime: DateTime, beforeDatetime: DateTime, limit: Int, order: EventOrderBy, orderDirection: SortDirection, page: Int): PaginatedEventList
+  physicalAddress: Address
+  posts(limit: Int, page: Int): PaginatedPostList
+  preferredUsername: String
+  resources(limit: Int, page: Int): PaginatedResourceList
+  summary: String
+  suspended: Boolean
+  todoLists(limit: Int, page: Int): PaginatedTodoListList
+  type: ActorType
+  types: GroupType
+  url: String
+  visibility: GroupVisibility
+}
+
+"""Search group result"""
+type GroupResult {
+  avatar: Media
+  banner: Media
+  domain: String
+  followersCount: Int
+  id: ID
+  membersCount: Int
+  name: String
+  physicalAddress: Address
+  preferredUsername: String
+  summary: String
+  type: ActorType
+  url: String
+}
+
+interface GroupSearchResult {
+  avatar: Media
+  banner: Media
+  domain: String
+  followersCount: Int
+  id: ID
+  membersCount: Int
+  name: String
+  physicalAddress: Address
+  preferredUsername: String
+  summary: String
+  type: ActorType
+  url: String
+}
+
+"""The types of Group that exist"""
+enum GroupType {
+  COMMUNITY
+  GROUP
+}
+
+"""The list of visibility options for a group"""
+enum GroupVisibility {
+  PRIVATE
+  PUBLIC
+  UNLISTED
+}
+
+"""Search groups result"""
+type Groups {
+  elements: [GroupSearchResult]!
+  total: Int!
+}
+
+"""An instance representation"""
+type Instance {
+  domain: ID
+  eventCount: Int
+  followedStatus: InstanceFollowStatus
+  followerStatus: InstanceFollowStatus
+  followersCount: Int
+  followingsCount: Int
+  groupCount: Int
+  hasRelay: Boolean
+  instanceDescription: String
+  instanceName: String
+  mediaSize: Int
+  personCount: Int
+  relayAddress: String
+  reportsCount: Int
+  software: String
+  softwareVersion: String
+}
+
+type InstanceFeeds {
+  enabled: Boolean
+}
+
+enum InstanceFilterFollowStatus {
+  ALL
+  FOLLOWED
+  FOLLOWING
+}
+
+enum InstanceFilterSuspendStatus {
+  ALL
+  SUSPENDED
+}
+
+enum InstanceFollowStatus {
+  APPROVED
+  NONE
+  PENDING
+}
+
+"""The acceptable values for the instance privacy policy type"""
+enum InstancePrivacyType {
+  CUSTOM
+  DEFAULT
+  URL
+}
+
+"""The acceptable values for the instance's terms type"""
+enum InstanceTermsType {
+  CUSTOM
+  DEFAULT
+  URL
+}
+
+enum InstancesSortFields {
+  EVENT_COUNT
+  FOLLOWERS_COUNT
+  FOLLOWINGS_COUNT
+  GROUP_COUNT
+  MEDIA_SIZE
+  PERSON_COUNT
+  REPORTS_COUNT
+}
+
+"""A entity that can be interacted with from a remote instance"""
+interface Interactable {
+  url: String
+}
+
+"""Language information"""
+type Language {
+  code: String
+  name: String
+}
+
+type Location {
+  geohash: String
+  name: String
+  range: Int
+}
+
+"""The set of parameters needed to input a location"""
+input LocationInput {
+  geohash: String
+  name: String
+  range: Int
+}
+
+"""A JWT and the associated user ID"""
+type Login {
+  accessToken: String!
+  refreshToken: String!
+  user: User!
+}
+
+"""Geographic coordinates"""
+type Lonlat {
+  latitude: Float
+  longitude: Float
+}
+
+"""Instance maps configuration"""
+type Maps {
+  routing: Routing
+  tiles: Tiles
+}
+
+"""A media"""
+type Media {
+  alt: String
+  contentType: String
+  id: ID
+  metadata: MediaMetadata
+  name: String
+  size: Int
+  url: String
+}
+
+"""An attached media or a link to a media"""
+input MediaInput {
+  media: MediaInputObject
+  mediaId: ID
+}
+
+"""An attached media"""
+input MediaInputObject {
+  actorId: ID
+  alt: String
+  file: Upload
+  name: String!
+  url: String
+}
+
+"""Some metadata associated with a media"""
+type MediaMetadata {
+  blurhash: String
+  height: Int
+  width: Int
+}
+
+"""Represents a member of a group"""
+type Member {
+  actor: Person
+  id: ID
+  insertedAt: NaiveDateTime
+  invitedBy: Person
+  parent: Group
+  role: MemberRoleEnum
+  updatedAt: NaiveDateTime
+}
+
+"""Values for a member role"""
+enum MemberRoleEnum {
+  ADMINISTRATOR
+  CREATOR
+  INVITED
+  MEMBER
+  MODERATOR
+  NOT_APPROVED
+  REJECTED
+}
+
+"""Root Mutation"""
+type RootMutationType {
+  acceptInvitation(id: ID!): Member
+  acceptRelay(address: String!): Follower
+  addInstance(domain: String!): Instance
+  adminUpdateUser(confirmed: Boolean, email: String, id: ID!, notify: Boolean, role: UserRole): User
+  approveMember(memberId: ID!): Member
+  authorizeApplication(clientId: String!, redirectUri: String!, scope: String!, state: String): ApplicationCodeAndState
+  authorizeDeviceApplication(clientId: String!, userCode: String!): AuthApplication
+  changeDefaultActor(preferredUsername: String!): User
+  changeEmail(email: String!, password: String!): User
+  changePassword(newPassword: String!, oldPassword: String!): User
+  confirmParticipation(confirmationToken: String!): Participant
+  createComment(eventId: ID!, inReplyToCommentId: ID, isAnnouncement: Boolean, language: String, text: String!): Comment
+  createDiscussion(actorId: ID!, text: String!, title: String!): Discussion
+  createEvent(attributedToId: ID, beginsOn: DateTime!, category: EventCategory, contacts: [Contact], description: String!, draft: Boolean, endsOn: DateTime, externalParticipationUrl: String, joinOptions: EventJoinOptions, language: String, metadata: [EventMetadataInput], onlineAddress: String, options: EventOptionsInput, organizerActorId: ID!, phoneAddress: String, physicalAddress: AddressInput, picture: MediaInput, publishAt: DateTime, status: EventStatus, tags: [String], title: String!, visibility: EventVisibility): Event
+  createFeedToken(actorId: ID): FeedToken
+  createGroup(avatar: MediaInput, banner: MediaInput, manuallyApprovesFollowers: Boolean, name: String, openness: Openness, physicalAddress: AddressInput, preferredUsername: String!, summary: String, visibility: GroupVisibility): Group
+  createPerson(avatar: MediaInput, banner: MediaInput, name: String, preferredUsername: String!, summary: String): Person
+  createPost(attributedToId: ID!, body: String!, draft: Boolean, language: String, picture: MediaInput, publishAt: DateTime, tags: [String], title: String!, visibility: PostVisibility): Post
+  createReport(commentsIds: [ID], content: String, eventsIds: [ID], forward: Boolean, reportedId: ID!): Report
+  createReportNote(content: String, reportId: ID!): ReportNote
+  createResource(actorId: ID!, parentId: ID, resourceUrl: String, summary: String, title: String!, type: String): Resource
+  createTodo(assignedToId: ID, dueDate: DateTime, status: Boolean, title: String!, todoListId: ID!): Todo
+  createTodoList(groupId: ID!, title: String!): TodoList
+  createUser(email: String!, locale: String, password: String!): User
+  deleteAccount(password: String, userId: ID): DeletedObject
+  deleteComment(commentId: ID!): Comment
+  deleteConversation(conversationId: ID!): Conversation
+  deleteDiscussion(discussionId: ID!): Discussion
+  deleteEvent(eventId: ID!): DeletedObject
+  deleteFeedToken(token: String!): DeletedFeedToken
+  deleteGroup(groupId: ID!): DeletedObject
+  deletePerson(id: ID!): Person
+  deletePost(id: ID!): DeletedObject
+  deleteReportNote(noteId: ID!): DeletedObject
+  deleteResource(id: ID!): DeletedObject
+  deviceActivation(userCode: String!): ApplicationDeviceActivation
+  exportEventParticipants(eventId: ID!, format: ExportFormatEnum, roles: [ParticipantRoleEnum]): ParticipantExport
+  followGroup(groupId: ID!, notify: Boolean): Follower
+  inviteMember(groupId: ID!, targetActorUsername: String!): Member
+  joinEvent(actorId: ID!, email: String, eventId: ID!, locale: String, message: String, timezone: Timezone): Participant
+  joinGroup(groupId: ID!): Member
+  leaveEvent(actorId: ID!, eventId: ID!, token: String): DeletedParticipant
+  leaveGroup(groupId: ID!): DeletedObject
+  login(email: String!, password: String!): Login
+  logout(refreshToken: String!): String
+  postPrivateMessage(actorId: ID!, attributedToId: ID, conversationId: ID, language: String, mentions: [String], text: String!): Conversation
+  previewResourceLink(resourceUrl: String!): ResourceMetadata
+  refreshProfile(id: ID!): Actor
+  refreshToken(refreshToken: String!): RefreshedToken
+  registerPerson(avatar: MediaInput, banner: MediaInput, email: String!, name: String, preferredUsername: String!, summary: String): Person
+  registerPush(auth: String!, endpoint: String!, p256dh: String!): String
+  rejectInvitation(id: ID!): Member
+  rejectMember(memberId: ID!): Member
+  rejectRelay(address: String!): Follower
+  removeMedia(id: ID!): DeletedObject
+  removeMember(exclude: Boolean, memberId: ID!): Member
+  removeRelay(address: String!): Follower
+  replyToDiscussion(discussionId: ID!, text: String!): Discussion
+  resendConfirmationEmail(email: String!, locale: String): String
+  resetPassword(locale: String, password: String!, token: String!): Login
+  revokeApplicationToken(appTokenId: String!): DeletedObject
+  saveAdminSettings(contact: String, defaultPicture: MediaInput, instanceDescription: String, instanceFavicon: MediaInput, instanceLanguages: [String], instanceLogo: MediaInput, instanceLongDescription: String, instanceName: String, instancePrivacyPolicy: String, instancePrivacyPolicyType: InstancePrivacyType, instancePrivacyPolicyUrl: String, instanceRules: String, instanceSlogan: String, instanceTerms: String, instanceTermsType: InstanceTermsType, instanceTermsUrl: String, primaryColor: String, registrationsOpen: Boolean, secondaryColor: String): AdminSettings
+  sendEventPrivateMessage(actorId: ID!, eventId: ID!, language: String, roles: [ParticipantRoleEnum], text: String!): Conversation
+  sendResetPassword(email: String!, locale: String): String
+  setUserSettings(groupNotifications: NotificationPendingEnum, location: LocationInput, notificationBeforeEvent: Boolean, notificationEachWeek: Boolean, notificationOnDay: Boolean, notificationPendingMembership: NotificationPendingEnum, notificationPendingParticipation: NotificationPendingEnum, timezone: Timezone): UserSettings
+  suspendProfile(id: ID!): DeletedObject
+  unfollowGroup(groupId: ID!): Follower
+  unregisterPush(endpoint: String!): String
+  unsuspendProfile(id: ID!): Actor
+  updateActivitySetting(enabled: Boolean!, key: String!, method: String!): ActivitySetting
+  updateComment(commentId: ID!, isAnnouncement: Boolean, language: String, text: String!): Comment
+  updateConversation(conversationId: ID!, read: Boolean!): Conversation
+  updateDiscussion(discussionId: ID!, title: String!): Discussion
+  updateEvent(attributedToId: ID, beginsOn: DateTime, category: EventCategory, contacts: [Contact], description: String, draft: Boolean, endsOn: DateTime, eventId: ID!, externalParticipationUrl: String, joinOptions: EventJoinOptions, language: String, metadata: [EventMetadataInput], onlineAddress: String, options: EventOptionsInput, organizerActorId: ID, phoneAddress: String, physicalAddress: AddressInput, picture: MediaInput, status: EventStatus, tags: [String], title: String, visibility: EventVisibility): Event
+  updateFollower(approved: Boolean!, id: ID!): Follower
+  updateGroup(avatar: MediaInput, banner: MediaInput, id: ID!, manuallyApprovesFollowers: Boolean, name: String, openness: Openness, physicalAddress: AddressInput, summary: String, visibility: GroupVisibility): Group
+  updateGroupFollow(followId: ID!, notify: Boolean): Follower
+  updateLocale(locale: String): User
+  updateMember(memberId: ID!, role: MemberRoleEnum!): Member
+  updateParticipation(id: ID!, role: ParticipantRoleEnum!): Participant
+  updatePerson(avatar: MediaInput, banner: MediaInput, id: ID!, name: String, summary: String): Person
+  updatePost(attributedToId: ID, body: String, draft: Boolean, id: ID!, language: String, picture: MediaInput, publishAt: DateTime, tags: [String], title: String, visibility: PostVisibility): Post
+  updateReportStatus(antispamFeedback: AntiSpamFeedback, reportId: ID!, status: ReportStatus!): Report
+  updateResource(id: ID!, parentId: ID, resourceUrl: String, summary: String, title: String): Resource
+  updateTodo(assignedToId: ID, dueDate: DateTime, id: ID!, status: Boolean, title: String, todoListId: ID): Todo
+  uploadMedia(actorId: ID, alt: String, file: Upload!, name: String!): Media
+  validateEmail(token: String!): User
+  validateUser(token: String!): Login
+}
+
+"""The `Naive DateTime` scalar type represents a naive date and time without
+timezone. The DateTime appears in a JSON response as an ISO8601 formatted
+string."""
+scalar NaiveDateTime
+
+"""The list of values the for pending notification settings"""
+enum NotificationPendingEnum {
+  DIRECT
+  NONE
+  ONE_DAY
+  ONE_HOUR
+  ONE_WEEK
+}
+
+"""An oAuth Provider"""
+type OauthProvider {
+  id: String
+  label: String
+}
+
+"""Describes how an actor is opened to follows"""
+enum Openness {
+  INVITE_ONLY
+  MODERATED
+  OPEN
+}
+
+"""A paginated list of action logs"""
+type PaginatedActionLogList {
+  elements: [ActionLog]
+  total: Int
+}
+
+"""A paginated list of activity items"""
+type PaginatedActivityList {
+  elements: [Activity]
+  total: Int
+}
+
+"""A paginated list of comments"""
+type PaginatedCommentList {
+  elements: [Comment]
+  total: Int
+}
+
+"""A paginated list of conversations"""
+type PaginatedConversationList {
+  elements: [Conversation]
+  total: Int
+}
+
+"""A paginated list of discussions"""
+type PaginatedDiscussionList {
+  elements: [Discussion]
+  total: Int
+}
+
+"""A paginated list of events"""
+type PaginatedEventList {
+  elements: [Event]
+  total: Int
+}
+
+"""A paginated list of follow group events"""
+type PaginatedFollowedGroupEvents {
+  elements: [FollowedGroupEvent]
+  total: Int
+}
+
+"""A paginated list of follower objects"""
+type PaginatedFollowerList {
+  elements: [Follower]
+  total: Int
+}
+
+"""A paginated list of groups"""
+type PaginatedGroupList {
+  elements: [Group]
+  total: Int
+}
+
+"""A paginated list of instances"""
+type PaginatedInstanceList {
+  elements: [Instance]
+  total: Int
+}
+
+"""A paginated list of medias"""
+type PaginatedMediaList {
+  elements: [Media]
+  total: Int
+}
+
+"""A paginated list of members"""
+type PaginatedMemberList {
+  elements: [Member]
+  total: Int
+}
+
+"""A paginated list of participants"""
+type PaginatedParticipantList {
+  elements: [Participant]
+  total: Int
+}
+
+"""A paginated list of persons"""
+type PaginatedPersonList {
+  elements: [Person]
+  total: Int
+}
+
+"""A paginated list of posts"""
+type PaginatedPostList {
+  elements: [Post]
+  total: Int
+}
+
+type PaginatedReportList {
+  elements: [Report]
+  total: Int
+}
+
+"""A paginated list of resources"""
+type PaginatedResourceList {
+  elements: [Resource]
+  total: Int
+}
+
+"""A paginated list of todos"""
+type PaginatedTodoList {
+  elements: [Todo]
+  total: Int
+}
+
+"""A paginated list of todo-lists"""
+type PaginatedTodoListList {
+  elements: [TodoList]
+  total: Int
+}
+
+"""Represents a participant to an event"""
+type Participant {
+  actor: Actor
+  event: Event
+  id: ID
+  insertedAt: DateTime
+  metadata: ParticipantMetadata
+  role: ParticipantRoleEnum
+}
+
+type ParticipantExport {
+  format: ExportFormatEnum
+  path: String
+}
+
+"""Metadata about a participant"""
+type ParticipantMetadata {
+  cancellationToken: String
+  locale: String
+  message: String
+}
+
+"""The possible values for a participant role"""
+enum ParticipantRoleEnum {
+  ADMINISTRATOR
+  CREATOR
+  MODERATOR
+  NOT_APPROVED
+  NOT_CONFIRMED
+  PARTICIPANT
+  REJECTED
+}
+
+"""Participation statistics"""
+type ParticipantStats {
+  administrator: Int
+  creator: Int
+  going: Int
+  moderator: Int
+  notApproved: Int
+  notConfirmed: Int
+  participant: Int
+  rejected: Int
+}
+
+"""Represents a person identity"""
+type Person {
+  avatar: Media
+  banner: Media
+  conversations(limit: Int, page: Int): PaginatedConversationList
+  domain: String
+  feedTokens: [FeedToken]
+  followersCount: Int
+  followingCount: Int
+  follows(group: String, limit: Int, page: Int): PaginatedFollowerList
+  id: ID
+  local: Boolean
+  manuallyApprovesFollowers: Boolean
+  mediaSize: Int
+  memberOf: [Member]
+  memberships(group: String, groupId: ID, limit: Int, page: Int): PaginatedMemberList
+  name: String
+  organizedEvents(limit: Int, page: Int): PaginatedEventList
+  participations(eventId: ID, limit: Int, page: Int): PaginatedParticipantList
+  preferredUsername: String
+  summary: String
+  suspended: Boolean
+  type: ActorType
+  unreadConversationsCount: Int
+  url: String
+  user: User
+}
+
+"""Search persons result"""
+type Persons {
+  elements: [Person]!
+  total: Int!
+}
+
+"""A picture associated with an address"""
+type PictureInfo {
+  author: PictureInfoElement
+  source: PictureInfoElement
+  url: String
+}
+
+type PictureInfoElement {
+  name: String
+  url: String
+}
+
+"""The `Point` scalar type represents Point geographic information compliant string data, 
+represented as floats separated by a semi-colon. The geodetic system is WGS 84"""
+scalar Point
+
+"""A post"""
+type Post {
+  attributedTo: Actor
+  author: Actor
+  body: String
+  draft: Boolean
+  id: ID
+  insertedAt: DateTime
+  language: String
+  picture: Media
+  publishAt: DateTime
+  slug: String
+  tags: [Tag]
+  title: String
+  updatedAt: DateTime
+  url: String
+  visibility: PostVisibility
+}
+
+"""The list of visibility options for a post"""
+enum PostVisibility {
+  PRIVATE
+  PUBLIC
+  UNLISTED
+}
+
+"""The instance's privacy policy configuration"""
+type Privacy {
+  bodyHtml: String
+  type: InstancePrivacyType
+  url: String
+}
+
+"""Root Query"""
+type RootQueryType {
+  actionLogs(limit: Int, page: Int): PaginatedActionLogList
+  adminSettings: AdminSettings
+  authApplication(clientId: String!): AuthApplication
+  categoryStatistics: [CategoryStatistics]
+  config: Config
+  conversation(id: ID): Conversation
+  dashboard: Dashboard
+  discussion(id: ID, slug: String): Discussion
+  event(uuid: UUID!): Event
+  events(direction: SortDirection, limit: Int, location: String, longEvents: Boolean, orderBy: EventOrderBy, page: Int, radius: Float): PaginatedEventList
+  fetchPerson(preferredUsername: String!): Person
+  getGroup(id: ID!): Group
+  group(preferredUsername: String!): Group
+  groups(domain: String, limit: Int, local: Boolean, name: String, page: Int, preferredUsername: String, suspended: Boolean): PaginatedGroupList
+  identities: [Person]
+  instance(domain: ID!): Instance
+  instances(direction: String, filterDomain: String, filterFollowStatus: InstanceFilterFollowStatus, filterSuspendStatus: InstanceFilterSuspendStatus, limit: Int, orderBy: InstancesSortFields, page: Int): PaginatedInstanceList
+  interact(uri: String!): Interactable
+  languages(codes: [String]): [Language]
+  loggedPerson: Person
+  loggedUser: User
+  media(id: ID!): Media
+  person(id: ID!): Person
+  persons(domain: String, limit: Int, local: Boolean, name: String, page: Int, preferredUsername: String, suspended: Boolean): PaginatedPersonList
+  post(slug: String!): Post
+  relayFollowers(limit: Int, page: Int): PaginatedFollowerList
+  relayFollowings(direction: String, limit: Int, orderBy: String, page: Int): PaginatedFollowerList
+  report(id: ID!): Report
+  reports(domain: String, limit: Int, page: Int, status: ReportStatus): PaginatedReportList
+  resource(path: String!, username: String!): Resource
+  reverseGeocode(latitude: Float!, locale: String, longitude: Float!, zoom: Int): [Address]
+  searchAddress(limit: Int, locale: String, page: Int, query: String!, type: AddressSearchType): [Address]
+  searchEvents(bbox: String, beginsOn: DateTime, boostLanguages: [String], category: String, categoryOneOf: [String], endsOn: DateTime, languageOneOf: [String], limit: Int, location: String, longEvents: Boolean, page: Int, radius: Float, searchTarget: SearchTarget, sortBy: SearchEventSortOptions, statusOneOf: [EventStatus], tags: String, term: String, type: EventType, zoom: Int): Events
+  searchGroups(bbox: String, boostLanguages: [String], excludeMyGroups: Boolean, languageOneOf: [String], limit: Int, location: String, minimumVisibility: GroupVisibility, page: Int, radius: Float, searchTarget: SearchTarget, sortBy: SearchGroupSortOptions, term: String, zoom: Int): Groups
+  searchPersons(limit: Int, page: Int, term: String): Persons
+  statistics: Statistics
+  tags(filter: String, limit: Int, page: Int): [Tag]!
+  thread(id: ID!): [Comment]
+  todo(id: ID!): Todo
+  todoList(id: ID!): TodoList
+  user(id: ID!): User
+  users(currentSignInIp: String, direction: SortDirection, email: String, limit: Int, page: Int, sort: SortableUserField): Users
+}
+
+"""Token"""
+type RefreshedToken {
+  accessToken: String!
+  refreshToken: String!
+}
+
+"""A report object"""
+type Report {
+  comments: [Comment]
+  content: String
+  events: [Event]
+  id: ID
+  insertedAt: DateTime
+  notes: [ReportNote]
+  reported: Actor
+  reporter: Actor
+  status: ReportStatus
+  updatedAt: DateTime
+  uri: String
+}
+
+"""A report note object"""
+type ReportNote {
+  content: String
+  id: ID
+  insertedAt: DateTime
+  moderator: Actor
+  report: Report
+}
+
+"""The list of possible statuses for a report object"""
+enum ReportStatus {
+  CLOSED
+  OPEN
+  RESOLVED
+}
+
+"""A resource"""
+type Resource {
+  actor: Actor
+  children(limit: Int, page: Int): PaginatedResourceList
+  creator: Actor
+  id: ID
+  insertedAt: NaiveDateTime
+  metadata: ResourceMetadata
+  parent: Resource
+  path: String
+  publishedAt: NaiveDateTime
+  resourceUrl: String
+  summary: String
+  title: String
+  type: String
+  updatedAt: NaiveDateTime
+  url: String
+}
+
+"""The metadata associated to the resource"""
+type ResourceMetadata {
+  authorName: String
+  authorUrl: String
+  description: String
+  faviconUrl: String
+  height: Int
+  html: String
+  imageRemoteUrl: String
+  providerName: String
+  providerUrl: String
+  title: String
+  type: String
+  width: Int
+}
+
+"""A resource provider details"""
+type ResourceProvider {
+  endpoint: String
+  software: String
+  type: String
+}
+
+"""The instance's restrictions"""
+type Restrictions {
+  onlyAdminCanCreateGroups: Boolean
+  onlyGroupsCanCreateEvents: Boolean
+}
+
+"""Instance map routing configuration"""
+type Routing {
+  type: RoutingType
+}
+
+enum RoutingType {
+  GOOGLE_MAPS
+  OPENSTREETMAP
+}
+
+enum SearchEventSortOptions {
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  MATCH_DESC
+  PARTICIPANT_COUNT_DESC
+  START_TIME_ASC
+  START_TIME_DESC
+}
+
+enum SearchGroupSortOptions {
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  LAST_EVENT_ACTIVITY
+  MATCH_DESC
+  MEMBER_COUNT_ASC
+  MEMBER_COUNT_DESC
+}
+
+type SearchSettings {
+  global: GlobalSearchSettings
+}
+
+enum SearchTarget {
+  GLOBAL
+  INTERNAL
+  SELF
+}
+
+"""Available sort directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""The list of sortable fields for an user list"""
+enum SortableUserField {
+  ID
+}
+
+"""A statistics object"""
+type Statistics {
+  numberOfComments: Int
+  numberOfEvents: Int
+  numberOfGroups: Int
+  numberOfInstanceFollowers: Int
+  numberOfInstanceFollowings: Int
+  numberOfLocalComments: Int
+  numberOfLocalEvents: Int
+  numberOfLocalGroups: Int
+  numberOfUsers: Int
+}
+
+"""Root subscription"""
+type RootSubscriptionType {
+  conversationCommentChanged(id: ID!): Conversation
+  discussionCommentChanged(slug: String!): Discussion
+  eventPersonParticipationChanged(personId: ID!): Person
+  groupMembershipChanged(group: String!, personId: ID!): Person
+  personUnreadConversationsCount(personId: ID!): Int
+}
+
+"""A tag"""
+type Tag {
+  id: ID
+  related: [Tag]
+  slug: String
+  title: String
+}
+
+"""The instance's terms configuration"""
+type Terms {
+  bodyHtml: String
+  type: InstanceTermsType
+  url: String
+}
+
+"""Instance map tiles configuration"""
+type Tiles {
+  attribution: String
+  endpoint: String
+}
+
+"""The `Timezone` scalar type represents a timezone identifier,
+as registered in the IANA Time Zone Database."""
+scalar Timezone
+
+"""A todo"""
+type Todo {
+  assignedTo: Actor
+  creator: Actor
+  dueDate: DateTime
+  id: ID
+  status: Boolean
+  title: String
+  todoList: TodoList
+}
+
+"""A todo list"""
+type TodoList {
+  actor: Actor
+  id: ID
+  title: String
+  todos(limit: Int, page: Int): PaginatedTodoList
+}
+
+"""Represents an uploaded file."""
+scalar Upload
+
+"""An upload limits configuration"""
+type UploadLimits {
+  avatar: Int
+  banner: Int
+  default: Int
+}
+
+"""A local user of Mobilizon"""
+type User {
+  activitySettings: [ActivitySetting]
+  actors: [Person]!
+  authAuthorizedApplications: [AuthApplicationToken]
+  confirmationSentAt: DateTime
+  confirmationToken: String
+  confirmedAt: DateTime
+  conversations(limit: Int, page: Int): PaginatedConversationList
+  currentSignInAt: DateTime
+  currentSignInIp: String
+  defaultActor: Person
+  disabled: Boolean
+  drafts(limit: Int, page: Int): PaginatedEventList
+  email: String!
+  feedTokens: [FeedToken]
+  followedGroupEvents(afterDatetime: DateTime, limit: Int, page: Int): PaginatedFollowedGroupEvents
+  id: ID
+  lastSignInAt: DateTime
+  lastSignInIp: String
+  locale: String
+  media(limit: Int, page: Int): PaginatedMediaList
+  mediaSize: Int
+  memberships(limit: Int, name: String, page: Int): PaginatedMemberList
+  participations(afterDatetime: DateTime, beforeDatetime: DateTime, limit: Int, page: Int): PaginatedParticipantList
+  provider: String
+  resetPasswordSentAt: DateTime
+  resetPasswordToken: String
+  role: UserRole
+  settings: UserSettings
+}
+
+"""The list of roles an user can have"""
+enum UserRole {
+  ADMINISTRATOR
+  MODERATOR
+  USER
+}
+
+"""A set of user settings"""
+type UserSettings {
+  groupNotifications: NotificationPendingEnum
+  location: Location
+  notificationBeforeEvent: Boolean
+  notificationEachWeek: Boolean
+  notificationOnDay: Boolean
+  notificationPendingMembership: NotificationPendingEnum
+  notificationPendingParticipation: NotificationPendingEnum
+  timezone: Timezone
+}
+
+"""Users list"""
+type Users {
+  elements: [User]!
+  total: Int!
+}
+
+"""The `UUID` scalar type represents UUID4 compliant string data, represented as UTF-8
+character sequences. The UUID4 type is most often used to represent unique
+human-readable ID strings."""
+scalar UUID
+
+type WebPush {
+  enabled: Boolean
+  publicKey: String
+}
+

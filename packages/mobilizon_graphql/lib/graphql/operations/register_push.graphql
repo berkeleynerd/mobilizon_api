@@ -1,0 +1,3 @@
+mutation RegisterPush($auth: String!, $endpoint: String!, $p256dh: String!) {
+  registerPush(auth: $auth, endpoint: $endpoint, p256dh: $p256dh)
+}

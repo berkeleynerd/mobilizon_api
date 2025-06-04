@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
 import 'package:mobilizon_api/mobilizon_client.dart';
 
-import 'test_token_storage.dart';
+import 'helpers/token_storage.dart';
 
 /// Authentication integration tests for Mobilizon API client
 ///
@@ -19,7 +19,7 @@ import 'test_token_storage.dart';
 /// 4. Logout and clearing of authentication state
 /// 5. Token refresh flow
 ///
-/// The tests use the in-memory token storage implementation from test_token_storage.dart
+/// The tests use the in-memory token storage implementation from token_storage.dart
 /// to store JWT tokens between API calls.
 void main() {
   // Initialize Flutter testing framework

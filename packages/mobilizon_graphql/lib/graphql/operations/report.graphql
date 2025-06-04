@@ -1,0 +1,779 @@
+query Report($id: ID!) {
+  report(id: $id) {
+    comments {
+      actor {
+        ...report_PersonFields
+      }
+      attributedTo {
+        avatar {
+          ...report_MediaFields
+        }
+        banner {
+          ...report_MediaFields
+        }
+        domain
+        followersCount
+        followingCount
+        id
+        local
+        manuallyApprovesFollowers
+        mediaSize
+        name
+        preferredUsername
+        summary
+        suspended
+        type
+        url
+      }
+      conversation {
+        actor {
+          ...report_PersonFields
+        }
+        comments {
+          total
+        }
+        conversationParticipantId
+        event {
+          ...report_EventFields
+        }
+        id
+        insertedAt
+        lastComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        originComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        participants {
+          ...report_PersonFields
+        }
+        unread
+        updatedAt
+      }
+      deletedAt
+      event {
+        ...report_EventFields
+      }
+      id
+      inReplyToComment {
+        actor {
+          ...report_PersonFields
+        }
+        attributedTo {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        conversation {
+          conversationParticipantId
+          id
+          insertedAt
+          unread
+          updatedAt
+        }
+        deletedAt
+        event {
+          ...report_EventFields
+        }
+        id
+        inReplyToComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        insertedAt
+        isAnnouncement
+        language
+        local
+        originComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        primaryLanguage
+        publishedAt
+        replies {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        text
+        threadLanguages
+        totalReplies
+        updatedAt
+        url
+        uuid
+        visibility
+      }
+      insertedAt
+      isAnnouncement
+      language
+      local
+      originComment {
+        actor {
+          ...report_PersonFields
+        }
+        attributedTo {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        conversation {
+          conversationParticipantId
+          id
+          insertedAt
+          unread
+          updatedAt
+        }
+        deletedAt
+        event {
+          ...report_EventFields
+        }
+        id
+        inReplyToComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        insertedAt
+        isAnnouncement
+        language
+        local
+        originComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        primaryLanguage
+        publishedAt
+        replies {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        text
+        threadLanguages
+        totalReplies
+        updatedAt
+        url
+        uuid
+        visibility
+      }
+      primaryLanguage
+      publishedAt
+      replies {
+        actor {
+          ...report_PersonFields
+        }
+        attributedTo {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        conversation {
+          conversationParticipantId
+          id
+          insertedAt
+          unread
+          updatedAt
+        }
+        deletedAt
+        event {
+          ...report_EventFields
+        }
+        id
+        inReplyToComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        insertedAt
+        isAnnouncement
+        language
+        local
+        originComment {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        primaryLanguage
+        publishedAt
+        replies {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        text
+        threadLanguages
+        totalReplies
+        updatedAt
+        url
+        uuid
+        visibility
+      }
+      text
+      threadLanguages
+      totalReplies
+      updatedAt
+      url
+      uuid
+      visibility
+    }
+    content
+    events {
+      ...report_EventFields
+    }
+    id
+    insertedAt
+    notes {
+      content
+      id
+      insertedAt
+      moderator {
+        avatar {
+          ...report_MediaFields
+        }
+        banner {
+          ...report_MediaFields
+        }
+        domain
+        followersCount
+        followingCount
+        id
+        local
+        manuallyApprovesFollowers
+        mediaSize
+        name
+        preferredUsername
+        summary
+        suspended
+        type
+        url
+      }
+      report {
+        comments {
+          deletedAt
+          id
+          insertedAt
+          isAnnouncement
+          language
+          local
+          primaryLanguage
+          publishedAt
+          text
+          threadLanguages
+          totalReplies
+          updatedAt
+          url
+          uuid
+          visibility
+        }
+        content
+        events {
+          ...report_EventFields
+        }
+        id
+        insertedAt
+        notes {
+          content
+          id
+          insertedAt
+        }
+        reported {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        reporter {
+          domain
+          followersCount
+          followingCount
+          id
+          local
+          manuallyApprovesFollowers
+          mediaSize
+          name
+          preferredUsername
+          summary
+          suspended
+          type
+          url
+        }
+        status
+        updatedAt
+        uri
+      }
+    }
+    reported {
+      avatar {
+        ...report_MediaFields
+      }
+      banner {
+        ...report_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    reporter {
+      avatar {
+        ...report_MediaFields
+      }
+      banner {
+        ...report_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    status
+    updatedAt
+    uri
+  }
+}
+
+fragment report_EventFields on Event {
+  attributedTo {
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+  beginsOn
+  category
+  comments {
+    deletedAt
+    id
+    insertedAt
+    isAnnouncement
+    language
+    local
+    primaryLanguage
+    publishedAt
+    text
+    threadLanguages
+    totalReplies
+    updatedAt
+    url
+    uuid
+    visibility
+  }
+  contacts {
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+  conversations {
+    total
+  }
+  description
+  draft
+  endsOn
+  externalParticipationUrl
+  id
+  insertedAt
+  joinOptions
+  language
+  local
+  longEvent
+  media {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  metadata {
+    key
+    title
+    type
+    value
+  }
+  onlineAddress
+  options {
+    anonymousParticipation
+    attendees
+    commentModeration
+    hideNumberOfParticipants
+    hideOrganizerWhenGroupEvent
+    isOnline
+    maximumAttendeeCapacity
+    program
+    remainingAttendeeCapacity
+    showEndTime
+    showParticipationPrice
+    showRemainingAttendeeCapacity
+    showStartTime
+    timezone
+  }
+  organizerActor {
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+  participantStats {
+    administrator
+    creator
+    going
+    moderator
+    notApproved
+    notConfirmed
+    participant
+    rejected
+  }
+  participants {
+    total
+  }
+  phoneAddress
+  physicalAddress {
+    country
+    description
+    geom
+    id
+    locality
+    originId
+    postalCode
+    region
+    street
+    timezone
+    type
+    url
+  }
+  picture {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  publishAt
+  slug
+  status
+  tags {
+    id
+    slug
+    title
+  }
+  title
+  updatedAt
+  url
+  uuid
+  visibility
+}
+
+fragment report_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+
+fragment report_PersonFields on Person {
+  avatar {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  banner {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  conversations {
+    total
+  }
+  domain
+  feedTokens {
+    token
+  }
+  followersCount
+  followingCount
+  follows {
+    total
+  }
+  id
+  local
+  manuallyApprovesFollowers
+  mediaSize
+  memberOf {
+    id
+    insertedAt
+    role
+    updatedAt
+  }
+  memberships {
+    total
+  }
+  name
+  organizedEvents {
+    total
+  }
+  participations {
+    total
+  }
+  preferredUsername
+  summary
+  suspended
+  type
+  unreadConversationsCount
+  url
+  user {
+    confirmationSentAt
+    confirmationToken
+    confirmedAt
+    currentSignInAt
+    currentSignInIp
+    disabled
+    email
+    id
+    lastSignInAt
+    lastSignInIp
+    locale
+    mediaSize
+    provider
+    resetPasswordSentAt
+    resetPasswordToken
+    role
+  }
+}
+

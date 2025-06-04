@@ -1,0 +1,38 @@
+mutation UnsuspendProfile($id: ID!) {
+  unsuspendProfile(id: $id) {
+    avatar {
+      ...unsuspendProfile_MediaFields
+    }
+    banner {
+      ...unsuspendProfile_MediaFields
+    }
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+}
+
+fragment unsuspendProfile_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

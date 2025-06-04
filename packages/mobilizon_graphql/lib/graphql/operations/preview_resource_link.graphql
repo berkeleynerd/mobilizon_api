@@ -1,0 +1,16 @@
+mutation PreviewResourceLink($resourceUrl: String!) {
+  previewResourceLink(resourceUrl: $resourceUrl) {
+    authorName
+    authorUrl
+    description
+    faviconUrl
+    height
+    html
+    imageRemoteUrl
+    providerName
+    providerUrl
+    title
+    type
+    width
+  }
+}

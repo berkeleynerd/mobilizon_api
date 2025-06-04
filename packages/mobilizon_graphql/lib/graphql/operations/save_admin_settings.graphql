@@ -1,0 +1,44 @@
+mutation SaveAdminSettings($contact: String, $defaultPicture: MediaInput, $instanceDescription: String, $instanceFavicon: MediaInput, $instanceLanguages: [String], $instanceLogo: MediaInput, $instanceLongDescription: String, $instanceName: String, $instancePrivacyPolicy: String, $instancePrivacyPolicyType: InstancePrivacyType, $instancePrivacyPolicyUrl: String, $instanceRules: String, $instanceSlogan: String, $instanceTerms: String, $instanceTermsType: InstanceTermsType, $instanceTermsUrl: String, $primaryColor: String, $registrationsOpen: Boolean, $secondaryColor: String) {
+  saveAdminSettings(contact: $contact, defaultPicture: $defaultPicture, instanceDescription: $instanceDescription, instanceFavicon: $instanceFavicon, instanceLanguages: $instanceLanguages, instanceLogo: $instanceLogo, instanceLongDescription: $instanceLongDescription, instanceName: $instanceName, instancePrivacyPolicy: $instancePrivacyPolicy, instancePrivacyPolicyType: $instancePrivacyPolicyType, instancePrivacyPolicyUrl: $instancePrivacyPolicyUrl, instanceRules: $instanceRules, instanceSlogan: $instanceSlogan, instanceTerms: $instanceTerms, instanceTermsType: $instanceTermsType, instanceTermsUrl: $instanceTermsUrl, primaryColor: $primaryColor, registrationsOpen: $registrationsOpen, secondaryColor: $secondaryColor) {
+    contact
+    defaultPicture {
+      ...saveAdminSettings_MediaFields
+    }
+    instanceDescription
+    instanceFavicon {
+      ...saveAdminSettings_MediaFields
+    }
+    instanceLanguages
+    instanceLogo {
+      ...saveAdminSettings_MediaFields
+    }
+    instanceLongDescription
+    instanceName
+    instancePrivacyPolicy
+    instancePrivacyPolicyType
+    instancePrivacyPolicyUrl
+    instanceRules
+    instanceSlogan
+    instanceTerms
+    instanceTermsType
+    instanceTermsUrl
+    primaryColor
+    registrationsOpen
+    secondaryColor
+  }
+}
+
+fragment saveAdminSettings_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

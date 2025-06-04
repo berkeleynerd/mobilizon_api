@@ -1,0 +1,6 @@
+query Languages($codes: [String]) {
+  languages(codes: $codes) {
+    code
+    name
+  }
+}

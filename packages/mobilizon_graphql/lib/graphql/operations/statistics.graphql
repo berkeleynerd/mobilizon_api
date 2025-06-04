@@ -1,0 +1,13 @@
+query Statistics {
+  statistics {
+    numberOfComments
+    numberOfEvents
+    numberOfGroups
+    numberOfInstanceFollowers
+    numberOfInstanceFollowings
+    numberOfLocalComments
+    numberOfLocalEvents
+    numberOfLocalGroups
+    numberOfUsers
+  }
+}

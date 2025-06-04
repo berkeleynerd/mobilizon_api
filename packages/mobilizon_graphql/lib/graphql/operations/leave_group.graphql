@@ -1,0 +1,5 @@
+mutation LeaveGroup($groupId: ID!) {
+  leaveGroup(groupId: $groupId) {
+    id
+  }
+}

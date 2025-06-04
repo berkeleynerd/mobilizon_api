@@ -1,0 +1,66 @@
+mutation FollowGroup($groupId: ID!) {
+  followGroup(groupId: $groupId) {
+    actor {
+      avatar {
+        ...followGroup_MediaFields
+      }
+      banner {
+        ...followGroup_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    approved
+    id
+    insertedAt
+    notify
+    targetActor {
+      avatar {
+        ...followGroup_MediaFields
+      }
+      banner {
+        ...followGroup_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    updatedAt
+  }
+}
+
+fragment followGroup_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

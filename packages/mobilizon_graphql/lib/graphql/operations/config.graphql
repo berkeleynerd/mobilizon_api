@@ -1,0 +1,145 @@
+query Config {
+  config {
+    analytics {
+      configuration {
+        key
+        type
+        value
+      }
+      enabled
+      id
+    }
+    anonymous {
+      actorId
+      eventCreation {
+        allowed
+        validation {
+          __typename
+        }
+      }
+      participation {
+        allowed
+        validation {
+          __typename
+        }
+      }
+      reports {
+        allowed
+      }
+    }
+    auth {
+      databaseLogin
+      ldap
+      oauthProviders {
+        id
+        label
+      }
+    }
+    contact
+    countryCode
+    defaultPicture {
+      ...config_MediaFields
+    }
+    demoMode
+    description
+    durationOfLongEvent
+    eventCategories {
+      id
+      label
+    }
+    exportFormats {
+      eventParticipants
+    }
+    features {
+      antispam
+      eventCreation
+      eventExternal
+      groups
+    }
+    federating
+    geocoding {
+      autocomplete
+      provider
+    }
+    instanceFeeds {
+      enabled
+    }
+    instanceLogo {
+      ...config_MediaFields
+    }
+    languages
+    location {
+      latitude
+      longitude
+    }
+    longDescription
+    longEvents
+    maps {
+      routing {
+        type
+      }
+      tiles {
+        attribution
+        endpoint
+      }
+    }
+    name
+    primaryColor
+    privacy {
+      bodyHtml
+      type
+      url
+    }
+    registrationsAllowlist
+    registrationsOpen
+    resourceProviders {
+      endpoint
+      software
+      type
+    }
+    restrictions {
+      onlyAdminCanCreateGroups
+      onlyGroupsCanCreateEvents
+    }
+    rules
+    search {
+      global {
+        isDefault
+        isEnabled
+      }
+    }
+    secondaryColor
+    slogan
+    terms {
+      bodyHtml
+      type
+      url
+    }
+    timezones
+    uploadLimits {
+      avatar
+      banner
+      default
+    }
+    version
+    webPush {
+      enabled
+      publicKey
+    }
+  }
+}
+
+fragment config_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

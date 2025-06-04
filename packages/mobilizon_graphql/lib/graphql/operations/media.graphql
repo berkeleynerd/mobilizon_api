@@ -1,0 +1,15 @@
+query Media($id: ID!) {
+  media(id: $id) {
+    alt
+    contentType
+    id
+    metadata {
+      blurhash
+      height
+      width
+    }
+    name
+    size
+    url
+  }
+}

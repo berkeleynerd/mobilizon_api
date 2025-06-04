@@ -1,0 +1,38 @@
+mutation RefreshProfile($id: ID!) {
+  refreshProfile(id: $id) {
+    avatar {
+      ...refreshProfile_MediaFields
+    }
+    banner {
+      ...refreshProfile_MediaFields
+    }
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+}
+
+fragment refreshProfile_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

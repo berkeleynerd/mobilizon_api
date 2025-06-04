@@ -1,0 +1,27 @@
+query SearchAddress($query: String!, $type: AddressSearchType) {
+  searchAddress(query: $query, type: $type) {
+    country
+    description
+    geom
+    id
+    locality
+    originId
+    pictureInfo {
+      author {
+        name
+        url
+      }
+      source {
+        name
+        url
+      }
+      url
+    }
+    postalCode
+    region
+    street
+    timezone
+    type
+    url
+  }
+}

@@ -1,0 +1,90 @@
+mutation UpdatePost($attributedToId: ID, $body: String, $draft: Boolean, $id: ID!, $picture: MediaInput, $publishAt: DateTime, $tags: [String], $title: String, $visibility: PostVisibility) {
+  updatePost(attributedToId: $attributedToId, body: $body, draft: $draft, id: $id, picture: $picture, publishAt: $publishAt, tags: $tags, title: $title, visibility: $visibility) {
+    attributedTo {
+      avatar {
+        ...updatePost_MediaFields
+      }
+      banner {
+        ...updatePost_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    author {
+      avatar {
+        ...updatePost_MediaFields
+      }
+      banner {
+        ...updatePost_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    body
+    draft
+    id
+    insertedAt
+    language
+    picture {
+      ...updatePost_MediaFields
+    }
+    publishAt
+    slug
+    tags {
+      id
+      related {
+        id
+        related {
+          id
+          slug
+          title
+        }
+        slug
+        title
+      }
+      slug
+      title
+    }
+    title
+    updatedAt
+    url
+    visibility
+  }
+}
+
+fragment updatePost_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

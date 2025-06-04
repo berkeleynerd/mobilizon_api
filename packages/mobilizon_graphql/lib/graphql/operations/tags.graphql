@@ -1,0 +1,22 @@
+query Tags($filter: String) {
+  tags(filter: $filter) {
+    id
+    related {
+      id
+      related {
+        id
+        related {
+          id
+          slug
+          title
+        }
+        slug
+        title
+      }
+      slug
+      title
+    }
+    slug
+    title
+  }
+}

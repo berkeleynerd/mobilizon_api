@@ -1,0 +1,58 @@
+query SearchGroups($bbox: String, $boostLanguages: [String], $excludeMyGroups: Boolean, $languageOneOf: [String], $location: String, $minimumVisibility: GroupVisibility, $zoom: Int) {
+  searchGroups(bbox: $bbox, boostLanguages: $boostLanguages, excludeMyGroups: $excludeMyGroups, languageOneOf: $languageOneOf, location: $location, minimumVisibility: $minimumVisibility, zoom: $zoom) {
+    elements {
+      avatar {
+        ...searchGroups_MediaFields
+      }
+      banner {
+        ...searchGroups_MediaFields
+      }
+      domain
+      followersCount
+      id
+      membersCount
+      name
+      physicalAddress {
+        ...searchGroups_AddressFields
+      }
+      preferredUsername
+      summary
+      type
+      url
+    }
+    total
+  }
+}
+
+fragment searchGroups_AddressFields on Address {
+  country
+  description
+  geom
+  id
+  locality
+  originId
+  pictureInfo {
+    url
+  }
+  postalCode
+  region
+  street
+  timezone
+  type
+  url
+}
+
+fragment searchGroups_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

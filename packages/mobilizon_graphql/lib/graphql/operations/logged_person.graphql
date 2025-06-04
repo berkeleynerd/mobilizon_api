@@ -1,0 +1,33 @@
+query LoggedPerson {
+  loggedPerson {
+    avatar {
+      ...loggedPerson_MediaFields
+    }
+    banner {
+      ...loggedPerson_MediaFields
+    }
+    domain
+    followersCount
+    followingCount
+    id
+    local
+    manuallyApprovesFollowers
+    mediaSize
+    name
+    preferredUsername
+    summary
+    suspended
+    type
+    url
+  }
+}
+
+fragment loggedPerson_MediaFields on Media {
+  alt
+  contentType
+  id
+  name
+  size
+  url
+}
+

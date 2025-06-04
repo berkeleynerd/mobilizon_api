@@ -1,0 +1,66 @@
+mutation UnfollowGroup($groupId: ID!) {
+  unfollowGroup(groupId: $groupId) {
+    actor {
+      avatar {
+        ...unfollowGroup_MediaFields
+      }
+      banner {
+        ...unfollowGroup_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    approved
+    id
+    insertedAt
+    notify
+    targetActor {
+      avatar {
+        ...unfollowGroup_MediaFields
+      }
+      banner {
+        ...unfollowGroup_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    updatedAt
+  }
+}
+
+fragment unfollowGroup_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

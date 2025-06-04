@@ -1,0 +1,44 @@
+query AdminSettings {
+  adminSettings {
+    contact
+    defaultPicture {
+      ...adminSettings_MediaFields
+    }
+    instanceDescription
+    instanceFavicon {
+      ...adminSettings_MediaFields
+    }
+    instanceLanguages
+    instanceLogo {
+      ...adminSettings_MediaFields
+    }
+    instanceLongDescription
+    instanceName
+    instancePrivacyPolicy
+    instancePrivacyPolicyType
+    instancePrivacyPolicyUrl
+    instanceRules
+    instanceSlogan
+    instanceTerms
+    instanceTermsType
+    instanceTermsUrl
+    primaryColor
+    registrationsOpen
+    secondaryColor
+  }
+}
+
+fragment adminSettings_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

@@ -1,0 +1,3 @@
+mutation ResendConfirmationEmail($email: String!, $locale: String) {
+  resendConfirmationEmail(email: $email, locale: $locale)
+}

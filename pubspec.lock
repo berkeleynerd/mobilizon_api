@@ -421,7 +421,7 @@ packages:
   mobilizon_graphql:
     dependency: "direct main"
     description:
-      path: ".."
+      path: "packages/mobilizon_graphql"
       relative: true
     source: path
     version: "0.1.0"

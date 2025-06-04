@@ -1,0 +1,17 @@
+mutation CreateUser($email: String!, $locale: String, $password: String!) {
+  createUser(email: $email, locale: $locale, password: $password) {
+    confirmationSentAt
+    confirmationToken
+    confirmedAt
+    email
+    id
+    locale
+    role
+    actors {
+      id
+      preferredUsername
+      name
+    }
+  }
+}
+

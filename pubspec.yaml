@@ -21,7 +21,7 @@ dependencies:
 
   # GraphQL dependencies from mobilizon_graphql_gen
   mobilizon_graphql:
-    path: ../
+    path: ./packages/mobilizon_graphql
   ferry: ^0.16.2-dev.4
   ferry_exec: any
   gql: ^1.0.0

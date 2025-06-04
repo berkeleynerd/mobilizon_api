@@ -1,0 +1,23 @@
+query Instances($filterDomain: String) {
+  instances(filterDomain: $filterDomain) {
+    elements {
+      domain
+      eventCount
+      followedStatus
+      followerStatus
+      followersCount
+      followingsCount
+      groupCount
+      hasRelay
+      instanceDescription
+      instanceName
+      mediaSize
+      personCount
+      relayAddress
+      reportsCount
+      software
+      softwareVersion
+    }
+    total
+  }
+}

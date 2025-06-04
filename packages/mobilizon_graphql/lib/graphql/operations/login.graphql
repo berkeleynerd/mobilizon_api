@@ -1,0 +1,46 @@
+# Login Mutation - Field Selection for mobilizon_api Compatibility
+#
+# This operation has been configured to request the fields expected by
+# mobilizon_api's AuthService. The actors field is included to support
+# the user profile mapping functionality.
+#
+# KNOWN LIMITATION: The Mobilizon server's login mutation does not properly
+# preload the actors association, resulting in actors being returned with
+# null field values. This is a server-side issue where the login resolver
+# returns the user object without eager-loading the actors relationship.
+# 
+# Workaround: Use the loggedPerson query after authentication to fetch
+# the complete actor/profile data.
+#
+# Server fix: The login resolver should preload actors:
+# user <- Repo.preload(user, [:actors, :default_actor])
+
+mutation Login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    accessToken
+    refreshToken
+    user {
+      ...login_UserFields
+    }
+  }
+}
+
+fragment login_UserFields on User {
+  id
+  email
+  role
+  locale
+  confirmedAt
+  actors {
+    id
+    preferredUsername
+    name
+    summary
+    domain
+    type
+    url
+    local
+    suspended
+  }
+}
+

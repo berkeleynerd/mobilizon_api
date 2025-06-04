@@ -1,0 +1,21 @@
+targets:
+  $default:
+    builders:
+      ferry_generator|graphql_builder:
+        enabled: true
+        options:
+          schema: mobilizon_graphql|lib/graphql/schema.graphql
+          type_overrides:
+            DateTime:
+              name: DateTime
+            Upload:
+              name: MultipartFile
+              import: package:http/http.dart
+      ferry_generator|serializer_builder:
+        enabled: true
+        options:
+          schema: mobilizon_graphql|lib/graphql/schema.graphql
+          output: lib/graphql/__generated__/serializers.gql.dart
+          custom_serializers:
+            - import: "package:built_value/iso_8601_date_time_serializer.dart"
+              name: Iso8601DateTimeSerializer

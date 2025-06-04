@@ -1,0 +1,99 @@
+query Todo($id: ID!) {
+  todo(id: $id) {
+    assignedTo {
+      avatar {
+        ...todo_MediaFields
+      }
+      banner {
+        ...todo_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    creator {
+      avatar {
+        ...todo_MediaFields
+      }
+      banner {
+        ...todo_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    dueDate
+    id
+    status
+    title
+    todoList {
+      actor {
+        avatar {
+          ...todo_MediaFields
+        }
+        banner {
+          ...todo_MediaFields
+        }
+        domain
+        followersCount
+        followingCount
+        id
+        local
+        manuallyApprovesFollowers
+        mediaSize
+        name
+        preferredUsername
+        summary
+        suspended
+        type
+        url
+      }
+      id
+      title
+      todos {
+        elements {
+          dueDate
+          id
+          status
+          title
+        }
+        total
+      }
+    }
+  }
+}
+
+fragment todo_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

@@ -1,0 +1,15 @@
+mutation UploadMedia($actorId: ID, $alt: String, $file: Upload!, $name: String!) {
+  uploadMedia(actorId: $actorId, alt: $alt, file: $file, name: $name) {
+    alt
+    contentType
+    id
+    metadata {
+      blurhash
+      height
+      width
+    }
+    name
+    size
+    url
+  }
+}

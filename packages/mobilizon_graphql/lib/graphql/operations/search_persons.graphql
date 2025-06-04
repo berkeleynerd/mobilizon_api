@@ -1,0 +1,84 @@
+query SearchPersons {
+  searchPersons {
+    elements {
+      ...searchPersons_PersonFields
+    }
+    total
+  }
+}
+
+fragment searchPersons_PersonFields on Person {
+  avatar {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  banner {
+    alt
+    contentType
+    id
+    name
+    size
+    url
+  }
+  conversations {
+    total
+  }
+  domain
+  feedTokens {
+    token
+  }
+  followersCount
+  followingCount
+  follows {
+    total
+  }
+  id
+  local
+  manuallyApprovesFollowers
+  mediaSize
+  memberOf {
+    id
+    insertedAt
+    role
+    updatedAt
+  }
+  memberships {
+    total
+  }
+  name
+  organizedEvents {
+    total
+  }
+  participations {
+    total
+  }
+  preferredUsername
+  summary
+  suspended
+  type
+  unreadConversationsCount
+  url
+  user {
+    confirmationSentAt
+    confirmationToken
+    confirmedAt
+    currentSignInAt
+    currentSignInIp
+    disabled
+    email
+    id
+    lastSignInAt
+    lastSignInIp
+    locale
+    mediaSize
+    provider
+    resetPasswordSentAt
+    resetPasswordToken
+    role
+  }
+}
+

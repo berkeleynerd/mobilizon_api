@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobilizon_api/mobilizon_client.dart';
 
-import 'test_token_storage.dart';
+import 'helpers/token_storage.dart';
 
 /// Instance connectivity tests for Mobilizon API client
 ///

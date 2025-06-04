@@ -1,0 +1,90 @@
+mutation CreatePost($attributedToId: ID!, $body: String!, $picture: MediaInput, $publishAt: DateTime, $title: String!, $visibility: PostVisibility) {
+  createPost(attributedToId: $attributedToId, body: $body, picture: $picture, publishAt: $publishAt, title: $title, visibility: $visibility) {
+    attributedTo {
+      avatar {
+        ...createPost_MediaFields
+      }
+      banner {
+        ...createPost_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    author {
+      avatar {
+        ...createPost_MediaFields
+      }
+      banner {
+        ...createPost_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    body
+    draft
+    id
+    insertedAt
+    language
+    picture {
+      ...createPost_MediaFields
+    }
+    publishAt
+    slug
+    tags {
+      id
+      related {
+        id
+        related {
+          id
+          slug
+          title
+        }
+        slug
+        title
+      }
+      slug
+      title
+    }
+    title
+    updatedAt
+    url
+    visibility
+  }
+}
+
+fragment createPost_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

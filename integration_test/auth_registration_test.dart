@@ -5,7 +5,7 @@ import 'package:mobilizon_api/auth/exceptions/auth_exception.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
 import 'package:mobilizon_api/mobilizon_client.dart';
 
-import 'test_token_storage.dart';
+import 'helpers/token_storage.dart';
 
 void main() {
   // Initialize Flutter testing framework

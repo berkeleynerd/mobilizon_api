@@ -1,0 +1,90 @@
+query Post($slug: String!) {
+  post(slug: $slug) {
+    attributedTo {
+      avatar {
+        ...post_MediaFields
+      }
+      banner {
+        ...post_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    author {
+      avatar {
+        ...post_MediaFields
+      }
+      banner {
+        ...post_MediaFields
+      }
+      domain
+      followersCount
+      followingCount
+      id
+      local
+      manuallyApprovesFollowers
+      mediaSize
+      name
+      preferredUsername
+      summary
+      suspended
+      type
+      url
+    }
+    body
+    draft
+    id
+    insertedAt
+    language
+    picture {
+      ...post_MediaFields
+    }
+    publishAt
+    slug
+    tags {
+      id
+      related {
+        id
+        related {
+          id
+          slug
+          title
+        }
+        slug
+        title
+      }
+      slug
+      title
+    }
+    title
+    updatedAt
+    url
+    visibility
+  }
+}
+
+fragment post_MediaFields on Media {
+  alt
+  contentType
+  id
+  metadata {
+    blurhash
+    height
+    width
+  }
+  name
+  size
+  url
+}
+

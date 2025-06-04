@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobilizon_api/auth/models/auth_models.dart';
 import 'package:mobilizon_api/mobilizon_client.dart';
 
-import 'test_token_storage.dart';
+import 'helpers/token_storage.dart';
 
 /// Integration tests for person profile operations in Mobilizon API client
 ///
@@ -19,7 +19,7 @@ import 'test_token_storage.dart';
 /// 4. Comparison of getMyPerson() with getMyProfile()
 /// 5. Testing behavior when not authenticated
 ///
-/// The tests use the in-memory token storage implementation from test_token_storage.dart
+/// The tests use the in-memory token storage implementation from token_storage.dart
 /// to store JWT tokens between API calls.
 void main() {
   // Initialize Flutter testing framework
@@ -58,7 +58,9 @@ void main() {
       client.dispose();
     });
 
-    test('getMyPerson returns correct person data for regular user', () async {
+    test(
+      'getMyPerson returns correct person data for regular user',
+      () async {
       try {
         // Step 1: Log in as regular user
         print('Logging in as regular user...');
@@ -91,11 +93,51 @@ void main() {
         );
 
         // Print more details for debugging
-        print('myPerson details:');
+        print('\n=== Person Profile Data ===');
         print('ID: ${myPerson?.id}');
-        print('preferredUsername: ${myPerson?.preferredUsername}');
-        print('name: ${myPerson?.name}');
-        print('summary: ${myPerson?.summary}');
+        print('Username: ${myPerson?.preferredUsername}');
+        print('Display Name: ${myPerson?.name ?? "(not set)"}');
+        print('Bio/Description: ${myPerson?.summary ?? "(not set)"}');
+        
+        // Display avatar information
+        if (myPerson?.avatar != null) {
+          final avatarUrl = myPerson!.avatar!.url;
+          // Extract filename from URL query parameters or path
+          final uri = Uri.parse(avatarUrl);
+          String? filename;
+          
+          // Check query parameters first
+          if (uri.queryParameters.containsKey('name')) {
+            filename = uri.queryParameters['name'];
+          } else {
+            // Extract from path if no query parameter
+            filename = uri.pathSegments.last;
+          }
+          
+          print('Avatar: ✅ ${filename ?? "unnamed image"}');
+          print('  Full URL: $avatarUrl');
+        } else {
+          print('Avatar: ❌ No profile image set');
+        }
+        
+        // Display banner information
+        if (myPerson?.banner != null) {
+          final bannerUrl = myPerson!.banner!.url;
+          final uri = Uri.parse(bannerUrl);
+          String? filename;
+          
+          if (uri.queryParameters.containsKey('name')) {
+            filename = uri.queryParameters['name'];
+          } else {
+            filename = uri.pathSegments.last;
+          }
+          
+          print('Banner: ✅ ${filename ?? "unnamed image"}');
+          print('  Full URL: $bannerUrl');
+        } else {
+          print('Banner: ❌ No banner image set');
+        }
+        print('========================\n');
 
         // These fields might be null but should exist in the model
         expect(myPerson?.name, isA<String?>());
@@ -200,9 +242,13 @@ void main() {
         print('Stack trace: $stackTrace');
         fail('getMyPerson test failed for regular user: $e');
       }
-    });
+    },
+    timeout: const Timeout(Duration(minutes: 2)),
+    );
 
-    test('getMyPerson returns correct person data for admin user', () async {
+    test(
+      'getMyPerson returns correct person data for admin user',
+      () async {
       try {
         // Add delay before admin login
         await Future.delayed(rateLimitDelay);
@@ -238,11 +284,48 @@ void main() {
         );
 
         // Print more details for debugging
-        print('adminPerson details:');
+        print('\n=== Admin Person Profile Data ===');
         print('ID: ${adminPerson?.id}');
-        print('preferredUsername: ${adminPerson?.preferredUsername}');
-        print('name: ${adminPerson?.name}');
-        print('summary: ${adminPerson?.summary}');
+        print('Username: ${adminPerson?.preferredUsername}');
+        print('Display Name: ${adminPerson?.name ?? "(not set)"}');
+        print('Bio/Description: ${adminPerson?.summary ?? "(not set)"}');
+        
+        // Display avatar information
+        if (adminPerson?.avatar != null) {
+          final avatarUrl = adminPerson!.avatar!.url;
+          final uri = Uri.parse(avatarUrl);
+          String? filename;
+          
+          if (uri.queryParameters.containsKey('name')) {
+            filename = uri.queryParameters['name'];
+          } else {
+            filename = uri.pathSegments.last;
+          }
+          
+          print('Avatar: ✅ ${filename ?? "unnamed image"}');
+          print('  Full URL: $avatarUrl');
+        } else {
+          print('Avatar: ❌ No profile image set');
+        }
+        
+        // Display banner information
+        if (adminPerson?.banner != null) {
+          final bannerUrl = adminPerson!.banner!.url;
+          final uri = Uri.parse(bannerUrl);
+          String? filename;
+          
+          if (uri.queryParameters.containsKey('name')) {
+            filename = uri.queryParameters['name'];
+          } else {
+            filename = uri.pathSegments.last;
+          }
+          
+          print('Banner: ✅ ${filename ?? "unnamed image"}');
+          print('  Full URL: $bannerUrl');
+        } else {
+          print('Banner: ❌ No banner image set');
+        }
+        print('===========================\n');
 
         // Add delay before next API call
         await Future.delayed(rateLimitDelay);
@@ -289,9 +372,13 @@ void main() {
         print('Stack trace: $stackTrace');
         fail('getMyPerson test failed for admin user: $e');
       }
-    });
+    },
+    timeout: const Timeout(Duration(minutes: 2)),
+    );
 
-    test('getMyPerson returns null when not authenticated', () async {
+    test(
+      'getMyPerson returns null when not authenticated',
+      () async {
       try {
         // Skip authentication step
         print('Testing unauthenticated state...');
@@ -316,6 +403,8 @@ void main() {
         print('Stack trace: $stackTrace');
         fail('getMyPerson test failed for unauthenticated state: $e');
       }
-    });
+    },
+    timeout: const Timeout(Duration(minutes: 1)),
+    );
   });
 }

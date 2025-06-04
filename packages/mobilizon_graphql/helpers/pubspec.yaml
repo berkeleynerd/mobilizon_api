@@ -1,0 +1,24 @@
+name: mobilizon_graphql_gen_helpers
+description: Helper tools for generating GraphQL operations from Mobilizon API endpoints
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+
+dependencies:
+  # Command line parsing
+  args: ^2.4.2
+  path: ^1.8.0
+  # HTTP client for fetching GraphQL schemas
+  http: ^1.1.0
+  # GraphQL and related dependencies
+  gql: ^1.0.0
+  gql_exec: ^1.0.0
+  gql_http_link: ^1.0.0
+  # Built Value for data classes
+  built_value: ^8.7.0
+  built_collection: ^5.1.1
+
+dev_dependencies:
+  lints: ^6.0.0
