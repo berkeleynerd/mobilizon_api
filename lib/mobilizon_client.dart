@@ -1,6 +1,7 @@
 import 'auth/auth_service.dart';
 import 'auth/graphql_client_provider.dart';
 import 'auth/token_manager.dart';
+import 'profiles/profile_service.dart';
 
 /// Main client for interacting with Mobilizon
 class MobilizonClient {
@@ -8,9 +9,13 @@ class MobilizonClient {
   late final TokenManager _tokenManager;
   late final GraphQLClientProvider _graphQLClient;
   late final AuthService _authService;
+  late final ProfileService _profileService;
 
   /// Authentication service
   AuthService get auth => _authService;
+  
+  /// Profile management service
+  ProfileService get profiles => _profileService;
 
   MobilizonClient(this._config) {
     _initServices();
@@ -34,8 +39,14 @@ class MobilizonClient {
       graphQLClient: _graphQLClient,
       tokenManager: _tokenManager,
     );
+    
+    // Initialize profile service
+    _profileService = ProfileService(
+      authService: _authService,
+      graphQLClient: _graphQLClient,
+    );
 
-    // TODO: Initialize other services (user, profile, admin)
+    // TODO: Initialize other services (user, admin)
   }
 
   /// Dispose all resources

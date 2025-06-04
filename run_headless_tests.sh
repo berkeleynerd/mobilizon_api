@@ -62,6 +62,14 @@ sleep $DELAY
 echo "Testing profile update functionality..."
 flutter test integration_test/profile_update_test.dart -d flutter-tester
 
+# Wait to avoid rate limiting
+echo "Waiting ${DELAY}s to avoid rate limiting..."
+sleep $DELAY
+
+# Run profile management tests
+echo "Testing profile management functionality..."
+flutter test integration_test/profile_management_test.dart -d flutter-tester
+
 # Run any other specific test files if they exist
 # For now, we're focusing on connectivity, authentication, and user profile
 

@@ -112,24 +112,118 @@ class AuthService {
     }
   }
 
+  /// Gets all profiles (identities) for the currently authenticated user
+  /// 
+  /// Returns a list of all Person profiles associated with the user account.
+  /// Returns an empty list if not authenticated or no profiles exist.
+  /// 
+  /// This is useful when users need to:
+  /// - View all their profiles
+  /// - Switch between profiles
+  /// - Manage multiple identities
+  Future<List<Person>> getAllProfiles() async {
+    // Verify authentication
+    final isAuth = await isAuthenticated();
+    if (!isAuth) {
+      return [];
+    }
+
+    try {
+      // Use the identities query which is specifically designed for this purpose
+      final request = GIdentitiesReq();
+
+      // Execute the query
+      final response = await _graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.identities == null) {
+        // Fall back to getting the single logged person if identities query fails
+        final person = await getLoggedPerson();
+        return person != null ? [person] : [];
+      }
+
+      // Map the identities to Person objects
+      final identities = response.data!.identities;
+      if (identities == null) {
+        // Fall back to getting the single logged person if identities is null
+        final person = await getLoggedPerson();
+        return person != null ? [person] : [];
+      }
+      
+      final profiles = identities.where((identity) => identity != null).map((identity) {
+        return Person(
+          id: identity!.id ?? '',
+          preferredUsername: identity.preferredUsername ?? '',
+          name: identity.name,
+          summary: identity.summary,
+          avatar: identity.avatar != null
+              ? Media(
+                  id: identity.avatar!.id ?? '',
+                  url: identity.avatar!.url ?? '',
+                  alt: identity.avatar!.alt,
+                )
+              : null,
+          banner: identity.banner != null
+              ? Media(
+                  id: identity.banner!.id ?? '',
+                  url: identity.banner!.url ?? '',
+                  alt: identity.banner!.alt,
+                )
+              : null,
+        );
+      }).where((profile) => 
+        profile.id.isNotEmpty && 
+        profile.preferredUsername.isNotEmpty
+      ).toList();
+
+      return profiles;
+    } catch (e) {
+      // If identities query is not available, fall back to single profile
+      try {
+        final person = await getLoggedPerson();
+        return person != null ? [person] : [];
+      } catch (e) {
+        return [];
+      }
+    }
+  }
+
+  /// Gets a specific profile by ID from the user's profiles
+  /// 
+  /// Parameters:
+  /// - [profileId]: The ID of the profile to retrieve
+  /// 
+  /// Returns the Person profile if found, null otherwise
+  Future<Person?> getProfileById(String profileId) async {
+    try {
+      final profiles = await getAllProfiles();
+      return profiles.firstWhere(
+        (profile) => profile.id == profileId,
+        orElse: () => throw StateError('Profile not found'),
+      );
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /// Gets the default/primary profile for the current user
+  /// 
+  /// This is typically the first profile in the list or the one
+  /// marked as default by the user.
+  /// 
+  /// Returns null if not authenticated or no profiles exist.
   Future<Person?> getMyProfile() async {
     try {
-      final user = await getLoggedUser();
+      // Get all profiles using the proper query
+      final profiles = await getAllProfiles();
 
-      // Return null if user is null or there are no profiles
-      if (user == null || user.profiles.isEmpty) {
+      // Return null if there are no profiles
+      if (profiles.isEmpty) {
         return null;
       }
 
-      // Return the default profile (first one in the list)
-      final profile = user.profiles.first;
-
-      // Return null if profile data is not valid
-      if (profile.id.isEmpty || profile.preferredUsername.isEmpty) {
-        return null;
-      }
-
-      return profile;
+      // Return the first profile as the default
+      return profiles.first;
     } catch (e) {
       return null;
     }
