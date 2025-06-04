@@ -29,8 +29,8 @@ library;
 export 'src/ferry_operation_generator.dart';
 // Utility exports
 export 'src/introspection_query.dart' show introspectionQuery;
+// Post-processing functionality
+export 'src/post_processor.dart';
 // Core functionality exports
 export 'src/schema_fetcher.dart';
 export 'src/schema_parser.dart';
-// Post-processing functionality
-export 'src/post_processor.dart';

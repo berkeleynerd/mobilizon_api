@@ -111,7 +111,9 @@ class GraphQLClientProvider {
     // Listen to client events for debugging
     _client.requestController.stream.listen((request) {
       print('🚀 [GraphQL] ${request.operation.operationName}');
-      print('  Variables: ${request.vars}');
+      if (request.vars != null && request.vars.toString().isNotEmpty) {
+        print('  Variables: ${request.vars}');
+      }
     });
   }
 

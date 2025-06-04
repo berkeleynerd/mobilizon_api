@@ -26,6 +26,7 @@ analyzer:
     prefer_single_quotes: warning
     sort_pub_dependencies: warning
     always_put_required_named_parameters_first: warning
+    dangling_library_doc_comments: ignore
 
 linter:
   rules:

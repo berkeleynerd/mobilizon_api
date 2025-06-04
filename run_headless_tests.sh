@@ -54,6 +54,14 @@ sleep $DELAY
 echo "Testing person profile retrieval..."
 flutter test integration_test/person_test.dart -d flutter-tester
 
+# Wait to avoid rate limiting
+echo "Waiting ${DELAY}s to avoid rate limiting..."
+sleep $DELAY
+
+# Run profile update tests
+echo "Testing profile update functionality..."
+flutter test integration_test/profile_update_test.dart -d flutter-tester
+
 # Run any other specific test files if they exist
 # For now, we're focusing on connectivity, authentication, and user profile
 

@@ -79,8 +79,8 @@ class FerryOperationGenerator {
     );
 
     // Combine operation and fragments
-    final result = StringBuffer();
-    result.write(_operation);
+    final result = StringBuffer()
+    ..write(_operation);
 
     // Add used fragments at the end
     if (_fragments.isNotEmpty && generateFragments) {
@@ -89,8 +89,8 @@ class FerryOperationGenerator {
       final sortedFragments = _usedFragments.toList()..sort();
       for (final fragmentName in sortedFragments) {
         if (_fragments.containsKey(fragmentName)) {
-          result.write(_fragments[fragmentName]);
-          result.writeln();
+          result..write(_fragments[fragmentName])
+          ..writeln();
         }
       }
     }
@@ -115,10 +115,10 @@ class FerryOperationGenerator {
     if (variables.isNotEmpty) {
       _operation.write('(${variables.join(', ')})');
     }
-    _operation.writeln(' {');
+    _operation..writeln(' {')
 
     // Write field
-    _operation.write('  $operationName');
+    ..write('  $operationName');
     if (args.isNotEmpty) {
       final argValues = _generateArgumentValues(args);
       if (argValues.isNotEmpty) {
@@ -130,9 +130,9 @@ class FerryOperationGenerator {
     final returnType = field['type'] as Map<String, dynamic>;
     final selection = _generateSelection(returnType, 1, 2);
     if (selection.isNotEmpty) {
-      _operation.writeln(' {');
-      _operation.write(selection);
-      _operation.writeln('  }');
+      _operation..writeln(' {')
+      ..write(selection)
+      ..writeln('  }');
     } else {
       _operation.writeln();
     }
@@ -251,10 +251,14 @@ class FerryOperationGenerator {
       final isDeprecated = fieldData['isDeprecated'] as bool? ?? false;
 
       // Skip deprecated fields unless configured to include them
-      if (isDeprecated && !includeDeprecated) continue;
+      if (isDeprecated && !includeDeprecated) {
+        continue;
+      }
 
       // Skip fields that would create circular references at max depth
-      if (currentDepth >= maxDepth && !_isScalarType(fieldType)) continue;
+      if (currentDepth >= maxDepth && !_isScalarType(fieldType)) {
+        continue;
+      }
 
       // Always include ID fields
       if (fieldName == 'id' ||
@@ -278,9 +282,9 @@ class FerryOperationGenerator {
           indent + 1,
         );
         if (selection.isNotEmpty) {
-          buffer.writeln(' {');
-          buffer.write(selection);
-          buffer.writeln('$indentStr}');
+          buffer..writeln(' {')
+          ..write(selection)
+          ..writeln('$indentStr}');
           hasFields = true;
         } else {
           buffer.writeln();
@@ -328,8 +332,8 @@ class FerryOperationGenerator {
   }
 
   void _generateFragment(String typeName, Map<String, dynamic> typeData) {
-    final fragmentBuffer = StringBuffer();
-    fragmentBuffer.writeln('fragment ${_currentOperationName}_${typeName}Fields on $typeName {');
+    final fragmentBuffer = StringBuffer()
+    ..writeln('fragment ${_currentOperationName}_${typeName}Fields on $typeName {');
 
     // Generate fields with depth = 1 for fragments to include one level of complex fields
     _writeFragmentFields(fragmentBuffer, typeData, typeName, 1, 1);
@@ -355,7 +359,9 @@ class FerryOperationGenerator {
       final fieldType = fieldData['type'] as Map<String, dynamic>;
       final isDeprecated = fieldData['isDeprecated'] as bool? ?? false;
 
-      if (isDeprecated && !includeDeprecated) continue;
+      if (isDeprecated && !includeDeprecated) {
+        continue;
+      }
 
       // Always include ID fields
       if (fieldName == 'id' || fieldName == 'uuid' || fieldName.endsWith('Id')) {
@@ -437,11 +443,15 @@ class FerryOperationGenerator {
   }
 
   String _toPascalCase(String input) {
-    if (input.isEmpty) return input;
+    if (input.isEmpty) {
+      return input;
+    }
 
     final words = input.split(RegExp('(?=[A-Z])|_|-'));
     return words.map((word) {
-      if (word.isEmpty) return '';
+      if (word.isEmpty) {
+        return '';
+      }
       return word[0].toUpperCase() + word.substring(1).toLowerCase();
     }).join();
   }

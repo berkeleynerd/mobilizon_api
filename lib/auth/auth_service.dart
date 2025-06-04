@@ -1,8 +1,10 @@
 import 'dart:async';
 
-// Import the generated GraphQL classes for auth operations
+import 'package:http/http.dart' show MultipartFile;
+import 'package:http_parser/http_parser.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:mobilizon_graphql/mobilizon_graphql.dart';
+
 import 'exceptions/auth_exception.dart';
 import 'graphql_client_provider.dart';
 import 'models/auth_models.dart';
@@ -67,14 +69,20 @@ class AuthService {
       final profiles = userData.actors.where((actor) => actor != null).map((
         actor,
       ) {
+        // Only include profiles with valid data
+        if (actor!.id == null || actor.preferredUsername == null) {
+          return null;
+        }
+        
         return Person(
-          id: actor!.id ?? '',
-          preferredUsername: actor.preferredUsername ?? '',
+          id: actor.id!,
+          preferredUsername: actor.preferredUsername!,
           name: actor.name,
           summary: actor.summary,
+          avatar: null, // Avatar is not included in the actors fragment
           banner: null, // Banner is not included in the actors fragment
         );
-      }).toList();
+      }).where((person) => person != null).cast<Person>().toList();
 
       // Create settings if available
       UserSettings? settings;
@@ -82,7 +90,7 @@ class AuthService {
         settings = UserSettings(timezone: userData.settings?.timezone?.value);
       }
 
-      // Create the user object
+      // Create and cache the user object
       _currentUser = User(
         id: userData.id ?? '',
         email: userData.email,
@@ -108,23 +116,8 @@ class AuthService {
     try {
       final user = await getLoggedUser();
 
-      // Add debug logs
-      print(
-        'getMyProfile: user = ${user != null ? 'User found' : 'No user found'}',
-      );
-      if (user != null) {
-        print('getMyProfile: user.profiles.length = ${user.profiles.length}');
-        if (user.profiles.isNotEmpty) {
-          print(
-            'getMyProfile: first profile preferredUsername = ${user.profiles.first.preferredUsername}',
-          );
-        }
-      }
-
       // Return null if user is null or there are no profiles
       if (user == null || user.profiles.isEmpty) {
-        print('getMyProfile: No user or empty profiles list, returning null');
-
         return null;
       }
 
@@ -133,15 +126,11 @@ class AuthService {
 
       // Return null if profile data is not valid
       if (profile.id.isEmpty || profile.preferredUsername.isEmpty) {
-        print('getMyProfile: Empty profile ID or username, returning null');
-
         return null;
       }
 
       return profile;
     } catch (e) {
-      print('getMyProfile error: $e');
-
       return null;
     }
   }
@@ -210,6 +199,147 @@ class AuthService {
     }
   }
 
+  /// Updates the current user's profile (Person)
+  /// 
+  /// This method allows updating the display name, bio/summary, avatar and banner
+  /// of the currently authenticated person profile.
+  /// 
+  /// Parameters:
+  /// - [updateData]: The profile fields to update
+  /// 
+  /// Returns the updated Person object
+  /// 
+  /// Throws:
+  /// - [AuthException] if not authenticated or the update fails
+  Future<Person> updateProfile(ProfileUpdateData updateData) async {
+    // Verify authentication status
+    final isAuth = await isAuthenticated();
+    if (!isAuth) {
+      throw AuthException('Not authenticated');
+    }
+
+    try {
+      // Get current person to obtain the ID
+      final currentPerson = await getLoggedPerson();
+      if (currentPerson == null) {
+        throw AuthException('Could not get current person profile');
+      }
+
+      // Build the update request
+      final requestBuilder = GUpdatePersonReqBuilder()
+        ..vars.id = currentPerson.id
+        ..vars.name = updateData.name
+        ..vars.summary = updateData.summary;
+
+      // Handle avatar update if provided
+      if (updateData.avatar != null) {
+        requestBuilder.vars.avatar = _buildMediaInput(updateData.avatar!);
+      }
+
+      // Handle banner update if provided
+      if (updateData.banner != null) {
+        requestBuilder.vars.banner = _buildMediaInput(updateData.banner!);
+      }
+
+      final request = requestBuilder.build();
+
+      // Execute the update mutation
+      final response = await _graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.updatePerson == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .join(', ');
+        throw AuthException(
+          "Profile update failed: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Extract the updated person data
+      final updatedPersonData = response.data!.updatePerson!;
+
+      // Map the response to our domain model
+      final updatedPerson = Person(
+        id: updatedPersonData.id ?? '',
+        preferredUsername: updatedPersonData.preferredUsername ?? '',
+        name: updatedPersonData.name,
+        summary: updatedPersonData.summary,
+        // Map avatar if available
+        avatar: updatedPersonData.avatar != null
+            ? Media(
+                id: updatedPersonData.avatar!.id ?? '',
+                url: updatedPersonData.avatar!.url ?? '',
+                alt: updatedPersonData.avatar!.alt,
+              )
+            : null,
+        // Map banner if available
+        banner: updatedPersonData.banner != null
+            ? Media(
+                id: updatedPersonData.banner!.id ?? '',
+                url: updatedPersonData.banner!.url ?? '',
+                alt: updatedPersonData.banner!.alt,
+              )
+            : null,
+      );
+
+      // Update cached user data if we have it
+      if (_currentUser != null) {
+        // Find and update the profile in the user's profiles list
+        final updatedProfiles = _currentUser!.profiles.map((profile) {
+          if (profile.id == updatedPerson.id) {
+            return updatedPerson;
+          }
+          return profile;
+        }).toList();
+
+        _currentUser = User(
+          id: _currentUser!.id,
+          email: _currentUser!.email,
+          confirmed: _currentUser!.confirmed,
+          role: _currentUser!.role,
+          profiles: updatedProfiles,
+          settings: _currentUser!.settings,
+        );
+      }
+
+      return updatedPerson;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to update profile: ${e.toString()}',
+        originalError: e,
+      );
+    }
+  }
+
+  /// Helper method to build GMediaInput from MediaUpload
+  GMediaInputBuilder _buildMediaInput(MediaUpload upload) {
+    final builder = GMediaInputBuilder();
+    
+    if (upload.mediaId != null) {
+      // Using existing media
+      builder.mediaId = upload.mediaId;
+    } else if (upload.file != null) {
+      // Uploading new file
+      final file = upload.file!;
+      builder.media = GMediaInputObjectBuilder()
+        ..name = file.name
+        ..alt = file.alt
+        ..file = MultipartFile.fromBytes(
+          'file',
+          file.bytes,
+          filename: file.name,
+          contentType: MediaType.parse(file.contentType),
+        );
+    }
+    
+    return builder;
+  }
+
   Future<bool> isAuthenticated() async {
     final tokens = await _tokenManager.getCurrentTokens();
     if (tokens == null) {
@@ -242,21 +372,13 @@ class AuthService {
       // Execute the login mutation
       final response = await _graphQLClient.executePublic(request);
 
-      // Debug logging
-      print('🔍 [DEBUG] Login response:');
-      print('  Has errors: ${response.hasErrors}');
-      print('  GraphQL errors: ${response.graphqlErrors}');
-      print('  Link exception: ${response.linkException}');
-      print('  Data is null: ${response.data == null}');
-      print('  Login is null: ${response.data?.login == null}');
-      if (response.data != null) {
-        print('  Response data type: ${response.data.runtimeType}');
-        try {
-          print('  Response data JSON: ${response.data?.toJson()}');
-        } catch (e) {
-          print('  Could not serialize response data: $e');
-        }
-      }
+      // Debug logging (disabled for production)
+      // print('🔍 [DEBUG] Login response:');
+      // print('  Has errors: ${response.hasErrors}');
+      // print('  GraphQL errors: ${response.graphqlErrors}');
+      // print('  Link exception: ${response.linkException}');
+      // print('  Data is null: ${response.data == null}');
+      // print('  Login is null: ${response.data?.login == null}');
 
       // Check for errors from the GraphQL operation
       if (response.hasErrors || response.data?.login == null) {

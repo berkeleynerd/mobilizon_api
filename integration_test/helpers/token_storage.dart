@@ -47,3 +47,29 @@ class TestTokenStorage implements TokenStorage {
     _tokens = null;
   }
 }
+
+/// Isolated test implementation of TokenStorage
+/// 
+/// This implementation doesn't share state between instances,
+/// making it suitable for tests that need truly isolated authentication states.
+class IsolatedTestTokenStorage implements TokenStorage {
+  TokenPair? _tokens;
+
+  /// Store authentication tokens in this instance
+  @override
+  Future<void> storeTokens(TokenPair tokens) async {
+    _tokens = tokens;
+  }
+
+  /// Retrieve authentication tokens from this instance
+  @override
+  Future<TokenPair?> getTokens() async {
+    return _tokens;
+  }
+
+  /// Clear any stored authentication tokens from this instance
+  @override
+  Future<void> clearTokens() async {
+    _tokens = null;
+  }
+}
