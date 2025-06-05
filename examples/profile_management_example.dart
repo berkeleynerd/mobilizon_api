@@ -160,23 +160,16 @@ Future<void> checkUsernameAvailability(MobilizonClient client, String username) 
 /// Example token storage implementation (you need to implement this)
 class YourTokenStorageImplementation implements TokenStorage {
   @override
-  Future<String?> getAccessToken() async {
+  Future<TokenPair?> getTokens() async {
     // Implement secure storage retrieval
+    // Return TokenPair with accessToken, refreshToken, and expiry
     throw UnimplementedError();
   }
 
   @override
-  Future<String?> getRefreshToken() async {
-    // Implement secure storage retrieval
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> saveTokens({
-    required String accessToken,
-    required String refreshToken,
-  }) async {
+  Future<void> storeTokens(TokenPair tokens) async {
     // Implement secure storage save
+    // Store tokens.accessToken, tokens.refreshToken, and tokens.accessTokenExpiry
     throw UnimplementedError();
   }
 
