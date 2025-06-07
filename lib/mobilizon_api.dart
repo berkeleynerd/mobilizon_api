@@ -1,5 +1,5 @@
 /// Mobilizon API Client Library
-/// 
+///
 /// A Dart library for interacting with Mobilizon instances via GraphQL.
 /// Provides authentication, profile management, and other Mobilizon features.
 library;
@@ -8,8 +8,8 @@ library;
 export 'auth/auth_service.dart';
 export 'auth/exceptions/auth_exception.dart';
 export 'auth/models/auth_models.dart';
-export 'auth/token_manager.dart' show TokenStorage;
+export 'core/storage/storage.dart' show TokenStorage;
 // Export main client
 export 'mobilizon_client.dart';
-// Export profile module  
-export 'profiles/profile_service.dart'; 
+// Export profile module
+export 'profiles/profile_service.dart';

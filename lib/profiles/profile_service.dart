@@ -4,9 +4,9 @@ import 'package:mobilizon_graphql/mobilizon_graphql.dart';
 
 import '../auth/exceptions/auth_exception.dart';
 import '../auth/models/auth_models.dart';
-import '../auth/token_manager.dart';
 import '../core/client/graphql_client_provider.dart';
 import '../core/models/models.dart';
+import '../core/storage/storage.dart';
 import 'cache/profile_cache.dart';
 import 'exceptions/profile_exception.dart';
 import 'validation/profile_validator.dart';

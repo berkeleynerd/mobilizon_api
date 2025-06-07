@@ -5,9 +5,9 @@ import 'package:mobilizon_graphql/mobilizon_graphql.dart';
 
 import '../core/client/graphql_client_provider.dart';
 import '../core/models/models.dart';
+import '../core/storage/storage.dart';
 import 'exceptions/auth_exception.dart';
 import 'models/auth_models.dart';
-import 'token_manager.dart';
 
 /// Implementation of AuthService using GraphQL
 class AuthService {

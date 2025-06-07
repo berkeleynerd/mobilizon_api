@@ -1,6 +1,6 @@
 import 'auth/auth_service.dart';
-import 'auth/token_manager.dart';
 import 'core/client/graphql_client_provider.dart';
+import 'core/storage/storage.dart';
 import 'profiles/profile_service.dart';
 
 /// Main client for interacting with Mobilizon

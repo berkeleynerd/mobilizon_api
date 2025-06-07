@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:ferry/ferry.dart';
 import 'package:gql_http_link/gql_http_link.dart';
 
-import '../../auth/token_manager.dart';
+import '../storage/storage.dart';
 import 'exceptions/graphql_exception.dart';
 
 /// Enhanced GraphQL client provider that properly utilizes Ferry's caching
