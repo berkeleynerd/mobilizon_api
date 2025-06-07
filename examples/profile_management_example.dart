@@ -8,6 +8,8 @@ import 'package:mobilizon_api/mobilizon_api.dart';
 /// - Create a new profile
 /// - Switch between profiles
 /// - Get profile statistics
+/// - Update an existing profile
+/// - Delete a profile
 void main() async {
   // Configure the Mobilizon client
   final client = MobilizonClient(
@@ -39,6 +41,12 @@ void main() async {
 
     // Example 5: Check username availability
     await checkUsernameAvailability(client, 'desired-username');
+
+    // Example 6: Update an existing profile
+    await updateExistingProfile(client);
+
+    // Example 7: Delete a profile (use with caution!)
+    // await deleteProfile(client, 'profile-id-to-delete');
 
   } catch (e) {
     print('Error: $e');
@@ -154,6 +162,82 @@ Future<void> checkUsernameAvailability(MobilizonClient client, String username) 
     print('Username "$username" is available!');
   } else {
     print('Username "$username" is already taken.');
+  }
+}
+
+/// Example 6: Update an existing profile
+Future<void> updateExistingProfile(MobilizonClient client) async {
+  print('\n=== Updating Profile ===');
+  
+  // Get the current profile to update
+  final currentProfile = await client.profiles.getCurrentActiveProfile();
+  if (currentProfile == null) {
+    print('No active profile found.');
+    return;
+  }
+  
+  print('Updating profile: ${currentProfile.preferredUsername}');
+  
+  try {
+    // Update profile fields
+    final updatedProfile = await client.profiles.updateProfile(
+      ProfileUpdateData(
+        name: 'Updated Display Name',
+        summary: 'This is my updated bio with new information!',
+        // Optional: Update avatar and banner
+        // avatar: MediaUpload.existingMedia('new-avatar-id'),
+        // banner: MediaUpload.existingMedia('new-banner-id'),
+      ),
+    );
+    
+    print('Profile updated successfully!');
+    print(' Display Name: ${updatedProfile.name}');
+    print(' Bio: ${updatedProfile.summary}');
+    
+  } catch (e) {
+    print('Failed to update profile: $e');
+  }
+}
+
+/// Example 7: Delete a profile (use with caution!)
+Future<void> deleteProfile(MobilizonClient client, String profileId) async {
+  print('\n=== Deleting Profile ===');
+  print('⚠️  WARNING: This will permanently delete the profile!');
+  
+  try {
+    // Get all profiles to ensure we're not deleting the last one
+    final allProfiles = await client.profiles.getAllProfiles();
+    
+    if (allProfiles.length <= 1) {
+      print('Cannot delete profile: This is your only profile.');
+      return;
+    }
+    
+    // Find the profile to delete
+    final profileToDelete = allProfiles.firstWhere(
+      (p) => p.id == profileId,
+      orElse: () => throw Exception('Profile not found'),
+    );
+    
+    print('Deleting profile: ${profileToDelete.preferredUsername}');
+    
+    // Delete the profile
+    final deletedProfile = await client.profiles.deleteProfile(profileId);
+    
+    print('Profile deleted successfully: ${deletedProfile.preferredUsername}');
+    
+    // If we deleted the active profile, switch to another one
+    final currentActive = await client.profiles.getCurrentActiveProfile();
+    if (currentActive == null || currentActive.id == profileId) {
+      final remainingProfiles = await client.profiles.getAllProfiles();
+      if (remainingProfiles.isNotEmpty) {
+        await client.profiles.setActiveProfile(remainingProfiles.first.id);
+        print('Switched to profile: ${remainingProfiles.first.preferredUsername}');
+      }
+    }
+    
+  } catch (e) {
+    print('Failed to delete profile: $e');
   }
 }
 

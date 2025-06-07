@@ -159,9 +159,37 @@ void main() {
       expect(profiles, isA<List<Person>>());
     });
 
+    test('should update profile through ProfileService', () async {
+      // Get current profile
+      final currentProfile = await client.profiles.getCurrentActiveProfile();
+      expect(currentProfile, isNotNull);
+      
+      // Update the profile
+      const newName = 'Updated via ProfileService';
+      const newSummary = 'Bio updated through ProfileService.updateProfile()';
+      
+      final updatedProfile = await client.profiles.updateProfile(
+        ProfileUpdateData(
+          name: newName,
+          summary: newSummary,
+        ),
+      );
+      
+      // Verify the update was successful
+      expect(updatedProfile.name, equals(newName));
+      expect(updatedProfile.summary, equals(newSummary));
+      expect(updatedProfile.id, equals(currentProfile!.id));
+      
+      print('✅ Successfully updated profile through ProfileService');
+    });
+
     // Note: Creating new profiles is not tested here as it would
     // create permanent data on the test server. This should be
     // tested in a separate test suite with cleanup capabilities.
+    //
+    // Note: Deleting profiles is not tested here as it would
+    // permanently delete data on the test server. This should be
+    // tested in a separate test suite with proper test data setup.
   });
 
   group('Profile Service with AuthService integration', () {

@@ -11,6 +11,8 @@ import '../auth/models/auth_models.dart';
 /// - Listing all user profiles
 /// - Getting specific profile details  
 /// - Creating new profiles
+/// - Updating existing profiles
+/// - Deleting profiles
 /// - Switching between profiles
 /// - Getting profile statistics
 class ProfileService {
@@ -307,6 +309,127 @@ class ProfileService {
     }
     
     return builder;
+  }
+
+  /// Updates an existing profile
+  /// 
+  /// This is a convenience method that delegates to AuthService.updateProfile()
+  /// to provide a consistent API within ProfileService.
+  /// 
+  /// Parameters:
+  /// - [updateData]: The profile fields to update (name, summary, avatar, banner)
+  /// 
+  /// Returns the updated Person profile
+  /// 
+  /// Throws:
+  /// - [AuthException] if not authenticated or update fails
+  Future<Person> updateProfile(ProfileUpdateData updateData) async {
+    // Delegate to AuthService which already has the implementation
+    final updatedProfile = await _authService.updateProfile(updateData);
+    
+    // Update cached active profile if it's the one being updated
+    if (_currentActiveProfile != null && 
+        _currentActiveProfile!.id == updatedProfile.id) {
+      _currentActiveProfile = updatedProfile;
+    }
+    
+    return updatedProfile;
+  }
+
+  /// Deletes a profile
+  /// 
+  /// Parameters:
+  /// - [profileId]: The ID of the profile to delete
+  /// 
+  /// Returns the deleted Person profile data
+  /// 
+  /// Throws:
+  /// - [AuthException] if not authenticated or deletion fails
+  /// - [AuthException] if trying to delete the last profile
+  Future<Person> deleteProfile(String profileId) async {
+    // Verify authentication
+    final isAuth = await _authService.isAuthenticated();
+    if (!isAuth) {
+      throw AuthException('Not authenticated');
+    }
+
+    try {
+      // Check if this is the last profile
+      final allProfiles = await getAllProfiles();
+      if (allProfiles.length <= 1) {
+        throw AuthException(
+          'Cannot delete the last profile. Users must have at least one profile.',
+        );
+      }
+
+      // Check if the profile exists and belongs to the user
+      final profileToDelete = await getProfileById(profileId);
+      if (profileToDelete == null) {
+        throw AuthException('Profile not found or does not belong to the current user');
+      }
+
+      // Create the delete request
+      final request = GDeletePersonReq(
+        (b) => b..vars.id = profileId,
+      );
+
+      // Execute the delete mutation
+      final response = await _graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.deletePerson == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .join(', ');
+        throw AuthException(
+          "Profile deletion failed: ${errorMessages ?? 'Unknown error'}",
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Extract the deleted person data
+      final deletedPersonData = response.data!.deletePerson!;
+
+      // Map to our domain model
+      final deletedProfile = Person(
+        id: deletedPersonData.id ?? profileId,
+        preferredUsername: deletedPersonData.preferredUsername ?? '',
+        name: deletedPersonData.name,
+        summary: deletedPersonData.summary,
+        avatar: deletedPersonData.avatar != null
+            ? Media(
+                id: deletedPersonData.avatar!.id ?? '',
+                url: deletedPersonData.avatar!.url ?? '',
+                alt: deletedPersonData.avatar!.alt,
+              )
+            : null,
+        banner: deletedPersonData.banner != null
+            ? Media(
+                id: deletedPersonData.banner!.id ?? '',
+                url: deletedPersonData.banner!.url ?? '',
+                alt: deletedPersonData.banner!.alt,
+              )
+            : null,
+      );
+
+      // Clear cached active profile if it was deleted
+      if (_currentActiveProfile?.id == profileId) {
+        _currentActiveProfile = null;
+      }
+
+      // Clear the cached user data in AuthService to force refresh
+      await _authService.getLoggedUser();
+
+      return deletedProfile;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to delete profile: ${e.toString()}',
+        originalError: e,
+      );
+    }
   }
 
   /// Clears the currently active profile

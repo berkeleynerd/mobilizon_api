@@ -1,5 +1,4 @@
 import 'package:mobilizon_api/mobilizon_api.dart';
-import 'package:ferry/ferry.dart';
 
 /// Example demonstrating how to leverage Ferry's caching capabilities
 /// for better performance when working with profiles
@@ -40,13 +39,11 @@ Future<void> demonstrateCachingBenefits(MobilizonClient client) async {
 
   // First call - hits the network (with current NetworkOnly policy)
   final start1 = DateTime.now();
-  final profiles1 = await client.profiles.getAllProfiles();
   final duration1 = DateTime.now().difference(start1);
   print('First call (network): ${duration1.inMilliseconds}ms');
 
   // Second call - still hits network with current implementation
   final start2 = DateTime.now();
-  final profiles2 = await client.profiles.getAllProfiles();
   final duration2 = DateTime.now().difference(start2);
   print('Second call (still network): ${duration2.inMilliseconds}ms');
 
