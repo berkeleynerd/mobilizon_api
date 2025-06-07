@@ -53,7 +53,7 @@ void main() {
       );
 
       // Store original profile data
-      originalProfile = await authService.getLoggedPerson();
+      originalProfile = await client.profiles.getLoggedPerson();
       expect(
         originalProfile,
         isNotNull,
@@ -65,7 +65,7 @@ void main() {
       // Restore original profile data if we have it
       if (originalProfile != null) {
         try {
-          await authService.updateProfile(
+          await client.profiles.updateProfile(
             ProfileUpdateData(
               name: originalProfile!.name,
               summary: originalProfile!.summary,
@@ -86,7 +86,7 @@ void main() {
         const newName = 'Test Display Name';
 
         // Update the display name
-        final updatedProfile = await authService.updateProfile(
+        final updatedProfile = await client.profiles.updateProfile(
           const ProfileUpdateData(name: newName),
         );
 
@@ -107,7 +107,7 @@ void main() {
         // await Future.delayed(const Duration(seconds: 2));
 
         // Verify the change persists when fetching the profile again
-        // final refetchedProfile = await authService.getLoggedPerson();
+        // final refetchedProfile = await client.profiles.getLoggedPerson();
         // expect(refetchedProfile?.name, equals(newName));
 
         print('✅ Successfully updated display name to: $newName');
@@ -127,7 +127,7 @@ void main() {
             'Integration tests are running smoothly!';
 
         // Update the summary
-        final updatedProfile = await authService.updateProfile(
+        final updatedProfile = await client.profiles.updateProfile(
           const ProfileUpdateData(summary: newSummary),
         );
 
@@ -137,7 +137,7 @@ void main() {
 
         // TODO: Server persistence check disabled due to caching issues
         // Verify the change persists
-        // final refetchedProfile = await authService.getLoggedPerson();
+        // final refetchedProfile = await client.profiles.getLoggedPerson();
         // expect(refetchedProfile?.summary, equals(newSummary));
 
         print('✅ Successfully updated bio/summary');
@@ -153,7 +153,7 @@ void main() {
         const newSummary = 'Testing simultaneous updates of multiple fields.';
 
         // Update both name and summary
-        final updatedProfile = await authService.updateProfile(
+        final updatedProfile = await client.profiles.updateProfile(
           const ProfileUpdateData(name: newName, summary: newSummary),
         );
 
@@ -164,7 +164,7 @@ void main() {
 
         // TODO: Server persistence check disabled due to caching issues
         // Verify changes persist
-        // final refetchedProfile = await authService.getLoggedPerson();
+        // final refetchedProfile = await client.profiles.getLoggedPerson();
         // expect(refetchedProfile?.name, equals(newName));
         // expect(refetchedProfile?.summary, equals(newSummary));
 
@@ -177,7 +177,7 @@ void main() {
       'Clear profile fields by setting to empty string',
       () async {
         // First set some values
-        await authService.updateProfile(
+        await client.profiles.updateProfile(
           const ProfileUpdateData(
             name: 'Temporary Name',
             summary: 'Temporary bio',
@@ -185,7 +185,7 @@ void main() {
         );
 
         // Now clear them
-        final clearedProfile = await authService.updateProfile(
+        final clearedProfile = await client.profiles.updateProfile(
           const ProfileUpdateData(name: '', summary: ''),
         );
 
@@ -195,7 +195,7 @@ void main() {
 
         // TODO: Server persistence check disabled due to caching issues
         // Verify changes persist
-        // final refetchedProfile = await authService.getLoggedPerson();
+        // final refetchedProfile = await client.profiles.getLoggedPerson();
         // expect(refetchedProfile?.name, anyOf(equals(''), isNull));
         // expect(refetchedProfile?.summary, anyOf(equals(''), isNull));
 
@@ -219,7 +219,7 @@ void main() {
         try {
           // Attempt to update profile without being authenticated
           await expectLater(
-            unauthClient.auth.updateProfile(
+            unauthClient.profiles.updateProfile(
               const ProfileUpdateData(name: 'Should Fail'),
             ),
             throwsA(
@@ -246,13 +246,13 @@ void main() {
         const initialName = 'Initial Name';
         const initialSummary = 'Initial summary for preservation test';
 
-        await authService.updateProfile(
+        await client.profiles.updateProfile(
           const ProfileUpdateData(name: initialName, summary: initialSummary),
         );
 
         // Update only the name
         const updatedName = 'Updated Name Only';
-        final partialUpdate = await authService.updateProfile(
+        final partialUpdate = await client.profiles.updateProfile(
           const ProfileUpdateData(name: updatedName),
         );
 
@@ -262,7 +262,7 @@ void main() {
 
         // Update only the summary
         const updatedSummary = 'Updated summary only';
-        final summaryUpdate = await authService.updateProfile(
+        final summaryUpdate = await client.profiles.updateProfile(
           const ProfileUpdateData(summary: updatedSummary),
         );
 
@@ -284,7 +284,7 @@ void main() {
 
         // The main client has cached user data with invalid profiles from login.
         // We'll use getLoggedPerson to get fresh profile data, then update it.
-        final person = await authService.getLoggedPerson();
+        final person = await client.profiles.getLoggedPerson();
         expect(
           person,
           isNotNull,
@@ -292,7 +292,7 @@ void main() {
         );
 
         // Update the profile
-        final updatedPerson = await authService.updateProfile(
+        final updatedPerson = await client.profiles.updateProfile(
           const ProfileUpdateData(name: testName),
         );
 

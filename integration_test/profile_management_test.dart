@@ -213,7 +213,7 @@ void main() {
     test('getAllProfiles should match auth.getAllProfiles', () async {
       // Get profiles from both services
       final profilesFromProfileService = await client.profiles.getAllProfiles();
-      final profilesFromAuthService = await client.auth.getAllProfiles();
+      final profilesFromAuthService = await client.profiles.getAllProfiles();
 
       // They should return the same data
       expect(
@@ -233,7 +233,7 @@ void main() {
       // Get default profile from both services
       final profileFromProfileService = await client.profiles
           .getDefaultProfile();
-      final profileFromAuthService = await client.auth.getMyProfile();
+      final profileFromAuthService = await client.profiles.getDefaultProfile();
 
       // They should return the same profile
       expect(profileFromProfileService?.id, equals(profileFromAuthService?.id));

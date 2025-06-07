@@ -42,8 +42,8 @@ class MobilizonClient {
 
     // Initialize profile service
     _profileService = ProfileService(
-      authService: _authService,
       graphQLClient: _graphQLClient,
+      tokenManager: _tokenManager,
     );
 
     // TODO: Initialize other services (user, admin)
