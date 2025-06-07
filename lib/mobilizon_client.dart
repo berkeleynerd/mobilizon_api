@@ -1,6 +1,6 @@
 import 'auth/auth_service.dart';
-import 'auth/graphql_client_provider.dart';
 import 'auth/token_manager.dart';
+import 'core/client/graphql_client_provider.dart';
 import 'profiles/profile_service.dart';
 
 /// Main client for interacting with Mobilizon
@@ -13,7 +13,7 @@ class MobilizonClient {
 
   /// Authentication service
   AuthService get auth => _authService;
-  
+
   /// Profile management service
   ProfileService get profiles => _profileService;
 
@@ -39,7 +39,7 @@ class MobilizonClient {
       graphQLClient: _graphQLClient,
       tokenManager: _tokenManager,
     );
-    
+
     // Initialize profile service
     _profileService = ProfileService(
       authService: _authService,

@@ -2,14 +2,14 @@ import 'package:mobilizon_graphql/mobilizon_graphql.dart';
 
 import '../auth/auth_service.dart';
 import '../auth/exceptions/auth_exception.dart';
-import '../auth/graphql_client_provider.dart';
 import '../auth/models/auth_models.dart';
+import '../core/client/graphql_client_provider.dart';
 
 /// Service for managing user profiles (identities) in Mobilizon
-/// 
+///
 /// This service provides functionality for:
 /// - Listing all user profiles
-/// - Getting specific profile details  
+/// - Getting specific profile details
 /// - Creating new profiles
 /// - Updating existing profiles
 /// - Deleting profiles
@@ -18,7 +18,7 @@ import '../auth/models/auth_models.dart';
 class ProfileService {
   final AuthService _authService;
   final GraphQLClientProvider _graphQLClient;
-  
+
   // Cache for the current active profile
   Person? _currentActiveProfile;
 
@@ -29,7 +29,7 @@ class ProfileService {
        _graphQLClient = graphQLClient;
 
   /// Gets all profiles for the currently authenticated user
-  /// 
+  ///
   /// Returns a list of all Person profiles associated with the user account.
   /// Returns an empty list if not authenticated or no profiles exist.
   Future<List<Person>> getAllProfiles() async {
@@ -37,41 +37,41 @@ class ProfileService {
   }
 
   /// Gets a specific profile by ID
-  /// 
+  ///
   /// Parameters:
   /// - [profileId]: The ID of the profile to retrieve
-  /// 
+  ///
   /// Returns the Person profile if found, null otherwise
   Future<Person?> getProfileById(String profileId) async {
     return _authService.getProfileById(profileId);
   }
 
   /// Gets the default/primary profile for the current user
-  /// 
+  ///
   /// This is typically the first profile in the list
   Future<Person?> getDefaultProfile() async {
     return _authService.getMyProfile();
   }
 
   /// Gets the currently active profile
-  /// 
+  ///
   /// Returns the profile that is currently being used for operations.
   /// If no profile has been explicitly set as active, returns the default profile.
   Future<Person?> getCurrentActiveProfile() async {
     if (_currentActiveProfile != null) {
       return _currentActiveProfile;
     }
-    
+
     // If no active profile is set, use the default
     _currentActiveProfile = await getDefaultProfile();
     return _currentActiveProfile;
   }
 
   /// Sets a profile as the currently active profile
-  /// 
+  ///
   /// Parameters:
   /// - [profileId]: The ID of the profile to set as active
-  /// 
+  ///
   /// Returns true if the profile was successfully set as active
   Future<bool> setActiveProfile(String profileId) async {
     final profile = await getProfileById(profileId);
@@ -83,16 +83,16 @@ class ProfileService {
   }
 
   /// Creates a new profile for the current user
-  /// 
+  ///
   /// Parameters:
   /// - [username]: The unique username for the profile
   /// - [name]: The display name for the profile
   /// - [summary]: Optional bio/description for the profile
   /// - [avatar]: Optional avatar image
   /// - [banner]: Optional banner image
-  /// 
+  ///
   /// Returns the newly created Person profile
-  /// 
+  ///
   /// Throws:
   /// - [AuthException] if not authenticated or creation fails
   Future<Person> createProfile({
@@ -112,11 +112,11 @@ class ProfileService {
       // Step 1: Create the profile with basic info
       final createRequestBuilder = GCreatePersonReqBuilder()
         ..vars.preferredUsername = username;
-      
+
       if (avatar != null) {
         createRequestBuilder.vars.avatar = _buildMediaInput(avatar);
       }
-      
+
       if (banner != null) {
         createRequestBuilder.vars.banner = _buildMediaInput(banner);
       }
@@ -127,11 +127,12 @@ class ProfileService {
       final createResponse = await _graphQLClient.execute(createRequest);
 
       // Check for errors
-      if (createResponse.hasErrors || createResponse.data?.createPerson == null) {
+      if (createResponse.hasErrors ||
+          createResponse.data?.createPerson == null) {
         final errorMessages = createResponse.graphqlErrors
             ?.map((error) => error.message)
             .join(', ');
-        
+
         // Check for specific error cases
         if (errorMessages?.contains('already taken') ?? false) {
           throw AuthException(
@@ -139,7 +140,7 @@ class ProfileService {
             originalError: createResponse.graphqlErrors,
           );
         }
-        
+
         throw AuthException(
           "Profile creation failed: ${errorMessages ?? 'Unknown error'}",
           originalError: createResponse.graphqlErrors,
@@ -155,18 +156,19 @@ class ProfileService {
         final updateRequestBuilder = GUpdatePersonReqBuilder()
           ..vars.id = personId
           ..vars.name = name;
-        
+
         if (summary != null) {
           updateRequestBuilder.vars.summary = summary;
         }
 
         final updateRequest = updateRequestBuilder.build();
-        
+
         // Execute the update mutation
         final updateResponse = await _graphQLClient.execute(updateRequest);
-        
+
         // Check for errors
-        if (updateResponse.hasErrors || updateResponse.data?.updatePerson == null) {
+        if (updateResponse.hasErrors ||
+            updateResponse.data?.updatePerson == null) {
           // Profile was created but update failed - log warning but don't fail
           final errorMessages = updateResponse.graphqlErrors
               ?.map((error) => error.message)
@@ -175,7 +177,7 @@ class ProfileService {
         } else {
           // Use the updated data
           final updatedPersonData = updateResponse.data!.updatePerson!;
-          
+
           // Map to our domain model with updated data
           final updatedProfile = Person(
             id: updatedPersonData.id ?? personId,
@@ -197,10 +199,10 @@ class ProfileService {
                   )
                 : null,
           );
-          
+
           // Clear the cached user data in AuthService to force refresh
           await _authService.getLoggedUser();
-          
+
           return updatedProfile;
         }
       }
@@ -243,10 +245,10 @@ class ProfileService {
   }
 
   /// Gets profile statistics for a specific profile
-  /// 
+  ///
   /// Parameters:
   /// - [profileId]: The ID of the profile
-  /// 
+  ///
   /// Returns a map containing statistics like followers count, following count, etc.
   Future<Map<String, dynamic>> getProfileStatistics(String profileId) async {
     try {
@@ -270,10 +272,10 @@ class ProfileService {
   }
 
   /// Checks if a username is available for a new profile
-  /// 
+  ///
   /// Parameters:
   /// - [username]: The username to check
-  /// 
+  ///
   /// Returns true if the username is available, false otherwise
   Future<bool> isUsernameAvailable(String username) async {
     try {
@@ -283,7 +285,7 @@ class ProfileService {
       );
 
       final response = await _graphQLClient.execute(request);
-      
+
       // If we get a person back, username is taken
       return response.data?.fetchPerson == null;
     } catch (e) {
@@ -295,7 +297,7 @@ class ProfileService {
   /// Helper method to build GMediaInput from MediaUpload
   GMediaInputBuilder _buildMediaInput(MediaUpload upload) {
     final builder = GMediaInputBuilder();
-    
+
     if (upload.mediaId != null) {
       // Using existing media
       builder.mediaId = upload.mediaId;
@@ -307,42 +309,42 @@ class ProfileService {
         'Direct file upload not yet implemented. Please upload media separately first.',
       );
     }
-    
+
     return builder;
   }
 
   /// Updates an existing profile
-  /// 
+  ///
   /// This is a convenience method that delegates to AuthService.updateProfile()
   /// to provide a consistent API within ProfileService.
-  /// 
+  ///
   /// Parameters:
   /// - [updateData]: The profile fields to update (name, summary, avatar, banner)
-  /// 
+  ///
   /// Returns the updated Person profile
-  /// 
+  ///
   /// Throws:
   /// - [AuthException] if not authenticated or update fails
   Future<Person> updateProfile(ProfileUpdateData updateData) async {
     // Delegate to AuthService which already has the implementation
     final updatedProfile = await _authService.updateProfile(updateData);
-    
+
     // Update cached active profile if it's the one being updated
-    if (_currentActiveProfile != null && 
+    if (_currentActiveProfile != null &&
         _currentActiveProfile!.id == updatedProfile.id) {
       _currentActiveProfile = updatedProfile;
     }
-    
+
     return updatedProfile;
   }
 
   /// Deletes a profile
-  /// 
+  ///
   /// Parameters:
   /// - [profileId]: The ID of the profile to delete
-  /// 
+  ///
   /// Returns the deleted Person profile data
-  /// 
+  ///
   /// Throws:
   /// - [AuthException] if not authenticated or deletion fails
   /// - [AuthException] if trying to delete the last profile
@@ -365,13 +367,13 @@ class ProfileService {
       // Check if the profile exists and belongs to the user
       final profileToDelete = await getProfileById(profileId);
       if (profileToDelete == null) {
-        throw AuthException('Profile not found or does not belong to the current user');
+        throw AuthException(
+          'Profile not found or does not belong to the current user',
+        );
       }
 
       // Create the delete request
-      final request = GDeletePersonReq(
-        (b) => b..vars.id = profileId,
-      );
+      final request = GDeletePersonReq((b) => b..vars.id = profileId);
 
       // Execute the delete mutation
       final response = await _graphQLClient.execute(request);
@@ -436,4 +438,4 @@ class ProfileService {
   void clearActiveProfile() {
     _currentActiveProfile = null;
   }
-} 
+}

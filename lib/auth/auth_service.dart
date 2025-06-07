@@ -5,8 +5,8 @@ import 'package:http_parser/http_parser.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:mobilizon_graphql/mobilizon_graphql.dart';
 
+import '../core/client/graphql_client_provider.dart';
 import 'exceptions/auth_exception.dart';
-import 'graphql_client_provider.dart';
 import 'models/auth_models.dart';
 import 'token_manager.dart';
 
@@ -66,23 +66,26 @@ class AuthService {
       final userData = response.data!.loggedUser!;
 
       // Map profiles from actors
-      final profiles = userData.actors.where((actor) => actor != null).map((
-        actor,
-      ) {
-        // Only include profiles with valid data
-        if (actor!.id == null || actor.preferredUsername == null) {
-          return null;
-        }
-        
-        return Person(
-          id: actor.id!,
-          preferredUsername: actor.preferredUsername!,
-          name: actor.name,
-          summary: actor.summary,
-          avatar: null, // Avatar is not included in the actors fragment
-          banner: null, // Banner is not included in the actors fragment
-        );
-      }).where((person) => person != null).cast<Person>().toList();
+      final profiles = userData.actors
+          .where((actor) => actor != null)
+          .map((actor) {
+            // Only include profiles with valid data
+            if (actor!.id == null || actor.preferredUsername == null) {
+              return null;
+            }
+
+            return Person(
+              id: actor.id!,
+              preferredUsername: actor.preferredUsername!,
+              name: actor.name,
+              summary: actor.summary,
+              avatar: null, // Avatar is not included in the actors fragment
+              banner: null, // Banner is not included in the actors fragment
+            );
+          })
+          .where((person) => person != null)
+          .cast<Person>()
+          .toList();
 
       // Create settings if available
       UserSettings? settings;
@@ -113,10 +116,10 @@ class AuthService {
   }
 
   /// Gets all profiles (identities) for the currently authenticated user
-  /// 
+  ///
   /// Returns a list of all Person profiles associated with the user account.
   /// Returns an empty list if not authenticated or no profiles exist.
-  /// 
+  ///
   /// This is useful when users need to:
   /// - View all their profiles
   /// - Switch between profiles
@@ -149,32 +152,36 @@ class AuthService {
         final person = await getLoggedPerson();
         return person != null ? [person] : [];
       }
-      
-      final profiles = identities.where((identity) => identity != null).map((identity) {
-        return Person(
-          id: identity!.id ?? '',
-          preferredUsername: identity.preferredUsername ?? '',
-          name: identity.name,
-          summary: identity.summary,
-          avatar: identity.avatar != null
-              ? Media(
-                  id: identity.avatar!.id ?? '',
-                  url: identity.avatar!.url ?? '',
-                  alt: identity.avatar!.alt,
-                )
-              : null,
-          banner: identity.banner != null
-              ? Media(
-                  id: identity.banner!.id ?? '',
-                  url: identity.banner!.url ?? '',
-                  alt: identity.banner!.alt,
-                )
-              : null,
-        );
-      }).where((profile) => 
-        profile.id.isNotEmpty && 
-        profile.preferredUsername.isNotEmpty
-      ).toList();
+
+      final profiles = identities
+          .where((identity) => identity != null)
+          .map((identity) {
+            return Person(
+              id: identity!.id ?? '',
+              preferredUsername: identity.preferredUsername ?? '',
+              name: identity.name,
+              summary: identity.summary,
+              avatar: identity.avatar != null
+                  ? Media(
+                      id: identity.avatar!.id ?? '',
+                      url: identity.avatar!.url ?? '',
+                      alt: identity.avatar!.alt,
+                    )
+                  : null,
+              banner: identity.banner != null
+                  ? Media(
+                      id: identity.banner!.id ?? '',
+                      url: identity.banner!.url ?? '',
+                      alt: identity.banner!.alt,
+                    )
+                  : null,
+            );
+          })
+          .where(
+            (profile) =>
+                profile.id.isNotEmpty && profile.preferredUsername.isNotEmpty,
+          )
+          .toList();
 
       return profiles;
     } catch (e) {
@@ -189,10 +196,10 @@ class AuthService {
   }
 
   /// Gets a specific profile by ID from the user's profiles
-  /// 
+  ///
   /// Parameters:
   /// - [profileId]: The ID of the profile to retrieve
-  /// 
+  ///
   /// Returns the Person profile if found, null otherwise
   Future<Person?> getProfileById(String profileId) async {
     try {
@@ -207,10 +214,10 @@ class AuthService {
   }
 
   /// Gets the default/primary profile for the current user
-  /// 
+  ///
   /// This is typically the first profile in the list or the one
   /// marked as default by the user.
-  /// 
+  ///
   /// Returns null if not authenticated or no profiles exist.
   Future<Person?> getMyProfile() async {
     try {
@@ -294,15 +301,15 @@ class AuthService {
   }
 
   /// Updates the current user's profile (Person)
-  /// 
+  ///
   /// This method allows updating the display name, bio/summary, avatar and banner
   /// of the currently authenticated person profile.
-  /// 
+  ///
   /// Parameters:
   /// - [updateData]: The profile fields to update
-  /// 
+  ///
   /// Returns the updated Person object
-  /// 
+  ///
   /// Throws:
   /// - [AuthException] if not authenticated or the update fails
   Future<Person> updateProfile(ProfileUpdateData updateData) async {
@@ -413,7 +420,7 @@ class AuthService {
   /// Helper method to build GMediaInput from MediaUpload
   GMediaInputBuilder _buildMediaInput(MediaUpload upload) {
     final builder = GMediaInputBuilder();
-    
+
     if (upload.mediaId != null) {
       // Using existing media
       builder.mediaId = upload.mediaId;
@@ -430,7 +437,7 @@ class AuthService {
           contentType: MediaType.parse(file.contentType),
         );
     }
-    
+
     return builder;
   }
 

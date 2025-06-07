@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:ferry/ferry.dart';
 import 'package:gql_http_link/gql_http_link.dart';
 
-import 'exceptions/gql_client_exception.dart';
-import 'models/auth_models.dart';
-import 'token_manager.dart';
+import '../../auth/models/auth_models.dart';
+import '../../auth/token_manager.dart';
+import 'exceptions/graphql_exception.dart';
 
 /// Provider for Ferry GraphQL client operations
 ///
@@ -127,12 +127,12 @@ class GraphQLClientProvider {
       // Check if authentication is needed and token is available
       final tokens = await tokenManager.getCurrentTokens();
       if (tokens == null) {
-        throw GqlClientException('Authentication required');
+        throw GraphQLException('Authentication required');
       }
 
       // Check if token is expired
       if (tokens.isAccessTokenExpired) {
-        throw GqlClientException('Token expired');
+        throw GraphQLException('Token expired');
       }
 
       // Make sure we have an auth client
@@ -141,14 +141,17 @@ class GraphQLClientProvider {
       }
 
       // Execute the request with the authenticated client
-      return _authClient!.request(request).first.timeout(
-        Duration(seconds: networkTimeoutSeconds),
-        onTimeout: () => throw GqlClientException(
-          'Request timeout after $networkTimeoutSeconds seconds',
-        ),
-      );
+      return _authClient!
+          .request(request)
+          .first
+          .timeout(
+            Duration(seconds: networkTimeoutSeconds),
+            onTimeout: () => throw GraphQLException(
+              'Request timeout after $networkTimeoutSeconds seconds',
+            ),
+          );
     } catch (e) {
-      throw GqlClientException(
+      throw GraphQLException(
         'Failed to execute operation: ${request.operation.operationName}',
         originalError: e,
       );
@@ -163,14 +166,17 @@ class GraphQLClientProvider {
   ) {
     try {
       // Execute the request without checking auth
-      return _client.request(request).first.timeout(
-        Duration(seconds: networkTimeoutSeconds),
-        onTimeout: () => throw GqlClientException(
-          'Request timeout after $networkTimeoutSeconds seconds',
-        ),
-      );
+      return _client
+          .request(request)
+          .first
+          .timeout(
+            Duration(seconds: networkTimeoutSeconds),
+            onTimeout: () => throw GraphQLException(
+              'Request timeout after $networkTimeoutSeconds seconds',
+            ),
+          );
     } catch (e) {
-      throw GqlClientException(
+      throw GraphQLException(
         'Failed to execute public operation: ${request.operation.operationName}',
         originalError: e,
       );
@@ -190,7 +196,7 @@ class GraphQLClientProvider {
 
       return client.request(request);
     } catch (e) {
-      throw GqlClientException(
+      throw GraphQLException(
         'Failed to watch operation: ${request.operation.operationName}',
         originalError: e,
       );

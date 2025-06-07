@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:ferry/ferry.dart';
 import 'package:gql_http_link/gql_http_link.dart';
 
-import 'exceptions/gql_client_exception.dart';
-import 'token_manager.dart';
+import '../../auth/token_manager.dart';
+import 'exceptions/graphql_exception.dart';
 
 /// Enhanced GraphQL client provider that properly utilizes Ferry's caching
-/// 
+///
 /// Key improvements:
 /// - Shared cache instance between authenticated and public clients
 /// - Smart fetch policies for different operation types
@@ -77,7 +77,7 @@ class CachedGraphQLClientProvider {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
-    
+
     if (authToken != null) {
       headers['Authorization'] = 'Bearer $authToken';
     }
@@ -120,7 +120,7 @@ class CachedGraphQLClientProvider {
   }
 
   /// Execute a GraphQL operation with authentication
-  /// 
+  ///
   /// Uses the default fetch policy (CacheFirst for queries)
   Future<OperationResponse<TData, TVars>> execute<TData, TVars>(
     OperationRequest<TData, TVars> request,
@@ -129,12 +129,12 @@ class CachedGraphQLClientProvider {
       // Check if authentication is needed
       final tokens = await tokenManager.getCurrentTokens();
       if (tokens == null) {
-        throw GqlClientException('Authentication required');
+        throw GraphQLException('Authentication required');
       }
 
       // Check if token is expired
       if (tokens.isAccessTokenExpired) {
-        throw GqlClientException('Token expired');
+        throw GraphQLException('Token expired');
       }
 
       // Make sure we have an auth client
@@ -143,16 +143,19 @@ class CachedGraphQLClientProvider {
       }
 
       // Execute the request
-      final response = await _authClient!.request(request).first.timeout(
-        Duration(seconds: networkTimeoutSeconds),
-        onTimeout: () => throw GqlClientException(
-          'Request timeout after $networkTimeoutSeconds seconds',
-        ),
-      );
-      
+      final response = await _authClient!
+          .request(request)
+          .first
+          .timeout(
+            Duration(seconds: networkTimeoutSeconds),
+            onTimeout: () => throw GraphQLException(
+              'Request timeout after $networkTimeoutSeconds seconds',
+            ),
+          );
+
       return response;
     } catch (e) {
-      throw GqlClientException(
+      throw GraphQLException(
         'Failed to execute operation: ${request.operation.operationName}',
         originalError: e,
       );
@@ -164,16 +167,19 @@ class CachedGraphQLClientProvider {
     OperationRequest<TData, TVars> request,
   ) async {
     try {
-      final response = await _publicClient.request(request).first.timeout(
-        Duration(seconds: networkTimeoutSeconds),
-        onTimeout: () => throw GqlClientException(
-          'Request timeout after $networkTimeoutSeconds seconds',
-        ),
-      );
-      
+      final response = await _publicClient
+          .request(request)
+          .first
+          .timeout(
+            Duration(seconds: networkTimeoutSeconds),
+            onTimeout: () => throw GraphQLException(
+              'Request timeout after $networkTimeoutSeconds seconds',
+            ),
+          );
+
       return response;
     } catch (e) {
-      throw GqlClientException(
+      throw GraphQLException(
         'Failed to execute public operation: ${request.operation.operationName}',
         originalError: e,
       );
@@ -181,7 +187,7 @@ class CachedGraphQLClientProvider {
   }
 
   /// Watch a GraphQL operation with authentication
-  /// 
+  ///
   /// Returns a stream that emits:
   /// 1. Cached data immediately (if available)
   /// 2. Fresh data from network
@@ -192,10 +198,10 @@ class CachedGraphQLClientProvider {
     try {
       // Get the appropriate client
       final client = _authClient ?? _publicClient;
-      
+
       return client.request(request);
     } catch (e) {
-      throw GqlClientException(
+      throw GraphQLException(
         'Failed to watch operation: ${request.operation.operationName}',
         originalError: e,
       );
@@ -209,7 +215,7 @@ class CachedGraphQLClientProvider {
   ) async {
     // Clear all cache to force network fetch
     clearCache();
-    
+
     // Then execute the request (which will fetch from network)
     return execute(request);
   }
@@ -220,9 +226,7 @@ class CachedGraphQLClientProvider {
   }
 
   /// Read data directly from cache without network request
-  TData? readFromCache<TData, TVars>(
-    OperationRequest<TData, TVars> request,
-  ) {
+  TData? readFromCache<TData, TVars>(OperationRequest<TData, TVars> request) {
     return _sharedCache.readQuery(request);
   }
 
@@ -239,4 +243,4 @@ class CachedGraphQLClientProvider {
     _publicClient.dispose();
     _authClient?.dispose();
   }
-} 
+}
