@@ -4,6 +4,7 @@ import '../auth/auth_service.dart';
 import '../auth/exceptions/auth_exception.dart';
 import '../auth/models/auth_models.dart';
 import '../core/client/graphql_client_provider.dart';
+import '../core/models/models.dart';
 
 /// Service for managing user profiles (identities) in Mobilizon
 ///

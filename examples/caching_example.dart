@@ -1,3 +1,4 @@
+import 'package:mobilizon_api/core/models/models.dart';
 import 'package:mobilizon_api/mobilizon_api.dart';
 
 /// Example demonstrating how to leverage Ferry's caching capabilities
@@ -5,7 +6,7 @@ import 'package:mobilizon_api/mobilizon_api.dart';
 void main() async {
   // Note: To use caching, you would need to use the CachedGraphQLClientProvider
   // instead of the default GraphQLClientProvider
-  
+
   final client = MobilizonClient(
     MobilizonClientConfig(
       apiUrl: 'https://your-mobilizon-instance.com/api',
@@ -14,10 +15,9 @@ void main() async {
   );
 
   try {
-    await client.auth.login(AuthCredentials(
-      email: 'user@example.com',
-      password: 'password',
-    ));
+    await client.auth.login(
+      AuthCredentials(email: 'user@example.com', password: 'password'),
+    );
 
     // Example 1: Benefits of caching
     await demonstrateCachingBenefits(client);
@@ -27,7 +27,6 @@ void main() async {
 
     // Example 3: Optimistic updates
     await demonstrateOptimisticUpdates(client);
-
   } finally {
     client.dispose();
   }
@@ -49,7 +48,7 @@ Future<void> demonstrateCachingBenefits(MobilizonClient client) async {
 
   // With CacheFirst policy, the second call would be instant:
   // print('Second call (from cache): <1ms');
-  
+
   print('\nNote: Current implementation uses NetworkOnly policy.');
   print('With CacheFirst, subsequent calls would return instantly from cache.');
 }
@@ -57,7 +56,7 @@ Future<void> demonstrateCachingBenefits(MobilizonClient client) async {
 /// Example 2: Watch queries for real-time updates
 Future<void> demonstrateWatchQueries(MobilizonClient client) async {
   print('\n=== Watch Queries (Not Currently Implemented) ===');
-  
+
   // This is how it COULD work with proper caching:
   /*
   // Watch for changes to profiles
@@ -77,7 +76,7 @@ Future<void> demonstrateWatchQueries(MobilizonClient client) async {
     ProfileUpdateData(name: 'New Name'),
   );
   */
-  
+
   print('Watch queries would allow real-time updates when data changes.');
   print('Currently not implemented - requires cache integration.');
 }
@@ -85,7 +84,7 @@ Future<void> demonstrateWatchQueries(MobilizonClient client) async {
 /// Example 3: Optimistic updates
 Future<void> demonstrateOptimisticUpdates(MobilizonClient client) async {
   print('\n=== Optimistic Updates (Not Currently Implemented) ===');
-  
+
   // This is how optimistic updates COULD work:
   /*
   // Update profile with optimistic response
@@ -105,19 +104,19 @@ Future<void> demonstrateOptimisticUpdates(MobilizonClient client) async {
   // UI would update immediately with optimistic data
   // Then replace with server response when it arrives
   */
-  
+
   print('Optimistic updates would provide instant UI feedback.');
   print('Currently not implemented - requires cache integration.');
 }
 
 /// Benefits of using Ferry's cache properly:
-/// 
+///
 /// 1. **Performance**: Cache-first queries return instantly
 /// 2. **Offline Support**: Cached data available without network
 /// 3. **Reduced API Calls**: Less load on the server
 /// 4. **Real-time Updates**: Watch queries auto-update when cache changes
 /// 5. **Optimistic UI**: Instant feedback for mutations
-/// 
+///
 /// Current limitations:
 /// - Using NetworkOnly policy (no caching)
 /// - Separate cache instances for auth/public clients
@@ -161,4 +160,4 @@ class YourTokenStorageImplementation implements TokenStorage {
 
   @override
   Future<void> clearTokens() async {}
-} 
+}
