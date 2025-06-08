@@ -1,3 +1,0 @@
-[submodule "packages/mobilizon_graphql/mobilizon"]
-	path = packages/mobilizon_graphql/mobilizon
-	url = git@github.com:berkeleynerd/mobilizon.git
