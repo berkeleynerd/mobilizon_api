@@ -1,4 +1,3 @@
-import 'package:mobilizon_api/core/models/models.dart';
 import 'package:mobilizon_api/mobilizon_api.dart';
 
 /// Example demonstrating how to leverage Ferry's caching capabilities
@@ -160,4 +159,15 @@ class YourTokenStorageImplementation implements TokenStorage {
 
   @override
   Future<void> clearTokens() async {}
+
+  @override
+  Future<bool> hasTokens() async {
+    final tokens = await getTokens();
+    return tokens != null;
+  }
+
+  @override
+  Future<Map<String, dynamic>> getStorageInfo() async {
+    return {'type': runtimeType.toString(), 'hasTokens': await hasTokens()};
+  }
 }

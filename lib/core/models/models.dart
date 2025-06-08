@@ -1,4 +1,7 @@
-// Barrel file for core domain models
+/// Barrel file for core domain models
+/// These models represent the core domain concepts shared across the API
+
+export 'common.dart';
 export 'instance_config.dart';
 export 'media.dart';
 export 'person.dart';

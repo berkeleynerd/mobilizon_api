@@ -1,4 +1,4 @@
-/// Media item for profile images and other media content
+/// Core media model representing a media object in Mobilizon
 class Media {
   final String id;
   final String url;

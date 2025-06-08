@@ -3,12 +3,12 @@ import 'package:http_parser/http_parser.dart';
 import 'package:mobilizon_graphql/mobilizon_graphql.dart';
 
 import '../auth/exceptions/auth_exception.dart';
-import '../auth/models/auth_models.dart';
 import '../core/client/graphql_client_provider.dart';
 import '../core/models/models.dart';
-import '../core/storage/storage.dart';
+import '../core/storage/token_manager.dart';
 import 'cache/profile_cache.dart';
 import 'exceptions/profile_exception.dart';
+import 'models/profile_models.dart';
 import 'validation/profile_validator.dart';
 
 /// Service for managing user profiles (identities) in Mobilizon
