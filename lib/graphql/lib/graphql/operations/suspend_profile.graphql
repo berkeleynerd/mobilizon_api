@@ -1,5 +1,0 @@
-mutation SuspendProfile($id: ID!) {
-  suspendProfile(id: $id) {
-    id
-  }
-}

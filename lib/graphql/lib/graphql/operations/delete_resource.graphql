@@ -1,5 +1,0 @@
-mutation DeleteResource($id: ID!) {
-  deleteResource(id: $id) {
-    id
-  }
-}

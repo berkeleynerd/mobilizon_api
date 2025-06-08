@@ -1,5 +1,0 @@
-mutation RevokeApplicationToken($appTokenId: String!) {
-  revokeApplicationToken(appTokenId: $appTokenId) {
-    id
-  }
-}

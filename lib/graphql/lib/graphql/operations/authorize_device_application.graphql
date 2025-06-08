@@ -1,9 +1,0 @@
-mutation AuthorizeDeviceApplication($clientId: String!, $userCode: String!) {
-  authorizeDeviceApplication(clientId: $clientId, userCode: $userCode) {
-    clientId
-    id
-    name
-    scope
-    website
-  }
-}

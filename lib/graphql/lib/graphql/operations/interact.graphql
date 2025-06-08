@@ -1,5 +1,0 @@
-query Interact($uri: String!) {
-  interact(uri: $uri) {
-    url
-  }
-}

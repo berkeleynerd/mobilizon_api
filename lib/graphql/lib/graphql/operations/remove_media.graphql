@@ -1,5 +1,0 @@
-mutation RemoveMedia($id: ID!) {
-  removeMedia(id: $id) {
-    id
-  }
-}

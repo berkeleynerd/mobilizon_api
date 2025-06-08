@@ -1,8 +1,0 @@
-mutation AuthorizeApplication($clientId: String!, $redirectUri: String!, $scope: String!, $state: String) {
-  authorizeApplication(clientId: $clientId, redirectUri: $redirectUri, scope: $scope, state: $state) {
-    clientId
-    code
-    scope
-    state
-  }
-}
