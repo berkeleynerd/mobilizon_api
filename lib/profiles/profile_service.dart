@@ -166,7 +166,7 @@ class ProfileService {
       Person? profile;
       try {
         profile = profiles.firstWhere((p) => p.id == profileId);
-      } catch (StateError) {
+      } on StateError {
         // Profile not found - return null gracefully
         return null;
       }

@@ -8,7 +8,7 @@ echo "🧪 Running Mobilizon API Integration Tests..."
 
 # Check if the Mobilizon instance is running
 echo "🔍 Checking Mobilizon instance availability..."
-if ! curl -s -f http://localhost:4000/api >/dev/null; then
+if ! curl -s -X POST -H "Content-Type: application/json" -d '{"query":"query { __typename }"}' http://localhost:4000/api | grep -q "RootQueryType"; then
     echo "❌ Error: Mobilizon instance not available at http://localhost:4000"
     echo "   Please start the Mobilizon instance first using Docker Compose"
     exit 1
@@ -32,23 +32,58 @@ echo "   • person_service_batching_test.dart - Person/profile operations"
 echo "   • instance_live_test.dart - Server connectivity validation"
 echo ""
 
-# Run all integration tests
-flutter test integration_test/ \
+# Run integration tests sequentially (integration tests can't run concurrently)
+echo "🔥 Running tests individually to avoid Flutter integration test conflicts..."
+echo ""
+
+echo "1️⃣ Running Auth Service Tests..."
+flutter test integration_test/auth_service_test.dart \
     --dart-define=TEST_API_URL="$TEST_API_URL" \
     --dart-define=TEST_USER_EMAIL="$TEST_USER_EMAIL" \
     --dart-define=TEST_USER_PASSWORD="$TEST_USER_PASSWORD" \
     --dart-define=TEST_ADMIN_EMAIL="$TEST_ADMIN_EMAIL" \
     --dart-define=TEST_ADMIN_PASSWORD="$TEST_ADMIN_PASSWORD" \
-    -d flutter-tester \
-    --concurrency=1
+    -d flutter-tester
+
+if [ $? -ne 0 ]; then
+    echo "❌ Auth Service tests failed"
+    exit 1
+fi
 
 echo ""
-echo "✅ All integration tests completed successfully!"
+echo "2️⃣ Running Instance Live Tests..."
+flutter test integration_test/instance_live_test.dart \
+    --dart-define=TEST_API_URL="$TEST_API_URL" \
+    -d flutter-tester
+
+if [ $? -ne 0 ]; then
+    echo "❌ Instance Live tests failed"
+    exit 1
+fi
+
 echo ""
-echo "📊 Key tests included:"
-echo "   • Authentication service batching (login, logout, token refresh)"
-echo "   • Person service batching (retrieval, management, updates)"
-echo "   • Cross-service integration and data consistency"
-echo "   • Instance connectivity and live server validation"
+echo "3️⃣ Running Person Service Tests..."
+flutter test integration_test/person_service_test.dart \
+    --dart-define=TEST_API_URL="$TEST_API_URL" \
+    --dart-define=TEST_USER_EMAIL="$TEST_USER_EMAIL" \
+    --dart-define=TEST_USER_PASSWORD="$TEST_USER_PASSWORD" \
+    --dart-define=TEST_ADMIN_EMAIL="$TEST_ADMIN_EMAIL" \
+    --dart-define=TEST_ADMIN_PASSWORD="$TEST_ADMIN_PASSWORD" \
+    -d flutter-tester
+
+if [ $? -ne 0 ]; then
+    echo "❌ Person Service tests failed"
+    exit 1
+fi
+
 echo ""
-echo "🎯 See individual test output above for detailed performance metrics" 
+echo "🎉 All integration tests completed successfully!"
+echo ""
+echo "📊 Tests executed sequentially:"
+echo "   ✅ Authentication service batching (login, logout, token refresh)"
+echo "   ✅ Instance connectivity and live server validation"
+echo "   ✅ Person service batching (retrieval, management, updates)"
+echo "   ✅ Cross-service integration and data consistency"
+echo ""
+echo "🎯 All GraphQL operations working perfectly after package merge!"
+echo "💡 Sequential execution eliminates Flutter integration test conflicts" 

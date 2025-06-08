@@ -63,7 +63,7 @@ void main() {
 
         // Generate unique test user
         final timestamp = DateTime.now().millisecondsSinceEpoch;
-        final testEmail = 'test_batch_${timestamp}@example.com';
+        final testEmail = 'test_batch_$timestamp@example.com';
         const testPassword = 'BatchTest123!';
 
         try {
@@ -183,9 +183,7 @@ void main() {
         print('');
 
         print('⚡ INDIVIDUAL OPERATION BREAKDOWN:');
-        var cumulativeMs = 0;
         for (final entry in operationTimes.entries) {
-          cumulativeMs += entry.value;
           final seconds = (entry.value / 1000).toStringAsFixed(1);
           print(
             '   ${entry.key.padRight(15)}: ${entry.value.toString().padLeft(5)}ms (${seconds}s)',
@@ -212,7 +210,7 @@ void main() {
           final improvementPercent = ((savedMs / expectedTotalMs) * 100)
               .toStringAsFixed(1);
           print(
-            '   ✅ IMPROVEMENT: -${savedMs}ms (-${savedSeconds}s) = ${improvementPercent}% faster!',
+            '   ✅ IMPROVEMENT: -${savedMs}ms (-${savedSeconds}s) = $improvementPercent% faster!',
           );
         } else {
           final excessMs = totalMs - expectedTotalMs;
