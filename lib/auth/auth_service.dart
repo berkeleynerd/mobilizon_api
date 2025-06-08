@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:mobilizon_graphql/mobilizon_graphql.dart';
+import 'package:mobilizon_api/graphql/lib/mobilizon_graphql.dart';
 
 import '../core/client/graphql_client_provider.dart';
 import '../core/models/models.dart';

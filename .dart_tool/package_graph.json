@@ -7,10 +7,16 @@
       "name": "mobilizon_api",
       "version": "0.1.0",
       "dependencies": [
+        "args",
+        "built_collection",
+        "built_value",
         "ferry",
         "ferry_exec",
+        "ferry_flutter",
+        "ferry_hive_store",
         "flutter",
         "gql",
+        "gql_code_builder_serializers",
         "gql_exec",
         "gql_http_link",
         "http",
@@ -18,13 +24,18 @@
         "jwt_decoder",
         "meta",
         "mime",
-        "mobilizon_graphql",
         "path"
       ],
       "devDependencies": [
+        "build_config",
+        "build_runner",
+        "built_value_generator",
+        "ferry_generator",
         "flutter_lints",
         "flutter_test",
+        "gql_code_builder",
         "integration_test",
+        "lints",
         "test"
       ]
     },
@@ -57,6 +68,115 @@
         "typed_data",
         "web_socket_channel",
         "webkit_inspection_protocol",
+        "yaml"
+      ]
+    },
+    {
+      "name": "lints",
+      "version": "6.0.0",
+      "dependencies": []
+    },
+    {
+      "name": "gql_code_builder",
+      "version": "0.14.0",
+      "dependencies": [
+        "analyzer",
+        "built_collection",
+        "built_value",
+        "code_builder",
+        "collection",
+        "gql",
+        "gql_code_builder_serializers",
+        "gql_exec",
+        "gql_tristate_value",
+        "path"
+      ]
+    },
+    {
+      "name": "ferry_generator",
+      "version": "0.14.0-dev.0",
+      "dependencies": [
+        "analyzer",
+        "build",
+        "built_collection",
+        "built_value",
+        "built_value_generator",
+        "code_builder",
+        "dart_style",
+        "ferry_exec",
+        "glob",
+        "gql",
+        "gql_code_builder",
+        "gql_code_builder_serializers",
+        "gql_tristate_value",
+        "path",
+        "pub_semver",
+        "yaml"
+      ]
+    },
+    {
+      "name": "built_value_generator",
+      "version": "8.10.1",
+      "dependencies": [
+        "analyzer",
+        "build",
+        "build_config",
+        "built_collection",
+        "built_value",
+        "collection",
+        "source_gen"
+      ]
+    },
+    {
+      "name": "build_config",
+      "version": "1.1.2",
+      "dependencies": [
+        "checked_yaml",
+        "json_annotation",
+        "path",
+        "pubspec_parse",
+        "yaml"
+      ]
+    },
+    {
+      "name": "build_runner",
+      "version": "2.4.15",
+      "dependencies": [
+        "analyzer",
+        "args",
+        "async",
+        "build",
+        "build_config",
+        "build_daemon",
+        "build_resolvers",
+        "build_runner_core",
+        "code_builder",
+        "collection",
+        "crypto",
+        "dart_style",
+        "frontend_server_client",
+        "glob",
+        "graphs",
+        "http",
+        "http_multi_server",
+        "io",
+        "js",
+        "logging",
+        "meta",
+        "mime",
+        "package_config",
+        "path",
+        "pool",
+        "pub_semver",
+        "pubspec_parse",
+        "shelf",
+        "shelf_web_socket",
+        "stack_trace",
+        "stream_transform",
+        "timing",
+        "watcher",
+        "web",
+        "web_socket_channel",
         "yaml"
       ]
     },
@@ -129,6 +249,56 @@
       ]
     },
     {
+      "name": "ferry_hive_store",
+      "version": "0.6.0+1",
+      "dependencies": [
+        "collection",
+        "ferry_store",
+        "hive",
+        "rxdart"
+      ]
+    },
+    {
+      "name": "ferry_flutter",
+      "version": "0.9.1-dev.4",
+      "dependencies": [
+        "ferry",
+        "ferry_exec",
+        "flutter",
+        "flutter_test",
+        "gql_exec"
+      ]
+    },
+    {
+      "name": "built_collection",
+      "version": "5.1.1",
+      "dependencies": []
+    },
+    {
+      "name": "built_value",
+      "version": "8.10.1",
+      "dependencies": [
+        "built_collection",
+        "collection",
+        "fixnum",
+        "meta"
+      ]
+    },
+    {
+      "name": "gql_code_builder_serializers",
+      "version": "0.1.0",
+      "dependencies": [
+        "built_value",
+        "gql",
+        "gql_exec"
+      ]
+    },
+    {
+      "name": "args",
+      "version": "2.7.0",
+      "dependencies": []
+    },
+    {
       "name": "gql_exec",
       "version": "1.0.0+1",
       "dependencies": [
@@ -176,24 +346,6 @@
         "meta",
         "normalize",
         "rxdart"
-      ]
-    },
-    {
-      "name": "mobilizon_graphql",
-      "version": "0.1.0",
-      "dependencies": [
-        "args",
-        "built_collection",
-        "built_value",
-        "ferry",
-        "ferry_exec",
-        "ferry_flutter",
-        "ferry_hive_store",
-        "gql",
-        "gql_code_builder_serializers",
-        "gql_exec",
-        "gql_http_link",
-        "http"
       ]
     },
     {
@@ -509,9 +661,223 @@
       ]
     },
     {
-      "name": "lints",
-      "version": "6.0.0",
+      "name": "gql_tristate_value",
+      "version": "1.0.0",
       "dependencies": []
+    },
+    {
+      "name": "code_builder",
+      "version": "4.10.1",
+      "dependencies": [
+        "built_collection",
+        "built_value",
+        "collection",
+        "matcher",
+        "meta"
+      ]
+    },
+    {
+      "name": "glob",
+      "version": "2.1.3",
+      "dependencies": [
+        "async",
+        "collection",
+        "file",
+        "path",
+        "string_scanner"
+      ]
+    },
+    {
+      "name": "pub_semver",
+      "version": "2.2.0",
+      "dependencies": [
+        "collection"
+      ]
+    },
+    {
+      "name": "dart_style",
+      "version": "3.1.0",
+      "dependencies": [
+        "analyzer",
+        "args",
+        "collection",
+        "package_config",
+        "path",
+        "pub_semver",
+        "source_span",
+        "yaml"
+      ]
+    },
+    {
+      "name": "build",
+      "version": "2.4.2",
+      "dependencies": [
+        "analyzer",
+        "async",
+        "convert",
+        "crypto",
+        "glob",
+        "logging",
+        "meta",
+        "package_config",
+        "path"
+      ]
+    },
+    {
+      "name": "source_gen",
+      "version": "2.0.0",
+      "dependencies": [
+        "analyzer",
+        "async",
+        "build",
+        "dart_style",
+        "glob",
+        "path",
+        "pub_semver",
+        "source_span",
+        "yaml"
+      ]
+    },
+    {
+      "name": "pubspec_parse",
+      "version": "1.5.0",
+      "dependencies": [
+        "checked_yaml",
+        "collection",
+        "json_annotation",
+        "pub_semver",
+        "yaml"
+      ]
+    },
+    {
+      "name": "json_annotation",
+      "version": "4.9.0",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "checked_yaml",
+      "version": "2.0.3",
+      "dependencies": [
+        "json_annotation",
+        "source_span",
+        "yaml"
+      ]
+    },
+    {
+      "name": "web",
+      "version": "1.1.1",
+      "dependencies": []
+    },
+    {
+      "name": "watcher",
+      "version": "1.1.1",
+      "dependencies": [
+        "async",
+        "path"
+      ]
+    },
+    {
+      "name": "timing",
+      "version": "1.0.2",
+      "dependencies": [
+        "json_annotation"
+      ]
+    },
+    {
+      "name": "stream_transform",
+      "version": "2.1.1",
+      "dependencies": []
+    },
+    {
+      "name": "logging",
+      "version": "1.3.0",
+      "dependencies": []
+    },
+    {
+      "name": "graphs",
+      "version": "2.3.2",
+      "dependencies": [
+        "collection"
+      ]
+    },
+    {
+      "name": "frontend_server_client",
+      "version": "4.0.0",
+      "dependencies": [
+        "async",
+        "path"
+      ]
+    },
+    {
+      "name": "crypto",
+      "version": "3.0.6",
+      "dependencies": [
+        "typed_data"
+      ]
+    },
+    {
+      "name": "build_runner_core",
+      "version": "8.0.0",
+      "dependencies": [
+        "async",
+        "build",
+        "build_config",
+        "build_resolvers",
+        "collection",
+        "convert",
+        "crypto",
+        "glob",
+        "graphs",
+        "json_annotation",
+        "logging",
+        "meta",
+        "package_config",
+        "path",
+        "pool",
+        "timing",
+        "watcher",
+        "yaml"
+      ]
+    },
+    {
+      "name": "build_resolvers",
+      "version": "2.4.4",
+      "dependencies": [
+        "analyzer",
+        "async",
+        "build",
+        "collection",
+        "convert",
+        "crypto",
+        "graphs",
+        "logging",
+        "package_config",
+        "path",
+        "pool",
+        "pub_semver",
+        "stream_transform",
+        "yaml"
+      ]
+    },
+    {
+      "name": "build_daemon",
+      "version": "4.0.4",
+      "dependencies": [
+        "built_collection",
+        "built_value",
+        "crypto",
+        "http_multi_server",
+        "logging",
+        "path",
+        "pool",
+        "shelf",
+        "shelf_web_socket",
+        "stream_transform",
+        "watcher",
+        "web_socket_channel"
+      ]
     },
     {
       "name": "webdriver",
@@ -649,18 +1015,29 @@
       ]
     },
     {
-      "name": "built_value",
-      "version": "8.10.1",
+      "name": "rxdart",
+      "version": "0.28.0",
+      "dependencies": []
+    },
+    {
+      "name": "ferry_store",
+      "version": "0.6.1",
       "dependencies": [
-        "built_collection",
         "collection",
-        "fixnum",
+        "rxdart"
+      ]
+    },
+    {
+      "name": "hive",
+      "version": "2.2.3",
+      "dependencies": [
+        "crypto",
         "meta"
       ]
     },
     {
-      "name": "built_collection",
-      "version": "5.1.1",
+      "name": "fixnum",
+      "version": "1.1.1",
       "dependencies": []
     },
     {
@@ -694,66 +1071,8 @@
       ]
     },
     {
-      "name": "hive",
-      "version": "2.2.3",
-      "dependencies": [
-        "crypto",
-        "meta"
-      ]
-    },
-    {
-      "name": "rxdart",
-      "version": "0.28.0",
-      "dependencies": []
-    },
-    {
-      "name": "ferry_hive_store",
-      "version": "0.6.0+1",
-      "dependencies": [
-        "collection",
-        "ferry_store",
-        "hive",
-        "rxdart"
-      ]
-    },
-    {
-      "name": "ferry_flutter",
-      "version": "0.9.1-dev.4",
-      "dependencies": [
-        "ferry",
-        "ferry_exec",
-        "flutter",
-        "flutter_test",
-        "gql_exec"
-      ]
-    },
-    {
-      "name": "gql_code_builder_serializers",
-      "version": "0.1.0",
-      "dependencies": [
-        "built_value",
-        "gql",
-        "gql_exec"
-      ]
-    },
-    {
-      "name": "args",
-      "version": "2.7.0",
-      "dependencies": []
-    },
-    {
-      "name": "web",
-      "version": "1.1.1",
-      "dependencies": []
-    },
-    {
       "name": "sky_engine",
       "version": "0.0.0",
-      "dependencies": []
-    },
-    {
-      "name": "logging",
-      "version": "1.3.0",
       "dependencies": []
     },
     {
@@ -761,13 +1080,6 @@
       "version": "1.0.1",
       "dependencies": [
         "web"
-      ]
-    },
-    {
-      "name": "crypto",
-      "version": "3.0.6",
-      "dependencies": [
-        "typed_data"
       ]
     },
     {
@@ -787,40 +1099,10 @@
       ]
     },
     {
-      "name": "glob",
-      "version": "2.1.3",
-      "dependencies": [
-        "async",
-        "collection",
-        "file",
-        "path",
-        "string_scanner"
-      ]
-    },
-    {
-      "name": "frontend_server_client",
-      "version": "4.0.0",
-      "dependencies": [
-        "async",
-        "path"
-      ]
-    },
-    {
       "name": "convert",
       "version": "3.1.2",
       "dependencies": [
         "typed_data"
-      ]
-    },
-    {
-      "name": "pubspec_parse",
-      "version": "1.5.0",
-      "dependencies": [
-        "checked_yaml",
-        "collection",
-        "json_annotation",
-        "pub_semver",
-        "yaml"
       ]
     },
     {
@@ -829,21 +1111,6 @@
       "dependencies": [
         "args",
         "yaml"
-      ]
-    },
-    {
-      "name": "watcher",
-      "version": "1.1.1",
-      "dependencies": [
-        "async",
-        "path"
-      ]
-    },
-    {
-      "name": "pub_semver",
-      "version": "2.2.0",
-      "dependencies": [
-        "collection"
       ]
     },
     {
@@ -880,38 +1147,9 @@
       ]
     },
     {
-      "name": "fixnum",
-      "version": "1.1.1",
-      "dependencies": []
-    },
-    {
       "name": "pedantic",
       "version": "1.11.1",
       "dependencies": []
-    },
-    {
-      "name": "ferry_store",
-      "version": "0.6.1",
-      "dependencies": [
-        "collection",
-        "rxdart"
-      ]
-    },
-    {
-      "name": "json_annotation",
-      "version": "4.9.0",
-      "dependencies": [
-        "meta"
-      ]
-    },
-    {
-      "name": "checked_yaml",
-      "version": "2.0.3",
-      "dependencies": [
-        "json_annotation",
-        "source_span",
-        "yaml"
-      ]
     }
   ],
   "configVersion": 1

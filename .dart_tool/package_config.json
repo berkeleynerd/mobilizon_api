@@ -32,6 +32,42 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "build",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/build-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "build_config",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/build_config-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "build_daemon",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/build_daemon-4.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "build_resolvers",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/build_resolvers-2.4.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "build_runner",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/build_runner-2.4.15",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "build_runner_core",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/build_runner_core-8.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
       "name": "built_collection",
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/built_collection-5.1.1",
       "packageUri": "lib/",
@@ -42,6 +78,12 @@
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/built_value-8.10.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "built_value_generator",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/built_value_generator-8.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
     },
     {
       "name": "characters",
@@ -68,6 +110,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "code_builder",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/code_builder-4.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
       "name": "collection",
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/collection-1.19.1",
       "packageUri": "lib/",
@@ -90,6 +138,12 @@
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/crypto-3.0.6",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "dart_style",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/dart_style-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
     },
     {
       "name": "fake_async",
@@ -120,6 +174,12 @@
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/ferry_flutter-0.9.1-dev.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "ferry_generator",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/ferry_generator-0.14.0-dev.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "ferry_hive_store",
@@ -194,6 +254,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "gql_code_builder",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/gql_code_builder-0.14.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "gql_code_builder_serializers",
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/gql_code_builder_serializers-0.1.0",
       "packageUri": "lib/",
@@ -216,6 +282,18 @@
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/gql_link-1.0.0+1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "gql_tristate_value",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/gql_tristate_value-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "graphs",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/graphs-2.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "hive",
@@ -326,12 +404,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "mobilizon_graphql",
-      "rootUri": "../packages/mobilizon_graphql",
-      "packageUri": "lib/",
-      "languageVersion": "3.8"
-    },
-    {
       "name": "node_preamble",
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/node_preamble-2.0.2",
       "packageUri": "lib/",
@@ -428,6 +500,12 @@
       "languageVersion": "3.7"
     },
     {
+      "name": "source_gen",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/source_gen-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
       "name": "source_map_stack_trace",
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/source_map_stack_trace-2.1.2",
       "packageUri": "lib/",
@@ -456,6 +534,12 @@
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/stream_channel-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "3.3"
+    },
+    {
+      "name": "stream_transform",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/stream_transform-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
     },
     {
       "name": "string_scanner",
@@ -492,6 +576,12 @@
       "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/test_core-0.6.8",
       "packageUri": "lib/",
       "languageVersion": "3.5"
+    },
+    {
+      "name": "timing",
+      "rootUri": "file:///Users/rebecca/.pub-cache/hosted/pub.dev/timing-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "typed_data",

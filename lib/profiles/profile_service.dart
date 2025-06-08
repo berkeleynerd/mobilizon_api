@@ -1,6 +1,6 @@
 import 'package:http/http.dart' show MultipartFile;
 import 'package:http_parser/http_parser.dart';
-import 'package:mobilizon_graphql/mobilizon_graphql.dart';
+import 'package:mobilizon_api/graphql/lib/mobilizon_graphql.dart';
 
 import '../core/client/graphql_client_provider.dart';
 import '../core/exceptions/exceptions.dart';

@@ -1,0 +1,34 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:mobilizon_api/graphql/lib/graphql/__generated__/serializers.gql.dart'
+    as _i1;
+
+part 'unregister_push.var.gql.g.dart';
+
+abstract class GUnregisterPushVars
+    implements Built<GUnregisterPushVars, GUnregisterPushVarsBuilder> {
+  GUnregisterPushVars._();
+
+  factory GUnregisterPushVars(
+          [void Function(GUnregisterPushVarsBuilder b) updates]) =
+      _$GUnregisterPushVars;
+
+  String get endpoint;
+  static Serializer<GUnregisterPushVars> get serializer =>
+      _$gUnregisterPushVarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GUnregisterPushVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUnregisterPushVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GUnregisterPushVars.serializer,
+        json,
+      );
+}
