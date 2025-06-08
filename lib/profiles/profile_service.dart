@@ -2,8 +2,8 @@ import 'package:http/http.dart' show MultipartFile;
 import 'package:http_parser/http_parser.dart';
 import 'package:mobilizon_graphql/mobilizon_graphql.dart';
 
-import '../auth/exceptions/auth_exception.dart';
 import '../core/client/graphql_client_provider.dart';
+import '../core/exceptions/exceptions.dart';
 import '../core/models/models.dart';
 import '../core/storage/token_manager.dart';
 import 'cache/profile_cache.dart';
@@ -364,13 +364,16 @@ class ProfileService {
   /// Returns the updated Person object
   ///
   /// Throws:
-  /// - [AuthException] if not authenticated
+  /// - [AuthenticationException] if not authenticated
   /// - [ProfileException] if the update fails or validation fails
   Future<Person> updateProfile(ProfileUpdateData updateData) async {
     // Verify authentication status
     final isAuth = await _isAuthenticated();
     if (!isAuth) {
-      throw AuthException('Not authenticated');
+      throw AuthenticationException(
+        'Not authenticated',
+        errorType: AuthenticationErrorType.notAuthenticated,
+      );
     }
 
     try {
@@ -460,7 +463,7 @@ class ProfileService {
 
       return updatedPerson;
     } catch (e) {
-      if (e is ProfileException || e is AuthException) {
+      if (e is ProfileException || e is AuthenticationException) {
         rethrow;
       }
       throw ProfileException(
@@ -507,7 +510,7 @@ class ProfileService {
   /// Returns the newly created Person profile
   ///
   /// Throws:
-  /// - [AuthException] if not authenticated
+  /// - [AuthenticationException] if not authenticated
   /// - [ProfileException] if creation fails or validation fails
   /// - [UsernameException] if username is invalid or taken
   /// - [UsernameTakenException] if username is already taken
@@ -521,7 +524,10 @@ class ProfileService {
     // Verify authentication
     final isAuth = await _isAuthenticated();
     if (!isAuth) {
-      throw AuthException('Not authenticated');
+      throw AuthenticationException(
+        'Not authenticated',
+        errorType: AuthenticationErrorType.notAuthenticated,
+      );
     }
 
     try {
@@ -675,7 +681,7 @@ class ProfileService {
       return newProfile;
     } catch (e) {
       if (e is ProfileException ||
-          e is AuthException ||
+          e is AuthenticationException ||
           e is UsernameException) {
         rethrow;
       }
@@ -785,14 +791,17 @@ class ProfileService {
   /// Returns the deleted Person profile data
   ///
   /// Throws:
-  /// - [AuthException] if not authenticated
+  /// - [AuthenticationException] if not authenticated
   /// - [ProfileException] if deletion fails or trying to delete the last profile
   /// - [ProfileNotFoundException] if the profile doesn't exist
   Future<Person> deleteProfile(String profileId) async {
     // Verify authentication
     final isAuth = await _isAuthenticated();
     if (!isAuth) {
-      throw AuthException('Not authenticated');
+      throw AuthenticationException(
+        'Not authenticated',
+        errorType: AuthenticationErrorType.notAuthenticated,
+      );
     }
 
     try {
@@ -864,7 +873,7 @@ class ProfileService {
 
       return deletedProfile;
     } catch (e) {
-      if (e is ProfileException || e is AuthException) {
+      if (e is ProfileException || e is AuthenticationException) {
         rethrow;
       }
       throw ProfileException(

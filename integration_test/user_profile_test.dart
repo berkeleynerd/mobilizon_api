@@ -3,9 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobilizon_api/auth/models/auth_models.dart';
-import 'package:mobilizon_api/core/models/models.dart';
-import 'package:mobilizon_api/mobilizon_client.dart';
+import 'package:mobilizon_api/mobilizon_api.dart';
 
 import 'helpers/token_storage.dart';
 

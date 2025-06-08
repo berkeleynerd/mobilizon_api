@@ -1,4 +1,4 @@
-import '../../../auth/models/auth_models.dart';
+import '../../models/auth.dart';
 import '../interfaces/token_storage.dart';
 
 /// Simple in-memory implementation of TokenStorage

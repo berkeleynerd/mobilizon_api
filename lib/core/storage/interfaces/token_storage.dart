@@ -1,4 +1,4 @@
-import '../../../auth/models/auth_models.dart';
+import '../../models/auth.dart';
 import '../exceptions/storage_exception.dart';
 
 /// Interface for secure token storage

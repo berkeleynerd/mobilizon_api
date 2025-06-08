@@ -28,21 +28,6 @@ class RegistrationData {
   });
 }
 
-/// Authentication token pair
-class TokenPair {
-  final String accessToken;
-  final String refreshToken;
-  final DateTime accessTokenExpiry;
-
-  const TokenPair({
-    required this.accessToken,
-    required this.refreshToken,
-    required this.accessTokenExpiry,
-  });
-
-  bool get isAccessTokenExpired => DateTime.now().isAfter(accessTokenExpiry);
-}
-
 /// Authentication result containing tokens and user info
 class AuthResult {
   final TokenPair tokens;

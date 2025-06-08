@@ -5,8 +5,6 @@
 
 library;
 
-import '../../core/models/models.dart';
-
 /// Profile update data
 class ProfileUpdateData {
   final String? name;

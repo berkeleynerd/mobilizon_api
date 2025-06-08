@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../../auth/models/auth_models.dart';
+import '../models/auth.dart';
 import 'exceptions/storage_exception.dart';
 import 'interfaces/token_storage.dart';
 

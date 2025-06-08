@@ -1,6 +1,6 @@
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../../../auth/models/auth_models.dart';
+import '../../models/auth.dart';
 import '../interfaces/token_storage.dart';
 // import '../exceptions/storage_exception.dart'; // Uncomment when implementing
 

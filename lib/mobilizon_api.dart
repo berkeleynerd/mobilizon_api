@@ -8,11 +8,16 @@ library;
 export 'auth/auth_service.dart';
 export 'auth/exceptions/auth_exception.dart';
 export 'auth/models/auth_models.dart';
-// Export core models
+export 'auth/validation/validation.dart';
+// Export core abstractions
+export 'core/cache/cache.dart';
+export 'core/exceptions/exceptions.dart';
 export 'core/models/models.dart';
 export 'core/storage/storage.dart' show TokenStorage;
+export 'core/validation/validation.dart';
 // Export main client
 export 'mobilizon_client.dart';
+export 'profiles/models/profile_models.dart';
 // Export profile module
 export 'profiles/profile_service.dart';
-export 'profiles/models/profile_models.dart';
+export 'profiles/validation/validation.dart';

@@ -1,4 +1,4 @@
-import 'package:mobilizon_api/auth/models/auth_models.dart';
+import 'package:mobilizon_api/core/models/auth.dart';
 import 'package:mobilizon_api/core/storage/storage.dart';
 
 /// Integration test implementation of TokenStorage
