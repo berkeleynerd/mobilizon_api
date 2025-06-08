@@ -1,11 +1,17 @@
 import 'dart:io';
 import 'lib/core/client/lightweight_graphql_client.dart';
 
+/// Template for testing schema optimization performance improvements
+///
+/// Usage: Modify the queries below to test any operation's original vs minimal version
+/// This demonstrates the proven pattern for schema bloat remediation
+
 void main() async {
   const apiUrl = 'http://localhost:4000/api';
 
-  print('🚀 CREATE PERSON PERFORMANCE COMPARISON');
-  print('==========================================');
+  print('🚀 SCHEMA OPTIMIZATION PERFORMANCE TEST');
+  print('=======================================');
+  print('Template for testing operation improvements');
   print('');
 
   await testCreatePersonPerformance();
