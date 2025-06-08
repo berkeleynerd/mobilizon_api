@@ -39,12 +39,11 @@ void main() {
 
     setUp(() {
       // Create a fresh client for each test with test token storage
-      client = MobilizonClient(
-        MobilizonClientConfig(
-          apiUrl: apiUrl,
-          enableDebugLogging: true,
-          tokenStorage: TestTokenStorage(),
-        ),
+      client = MobilizonClient.forTesting(
+        apiUrl: apiUrl,
+        tokenStorage: TestTokenStorage(),
+        enableDebugLogging: true,
+        maxRetryAttempts: 3,
       );
     });
 

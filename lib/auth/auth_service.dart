@@ -183,7 +183,9 @@ class AuthService {
       _currentUser = user;
 
       // Notify listeners of authentication state change
-      _authStateController.add(true);
+      if (!_authStateController.isClosed) {
+        _authStateController.add(true);
+      }
 
       // Return the result
       return AuthResult(tokens: tokens, user: user);
@@ -258,7 +260,9 @@ class AuthService {
       // Note: Registration doesn't return tokens, user needs to login separately
       // Clear any existing authentication state
       _currentUser = null;
-      _authStateController.add(false);
+      if (!_authStateController.isClosed) {
+        _authStateController.add(false);
+      }
 
       return user;
     } catch (e) {
@@ -293,7 +297,9 @@ class AuthService {
       _currentUser = null;
 
       // Notify listeners of authentication state change
-      _authStateController.add(false);
+      if (!_authStateController.isClosed) {
+        _authStateController.add(false);
+      }
 
       return true;
     } catch (e) {

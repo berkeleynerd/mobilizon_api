@@ -1,0 +1,18 @@
+mutation CreatePersonMinimal($avatar: MediaInput, $banner: MediaInput, $preferredUsername: String!) {
+  createPerson(avatar: $avatar, banner: $banner, preferredUsername: $preferredUsername) {
+    id
+    preferredUsername
+    name
+    summary
+    avatar {
+      id
+      url
+      alt
+    }
+    banner {
+      id
+      url
+      alt
+    }
+  }
+} 

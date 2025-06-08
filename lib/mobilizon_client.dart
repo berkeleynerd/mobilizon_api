@@ -21,17 +21,48 @@ class MobilizonClient {
     _initServices();
   }
 
+  /// Factory constructor for test environments with extended timeouts
+  factory MobilizonClient.forTesting({
+    required String apiUrl,
+    required TokenStorage tokenStorage,
+    bool enableDebugLogging = true,
+    OperationTimeouts? operationTimeouts,
+    int maxRetryAttempts = 3,
+  }) {
+    // Default test timeouts (more generous than production)
+    final testTimeouts =
+        operationTimeouts ??
+        const OperationTimeouts(
+          defaultSeconds: 60,
+          authenticationSeconds: 60,
+          registrationSeconds: 90,
+          querySeconds: 45,
+          mutationSeconds: 75,
+        );
+
+    return MobilizonClient(
+      MobilizonClientConfig(
+        apiUrl: apiUrl,
+        tokenStorage: tokenStorage,
+        enableDebugLogging: enableDebugLogging,
+        operationTimeouts: testTimeouts,
+        maxRetryAttempts: maxRetryAttempts,
+      ),
+    );
+  }
+
   /// Initialize all client services
   void _initServices() {
     // Initialize token manager with provided storage
     _tokenManager = TokenManager(_config.tokenStorage);
 
-    // Initialize GraphQL client provider
+    // Initialize GraphQL client provider with timeout configuration
     _graphQLClient = GraphQLClientProvider(
       apiUrl: _config.apiUrl,
       tokenManager: _tokenManager,
       enableDebugLogging: _config.enableDebugLogging,
-      networkTimeoutSeconds: _config.networkTimeoutSeconds,
+      operationTimeouts: _config.operationTimeouts,
+      maxRetryAttempts: _config.maxRetryAttempts,
     );
 
     // Initialize authentication service
@@ -70,13 +101,17 @@ class MobilizonClientConfig {
   /// to handle secure storage of authentication tokens.
   final TokenStorage tokenStorage;
 
-  /// Timeout for network requests in seconds
-  final int networkTimeoutSeconds;
+  /// Timeout configuration for different operation types
+  final OperationTimeouts operationTimeouts;
+
+  /// Maximum retry attempts for failed requests
+  final int maxRetryAttempts;
 
   const MobilizonClientConfig({
     required this.apiUrl,
     required this.tokenStorage,
     this.enableDebugLogging = false,
-    this.networkTimeoutSeconds = 30,
-  });
+    OperationTimeouts? operationTimeouts,
+    this.maxRetryAttempts = 2,
+  }) : operationTimeouts = operationTimeouts ?? const OperationTimeouts();
 }

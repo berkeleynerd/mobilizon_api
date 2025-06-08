@@ -150,8 +150,10 @@ class TokenManager {
       _cachedTokens = tokens;
       _lastCacheTime = DateTime.now();
 
-      // Notify listeners
-      _tokenChangeController.add(tokens);
+      // Notify listeners if stream is still open
+      if (!_tokenChangeController.isClosed) {
+        _tokenChangeController.add(tokens);
+      }
     } catch (e) {
       // Clear cache on storage failure to maintain consistency
       _cachedTokens = null;
@@ -182,7 +184,9 @@ class TokenManager {
   void updateTokensInCache(TokenPair tokens) {
     _cachedTokens = tokens;
     _lastCacheTime = DateTime.now();
-    _tokenChangeController.add(tokens);
+    if (!_tokenChangeController.isClosed) {
+      _tokenChangeController.add(tokens);
+    }
   }
 
   /// Clear all tokens (logout)
@@ -201,7 +205,9 @@ class TokenManager {
     // Always clear cache and notify, even if storage operation failed
     _cachedTokens = null;
     _lastCacheTime = null;
-    _tokenChangeController.add(null);
+    if (!_tokenChangeController.isClosed) {
+      _tokenChangeController.add(null);
+    }
   }
 
   /// Force refresh tokens from storage

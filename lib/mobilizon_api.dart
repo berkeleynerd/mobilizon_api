@@ -11,6 +11,7 @@ export 'auth/models/auth_models.dart';
 export 'auth/validation/validation.dart';
 // Export core abstractions
 export 'core/cache/cache.dart';
+export 'core/client/graphql_client_provider.dart' show OperationTimeouts;
 export 'core/exceptions/exceptions.dart';
 export 'core/models/models.dart';
 export 'core/storage/storage.dart' show TokenStorage;
@@ -20,4 +21,5 @@ export 'mobilizon_client.dart';
 export 'profiles/models/profile_models.dart';
 // Export profile module
 export 'profiles/profile_service.dart';
+export 'profiles/exceptions/profile_exception.dart';
 export 'profiles/validation/validation.dart';

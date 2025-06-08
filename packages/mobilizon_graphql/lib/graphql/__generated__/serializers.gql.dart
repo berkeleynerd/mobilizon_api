@@ -3717,6 +3717,16 @@ import 'package:mobilizon_graphql/graphql/operations/__generated__/create_person
         GcreatePerson_MediaFieldsVars,
         GcreatePerson_PersonFieldsVars,
         GcreatePerson_UserFieldsVars;
+import 'package:mobilizon_graphql/graphql/operations/__generated__/create_person_minimal.data.gql.dart'
+    show
+        GCreatePersonMinimalData,
+        GCreatePersonMinimalData_createPerson,
+        GCreatePersonMinimalData_createPerson_avatar,
+        GCreatePersonMinimalData_createPerson_banner;
+import 'package:mobilizon_graphql/graphql/operations/__generated__/create_person_minimal.req.gql.dart'
+    show GCreatePersonMinimalReq;
+import 'package:mobilizon_graphql/graphql/operations/__generated__/create_person_minimal.var.gql.dart'
+    show GCreatePersonMinimalVars;
 import 'package:mobilizon_graphql/graphql/operations/__generated__/create_post.data.gql.dart'
     show
         GCreatePostData,
@@ -17807,6 +17817,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCreatePersonData_createPerson_user_memberships,
   GCreatePersonData_createPerson_user_participations,
   GCreatePersonData_createPerson_user_settings,
+  GCreatePersonMinimalData,
+  GCreatePersonMinimalData_createPerson,
+  GCreatePersonMinimalData_createPerson_avatar,
+  GCreatePersonMinimalData_createPerson_banner,
+  GCreatePersonMinimalReq,
+  GCreatePersonMinimalVars,
   GCreatePersonReq,
   GCreatePersonVars,
   GCreatePostData,

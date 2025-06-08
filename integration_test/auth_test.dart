@@ -41,12 +41,11 @@ void main() {
     setUp(() {
       // Create a fresh client for each test with test token storage
       // This ensures each test starts with a clean authentication state
-      client = MobilizonClient(
-        MobilizonClientConfig(
-          apiUrl: apiUrl,
-          enableDebugLogging: true,
-          tokenStorage: TestTokenStorage(),
-        ),
+      client = MobilizonClient.forTesting(
+        apiUrl: apiUrl,
+        tokenStorage: TestTokenStorage(),
+        enableDebugLogging: true,
+        maxRetryAttempts: 3,
       );
     });
 

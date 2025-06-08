@@ -7,6 +7,45 @@ import '../models/auth.dart';
 import '../storage/storage.dart';
 import 'exceptions/graphql_exception.dart';
 
+/// Configuration for operation timeouts
+class OperationTimeouts {
+  final int defaultSeconds;
+  final int authenticationSeconds;
+  final int registrationSeconds;
+  final int querySeconds;
+  final int mutationSeconds;
+
+  const OperationTimeouts({
+    this.defaultSeconds = 30,
+    this.authenticationSeconds = 45,
+    this.registrationSeconds = 60,
+    this.querySeconds = 30,
+    this.mutationSeconds = 45,
+  });
+
+  /// Get timeout for specific operation
+  int getTimeoutForOperation(String operationName) {
+    final opName = operationName.toLowerCase();
+
+    if (opName.contains('login') || opName.contains('refresh')) {
+      return authenticationSeconds;
+    } else if (opName.contains('register') || opName.contains('createuser')) {
+      return registrationSeconds;
+    } else if (opName.contains('query') ||
+        opName.contains('get') ||
+        opName.contains('fetch')) {
+      return querySeconds;
+    } else if (opName.contains('mutation') ||
+        opName.contains('create') ||
+        opName.contains('update') ||
+        opName.contains('delete')) {
+      return mutationSeconds;
+    }
+
+    return defaultSeconds;
+  }
+}
+
 /// Provider for Ferry GraphQL client operations
 ///
 /// This class is a facade for the underlying Ferry client
@@ -21,8 +60,11 @@ class GraphQLClientProvider {
   /// Whether to enable debug logging
   final bool enableDebugLogging;
 
-  /// Timeout for network requests in seconds
-  final int networkTimeoutSeconds;
+  /// Timeout configuration for different operation types
+  final OperationTimeouts operationTimeouts;
+
+  /// Maximum retry attempts for failed requests
+  final int maxRetryAttempts;
 
   /// The underlying Ferry client
   late final Client _client;
@@ -34,8 +76,9 @@ class GraphQLClientProvider {
     required this.apiUrl,
     required this.tokenManager,
     this.enableDebugLogging = false,
-    this.networkTimeoutSeconds = 30,
-  }) {
+    OperationTimeouts? operationTimeouts,
+    this.maxRetryAttempts = 2,
+  }) : operationTimeouts = operationTimeouts ?? const OperationTimeouts() {
     _initClient();
   }
 
@@ -117,45 +160,13 @@ class GraphQLClientProvider {
     });
   }
 
-  /// Execute a GraphQL operation with authentication
+  /// Execute a GraphQL operation with authentication and retry logic
   ///
   /// The operation must be a Ferry-generated OperationRequest
   Future<OperationResponse<TData, TVars>> execute<TData, TVars>(
     OperationRequest<TData, TVars> request,
   ) async {
-    try {
-      // Check if authentication is needed and token is available
-      final tokens = await tokenManager.getCurrentTokens();
-      if (tokens == null) {
-        throw GraphQLException('Authentication required');
-      }
-
-      // Check if token is expired
-      if (tokens.isAccessTokenExpired) {
-        throw GraphQLException('Token expired');
-      }
-
-      // Make sure we have an auth client
-      if (_authClient == null) {
-        _createAuthClient(tokens);
-      }
-
-      // Execute the request with the authenticated client
-      return _authClient!
-          .request(request)
-          .first
-          .timeout(
-            Duration(seconds: networkTimeoutSeconds),
-            onTimeout: () => throw GraphQLException(
-              'Request timeout after $networkTimeoutSeconds seconds',
-            ),
-          );
-    } catch (e) {
-      throw GraphQLException(
-        'Failed to execute operation: ${request.operation.operationName}',
-        originalError: e,
-      );
-    }
+    return _executeWithRetry(request, true);
   }
 
   /// Execute a GraphQL operation without authentication
@@ -164,20 +175,110 @@ class GraphQLClientProvider {
   Future<OperationResponse<TData, TVars>> executePublic<TData, TVars>(
     OperationRequest<TData, TVars> request,
   ) {
+    return _executeWithRetry(request, false);
+  }
+
+  /// Execute operation with retry logic
+  Future<OperationResponse<TData, TVars>> _executeWithRetry<TData, TVars>(
+    OperationRequest<TData, TVars> request,
+    bool requireAuth,
+  ) async {
+    Exception? lastException;
+
+    for (int attempt = 0; attempt <= maxRetryAttempts; attempt++) {
+      try {
+        if (attempt > 0 && enableDebugLogging) {
+          print(
+            '🔄 [GraphQL] Retry attempt $attempt for ${request.operation.operationName}',
+          );
+        }
+
+        return await _executeSingle(request, requireAuth);
+      } catch (e) {
+        lastException = e as Exception;
+
+        // Don't retry authentication errors or client errors
+        if (e is GraphQLException) {
+          final message = e.message.toLowerCase();
+          if (message.contains('authentication') ||
+              message.contains('unauthorized') ||
+              message.contains('invalid') ||
+              message.contains('bad request')) {
+            rethrow;
+          }
+        }
+
+        // Wait before retry with exponential backoff
+        if (attempt < maxRetryAttempts) {
+          final delay = Duration(milliseconds: 1000 * (attempt + 1));
+          if (enableDebugLogging) {
+            print(
+              '⏳ [GraphQL] Waiting ${delay.inMilliseconds}ms before retry...',
+            );
+          }
+          await Future.delayed(delay);
+        }
+      }
+    }
+
+    // All retries failed, throw the last exception
+    throw lastException!;
+  }
+
+  /// Execute a single operation attempt
+  Future<OperationResponse<TData, TVars>> _executeSingle<TData, TVars>(
+    OperationRequest<TData, TVars> request,
+    bool requireAuth,
+  ) async {
     try {
-      // Execute the request without checking auth
-      return _client
+      Client clientToUse;
+
+      if (requireAuth) {
+        // Check if authentication is needed and token is available
+        final tokens = await tokenManager.getCurrentTokens();
+        if (tokens == null) {
+          throw GraphQLException('Authentication required');
+        }
+
+        // Check if token is expired
+        if (tokens.isAccessTokenExpired) {
+          throw GraphQLException('Token expired');
+        }
+
+        // Make sure we have an auth client
+        if (_authClient == null) {
+          _createAuthClient(tokens);
+        }
+
+        clientToUse = _authClient!;
+      } else {
+        clientToUse = _client;
+      }
+
+      // Get timeout for this specific operation
+      final timeoutSeconds = operationTimeouts.getTimeoutForOperation(
+        request.operation.operationName ?? 'unknown',
+      );
+
+      if (enableDebugLogging) {
+        print(
+          '⏱️ [GraphQL] Using ${timeoutSeconds}s timeout for ${request.operation.operationName}',
+        );
+      }
+
+      // Execute the request with operation-specific timeout
+      return await clientToUse
           .request(request)
           .first
           .timeout(
-            Duration(seconds: networkTimeoutSeconds),
+            Duration(seconds: timeoutSeconds),
             onTimeout: () => throw GraphQLException(
-              'Request timeout after $networkTimeoutSeconds seconds',
+              'Request timeout after ${timeoutSeconds} seconds for operation: ${request.operation.operationName}',
             ),
           );
     } catch (e) {
       throw GraphQLException(
-        'Failed to execute public operation: ${request.operation.operationName}',
+        'Failed to execute operation: ${request.operation.operationName}',
         originalError: e,
       );
     }

@@ -59,6 +59,8 @@ export 'graphql/operations/__generated__/create_feed_token.req.gql.dart';
 export 'graphql/operations/__generated__/create_group.req.gql.dart';
 // CreatePerson operation
 export 'graphql/operations/__generated__/create_person.req.gql.dart';
+// CreatePersonMinimal operation
+export 'graphql/operations/__generated__/create_person_minimal.req.gql.dart';
 // CreatePost operation
 export 'graphql/operations/__generated__/create_post.req.gql.dart';
 // CreateReport operation
