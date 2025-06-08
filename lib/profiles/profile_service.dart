@@ -589,7 +589,7 @@ class ProfileService {
 
       // Extract the created person data
       final createdPersonData = createResponse.data!.createPerson!;
-      final personId = createdPersonData.id as String? ?? '';
+      final personId = createdPersonData.id ?? '';
 
       // Step 2: Update the profile with name and summary if provided
       if (validatedName.isNotEmpty || validatedSummary != null) {
@@ -620,24 +620,23 @@ class ProfileService {
 
           // Map to our domain model with updated data
           final newProfile = Person(
-            id: (updatedPersonData.id as String?) ?? personId,
+            id: updatedPersonData.id ?? personId,
             preferredUsername:
-                (updatedPersonData.preferredUsername as String?) ??
-                validatedUsername,
-            name: updatedPersonData.name as String?,
-            summary: updatedPersonData.summary as String?,
+                updatedPersonData.preferredUsername ?? validatedUsername,
+            name: updatedPersonData.name,
+            summary: updatedPersonData.summary,
             avatar: updatedPersonData.avatar != null
                 ? Media(
-                    id: (updatedPersonData.avatar!.id as String?) ?? '',
-                    url: (updatedPersonData.avatar!.url as String?) ?? '',
-                    alt: updatedPersonData.avatar!.alt as String?,
+                    id: updatedPersonData.avatar!.id ?? '',
+                    url: updatedPersonData.avatar!.url ?? '',
+                    alt: updatedPersonData.avatar!.alt,
                   )
                 : null,
             banner: updatedPersonData.banner != null
                 ? Media(
-                    id: (updatedPersonData.banner!.id as String?) ?? '',
-                    url: (updatedPersonData.banner!.url as String?) ?? '',
-                    alt: updatedPersonData.banner!.alt as String?,
+                    id: updatedPersonData.banner!.id ?? '',
+                    url: updatedPersonData.banner!.url ?? '',
+                    alt: updatedPersonData.banner!.alt,
                   )
                 : null,
           );
@@ -655,22 +654,21 @@ class ProfileService {
       final newProfile = Person(
         id: personId,
         preferredUsername:
-            (createdPersonData.preferredUsername as String?) ??
-            validatedUsername,
-        name: (createdPersonData.name as String?) ?? validatedName,
-        summary: (createdPersonData.summary as String?) ?? validatedSummary,
+            createdPersonData.preferredUsername ?? validatedUsername,
+        name: createdPersonData.name ?? validatedName,
+        summary: createdPersonData.summary ?? validatedSummary,
         avatar: createdPersonData.avatar != null
             ? Media(
-                id: (createdPersonData.avatar!.id as String?) ?? '',
-                url: (createdPersonData.avatar!.url as String?) ?? '',
-                alt: createdPersonData.avatar!.alt as String?,
+                id: createdPersonData.avatar!.id ?? '',
+                url: createdPersonData.avatar!.url ?? '',
+                alt: createdPersonData.avatar!.alt,
               )
             : null,
         banner: createdPersonData.banner != null
             ? Media(
-                id: (createdPersonData.banner!.id as String?) ?? '',
-                url: (createdPersonData.banner!.url as String?) ?? '',
-                alt: createdPersonData.banner!.alt as String?,
+                id: createdPersonData.banner!.id ?? '',
+                url: createdPersonData.banner!.url ?? '',
+                alt: createdPersonData.banner!.alt,
               )
             : null,
       );

@@ -273,7 +273,7 @@ class GraphQLClientProvider {
           .timeout(
             Duration(seconds: timeoutSeconds),
             onTimeout: () => throw GraphQLException(
-              'Request timeout after ${timeoutSeconds} seconds for operation: ${request.operation.operationName}',
+              'Request timeout after $timeoutSeconds seconds for operation: ${request.operation.operationName}',
             ),
           );
     } catch (e) {

@@ -18,8 +18,8 @@ export 'core/storage/storage.dart' show TokenStorage;
 export 'core/validation/validation.dart';
 // Export main client
 export 'mobilizon_client.dart';
+export 'profiles/exceptions/profile_exception.dart';
 export 'profiles/models/profile_models.dart';
 // Export profile module
 export 'profiles/profile_service.dart';
-export 'profiles/exceptions/profile_exception.dart';
 export 'profiles/validation/validation.dart';
