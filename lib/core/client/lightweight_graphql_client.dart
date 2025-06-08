@@ -64,10 +64,13 @@ class LightweightGraphQLClient {
       final responseData = json.decode(responseBody) as Map<String, dynamic>;
 
       // Check for GraphQL errors
-      if (responseData['errors'] != null) {
-        final errors = responseData['errors'] as List;
-        final errorMessage = errors.isNotEmpty
-            ? errors.first['message'] ?? 'Unknown GraphQL error'
+      final errors = responseData['errors'];
+      if (errors != null) {
+        final errorsList = errors as List<dynamic>;
+        final errorMessage = errorsList.isNotEmpty
+            ? (errorsList.first as Map<String, dynamic>)['message']
+                      ?.toString() ??
+                  'Unknown GraphQL error'
             : 'Unknown GraphQL error';
         throw Exception('GraphQL Error: $errorMessage');
       }
@@ -264,8 +267,13 @@ class LightweightClientPerformanceTest {
       );
 
       // Extract access token
-      final loginData = loginResult['data']['login'];
-      final accessToken = loginData['accessToken'] as String;
+      final data = loginResult['data'] as Map<String, dynamic>?;
+      final loginData = data?['login'] as Map<String, dynamic>?;
+      final accessToken = loginData?['accessToken'] as String?;
+
+      if (accessToken == null) {
+        throw Exception('Failed to obtain access token from login response');
+      }
       print('   ✅ Access token obtained');
 
       // Test 2: LoggedPerson

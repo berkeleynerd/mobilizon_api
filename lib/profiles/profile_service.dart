@@ -119,6 +119,14 @@ class ProfileService {
           )
           .toList();
 
+      // If no valid profiles were found from identities query, fall back to logged person
+      if (profiles.isEmpty) {
+        final person = await getLoggedPerson();
+        final fallbackProfiles = person != null ? <Person>[person] : <Person>[];
+        _cache.cacheAllProfiles(fallbackProfiles);
+        return fallbackProfiles;
+      }
+
       // Cache the result
       _cache.cacheAllProfiles(profiles);
       return profiles;
@@ -153,18 +161,21 @@ class ProfileService {
 
     try {
       final profiles = await getAllProfiles();
-      final profile = profiles.firstWhere(
-        (profile) => profile.id == profileId,
-        orElse: () => throw ProfileNotFoundException(profileId),
-      );
+
+      // Find the profile without throwing exception
+      Person? profile;
+      try {
+        profile = profiles.firstWhere((p) => p.id == profileId);
+      } catch (StateError) {
+        // Profile not found - return null gracefully
+        return null;
+      }
 
       // Cache the result
       _cache.cacheProfileById(profile);
       return profile;
     } catch (e) {
-      if (e is ProfileNotFoundException) {
-        rethrow;
-      }
+      // Return null for any other errors
       return null;
     }
   }
@@ -249,15 +260,18 @@ class ProfileService {
   /// This method is more direct than getDefaultProfile() as it performs a dedicated query
   /// rather than extracting the profile from the user data
   Future<Person?> getLoggedPerson() async {
-    // Check cache first
+    // Check authentication FIRST
+    final isAuth = await _isAuthenticated();
+    if (!isAuth) {
+      // Clear cached person data if not authenticated
+      _cache.clearLoggedPersonCache();
+      return null;
+    }
+
+    // Check cache only after confirming authentication
     final cachedPerson = _cache.getCachedLoggedPerson();
     if (cachedPerson != null) {
       return cachedPerson;
-    }
-
-    final isAuth = await _isAuthenticated();
-    if (!isAuth) {
-      return null;
     }
 
     try {
@@ -820,8 +834,10 @@ class ProfileService {
         throw ProfileNotFoundException(profileId);
       }
 
-      // Create the delete request
-      final request = GDeletePersonReq((b) => b..vars.id = profileId);
+      // Create the delete request (using minimal operation)
+      final deleteRequestBuilder = GDeletePersonMinimalReqBuilder()
+        ..vars.id = profileId;
+      final request = deleteRequestBuilder.build();
 
       // Execute the delete mutation
       final response = await _graphQLClient.execute(request);
@@ -968,6 +984,18 @@ class ProfileService {
   /// This is useful when you want to force fresh data from the API
   void clearAllCaches() {
     _cache.clearAllCaches();
+    _currentActiveProfile = null;
+  }
+
+  /// Clears profile caches when authentication state changes
+  ///
+  /// Called when user logs out or authentication becomes invalid
+  void onAuthenticationStateChanged(bool isAuthenticated) {
+    if (!isAuthenticated) {
+      // Clear all cached profile data when user is no longer authenticated
+      _cache.clearAllCaches();
+      _currentActiveProfile = null;
+    }
   }
 
   /// Batch operation: Updates multiple profile fields at once

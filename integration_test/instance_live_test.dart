@@ -28,12 +28,10 @@ void main() {
   group('Mobilizon Instance Availability Tests', () {
     test('Instance API endpoint is reachable', () async {
       // Create a client with the test API URL and test token storage
-      final client = MobilizonClient(
-        MobilizonClientConfig(
-          apiUrl: apiUrl,
-          enableDebugLogging: true,
-          tokenStorage: TestTokenStorage(),
-        ),
+      final client = MobilizonClient.forTesting(
+        apiUrl: apiUrl,
+        tokenStorage: TestTokenStorage(),
+        enableDebugLogging: true,
       );
 
       try {

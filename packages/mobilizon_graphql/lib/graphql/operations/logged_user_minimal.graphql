@@ -1,0 +1,17 @@
+query LoggedUserMinimal {
+  loggedUser {
+    id
+    email
+    confirmedAt
+    role
+    actors {
+      id
+      preferredUsername
+      name
+      summary
+    }
+    settings {
+      timezone
+    }
+  }
+} 

@@ -3,74 +3,52 @@
 # Exit on error
 set -e
 
-echo "Running headless API tests for mobilizon_api package"
+# Mobilizon API Integration Tests Runner
+echo "🧪 Running Mobilizon API Integration Tests..."
 
-# Configure test environment variables for live server testing
+# Check if the Mobilizon instance is running
+echo "🔍 Checking Mobilizon instance availability..."
+if ! curl -s -f http://localhost:4000/api >/dev/null; then
+    echo "❌ Error: Mobilizon instance not available at http://localhost:4000"
+    echo "   Please start the Mobilizon instance first using Docker Compose"
+    exit 1
+fi
+echo "✅ Mobilizon instance is available"
+
 export TEST_API_URL="http://localhost:4000/api"
-export TEST_USER_EMAIL="rebecca@redshift.is" 
+export TEST_USER_EMAIL="rebecca@redshift.is"
 export TEST_USER_PASSWORD="airong7"
-export TEST_ADMIN_EMAIL="admin@admin.admin" 
+export TEST_ADMIN_EMAIL="admin@admin.admin"
 export TEST_ADMIN_PASSWORD="airong7"
 
-# Run flutter pub get to ensure dependencies are up to date
-flutter pub get
+echo "🚀 Running integration tests with live Mobilizon instance..."
+echo "   API URL: $TEST_API_URL"
+echo "   Test User: $TEST_USER_EMAIL"
+echo "   Admin User: $TEST_ADMIN_EMAIL"
+echo ""
+echo "📝 Test Structure:"
+echo "   • auth_service_batching_test.dart - Authentication operations"
+echo "   • person_service_batching_test.dart - Person/profile operations"
+echo "   • instance_live_test.dart - Server connectivity validation"
+echo ""
 
-# Define a delay to prevent rate limiting (in seconds)
-DELAY=2
+# Run all integration tests
+flutter test integration_test/ \
+    --dart-define=TEST_API_URL="$TEST_API_URL" \
+    --dart-define=TEST_USER_EMAIL="$TEST_USER_EMAIL" \
+    --dart-define=TEST_USER_PASSWORD="$TEST_USER_PASSWORD" \
+    --dart-define=TEST_ADMIN_EMAIL="$TEST_ADMIN_EMAIL" \
+    --dart-define=TEST_ADMIN_PASSWORD="$TEST_ADMIN_PASSWORD" \
+    -d flutter-tester \
+    --concurrency=1
 
-# First, run instance connectivity test to verify server access
-echo "Testing instance connectivity..."
-flutter test integration_test/instance_live_test.dart -d flutter-tester
-
-# Wait to avoid rate limiting
-echo "Waiting ${DELAY}s to avoid rate limiting..."
-sleep $DELAY
-
-# If connectivity test passes, run authentication tests
-echo "Testing authentication..."
-flutter test integration_test/auth_test.dart -d flutter-tester
-
-# Wait to avoid rate limiting
-echo "Waiting ${DELAY}s to avoid rate limiting..."
-sleep $DELAY
-
-# Run registration tests
-echo "Testing user registration..."
-flutter test integration_test/auth_registration_test.dart -d flutter-tester
-
-# Wait to avoid rate limiting
-echo "Waiting ${DELAY}s to avoid rate limiting..."
-sleep $DELAY
-
-# Run user profile retrieval tests
-echo "Testing user profile retrieval..."
-flutter test integration_test/user_profile_test.dart -d flutter-tester
-
-# Wait to avoid rate limiting
-echo "Waiting ${DELAY}s to avoid rate limiting..."
-sleep $DELAY
-
-# Run person profile retrieval tests
-echo "Testing person profile retrieval..."
-flutter test integration_test/person_test.dart -d flutter-tester
-
-# Wait to avoid rate limiting
-echo "Waiting ${DELAY}s to avoid rate limiting..."
-sleep $DELAY
-
-# Run profile update tests
-echo "Testing profile update functionality..."
-flutter test integration_test/profile_update_test.dart -d flutter-tester
-
-# Wait to avoid rate limiting
-echo "Waiting ${DELAY}s to avoid rate limiting..."
-sleep $DELAY
-
-# Run profile management tests
-echo "Testing profile management functionality..."
-flutter test integration_test/profile_management_test.dart -d flutter-tester
-
-# Run any other specific test files if they exist
-# For now, we're focusing on connectivity, authentication, and user profile
-
-echo "All tests completed successfully!" 
+echo ""
+echo "✅ All integration tests completed successfully!"
+echo ""
+echo "📊 Key tests included:"
+echo "   • Authentication service batching (login, logout, token refresh)"
+echo "   • Person service batching (retrieval, management, updates)"
+echo "   • Cross-service integration and data consistency"
+echo "   • Instance connectivity and live server validation"
+echo ""
+echo "🎯 See individual test output above for detailed performance metrics" 

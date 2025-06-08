@@ -1,0 +1,18 @@
+mutation DeletePersonMinimal($id: ID!) {
+  deletePerson(id: $id) {
+    id
+    preferredUsername
+    name
+    summary
+    avatar {
+      id
+      url
+      alt
+    }
+    banner {
+      id
+      url
+      alt
+    }
+  }
+} 

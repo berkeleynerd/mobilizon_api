@@ -29,15 +29,17 @@ class MobilizonClient {
     OperationTimeouts? operationTimeouts,
     int maxRetryAttempts = 3,
   }) {
-    // Default test timeouts (more generous than production)
+    // Optimized test timeouts based on actual operation performance
+    // Operations typically complete in 10-15 seconds, so we use conservative
+    // but realistic timeouts instead of the previous 60-90 second values
     final testTimeouts =
         operationTimeouts ??
         const OperationTimeouts(
-          defaultSeconds: 60,
-          authenticationSeconds: 60,
-          registrationSeconds: 90,
-          querySeconds: 45,
-          mutationSeconds: 75,
+          defaultSeconds: 20, // Reduced from 60s
+          authenticationSeconds: 20, // Reduced from 60s
+          registrationSeconds: 25, // Reduced from 90s
+          querySeconds: 15, // Reduced from 45s
+          mutationSeconds: 20, // Reduced from 75s
         );
 
     return MobilizonClient(
@@ -77,7 +79,18 @@ class MobilizonClient {
       tokenManager: _tokenManager,
     );
 
+    // Set up cross-service coordination for cache clearing
+    _setupCacheClearingCoordination();
+
     // TODO: Initialize other services (user, admin)
+  }
+
+  /// Set up coordination between services for cache clearing
+  void _setupCacheClearingCoordination() {
+    // Listen to authentication state changes and clear profile caches accordingly
+    _authService.authStateChanges.listen((isAuthenticated) {
+      _profileService.onAuthenticationStateChanged(isAuthenticated);
+    });
   }
 
   /// Dispose all resources

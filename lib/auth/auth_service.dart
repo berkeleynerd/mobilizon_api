@@ -44,8 +44,8 @@ class AuthService {
     // We're authenticated but don't have user data
     // Fetch current user data using the GraphQL API
     try {
-      // Create the get logged user request
-      final request = GLoggedUserReq();
+      // Create the get logged user request (using minimal operation)
+      final request = GLoggedUserMinimalReq();
 
       // Execute the query
       final response = await _graphQLClient.execute(request);
@@ -69,7 +69,10 @@ class AuthService {
           .where((actor) => actor != null)
           .map((actor) {
             // Only include profiles with valid data
-            if (actor!.id == null || actor.preferredUsername == null) {
+            if (actor!.id == null ||
+                actor.id!.isEmpty ||
+                actor.preferredUsername == null ||
+                actor.preferredUsername!.isEmpty) {
               return null;
             }
 
@@ -91,6 +94,9 @@ class AuthService {
       if (userData.settings != null) {
         settings = UserSettings(timezone: userData.settings?.timezone?.value);
       }
+
+      // If no profiles were found, this might be due to the minimal query structure
+      // Add a note that profiles might be empty and should be fetched via ProfileService if needed
 
       // Create and cache the user object
       _currentUser = User(
@@ -234,18 +240,29 @@ class AuthService {
       final userData = response.data!.createUser!;
 
       // Map profiles from actors
-      final profiles = userData.actors.where((actor) => actor != null).map((
-        actor,
-      ) {
-        return Person(
-          id: actor!.id ?? '',
-          preferredUsername: actor.preferredUsername ?? '',
-          name: actor.name,
-          summary: null,
-          avatar: null,
-          banner: null,
-        );
-      }).toList();
+      final profiles = userData.actors
+          .where((actor) => actor != null)
+          .map((actor) {
+            // Only include profiles with valid data
+            if (actor!.id == null ||
+                actor.id!.isEmpty ||
+                actor.preferredUsername == null ||
+                actor.preferredUsername!.isEmpty) {
+              return null;
+            }
+
+            return Person(
+              id: actor.id!,
+              preferredUsername: actor.preferredUsername!,
+              name: actor.name,
+              summary: null,
+              avatar: null,
+              banner: null,
+            );
+          })
+          .where((person) => person != null)
+          .cast<Person>()
+          .toList();
 
       // Create the user object
       final user = User(
@@ -395,16 +412,29 @@ class AuthService {
   // Helper method to map GraphQL user to domain model
   User _mapGraphQLUserToUser(GLoginData_login_user user) {
     // Create a list of profiles from actors
-    final profiles = user.actors.where((actor) => actor != null).map((actor) {
-      return Person(
-        id: actor!.id ?? '',
-        preferredUsername: actor.preferredUsername ?? '',
-        name: actor.name,
-        summary: actor.summary,
-        avatar: null,
-        banner: null,
-      );
-    }).toList();
+    final profiles = user.actors
+        .where((actor) => actor != null)
+        .map((actor) {
+          // Only include profiles with valid data
+          if (actor!.id == null ||
+              actor.id!.isEmpty ||
+              actor.preferredUsername == null ||
+              actor.preferredUsername!.isEmpty) {
+            return null;
+          }
+
+          return Person(
+            id: actor.id!,
+            preferredUsername: actor.preferredUsername!,
+            name: actor.name,
+            summary: actor.summary,
+            avatar: null,
+            banner: null,
+          );
+        })
+        .where((person) => person != null)
+        .cast<Person>()
+        .toList();
 
     return User(
       id: user.id ?? '',
