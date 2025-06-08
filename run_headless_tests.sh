@@ -27,9 +27,9 @@ echo "   Test User: $TEST_USER_EMAIL"
 echo "   Admin User: $TEST_ADMIN_EMAIL"
 echo ""
 echo "📝 Test Structure:"
+echo "   • Server connectivity validation (GraphQL health check)"
 echo "   • auth_service_batching_test.dart - Authentication operations"
 echo "   • person_service_batching_test.dart - Person/profile operations"
-echo "   • instance_live_test.dart - Server connectivity validation"
 echo ""
 
 # Run integration tests sequentially (integration tests can't run concurrently)
@@ -51,18 +51,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo ""
-echo "2️⃣ Running Instance Live Tests..."
-flutter test integration_test/instance_live_test.dart \
-    --dart-define=TEST_API_URL="$TEST_API_URL" \
-    -d flutter-tester
-
-if [ $? -ne 0 ]; then
-    echo "❌ Instance Live tests failed"
-    exit 1
-fi
-
-echo ""
-echo "3️⃣ Running Person Service Tests..."
+echo "2️⃣ Running Person Service Tests..."
 flutter test integration_test/person_service_test.dart \
     --dart-define=TEST_API_URL="$TEST_API_URL" \
     --dart-define=TEST_USER_EMAIL="$TEST_USER_EMAIL" \
@@ -80,8 +69,8 @@ echo ""
 echo "🎉 All integration tests completed successfully!"
 echo ""
 echo "📊 Tests executed sequentially:"
+echo "   ✅ Server connectivity validation (GraphQL health check)"
 echo "   ✅ Authentication service batching (login, logout, token refresh)"
-echo "   ✅ Instance connectivity and live server validation"
 echo "   ✅ Person service batching (retrieval, management, updates)"
 echo "   ✅ Cross-service integration and data consistency"
 echo ""

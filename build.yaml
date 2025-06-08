@@ -4,7 +4,7 @@ targets:
       ferry_generator|graphql_builder:
         enabled: true
         options:
-          schema: mobilizon_api|lib/graphql/lib/graphql/schema.graphql
+          schema: mobilizon_api|lib/graphql/schema.graphql
           type_overrides:
             DateTime:
               name: DateTime
@@ -14,8 +14,8 @@ targets:
       ferry_generator|serializer_builder:
         enabled: true
         options:
-          schema: mobilizon_api|lib/graphql/lib/graphql/schema.graphql
-          output: lib/graphql/lib/graphql/__generated__/serializers.gql.dart
+          schema: mobilizon_api|lib/graphql/schema.graphql
+          output: lib/graphql/__generated__/serializers.gql.dart
           custom_serializers:
             - import: "package:built_value/iso_8601_date_time_serializer.dart"
               name: Iso8601DateTimeSerializer
