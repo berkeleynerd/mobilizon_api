@@ -144,21 +144,21 @@ These are nice-to-have improvements.
 - [ ] Add debug logging standardization
 
 ### 3.3 Advanced Caching Features
-- [ ] Add cache warming support
-- [ ] Add cache eviction policies
-- [ ] Add cache size limits
-- [ ] Add cache serialization for persistence
-- [ ] Add cache hit/miss metrics
+- ~~Add cache warming support~~ → **DEFERRED** (premature optimization)
+- ✅ Cache eviction policies already implemented (TTL + LRU)
+- ✅ Cache size limits already implemented (SimpleCache maxEntries)
+- ✅ Cache serialization already implemented (Ferry + Hive)
+- ~~Add cache hit/miss metrics~~ → **DEFERRED** (over-engineering without clear use case)
 
 ## Phase 4: Documentation and Migration
 Final steps to complete the rationalization.
 
-### 4.1 Update Documentation
-- [ ] Update CLAUDE.md with new patterns
-- [ ] Update README with architecture changes
-- [ ] Create migration guide for consumers
-- [ ] Update example code
-- [ ] Add architecture decision records (ADRs)
+### 4.1 Update Documentation ✅
+- [x] Update CLAUDE.md with new patterns
+- [x] Create README with architecture changes
+- [x] Create migration guide for consumers
+- [x] Verify example code is current
+- [x] Add architecture decision records (ADRs)
 
 ### 4.2 Deprecation Notices
 - [ ] Mark old patterns as deprecated

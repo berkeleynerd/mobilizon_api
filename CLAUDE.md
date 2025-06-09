@@ -61,8 +61,10 @@ The Mobilizon API client uses a layered architecture with clear separation of co
    - Provides factory methods for different environments (testing vs production)
 
 2. **Service Layer**: Domain-specific services that handle business logic
-   - `AuthService`: Authentication flows (login, logout, token refresh, user management)
-   - `ProfileService`: Profile/Person management (CRUD operations, caching, validation)
+   - **BaseService**: Common base class providing shared functionality (authentication checks, error handling utilities)
+   - `AuthService`: Authentication flows (login, logout, token refresh, user management) - extends BaseService
+   - `ProfileService`: Profile/Person management (CRUD operations, caching, validation) - extends BaseService  
+   - `MediaService`: File upload handling with multipart support via Dio - extends BaseService
    - Services coordinate through event streams (e.g., `authStateChanges`)
 
 3. **GraphQL Layer**: Ferry-based GraphQL client with code generation
@@ -74,10 +76,10 @@ The Mobilizon API client uses a layered architecture with clear separation of co
 4. **Core Infrastructure** (`lib/core/`):
    - **Client**: GraphQL client provider with timeout configuration and retry logic
    - **Storage**: Token storage abstraction requiring consumer implementation
-   - **Cache**: Profile-specific caching with TTL and invalidation
-   - **Exceptions**: Typed exceptions for different failure modes
+   - **Cache**: Unified cache strategy interface with TTL and simple implementations
+   - **Exceptions**: Hierarchical exception system with ServiceException base class
    - **Models**: Domain models (User, Person, Media, etc.)
-   - **Validation**: Input validation for usernames, names, summaries
+   - **Validation**: Standardized validation pattern used across all services
 
 ### Token Management Architecture
 The client uses an abstraction pattern for token storage, requiring consumers to provide their own implementation:
@@ -99,6 +101,92 @@ final client = MobilizonClient(
 );
 ```
 
+### Service Rationalization Patterns
+The service layer follows standardized patterns implemented during architecture rationalization:
+
+#### BaseService Pattern
+All services extend a common `BaseService` class providing:
+- **Authentication checks**: `isAuthenticated()` method available to all services
+- **Error handling utilities**: `executeOperation()` method with ServiceResult pattern
+- **Consistent service initialization**: Standardized constructor pattern
+
+```dart
+abstract class BaseService {
+  final GraphQLClientProvider _clientProvider;
+  final TokenManager _tokenManager;
+  
+  BaseService(this._clientProvider, this._tokenManager);
+  
+  Future<bool> isAuthenticated() async { /* shared implementation */ }
+  
+  Future<ServiceResult<T>> executeOperation<T>(
+    Future<T> Function() operation,
+  ) async { /* shared error handling */ }
+}
+```
+
+#### Validator Pattern Standardization
+Each service uses its dedicated validator for input validation:
+- `AuthValidator`: Email, password, locale validation for authentication
+- `ProfileValidator`: Username, name, summary validation for profiles  
+- `MediaValidator`: File size, type, name validation for uploads
+
+```dart
+// Consistent validation pattern across all services
+final validated = AuthValidator.validateLogin(
+  email: credentials.email,
+  password: credentials.password,
+);
+```
+
+#### Exception Hierarchy
+Standardized exception handling with common base class:
+```dart
+abstract class ServiceException implements Exception {
+  final String message;
+  final dynamic originalError;
+  const ServiceException(this.message, {this.originalError});
+}
+
+// Service-specific exceptions extend ServiceException
+class AuthException extends ServiceException {
+  final AuthErrorType errorType;
+  // ...
+}
+```
+
+#### Cache Strategy Interface
+Unified caching interface with multiple implementations:
+```dart
+abstract class CacheStrategy<T> {
+  T? get(String key);
+  void set(String key, T value);
+  void remove(String key);
+  void clear();
+  bool has(String key);
+  Map<String, dynamic> getStatistics();
+}
+
+// Implementations:
+// - TTLCache: Time-based expiration (used by ProfileService)
+// - SimpleCache: LRU eviction with size limits (used by MediaService)
+```
+
+#### ServiceResult Pattern
+Alternative error handling approach using Result types:
+```dart
+// Traditional exception approach
+final profile = await profileService.createProfile(data);
+
+// ServiceResult approach for explicit error handling
+final result = await profileService.createProfileSafe(data);
+if (result.isSuccess) {
+  final profile = result.data!;
+} else {
+  final error = result.error!;
+}
+```
+
 ### GraphQL Operation Architecture
 The codebase uses Ferry for GraphQL operations with a specific pattern:
 
@@ -113,16 +201,19 @@ login.graphql → GLoginReq/GLoginData → AuthService.login() → AuthResult
 ```
 
 ### Caching Strategy
-The client implements a multi-level caching approach:
+The client implements a unified caching approach with standardized interfaces:
 
-1. **Profile Cache** (`ProfileCache`): In-memory cache with TTL for profile data
-2. **Token Manager**: Manages authentication tokens with automatic refresh
-3. **GraphQL Cache**: Currently disabled (using NetworkOnly policy)
+1. **Cache Strategy Interface**: Common interface (`CacheStrategy<T>`) implemented by:
+   - **TTLCache**: Time-based expiration used by ProfileService (5-minute TTL)
+   - **SimpleCache**: LRU eviction with size limits used by MediaService (50 entries max)
+2. **Token Manager**: Manages authentication tokens with 5-minute cache TTL
+3. **GraphQL Cache**: Ferry cache with Hive persistence for offline support
 
 Cache invalidation occurs on:
-- Authentication state changes
-- Profile updates/deletions
+- Authentication state changes (clears all profile caches)
+- Profile updates/deletions (selective cache invalidation)
 - Manual refresh calls
+- Automatic TTL expiration
 
 ### Testing Architecture
 Integration tests use a headless Flutter environment with:
@@ -154,23 +245,56 @@ Stream<bool> get authStateChanges => _authStateController.stream;
 ```
 
 ### Validation Pattern
-Input validation happens before API calls:
+Input validation happens before API calls using standardized validators:
 ```dart
+// AuthService uses AuthValidator
+final validated = AuthValidator.validateLogin(
+  email: credentials.email,
+  password: credentials.password,
+);
+
+// ProfileService uses ProfileValidator  
 final validatedData = ProfileValidator.validateProfileCreation(
   username: username,
   name: name,
   summary: summary,
 );
+
+// MediaService uses MediaValidator
+final validated = MediaValidator.validateUpload(file);
 ```
 
-### Error Propagation
-Errors are wrapped in typed exceptions with context:
+### Error Handling Patterns
+Two approaches are available for error handling:
+
+#### Traditional Exception Approach
+Errors are wrapped in typed exceptions extending ServiceException:
 ```dart
-throw ProfileException(
-  'Failed to create profile: ${errorMessages}',
-  originalError: graphqlErrors,
-  errorType: ProfileErrorType.creationFailed,
-);
+try {
+  final profile = await profileService.createProfile(data);
+} catch (e) {
+  if (e is ProfileException) {
+    switch (e.errorType) {
+      case ProfileErrorType.usernameUnavailable:
+        // Handle username conflict
+      case ProfileErrorType.creationFailed:
+        // Handle general creation failure
+    }
+  }
+}
+```
+
+#### ServiceResult Approach
+Explicit error handling without exceptions:
+```dart
+final result = await profileService.createProfileSafe(data);
+if (result.isSuccess) {
+  final profile = result.data!;
+  // Handle success
+} else {
+  final error = result.error!;
+  // Handle error without try-catch
+}
 ```
 
 ## Environment Configuration
