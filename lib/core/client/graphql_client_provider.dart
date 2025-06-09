@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:ferry/ferry.dart';
 import 'package:ferry_hive_store/ferry_hive_store.dart';
-import 'package:gql_http_link/gql_http_link.dart';
+import 'package:gql_dio_link/gql_dio_link.dart';
 import 'package:hive/hive.dart';
 
 import '../models/auth.dart';
 import '../storage/storage.dart';
 import 'exceptions/graphql_exception.dart';
+import 'multipart_link.dart';
 
 /// Configuration for operation timeouts
 class OperationTimeouts {
@@ -101,22 +102,39 @@ class GraphQLClientProvider {
     // Initialize cache asynchronously
     _initializeCache();
 
-    // Create an HTTP link for the GraphQL API with default headers
-    final httpLink = HttpLink(
-      apiUrl,
-      defaultHeaders: {
-        'Content-Type': 'application/json',
+    // Create a Dio client
+    final dio = Dio(BaseOptions(
+      baseUrl: apiUrl,
+      headers: {
         'Accept': 'application/json',
       },
+    ));
+
+    // Create a link chain: MultipartLink -> DioLink
+    // MultipartLink handles file uploads, DioLink handles regular requests
+    final multipartLink = MultipartLink(
+      apiUrl,
+      defaultHeaders: {
+        'Accept': 'application/json',
+      },
+      dioClient: dio,
     );
+
+    final dioLink = DioLink(
+      apiUrl,
+      client: dio,
+    );
+
+    // Chain the links: multipart first, then dio as fallback
+    final link = Link.from([multipartLink, dioLink]);
 
     // Create a temporary in-memory cache until persistent cache is ready
     _sharedCache = Cache();
 
-    // Create the default client with the HTTP link and cache
+    // Create the default client with the link chain and cache
     _client = Client(
-      link: httpLink,
-      cache: _sharedCache!,
+      link: link,
+      cache: _sharedCache,
       defaultFetchPolicies: {
         // Use CacheFirst for queries for instant responses
         OperationType.query: FetchPolicy.CacheFirst,
@@ -184,16 +202,30 @@ class GraphQLClientProvider {
   /// Update clients with new cache instance
   void _updateClientsWithCache(Cache cache) {
     // Recreate clients with new cache
-    final httpLink = HttpLink(
-      apiUrl,
-      defaultHeaders: {
-        'Content-Type': 'application/json',
+    final dio = Dio(BaseOptions(
+      baseUrl: apiUrl,
+      headers: {
         'Accept': 'application/json',
       },
+    ));
+
+    final multipartLink = MultipartLink(
+      apiUrl,
+      defaultHeaders: {
+        'Accept': 'application/json',
+      },
+      dioClient: dio,
     );
 
+    final dioLink = DioLink(
+      apiUrl,
+      client: dio,
+    );
+
+    final link = Link.from([multipartLink, dioLink]);
+
     _client = Client(
-      link: httpLink,
+      link: link,
       cache: cache,
       defaultFetchPolicies: {
         OperationType.query: FetchPolicy.CacheFirst,
@@ -212,20 +244,36 @@ class GraphQLClientProvider {
 
   /// Create an authenticated client with the current token
   void _createAuthClient(TokenPair tokens) {
-    // Create an HTTP link with the auth token
-    final authHttpLink = HttpLink(
-      apiUrl,
-      defaultHeaders: {
-        'Content-Type': 'application/json',
+    // Create a Dio client with auth token
+    final dio = Dio(BaseOptions(
+      baseUrl: apiUrl,
+      headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${tokens.accessToken}',
       },
+    ));
+
+    // Create link chain with auth headers
+    final multipartLink = MultipartLink(
+      apiUrl,
+      defaultHeaders: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${tokens.accessToken}',
+      },
+      dioClient: dio,
     );
+
+    final dioLink = DioLink(
+      apiUrl,
+      client: dio,
+    );
+
+    final link = Link.from([multipartLink, dioLink]);
 
     // Create the auth client with shared cache
     _authClient = Client(
-      link: authHttpLink,
-      cache: _sharedCache!, // Use shared cache for consistency
+      link: link,
+      cache: _sharedCache, // Use shared cache for consistency
       defaultFetchPolicies: {
         OperationType.query: FetchPolicy.CacheFirst,
         OperationType.mutation: FetchPolicy.NetworkOnly,

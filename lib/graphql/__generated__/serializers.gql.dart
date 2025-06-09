@@ -9,6 +9,8 @@ import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     show OperationSerializer;
+import 'package:mobilizon_api/core/serializers/multipart_file_serializer.dart'
+    show MultipartFileSerializer;
 import 'package:mobilizon_api/graphql/__generated__/schema.schema.gql.dart'
     show
         GActionLogAction,
@@ -707,12 +709,22 @@ import 'package:mobilizon_api/graphql/operations/__generated__/update_person.req
     show GUpdatePersonReq;
 import 'package:mobilizon_api/graphql/operations/__generated__/update_person.var.gql.dart'
     show GUpdatePersonVars;
+import 'package:mobilizon_api/graphql/operations/__generated__/upload_media.data.gql.dart'
+    show
+        GUploadMediaData,
+        GUploadMediaData_uploadMedia,
+        GUploadMediaData_uploadMedia_metadata;
+import 'package:mobilizon_api/graphql/operations/__generated__/upload_media.req.gql.dart'
+    show GUploadMediaReq;
+import 'package:mobilizon_api/graphql/operations/__generated__/upload_media.var.gql.dart'
+    show GUploadMediaVars;
 
 part 'serializers.gql.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..add(Iso8601DateTimeSerializer())
+  ..add(MultipartFileSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GActionLogAction,
@@ -1230,6 +1242,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GUpdatePersonData_updatePerson_banner,
   GUpdatePersonReq,
   GUpdatePersonVars,
+  GUploadMediaData,
+  GUploadMediaData_uploadMedia,
+  GUploadMediaData_uploadMedia_metadata,
+  GUploadMediaReq,
+  GUploadMediaVars,
   GUserRole,
   Gconfig_MediaFieldsData,
   Gconfig_MediaFieldsData_metadata,

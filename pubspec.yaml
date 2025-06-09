@@ -36,6 +36,9 @@ dependencies:
   ferry_hive_store: ^0.6.0+1
   # Cache dependencies
   hive: ^2.2.3
+  gql_dio_link: ^1.0.1+1
+  gql_link: ^1.0.0+1
+  dio: ^5.0.0
   
 dev_dependencies:
   flutter_test:

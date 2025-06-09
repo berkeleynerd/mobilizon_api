@@ -19,3 +19,5 @@ targets:
           custom_serializers:
             - import: "package:built_value/iso_8601_date_time_serializer.dart"
               name: Iso8601DateTimeSerializer
+            - import: "package:mobilizon_api/core/serializers/multipart_file_serializer.dart"
+              name: MultipartFileSerializer

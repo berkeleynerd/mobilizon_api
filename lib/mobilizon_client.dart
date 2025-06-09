@@ -1,6 +1,7 @@
 import 'auth/auth_service.dart';
 import 'core/client/graphql_client_provider.dart';
 import 'core/storage/storage.dart';
+import 'media/media_service.dart';
 import 'profiles/profile_service.dart';
 
 /// Main client for interacting with Mobilizon
@@ -10,12 +11,16 @@ class MobilizonClient {
   late final GraphQLClientProvider _graphQLClient;
   late final AuthService _authService;
   late final ProfileService _profileService;
+  late final MediaService _mediaService;
 
   /// Authentication service
   AuthService get auth => _authService;
 
   /// Profile management service
   ProfileService get profiles => _profileService;
+
+  /// Media upload service
+  MediaService get media => _mediaService;
 
   MobilizonClient(this._config) {
     _initServices();
@@ -82,10 +87,16 @@ class MobilizonClient {
       tokenManager: _tokenManager,
     );
 
+    // Initialize media service
+    _mediaService = MediaService(
+      graphQLClient: _graphQLClient,
+      tokenManager: _tokenManager,
+    );
+
     // Set up cross-service coordination for cache clearing
     _setupCacheClearingCoordination();
 
-    // TODO: Initialize other services (user, admin)
+    // TODO: Initialize other services (event, group)
   }
 
   /// Set up coordination between services for cache clearing
@@ -100,6 +111,7 @@ class MobilizonClient {
   Future<void> clearCache() async {
     await _graphQLClient.clearCache();
     _profileService.clearAllCaches();
+    _mediaService.clearCache();
   }
 
   /// Dispose all resources

@@ -2,3 +2,4 @@
 build/
 packages/mobilizon_graphql/.dart_tool/
 packages/mobilizon_graphql/build/
+mobilizon/

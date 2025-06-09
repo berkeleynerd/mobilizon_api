@@ -16,6 +16,9 @@ export 'core/exceptions/exceptions.dart';
 export 'core/models/models.dart';
 export 'core/storage/storage.dart' show TokenStorage;
 export 'core/validation/validation.dart';
+// Export media module
+export 'media/exceptions/media_exception.dart';
+export 'media/media_service.dart';
 // Export main client
 export 'mobilizon_client.dart';
 export 'profiles/exceptions/profile_exception.dart';
