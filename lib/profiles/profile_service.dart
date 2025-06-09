@@ -2,6 +2,7 @@ import 'package:http/http.dart' show MultipartFile;
 import 'package:http_parser/http_parser.dart';
 import 'package:mobilizon_api/graphql/client.dart';
 
+import '../core/client/base_service.dart';
 import '../core/client/graphql_client_provider.dart';
 import '../core/exceptions/exceptions.dart';
 import '../core/models/models.dart';
@@ -24,9 +25,7 @@ import 'validation/profile_validator.dart';
 /// - Profile validation and caching
 /// - Username availability checking
 /// - Profile search and lookup
-class ProfileService {
-  final GraphQLClientProvider _graphQLClient;
-  final TokenManager _tokenManager;
+class ProfileService extends BaseService {
   final ProfileCache _cache = ProfileCache();
 
   // Cache for the current active profile
@@ -35,14 +34,7 @@ class ProfileService {
   ProfileService({
     required GraphQLClientProvider graphQLClient,
     required TokenManager tokenManager,
-  }) : _graphQLClient = graphQLClient,
-       _tokenManager = tokenManager;
-
-  /// Checks if the user is authenticated
-  Future<bool> _isAuthenticated() async {
-    final tokens = await _tokenManager.getCurrentTokens();
-    return tokens != null && !tokens.isAccessTokenExpired;
-  }
+  }) : super(graphQLClient: graphQLClient, tokenManager: tokenManager);
 
   /// Gets all profiles (identities) for the currently authenticated user
   ///
@@ -58,7 +50,7 @@ class ProfileService {
     }
 
     // Verify authentication
-    final isAuth = await _isAuthenticated();
+    final isAuth = await isAuthenticated();
     if (!isAuth) {
       return [];
     }
@@ -68,7 +60,7 @@ class ProfileService {
       final request = GIdentitiesReq();
 
       // Execute the query
-      final response = await _graphQLClient.execute(request);
+      final response = await graphQLClient.execute(request);
 
       // Check for errors
       if (response.hasErrors || response.data?.identities == null) {
@@ -192,7 +184,7 @@ class ProfileService {
         (b) => b..vars.preferredUsername = username,
       );
 
-      final response = await _graphQLClient.execute(request);
+      final response = await graphQLClient.execute(request);
 
       if (response.hasErrors || response.data?.fetchPerson == null) {
         return null;
@@ -261,7 +253,7 @@ class ProfileService {
   /// rather than extracting the profile from the user data
   Future<Person?> getLoggedPerson() async {
     // Check authentication FIRST
-    final isAuth = await _isAuthenticated();
+    final isAuth = await isAuthenticated();
     if (!isAuth) {
       // Clear cached person data if not authenticated
       _cache.clearLoggedPersonCache();
@@ -279,7 +271,7 @@ class ProfileService {
       final request = GLoggedPersonReq();
 
       // Execute the query
-      final response = await _graphQLClient.execute(request);
+      final response = await graphQLClient.execute(request);
 
       // Check for errors
       if (response.hasErrors || response.data?.loggedPerson == null) {
@@ -382,7 +374,7 @@ class ProfileService {
   /// - [ProfileException] if the update fails or validation fails
   Future<Person> updateProfile(ProfileUpdateData updateData) async {
     // Verify authentication status
-    final isAuth = await _isAuthenticated();
+    final isAuth = await isAuthenticated();
     if (!isAuth) {
       throw AuthenticationException(
         'Not authenticated',
@@ -425,7 +417,7 @@ class ProfileService {
       final request = requestBuilder.build();
 
       // Execute the update mutation
-      final response = await _graphQLClient.execute(request);
+      final response = await graphQLClient.execute(request);
 
       // Check for errors
       if (response.hasErrors || response.data?.updatePerson == null) {
@@ -536,7 +528,7 @@ class ProfileService {
     MediaUpload? banner,
   }) async {
     // Verify authentication
-    final isAuth = await _isAuthenticated();
+    final isAuth = await isAuthenticated();
     if (!isAuth) {
       throw AuthenticationException(
         'Not authenticated',
@@ -577,7 +569,7 @@ class ProfileService {
       final createRequest = createRequestBuilder.build();
 
       // Execute the create mutation
-      final createResponse = await _graphQLClient.execute(createRequest);
+      final createResponse = await graphQLClient.execute(createRequest);
 
       // Check for errors
       if (createResponse.hasErrors ||
@@ -618,7 +610,7 @@ class ProfileService {
         final updateRequest = updateRequestBuilder.build();
 
         // Execute the update mutation
-        final updateResponse = await _graphQLClient.execute(updateRequest);
+        final updateResponse = await graphQLClient.execute(updateRequest);
 
         // Check for errors
         if (updateResponse.hasErrors ||
@@ -754,7 +746,7 @@ class ProfileService {
         (b) => b..vars.preferredUsername = username,
       );
 
-      final response = await _graphQLClient.execute(request);
+      final response = await graphQLClient.execute(request);
 
       // If we get a person back, username is taken
       return response.data?.fetchPerson == null;
@@ -810,7 +802,7 @@ class ProfileService {
   /// - [ProfileNotFoundException] if the profile doesn't exist
   Future<Person> deleteProfile(String profileId) async {
     // Verify authentication
-    final isAuth = await _isAuthenticated();
+    final isAuth = await isAuthenticated();
     if (!isAuth) {
       throw AuthenticationException(
         'Not authenticated',
@@ -840,7 +832,7 @@ class ProfileService {
       final request = deleteRequestBuilder.build();
 
       // Execute the delete mutation
-      final response = await _graphQLClient.execute(request);
+      final response = await graphQLClient.execute(request);
 
       // Check for errors
       if (response.hasErrors || response.data?.deletePerson == null) {

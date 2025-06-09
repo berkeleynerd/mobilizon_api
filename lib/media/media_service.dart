@@ -1,4 +1,4 @@
-
+import '../core/client/base_service.dart';
 import '../core/client/graphql_client_provider.dart';
 import '../core/models/media.dart';
 import '../core/storage/storage.dart';
@@ -12,10 +12,7 @@ import 'upload_handler.dart';
 /// - Uploading images (avatars, banners, event pictures, etc)
 /// - Validating file size and type
 /// - Tracking recent uploads for quick reuse
-class MediaService {
-  // GraphQL client is kept for potential future use
-  // ignore: unused_field
-  final GraphQLClientProvider _graphQLClient;
+class MediaService extends BaseService {
   final MediaUploadHandler _uploadHandler;
 
   // Simple in-memory cache for recent uploads
@@ -33,11 +30,11 @@ class MediaService {
   MediaService({
     required GraphQLClientProvider graphQLClient,
     required TokenManager tokenManager,
-  }) : _graphQLClient = graphQLClient,
-       _uploadHandler = MediaUploadHandler(
+  }) : _uploadHandler = MediaUploadHandler(
          apiUrl: graphQLClient.apiUrl,
          tokenManager: tokenManager,
-       );
+       ),
+       super(graphQLClient: graphQLClient, tokenManager: tokenManager);
 
   /// Upload a media file to Mobilizon
   ///

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:mobilizon_api/graphql/client.dart';
 
+import '../core/client/base_service.dart';
 import '../core/client/graphql_client_provider.dart';
 import '../core/models/models.dart';
 import '../core/storage/storage.dart';
@@ -10,15 +11,9 @@ import 'exceptions/auth_exception.dart';
 import 'models/auth_models.dart';
 
 /// Implementation of AuthService using GraphQL
-class AuthService {
+class AuthService extends BaseService {
   // Internal controller for auth state changes
   final _authStateController = StreamController<bool>.broadcast();
-
-  // GraphQL client for API calls
-  final GraphQLClientProvider _graphQLClient;
-
-  // Token manager for managing auth tokens
-  final TokenManager _tokenManager;
 
   // Current user
   User? _currentUser;
@@ -26,8 +21,7 @@ class AuthService {
   AuthService({
     required GraphQLClientProvider graphQLClient,
     required TokenManager tokenManager,
-  }) : _graphQLClient = graphQLClient,
-       _tokenManager = tokenManager;
+  }) : super(graphQLClient: graphQLClient, tokenManager: tokenManager);
 
   Stream<bool> get authStateChanges => _authStateController.stream;
 
@@ -48,7 +42,7 @@ class AuthService {
       final request = GLoggedUserMinimalReq();
 
       // Execute the query
-      final response = await _graphQLClient.execute(request);
+      final response = await graphQLClient.execute(request);
 
       // Check for errors
       if (response.hasErrors || response.data?.loggedUser == null) {
@@ -120,26 +114,6 @@ class AuthService {
     }
   }
 
-  Future<bool> isAuthenticated() async {
-    final tokens = await _tokenManager.getCurrentTokens();
-    if (tokens == null) {
-      return false;
-    }
-
-    if (tokens.isAccessTokenExpired) {
-      try {
-        // Try to refresh the token
-        await refreshTokenIfNeeded();
-
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
   Future<AuthResult> login(AuthCredentials credentials) async {
     try {
       // Create the login request with credentials
@@ -150,7 +124,7 @@ class AuthService {
       );
 
       // Execute the login mutation
-      final response = await _graphQLClient.executePublic(request);
+      final response = await graphQLClient.executePublic(request);
 
       // Check for errors from the GraphQL operation
       if (response.hasErrors || response.data?.login == null) {
@@ -182,7 +156,7 @@ class AuthService {
       );
 
       // Save tokens
-      await _tokenManager.saveTokens(tokens);
+      await tokenManager.saveTokens(tokens);
 
       // Map GraphQL user to domain model
       final user = _mapGraphQLUserToUser(loginData.user);
@@ -214,7 +188,7 @@ class AuthService {
       );
 
       // Execute the registration mutation (no auth required)
-      final response = await _graphQLClient.executePublic(request);
+      final response = await graphQLClient.executePublic(request);
 
       // Check for errors
       if (response.hasErrors || response.data?.createUser == null) {
@@ -296,7 +270,7 @@ class AuthService {
   Future<bool> logout() async {
     try {
       // Get the current refresh token
-      final tokens = await _tokenManager.getCurrentTokens();
+      final tokens = await tokenManager.getCurrentTokens();
       if (tokens != null) {
         // Create the logout request with refresh token
         final request = GLogoutReq(
@@ -304,17 +278,17 @@ class AuthService {
         );
 
         // Execute the logout mutation
-        await _graphQLClient.execute(request);
+        await graphQLClient.execute(request);
       }
 
       // Clear the tokens
-      await _tokenManager.clearTokens();
+      await tokenManager.clearTokens();
 
       // Clear current user
       _currentUser = null;
 
       // Clear GraphQL cache on logout for privacy
-      await _graphQLClient.clearCache();
+      await graphQLClient.clearCache();
 
       // Notify listeners of authentication state change
       if (!_authStateController.isClosed) {
@@ -332,7 +306,7 @@ class AuthService {
 
   Future<bool> refreshTokenIfNeeded() async {
     try {
-      final tokens = await _tokenManager.getCurrentTokens();
+      final tokens = await tokenManager.getCurrentTokens();
       if (tokens == null) {
         return false; // No tokens to refresh
       }
@@ -355,7 +329,7 @@ class AuthService {
 
   Future<TokenPair> forceTokenRefresh() async {
     try {
-      final tokens = await _tokenManager.getCurrentTokens();
+      final tokens = await tokenManager.getCurrentTokens();
       if (tokens == null) {
         throw AuthException('No tokens available for refresh');
       }
@@ -366,7 +340,7 @@ class AuthService {
       );
 
       // Execute the refresh token mutation
-      final response = await _graphQLClient.executePublic(request);
+      final response = await graphQLClient.executePublic(request);
 
       // Check for errors
       if (response.hasErrors || response.data?.refreshToken == null) {
@@ -398,7 +372,7 @@ class AuthService {
       );
 
       // Save new tokens
-      await _tokenManager.saveTokens(newTokens);
+      await tokenManager.saveTokens(newTokens);
 
       return newTokens;
     } catch (e) {
