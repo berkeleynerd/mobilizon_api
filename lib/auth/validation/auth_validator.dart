@@ -20,7 +20,11 @@ class AuthValidator extends BaseValidator {
     try {
       return BaseValidator.validateEmail(email);
     } catch (e) {
-      throw AuthException('Invalid email address', originalError: e);
+      throw AuthException(
+        'Invalid email address', 
+        originalError: e,
+        errorType: AuthErrorType.invalidCredentials,
+      );
     }
   }
 
@@ -69,12 +73,17 @@ class AuthValidator extends BaseValidator {
       return password;
     } catch (e) {
       if (e is ValidationException) {
-        throw AuthException(e.message, originalError: e);
+        throw AuthException(
+          e.message, 
+          originalError: e,
+          errorType: AuthErrorType.invalidCredentials,
+        );
       }
 
       throw AuthException(
         'Password validation failed: ${e.toString()}',
         originalError: e,
+        errorType: AuthErrorType.general,
       );
     }
   }

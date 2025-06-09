@@ -5,6 +5,7 @@ import 'package:mobilizon_api/graphql/client.dart';
 
 import '../core/client/base_service.dart';
 import '../core/models/models.dart';
+import 'exceptions/auth_error_mapper.dart';
 import 'exceptions/auth_exception.dart';
 import 'models/auth_models.dart';
 import 'validation/auth_validator.dart';
@@ -47,9 +48,10 @@ class AuthService extends BaseService {
       if (response.hasErrors || response.data?.loggedUser == null) {
         final errorMessages = response.graphqlErrors
             ?.map((error) => error.message)
-            .join(', ');
-        throw AuthException(
-          "Failed to get current user: ${errorMessages ?? 'Unknown error'}",
+            .toList();
+        throw AuthErrorMapper.createMappedException(
+          "Failed to get current user: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
           originalError: response.graphqlErrors,
         );
       }
@@ -109,6 +111,7 @@ class AuthService extends BaseService {
       throw AuthException(
         'Failed to get current user: ${e.toString()}',
         originalError: e,
+        errorType: AuthErrorType.userDataFailed,
       );
     }
   }
@@ -135,9 +138,10 @@ class AuthService extends BaseService {
       if (response.hasErrors || response.data?.login == null) {
         final errorMessages = response.graphqlErrors
             ?.map((error) => error.message)
-            .join(', ');
-        throw AuthException(
-          "Login failed: ${errorMessages ?? 'Unknown error'}",
+            .toList();
+        throw AuthErrorMapper.createMappedException(
+          "Login failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
           originalError: response.graphqlErrors,
         );
       }
@@ -178,7 +182,11 @@ class AuthService extends BaseService {
       if (e is AuthException) {
         rethrow;
       }
-      throw AuthException('Failed to login: ${e.toString()}', originalError: e);
+      throw AuthException(
+        'Failed to login: ${e.toString()}', 
+        originalError: e,
+        errorType: AuthErrorType.invalidCredentials,
+      );
     }
   }
 
@@ -206,18 +214,11 @@ class AuthService extends BaseService {
       if (response.hasErrors || response.data?.createUser == null) {
         final errorMessages = response.graphqlErrors
             ?.map((error) => error.message)
-            .join(', ');
+            .toList();
 
-        // Check for specific error cases
-        if (errorMessages?.contains('already used') ?? false) {
-          throw AuthException(
-            'Email address is already registered',
-            originalError: response.graphqlErrors,
-          );
-        }
-
-        throw AuthException(
-          "Registration failed: ${errorMessages ?? 'Unknown error'}",
+        throw AuthErrorMapper.createMappedException(
+          "Registration failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
           originalError: response.graphqlErrors,
         );
       }
@@ -275,6 +276,7 @@ class AuthService extends BaseService {
       throw AuthException(
         'Failed to register: ${e.toString()}',
         originalError: e,
+        errorType: AuthErrorType.registrationFailed,
       );
     }
   }
@@ -312,6 +314,7 @@ class AuthService extends BaseService {
       throw AuthException(
         'Failed to logout: ${e.toString()}',
         originalError: e,
+        errorType: AuthErrorType.logoutFailed,
       );
     }
   }
@@ -335,6 +338,7 @@ class AuthService extends BaseService {
       throw AuthException(
         'Token refresh failed: ${e.toString()}',
         originalError: e,
+        errorType: AuthErrorType.refreshFailed,
       );
     }
   }
@@ -343,7 +347,10 @@ class AuthService extends BaseService {
     try {
       final tokens = await tokenManager.getCurrentTokens();
       if (tokens == null) {
-        throw AuthException('No tokens available for refresh');
+        throw AuthException(
+          'No tokens available for refresh',
+          errorType: AuthErrorType.noTokensAvailable,
+        );
       }
 
       // Create the refresh token request
@@ -358,9 +365,10 @@ class AuthService extends BaseService {
       if (response.hasErrors || response.data?.refreshToken == null) {
         final errorMessages = response.graphqlErrors
             ?.map((error) => error.message)
-            .join(', ');
-        throw AuthException(
-          "Token refresh failed: ${errorMessages ?? 'Unknown error'}",
+            .toList();
+        throw AuthErrorMapper.createMappedException(
+          "Token refresh failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
           originalError: response.graphqlErrors,
         );
       }
@@ -394,6 +402,7 @@ class AuthService extends BaseService {
       throw AuthException(
         'Failed to refresh token: ${e.toString()}',
         originalError: e,
+        errorType: AuthErrorType.refreshFailed,
       );
     }
   }

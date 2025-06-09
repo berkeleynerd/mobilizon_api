@@ -98,7 +98,7 @@ These require more effort but provide significant value.
 - [x] Add cache tests
 
 ### 2.3 Standardize Error Handling
-- [ ] Add errorType to AuthException:
+- [x] Add errorType to AuthException:
   ```dart
   enum AuthErrorType {
     general,
@@ -110,10 +110,10 @@ These require more effort but provide significant value.
     refreshFailed,
   }
   ```
-- [ ] Update AuthService to use error types instead of string parsing
-- [ ] Create error type mapping utility
-- [ ] Update error handling in all auth methods
-- [ ] Update auth tests for new error types
+- [x] Update AuthService to use error types instead of string parsing
+- [x] Create error type mapping utility
+- [x] Update error handling in all auth methods
+- [x] Update auth tests for new error types
 
 ### 2.4 Use ServiceResult Pattern
 - [ ] Update BaseService methods to return ServiceResult
