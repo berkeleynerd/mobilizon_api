@@ -9,6 +9,7 @@ import '../core/models/models.dart';
 import '../core/storage/storage.dart';
 import 'exceptions/auth_exception.dart';
 import 'models/auth_models.dart';
+import 'validation/auth_validator.dart';
 
 /// Implementation of AuthService using GraphQL
 class AuthService extends BaseService {
@@ -116,11 +117,17 @@ class AuthService extends BaseService {
 
   Future<AuthResult> login(AuthCredentials credentials) async {
     try {
-      // Create the login request with credentials
+      // Validate credentials before attempting login
+      final validated = AuthValidator.validateLogin(
+        email: credentials.email,
+        password: credentials.password,
+      );
+
+      // Create the login request with validated credentials
       final request = GLoginReq(
         (b) => b
-          ..vars.email = credentials.email
-          ..vars.password = credentials.password,
+          ..vars.email = validated['email']!
+          ..vars.password = validated['password']!,
       );
 
       // Execute the login mutation
@@ -179,12 +186,19 @@ class AuthService extends BaseService {
 
   Future<User> register(RegistrationData registrationData) async {
     try {
-      // Create the registration request
+      // Validate registration data before attempting registration
+      final validated = AuthValidator.validateRegistration(
+        email: registrationData.email,
+        password: registrationData.password,
+        locale: registrationData.locale,
+      );
+
+      // Create the registration request with validated data
       final request = GCreateUserReq(
         (b) => b
-          ..vars.email = registrationData.email
-          ..vars.password = registrationData.password
-          ..vars.locale = registrationData.locale,
+          ..vars.email = validated['email']!
+          ..vars.password = validated['password']!
+          ..vars.locale = validated['locale'],
       );
 
       // Execute the registration mutation (no auth required)
