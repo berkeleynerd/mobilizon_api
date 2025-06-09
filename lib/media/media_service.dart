@@ -3,6 +3,7 @@ import '../core/models/media.dart';
 import '../profiles/models/profile_models.dart';
 import 'exceptions/media_exception.dart';
 import 'upload_handler.dart';
+import 'validation/media_validator.dart';
 
 /// Service for uploading media files to Mobilizon
 ///
@@ -15,15 +16,6 @@ class MediaService extends BaseService {
 
   // Simple in-memory cache for recent uploads
   final _recentUploads = <String, Media>{};
-
-  // Configuration
-  static const int maxFileSize = 10 * 1024 * 1024; // 10MB
-  static const List<String> supportedImageTypes = [
-    'image/jpeg',
-    'image/png',
-    'image/gif',
-    'image/webp',
-  ];
 
   MediaService({
     required super.graphQLClient,
@@ -49,19 +41,19 @@ class MediaService extends BaseService {
     String? actorId,
     void Function(double progress)? onProgress,
   }) async {
-    // Validate file
-    _validateFile(file);
+    // Validate file using MediaValidator
+    final validatedFile = MediaValidator.validateMediaFile(file);
 
     try {
       // Use direct upload handler instead of GraphQL client
       // The standard Ferry client doesn't handle multipart uploads well
       final media = await _uploadHandler.uploadFile(
-        fileBytes: file.bytes,
-        filename: file.name,
-        name: file.name,
-        alt: file.alt,
+        fileBytes: validatedFile.bytes,
+        filename: validatedFile.name,
+        name: validatedFile.name,
+        alt: validatedFile.alt,
         actorId: actorId,
-        contentType: file.contentType,
+        contentType: validatedFile.contentType,
       );
 
       // Cache for quick reuse
@@ -90,14 +82,19 @@ class MediaService extends BaseService {
     String? actorId,
     void Function(double progress)? onProgress,
   }) async {
-    final contentType = _detectImageType(filename);
+    // Use MediaValidator to validate upload data and detect content type
+    final validated = MediaValidator.validateUploadData(
+      bytes: bytes,
+      filename: filename,
+      alt: alt,
+    );
 
     return uploadMedia(
       file: MediaFile(
-        name: filename,
-        bytes: bytes,
-        contentType: contentType,
-        alt: alt,
+        name: validated['filename'] as String,
+        bytes: validated['bytes'] as List<int>,
+        contentType: validated['contentType'] as String,
+        alt: validated['alt'] as String?,
       ),
       actorId: actorId,
       onProgress: onProgress,
@@ -118,63 +115,6 @@ class MediaService extends BaseService {
     };
   }
 
-  /// Validate file before upload
-  void _validateFile(MediaFile file) {
-    // Check if file is empty
-    if (file.bytes.isEmpty) {
-      throw MediaException(
-        'File is empty',
-        errorType: MediaErrorType.emptyFile,
-      );
-    }
-
-    // Check file size
-    if (file.bytes.length > maxFileSize) {
-      final sizeMB = (file.bytes.length / (1024 * 1024)).toStringAsFixed(1);
-      throw MediaException(
-        'File too large: ${sizeMB}MB (max ${maxFileSize ~/ (1024 * 1024)}MB)',
-        errorType: MediaErrorType.fileTooLarge,
-      );
-    }
-
-    // Validate content type
-    if (!supportedImageTypes.contains(file.contentType)) {
-      throw MediaException(
-        'Unsupported file type: ${file.contentType}. Supported types: ${supportedImageTypes.join(', ')}',
-        errorType: MediaErrorType.invalidFileType,
-      );
-    }
-
-    // Basic filename validation
-    if (file.name.isEmpty) {
-      throw MediaException(
-        'Filename cannot be empty',
-        errorType: MediaErrorType.validationFailed,
-      );
-    }
-  }
-
-  /// Detect image content type from filename
-  String _detectImageType(String filename) {
-    final ext = filename.split('.').last.toLowerCase();
-    switch (ext) {
-      case 'jpg':
-      case 'jpeg':
-        return 'image/jpeg';
-      case 'png':
-        return 'image/png';
-      case 'gif':
-        return 'image/gif';
-      case 'webp':
-        return 'image/webp';
-      default:
-        throw MediaException(
-          'Unsupported image type: .$ext',
-          errorType: MediaErrorType.invalidFileType,
-        );
-    }
-  }
-
   /// Helper to create MediaUpload for use in other services
   static MediaUpload createMediaUpload({String? mediaId, MediaFile? file}) {
     if (mediaId != null) {
@@ -184,5 +124,20 @@ class MediaService extends BaseService {
     } else {
       throw ArgumentError('Either mediaId or file must be provided');
     }
+  }
+
+  /// Get media validation rules for display to users
+  static Map<String, List<String>> getValidationRules() {
+    return MediaValidator.getMediaValidationRules();
+  }
+
+  /// Check if a content type is supported
+  static bool isValidContentType(String contentType) {
+    return MediaValidator.isValidContentType(contentType);
+  }
+
+  /// Check if a filename has a valid extension
+  static bool isValidFilename(String filename) {
+    return MediaValidator.isValidFilename(filename);
   }
 }
