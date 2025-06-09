@@ -1,6 +1,5 @@
 // ignore_for_file: prefer-moving-to-variable
 
-import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobilizon_api/mobilizon_api.dart';
