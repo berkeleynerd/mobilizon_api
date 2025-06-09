@@ -50,15 +50,26 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // Get configuration from environment variables
-  final apiUrl =
-      Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
-  final userEmail =
-      Platform.environment['TEST_USER_EMAIL'] ?? 'rebecca@redshift.is';
-  final userPassword = Platform.environment['TEST_USER_PASSWORD'] ?? 'airong7';
-  final adminEmail =
-      Platform.environment['TEST_ADMIN_EMAIL'] ?? 'admin@admin.admin';
-  final adminPassword =
-      Platform.environment['TEST_ADMIN_PASSWORD'] ?? 'airong7';
+  final apiUrl = const String.fromEnvironment(
+    'TEST_API_URL',
+    defaultValue: 'http://localhost:4000/api',
+  );
+  final userEmail = const String.fromEnvironment(
+    'TEST_USER_EMAIL',
+    defaultValue: 'rebecca@redshift.is',
+  );
+  final userPassword = const String.fromEnvironment(
+    'TEST_USER_PASSWORD',
+    defaultValue: 'airong123',
+  );
+  final adminEmail = const String.fromEnvironment(
+    'TEST_ADMIN_EMAIL',
+    defaultValue: 'admin@admin.admin',
+  );
+  final adminPassword = const String.fromEnvironment(
+    'TEST_ADMIN_PASSWORD',
+    defaultValue: 'airong123',
+  );
 
   // Define rate limiting delay to prevent server throttling
   const rateLimitDelay = Duration(milliseconds: 500);

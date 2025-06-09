@@ -1,12 +1,12 @@
+import '../../core/exceptions/service_exception.dart';
+
 /// Custom exception for media-related errors
-class MediaException implements Exception {
-  final String message;
-  final dynamic originalError;
+class MediaException extends ServiceException {
   final MediaErrorType errorType;
 
   const MediaException(
-    this.message, {
-    this.originalError,
+    super.message, {
+    super.originalError,
     this.errorType = MediaErrorType.general,
   });
 

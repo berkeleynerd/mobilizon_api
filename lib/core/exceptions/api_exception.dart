@@ -1,13 +1,13 @@
+import 'service_exception.dart';
+
 /// Base exception class for all API-related errors
-class ApiException implements Exception {
-  final String message;
-  final dynamic originalError;
+class ApiException extends ServiceException {
   final int? statusCode;
   final Map<String, dynamic>? details;
 
   const ApiException(
-    this.message, {
-    this.originalError,
+    super.message, {
+    super.originalError,
     this.statusCode,
     this.details,
   });

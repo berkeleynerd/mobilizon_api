@@ -41,8 +41,8 @@ These can be done immediately with minimal risk.
 - [x] Update auth tests to cover validation scenarios (validation exceptions will be thrown automatically)
 - [x] Run auth tests to verify (analyzer confirms no errors)
 
-### 1.3 Create Base Exception Class
-- [ ] Create `lib/core/exceptions/service_exception.dart`:
+### 1.3 Create Base Exception Class ✅
+- [x] Create `lib/core/exceptions/service_exception.dart`:
   ```dart
   abstract class ServiceException implements Exception {
     final String message;
@@ -51,13 +51,13 @@ These can be done immediately with minimal risk.
     const ServiceException(this.message, {this.originalError});
   }
   ```
-- [ ] Update AuthException to extend ServiceException
-  - [ ] Note: AuthException doesn't have errorType enum currently
-- [ ] Update ProfileException to extend ServiceException
-  - [ ] Keep ProfileErrorType enum
-- [ ] Update MediaException to extend ServiceException
-  - [ ] Keep MediaErrorType enum
-- [ ] Run all tests to ensure no breaking changes
+- [x] Update AuthException to extend ServiceException
+  - [x] Note: AuthException doesn't have errorType enum currently (preserved code field)
+- [x] Update ProfileException to extend ServiceException
+  - [x] Keep ProfileErrorType enum (via ApiException inheritance)
+- [x] Update MediaException to extend ServiceException
+  - [x] Keep MediaErrorType enum
+- [x] Run all tests to ensure no breaking changes (analyzer confirms no errors)
 
 ## Phase 2: Standardization (Medium Priority)
 These require more effort but provide significant value.

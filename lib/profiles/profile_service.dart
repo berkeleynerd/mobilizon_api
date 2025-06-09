@@ -3,10 +3,8 @@ import 'package:http_parser/http_parser.dart';
 import 'package:mobilizon_api/graphql/client.dart';
 
 import '../core/client/base_service.dart';
-import '../core/client/graphql_client_provider.dart';
 import '../core/exceptions/exceptions.dart';
 import '../core/models/models.dart';
-import '../core/storage/token_manager.dart';
 import 'cache/profile_cache.dart';
 import 'exceptions/profile_exception.dart';
 import 'models/profile_models.dart';
@@ -32,9 +30,9 @@ class ProfileService extends BaseService {
   Person? _currentActiveProfile;
 
   ProfileService({
-    required GraphQLClientProvider graphQLClient,
-    required TokenManager tokenManager,
-  }) : super(graphQLClient: graphQLClient, tokenManager: tokenManager);
+    required super.graphQLClient,
+    required super.tokenManager,
+  });
 
   /// Gets all profiles (identities) for the currently authenticated user
   ///

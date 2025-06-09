@@ -17,9 +17,9 @@ echo "✅ Mobilizon instance is available"
 
 export TEST_API_URL="http://localhost:4000/api"
 export TEST_USER_EMAIL="rebecca@redshift.is"
-export TEST_USER_PASSWORD="airong7"
+export TEST_USER_PASSWORD="airong123"
 export TEST_ADMIN_EMAIL="admin@admin.admin"
-export TEST_ADMIN_PASSWORD="airong7"
+export TEST_ADMIN_PASSWORD="airong123"
 
 echo "🚀 Running integration tests with live Mobilizon instance..."
 echo "   API URL: $TEST_API_URL"

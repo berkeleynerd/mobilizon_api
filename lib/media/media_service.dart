@@ -1,7 +1,5 @@
 import '../core/client/base_service.dart';
-import '../core/client/graphql_client_provider.dart';
 import '../core/models/media.dart';
-import '../core/storage/storage.dart';
 import '../profiles/models/profile_models.dart';
 import 'exceptions/media_exception.dart';
 import 'upload_handler.dart';
@@ -28,13 +26,12 @@ class MediaService extends BaseService {
   ];
 
   MediaService({
-    required GraphQLClientProvider graphQLClient,
-    required TokenManager tokenManager,
+    required super.graphQLClient,
+    required super.tokenManager,
   }) : _uploadHandler = MediaUploadHandler(
          apiUrl: graphQLClient.apiUrl,
          tokenManager: tokenManager,
-       ),
-       super(graphQLClient: graphQLClient, tokenManager: tokenManager);
+       );
 
   /// Upload a media file to Mobilizon
   ///

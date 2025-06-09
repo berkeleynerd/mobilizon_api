@@ -1,11 +1,10 @@
-/// Exception thrown when authentication operations fail
-class AuthException implements Exception {
-  final String message;
-  final String? code;
-  // ignore: avoid-dynamic
-  final dynamic originalError;
+import '../../core/exceptions/service_exception.dart';
 
-  const AuthException(this.message, {this.code, this.originalError});
+/// Exception thrown when authentication operations fail
+class AuthException extends ServiceException {
+  final String? code;
+
+  const AuthException(super.message, {this.code, super.originalError});
 
   @override
   String toString() =>

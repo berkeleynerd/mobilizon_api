@@ -24,11 +24,18 @@ import 'helpers/token_storage.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  final apiUrl =
-      Platform.environment['TEST_API_URL'] ?? 'http://localhost:4000/api';
-  final userEmail =
-      Platform.environment['TEST_USER_EMAIL'] ?? 'rebecca@redshift.is';
-  final userPassword = Platform.environment['TEST_USER_PASSWORD'] ?? 'airong7';
+  final apiUrl = const String.fromEnvironment(
+    'TEST_API_URL',
+    defaultValue: 'http://localhost:4000/api',
+  );
+  final userEmail = const String.fromEnvironment(
+    'TEST_USER_EMAIL',
+    defaultValue: 'rebecca@redshift.is',
+  );
+  final userPassword = const String.fromEnvironment(
+    'TEST_USER_PASSWORD',
+    defaultValue: 'airong123',
+  );
 
   group('🚀 Auth Service Batching Test', () {
     late MobilizonClient client;
@@ -88,7 +95,7 @@ void main() {
 
           expect(registerResult.email, testEmail);
 
-          // 2️⃣ Operation 2: Login with Test User
+          // 2️⃣ Operation 2: Login with Test User  
           print('\n2️⃣ OPERATION 2: Login');
           final loginStopwatch = Stopwatch()..start();
 

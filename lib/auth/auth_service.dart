@@ -4,9 +4,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:mobilizon_api/graphql/client.dart';
 
 import '../core/client/base_service.dart';
-import '../core/client/graphql_client_provider.dart';
 import '../core/models/models.dart';
-import '../core/storage/storage.dart';
 import 'exceptions/auth_exception.dart';
 import 'models/auth_models.dart';
 import 'validation/auth_validator.dart';
@@ -20,9 +18,9 @@ class AuthService extends BaseService {
   User? _currentUser;
 
   AuthService({
-    required GraphQLClientProvider graphQLClient,
-    required TokenManager tokenManager,
-  }) : super(graphQLClient: graphQLClient, tokenManager: tokenManager);
+    required super.graphQLClient,
+    required super.tokenManager,
+  });
 
   Stream<bool> get authStateChanges => _authStateController.stream;
 
@@ -126,8 +124,8 @@ class AuthService extends BaseService {
       // Create the login request with validated credentials
       final request = GLoginReq(
         (b) => b
-          ..vars.email = validated['email']!
-          ..vars.password = validated['password']!,
+          ..vars.email = validated['email']
+          ..vars.password = validated['password'],
       );
 
       // Execute the login mutation
@@ -196,8 +194,8 @@ class AuthService extends BaseService {
       // Create the registration request with validated data
       final request = GCreateUserReq(
         (b) => b
-          ..vars.email = validated['email']!
-          ..vars.password = validated['password']!
+          ..vars.email = validated['email']
+          ..vars.password = validated['password']
           ..vars.locale = validated['locale'],
       );
 
