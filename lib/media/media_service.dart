@@ -1,3 +1,4 @@
+import '../core/cache/cache.dart';
 import '../core/client/base_service.dart';
 import '../core/models/media.dart';
 import '../profiles/models/profile_models.dart';
@@ -14,8 +15,8 @@ import 'validation/media_validator.dart';
 class MediaService extends BaseService {
   final MediaUploadHandler _uploadHandler;
 
-  // Simple in-memory cache for recent uploads
-  final _recentUploads = <String, Media>{};
+  // Simple cache for recent uploads with LRU eviction
+  final SimpleCache<Media> _recentUploads = SimpleCache<Media>(maxEntries: 50);
 
   MediaService({
     required super.graphQLClient,
@@ -57,7 +58,7 @@ class MediaService extends BaseService {
       );
 
       // Cache for quick reuse
-      _recentUploads[media.id] = media;
+      _recentUploads.set(media.id, media);
 
       return media;
     } catch (e) {
@@ -102,17 +103,14 @@ class MediaService extends BaseService {
   }
 
   /// Get a recently uploaded media by ID (from cache)
-  Media? getRecentUpload(String mediaId) => _recentUploads[mediaId];
+  Media? getRecentUpload(String mediaId) => _recentUploads.get(mediaId);
 
   /// Clear upload cache
   void clearCache() => _recentUploads.clear();
 
   /// Get cache statistics
   Map<String, dynamic> getCacheStatistics() {
-    return {
-      'recentUploadsCount': _recentUploads.length,
-      'recentUploadIds': _recentUploads.keys.toList(),
-    };
+    return _recentUploads.getStatistics();
   }
 
   /// Helper to create MediaUpload for use in other services

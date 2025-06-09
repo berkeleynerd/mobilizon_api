@@ -77,7 +77,7 @@ These require more effort but provide significant value.
 - [x] Update media service tests (verified all tests pass)
 
 ### 2.2 Implement Cache Strategy Interface
-- [ ] Create `lib/core/cache/cache_strategy.dart`:
+- [x] Create `lib/core/cache/cache_strategy.dart`:
   ```dart
   abstract class CacheStrategy<T> {
     T? get(String key);
@@ -88,14 +88,14 @@ These require more effort but provide significant value.
     Map<String, dynamic> getStatistics();
   }
   ```
-- [ ] Create `lib/core/cache/ttl_cache.dart` implementing CacheStrategy
-  - [ ] Extract TTL logic from ProfileCache
-  - [ ] Make it generic and reusable
-- [ ] Create `lib/core/cache/simple_cache.dart` implementing CacheStrategy
-  - [ ] Wrap Map-based caching with the interface
-- [ ] Update ProfileCache to use TTLCache internally
-- [ ] Update MediaService to use SimpleCache
-- [ ] Add cache tests
+- [x] Create `lib/core/cache/ttl_cache.dart` implementing CacheStrategy
+  - [x] Extract TTL logic from ProfileCache
+  - [x] Make it generic and reusable
+- [x] Create `lib/core/cache/simple_cache.dart` implementing CacheStrategy
+  - [x] Wrap Map-based caching with the interface
+- [x] Update ProfileCache to use TTLCache internally
+- [x] Update MediaService to use SimpleCache
+- [x] Add cache tests
 
 ### 2.3 Standardize Error Handling
 - [ ] Add errorType to AuthException:

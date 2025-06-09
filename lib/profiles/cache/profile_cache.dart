@@ -1,89 +1,72 @@
+import '../../core/cache/cache.dart';
 import '../../core/models/models.dart';
 
 /// Cache manager for profile data to improve performance
 class ProfileCache {
-  // Cache for all profiles list
-  List<Person>? _allProfiles;
-  DateTime? _allProfilesCacheTime;
+  // Use TTLCache for individual profiles
+  final TTLCache<Person> _profilesById = TTLCache<Person>(
+    ttl: const Duration(minutes: 5),
+  );
 
-  // Cache for individual profiles by ID
-  final Map<String, Person> _profilesById = {};
-  final Map<String, DateTime> _profilesCacheTime = {};
+  // Use TTLCache for logged person
+  final TTLCache<Person> _loggedPersonCache = TTLCache<Person>(
+    ttl: const Duration(minutes: 5),
+  );
 
-  // Cache for logged person
-  Person? _loggedPerson;
-  DateTime? _loggedPersonCacheTime;
+  // Use TTLCache for all profiles list
+  final TTLCache<List<Person>> _allProfilesCache = TTLCache<List<Person>>(
+    ttl: const Duration(minutes: 5),
+  );
 
   // Cache TTL (Time To Live) in minutes
   static const int cacheTtlMinutes = 5;
 
-  /// Checks if cached data is still valid
-  bool _isCacheValid(DateTime? cacheTime) {
-    if (cacheTime == null) return false;
-
-    final now = DateTime.now();
-    final expiry = cacheTime.add(const Duration(minutes: cacheTtlMinutes));
-
-    return now.isBefore(expiry);
-  }
-
   /// Gets cached all profiles list if valid
   List<Person>? getCachedAllProfiles() {
-    if (_isCacheValid(_allProfilesCacheTime)) {
-      return _allProfiles;
-    }
-    return null;
+    return _allProfilesCache.get('all_profiles');
   }
 
   /// Caches the all profiles list
   void cacheAllProfiles(List<Person> profiles) {
-    _allProfiles = List.from(profiles); // Create a copy
-    _allProfilesCacheTime = DateTime.now();
+    _allProfilesCache.set('all_profiles', List.from(profiles));
 
     // Also cache individual profiles
     for (final profile in profiles) {
-      _profilesById[profile.id] = profile;
-      _profilesCacheTime[profile.id] = DateTime.now();
+      _profilesById.set(profile.id, profile);
     }
   }
 
   /// Gets cached profile by ID if valid
   Person? getCachedProfileById(String profileId) {
-    if (_isCacheValid(_profilesCacheTime[profileId])) {
-      return _profilesById[profileId];
-    }
-    return null;
+    return _profilesById.get(profileId);
   }
 
   /// Caches a profile by ID
   void cacheProfileById(Person profile) {
-    _profilesById[profile.id] = profile;
-    _profilesCacheTime[profile.id] = DateTime.now();
+    _profilesById.set(profile.id, profile);
 
     // Update the profile in all profiles list if cached
-    if (_allProfiles != null) {
-      final index = _allProfiles!.indexWhere((p) => p.id == profile.id);
+    final allProfiles = _allProfilesCache.get('all_profiles');
+    if (allProfiles != null) {
+      final index = allProfiles.indexWhere((p) => p.id == profile.id);
       if (index != -1) {
-        _allProfiles![index] = profile;
+        allProfiles[index] = profile;
       } else {
         // Add new profile to the list
-        _allProfiles!.add(profile);
+        allProfiles.add(profile);
       }
+      _allProfilesCache.set('all_profiles', allProfiles);
     }
   }
 
   /// Gets cached logged person if valid
   Person? getCachedLoggedPerson() {
-    if (_isCacheValid(_loggedPersonCacheTime)) {
-      return _loggedPerson;
-    }
-    return null;
+    return _loggedPersonCache.get('logged_person');
   }
 
   /// Caches the logged person
   void cacheLoggedPerson(Person person) {
-    _loggedPerson = person;
-    _loggedPersonCacheTime = DateTime.now();
+    _loggedPersonCache.set('logged_person', person);
 
     // Also cache in profiles by ID
     cacheProfileById(person);
@@ -92,17 +75,18 @@ class ProfileCache {
   /// Removes a profile from cache (used when profile is deleted)
   void removeProfileFromCache(String profileId) {
     _profilesById.remove(profileId);
-    _profilesCacheTime.remove(profileId);
 
     // Remove from all profiles list if cached
-    if (_allProfiles != null) {
-      _allProfiles!.removeWhere((p) => p.id == profileId);
+    final allProfiles = _allProfilesCache.get('all_profiles');
+    if (allProfiles != null) {
+      allProfiles.removeWhere((p) => p.id == profileId);
+      _allProfilesCache.set('all_profiles', allProfiles);
     }
 
     // Clear logged person if it was the deleted profile
-    if (_loggedPerson?.id == profileId) {
-      _loggedPerson = null;
-      _loggedPersonCacheTime = null;
+    final loggedPerson = _loggedPersonCache.get('logged_person');
+    if (loggedPerson?.id == profileId) {
+      _loggedPersonCache.remove('logged_person');
     }
   }
 
@@ -111,66 +95,63 @@ class ProfileCache {
     cacheProfileById(updatedProfile);
 
     // Update logged person if it's the same profile
-    if (_loggedPerson?.id == updatedProfile.id) {
-      _loggedPerson = updatedProfile;
-      _loggedPersonCacheTime = DateTime.now();
+    final loggedPerson = _loggedPersonCache.get('logged_person');
+    if (loggedPerson?.id == updatedProfile.id) {
+      _loggedPersonCache.set('logged_person', updatedProfile);
     }
   }
 
   /// Clears all cached profiles
   void clearAllProfilesCache() {
-    _allProfiles = null;
-    _allProfilesCacheTime = null;
+    _allProfilesCache.remove('all_profiles');
   }
 
   /// Clears cached profile by ID
   void clearProfileByIdCache(String profileId) {
     _profilesById.remove(profileId);
-    _profilesCacheTime.remove(profileId);
   }
 
   /// Clears logged person cache
   void clearLoggedPersonCache() {
-    _loggedPerson = null;
-    _loggedPersonCacheTime = null;
+    _loggedPersonCache.remove('logged_person');
   }
 
   /// Clears all caches
   void clearAllCaches() {
-    _allProfiles = null;
-    _allProfilesCacheTime = null;
+    _allProfilesCache.clear();
     _profilesById.clear();
-    _profilesCacheTime.clear();
-    _loggedPerson = null;
-    _loggedPersonCacheTime = null;
+    _loggedPersonCache.clear();
   }
 
   /// Gets cache statistics for debugging
   Map<String, dynamic> getCacheStatistics() {
+    final allProfiles = _allProfilesCache.get('all_profiles');
+    final loggedPerson = _loggedPersonCache.get('logged_person');
+    
     return {
-      'allProfilesCached': _allProfiles != null,
-      'allProfilesCount': _allProfiles?.length ?? 0,
-      'allProfilesCacheTime': _allProfilesCacheTime?.toIso8601String(),
-      'profilesByIdCount': _profilesById.length,
-      'loggedPersonCached': _loggedPerson != null,
-      'loggedPersonCacheTime': _loggedPersonCacheTime?.toIso8601String(),
+      'allProfilesCached': allProfiles != null,
+      'allProfilesCount': allProfiles?.length ?? 0,
+      'profilesByIdCount': _profilesById.getStatistics()['entryCount'] ?? 0,
+      'loggedPersonCached': loggedPerson != null,
       'cacheTtlMinutes': cacheTtlMinutes,
+      'allProfilesStats': _allProfilesCache.getStatistics(),
+      'profilesByIdStats': _profilesById.getStatistics(),
+      'loggedPersonStats': _loggedPersonCache.getStatistics(),
     };
   }
 
   /// Checks if a specific profile is cached and valid
   bool isProfileCached(String profileId) {
-    return _isCacheValid(_profilesCacheTime[profileId]) &&
-        _profilesById.containsKey(profileId);
+    return _profilesById.has(profileId);
   }
 
   /// Checks if the all profiles list is cached and valid
   bool isAllProfilesCached() {
-    return _isCacheValid(_allProfilesCacheTime) && _allProfiles != null;
+    return _allProfilesCache.has('all_profiles');
   }
 
   /// Checks if the logged person is cached and valid
   bool isLoggedPersonCached() {
-    return _isCacheValid(_loggedPersonCacheTime) && _loggedPerson != null;
+    return _loggedPersonCache.has('logged_person');
   }
 }
