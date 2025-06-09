@@ -51,6 +51,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# Add delay between test suites to avoid rate limiting
+echo ""
+echo "⏳ Waiting 5 seconds to avoid rate limiting..."
+sleep 5
+
 echo ""
 echo "2️⃣ Running Person Service Tests..."
 flutter test integration_test/person_service_test.dart \
@@ -65,6 +70,11 @@ if [ $? -ne 0 ]; then
     echo "❌ Person Service tests failed"
     exit 1
 fi
+
+# Add delay between test suites to avoid rate limiting
+echo ""
+echo "⏳ Waiting 5 seconds to avoid rate limiting..."
+sleep 5
 
 echo ""
 echo "3️⃣ Running Media Service Tests..."
