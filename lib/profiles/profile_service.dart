@@ -370,7 +370,7 @@ class ProfileService extends BaseService {
   /// Throws:
   /// - [AuthenticationException] if not authenticated
   /// - [ProfileException] if the update fails or validation fails
-  Future<Person> updateProfile(ProfileUpdateData updateData) async {
+  Future<Person> updateProfile(ProfileUpdateData updateData, {String? profileId}) async {
     // Verify authentication status
     final isAuth = await isAuthenticated();
     if (!isAuth) {
@@ -1009,7 +1009,7 @@ class ProfileService extends BaseService {
       banner: updates['banner'] as MediaUpload?,
     );
 
-    return await updateProfile(updateData);
+    return await updateProfile(updateData, profileId: profileId);
   }
 
   /// Checks if the current user has multiple profiles
@@ -1037,5 +1037,119 @@ class ProfileService extends BaseService {
           },
         )
         .toList();
+  }
+
+  // =============================================================================
+  // ServiceResult-based methods (alternative to exception-based methods)
+  // =============================================================================
+
+  /// Create profile with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Person>` that contains either:
+  /// - Success: The newly created Person profile
+  /// - Failure: Error message without throwing an exception
+  ///
+  /// This method is useful for UI code that prefers explicit error handling
+  /// over try-catch blocks.
+  Future<ServiceResult<Person>> createProfileSafely(
+    ProfileCreationData creationData,
+  ) async {
+    return executeAuthenticatedOperation(
+      () => createProfile(
+        username: creationData.preferredUsername,
+        name: creationData.name ?? creationData.preferredUsername,
+        summary: creationData.summary,
+        avatar: creationData.avatar,
+        banner: creationData.banner,
+      ),
+      operationName: 'CreateProfile',
+    );
+  }
+
+  /// Update profile with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Person>` that contains either:
+  /// - Success: The updated Person profile
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<Person>> updateProfileSafely(
+    ProfileUpdateData updateData, {
+    String? profileId,
+  }) async {
+    return executeAuthenticatedOperation(
+      () => updateProfile(updateData, profileId: profileId),
+      operationName: 'UpdateProfile',
+    );
+  }
+
+  /// Delete profile with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Person>` that contains either:
+  /// - Success: The deleted Person profile data
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<Person>> deleteProfileSafely(String profileId) async {
+    return executeAuthenticatedOperation(
+      () => deleteProfile(profileId),
+      operationName: 'DeleteProfile',
+    );
+  }
+
+  /// Get profile by ID with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Person?>` that contains either:
+  /// - Success: Person profile (or null if not found)
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<Person?>> getProfileByIdSafely(String profileId) async {
+    return executeAuthenticatedOperation(
+      () => getProfileById(profileId),
+      operationName: 'GetProfileById',
+    );
+  }
+
+  /// Get all profiles with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<List<Person>>` that contains either:
+  /// - Success: List of all Person profiles for the user
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<List<Person>>> getAllProfilesSafely() async {
+    return executeAuthenticatedOperation(
+      getAllProfiles,
+      operationName: 'GetAllProfiles',
+    );
+  }
+
+  /// Get logged person with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Person?>` that contains either:
+  /// - Success: The logged Person (or null if not authenticated)
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<Person?>> getLoggedPersonSafely() async {
+    return executeOperation(
+      getLoggedPerson,
+      operationName: 'GetLoggedPerson',
+    );
+  }
+
+  /// Get default profile with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Person?>` that contains either:
+  /// - Success: The default Person profile (or null if none)
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<Person?>> getDefaultProfileSafely() async {
+    return executeAuthenticatedOperation(
+      getDefaultProfile,
+      operationName: 'GetDefaultProfile',
+    );
+  }
+
+  /// Check username availability with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<bool>` that contains either:
+  /// - Success: true if username is available, false if taken
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<bool>> isUsernameAvailableSafely(String username) async {
+    return executeOperation(
+      () => isUsernameAvailable(username),
+      operationName: 'CheckUsernameAvailability',
+    );
   }
 }

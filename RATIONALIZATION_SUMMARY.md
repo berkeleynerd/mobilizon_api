@@ -47,10 +47,10 @@ Rationalize the implementation of AuthService, ProfileService, and MediaService 
 - Standardize error handling
 - Document ServiceResult usage
 
-### Phase 3: Optimization (6-8 hours)
-- Extract test utilities
-- Add metrics collection
+### Phase 3: Optimization (2-3 hours)
 - Enhance caching features
+- ~~Extract test utilities~~ → **DEFERRED**
+- ~~Add metrics collection~~ → **DEFERRED**
 
 ### Phase 4: Documentation (3-4 hours)
 - Update all documentation

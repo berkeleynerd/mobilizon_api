@@ -116,13 +116,13 @@ These require more effort but provide significant value.
 - [x] Update auth tests for new error types
 
 ### 2.4 Use ServiceResult Pattern
-- [ ] Update BaseService methods to return ServiceResult
-- [ ] Add service methods that use executeOperation:
-  - [ ] AuthService: wrap login, register, logout
-  - [ ] ProfileService: wrap create, update, delete
-  - [ ] MediaService: wrap upload methods
-- [ ] Create examples showing ServiceResult usage
-- [ ] Document when to use ServiceResult vs exceptions
+- [x] Update BaseService methods to return ServiceResult
+- [x] Add service methods that use executeOperation:
+  - [x] AuthService: wrap login, register, logout
+  - [x] ProfileService: wrap create, update, delete
+  - [x] MediaService: wrap upload methods
+- [x] Create examples showing ServiceResult usage
+- [x] Document when to use ServiceResult vs exceptions
 
 ## Phase 3: Optimization (Low Priority)
 These are nice-to-have improvements.

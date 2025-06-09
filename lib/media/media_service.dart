@@ -1,6 +1,6 @@
 import '../core/cache/cache.dart';
 import '../core/client/base_service.dart';
-import '../core/models/media.dart';
+import '../core/models/models.dart';
 import '../profiles/models/profile_models.dart';
 import 'exceptions/media_exception.dart';
 import 'upload_handler.dart';
@@ -137,5 +137,56 @@ class MediaService extends BaseService {
   /// Check if a filename has a valid extension
   static bool isValidFilename(String filename) {
     return MediaValidator.isValidFilename(filename);
+  }
+
+  // =============================================================================
+  // ServiceResult-based methods (alternative to exception-based methods)
+  // =============================================================================
+
+  /// Upload media with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Media>` that contains either:
+  /// - Success: The uploaded Media with ID and URL
+  /// - Failure: Error message without throwing an exception
+  ///
+  /// This method is useful for UI code that prefers explicit error handling
+  /// over try-catch blocks.
+  Future<ServiceResult<Media>> uploadMediaSafely({
+    required MediaFile file,
+    String? actorId,
+    void Function(double progress)? onProgress,
+  }) async {
+    return executeAuthenticatedOperation(
+      () => uploadMedia(
+        file: file,
+        actorId: actorId,
+        onProgress: onProgress,
+      ),
+      operationName: 'UploadMedia',
+    );
+  }
+
+  /// Upload image with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<Media>` that contains either:
+  /// - Success: The uploaded Media with ID and URL
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<Media>> uploadImageSafely({
+    required List<int> bytes,
+    required String filename,
+    String? alt,
+    String? actorId,
+    void Function(double progress)? onProgress,
+  }) async {
+    return executeAuthenticatedOperation(
+      () => uploadImage(
+        bytes: bytes,
+        filename: filename,
+        alt: alt,
+        actorId: actorId,
+        onProgress: onProgress,
+      ),
+      operationName: 'UploadImage',
+    );
   }
 }

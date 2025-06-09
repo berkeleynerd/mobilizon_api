@@ -459,4 +459,85 @@ class AuthService extends BaseService {
   void dispose() {
     _authStateController.close();
   }
+
+  // =============================================================================
+  // ServiceResult-based methods (alternative to exception-based methods)
+  // =============================================================================
+
+  /// Login with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<AuthResult>` that contains either:
+  /// - Success: AuthResult with tokens and user data
+  /// - Failure: Error message without throwing an exception
+  ///
+  /// This method is useful for UI code that prefers explicit error handling
+  /// over try-catch blocks.
+  Future<ServiceResult<AuthResult>> loginSafely(AuthCredentials credentials) async {
+    return executeOperation(
+      () => login(credentials),
+      operationName: 'Login',
+    );
+  }
+
+  /// Register with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<User>` that contains either:
+  /// - Success: User data after successful registration
+  /// - Failure: Error message without throwing an exception
+  ///
+  /// Note: Registration doesn't return tokens - user needs to login separately
+  Future<ServiceResult<User>> registerSafely(RegistrationData registrationData) async {
+    return executeOperation(
+      () => register(registrationData),
+      operationName: 'Registration',
+    );
+  }
+
+  /// Logout with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<bool>` that contains either:
+  /// - Success: true if logout was successful
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<bool>> logoutSafely() async {
+    return executeOperation(
+      logout,
+      operationName: 'Logout',
+    );
+  }
+
+  /// Get logged user with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<User?>` that contains either:
+  /// - Success: User data (or null if not authenticated)
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<User?>> getLoggedUserSafely() async {
+    return executeOperation(
+      getLoggedUser,
+      operationName: 'GetLoggedUser',
+    );
+  }
+
+  /// Refresh token with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<TokenPair>` that contains either:
+  /// - Success: New token pair
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<TokenPair>> forceTokenRefreshSafely() async {
+    return executeAuthenticatedOperation(
+      forceTokenRefresh,
+      operationName: 'TokenRefresh',
+    );
+  }
+
+  /// Check and refresh token if needed with ServiceResult pattern
+  ///
+  /// Returns a `ServiceResult<bool>` that contains either:
+  /// - Success: true if token was refreshed or still valid
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<bool>> refreshTokenIfNeededSafely() async {
+    return executeOperation(
+      refreshTokenIfNeeded,
+      operationName: 'TokenRefreshCheck',
+    );
+  }
 }
