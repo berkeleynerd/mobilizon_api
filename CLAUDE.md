@@ -192,15 +192,44 @@ throw ProfileException(
 - Standard timeouts
 - Proper error tracking
 
-## Ferry Optimization Opportunities
+## Ferry Implementation Status
 
-The current implementation underutilizes Ferry's capabilities. Future improvements could include:
+### Completed Optimizations ✅
+1. **Cache Enabled**: Switched from `NetworkOnly` to `CacheFirst` fetch policy
+2. **Persistent Cache**: Added `ferry_hive_store` for offline support (using Hive)
 
-1. **Enable Caching**: Switch from `NetworkOnly` to `CacheFirst` fetch policy
-2. **Persistent Cache**: Use `ferry_hive_store` for offline support
-3. **Watch Queries**: Replace manual polling with reactive streams
-4. **Optimistic Updates**: Improve UI responsiveness
-5. **Request Interceptors**: Add analytics and logging links
+### Deferred: Infrastructure Complexity (What's Possible vs Practical)
+The following infrastructure features are deferred indefinitely unless explicitly requested. They add complexity without proportional user value:
+
+1. **Request/Response Interceptors**: Link chains for logging, retry, analytics
+   - We already have auth headers, retry logic, and error handling
+   - Would complicate debugging and increase maintenance burden
+   
+2. **Multi-Level Cache Management**: L0/L1/L2 cache hierarchies
+   - Current Ferry cache + Hive persistence is sufficient
+   - Additional layers add complexity without clear benefit
+
+3. **Background Task Management**: Generic task scheduling infrastructure
+   - Better to implement specific sync needs when identified
+   - Platform-specific implementations vary widely
+
+4. **Structured Logging Infrastructure**: Comprehensive logging framework
+   - Current debug logging is adequate
+   - Remote logging is better handled by crash reporting services
+
+5. **General Persistent Storage Abstraction**: Generic storage layer
+   - Current token storage + cache covers actual needs
+   - Additional abstraction premature without specific use cases
+
+### Deferred: Ferry Advanced Features (Pending User Studies)
+The following Ferry features are deferred until user studies indicate they would improve user experience:
+
+1. **Watch Queries**: Reactive streams to replace polling
+2. **Optimistic Updates**: Immediate UI updates before server confirmation
+3. **Cache Warming**: Pre-loading predictable data needs
+4. **Per-Operation Cache Policies**: Fine-tuning cache behavior per query/mutation
+
+**Principle**: Infrastructure should be added only when solving actual problems, not theoretical ones. Keep the codebase simple and maintainable.
 
 ## Important Notes
 

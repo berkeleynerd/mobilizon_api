@@ -313,6 +313,9 @@ class AuthService {
       // Clear current user
       _currentUser = null;
 
+      // Clear GraphQL cache on logout for privacy
+      await _graphQLClient.clearCache();
+
       // Notify listeners of authentication state change
       if (!_authStateController.isClosed) {
         _authStateController.add(false);

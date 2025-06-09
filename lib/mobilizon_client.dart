@@ -49,6 +49,8 @@ class MobilizonClient {
         enableDebugLogging: enableDebugLogging,
         operationTimeouts: testTimeouts,
         maxRetryAttempts: maxRetryAttempts,
+        // Tests use in-memory cache to avoid file system dependencies
+        enablePersistentCache: false,
       ),
     );
   }
@@ -65,6 +67,7 @@ class MobilizonClient {
       enableDebugLogging: _config.enableDebugLogging,
       operationTimeouts: _config.operationTimeouts,
       maxRetryAttempts: _config.maxRetryAttempts,
+      enablePersistentCache: _config.enablePersistentCache,
     );
 
     // Initialize authentication service
@@ -93,10 +96,17 @@ class MobilizonClient {
     });
   }
 
+  /// Clear all caches
+  Future<void> clearCache() async {
+    await _graphQLClient.clearCache();
+    _profileService.clearAllCaches();
+  }
+
   /// Dispose all resources
-  void dispose() {
+  Future<void> dispose() async {
     _authService.dispose();
     _tokenManager.dispose();
+    await _graphQLClient.dispose();
   }
 }
 
@@ -120,11 +130,15 @@ class MobilizonClientConfig {
   /// Maximum retry attempts for failed requests
   final int maxRetryAttempts;
 
+  /// Whether to enable persistent cache (default: true for production)
+  final bool enablePersistentCache;
+
   const MobilizonClientConfig({
     required this.apiUrl,
     required this.tokenStorage,
     this.enableDebugLogging = false,
     OperationTimeouts? operationTimeouts,
     this.maxRetryAttempts = 2,
+    this.enablePersistentCache = true,
   }) : operationTimeouts = operationTimeouts ?? const OperationTimeouts();
 }

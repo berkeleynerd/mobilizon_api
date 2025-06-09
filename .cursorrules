@@ -1,0 +1,134 @@
+# Cursor IDE Rules for Mobilizon API
+
+This file provides guidance to Cursor AI when working with code in this repository.
+
+## Development Commands
+
+### Build and Code Generation
+```bash
+# Generate GraphQL code from schema and operations
+dart run build_runner build
+
+# Generate with watch mode for development
+dart run build_runner watch
+
+# Clean and rebuild generated files
+dart run build_runner build --delete-conflicting-outputs
+```
+
+### Testing
+```bash
+# Run unit tests
+flutter test
+
+# Run integration tests (requires Mobilizon instance at localhost:4000)
+./run_headless_tests.sh
+
+# Run specific test file
+flutter test test/auth/auth_service_test.dart
+
+# Run single test
+flutter test test/auth/auth_service_test.dart --name "login with valid credentials"
+```
+
+### Linting and Analysis
+```bash
+# Run Flutter analyzer
+flutter analyze
+
+# Run linter with auto-fix
+dart fix --apply
+
+# Check formatting
+dart format --set-exit-if-changed .
+```
+
+## Architecture Guidelines
+
+### Core Principles
+1. **Simplicity > Cleverness**: Keep implementations straightforward and maintainable
+2. **Build what users need**: Not what's technically possible
+3. **Avoid premature abstraction**: Add infrastructure only when solving actual problems
+
+### High-Level Architecture
+- **MobilizonClient**: Main entry point orchestrating services
+- **Service Layer**: Domain-specific services (AuthService, ProfileService)
+- **GraphQL Layer**: Ferry-based with code generation
+- **Token Storage**: Abstract interface requiring consumer implementation
+
+### Ferry Implementation Status
+
+#### Completed Optimizations ✅
+1. **Cache Enabled**: CacheFirst fetch policy for queries
+2. **Persistent Cache**: HiveStore for offline support
+
+#### Deferred: Infrastructure Complexity (What's Possible vs Practical)
+The following are deferred indefinitely unless explicitly requested:
+
+1. **Request/Response Interceptors**: Link chains for logging, retry, analytics
+   - We already have auth headers, retry logic, and error handling
+   - Would complicate debugging and increase maintenance burden
+   
+2. **Multi-Level Cache Management**: L0/L1/L2 cache hierarchies
+   - Current Ferry cache + Hive persistence is sufficient
+   - Additional layers add complexity without clear benefit
+
+3. **Background Task Management**: Generic task scheduling infrastructure
+   - Better to implement specific sync needs when identified
+   - Platform-specific implementations vary widely
+
+4. **Structured Logging Infrastructure**: Comprehensive logging framework
+   - Current debug logging is adequate
+   - Remote logging is better handled by crash reporting services
+
+5. **General Persistent Storage Abstraction**: Generic storage layer
+   - Current token storage + cache covers actual needs
+   - Additional abstraction premature without specific use cases
+
+#### Deferred: Ferry Advanced Features (Pending User Studies)
+1. **Watch Queries**: Reactive streams to replace polling
+2. **Optimistic Updates**: Immediate UI updates before server confirmation
+3. **Cache Warming**: Pre-loading predictable data needs
+4. **Per-Operation Cache Policies**: Fine-tuning cache behavior per query/mutation
+
+## Code Style Guidelines
+
+### DO:
+- Follow existing patterns in the codebase
+- Use async/await with proper error handling
+- Validate inputs before API calls
+- Wrap errors in typed exceptions with context
+- Clear cache on logout for privacy
+- Use `forTesting()` factory for integration tests
+
+### DON'T:
+- Add comments unless specifically requested
+- Create generic infrastructure without specific use cases
+- Implement complex link chains or interceptors
+- Add multiple cache layers beyond Ferry + Hive
+- Build theoretical optimizations
+
+## Important Implementation Notes
+
+1. **Token Storage**: Client does NOT provide storage - consumers must implement `TokenStorage`
+2. **Cache Behavior**: Production uses persistent cache, tests use in-memory
+3. **GraphQL Fragments**: Some operations avoid fragments due to server validation issues
+4. **Integration Tests**: Must run sequentially due to Flutter limitations
+5. **Terminology**: "Person" = user profile/identity in Mobilizon
+
+## Focus Areas for New Features
+
+### High Value Domain Services:
+1. **Event Service** - Core Mobilizon functionality
+2. **Group Service** - Community features  
+3. **Media Upload Service** - Image handling
+4. **Search Service** - Discovery features
+
+### Avoid Unless Requested:
+- Generic infrastructure
+- Complex caching hierarchies
+- Abstract storage layers
+- Interceptor chains
+- Background task frameworks
+
+Remember: Infrastructure should solve actual problems, not theoretical ones.

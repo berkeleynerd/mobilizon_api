@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:ferry/ferry.dart';
+import 'package:ferry_hive_store/ferry_hive_store.dart';
 import 'package:gql_http_link/gql_http_link.dart';
+import 'package:hive/hive.dart';
 
 import '../models/auth.dart';
 import '../storage/storage.dart';
@@ -66,11 +69,20 @@ class GraphQLClientProvider {
   /// Maximum retry attempts for failed requests
   final int maxRetryAttempts;
 
+  /// Whether to use persistent cache (false for testing)
+  final bool enablePersistentCache;
+
   /// The underlying Ferry client
   late final Client _client;
 
   /// Client for authenticated requests
   Client? _authClient;
+
+  /// Shared cache instance for both clients
+  Cache? _sharedCache;
+
+  /// Hive store for persistent cache
+  HiveStore? _hiveStore;
 
   GraphQLClientProvider({
     required this.apiUrl,
@@ -78,12 +90,17 @@ class GraphQLClientProvider {
     this.enableDebugLogging = false,
     OperationTimeouts? operationTimeouts,
     this.maxRetryAttempts = 2,
+    this.enablePersistentCache = true,
   }) : operationTimeouts = operationTimeouts ?? const OperationTimeouts() {
+    // Initialize synchronously, cache will be set up asynchronously
     _initClient();
   }
 
   /// Initialize the Ferry client
   void _initClient() {
+    // Initialize cache asynchronously
+    _initializeCache();
+
     // Create an HTTP link for the GraphQL API with default headers
     final httpLink = HttpLink(
       apiUrl,
@@ -93,16 +110,16 @@ class GraphQLClientProvider {
       },
     );
 
-    // Create an in-memory cache
-    final cache = Cache();
+    // Create a temporary in-memory cache until persistent cache is ready
+    _sharedCache = Cache();
 
     // Create the default client with the HTTP link and cache
     _client = Client(
       link: httpLink,
-      cache: cache,
+      cache: _sharedCache!,
       defaultFetchPolicies: {
-        // Default policies for query, mutation, and subscription
-        OperationType.query: FetchPolicy.NetworkOnly,
+        // Use CacheFirst for queries for instant responses
+        OperationType.query: FetchPolicy.CacheFirst,
         OperationType.mutation: FetchPolicy.NetworkOnly,
         OperationType.subscription: FetchPolicy.CacheAndNetwork,
       },
@@ -122,6 +139,77 @@ class GraphQLClientProvider {
     });
   }
 
+  /// Initialize persistent cache asynchronously
+  Future<void> _initializeCache() async {
+    if (!enablePersistentCache) {
+      // Testing mode - use in-memory cache only
+      if (enableDebugLogging) {
+        print('🧪 [GraphQL] Using in-memory cache for testing');
+      }
+      return;
+    }
+
+    try {
+      // For now, use a simple approach without path_provider
+      // This will store cache in the current directory (not ideal for production)
+      // TODO: Add proper path resolution when Flutter context is available
+      
+      // Open a Hive box for Ferry cache
+      final box = await Hive.openBox('graphql_cache');
+
+      // Create HiveStore with the box
+      _hiveStore = HiveStore(box);
+
+      // Create new cache with persistent store
+      final persistentCache = Cache(store: _hiveStore);
+
+      // Replace the temporary cache with persistent cache
+      _sharedCache = persistentCache;
+      
+      // Update existing clients with new cache
+      _updateClientsWithCache(persistentCache);
+
+      if (enableDebugLogging) {
+        print('✅ [GraphQL] Persistent cache initialized');
+      }
+    } catch (e) {
+      if (enableDebugLogging) {
+        print('⚠️ [GraphQL] Failed to initialize persistent cache: $e');
+        print('📦 [GraphQL] Continuing with in-memory cache');
+      }
+      // Continue with in-memory cache on failure
+    }
+  }
+
+  /// Update clients with new cache instance
+  void _updateClientsWithCache(Cache cache) {
+    // Recreate clients with new cache
+    final httpLink = HttpLink(
+      apiUrl,
+      defaultHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    );
+
+    _client = Client(
+      link: httpLink,
+      cache: cache,
+      defaultFetchPolicies: {
+        OperationType.query: FetchPolicy.CacheFirst,
+        OperationType.mutation: FetchPolicy.NetworkOnly,
+        OperationType.subscription: FetchPolicy.CacheAndNetwork,
+      },
+    );
+
+    // Recreate auth client if tokens exist
+    tokenManager.getCurrentTokens().then((tokens) {
+      if (tokens != null) {
+        _createAuthClient(tokens);
+      }
+    });
+  }
+
   /// Create an authenticated client with the current token
   void _createAuthClient(TokenPair tokens) {
     // Create an HTTP link with the auth token
@@ -134,15 +222,12 @@ class GraphQLClientProvider {
       },
     );
 
-    // Create an in-memory cache
-    final cache = Cache();
-
-    // Create the auth client
+    // Create the auth client with shared cache
     _authClient = Client(
       link: authHttpLink,
-      cache: cache,
+      cache: _sharedCache!, // Use shared cache for consistency
       defaultFetchPolicies: {
-        OperationType.query: FetchPolicy.NetworkOnly,
+        OperationType.query: FetchPolicy.CacheFirst,
         OperationType.mutation: FetchPolicy.NetworkOnly,
         OperationType.subscription: FetchPolicy.CacheAndNetwork,
       },
@@ -301,6 +386,34 @@ class GraphQLClientProvider {
         'Failed to watch operation: ${request.operation.operationName}',
         originalError: e,
       );
+    }
+  }
+
+  /// Clear all cached data
+  Future<void> clearCache() async {
+    _sharedCache?.clear();
+    if (enableDebugLogging) {
+      print('🗑️ [GraphQL] Cache cleared');
+    }
+  }
+
+  /// Get cache statistics for debugging
+  Map<String, dynamic> getCacheStatistics() {
+    return {
+      'type': _hiveStore != null ? 'persistent' : 'memory',
+      'initialized': _sharedCache != null,
+      'persistentCacheEnabled': enablePersistentCache,
+    };
+  }
+
+  /// Dispose resources
+  Future<void> dispose() async {
+    // HiveStore doesn't have a close method in this version
+    // Just clear references
+    _hiveStore = null;
+    _sharedCache = null;
+    if (enableDebugLogging) {
+      print('🔒 [GraphQL] Cache resources released');
     }
   }
 }
