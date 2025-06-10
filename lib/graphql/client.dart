@@ -12,6 +12,11 @@
 
 // Schema types (foundational - always needed)
 export '__generated__/schema.schema.gql.dart';
+// AUTHENTICATION OPERATIONS (Used by AuthService)
+// =================================================
+
+// ChangePassword operation (30KB) - AuthService.changePassword()
+export 'operations/__generated__/change_password.req.gql.dart';
 // CORE UTILITY OPERATIONS
 // ========================
 
@@ -37,11 +42,6 @@ export 'operations/__generated__/logged_person.req.gql.dart';
 // LoggedUserMinimal operation (30KB) - AuthService.getLoggedUser() [OPTIMIZED]
 export 'operations/__generated__/logged_user_minimal.req.gql.dart';
 export 'operations/__generated__/login.data.gql.dart';
-// AUTHENTICATION OPERATIONS (Used by AuthService)
-// =================================================
-
-// ChangePassword operation (30KB) - AuthService.changePassword()
-export 'operations/__generated__/change_password.req.gql.dart';
 // Login operation (52KB) - AuthService.login()
 export 'operations/__generated__/login.req.gql.dart';
 // Logout operation (20KB) - AuthService.logout()

@@ -330,8 +330,8 @@ class AuthService extends BaseService {
       // Create the change password request with validated data
       final request = GChangePasswordReq(
         (b) => b
-          ..vars.oldPassword = validated['oldPassword']!
-          ..vars.newPassword = validated['newPassword']!,
+          ..vars.oldPassword = validated['oldPassword']
+          ..vars.newPassword = validated['newPassword'],
       );
 
       // Execute the change password mutation (requires authentication)
@@ -614,7 +614,7 @@ class AuthService extends BaseService {
       // Create the password reset request with validated data
       final request = GSendResetPasswordReq(
         (b) => b
-          ..vars.email = validated['email']!
+          ..vars.email = validated['email']
           ..vars.locale = validated['locale'],
       );
 
@@ -694,7 +694,7 @@ class AuthService extends BaseService {
   /// - Failure: Error message without throwing an exception
   Future<ServiceResult<bool>> logoutSafely() async {
     return executeOperation(
-      () => logout(),
+      logout,
       operationName: 'Logout',
     );
   }
