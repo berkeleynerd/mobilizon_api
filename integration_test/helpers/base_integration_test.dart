@@ -4,8 +4,9 @@ import 'package:mobilizon_api/mobilizon_api.dart';
 import 'rate_limiter.dart';
 import 'token_storage.dart';
 
-// Re-export rate limiting types for convenience
+// Re-export types for convenience
 export 'rate_limiter.dart';
+export 'token_storage.dart';
 
 /// Base class for all Mobilizon API integration tests
 ///
