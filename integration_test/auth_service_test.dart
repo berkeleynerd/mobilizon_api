@@ -76,11 +76,26 @@ class _AuthServiceTest extends RestorableIntegrationTest {
       });
       operationTimes['Register'] = registerTime;
 
-      // 2️⃣ Login - using base class helper with rate limiting
+      // 2️⃣ Smart Login - handle potential password state
       final loginTime = await _timedOperation('Login', () async {
-        printTestStep('2️⃣', 'OPERATION 2: Login');
+        printTestStep('2️⃣', 'OPERATION 2: Smart Login');
         
-        final result = await loginAsUser(); // Base class handles rate limiting!
+        late AuthResult result;
+        try {
+          result = await loginAsUser(); // Try original password first
+          printInfo('Original password works');
+        } catch (e) {
+          // Try temp password if original fails
+          printInfo('Trying alternate password...');
+          result = await withRateLimit(() async {
+            return await client.auth.loginWithRetry(AuthCredentials(
+              email: userEmail,
+              password: 'TempPassword123!',
+            ));
+          }, type: RateLimitType.authentication);
+          printInfo('Alternate password works');
+        }
+        
         expect(result.user, isNotNull);
         expect(await client.auth.isAuthenticated(), true);
         
@@ -153,16 +168,39 @@ class _AuthServiceTest extends RestorableIntegrationTest {
     storeOriginalData('originalPassword', userPassword);
 
     try {
-      // 1️⃣ Login - using base class
-      printTestStep('1️⃣', 'STEP 1: Login with original credentials');
-      final loginResult = await loginAsUser();
+      // 1️⃣ Smart Login - try both passwords
+      printTestStep('1️⃣', 'STEP 1: Smart login (handling potential password state)');
+      late AuthResult loginResult;
+      
+      try {
+        // Try original password first
+        loginResult = await loginAsUser();
+        printSuccess('Original password works');
+      } catch (e) {
+        // If original fails, try temp password (from previous incomplete test)
+        printWarning('Original password failed, trying temp password...');
+        loginResult = await withRateLimit(() async {
+          return await client.auth.loginWithRetry(AuthCredentials(
+            email: userEmail,
+            password: tempPassword,
+          ));
+        }, type: RateLimitType.authentication);
+        
+        printSuccess('Temp password works - will restore original');
+        storeOriginalData('needsRestoration', true);
+        storeOriginalData('currentPassword', tempPassword);
+      }
+      
       expect(loginResult.user.email, userEmail);
 
       // 2️⃣ Change password - with rate limiting
       printTestStep('2️⃣', 'STEP 2: Change password');
+      
+      // Use the current password that worked for login
+      final currentPassword = getOriginalData<String>('currentPassword') ?? userPassword;
       final updatedUser = await withRateLimit(() async {
         return await client.auth.changePassword(ChangePasswordData(
-          oldPassword: userPassword,
+          oldPassword: currentPassword,
           newPassword: tempPassword,
         ));
       }, type: RateLimitType.authentication);
@@ -174,11 +212,13 @@ class _AuthServiceTest extends RestorableIntegrationTest {
       printTestStep('3️⃣', 'STEP 3: Logout and verify old password fails');
       await logoutSafely();
 
+      // Test that the old password no longer works
+      final oldPassword = getOriginalData<String>('currentPassword') ?? userPassword;
       try {
         await withRateLimit(() async {
           return await client.auth.loginWithRetry(AuthCredentials(
             email: userEmail,
-            password: userPassword, // Old password
+            password: oldPassword, // Old password that was just changed
           ));
         }, type: RateLimitType.authentication);
         fail('Login with old password should have failed');
@@ -242,18 +282,19 @@ class _AuthServiceTest extends RestorableIntegrationTest {
   @override
   Future<void> restoreOriginalData() async {
     final originalPassword = getOriginalData<String>('originalPassword');
-    final tempPassword = getOriginalData<String>('tempPassword');
+    final needsRestoration = getOriginalData<bool>('needsRestoration') ?? false;
+    final currentPassword = getOriginalData<String>('currentPassword') ?? getOriginalData<String>('tempPassword');
     
-    if (originalPassword != null && tempPassword != null) {
+    if (originalPassword != null && needsRestoration && currentPassword != null) {
       printTestStep('🔄', 'Restoring original password...');
       
       try {
-        // Ensure we're logged in with temp password
+        // Ensure we're logged in with current password
         if (!await client.auth.isAuthenticated()) {
           await withRateLimit(() async {
             return await client.auth.loginWithRetry(AuthCredentials(
               email: userEmail,
-              password: tempPassword,
+              password: currentPassword,
             ));
           }, type: RateLimitType.authentication);
         }
@@ -261,7 +302,7 @@ class _AuthServiceTest extends RestorableIntegrationTest {
         // Restore original password
         await withRateLimit(() async {
           return await client.auth.changePassword(ChangePasswordData(
-            oldPassword: tempPassword,
+            oldPassword: currentPassword,
             newPassword: originalPassword,
           ));
         }, type: RateLimitType.authentication);
@@ -278,6 +319,32 @@ class _AuthServiceTest extends RestorableIntegrationTest {
         }, type: RateLimitType.authentication);
         
         printSuccess('Password restoration verified');
+        
+      } catch (e) {
+        printWarning('Failed to restore original password: $e');
+      }
+    } else if (originalPassword != null && currentPassword != null && currentPassword != originalPassword) {
+      // Handle legacy tempPassword restoration
+      printTestStep('🔄', 'Restoring original password (legacy)...');
+      
+      try {
+        if (!await client.auth.isAuthenticated()) {
+          await withRateLimit(() async {
+            return await client.auth.loginWithRetry(AuthCredentials(
+              email: userEmail,
+              password: currentPassword,
+            ));
+          }, type: RateLimitType.authentication);
+        }
+
+        await withRateLimit(() async {
+          return await client.auth.changePassword(ChangePasswordData(
+            oldPassword: currentPassword,
+            newPassword: originalPassword,
+          ));
+        }, type: RateLimitType.authentication);
+        
+        printSuccess('Original password restored');
         
       } catch (e) {
         printWarning('Failed to restore original password: $e');

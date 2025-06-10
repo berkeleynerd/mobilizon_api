@@ -57,12 +57,12 @@ class RateLimitProfile {
 
   /// Standard profile based on observed patterns
   static const standard = RateLimitProfile(
-    standardDelay: Duration(milliseconds: 800),
-    authenticationDelay: Duration(seconds: 3), // Significantly increased for rate limiting
-    mediaDelay: Duration(seconds: 3),
-    profileUpdateDelay: Duration(seconds: 1),
-    testStartDelay: Duration(seconds: 1), // Increased pre-test delay
-    batchOperationDelay: Duration(milliseconds: 500),
+    standardDelay: Duration(milliseconds: 500),
+    authenticationDelay: Duration(milliseconds: 1500), // Reliable but faster
+    mediaDelay: Duration(seconds: 2),
+    profileUpdateDelay: Duration(milliseconds: 700),
+    testStartDelay: Duration(milliseconds: 600),
+    batchOperationDelay: Duration(milliseconds: 350),
   );
 
   /// Conservative profile for high-load scenarios
@@ -93,7 +93,7 @@ class RateLimitProfile {
       case RateLimitType.authentication:
         return authenticationDelay;
       case RateLimitType.passwordReset:
-        return authenticationDelay * 6; // 6x delay for password reset (heavily rate-limited)
+        return authenticationDelay * 2; // 2x delay for password reset (3 seconds total)
       case RateLimitType.media:
         return mediaDelay;
       case RateLimitType.profileUpdate:
