@@ -355,6 +355,22 @@ The following Ferry features are deferred until user studies indicate they would
 
 **Principle**: Infrastructure should be added only when solving actual problems, not theoretical ones. Keep the codebase simple and maintainable.
 
+## Service Templates
+
+For creating new domain services (Groups, Events, Discussions), use the standardized templates:
+
+- **Template Guide**: `templates/SERVICE_TEMPLATE.md` - Complete implementation guide
+- **Service Template**: `templates/domain_service.template` - Copy and customize
+- **Working Example**: `templates/group_service_example.dart` - Shows GroupService implementation
+- **Template README**: `templates/README.md` - Quick start and patterns
+
+All templates follow the service rationalization patterns:
+- Extend `BaseService` for shared functionality
+- Use dedicated validators for input validation
+- Implement unified cache strategies (TTL or Simple)
+- Provide both exception and `ServiceResult` error handling
+- Include authentication state management
+
 ## Important Notes
 
 1. **Token Storage**: The client does NOT provide token storage - consumers must implement `TokenStorage` interface
@@ -362,3 +378,4 @@ The following Ferry features are deferred until user studies indicate they would
 3. **Sequential Testing**: Integration tests must run sequentially due to Flutter limitations
 4. **Profile vs Person**: "Person" represents a user profile/identity in Mobilizon terminology
 5. **Error Handling**: All services throw typed exceptions - catch specific types for proper handling
+6. **New Services**: Use templates in `templates/` directory for consistent patterns

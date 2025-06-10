@@ -1,0 +1,390 @@
+// Template: Domain Service
+// Replace {Domain} with your actual domain (e.g., Group, Event, Discussion)
+// Replace {domain} with lowercase version (e.g., group, event, discussion) 
+// This template follows all patterns established during service rationalization
+
+import 'package:mobilizon_api/mobilizon_api.dart';
+
+/// Service for managing {Domain} entities
+/// 
+/// This service provides CRUD operations for {Domain}s with:
+/// - Input validation via {Domain}Validator
+/// - Caching with configurable strategy
+/// - Typed error handling with {Domain}Exception
+/// - Both exception and ServiceResult patterns
+/// - Authentication state awareness
+class {Domain}Service extends BaseService {
+  // Cache strategy - choose TTL or Simple based on domain needs
+  // TTL: For frequently changing data (events, groups)
+  // Simple: For recent uploads, temporary data
+  final TTLCache<{Domain}> _cache = TTLCache<{Domain}>(
+    ttl: const Duration(minutes: 5), // Adjust based on data volatility
+  );
+  
+  final TTLCache<List<{Domain}>> _listCache = TTLCache<List<{Domain}>>(
+    ttl: const Duration(minutes: 5),
+  );
+
+  /// Creates a new {Domain}Service
+  /// 
+  /// Parameters:
+  /// - [clientProvider]: GraphQL client provider
+  /// - [tokenManager]: Token manager for authentication
+  {Domain}Service(
+    GraphQLClientProvider clientProvider,
+    TokenManager tokenManager,
+  ) : super(clientProvider, tokenManager);
+
+  // ==========================================================================
+  // CRUD Operations - Traditional Exception Pattern
+  // ==========================================================================
+
+  /// Retrieves all {domain}s accessible to the current user
+  ///
+  /// Returns a cached list if available and valid, otherwise fetches from server.
+  /// Cache TTL: 5 minutes
+  ///
+  /// Throws:
+  /// - [AuthenticationException] if user is not authenticated
+  /// - [{Domain}Exception] if operation fails
+  Future<List<{Domain}>> getAll{Domain}s() async {
+    // Check authentication
+    if (!await isAuthenticated()) {
+      throw AuthenticationException('Must be logged in to access {domain}s');
+    }
+
+    // Check cache first
+    const cacheKey = 'all_{domain}s';
+    final cached = _listCache.get(cacheKey);
+    if (cached != null) {
+      return cached;
+    }
+
+    try {
+      // TODO: Replace with actual GraphQL operation
+      final request = GGet{Domain}sReq(/* query variables */);
+      final response = await _clientProvider.execute(request);
+      
+      if (response.hasErrors) {
+        throw {Domain}Exception(
+          'Failed to fetch {domain}s: ${response.errors}',
+          errorType: {Domain}ErrorType.general,
+          originalError: response.errors,
+        );
+      }
+
+      final {domain}s = response.data?.{domain}s?.map(/* convert to model */).toList() ?? [];
+      
+      // Cache the results
+      _listCache.set(cacheKey, {domain}s);
+      
+      // Also cache individual {domain}s
+      for (final {domain} in {domain}s) {
+        _cache.set({domain}.id, {domain});
+      }
+      
+      return {domain}s;
+    } catch (e) {
+      throw {Domain}Exception(
+        'Failed to fetch {domain}s',
+        errorType: {Domain}ErrorType.general,
+        originalError: e,
+      );
+    }
+  }
+
+  /// Retrieves a specific {domain} by ID
+  ///
+  /// Returns cached {domain} if available and valid, otherwise fetches from server.
+  ///
+  /// Parameters:
+  /// - [{domain}Id]: The ID of the {domain} to retrieve
+  ///
+  /// Throws:
+  /// - [AuthenticationException] if user is not authenticated
+  /// - [{Domain}Exception] if {domain} not found or operation fails
+  Future<{Domain}> get{Domain}ById(String {domain}Id) async {
+    // Validate input
+    final validated = {Domain}Validator.validateId({domain}Id);
+    
+    // Check authentication
+    if (!await isAuthenticated()) {
+      throw AuthenticationException('Must be logged in to access {domain}');
+    }
+
+    // Check cache first
+    final cached = _cache.get({domain}Id);
+    if (cached != null) {
+      return cached;
+    }
+
+    try {
+      // TODO: Replace with actual GraphQL operation
+      final request = GGet{Domain}Req(({domain}Id: {domain}Id));
+      final response = await _clientProvider.execute(request);
+      
+      if (response.hasErrors) {
+        // Check for specific error types
+        final errorMessage = response.errors?.first.message ?? 'Unknown error';
+        if (errorMessage.contains('not found')) {
+          throw {Domain}Exception(
+            '{Domain} not found: ${domain}Id',
+            errorType: {Domain}ErrorType.notFound,
+            originalError: response.errors,
+          );
+        }
+        
+        throw {Domain}Exception(
+          'Failed to fetch {domain}: $errorMessage',
+          errorType: {Domain}ErrorType.general,
+          originalError: response.errors,
+        );
+      }
+
+      final {domain} = /* convert response to model */;
+      
+      // Cache the result
+      _cache.set({domain}Id, {domain});
+      
+      return {domain};
+    } catch (e) {
+      if (e is {Domain}Exception) rethrow;
+      throw {Domain}Exception(
+        'Failed to fetch {domain}',
+        errorType: {Domain}ErrorType.general,
+        originalError: e,
+      );
+    }
+  }
+
+  /// Creates a new {domain}
+  ///
+  /// Parameters:
+  /// - [data]: The {domain} creation data
+  ///
+  /// Returns: The created {domain}
+  ///
+  /// Throws:
+  /// - [AuthenticationException] if user is not authenticated
+  /// - [{Domain}Exception] if creation fails or validation errors
+  Future<{Domain}> create{Domain}({Domain}CreationData data) async {
+    // Validate input
+    final validated = {Domain}Validator.validateCreation(data);
+    
+    // Check authentication
+    if (!await isAuthenticated()) {
+      throw AuthenticationException('Must be logged in to create {domain}');
+    }
+
+    try {
+      // TODO: Replace with actual GraphQL operation
+      final request = GCreate{Domain}Req((
+        // Map validated data to GraphQL variables
+      ));
+      final response = await _clientProvider.execute(request);
+      
+      if (response.hasErrors) {
+        final errorMessage = response.errors?.first.message ?? 'Unknown error';
+        
+        if (errorMessage.contains('already exists')) {
+          throw {Domain}Exception(
+            '{Domain} already exists',
+            errorType: {Domain}ErrorType.alreadyExists,
+            originalError: response.errors,
+          );
+        }
+        
+        if (errorMessage.contains('validation')) {
+          throw {Domain}Exception(
+            'Validation failed: $errorMessage',
+            errorType: {Domain}ErrorType.validationFailed,
+            originalError: response.errors,
+          );
+        }
+        
+        throw {Domain}Exception(
+          'Failed to create {domain}: $errorMessage',
+          errorType: {Domain}ErrorType.creationFailed,
+          originalError: response.errors,
+        );
+      }
+
+      final {domain} = /* convert response to model */;
+      
+      // Cache the new {domain}
+      _cache.set({domain}.id, {domain});
+      
+      // Invalidate list cache
+      _listCache.remove('all_{domain}s');
+      
+      return {domain};
+    } catch (e) {
+      if (e is {Domain}Exception) rethrow;
+      throw {Domain}Exception(
+        'Failed to create {domain}',
+        errorType: {Domain}ErrorType.creationFailed,
+        originalError: e,
+      );
+    }
+  }
+
+  // ==========================================================================
+  // ServiceResult Pattern Methods (Optional)
+  // ==========================================================================
+
+  /// Safely retrieves all {domain}s with explicit error handling
+  ///
+  /// Returns a [ServiceResult] containing either the {domain}s or error information.
+  /// Use this method when you prefer explicit error handling over try-catch.
+  Future<ServiceResult<List<{Domain}>>> getAll{Domain}sSafely() async {
+    return executeOperation(() => getAll{Domain}s());
+  }
+
+  /// Safely retrieves a {domain} by ID with explicit error handling
+  Future<ServiceResult<{Domain}>> get{Domain}ByIdSafely(String {domain}Id) async {
+    return executeOperation(() => get{Domain}ById({domain}Id));
+  }
+
+  /// Safely creates a {domain} with explicit error handling
+  Future<ServiceResult<{Domain}>> create{Domain}Safely({Domain}CreationData data) async {
+    return executeOperation(() => create{Domain}(data));
+  }
+
+  // ==========================================================================
+  // Cache Management
+  // ==========================================================================
+
+  /// Clears all {domain} caches
+  void clearAllCaches() {
+    _cache.clear();
+    _listCache.clear();
+  }
+
+  /// Removes a specific {domain} from cache
+  void clear{Domain}Cache(String {domain}Id) {
+    _cache.remove({domain}Id);
+    _listCache.remove('all_{domain}s');
+  }
+
+  /// Gets cache statistics for monitoring and debugging
+  Map<String, dynamic> getCacheStatistics() {
+    return {
+      '{domain}Cache': _cache.getStatistics(),
+      'listCache': _listCache.getStatistics(),
+      'totalCachedEntities': _cache.getStatistics()['entryCount'],
+      'totalCachedLists': _listCache.getStatistics()['entryCount'],
+    };
+  }
+
+  // ==========================================================================
+  // Authentication State Handling
+  // ==========================================================================
+
+  /// Handles authentication state changes
+  ///
+  /// Call this method when the user logs out to clear sensitive cached data.
+  void onAuthenticationStateChanged(bool isAuthenticated) {
+    if (!isAuthenticated) {
+      // Clear all caches on logout for privacy
+      clearAllCaches();
+    }
+  }
+}
+
+// =============================================================================
+// Data Transfer Objects
+// =============================================================================
+
+/// Data required to create a new {domain}
+class {Domain}CreationData {
+  final String name;
+  final String? description;
+  final Map<String, dynamic>? metadata;
+
+  const {Domain}CreationData({
+    required this.name,
+    this.description,
+    this.metadata,
+  });
+}
+
+/// Data for updating an existing {domain}
+class {Domain}UpdateData {
+  final String id;
+  final String? name;
+  final String? description;
+  final Map<String, dynamic>? metadata;
+
+  const {Domain}UpdateData({
+    required this.id,
+    this.name,
+    this.description,
+    this.metadata,
+  });
+
+  /// Whether this update contains any actual changes
+  bool get hasChanges => name != null || description != null || metadata != null;
+}
+
+// =============================================================================
+// TODO: Implement these classes based on your domain
+// =============================================================================
+
+/// Domain model - replace with your actual {Domain} model
+class {Domain} {
+  final String id;
+  final String name;
+  final String? description;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+
+  const {Domain}({
+    required this.id,
+    required this.name,
+    this.description,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+}
+
+/// Validator class - implement in separate file
+class {Domain}Validator {
+  static void validateId(String id) {
+    // TODO: Implement ID validation
+  }
+
+  static void validateCreation({Domain}CreationData data) {
+    // TODO: Implement creation validation
+  }
+
+  static void validateUpdate({Domain}UpdateData data) {
+    // TODO: Implement update validation
+  }
+
+  static void validateName(String name) {
+    // TODO: Implement name validation
+  }
+}
+
+/// Exception class - implement in separate file
+class {Domain}Exception extends ServiceException {
+  final {Domain}ErrorType errorType;
+
+  const {Domain}Exception(
+    String message, {
+    required this.errorType,
+    dynamic originalError,
+  }) : super(message, originalError: originalError);
+}
+
+/// Error types for {domain} operations
+enum {Domain}ErrorType {
+  general,
+  notFound,
+  unauthorized,
+  validationFailed,
+  creationFailed,
+  updateFailed,
+  deletionFailed,
+  alreadyExists,
+} 

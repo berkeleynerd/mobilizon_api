@@ -93,6 +93,18 @@ The client follows a service-oriented architecture with standardized patterns:
 - **ProfileService**: Profile/Person CRUD operations with TTL caching
 - **MediaService**: File upload handling with LRU caching
 
+### Adding New Services
+Use the standardized templates for creating additional domain services:
+```bash
+# Copy template for new domain (e.g., Groups)
+cp templates/domain_service.template lib/groups/group_service.dart
+
+# Follow the template guide
+cat templates/README.md
+```
+
+Templates ensure consistency with service rationalization patterns including BaseService extension, validation, caching, and error handling.
+
 ### Caching Strategy
 - **ProfileService**: 5-minute TTL cache for profile data
 - **MediaService**: 50-entry LRU cache for recent uploads  
