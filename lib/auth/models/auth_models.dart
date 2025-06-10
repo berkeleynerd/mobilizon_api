@@ -43,3 +43,25 @@ class PasswordResetRequestResult {
 
   const PasswordResetRequestResult({required this.success, this.message});
 }
+
+/// Data for changing user password
+class ChangePasswordData {
+  final String oldPassword;
+  final String newPassword;
+
+  const ChangePasswordData({
+    required this.oldPassword,
+    required this.newPassword,
+  });
+}
+
+/// Data for requesting password reset
+class PasswordResetData {
+  final String email;
+  final String? locale;
+
+  const PasswordResetData({
+    required this.email,
+    this.locale,
+  });
+}

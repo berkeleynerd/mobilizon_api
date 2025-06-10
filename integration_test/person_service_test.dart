@@ -98,7 +98,7 @@ void main() {
         try {
           // Restore user person if needed
           if (originalUserPerson != null) {
-            await client.auth.login(
+            await client.auth.loginWithRetry(
               AuthCredentials(email: userEmail, password: userPassword),
             );
             await Future.delayed(rateLimitDelay);
@@ -136,7 +136,7 @@ void main() {
               email: userEmail,
               password: userPassword,
             );
-            final loginResult = await client.auth.login(credentials);
+            final loginResult = await client.auth.loginWithRetry(credentials);
 
             expect(loginResult.user, isNotNull);
             expect(loginResult.user.email, userEmail);
@@ -301,7 +301,7 @@ void main() {
               email: adminEmail,
               password: adminPassword,
             );
-            final loginResult = await client.auth.login(credentials);
+            final loginResult = await client.auth.loginWithRetry(credentials);
 
             expect(loginResult.user, isNotNull);
             expect(loginResult.user.email, adminEmail);
@@ -407,7 +407,7 @@ void main() {
 
           try {
             // Re-authenticate as regular user
-            await client.auth.login(
+            await client.auth.loginWithRetry(
               AuthCredentials(email: userEmail, password: userPassword),
             );
             await Future.delayed(rateLimitDelay);
@@ -546,7 +546,7 @@ void main() {
           try {
             // Ensure authenticated
             if (!await client.auth.isAuthenticated()) {
-              await client.auth.login(
+              await client.auth.loginWithRetry(
                 AuthCredentials(email: userEmail, password: userPassword),
               );
               await Future.delayed(rateLimitDelay);
@@ -728,7 +728,7 @@ void main() {
           try {
             // Ensure authenticated
             if (!await client.auth.isAuthenticated()) {
-              await client.auth.login(
+              await client.auth.loginWithRetry(
                 AuthCredentials(email: userEmail, password: userPassword),
               );
               await Future.delayed(rateLimitDelay);

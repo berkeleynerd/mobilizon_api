@@ -319,6 +319,97 @@ class AuthService extends BaseService {
     }
   }
 
+  Future<User> changePassword(ChangePasswordData changePasswordData) async {
+    try {
+      // Validate change password data before attempting the operation
+      final validated = AuthValidator.validateChangePassword(
+        oldPassword: changePasswordData.oldPassword,
+        newPassword: changePasswordData.newPassword,
+      );
+
+      // Create the change password request with validated data
+      final request = GChangePasswordReq(
+        (b) => b
+          ..vars.oldPassword = validated['oldPassword']!
+          ..vars.newPassword = validated['newPassword']!,
+      );
+
+      // Execute the change password mutation (requires authentication)
+      final response = await graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.changePassword == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .toList();
+
+        throw AuthErrorMapper.createMappedException(
+          "Change password failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Map the response to our domain model
+      final userData = response.data!.changePassword!;
+
+      // Map profiles from actors
+      final profiles = userData.actors
+          .where((actor) => actor != null)
+          .map((actor) {
+            // Only include profiles with valid data
+            if (actor!.id == null ||
+                actor.id!.isEmpty ||
+                actor.preferredUsername == null ||
+                actor.preferredUsername!.isEmpty) {
+              return null;
+            }
+
+            return Person(
+              id: actor.id!,
+              preferredUsername: actor.preferredUsername!,
+              name: actor.name,
+              summary: actor.summary,
+              avatar: null, // Avatar is not included in this operation
+              banner: null, // Banner is not included in this operation
+            );
+          })
+          .where((person) => person != null)
+          .cast<Person>()
+          .toList();
+
+      // Create settings if available
+      UserSettings? settings;
+      if (userData.settings != null) {
+        settings = UserSettings(timezone: userData.settings?.timezone?.value);
+      }
+
+      // Create and update the current user object
+      final user = User(
+        id: userData.id ?? '',
+        email: userData.email,
+        confirmed: userData.confirmedAt != null,
+        role: _mapUserRole(userData.role?.toString()),
+        profiles: profiles,
+        settings: settings,
+      );
+
+      // Update cached user
+      _currentUser = user;
+
+      return user;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to change password: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.changePasswordFailed,
+      );
+    }
+  }
+
   Future<bool> refreshTokenIfNeeded() async {
     try {
       final tokens = await tokenManager.getCurrentTokens();
@@ -460,6 +551,109 @@ class AuthService extends BaseService {
     _authStateController.close();
   }
 
+  /// Helper method to execute operations with retry logic for rate limiting
+  Future<T> _executeWithRetry<T>(
+    Future<T> Function() operation, {
+    int maxRetries = 3,
+    Duration initialDelay = const Duration(seconds: 5),
+  }) async {
+    int attempt = 0;
+    Duration delay = initialDelay;
+
+    while (attempt < maxRetries) {
+      try {
+        return await operation();
+      } catch (e) {
+        attempt++;
+        
+        // Check if this is a rate limiting error
+        bool isRateLimited = false;
+        if (e is AuthException && e.errorType == AuthErrorType.rateLimited) {
+          isRateLimited = true;
+        } else if (e.toString().toLowerCase().contains('too many requests')) {
+          isRateLimited = true;
+        }
+
+        // If not rate limited or max attempts reached, rethrow
+        if (!isRateLimited || attempt >= maxRetries) {
+          rethrow;
+        }
+
+        // Wait before retry with exponential backoff
+        print('🔄 Rate limited, retrying in ${delay.inSeconds}s (attempt $attempt/$maxRetries)');
+        await Future.delayed(delay);
+        delay = Duration(seconds: (delay.inSeconds * 1.5).round());
+      }
+    }
+
+    // This should never be reached, but just in case
+    throw AuthException(
+      'Max retry attempts reached',
+      errorType: AuthErrorType.rateLimited,
+    );
+  }
+
+  /// Login with automatic retry for rate limiting
+  Future<AuthResult> loginWithRetry(AuthCredentials credentials) async {
+    return _executeWithRetry(() => login(credentials));
+  }
+
+  /// Send password reset with automatic retry for rate limiting
+  Future<PasswordResetRequestResult> sendResetPasswordWithRetry(PasswordResetData passwordResetData) async {
+    return _executeWithRetry(() => sendResetPassword(passwordResetData));
+  }
+
+  Future<PasswordResetRequestResult> sendResetPassword(PasswordResetData passwordResetData) async {
+    try {
+      // Validate password reset data before attempting the operation
+      final validated = AuthValidator.validatePasswordReset(
+        email: passwordResetData.email,
+        locale: passwordResetData.locale,
+      );
+
+      // Create the password reset request with validated data
+      final request = GSendResetPasswordReq(
+        (b) => b
+          ..vars.email = validated['email']!
+          ..vars.locale = validated['locale'],
+      );
+
+      // Execute the password reset mutation (no auth required - public operation)
+      final response = await graphQLClient.executePublic(request);
+
+      // Check for errors
+      if (response.hasErrors) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .toList();
+
+        throw AuthErrorMapper.createMappedException(
+          "Password reset request failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // The sendResetPassword operation returns a simple String message
+      // We interpret success as the response not having errors
+      final message = response.data?.sendResetPassword;
+
+      return PasswordResetRequestResult(
+        success: true,
+        message: message ?? 'Password reset email sent successfully',
+      );
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to send password reset: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.general,
+      );
+    }
+  }
+
   // =============================================================================
   // ServiceResult-based methods (alternative to exception-based methods)
   // =============================================================================
@@ -500,8 +694,32 @@ class AuthService extends BaseService {
   /// - Failure: Error message without throwing an exception
   Future<ServiceResult<bool>> logoutSafely() async {
     return executeOperation(
-      logout,
+      () => logout(),
       operationName: 'Logout',
+    );
+  }
+
+  /// Change password with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<User>` that contains either:
+  /// - Success: Updated user data after password change
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<User>> changePasswordSafely(ChangePasswordData changePasswordData) async {
+    return executeOperation(
+      () => changePassword(changePasswordData),
+      operationName: 'Change Password',
+    );
+  }
+
+  /// Send password reset with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<PasswordResetRequestResult>` that contains either:
+  /// - Success: Password reset request result with confirmation message
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<PasswordResetRequestResult>> sendResetPasswordSafely(PasswordResetData passwordResetData) async {
+    return executeOperation(
+      () => sendResetPassword(passwordResetData),
+      operationName: 'Send Password Reset',
     );
   }
 

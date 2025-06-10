@@ -1,0 +1,241 @@
+# Auth, User, and Person Operations Coverage Checklist
+
+This document provides a comprehensive checklist for implementing full coverage of all authentication, user management, and person/profile operations available in the Mobilizon GraphQL schema.
+
+## Current Implementation Status
+
+### ✅ **COMPLETED OPERATIONS**
+
+#### Authentication (AuthService)
+- [x] `login` - User authentication with email/password
+- [x] `logout` - User logout with token invalidation
+- [x] `refreshToken` - JWT token refresh
+- [x] `createUser` - User registration
+- [x] `loggedUser` (minimal) - Get current authenticated user
+
+#### Person/Profile Management (ProfileService)
+- [x] `loggedPerson` - Get current person/profile data
+- [x] `identities` - Get all profiles for current user
+- [x] `fetchPerson` - Get person by username
+- [x] `createPerson` (minimal) - Create new profile
+- [x] `updatePerson` - Update profile information
+- [x] `deletePerson` (minimal) - Delete profile
+
+#### Media Operations (MediaService)
+- [x] `uploadMedia` - Upload media files
+
+---
+
+## 🚧 **MISSING OPERATIONS** (Implementation Required)
+
+### 1. **User Account Management**
+
+#### Password Management
+- [x] **`changePassword`** - Change user password ✅
+  - **Schema**: `changePassword(newPassword: String!, oldPassword: String!): User`
+  - **Priority**: High
+  - **Validation**: Validate old password, enforce password rules
+  - **Service**: AuthService
+  - **Status**: ✅ **COMPLETE** - Implementation, validation, unit tests, and integration tests all passing
+
+- [x] **`sendResetPassword`** - Request password reset email ✅
+  - **Schema**: `sendResetPassword(email: String!, locale: String): String`
+  - **Priority**: High
+  - **Public**: No authentication required
+  - **Service**: AuthService
+  - **Status**: ✅ **COMPLETE** - Implementation, validation, unit tests, and integration tests all passing
+
+- [ ] **`resetPassword`** - Complete password reset with token
+  - **Schema**: `resetPassword(locale: String, password: String!, token: String!): Login`
+  - **Priority**: High
+  - **Public**: No authentication required
+  - **Service**: AuthService
+
+#### Email Management
+- [ ] **`changeEmail`** - Change user email address
+  - **Schema**: `changeEmail(email: String!, password: String!): User`
+  - **Priority**: Medium
+  - **Validation**: Validate current password, unique email
+  - **Service**: AuthService
+
+#### User Settings
+- [ ] **`setUserSettings`** - Update user preferences
+  - **Schema**: `setUserSettings(groupNotifications: NotificationPendingEnum, location: LocationInput, notificationBeforeEvent: Boolean, notificationEachWeek: Boolean, notificationOnDay: Boolean, notificationPendingMembership: NotificationPendingEnum, notificationPendingParticipation: NotificationPendingEnum, timezone: Timezone): UserSettings`
+  - **Priority**: Medium
+  - **Service**: AuthService or new UserService
+
+#### Activity Settings
+- [ ] **`updateActivitySetting`** - Update individual activity settings
+  - **Schema**: `updateActivitySetting(enabled: Boolean!, key: String!, method: String!): ActivitySetting`
+  - **Priority**: Low
+  - **Service**: AuthService or new UserService
+
+### 2. **Person/Profile Social Operations**
+
+#### Profile Following
+- [x] ~~**`followPerson`**~~ - ❌ **NOT SUPPORTED** - Mobilizon only supports group following
+- [x] ~~**`unfollowPerson`**~~ - ❌ **NOT SUPPORTED** - Mobilizon only supports group following
+
+### 3. **Administrative Operations** ⚠️ **OUT OF SCOPE**
+
+#### Profile Moderation
+- [x] ~~**`suspendProfile`**~~ - 🔒 **OUT OF SCOPE** - Admin-only functionality
+  - **Schema**: `suspendProfile(id: ID!): DeletedObject`
+  - **Reason**: Requires administrator privileges, outside library scope
+
+- [x] ~~**`unsuspendProfile`**~~ - 🔒 **OUT OF SCOPE** - Admin-only functionality
+  - **Schema**: `unsuspendProfile(id: ID!): Actor`
+  - **Reason**: Requires administrator privileges, outside library scope
+
+#### User Administration
+- [x] ~~**`adminUpdateUser`**~~ - 🔒 **OUT OF SCOPE** - Admin-only functionality
+  - **Schema**: `adminUpdateUser(confirmed: Boolean, email: String, id: ID!, notify: Boolean, role: UserRole): User`
+  - **Reason**: Requires administrator privileges, outside library scope
+
+### 4. **Enhanced Operations** (Improvements to existing)
+
+#### Enhanced User Queries
+- [ ] **`loggedUser` (full)** - Get complete user data with all relationships
+  - **Current**: Only minimal user data
+  - **Enhancement**: Full user data with settings, activity preferences, etc.
+  - **Priority**: Medium
+  - **Service**: AuthService
+
+#### Enhanced Person Queries
+- [ ] **`fetchPerson` (optimized)** - Optimize person fetching for specific use cases
+  - **Current**: Very large query with all relationships
+  - **Enhancement**: Create targeted queries for specific needs
+  - **Priority**: Low
+  - **Service**: ProfileService
+
+---
+
+## 📋 **IMPLEMENTATION PRIORITY MATRIX**
+
+### **HIGH PRIORITY** (Security & Core Functionality)
+1. `changePassword` - Essential for account security
+2. `sendResetPassword` - Essential for password recovery
+3. `resetPassword` - Complete password recovery flow
+
+### **MEDIUM PRIORITY** (User Experience)
+4. `changeEmail` - Account management
+5. `setUserSettings` - User customization
+6. Enhanced `loggedUser` query - Better user data access
+
+### **LOW PRIORITY** (Advanced Features)
+7. `updateActivitySetting` - Fine-grained notifications
+
+---
+
+## 🛠 **IMPLEMENTATION GUIDELINES**
+
+### New GraphQL Operations Required
+The following `.graphql` files need to be created:
+
+```
+lib/graphql/operations/
+├── change_password.graphql          # changePassword mutation
+├── send_reset_password.graphql      # sendResetPassword mutation
+├── reset_password.graphql           # resetPassword mutation
+├── change_email.graphql             # changeEmail mutation
+├── set_user_settings.graphql        # setUserSettings mutation
+├── update_activity_setting.graphql  # updateActivitySetting mutation
+└── logged_user_full.graphql         # Enhanced loggedUser query
+```
+
+### Service Organization
+- **AuthService**: Password management, email management, basic user settings
+- **ProfileService**: Profile operations
+- **UserService** (new): Advanced user settings, activity settings
+
+### Validation Requirements
+- Password complexity validation
+- Email format and uniqueness validation
+- Settings value validation
+
+### Error Handling
+- Extend existing error mappers for new operation types
+- Add specific error types for password operations
+- Handle rate limiting for password reset operations
+
+### Testing Strategy
+- Unit tests for all new operations
+- Integration tests for complete flows (password reset, email change)
+
+---
+
+## 📝 **DOMAIN MODELS TO ADD**
+
+### Password Operations
+```dart
+class ChangePasswordData {
+  final String oldPassword;
+  final String newPassword;
+}
+
+class PasswordResetData {
+  final String email;
+  final String? locale;
+}
+
+class PasswordResetConfirmData {
+  final String token;
+  final String newPassword;
+  final String? locale;
+}
+```
+
+### User Settings
+```dart
+class UserSettingsData {
+  final NotificationPendingEnum? groupNotifications;
+  final LocationInput? location;
+  final bool? notificationBeforeEvent;
+  final bool? notificationEachWeek;
+  final bool? notificationOnDay;
+  final NotificationPendingEnum? notificationPendingMembership;
+  final NotificationPendingEnum? notificationPendingParticipation;
+  final String? timezone;
+}
+
+class ActivitySettingData {
+  final String key;
+  final String method;
+  final bool enabled;
+}
+```
+
+---
+
+## ✅ **COMPLETION TRACKING**
+
+- [ ] **Phase 1**: High Priority Operations (3 operations)
+- [ ] **Phase 2**: Medium Priority Operations (3 operations)  
+- [ ] **Phase 3**: Low Priority Operations (1 operation)
+- [ ] **Phase 4**: Enhanced Operations (2 operations)
+
+**Total Operations to Implement**: 9
+
+**Current Coverage**: ~81% (9/16 in-scope operations implemented)
+**Target Coverage**: 100% (16/16 in-scope operations implemented)
+
+**Out of Scope**: 5 operations (3 admin-only, 2 non-existent)
+
+---
+
+## 🔍 **VERIFICATION CHECKLIST**
+
+Before marking an operation as complete, verify:
+- [ ] GraphQL operation file created
+- [ ] Generated types built successfully (`dart run build_runner build`)
+- [ ] Service method implemented with proper validation
+- [ ] Error handling and mapping implemented
+- [ ] Unit tests written and passing
+- [ ] Integration tests written and passing
+- [ ] Documentation updated
+- [ ] Example usage provided
+
+---
+
+**Last Updated**: December 2024
+**Next Review**: After completing Phase 1 operations 

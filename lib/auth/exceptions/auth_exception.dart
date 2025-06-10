@@ -13,6 +13,7 @@ enum AuthErrorType {
   noTokensAvailable,
   userDataFailed,
   logoutFailed,
+  changePasswordFailed,
 }
 
 /// Exception thrown when authentication operations fail

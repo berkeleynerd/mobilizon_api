@@ -103,7 +103,7 @@ void main() {
                 userEmail, // Use existing user since new user might need email confirmation
             password: userPassword,
           );
-          final loginResult = await client.auth.login(credentials);
+          final loginResult = await client.auth.loginWithRetry(credentials);
 
           loginStopwatch.stop();
           operationTimes['Login'] = loginStopwatch.elapsedMilliseconds;
@@ -292,6 +292,226 @@ void main() {
         print('\n🎯 Auth Service batching test completed successfully! 🎯\n');
       },
       timeout: const Timeout(Duration(minutes: 3)),
+    );
+
+    test(
+      '🔐 Change Password Integration Test',
+      () async {
+        print('\n🔐 CHANGE PASSWORD INTEGRATION TEST');
+        print('===================================');
+        print('Testing changePassword operation against live Mobilizon instance\n');
+
+        final originalPassword = userPassword;
+        const tempPassword = 'TempPassword123!';
+
+        try {
+          // 1️⃣ Login with original credentials
+          print('1️⃣ STEP 1: Login with original credentials');
+          final credentials = AuthCredentials(
+            email: userEmail,
+            password: originalPassword,
+          );
+          final loginResult = await client.auth.loginWithRetry(credentials);
+          print('   ✅ Login successful: ${loginResult.user.email}');
+          
+          expect(loginResult.user.email, userEmail);
+          expect(await client.auth.isAuthenticated(), true);
+
+          // 2️⃣ Change password to temporary password
+          print('\n2️⃣ STEP 2: Change password to temporary password');
+          final changePasswordData = ChangePasswordData(
+            oldPassword: originalPassword,
+            newPassword: tempPassword,
+          );
+          
+          final updatedUser = await client.auth.changePassword(changePasswordData);
+          print('   ✅ Password changed successfully');
+          print('   👤 User still authenticated: ${updatedUser.email}');
+          
+          expect(updatedUser.email, userEmail);
+          expect(await client.auth.isAuthenticated(), true);
+
+          // 3️⃣ Logout
+          print('\n3️⃣ STEP 3: Logout');
+          await client.auth.logout();
+          print('   ✅ Logout successful');
+          
+          expect(await client.auth.isAuthenticated(), false);
+
+          // 4️⃣ Attempt login with old password (should fail)
+          print('\n4️⃣ STEP 4: Attempt login with old password (should fail)');
+          try {
+            await client.auth.loginWithRetry(AuthCredentials(
+              email: userEmail,
+              password: originalPassword,
+            ));
+            fail('Login with old password should have failed');
+          } catch (e) {
+            print('   ✅ Login with old password correctly failed: ${e.runtimeType}');
+            expect(e, isA<AuthException>());
+          }
+
+          // 5️⃣ Login with new password (should succeed)
+          print('\n5️⃣ STEP 5: Login with new password (should succeed)');
+          final newLoginResult = await client.auth.loginWithRetry(AuthCredentials(
+            email: userEmail,
+            password: tempPassword,
+          ));
+          print('   ✅ Login with new password successful');
+          
+          expect(newLoginResult.user.email, userEmail);
+          expect(await client.auth.isAuthenticated(), true);
+
+          // 6️⃣ Change password back to original (cleanup)
+          print('\n6️⃣ STEP 6: Change password back to original (cleanup)');
+          final restorePasswordData = ChangePasswordData(
+            oldPassword: tempPassword,
+            newPassword: originalPassword,
+          );
+          
+          final restoredUser = await client.auth.changePassword(restorePasswordData);
+          print('   ✅ Password restored to original');
+          
+          expect(restoredUser.email, userEmail);
+
+          // 7️⃣ Final verification - logout and login with original password
+          print('\n7️⃣ STEP 7: Final verification with original password');
+          await client.auth.logout();
+          
+          final finalLoginResult = await client.auth.loginWithRetry(AuthCredentials(
+            email: userEmail,
+            password: originalPassword,
+          ));
+          print('   ✅ Final login with original password successful');
+          
+          expect(finalLoginResult.user.email, userEmail);
+
+          // Cleanup - logout
+          await client.auth.logout();
+          
+        } catch (e, stackTrace) {
+          print('❌ Change password test failed: $e');
+          print('Stack trace: $stackTrace');
+          
+          // Attempt cleanup - try to restore original password if we're still authenticated
+          try {
+            if (await client.auth.isAuthenticated()) {
+              print('🔄 Attempting emergency password restore...');
+              await client.auth.changePassword(ChangePasswordData(
+                oldPassword: tempPassword,
+                newPassword: originalPassword,
+              ));
+              print('   ✅ Emergency password restore successful');
+            }
+          } catch (cleanupError) {
+            print('⚠️  Emergency cleanup failed: $cleanupError');
+            print('⚠️  Manual password reset may be required for test user');
+          }
+          
+          rethrow;
+        }
+
+        print('\n🎯 Change password integration test completed successfully! 🎯\n');
+      },
+      timeout: const Timeout(Duration(minutes: 2)),
+    );
+
+    test(
+      '📧 Send Reset Password Integration Test',
+      () async {
+        print('\n📧 SEND RESET PASSWORD INTEGRATION TEST');
+        print('=======================================');
+        print('Testing sendResetPassword operation against live Mobilizon instance\n');
+
+        try {
+          // Test 1: Valid email (should succeed regardless of account existence)
+          print('1️⃣ STEP 1: Send reset password to valid email format');
+          const validPasswordResetData = PasswordResetData(
+            email: 'test@example.com',
+            locale: 'en',
+          );
+
+          final validResult = await client.auth.sendResetPassword(validPasswordResetData);
+          print('   ✅ Valid email request successful');
+          print('   📝 Message: ${validResult.message}');
+          
+          expect(validResult.success, isTrue);
+          expect(validResult.message, isNotNull);
+
+          // Test 2: Test with user email (should also succeed)
+          print('\n2️⃣ STEP 2: Send reset password to test user email');
+          final userPasswordResetData = PasswordResetData(
+            email: userEmail,
+            locale: 'en',
+          );
+
+          final userResult = await client.auth.sendResetPassword(userPasswordResetData);
+          print('   ✅ User email request successful');
+          print('   📝 Message: ${userResult.message}');
+          
+          expect(userResult.success, isTrue);
+          expect(userResult.message, isNotNull);
+
+          // Test 3: Test without locale
+          print('\n3️⃣ STEP 3: Send reset password without locale');
+          const noLocalePasswordResetData = PasswordResetData(
+            email: 'test@example.com',
+          );
+
+          final noLocaleResult = await client.auth.sendResetPassword(noLocalePasswordResetData);
+          print('   ✅ No locale request successful');
+          print('   📝 Message: ${noLocaleResult.message}');
+          
+          expect(noLocaleResult.success, isTrue);
+          expect(noLocaleResult.message, isNotNull);
+
+          // Test 4: Test validation - invalid email (should fail)
+          print('\n4️⃣ STEP 4: Test invalid email validation');
+          try {
+            const invalidPasswordResetData = PasswordResetData(
+              email: 'invalid-email-format',
+              locale: 'en',
+            );
+            
+            await client.auth.sendResetPassword(invalidPasswordResetData);
+            fail('Should have thrown AuthException for invalid email');
+          } catch (e) {
+            print('   ✅ Invalid email correctly rejected: ${e.runtimeType}');
+            expect(e, isA<AuthException>());
+          }
+
+          // Test 5: Test ServiceResult pattern
+          print('\n5️⃣ STEP 5: Test ServiceResult pattern');
+          const serviceResultData = PasswordResetData(
+            email: 'test@example.com',
+            locale: 'fr',
+          );
+
+          final serviceResult = await client.auth.sendResetPasswordSafely(serviceResultData);
+          print('   ✅ ServiceResult pattern successful');
+          print('   📊 Success: ${serviceResult.isSuccess}');
+          
+          expect(serviceResult.isSuccess, isTrue);
+          expect(serviceResult.data?.success, isTrue);
+          expect(serviceResult.data?.message, isNotNull);
+
+          print('\n📊 SEND RESET PASSWORD TEST RESULTS');
+          print('====================================');
+          print('✅ Valid email format handled correctly');
+          print('✅ User email handled correctly');
+          print('✅ Optional locale handled correctly');
+          print('✅ Invalid email validation working');
+          print('✅ ServiceResult pattern working');
+          
+        } catch (e, stackTrace) {
+          print('❌ Send reset password test failed: $e');
+          print('Stack trace: $stackTrace');
+          rethrow;
+        }
+
+        print('\n🎯 Send reset password integration test completed successfully! 🎯\n');
+      },
+      timeout: const Timeout(Duration(minutes: 2)),
     );
   });
 }

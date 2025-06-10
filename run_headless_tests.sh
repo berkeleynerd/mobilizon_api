@@ -53,8 +53,8 @@ fi
 
 # Add delay between test suites to avoid rate limiting
 echo ""
-echo "⏳ Waiting 5 seconds to avoid rate limiting..."
-sleep 5
+echo "⏳ Waiting 60 seconds to avoid rate limiting..."
+sleep 60
 
 echo ""
 echo "2️⃣ Running Person Service Tests..."
@@ -73,8 +73,8 @@ fi
 
 # Add delay between test suites to avoid rate limiting
 echo ""
-echo "⏳ Waiting 5 seconds to avoid rate limiting..."
-sleep 5
+echo "⏳ Waiting 60 seconds to avoid rate limiting..."
+sleep 60
 
 echo ""
 echo "3️⃣ Running Media Service Tests..."

@@ -131,6 +131,74 @@ class AuthValidator extends BaseValidator {
     };
   }
 
+  /// Validates change password data
+  ///
+  /// Parameters:
+  /// - [oldPassword]: Current password for verification
+  /// - [newPassword]: New password to set
+  ///
+  /// Throws:
+  /// - [AuthException] if validation fails
+  ///
+  /// Returns: A map with validated data
+  static Map<String, String> validateChangePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) {
+    try {
+      // Validate old password (basic check - just not empty)
+      final cleanOldPassword = BaseValidator.validateRequired(
+        oldPassword,
+        'Current password',
+      );
+
+      // Validate new password with full rules
+      final validatedNewPassword = validatePassword(newPassword);
+
+      // Check that new password is different from old password
+      if (cleanOldPassword == validatedNewPassword) {
+        throw AuthException(
+          'New password must be different from current password',
+          errorType: AuthErrorType.changePasswordFailed,
+        );
+      }
+
+      return {
+        'oldPassword': cleanOldPassword,
+        'newPassword': validatedNewPassword,
+      };
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Change password validation failed: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.changePasswordFailed,
+      );
+    }
+  }
+
+  /// Validates password reset request data
+  ///
+  /// Parameters:
+  /// - [email]: Email address for password reset
+  /// - [locale]: Optional locale preference  
+  ///
+  /// Throws:
+  /// - [AuthException] if validation fails
+  ///
+  /// Returns: A map with validated data
+  static Map<String, String?> validatePasswordReset({
+    required String email,
+    String? locale,
+  }) {
+    return {
+      'email': validateEmail(email),
+      'locale': locale?.trim(),
+    };
+  }
+
   /// Checks if an email format is valid without throwing exceptions
   ///
   /// Parameters:

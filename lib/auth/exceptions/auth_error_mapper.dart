@@ -55,6 +55,14 @@ class AuthErrorMapper {
       return AuthErrorType.registrationFailed;
     }
 
+    if (lowerMessage.contains('password') && 
+        (lowerMessage.contains('change') || 
+         lowerMessage.contains('incorrect') ||
+         lowerMessage.contains('wrong') ||
+         lowerMessage.contains('current'))) {
+      return AuthErrorType.changePasswordFailed;
+    }
+
     // Default to general for unrecognized errors
     return AuthErrorType.general;
   }
@@ -116,6 +124,8 @@ class AuthErrorMapper {
         return 'Unable to retrieve user information. Please try again.';
       case AuthErrorType.logoutFailed:
         return 'Logout failed. Please try again.';
+      case AuthErrorType.changePasswordFailed:
+        return 'Password change failed. Please check your current password and try again.';
       case AuthErrorType.general:
         return 'An authentication error occurred. Please try again.';
     }

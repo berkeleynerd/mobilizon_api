@@ -40,12 +40,16 @@ export 'operations/__generated__/login.data.gql.dart';
 // AUTHENTICATION OPERATIONS (Used by AuthService)
 // =================================================
 
+// ChangePassword operation (30KB) - AuthService.changePassword()
+export 'operations/__generated__/change_password.req.gql.dart';
 // Login operation (52KB) - AuthService.login()
 export 'operations/__generated__/login.req.gql.dart';
 // Logout operation (20KB) - AuthService.logout()
 export 'operations/__generated__/logout.req.gql.dart';
 // RefreshToken operation (20KB) - AuthService.forceTokenRefresh()
 export 'operations/__generated__/refresh_token.req.gql.dart';
+// SendResetPassword operation (48KB) - AuthService.sendResetPassword()
+export 'operations/__generated__/send_reset_password.req.gql.dart';
 // UpdatePerson operation (50KB) - ProfileService
 export 'operations/__generated__/update_person.req.gql.dart';
 
