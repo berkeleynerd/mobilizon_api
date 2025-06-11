@@ -242,6 +242,46 @@ class AuthValidator extends BaseValidator {
     }
   }
 
+  /// Validates change email data
+  ///
+  /// Parameters:
+  /// - [email]: New email address
+  /// - [password]: Current password for verification
+  ///
+  /// Throws:
+  /// - [AuthException] if validation fails
+  ///
+  /// Returns: A map with validated data
+  static Map<String, String> validateChangeEmail({
+    required String email,
+    required String password,
+  }) {
+    try {
+      // Validate new email
+      final validatedEmail = validateEmail(email);
+
+      // Validate current password (basic check - just not empty)
+      final cleanPassword = BaseValidator.validateRequired(
+        password,
+        'Current password',
+      );
+
+      return {
+        'email': validatedEmail,
+        'password': cleanPassword,
+      };
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Change email validation failed: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.changeEmailFailed,
+      );
+    }
+  }
+
   /// Checks if an email format is valid without throwing exceptions
   ///
   /// Parameters:

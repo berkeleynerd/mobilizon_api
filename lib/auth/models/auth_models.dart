@@ -78,3 +78,14 @@ class PasswordResetConfirmData {
     this.locale,
   });
 }
+
+/// Data for changing user email address
+class ChangeEmailData {
+  final String email;
+  final String password;
+
+  const ChangeEmailData({
+    required this.email,
+    required this.password,
+  });
+}

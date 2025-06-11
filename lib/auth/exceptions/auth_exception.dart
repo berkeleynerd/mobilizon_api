@@ -15,6 +15,7 @@ enum AuthErrorType {
   logoutFailed,
   changePasswordFailed,
   passwordResetFailed,
+  changeEmailFailed,
 }
 
 /// Exception thrown when authentication operations fail

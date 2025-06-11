@@ -12,6 +12,9 @@
 
 // Schema types (foundational - always needed)
 export '__generated__/schema.schema.gql.dart';
+export 'operations/__generated__/change_email.data.gql.dart';
+// ChangeEmail operation - AuthService.changeEmail()
+export 'operations/__generated__/change_email.req.gql.dart';
 // AUTHENTICATION OPERATIONS (Used by AuthService)
 // =================================================
 

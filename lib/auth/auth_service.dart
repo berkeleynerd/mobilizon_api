@@ -410,6 +410,71 @@ class AuthService extends BaseService {
     }
   }
 
+  Future<User> changeEmail(ChangeEmailData changeEmailData) async {
+    try {
+      // Validate change email data before attempting the operation
+      final validated = AuthValidator.validateChangeEmail(
+        email: changeEmailData.email,
+        password: changeEmailData.password,
+      );
+
+      // Create the change email request with validated data
+      final request = GChangeEmailReq(
+        (b) => b
+          ..vars.email = validated['email']
+          ..vars.password = validated['password'],
+      );
+
+      // Execute the change email mutation (requires authentication)
+      final response = await graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.changeEmail == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .toList();
+
+        throw AuthErrorMapper.createMappedException(
+          "Change email failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Map the response to our domain model
+      final userData = response.data!.changeEmail!;
+
+      // Note: changeEmail operation uses simplified response without actors
+      // to avoid GraphQL fragment validation issues. Profiles will be empty
+      // and should be refreshed from a separate operation if needed.
+      final profiles = <Person>[];
+
+      // Create and update the current user object with new email
+      final user = User(
+        id: userData.id ?? '',
+        email: userData.email,
+        confirmed: userData.confirmedAt != null,
+        role: _mapUserRole(userData.role?.toString()),
+        profiles: profiles,
+        settings: null, // Settings not included in changeEmail response
+      );
+
+      // Update cached user
+      _currentUser = user;
+
+      return user;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to change email: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.changeEmailFailed,
+      );
+    }
+  }
+
   Future<bool> refreshTokenIfNeeded() async {
     try {
       final tokens = await tokenManager.getCurrentTokens();
@@ -773,6 +838,11 @@ class AuthService extends BaseService {
     return _executeWithRetry(() => resetPassword(passwordResetConfirmData));
   }
 
+  /// Change email with automatic retry for rate limiting
+  Future<User> changeEmailWithRetry(ChangeEmailData changeEmailData) async {
+    return _executeWithRetry(() => changeEmail(changeEmailData));
+  }
+
   // =============================================================================
   // ServiceResult-based methods (alternative to exception-based methods)
   // =============================================================================
@@ -887,6 +957,18 @@ class AuthService extends BaseService {
     return executeOperation(
       refreshTokenIfNeeded,
       operationName: 'TokenRefreshCheck',
+    );
+  }
+
+  /// Change email with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<User>` that contains either:
+  /// - Success: Updated user data after email change
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<User>> changeEmailSafely(ChangeEmailData changeEmailData) async {
+    return executeOperation(
+      () => changeEmail(changeEmailData),
+      operationName: 'Change Email',
     );
   }
 }
