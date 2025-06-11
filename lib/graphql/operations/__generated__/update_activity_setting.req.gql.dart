@@ -5,7 +5,6 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:ferry_exec/ferry_exec.dart' as _i1;
-import 'package:gql/ast.dart' as _i7;
 import 'package:gql_exec/gql_exec.dart' as _i4;
 import 'package:mobilizon_api/graphql/__generated__/serializers.gql.dart'
     as _i6;
@@ -96,61 +95,6 @@ abstract class GUpdateActivitySettingReq
   static GUpdateActivitySettingReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GUpdateActivitySettingReq.serializer,
-        json,
-      );
-}
-
-abstract class GupdateActivitySetting_UserFieldsReq
-    implements
-        Built<GupdateActivitySetting_UserFieldsReq,
-            GupdateActivitySetting_UserFieldsReqBuilder>,
-        _i1.FragmentRequest<_i2.GupdateActivitySetting_UserFieldsData,
-            _i3.GupdateActivitySetting_UserFieldsVars> {
-  GupdateActivitySetting_UserFieldsReq._();
-
-  factory GupdateActivitySetting_UserFieldsReq(
-      [void Function(GupdateActivitySetting_UserFieldsReqBuilder b)
-          updates]) = _$GupdateActivitySetting_UserFieldsReq;
-
-  static void _initializeBuilder(
-          GupdateActivitySetting_UserFieldsReqBuilder b) =>
-      b
-        ..document = _i5.document
-        ..fragmentName = 'updateActivitySetting_UserFields';
-
-  @override
-  _i3.GupdateActivitySetting_UserFieldsVars get vars;
-  @override
-  _i7.DocumentNode get document;
-  @override
-  String? get fragmentName;
-  @override
-  Map<String, dynamic> get idFields;
-  @override
-  _i2.GupdateActivitySetting_UserFieldsData? parseData(
-          Map<String, dynamic> json) =>
-      _i2.GupdateActivitySetting_UserFieldsData.fromJson(json);
-
-  @override
-  Map<String, dynamic> varsToJson() => vars.toJson();
-
-  @override
-  Map<String, dynamic> dataToJson(
-          _i2.GupdateActivitySetting_UserFieldsData data) =>
-      data.toJson();
-
-  static Serializer<GupdateActivitySetting_UserFieldsReq> get serializer =>
-      _$gupdateActivitySettingUserFieldsReqSerializer;
-
-  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GupdateActivitySetting_UserFieldsReq.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GupdateActivitySetting_UserFieldsReq? fromJson(
-          Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(
-        GupdateActivitySetting_UserFieldsReq.serializer,
         json,
       );
 }

@@ -45,6 +45,10 @@ void main() {
     test('⚙️ Streamlined Set User Settings Test', () async {
       await testInstance.runSetUserSettingsTest();
     });
+
+    test('🔔 Streamlined Update Activity Setting Test', () async {
+      await testInstance.runUpdateActivitySettingTest();
+    });
   });
 }
 
@@ -565,6 +569,144 @@ class _AuthServiceTest extends RestorableIntegrationTest {
     expect(result.location!.geohash, 'gcpv');
     
     printSuccess('All settings verified successfully');
+  }
+
+  /// Update activity setting test - granular notification control!
+  Future<void> runUpdateActivitySettingTest() async {
+    printTestHeader('🔔 UPDATE ACTIVITY SETTING INTEGRATION TEST');
+    printInfo('Testing updateActivitySetting operation for granular notification control');
+
+    try {
+      // 1️⃣ Smart Login
+      printTestStep('1️⃣', 'STEP 1: Authenticate user');
+      await loginAsUser();
+      printSuccess('User authenticated successfully');
+
+      // 2️⃣ Test different activity setting scenarios
+      await _testEventNotificationsSetting();
+      await _testGroupMentionsSetting();
+      await _testDisablingNotificationSetting();
+      await _testMultipleMethodSettings();
+
+    } catch (e) {
+      printWarning('Update activity setting test failed: $e');
+      rethrow;
+    }
+
+    printSuccess('Update activity setting test completed! 🎯');
+  }
+
+  /// Test event notifications activity setting
+  Future<void> _testEventNotificationsSetting() async {
+    printTestStep('📅', 'Testing event notifications setting');
+    
+    final activitySettingData = ActivitySettingData(
+      key: 'event_notifications',
+      method: 'email',
+      enabled: true,
+    );
+
+    final result = await withRateLimit(() async {
+      return await client.auth.updateActivitySettingWithRetry(activitySettingData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Event notifications setting updated');
+    printInfo('Setting: ${result.key}/${result.method} = ${result.enabled}');
+    
+    // Verify setting
+    expect(result.key, 'event_notifications');
+    expect(result.method, 'email');
+    expect(result.enabled, isTrue);
+  }
+
+  /// Test group mentions activity setting
+  Future<void> _testGroupMentionsSetting() async {
+    printTestStep('👥', 'Testing group mentions setting');
+    
+    final activitySettingData = ActivitySettingData(
+      key: 'group_mentions',
+      method: 'push',
+      enabled: false,
+    );
+
+    final result = await withRateLimit(() async {
+      return await client.auth.updateActivitySettingWithRetry(activitySettingData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Group mentions setting updated');
+    printInfo('Setting: ${result.key}/${result.method} = ${result.enabled}');
+    
+    // Verify setting
+    expect(result.key, 'group_mentions');
+    expect(result.method, 'push');
+    expect(result.enabled, isFalse);
+  }
+
+  /// Test disabling a notification setting
+  Future<void> _testDisablingNotificationSetting() async {
+    printTestStep('🔕', 'Testing disabling notification setting');
+    
+    final activitySettingData = ActivitySettingData(
+      key: 'weekly_digest',
+      method: 'email_digest',
+      enabled: false,
+    );
+
+    final result = await withRateLimit(() async {
+      return await client.auth.updateActivitySettingWithRetry(activitySettingData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Weekly digest setting disabled');
+    printInfo('Setting: ${result.key}/${result.method} = ${result.enabled}');
+    
+    // Verify setting
+    expect(result.key, 'weekly_digest');
+    expect(result.method, 'email_digest');
+    expect(result.enabled, isFalse);
+  }
+
+  /// Test updating settings for multiple methods
+  Future<void> _testMultipleMethodSettings() async {
+    printTestStep('🔄', 'Testing multiple notification methods');
+    
+    // Test SMS method
+    final smsSettingData = ActivitySettingData(
+      key: 'urgent_notifications',
+      method: 'sms',
+      enabled: true,
+    );
+
+    final smsResult = await withRateLimit(() async {
+      return await client.auth.updateActivitySettingWithRetry(smsSettingData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('SMS notifications enabled');
+    printInfo('SMS Setting: ${smsResult.key}/${smsResult.method} = ${smsResult.enabled}');
+
+    // Test email method for same notification type
+    final emailSettingData = ActivitySettingData(
+      key: 'urgent_notifications',
+      method: 'email',
+      enabled: false,
+    );
+
+    final emailResult = await withRateLimit(() async {
+      return await client.auth.updateActivitySettingWithRetry(emailSettingData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Email notifications disabled for same key');
+    printInfo('Email Setting: ${emailResult.key}/${emailResult.method} = ${emailResult.enabled}');
+    
+    // Verify both settings
+    expect(smsResult.key, 'urgent_notifications');
+    expect(smsResult.method, 'sms');
+    expect(smsResult.enabled, isTrue);
+    
+    expect(emailResult.key, 'urgent_notifications');
+    expect(emailResult.method, 'email');
+    expect(emailResult.enabled, isFalse);
+    
+    printSuccess('Multiple method settings verified successfully');
   }
 
   /// Restore original data automatically

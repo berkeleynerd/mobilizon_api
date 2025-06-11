@@ -480,4 +480,66 @@ class AuthValidator extends BaseValidator {
 
     return locationData.isEmpty ? null : locationData;
   }
+
+  /// Validates activity setting data
+  ///
+  /// Parameters:
+  /// - [key]: The activity setting key (required)
+  /// - [method]: The notification method (required)
+  /// - [enabled]: Whether the setting is enabled (required)
+  ///
+  /// Throws:
+  /// - [AuthException] if validation fails
+  ///
+  /// Returns: A map with validated data
+  static Map<String, dynamic> validateActivitySetting({
+    required String key,
+    required String method,
+    required bool enabled,
+  }) {
+    try {
+      // Validate key (required, non-empty string)
+      final cleanKey = BaseValidator.validateRequired(
+        key,
+        'Activity setting key',
+      );
+
+      // Validate method (required, non-empty string)
+      final cleanMethod = BaseValidator.validateRequired(
+        method,
+        'Notification method',
+      );
+
+      // Basic key format validation (alphanumeric, underscore, hyphen)
+      if (!RegExp(r'^[a-zA-Z0-9_-]+$').hasMatch(cleanKey)) {
+        throw AuthException(
+          'Activity setting key must contain only letters, numbers, underscores, and hyphens',
+          errorType: AuthErrorType.invalidCredentials,
+        );
+      }
+
+      // Basic method format validation (alphanumeric, underscore)
+      if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(cleanMethod)) {
+        throw AuthException(
+          'Notification method must contain only letters, numbers, and underscores',
+          errorType: AuthErrorType.invalidCredentials,
+        );
+      }
+
+      return {
+        'key': cleanKey,
+        'method': cleanMethod,
+        'enabled': enabled,
+      };
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Activity setting validation failed: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.invalidCredentials,
+      );
+    }
+  }
 }

@@ -58,6 +58,8 @@ export 'operations/__generated__/reset_password.req.gql.dart';
 export 'operations/__generated__/send_reset_password.req.gql.dart';
 // SetUserSettings operation - AuthService.setUserSettings()
 export 'operations/__generated__/set_user_settings.req.gql.dart';
+// UpdateActivitySetting operation - AuthService.updateActivitySetting()
+export 'operations/__generated__/update_activity_setting.req.gql.dart';
 // UpdatePerson operation (50KB) - ProfileService
 export 'operations/__generated__/update_person.req.gql.dart';
 

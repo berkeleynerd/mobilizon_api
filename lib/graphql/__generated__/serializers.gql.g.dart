@@ -2042,50 +2042,6 @@ Serializers _$serializers =
             GUpdateActivitySettingData_updateActivitySetting_user_activitySettings
                 .serializer,
           )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_actors
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_authAuthorizedApplications
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_conversations
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_defaultActor
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_drafts
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_feedTokens
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_followedGroupEvents
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_media
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_memberships
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_participations
-                .serializer,
-          )
-          ..add(
-            GUpdateActivitySettingData_updateActivitySetting_user_settings
-                .serializer,
-          )
           ..add(GUpdateActivitySettingReq.serializer)
           ..add(GUpdateActivitySettingVars.serializer)
           ..add(GUpdatePersonData.serializer)
@@ -2307,29 +2263,6 @@ Serializers _$serializers =
           ..add(GresetPassword_UserFieldsData_actors.serializer)
           ..add(GresetPassword_UserFieldsReq.serializer)
           ..add(GresetPassword_UserFieldsVars.serializer)
-          ..add(GupdateActivitySetting_UserFieldsData.serializer)
-          ..add(
-            GupdateActivitySetting_UserFieldsData_activitySettings.serializer,
-          )
-          ..add(GupdateActivitySetting_UserFieldsData_actors.serializer)
-          ..add(
-            GupdateActivitySetting_UserFieldsData_authAuthorizedApplications
-                .serializer,
-          )
-          ..add(GupdateActivitySetting_UserFieldsData_conversations.serializer)
-          ..add(GupdateActivitySetting_UserFieldsData_defaultActor.serializer)
-          ..add(GupdateActivitySetting_UserFieldsData_drafts.serializer)
-          ..add(GupdateActivitySetting_UserFieldsData_feedTokens.serializer)
-          ..add(
-            GupdateActivitySetting_UserFieldsData_followedGroupEvents
-                .serializer,
-          )
-          ..add(GupdateActivitySetting_UserFieldsData_media.serializer)
-          ..add(GupdateActivitySetting_UserFieldsData_memberships.serializer)
-          ..add(GupdateActivitySetting_UserFieldsData_participations.serializer)
-          ..add(GupdateActivitySetting_UserFieldsData_settings.serializer)
-          ..add(GupdateActivitySetting_UserFieldsReq.serializer)
-          ..add(GupdateActivitySetting_UserFieldsVars.serializer)
           ..addBuilderFactory(
             const FullType(BuiltList, const [
               const FullType.nullable(
@@ -3925,39 +3858,6 @@ Serializers _$serializers =
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
-              const FullType.nullable(
-                GUpdateActivitySettingData_updateActivitySetting_user_actors,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GUpdateActivitySettingData_updateActivitySetting_user_actors?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GUpdateActivitySettingData_updateActivitySetting_user_authAuthorizedApplications,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GUpdateActivitySettingData_updateActivitySetting_user_authAuthorizedApplications?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GUpdateActivitySettingData_updateActivitySetting_user_feedTokens,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GUpdateActivitySettingData_updateActivitySetting_user_feedTokens?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
               const FullType.nullable(GfetchPerson_EventFieldsData_comments),
             ]),
             () => ListBuilder<GfetchPerson_EventFieldsData_comments?>(),
@@ -4186,47 +4086,6 @@ Serializers _$serializers =
               const FullType.nullable(GresetPassword_UserFieldsData_actors),
             ]),
             () => ListBuilder<GresetPassword_UserFieldsData_actors?>(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GupdateActivitySetting_UserFieldsData_activitySettings,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GupdateActivitySetting_UserFieldsData_activitySettings?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GupdateActivitySetting_UserFieldsData_actors,
-              ),
-            ]),
-            () => ListBuilder<GupdateActivitySetting_UserFieldsData_actors?>(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GupdateActivitySetting_UserFieldsData_authAuthorizedApplications,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GupdateActivitySetting_UserFieldsData_authAuthorizedApplications?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GupdateActivitySetting_UserFieldsData_feedTokens,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GupdateActivitySetting_UserFieldsData_feedTokens?
-                >(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [const FullType.nullable(String)]),

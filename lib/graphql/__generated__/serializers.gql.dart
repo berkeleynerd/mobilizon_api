@@ -1043,35 +1043,11 @@ import 'package:mobilizon_api/graphql/operations/__generated__/update_activity_s
         GUpdateActivitySettingData,
         GUpdateActivitySettingData_updateActivitySetting,
         GUpdateActivitySettingData_updateActivitySetting_user,
-        GUpdateActivitySettingData_updateActivitySetting_user_activitySettings,
-        GUpdateActivitySettingData_updateActivitySetting_user_actors,
-        GUpdateActivitySettingData_updateActivitySetting_user_authAuthorizedApplications,
-        GUpdateActivitySettingData_updateActivitySetting_user_conversations,
-        GUpdateActivitySettingData_updateActivitySetting_user_defaultActor,
-        GUpdateActivitySettingData_updateActivitySetting_user_drafts,
-        GUpdateActivitySettingData_updateActivitySetting_user_feedTokens,
-        GUpdateActivitySettingData_updateActivitySetting_user_followedGroupEvents,
-        GUpdateActivitySettingData_updateActivitySetting_user_media,
-        GUpdateActivitySettingData_updateActivitySetting_user_memberships,
-        GUpdateActivitySettingData_updateActivitySetting_user_participations,
-        GUpdateActivitySettingData_updateActivitySetting_user_settings,
-        GupdateActivitySetting_UserFieldsData,
-        GupdateActivitySetting_UserFieldsData_activitySettings,
-        GupdateActivitySetting_UserFieldsData_actors,
-        GupdateActivitySetting_UserFieldsData_authAuthorizedApplications,
-        GupdateActivitySetting_UserFieldsData_conversations,
-        GupdateActivitySetting_UserFieldsData_defaultActor,
-        GupdateActivitySetting_UserFieldsData_drafts,
-        GupdateActivitySetting_UserFieldsData_feedTokens,
-        GupdateActivitySetting_UserFieldsData_followedGroupEvents,
-        GupdateActivitySetting_UserFieldsData_media,
-        GupdateActivitySetting_UserFieldsData_memberships,
-        GupdateActivitySetting_UserFieldsData_participations,
-        GupdateActivitySetting_UserFieldsData_settings;
+        GUpdateActivitySettingData_updateActivitySetting_user_activitySettings;
 import 'package:mobilizon_api/graphql/operations/__generated__/update_activity_setting.req.gql.dart'
-    show GUpdateActivitySettingReq, GupdateActivitySetting_UserFieldsReq;
+    show GUpdateActivitySettingReq;
 import 'package:mobilizon_api/graphql/operations/__generated__/update_activity_setting.var.gql.dart'
-    show GUpdateActivitySettingVars, GupdateActivitySetting_UserFieldsVars;
+    show GUpdateActivitySettingVars;
 import 'package:mobilizon_api/graphql/operations/__generated__/update_person.data.gql.dart'
     show
         GUpdatePersonData,
@@ -1865,17 +1841,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GUpdateActivitySettingData_updateActivitySetting,
   GUpdateActivitySettingData_updateActivitySetting_user,
   GUpdateActivitySettingData_updateActivitySetting_user_activitySettings,
-  GUpdateActivitySettingData_updateActivitySetting_user_actors,
-  GUpdateActivitySettingData_updateActivitySetting_user_authAuthorizedApplications,
-  GUpdateActivitySettingData_updateActivitySetting_user_conversations,
-  GUpdateActivitySettingData_updateActivitySetting_user_defaultActor,
-  GUpdateActivitySettingData_updateActivitySetting_user_drafts,
-  GUpdateActivitySettingData_updateActivitySetting_user_feedTokens,
-  GUpdateActivitySettingData_updateActivitySetting_user_followedGroupEvents,
-  GUpdateActivitySettingData_updateActivitySetting_user_media,
-  GUpdateActivitySettingData_updateActivitySetting_user_memberships,
-  GUpdateActivitySettingData_updateActivitySetting_user_participations,
-  GUpdateActivitySettingData_updateActivitySetting_user_settings,
   GUpdateActivitySettingReq,
   GUpdateActivitySettingVars,
   GUpdatePersonData,
@@ -2091,20 +2056,5 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GresetPassword_UserFieldsData_actors,
   GresetPassword_UserFieldsReq,
   GresetPassword_UserFieldsVars,
-  GupdateActivitySetting_UserFieldsData,
-  GupdateActivitySetting_UserFieldsData_activitySettings,
-  GupdateActivitySetting_UserFieldsData_actors,
-  GupdateActivitySetting_UserFieldsData_authAuthorizedApplications,
-  GupdateActivitySetting_UserFieldsData_conversations,
-  GupdateActivitySetting_UserFieldsData_defaultActor,
-  GupdateActivitySetting_UserFieldsData_drafts,
-  GupdateActivitySetting_UserFieldsData_feedTokens,
-  GupdateActivitySetting_UserFieldsData_followedGroupEvents,
-  GupdateActivitySetting_UserFieldsData_media,
-  GupdateActivitySetting_UserFieldsData_memberships,
-  GupdateActivitySetting_UserFieldsData_participations,
-  GupdateActivitySetting_UserFieldsData_settings,
-  GupdateActivitySetting_UserFieldsReq,
-  GupdateActivitySetting_UserFieldsVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

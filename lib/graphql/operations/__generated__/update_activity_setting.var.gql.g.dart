@@ -8,9 +8,6 @@ part of 'update_activity_setting.var.gql.dart';
 
 Serializer<GUpdateActivitySettingVars> _$gUpdateActivitySettingVarsSerializer =
     _$GUpdateActivitySettingVarsSerializer();
-Serializer<GupdateActivitySetting_UserFieldsVars>
-_$gupdateActivitySettingUserFieldsVarsSerializer =
-    _$GupdateActivitySetting_UserFieldsVarsSerializer();
 
 class _$GUpdateActivitySettingVarsSerializer
     implements StructuredSerializer<GUpdateActivitySettingVars> {
@@ -88,35 +85,6 @@ class _$GUpdateActivitySettingVarsSerializer
     }
 
     return result.build();
-  }
-}
-
-class _$GupdateActivitySetting_UserFieldsVarsSerializer
-    implements StructuredSerializer<GupdateActivitySetting_UserFieldsVars> {
-  @override
-  final Iterable<Type> types = const [
-    GupdateActivitySetting_UserFieldsVars,
-    _$GupdateActivitySetting_UserFieldsVars,
-  ];
-  @override
-  final String wireName = 'GupdateActivitySetting_UserFieldsVars';
-
-  @override
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GupdateActivitySetting_UserFieldsVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return <Object?>[];
-  }
-
-  @override
-  GupdateActivitySetting_UserFieldsVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return GupdateActivitySetting_UserFieldsVarsBuilder().build();
   }
 }
 
@@ -238,74 +206,6 @@ class GUpdateActivitySettingVarsBuilder
             'method',
           ),
         );
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GupdateActivitySetting_UserFieldsVars
-    extends GupdateActivitySetting_UserFieldsVars {
-  factory _$GupdateActivitySetting_UserFieldsVars([
-    void Function(GupdateActivitySetting_UserFieldsVarsBuilder)? updates,
-  ]) => (GupdateActivitySetting_UserFieldsVarsBuilder()..update(updates))
-      ._build();
-
-  _$GupdateActivitySetting_UserFieldsVars._() : super._();
-  @override
-  GupdateActivitySetting_UserFieldsVars rebuild(
-    void Function(GupdateActivitySetting_UserFieldsVarsBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
-
-  @override
-  GupdateActivitySetting_UserFieldsVarsBuilder toBuilder() =>
-      GupdateActivitySetting_UserFieldsVarsBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GupdateActivitySetting_UserFieldsVars;
-  }
-
-  @override
-  int get hashCode {
-    return 274943513;
-  }
-
-  @override
-  String toString() {
-    return newBuiltValueToStringHelper(
-      r'GupdateActivitySetting_UserFieldsVars',
-    ).toString();
-  }
-}
-
-class GupdateActivitySetting_UserFieldsVarsBuilder
-    implements
-        Builder<
-          GupdateActivitySetting_UserFieldsVars,
-          GupdateActivitySetting_UserFieldsVarsBuilder
-        > {
-  _$GupdateActivitySetting_UserFieldsVars? _$v;
-
-  GupdateActivitySetting_UserFieldsVarsBuilder();
-
-  @override
-  void replace(GupdateActivitySetting_UserFieldsVars other) {
-    _$v = other as _$GupdateActivitySetting_UserFieldsVars;
-  }
-
-  @override
-  void update(
-    void Function(GupdateActivitySetting_UserFieldsVarsBuilder)? updates,
-  ) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GupdateActivitySetting_UserFieldsVars build() => _build();
-
-  _$GupdateActivitySetting_UserFieldsVars _build() {
-    final _$result = _$v ?? _$GupdateActivitySetting_UserFieldsVars._();
     replace(_$result);
     return _$result;
   }

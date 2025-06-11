@@ -125,3 +125,16 @@ class LocationData {
     this.geohash,
   });
 }
+
+/// Data for updating individual activity settings
+class ActivitySettingData {
+  final String key;
+  final String method;
+  final bool enabled;
+
+  const ActivitySettingData({
+    required this.key,
+    required this.method,
+    required this.enabled,
+  });
+}

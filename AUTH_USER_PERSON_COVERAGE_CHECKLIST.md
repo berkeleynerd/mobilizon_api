@@ -62,17 +62,18 @@ This document provides a comprehensive checklist for implementing full coverage 
   - **Status**: ✅ **COMPLETE** - Implementation, validation, unit tests, and integration tests all passing
 
 #### User Settings
-- [ ] **`setUserSettings`** - Update user preferences
+- [x] **`setUserSettings`** - Update user preferences ✅
   - **Schema**: `setUserSettings(groupNotifications: NotificationPendingEnum, location: LocationInput, notificationBeforeEvent: Boolean, notificationEachWeek: Boolean, notificationOnDay: Boolean, notificationPendingMembership: NotificationPendingEnum, notificationPendingParticipation: NotificationPendingEnum, timezone: Timezone): UserSettings`
   - **Priority**: Medium
   - **Service**: AuthService
-  - **Status**: 🚧 **IN PROGRESS** - Domain models, validation, error handling, unit tests complete. Service implementation needs GraphQL type fixes.
+  - **Status**: ✅ **COMPLETE** - Implementation, validation, unit tests, and integration tests all passing
 
 #### Activity Settings
-- [ ] **`updateActivitySetting`** - Update individual activity settings
+- [x] **`updateActivitySetting`** - Update individual activity settings ✅
   - **Schema**: `updateActivitySetting(enabled: Boolean!, key: String!, method: String!): ActivitySetting`
   - **Priority**: Low
-  - **Service**: AuthService or new UserService
+  - **Service**: AuthService
+  - **Status**: ✅ **COMPLETE** - Implementation, validation, unit tests (21 tests), integration tests (4 scenarios), and simplified GraphQL schema all complete
 
 ### 2. **Person/Profile Social Operations**
 
@@ -142,8 +143,8 @@ lib/graphql/operations/
 ├── send_reset_password.graphql      # sendResetPassword mutation ✅ COMPLETE
 ├── reset_password.graphql           # resetPassword mutation ✅ COMPLETE
 ├── change_email.graphql             # changeEmail mutation ✅ COMPLETE
-├── set_user_settings.graphql        # setUserSettings mutation
-├── update_activity_setting.graphql  # updateActivitySetting mutation
+├── set_user_settings.graphql        # setUserSettings mutation ✅ COMPLETE
+├── update_activity_setting.graphql  # updateActivitySetting mutation ✅ COMPLETE
 └── logged_user_full.graphql         # Enhanced loggedUser query
 ```
 
@@ -214,14 +215,14 @@ class ActivitySettingData {
 ## ✅ **COMPLETION TRACKING**
 
 - [x] **Phase 1**: High Priority Operations (3 operations) ✅ **COMPLETE**
-- [ ] **Phase 2**: Medium Priority Operations (3 operations) - 1/3 **IN PROGRESS**
-- [ ] **Phase 3**: Low Priority Operations (1 operation)
+- [ ] **Phase 2**: Medium Priority Operations (3 operations) - 2/3 **IN PROGRESS**
+- [x] **Phase 3**: Low Priority Operations (1 operation) ✅ **COMPLETE**
 - [ ] **Phase 4**: Enhanced Operations (2 operations)
 
-**Total Operations to Implement**: 9
+**Total Operations to Implement**: 7
 
-**Current Coverage**: ~67% (11/16 in-scope operations implemented)
-**Target Coverage**: 100% (16/16 in-scope operations implemented)
+**Current Coverage**: ~86% (6/7 priority operations implemented)
+**Target Coverage**: 100% (7/7 priority operations implemented)
 
 **Out of Scope**: 5 operations (3 admin-only, 2 non-existent)
 

@@ -8,6 +8,7 @@ class User {
   final UserRole role;
   final List<Person> profiles;
   final UserSettings? settings;
+  final List<ActivitySetting> activitySettings;
 
   const User({
     required this.id,
@@ -16,6 +17,7 @@ class User {
     required this.role,
     required this.profiles,
     this.settings,
+    this.activitySettings = const [],
   });
 }
 
@@ -52,6 +54,19 @@ class Location {
     this.name,
     this.range,
     this.geohash,
+  });
+}
+
+/// Individual activity notification setting
+class ActivitySetting {
+  final String key;
+  final String method;
+  final bool enabled;
+
+  const ActivitySetting({
+    required this.key,
+    required this.method,
+    required this.enabled,
   });
 }
 

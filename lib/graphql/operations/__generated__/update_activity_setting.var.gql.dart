@@ -35,29 +35,3 @@ abstract class GUpdateActivitySettingVars
         json,
       );
 }
-
-abstract class GupdateActivitySetting_UserFieldsVars
-    implements
-        Built<GupdateActivitySetting_UserFieldsVars,
-            GupdateActivitySetting_UserFieldsVarsBuilder> {
-  GupdateActivitySetting_UserFieldsVars._();
-
-  factory GupdateActivitySetting_UserFieldsVars(
-      [void Function(GupdateActivitySetting_UserFieldsVarsBuilder b)
-          updates]) = _$GupdateActivitySetting_UserFieldsVars;
-
-  static Serializer<GupdateActivitySetting_UserFieldsVars> get serializer =>
-      _$gupdateActivitySettingUserFieldsVarsSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GupdateActivitySetting_UserFieldsVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GupdateActivitySetting_UserFieldsVars? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GupdateActivitySetting_UserFieldsVars.serializer,
-        json,
-      );
-}

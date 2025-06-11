@@ -572,6 +572,61 @@ class AuthService extends BaseService {
     }
   }
 
+  Future<ActivitySetting> updateActivitySetting(ActivitySettingData activitySettingData) async {
+    try {
+      // Validate activity setting data before attempting the operation
+      final validated = AuthValidator.validateActivitySetting(
+        key: activitySettingData.key,
+        method: activitySettingData.method,
+        enabled: activitySettingData.enabled,
+      );
+
+      // Create the update activity setting request with validated data
+      final request = GUpdateActivitySettingReq(
+        (b) => b
+          ..vars.key = validated['key'] as String
+          ..vars.method = validated['method'] as String
+          ..vars.enabled = validated['enabled'] as bool,
+      );
+
+      // Execute the update activity setting mutation (requires authentication)
+      final response = await graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.updateActivitySetting == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .toList();
+
+        throw AuthErrorMapper.createMappedException(
+          "Update activity setting failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Map the response to our domain model
+      final responseData = response.data!.updateActivitySetting!;
+
+      final activitySetting = ActivitySetting(
+        key: responseData.key ?? '',
+        method: responseData.method ?? '',
+        enabled: responseData.enabled ?? false,
+      );
+
+      return activitySetting;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to update activity setting: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.userSettingsFailed,
+      );
+    }
+  }
+
   Future<bool> refreshTokenIfNeeded() async {
     try {
       final tokens = await tokenManager.getCurrentTokens();
@@ -982,6 +1037,11 @@ class AuthService extends BaseService {
     return _executeWithRetry(() => setUserSettings(userSettingsData));
   }
 
+  /// Update activity setting with automatic retry for rate limiting
+  Future<ActivitySetting> updateActivitySettingWithRetry(ActivitySettingData activitySettingData) async {
+    return _executeWithRetry(() => updateActivitySetting(activitySettingData));
+  }
+
   // =============================================================================
   // ServiceResult-based methods (alternative to exception-based methods)
   // =============================================================================
@@ -1120,6 +1180,18 @@ class AuthService extends BaseService {
     return executeOperation(
       () => setUserSettings(userSettingsData),
       operationName: 'Set User Settings',
+    );
+  }
+
+  /// Update activity setting with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<ActivitySetting>` that contains either:
+  /// - Success: Updated activity setting after successful operation
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<ActivitySetting>> updateActivitySettingSafely(ActivitySettingData activitySettingData) async {
+    return executeOperation(
+      () => updateActivitySetting(activitySettingData),
+      operationName: 'Update Activity Setting',
     );
   }
 }
