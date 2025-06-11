@@ -199,6 +199,49 @@ class AuthValidator extends BaseValidator {
     };
   }
 
+  /// Validates password reset confirmation data
+  ///
+  /// Parameters:
+  /// - [token]: Password reset token from email
+  /// - [password]: New password to set
+  /// - [locale]: Optional locale preference
+  ///
+  /// Throws:
+  /// - [AuthException] if validation fails
+  ///
+  /// Returns: A map with validated data
+  static Map<String, String?> validatePasswordResetConfirm({
+    required String token,
+    required String password,
+    String? locale,
+  }) {
+    try {
+      // Validate token (required and not empty)
+      final cleanToken = BaseValidator.validateRequired(
+        token,
+        'Reset token',
+      );
+
+      // Validate new password with full rules
+      final validatedPassword = validatePassword(password);
+
+      return {
+        'token': cleanToken,
+        'password': validatedPassword,
+        'locale': locale?.trim(),
+      };
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Password reset confirmation validation failed: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.passwordResetFailed,
+      );
+    }
+  }
+
   /// Checks if an email format is valid without throwing exceptions
   ///
   /// Parameters:

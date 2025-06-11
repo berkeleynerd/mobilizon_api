@@ -65,3 +65,16 @@ class PasswordResetData {
     this.locale,
   });
 }
+
+/// Data for completing password reset with token
+class PasswordResetConfirmData {
+  final String token;
+  final String password;
+  final String? locale;
+
+  const PasswordResetConfirmData({
+    required this.token,
+    required this.password,
+    this.locale,
+  });
+}

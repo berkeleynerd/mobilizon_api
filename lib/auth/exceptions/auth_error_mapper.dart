@@ -63,6 +63,14 @@ class AuthErrorMapper {
       return AuthErrorType.changePasswordFailed;
     }
 
+    if (lowerMessage.contains('password') && 
+        (lowerMessage.contains('reset') || 
+         lowerMessage.contains('token') ||
+         lowerMessage.contains('invalid token') ||
+         lowerMessage.contains('expired token'))) {
+      return AuthErrorType.passwordResetFailed;
+    }
+
     // Default to general for unrecognized errors
     return AuthErrorType.general;
   }
@@ -126,6 +134,8 @@ class AuthErrorMapper {
         return 'Logout failed. Please try again.';
       case AuthErrorType.changePasswordFailed:
         return 'Password change failed. Please check your current password and try again.';
+      case AuthErrorType.passwordResetFailed:
+        return 'Password reset failed. Please check that your reset token is valid and not expired.';
       case AuthErrorType.general:
         return 'An authentication error occurred. Please try again.';
     }

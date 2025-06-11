@@ -535,6 +535,43 @@ class AuthService extends BaseService {
     );
   }
 
+  // Helper method to map GraphQL reset password user to domain model
+  User _mapGraphQLResetPasswordUserToUser(GResetPasswordData_resetPassword_user user) {
+    // Create a list of profiles from actors
+    final profiles = user.actors
+        .where((actor) => actor != null)
+        .map((actor) {
+          // Only include profiles with valid data
+          if (actor!.id == null ||
+              actor.id!.isEmpty ||
+              actor.preferredUsername == null ||
+              actor.preferredUsername!.isEmpty) {
+            return null;
+          }
+
+          return Person(
+            id: actor.id!,
+            preferredUsername: actor.preferredUsername!,
+            name: actor.name,
+            summary: actor.summary,
+            avatar: null,
+            banner: null,
+          );
+        })
+        .where((person) => person != null)
+        .cast<Person>()
+        .toList();
+
+    return User(
+      id: user.id ?? '',
+      email: user.email,
+      confirmed: user.confirmedAt != null,
+      role: _mapUserRole(user.role?.toString()),
+      profiles: profiles,
+      settings: null,
+    );
+  }
+
   // Map GraphQL user role to domain model
   UserRole _mapUserRole(String? role) {
     switch (role) {
@@ -654,6 +691,88 @@ class AuthService extends BaseService {
     }
   }
 
+  Future<AuthResult> resetPassword(PasswordResetConfirmData passwordResetConfirmData) async {
+    try {
+      // Validate password reset confirmation data before attempting the operation
+      final validated = AuthValidator.validatePasswordResetConfirm(
+        token: passwordResetConfirmData.token,
+        password: passwordResetConfirmData.password,
+        locale: passwordResetConfirmData.locale,
+      );
+
+      // Create the password reset confirmation request with validated data
+      final request = GResetPasswordReq(
+        (b) => b
+          ..vars.token = validated['token']
+          ..vars.password = validated['password']
+          ..vars.locale = validated['locale'],
+      );
+
+      // Execute the password reset mutation (no auth required - public operation)
+      final response = await graphQLClient.executePublic(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.resetPassword == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .toList();
+
+        throw AuthErrorMapper.createMappedException(
+          "Password reset failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      final resetData = response.data!.resetPassword!;
+
+      // Parse JWT token to get expiry date
+      final Map<String, dynamic> decodedToken = JwtDecoder.decode(
+        resetData.accessToken,
+      );
+      final expiryTimestamp = decodedToken['exp'] as int;
+      final expiryDateTime = DateTime.fromMillisecondsSinceEpoch(
+        expiryTimestamp * 1000,
+      );
+
+      // Create token pair
+      final tokens = TokenPair(
+        accessToken: resetData.accessToken,
+        refreshToken: resetData.refreshToken,
+        accessTokenExpiry: expiryDateTime,
+      );
+
+      // Save tokens
+      await tokenManager.saveTokens(tokens);
+
+      // Map GraphQL user to domain model
+      final user = _mapGraphQLResetPasswordUserToUser(resetData.user);
+      _currentUser = user;
+
+      // Notify listeners of authentication state change
+      if (!_authStateController.isClosed) {
+        _authStateController.add(true);
+      }
+
+      // Return the result
+      return AuthResult(tokens: tokens, user: user);
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to reset password: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.passwordResetFailed,
+      );
+    }
+  }
+
+  /// Reset password with automatic retry for rate limiting
+  Future<AuthResult> resetPasswordWithRetry(PasswordResetConfirmData passwordResetConfirmData) async {
+    return _executeWithRetry(() => resetPassword(passwordResetConfirmData));
+  }
+
   // =============================================================================
   // ServiceResult-based methods (alternative to exception-based methods)
   // =============================================================================
@@ -720,6 +839,18 @@ class AuthService extends BaseService {
     return executeOperation(
       () => sendResetPassword(passwordResetData),
       operationName: 'Send Password Reset',
+    );
+  }
+
+  /// Reset password with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<AuthResult>` that contains either:
+  /// - Success: AuthResult with tokens and user data after password reset
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<AuthResult>> resetPasswordSafely(PasswordResetConfirmData passwordResetConfirmData) async {
+    return executeOperation(
+      () => resetPassword(passwordResetConfirmData),
+      operationName: 'Reset Password',
     );
   }
 

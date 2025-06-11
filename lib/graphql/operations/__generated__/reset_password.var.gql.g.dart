@@ -26,18 +26,26 @@ class _$GResetPasswordVarsSerializer
     FullType specifiedType = FullType.unspecified,
   }) {
     final result = <Object?>[
-      'password',
-      serializers.serialize(
-        object.password,
-        specifiedType: const FullType(String),
-      ),
       'token',
       serializers.serialize(
         object.token,
         specifiedType: const FullType(String),
       ),
+      'password',
+      serializers.serialize(
+        object.password,
+        specifiedType: const FullType(String),
+      ),
     ];
-
+    Object? value;
+    value = object.locale;
+    if (value != null) {
+      result
+        ..add('locale')
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
+    }
     return result;
   }
 
@@ -55,6 +63,14 @@ class _$GResetPasswordVarsSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'token':
+          result.token =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )!
+                  as String;
+          break;
         case 'password':
           result.password =
               serializers.deserialize(
@@ -63,13 +79,13 @@ class _$GResetPasswordVarsSerializer
                   )!
                   as String;
           break;
-        case 'token':
-          result.token =
+        case 'locale':
+          result.locale =
               serializers.deserialize(
                     value,
                     specifiedType: const FullType(String),
-                  )!
-                  as String;
+                  )
+                  as String?;
           break;
       }
     }
@@ -109,16 +125,21 @@ class _$GresetPassword_UserFieldsVarsSerializer
 
 class _$GResetPasswordVars extends GResetPasswordVars {
   @override
+  final String token;
+  @override
   final String password;
   @override
-  final String token;
+  final String? locale;
 
   factory _$GResetPasswordVars([
     void Function(GResetPasswordVarsBuilder)? updates,
   ]) => (GResetPasswordVarsBuilder()..update(updates))._build();
 
-  _$GResetPasswordVars._({required this.password, required this.token})
-    : super._();
+  _$GResetPasswordVars._({
+    required this.token,
+    required this.password,
+    this.locale,
+  }) : super._();
   @override
   GResetPasswordVars rebuild(
     void Function(GResetPasswordVarsBuilder) updates,
@@ -132,15 +153,17 @@ class _$GResetPasswordVars extends GResetPasswordVars {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GResetPasswordVars &&
+        token == other.token &&
         password == other.password &&
-        token == other.token;
+        locale == other.locale;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, password.hashCode);
     _$hash = $jc(_$hash, token.hashCode);
+    _$hash = $jc(_$hash, password.hashCode);
+    _$hash = $jc(_$hash, locale.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -148,8 +171,9 @@ class _$GResetPasswordVars extends GResetPasswordVars {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GResetPasswordVars')
+          ..add('token', token)
           ..add('password', password)
-          ..add('token', token))
+          ..add('locale', locale))
         .toString();
   }
 }
@@ -158,21 +182,26 @@ class GResetPasswordVarsBuilder
     implements Builder<GResetPasswordVars, GResetPasswordVarsBuilder> {
   _$GResetPasswordVars? _$v;
 
+  String? _token;
+  String? get token => _$this._token;
+  set token(String? token) => _$this._token = token;
+
   String? _password;
   String? get password => _$this._password;
   set password(String? password) => _$this._password = password;
 
-  String? _token;
-  String? get token => _$this._token;
-  set token(String? token) => _$this._token = token;
+  String? _locale;
+  String? get locale => _$this._locale;
+  set locale(String? locale) => _$this._locale = locale;
 
   GResetPasswordVarsBuilder();
 
   GResetPasswordVarsBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _password = $v.password;
       _token = $v.token;
+      _password = $v.password;
+      _locale = $v.locale;
       _$v = null;
     }
     return this;
@@ -195,16 +224,17 @@ class GResetPasswordVarsBuilder
     final _$result =
         _$v ??
         _$GResetPasswordVars._(
-          password: BuiltValueNullFieldError.checkNotNull(
-            password,
-            r'GResetPasswordVars',
-            'password',
-          ),
           token: BuiltValueNullFieldError.checkNotNull(
             token,
             r'GResetPasswordVars',
             'token',
           ),
+          password: BuiltValueNullFieldError.checkNotNull(
+            password,
+            r'GResetPasswordVars',
+            'password',
+          ),
+          locale: locale,
         );
     replace(_$result);
     return _$result;

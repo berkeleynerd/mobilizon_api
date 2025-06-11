@@ -17,8 +17,9 @@ abstract class GResetPasswordVars
           [void Function(GResetPasswordVarsBuilder b) updates]) =
       _$GResetPasswordVars;
 
-  String get password;
   String get token;
+  String get password;
+  String? get locale;
   static Serializer<GResetPasswordVars> get serializer =>
       _$gResetPasswordVarsSerializer;
 

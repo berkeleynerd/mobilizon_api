@@ -48,6 +48,9 @@ export 'operations/__generated__/login.req.gql.dart';
 export 'operations/__generated__/logout.req.gql.dart';
 // RefreshToken operation (20KB) - AuthService.forceTokenRefresh()
 export 'operations/__generated__/refresh_token.req.gql.dart';
+export 'operations/__generated__/reset_password.data.gql.dart';
+// ResetPassword operation - AuthService.resetPassword()
+export 'operations/__generated__/reset_password.req.gql.dart';
 // SendResetPassword operation (48KB) - AuthService.sendResetPassword()
 export 'operations/__generated__/send_reset_password.req.gql.dart';
 // UpdatePerson operation (50KB) - ProfileService

@@ -2759,26 +2759,7 @@ Serializers _$serializers =
           ..add(GResetPasswordData.serializer)
           ..add(GResetPasswordData_resetPassword.serializer)
           ..add(GResetPasswordData_resetPassword_user.serializer)
-          ..add(
-            GResetPasswordData_resetPassword_user_activitySettings.serializer,
-          )
           ..add(GResetPasswordData_resetPassword_user_actors.serializer)
-          ..add(
-            GResetPasswordData_resetPassword_user_authAuthorizedApplications
-                .serializer,
-          )
-          ..add(GResetPasswordData_resetPassword_user_conversations.serializer)
-          ..add(GResetPasswordData_resetPassword_user_defaultActor.serializer)
-          ..add(GResetPasswordData_resetPassword_user_drafts.serializer)
-          ..add(GResetPasswordData_resetPassword_user_feedTokens.serializer)
-          ..add(
-            GResetPasswordData_resetPassword_user_followedGroupEvents
-                .serializer,
-          )
-          ..add(GResetPasswordData_resetPassword_user_media.serializer)
-          ..add(GResetPasswordData_resetPassword_user_memberships.serializer)
-          ..add(GResetPasswordData_resetPassword_user_participations.serializer)
-          ..add(GResetPasswordData_resetPassword_user_settings.serializer)
           ..add(GResetPasswordReq.serializer)
           ..add(GResetPasswordVars.serializer)
           ..add(GRoutingType.serializer)
@@ -3132,20 +3113,7 @@ Serializers _$serializers =
           ..add(Glogin_UserFieldsReq.serializer)
           ..add(Glogin_UserFieldsVars.serializer)
           ..add(GresetPassword_UserFieldsData.serializer)
-          ..add(GresetPassword_UserFieldsData_activitySettings.serializer)
           ..add(GresetPassword_UserFieldsData_actors.serializer)
-          ..add(
-            GresetPassword_UserFieldsData_authAuthorizedApplications.serializer,
-          )
-          ..add(GresetPassword_UserFieldsData_conversations.serializer)
-          ..add(GresetPassword_UserFieldsData_defaultActor.serializer)
-          ..add(GresetPassword_UserFieldsData_drafts.serializer)
-          ..add(GresetPassword_UserFieldsData_feedTokens.serializer)
-          ..add(GresetPassword_UserFieldsData_followedGroupEvents.serializer)
-          ..add(GresetPassword_UserFieldsData_media.serializer)
-          ..add(GresetPassword_UserFieldsData_memberships.serializer)
-          ..add(GresetPassword_UserFieldsData_participations.serializer)
-          ..add(GresetPassword_UserFieldsData_settings.serializer)
           ..add(GresetPassword_UserFieldsReq.serializer)
           ..add(GresetPassword_UserFieldsVars.serializer)
           ..add(GupdateActivitySetting_UserFieldsData.serializer)
@@ -5351,43 +5319,10 @@ Serializers _$serializers =
           ..addBuilderFactory(
             const FullType(BuiltList, const [
               const FullType.nullable(
-                GResetPasswordData_resetPassword_user_activitySettings,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GResetPasswordData_resetPassword_user_activitySettings?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
                 GResetPasswordData_resetPassword_user_actors,
               ),
             ]),
             () => ListBuilder<GResetPasswordData_resetPassword_user_actors?>(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GResetPasswordData_resetPassword_user_authAuthorizedApplications,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GResetPasswordData_resetPassword_user_authAuthorizedApplications?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GResetPasswordData_resetPassword_user_feedTokens,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GResetPasswordData_resetPassword_user_feedTokens?
-                >(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
@@ -5733,35 +5668,9 @@ Serializers _$serializers =
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
-              const FullType.nullable(
-                GresetPassword_UserFieldsData_activitySettings,
-              ),
-            ]),
-            () =>
-                ListBuilder<GresetPassword_UserFieldsData_activitySettings?>(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
               const FullType.nullable(GresetPassword_UserFieldsData_actors),
             ]),
             () => ListBuilder<GresetPassword_UserFieldsData_actors?>(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(
-                GresetPassword_UserFieldsData_authAuthorizedApplications,
-              ),
-            ]),
-            () =>
-                ListBuilder<
-                  GresetPassword_UserFieldsData_authAuthorizedApplications?
-                >(),
-          )
-          ..addBuilderFactory(
-            const FullType(BuiltList, const [
-              const FullType.nullable(GresetPassword_UserFieldsData_feedTokens),
-            ]),
-            () => ListBuilder<GresetPassword_UserFieldsData_feedTokens?>(),
           )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
