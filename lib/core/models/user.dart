@@ -19,22 +19,50 @@ class User {
   });
 }
 
-/// User settings
+/// User settings for notifications and preferences
 class UserSettings {
   final String? timezone;
+  final bool? notificationOnDay;
+  final bool? notificationEachWeek;
+  final bool? notificationBeforeEvent;
+  final NotificationPendingEnum? notificationPendingParticipation;
+  final NotificationPendingEnum? notificationPendingMembership;
+  final NotificationPendingEnum? groupNotifications;
+  final Location? location;
 
-  const UserSettings({this.timezone});
+  const UserSettings({
+    this.timezone,
+    this.notificationOnDay,
+    this.notificationEachWeek,
+    this.notificationBeforeEvent,
+    this.notificationPendingParticipation,
+    this.notificationPendingMembership,
+    this.groupNotifications,
+    this.location,
+  });
+}
+
+/// User location preferences for event suggestions
+class Location {
+  final String? name;
+  final int? range;
+  final String? geohash;
+
+  const Location({
+    this.name,
+    this.range,
+    this.geohash,
+  });
 }
 
 /// User role enum
 enum UserRole { administrator, moderator, user }
 
-/// Notification timing preferences
+/// Notification timing preferences matching Mobilizon backend
 enum NotificationPendingEnum {
-  always,
-  never,
+  none,
+  direct,
   oneHour,
   oneDay,
-  threeDays,
   oneWeek,
 }

@@ -65,7 +65,8 @@ This document provides a comprehensive checklist for implementing full coverage 
 - [ ] **`setUserSettings`** - Update user preferences
   - **Schema**: `setUserSettings(groupNotifications: NotificationPendingEnum, location: LocationInput, notificationBeforeEvent: Boolean, notificationEachWeek: Boolean, notificationOnDay: Boolean, notificationPendingMembership: NotificationPendingEnum, notificationPendingParticipation: NotificationPendingEnum, timezone: Timezone): UserSettings`
   - **Priority**: Medium
-  - **Service**: AuthService or new UserService
+  - **Service**: AuthService
+  - **Status**: 🚧 **IN PROGRESS** - Domain models, validation, error handling, unit tests complete. Service implementation needs GraphQL type fixes.
 
 #### Activity Settings
 - [ ] **`updateActivitySetting`** - Update individual activity settings
@@ -219,7 +220,7 @@ class ActivitySettingData {
 
 **Total Operations to Implement**: 9
 
-**Current Coverage**: ~62% (10/16 in-scope operations implemented)
+**Current Coverage**: ~67% (11/16 in-scope operations implemented)
 **Target Coverage**: 100% (16/16 in-scope operations implemented)
 
 **Out of Scope**: 5 operations (3 admin-only, 2 non-existent)

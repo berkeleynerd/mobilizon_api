@@ -79,6 +79,14 @@ class AuthErrorMapper {
       return AuthErrorType.changeEmailFailed;
     }
 
+    if (lowerMessage.contains('settings') && 
+        (lowerMessage.contains('update') || 
+         lowerMessage.contains('change') ||
+         lowerMessage.contains('save') ||
+         lowerMessage.contains('failed'))) {
+      return AuthErrorType.userSettingsFailed;
+    }
+
     // Default to general for unrecognized errors
     return AuthErrorType.general;
   }
@@ -146,6 +154,8 @@ class AuthErrorMapper {
         return 'Password reset failed. Please check that your reset token is valid and not expired.';
       case AuthErrorType.changeEmailFailed:
         return 'Email change failed. Please check your current password and try again.';
+      case AuthErrorType.userSettingsFailed:
+        return 'User settings update failed. Please check your input and try again.';
       case AuthErrorType.general:
         return 'An authentication error occurred. Please try again.';
     }

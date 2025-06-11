@@ -9,6 +9,20 @@ import 'exceptions/auth_error_mapper.dart';
 import 'exceptions/auth_exception.dart';
 import 'models/auth_models.dart';
 import 'validation/auth_validator.dart';
+import '../graphql/client.dart' show 
+  GChangePasswordReq, 
+  GCreateUserReq,
+  GLoginReq,
+  GLogoutReq,
+  GRefreshTokenReq,
+  GSendResetPasswordReq,
+  GResetPasswordReq,
+  GChangeEmailReq,
+  GSetUserSettingsReq;
+import '../graphql/__generated__/schema.schema.gql.dart' show 
+  GTimezone,
+  GLocationInput,
+  GNotificationPendingEnum;
 
 /// Implementation of AuthService using GraphQL
 class AuthService extends BaseService {
@@ -475,6 +489,103 @@ class AuthService extends BaseService {
     }
   }
 
+  Future<UserSettings> setUserSettings(UserSettingsData userSettingsData) async {
+    try {
+      // Validate user settings data before attempting the operation
+      final validated = AuthValidator.validateUserSettings(
+        timezone: userSettingsData.timezone,
+        notificationOnDay: userSettingsData.notificationOnDay,
+        notificationEachWeek: userSettingsData.notificationEachWeek,
+        notificationBeforeEvent: userSettingsData.notificationBeforeEvent,
+        notificationPendingParticipation: userSettingsData.notificationPendingParticipation,
+        notificationPendingMembership: userSettingsData.notificationPendingMembership,
+        groupNotifications: userSettingsData.groupNotifications,
+        locationName: userSettingsData.location?.name,
+        locationRange: userSettingsData.location?.range,
+        locationGeohash: userSettingsData.location?.geohash,
+      );
+
+      // Create the set user settings request with validated data
+      final request = GSetUserSettingsReq(
+        (b) {
+          // Set scalar values
+          final timezoneValue = validated['timezone'] as String?;
+          if (timezoneValue != null) {
+            b.vars.timezone.replace(GTimezone(timezoneValue));
+          }
+          b.vars.notificationOnDay = validated['notificationOnDay'] as bool?;
+          b.vars.notificationEachWeek = validated['notificationEachWeek'] as bool?;
+          b.vars.notificationBeforeEvent = validated['notificationBeforeEvent'] as bool?;
+          
+          // Set enum values
+          b.vars.notificationPendingParticipation = _mapNotificationPendingEnum(
+              validated['notificationPendingParticipation'] as NotificationPendingEnum?);
+          b.vars.notificationPendingMembership = _mapNotificationPendingEnum(
+              validated['notificationPendingMembership'] as NotificationPendingEnum?);
+          b.vars.groupNotifications = _mapNotificationPendingEnum(
+              validated['groupNotifications'] as NotificationPendingEnum?);
+          
+          // Handle location data if present
+          final locationData = validated['location'] as Map<String, dynamic>?;
+          if (locationData != null) {
+            b.vars.location.replace(GLocationInput((l) {
+              l.name = locationData['name'] as String?;
+              l.range = locationData['range'] as int?;
+              l.geohash = locationData['geohash'] as String?;
+            }));
+          }
+        },
+      );
+
+      // Execute the set user settings mutation (requires authentication)
+      final response = await graphQLClient.execute(request);
+
+      // Check for errors
+      if (response.hasErrors || response.data?.setUserSettings == null) {
+        final errorMessages = response.graphqlErrors
+            ?.map((error) => error.message)
+            .toList();
+
+        throw AuthErrorMapper.createMappedException(
+          "Set user settings failed: ${errorMessages?.join(', ') ?? 'Unknown error'}",
+          errorMessages: errorMessages,
+          originalError: response.graphqlErrors,
+        );
+      }
+
+      // Map the response to our domain model
+      final settingsData = response.data!.setUserSettings!;
+
+      final userSettings = UserSettings(
+        timezone: settingsData.timezone?.value,
+        notificationOnDay: settingsData.notificationOnDay,
+        notificationEachWeek: settingsData.notificationEachWeek,
+        notificationBeforeEvent: settingsData.notificationBeforeEvent,
+        notificationPendingParticipation: _mapGraphQLNotificationPendingEnum(settingsData.notificationPendingParticipation),
+        notificationPendingMembership: _mapGraphQLNotificationPendingEnum(settingsData.notificationPendingMembership),
+        groupNotifications: _mapGraphQLNotificationPendingEnum(settingsData.groupNotifications),
+        location: settingsData.location != null
+            ? Location(
+                name: settingsData.location!.name,
+                range: settingsData.location!.range,
+                geohash: settingsData.location!.geohash,
+              )
+            : null,
+      );
+
+      return userSettings;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'Failed to set user settings: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.userSettingsFailed,
+      );
+    }
+  }
+
   Future<bool> refreshTokenIfNeeded() async {
     try {
       final tokens = await tokenManager.getCurrentTokens();
@@ -646,6 +757,42 @@ class AuthService extends BaseService {
         return UserRole.moderator;
       default:
         return UserRole.user;
+    }
+  }
+
+  // Map domain NotificationPendingEnum to GraphQL enum
+  GNotificationPendingEnum? _mapNotificationPendingEnum(NotificationPendingEnum? notification) {
+    if (notification == null) return null;
+    
+    switch (notification) {
+      case NotificationPendingEnum.none:
+        return GNotificationPendingEnum.NONE;
+      case NotificationPendingEnum.direct:
+        return GNotificationPendingEnum.DIRECT;
+      case NotificationPendingEnum.oneHour:
+        return GNotificationPendingEnum.ONE_HOUR;
+      case NotificationPendingEnum.oneDay:
+        return GNotificationPendingEnum.ONE_DAY;
+      case NotificationPendingEnum.oneWeek:
+        return GNotificationPendingEnum.ONE_WEEK;
+    }
+  }
+
+  // Map GraphQL NotificationPendingEnum to domain model
+  NotificationPendingEnum? _mapGraphQLNotificationPendingEnum(GNotificationPendingEnum? notification) {
+    if (notification == null) return null;
+    
+    switch (notification) {
+      case GNotificationPendingEnum.NONE:
+        return NotificationPendingEnum.none;
+      case GNotificationPendingEnum.DIRECT:
+        return NotificationPendingEnum.direct;
+      case GNotificationPendingEnum.ONE_HOUR:
+        return NotificationPendingEnum.oneHour;
+      case GNotificationPendingEnum.ONE_DAY:
+        return NotificationPendingEnum.oneDay;
+      case GNotificationPendingEnum.ONE_WEEK:
+        return NotificationPendingEnum.oneWeek;
     }
   }
 
@@ -843,6 +990,11 @@ class AuthService extends BaseService {
     return _executeWithRetry(() => changeEmail(changeEmailData));
   }
 
+  /// Set user settings with automatic retry for rate limiting
+  Future<UserSettings> setUserSettingsWithRetry(UserSettingsData userSettingsData) async {
+    return _executeWithRetry(() => setUserSettings(userSettingsData));
+  }
+
   // =============================================================================
   // ServiceResult-based methods (alternative to exception-based methods)
   // =============================================================================
@@ -969,6 +1121,18 @@ class AuthService extends BaseService {
     return executeOperation(
       () => changeEmail(changeEmailData),
       operationName: 'Change Email',
+    );
+  }
+
+  /// Set user settings with ServiceResult pattern instead of exceptions
+  ///
+  /// Returns a `ServiceResult<UserSettings>` that contains either:
+  /// - Success: Updated user settings after successful operation
+  /// - Failure: Error message without throwing an exception
+  Future<ServiceResult<UserSettings>> setUserSettingsSafely(UserSettingsData userSettingsData) async {
+    return executeOperation(
+      () => setUserSettings(userSettingsData),
+      operationName: 'Set User Settings',
     );
   }
 }

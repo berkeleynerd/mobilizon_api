@@ -1,3 +1,4 @@
+import '../../core/models/models.dart';
 import '../../core/validation/base_validator.dart';
 import '../exceptions/auth_exception.dart';
 
@@ -257,7 +258,7 @@ class AuthValidator extends BaseValidator {
     required String password,
   }) {
     try {
-      // Validate new email
+      // Validate new email address
       final validatedEmail = validateEmail(email);
 
       // Validate current password (basic check - just not empty)
@@ -277,7 +278,7 @@ class AuthValidator extends BaseValidator {
       throw AuthException(
         'Change email validation failed: ${e.toString()}',
         originalError: e,
-        errorType: AuthErrorType.changeEmailFailed,
+        errorType: AuthErrorType.invalidCredentials,
       );
     }
   }
@@ -339,5 +340,144 @@ class AuthValidator extends BaseValidator {
       'email': getEmailValidationRules(),
       'password': getPasswordValidationRules(),
     };
+  }
+
+  /// Validates user settings data
+  ///
+  /// Parameters:
+  /// - [timezone]: Optional timezone string (IANA timezone identifier)
+  /// - [notificationOnDay]: Optional daily notification setting
+  /// - [notificationEachWeek]: Optional weekly notification setting
+  /// - [notificationBeforeEvent]: Optional pre-event notification setting
+  /// - [notificationPendingParticipation]: Optional pending participation notification timing
+  /// - [notificationPendingMembership]: Optional pending membership notification timing
+  /// - [groupNotifications]: Optional group activity notification timing
+  /// - [locationName]: Optional location name
+  /// - [locationRange]: Optional location range in kilometers
+  /// - [locationGeohash]: Optional geohash for location
+  ///
+  /// Throws:
+  /// - [AuthException] if validation fails
+  ///
+  /// Returns: A map with validated data
+  static Map<String, dynamic> validateUserSettings({
+    String? timezone,
+    bool? notificationOnDay,
+    bool? notificationEachWeek,
+    bool? notificationBeforeEvent,
+    NotificationPendingEnum? notificationPendingParticipation,
+    NotificationPendingEnum? notificationPendingMembership,
+    NotificationPendingEnum? groupNotifications,
+    String? locationName,
+    int? locationRange,
+    String? locationGeohash,
+  }) {
+    try {
+      final validated = <String, dynamic>{};
+
+      // Validate timezone if provided (basic check - non-empty string)
+      if (timezone != null) {
+        final cleanTimezone = timezone.trim();
+        if (cleanTimezone.isNotEmpty) {
+          validated['timezone'] = cleanTimezone;
+        }
+      }
+
+      // Boolean settings don't need validation beyond null checking
+      if (notificationOnDay != null) {
+        validated['notificationOnDay'] = notificationOnDay;
+      }
+      if (notificationEachWeek != null) {
+        validated['notificationEachWeek'] = notificationEachWeek;
+      }
+      if (notificationBeforeEvent != null) {
+        validated['notificationBeforeEvent'] = notificationBeforeEvent;
+      }
+
+      // Enum settings are already validated by the type system
+      if (notificationPendingParticipation != null) {
+        validated['notificationPendingParticipation'] = notificationPendingParticipation;
+      }
+      if (notificationPendingMembership != null) {
+        validated['notificationPendingMembership'] = notificationPendingMembership;
+      }
+      if (groupNotifications != null) {
+        validated['groupNotifications'] = groupNotifications;
+      }
+
+      // Validate location data if any location field is provided
+      final Map<String, dynamic>? locationData = _validateLocationData(
+        name: locationName,
+        range: locationRange,
+        geohash: locationGeohash,
+      );
+      if (locationData != null) {
+        validated['location'] = locationData;
+      }
+
+      // Ensure at least one setting is provided
+      if (validated.isEmpty) {
+        throw AuthException(
+          'At least one user setting must be provided',
+          errorType: AuthErrorType.invalidCredentials,
+        );
+      }
+
+      return validated;
+    } catch (e) {
+      if (e is AuthException) {
+        rethrow;
+      }
+      throw AuthException(
+        'User settings validation failed: ${e.toString()}',
+        originalError: e,
+        errorType: AuthErrorType.invalidCredentials,
+      );
+    }
+  }
+
+  /// Validates location data for user settings
+  ///
+  /// Returns null if no location data provided, or a map with validated location data
+  static Map<String, dynamic>? _validateLocationData({
+    String? name,
+    int? range,
+    String? geohash,
+  }) {
+    // If no location data provided, return null
+    if (name == null && range == null && geohash == null) {
+      return null;
+    }
+
+    final locationData = <String, dynamic>{};
+
+    // Validate location name if provided
+    if (name != null) {
+      final cleanName = name.trim();
+      if (cleanName.isNotEmpty) {
+        locationData['name'] = cleanName;
+      }
+    }
+
+    // Validate location range if provided (must be positive)
+    if (range != null) {
+      if (range < 0) {
+        throw AuthException(
+          'Location range must be non-negative',
+          errorType: AuthErrorType.invalidCredentials,
+        );
+      }
+      locationData['range'] = range;
+    }
+
+    // Validate geohash if provided (basic check - non-empty string)
+    if (geohash != null) {
+      final cleanGeohash = geohash.trim();
+      if (cleanGeohash.isNotEmpty) {
+        locationData['geohash'] = cleanGeohash;
+      }
+    }
+
+    return locationData.isEmpty ? null : locationData;
   }
 }

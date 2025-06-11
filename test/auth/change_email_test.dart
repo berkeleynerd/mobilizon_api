@@ -58,7 +58,7 @@ void main() {
           throwsA(isA<AuthException>().having(
             (e) => e.errorType,
             'errorType',
-            AuthErrorType.changeEmailFailed,
+            AuthErrorType.invalidCredentials,
           )),
         );
       });
@@ -72,7 +72,7 @@ void main() {
           throwsA(isA<AuthException>().having(
             (e) => e.errorType,
             'errorType',
-            AuthErrorType.changeEmailFailed,
+            AuthErrorType.invalidCredentials,
           )),
         );
       });

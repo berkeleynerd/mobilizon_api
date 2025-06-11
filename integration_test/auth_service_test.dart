@@ -41,6 +41,10 @@ void main() {
     test('📧 Streamlined Change Email Test', () async {
       await testInstance.runChangeEmailTest();
     });
+
+    test('⚙️ Streamlined Set User Settings Test', () async {
+      await testInstance.runSetUserSettingsTest();
+    });
   });
 }
 
@@ -417,6 +421,150 @@ class _AuthServiceTest extends RestorableIntegrationTest {
     }
 
     printSuccess('Change email test completed! 🎯');
+  }
+
+  /// Set user settings test - comprehensive settings operation test!
+  Future<void> runSetUserSettingsTest() async {
+    printTestHeader('⚙️ SET USER SETTINGS INTEGRATION TEST');
+    printInfo('Testing setUserSettings operation with various preference combinations');
+
+    // Store original settings for potential restoration
+    storeOriginalData('needsSettingsRestoration', false);
+
+    try {
+      // 1️⃣ Smart Login
+      printTestStep('1️⃣', 'STEP 1: Authenticate user');
+      await loginAsUser();
+      printSuccess('User authenticated successfully');
+
+      // 2️⃣ Test various settings combinations
+      await _testNotificationSettings();
+      await _testTimezoneSettings();
+      await _testLocationSettings();
+      await _testCompleteSettingsUpdate();
+
+    } catch (e) {
+      printWarning('Set user settings test failed: $e');
+      rethrow;
+    }
+
+    printSuccess('Set user settings test completed! 🎯');
+  }
+
+  /// Test notification-only settings
+  Future<void> _testNotificationSettings() async {
+    printTestStep('🔔', 'Testing notification settings');
+    
+    final settingsData = UserSettingsData(
+      notificationOnDay: true,
+      notificationEachWeek: false,
+      notificationBeforeEvent: true,
+      notificationPendingParticipation: NotificationPendingEnum.oneHour,
+      notificationPendingMembership: NotificationPendingEnum.direct,
+      groupNotifications: NotificationPendingEnum.oneDay,
+    );
+
+    final result = await withRateLimit(() async {
+      return await client.auth.setUserSettingsWithRetry(settingsData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Notification settings applied');
+    printInfo('Settings: notifications enabled, participation=1hr, membership=direct, groups=1day');
+    
+    // Verify settings
+    expect(result.notificationOnDay, isTrue);
+    expect(result.notificationEachWeek, isFalse);
+    expect(result.notificationBeforeEvent, isTrue);
+    expect(result.notificationPendingParticipation, NotificationPendingEnum.oneHour);
+    expect(result.notificationPendingMembership, NotificationPendingEnum.direct);
+    expect(result.groupNotifications, NotificationPendingEnum.oneDay);
+  }
+
+  /// Test timezone-only settings
+  Future<void> _testTimezoneSettings() async {
+    printTestStep('🌍', 'Testing timezone settings');
+    
+    final settingsData = UserSettingsData(
+      timezone: 'America/New_York',
+    );
+
+    final result = await withRateLimit(() async {
+      return await client.auth.setUserSettingsWithRetry(settingsData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Timezone settings applied');
+    printInfo('Timezone: ${result.timezone}');
+    
+    // Verify timezone setting
+    expect(result.timezone, 'America/New_York');
+  }
+
+  /// Test location-only settings  
+  Future<void> _testLocationSettings() async {
+    printTestStep('📍', 'Testing location settings');
+    
+    final settingsData = UserSettingsData(
+      location: LocationData(
+        name: 'San Francisco, CA',
+        range: 25,
+        geohash: '9q8yy',
+      ),
+    );
+
+    final result = await withRateLimit(() async {
+      return await client.auth.setUserSettingsWithRetry(settingsData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Location settings applied');
+    printInfo('Location: ${result.location?.name}, Range: ${result.location?.range}km');
+    
+    // Verify location settings
+    expect(result.location, isNotNull);
+    expect(result.location!.name, 'San Francisco, CA');
+    expect(result.location!.range, 25);
+    expect(result.location!.geohash, '9q8yy');
+  }
+
+  /// Test complete settings update with all fields
+  Future<void> _testCompleteSettingsUpdate() async {
+    printTestStep('🔧', 'Testing complete settings update');
+    
+    final settingsData = UserSettingsData(
+      timezone: 'Europe/London',
+      notificationOnDay: false,
+      notificationEachWeek: true,
+      notificationBeforeEvent: false,
+      notificationPendingParticipation: NotificationPendingEnum.oneWeek,
+      notificationPendingMembership: NotificationPendingEnum.none,
+      groupNotifications: NotificationPendingEnum.oneHour,
+      location: LocationData(
+        name: 'London, UK',
+        range: 50,
+        geohash: 'gcpv',
+      ),
+    );
+
+    final result = await withRateLimit(() async {
+      return await client.auth.setUserSettingsWithRetry(settingsData);
+    }, type: RateLimitType.standard);
+
+    printSuccess('Complete settings update applied');
+    printInfo('All settings updated: timezone, notifications, and location');
+    
+    // Verify all settings
+    expect(result.timezone, 'Europe/London');
+    expect(result.notificationOnDay, isFalse);
+    expect(result.notificationEachWeek, isTrue);
+    expect(result.notificationBeforeEvent, isFalse);
+    expect(result.notificationPendingParticipation, NotificationPendingEnum.oneWeek);
+    expect(result.notificationPendingMembership, NotificationPendingEnum.none);
+    expect(result.groupNotifications, NotificationPendingEnum.oneHour);
+    expect(result.location, isNotNull);
+    expect(result.location!.name, 'London, UK');
+    expect(result.location!.range, 50);
+    expect(result.location!.geohash, 'gcpv');
+    
+    printSuccess('All settings verified successfully');
   }
 
   /// Restore original data automatically

@@ -89,3 +89,39 @@ class ChangeEmailData {
     required this.password,
   });
 }
+
+/// Data for updating user settings
+class UserSettingsData {
+  final String? timezone;
+  final bool? notificationOnDay;
+  final bool? notificationEachWeek;
+  final bool? notificationBeforeEvent;
+  final NotificationPendingEnum? notificationPendingParticipation;
+  final NotificationPendingEnum? notificationPendingMembership;
+  final NotificationPendingEnum? groupNotifications;
+  final LocationData? location;
+
+  const UserSettingsData({
+    this.timezone,
+    this.notificationOnDay,
+    this.notificationEachWeek,
+    this.notificationBeforeEvent,
+    this.notificationPendingParticipation,
+    this.notificationPendingMembership,
+    this.groupNotifications,
+    this.location,
+  });
+}
+
+/// Data for user location preferences
+class LocationData {
+  final String? name;
+  final int? range;
+  final String? geohash;
+
+  const LocationData({
+    this.name,
+    this.range,
+    this.geohash,
+  });
+}
