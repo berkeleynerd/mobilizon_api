@@ -9,20 +9,6 @@ import 'exceptions/auth_error_mapper.dart';
 import 'exceptions/auth_exception.dart';
 import 'models/auth_models.dart';
 import 'validation/auth_validator.dart';
-import '../graphql/client.dart' show 
-  GChangePasswordReq, 
-  GCreateUserReq,
-  GLoginReq,
-  GLogoutReq,
-  GRefreshTokenReq,
-  GSendResetPasswordReq,
-  GResetPasswordReq,
-  GChangeEmailReq,
-  GSetUserSettingsReq;
-import '../graphql/__generated__/schema.schema.gql.dart' show 
-  GTimezone,
-  GLocationInput,
-  GNotificationPendingEnum;
 
 /// Implementation of AuthService using GraphQL
 class AuthService extends BaseService {
@@ -794,6 +780,7 @@ class AuthService extends BaseService {
       case GNotificationPendingEnum.ONE_WEEK:
         return NotificationPendingEnum.oneWeek;
     }
+    return null;
   }
 
   void dispose() {
